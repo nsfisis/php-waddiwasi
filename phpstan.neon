@@ -8,3 +8,13 @@ parameters:
     tipsOfTheDay: false
     paths:
         - src
+    typeAliases:
+        Byte: 'int'
+        U32: 'int'
+        U64: 'int'
+        S32: 'int'
+        S33: 'int'
+        S64: 'int'
+        F32: 'float'
+        F64: 'float'
+        Name: 'string'

@@ -1,0 +1,21 @@
+<?php
+
+declare(strict_types=1);
+
+namespace Nsfisis\Waddiwasi\Structure\Instructions\Instrs\Control;
+
+use Nsfisis\Waddiwasi\Structure\Types\TypeIdx;
+use Nsfisis\Waddiwasi\Structure\Types\ValType;
+
+abstract readonly class BlockType
+{
+    final public static function TypeIdx(TypeIdx $type): BlockTypes\TypeIdx
+    {
+        return new BlockTypes\TypeIdx($type);
+    }
+
+    final public static function ValType(?ValType $type): BlockTypes\ValType
+    {
+        return new BlockTypes\ValType($type);
+    }
+}

@@ -1,0 +1,19 @@
+<?php
+
+declare(strict_types=1);
+
+namespace Nsfisis\Waddiwasi\Structure\Instructions\Instrs\Parametric;
+
+use Nsfisis\Waddiwasi\Structure\Instructions\Instr;
+use Nsfisis\Waddiwasi\Structure\Types\ValType;
+
+final readonly class Select extends Instr
+{
+    /**
+     * @param list<ValType> $types
+     */
+    public function __construct(
+        public array $types,
+    ) {
+    }
+}
