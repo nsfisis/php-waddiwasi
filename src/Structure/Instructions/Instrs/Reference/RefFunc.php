@@ -9,7 +9,7 @@ use Nsfisis\Waddiwasi\Structure\Types\FuncIdx;
 
 final readonly class RefFunc extends Instr
 {
-    public function __construct(
+    protected function __construct(
         public FuncIdx $func,
     ) {
     }

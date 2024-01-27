@@ -1,7 +1,7 @@
 {
     "name": "nsfisis/waddiwasi",
     "type": "project",
-    "description": "WebAssembly interpreter written in pure PHP",
+    "description": "WebAssembly runtime written in pure PHP",
     "license": "MIT",
     "authors": [
         {

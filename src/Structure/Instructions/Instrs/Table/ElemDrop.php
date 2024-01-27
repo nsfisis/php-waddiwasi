@@ -9,7 +9,7 @@ use Nsfisis\Waddiwasi\Structure\Types\ElemIdx;
 
 final readonly class ElemDrop extends Instr
 {
-    public function __construct(
+    protected function __construct(
         public ElemIdx $elem,
     ) {
     }

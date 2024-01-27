@@ -11,7 +11,7 @@ final readonly class F32Const extends Instr
     /**
      * @param F32 $value
      */
-    public function __construct(
+    protected function __construct(
         public float $value,
     ) {
     }

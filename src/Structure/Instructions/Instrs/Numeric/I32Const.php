@@ -11,7 +11,7 @@ final readonly class I32Const extends Instr
     /**
      * @param U32 $value
      */
-    public function __construct(
+    protected function __construct(
         public int $value,
     ) {
     }

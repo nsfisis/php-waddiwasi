@@ -11,7 +11,7 @@ final readonly class I64Const extends Instr
     /**
      * @param U64 $value
      */
-    public function __construct(
+    protected function __construct(
         public int $value,
     ) {
     }

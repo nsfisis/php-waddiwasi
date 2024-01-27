@@ -10,7 +10,7 @@ use Nsfisis\Waddiwasi\Structure\Types\TypeIdx;
 
 final readonly class CallIndirect extends Instr
 {
-    public function __construct(
+    protected function __construct(
         public TableIdx $funcTable,
         public TypeIdx $type,
     ) {

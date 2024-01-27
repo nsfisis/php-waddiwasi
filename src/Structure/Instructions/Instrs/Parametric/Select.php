@@ -12,7 +12,7 @@ final readonly class Select extends Instr
     /**
      * @param list<ValType> $types
      */
-    public function __construct(
+    protected function __construct(
         public array $types,
     ) {
     }

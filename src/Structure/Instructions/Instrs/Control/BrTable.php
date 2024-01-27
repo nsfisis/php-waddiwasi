@@ -12,7 +12,7 @@ final readonly class BrTable extends Instr
     /**
      * @param list<LabelIdx> $labelTable
      */
-    public function __construct(
+    protected function __construct(
         public array $labelTable,
         public LabelIdx $defaultLabel,
     ) {

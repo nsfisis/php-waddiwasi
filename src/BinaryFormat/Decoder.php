@@ -132,12 +132,12 @@ final class Decoder
     {
         assert($this->pos === 4);
         $this->ensureNBytesRemains(4);
-        $b1 = ord($this->input[0]);
-        $b2 = ord($this->input[1]);
-        $b3 = ord($this->input[2]);
-        $b4 = ord($this->input[3]);
+        $b1 = ord($this->input[4]);
+        $b2 = ord($this->input[5]);
+        $b3 = ord($this->input[6]);
+        $b4 = ord($this->input[7]);
         if ([$b1, $b2, $b3, $b4] !== [0x01, 0x00, 0x00, 0x00]) {
-            throw new InvalidBinaryFormatException("version");
+            throw new InvalidBinaryFormatException(sprintf("version: [%x, %x, %x, %x]", $b1, $b2, $b3, $b4));
         }
         $this->pos += 4;
     }
@@ -150,6 +150,9 @@ final class Decoder
     private function decodeSection(SectionId $sectionId, callable $decoder): mixed
     {
         $this->skipCustomSections();
+        if ($this->eof()) {
+            return null;
+        }
 
         $idValue = $this->peekByte();
         $id = SectionId::tryFrom($idValue);
@@ -983,7 +986,7 @@ final class Decoder
     private function ensureNBytesRemains(int $n): void
     {
         if ($this->inputSize < $this->pos + $n) {
-            throw new InvalidBinaryFormatException("ensureNBytesRemains");
+            throw new InvalidBinaryFormatException("ensureNBytesRemains: $this->inputSize < $this->pos + $n");
         }
     }
 

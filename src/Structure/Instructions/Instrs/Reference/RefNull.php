@@ -9,7 +9,7 @@ use Nsfisis\Waddiwasi\Structure\Types\RefType;
 
 final readonly class RefNull extends Instr
 {
-    public function __construct(
+    protected function __construct(
         public RefType $type,
     ) {
     }

@@ -9,7 +9,7 @@ use Nsfisis\Waddiwasi\Structure\Types\LocalIdx;
 
 final readonly class LocalGet extends Instr
 {
-    public function __construct(
+    protected function __construct(
         public LocalIdx $var,
     ) {
     }

@@ -9,7 +9,7 @@ use Nsfisis\Waddiwasi\Structure\Types\GlobalIdx;
 
 final readonly class GlobalSet extends Instr
 {
-    public function __construct(
+    protected function __construct(
         public GlobalIdx $var,
     ) {
     }

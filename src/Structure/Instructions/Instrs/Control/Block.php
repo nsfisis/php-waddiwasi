@@ -11,7 +11,7 @@ final readonly class Block extends Instr
     /**
      * @param list<Instr> $body
      */
-    public function __construct(
+    protected function __construct(
         public BlockType $type,
         public array $body,
     ) {

@@ -9,7 +9,7 @@ use Nsfisis\Waddiwasi\Structure\Types\TableIdx;
 
 final readonly class TableGet extends Instr
 {
-    public function __construct(
+    protected function __construct(
         public TableIdx $table,
     ) {
     }

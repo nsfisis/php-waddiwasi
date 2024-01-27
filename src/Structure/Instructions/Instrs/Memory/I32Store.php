@@ -12,7 +12,7 @@ final readonly class I32Store extends Instr
      * @param U32 $offset
      * @param U32 $align
      */
-    public function __construct(
+    protected function __construct(
         public int $offset,
         public int $align,
     ) {

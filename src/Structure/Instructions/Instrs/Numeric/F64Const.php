@@ -11,7 +11,7 @@ final readonly class F64Const extends Instr
     /**
      * @param F64 $value
      */
-    public function __construct(
+    protected function __construct(
         public float $value,
     ) {
     }

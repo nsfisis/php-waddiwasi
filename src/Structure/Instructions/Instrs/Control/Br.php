@@ -9,7 +9,7 @@ use Nsfisis\Waddiwasi\Structure\Types\LabelIdx;
 
 final readonly class Br extends Instr
 {
-    public function __construct(
+    protected function __construct(
         public LabelIdx $label,
     ) {
     }

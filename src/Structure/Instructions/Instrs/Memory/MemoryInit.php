@@ -9,7 +9,7 @@ use Nsfisis\Waddiwasi\Structure\Types\DataIdx;
 
 final readonly class MemoryInit extends Instr
 {
-    public function __construct(
+    protected function __construct(
         public DataIdx $data,
     ) {
     }
