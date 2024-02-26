@@ -6,13 +6,13 @@ namespace Nsfisis\Waddiwasi\Execution;
 
 use Nsfisis\Waddiwasi\Structure\Types\MemType;
 
-final readonly class MemInst
+final class MemInst
 {
     /**
      * @param list<Byte> $data
      */
     public function __construct(
-        public MemType $type,
+        public readonly MemType $type,
         public array $data,
     ) {
     }

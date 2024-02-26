@@ -6,10 +6,10 @@ namespace Nsfisis\Waddiwasi\Execution;
 
 use Nsfisis\Waddiwasi\Structure\Types\GlobalType;
 
-final readonly class GlobalInst
+final class GlobalInst
 {
     public function __construct(
-        public GlobalType $type,
+        public readonly GlobalType $type,
         public Val $value,
     ) {
     }

@@ -13,4 +13,17 @@ final readonly class ResultType
         public array $types,
     ) {
     }
+
+    public function equals(ResultType $other): bool
+    {
+        if (count($this->types) !== count($other->types)) {
+            return false;
+        }
+        foreach ($this->types as $i => $type) {
+            if (!$type->equals($other->types[$i])) {
+                return false;
+            }
+        }
+        return true;
+    }
 }

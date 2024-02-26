@@ -7,8 +7,14 @@ namespace Nsfisis\Waddiwasi\Structure\Types;
 final readonly class FuncType
 {
     public function __construct(
-        public ResultType $args,
-        public ResultType $returns,
+        public ResultType $params,
+        public ResultType $results,
     ) {
+    }
+
+    public function equals(FuncType $other): bool
+    {
+        return $this->params->equals($other->params)
+            && $this->results->equals($other->results);
     }
 }

@@ -12,4 +12,10 @@ final readonly class VecType extends ValType
     protected function __construct(public OrigVecType $inner)
     {
     }
+
+    public function equals(ValType $other): bool
+    {
+        return $other instanceof self
+            && $this->inner === $other->inner; // @phpstan-ignore-line
+    }
 }

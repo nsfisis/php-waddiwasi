@@ -8,16 +8,16 @@ use Nsfisis\Waddiwasi\Execution\ModuleInst;
 use Nsfisis\Waddiwasi\Execution\StackEntry;
 use Nsfisis\Waddiwasi\Execution\Val;
 
-final readonly class Frame extends StackEntry
+final class Frame extends StackEntry
 {
     /**
      * @param int<0, max> $arity
      * @param list<Val> $locals
      */
     public function __construct(
-        public int $arity,
+        public readonly int $arity,
         public array $locals,
-        public ModuleInst $module,
+        public readonly ModuleInst $module,
     ) {
     }
 }

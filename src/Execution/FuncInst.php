@@ -14,8 +14,8 @@ abstract readonly class FuncInst
         return new FuncInsts\Wasm($type, $module, $code);
     }
 
-    final public static function Host(FuncType $type, callable $code): FuncInsts\Host
+    final public static function Host(FuncType $type, callable $callback): FuncInsts\Host
     {
-        return new FuncInsts\Host($type, $code);
+        return new FuncInsts\Host($type, $callback);
     }
 }

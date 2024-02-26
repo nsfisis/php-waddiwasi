@@ -29,9 +29,11 @@ final readonly class Allocator
         $m = new ModuleInst($module->types, [], [], [], [], [], [], []);
 
         foreach ($externVals as $externVal) {
-            if ($externVal instanceof ExternVals\Global_) {
-                $m->globalAddrs[] = $externVal->addr;
-            }
+            match ($externVal::class) {
+                ExternVals\Func::class => $m->funcAddrs[] = $externVal->addr,
+                ExternVals\Global_::class => $m->globalAddrs[] = $externVal->addr,
+                default => null,
+            };
         }
         foreach ($module->funcs as $func) {
             $m->funcAddrs[] = $this->allocFunc($func, $m);
@@ -57,7 +59,7 @@ final readonly class Allocator
 
         foreach ($externVals as $externVal) {
             match ($externVal::class) {
-                ExternVals\Func::class => $m->funcAddrs[] = $externVal->addr,
+                ExternVals\Func::class => null, // handled below.
                 ExternVals\Table::class => $m->tableAddrs[] = $externVal->addr,
                 ExternVals\Mem::class => $m->memAddrs[] = $externVal->addr,
                 ExternVals\Global_::class => $m->globalAddrs[] = $externVal->addr,
@@ -68,13 +70,14 @@ final readonly class Allocator
         foreach ($preAllocatedFuncs as $funcAddr) {
             $m->funcAddrs[] = $funcAddr;
             $funcInst = $this->store->funcs[$funcAddr->value];
-            assert($funcInst instanceof FuncInsts\Wasm);
-            // @phpstan-ignore-next-line
-            $this->store->funcs[$funcAddr->value] = FuncInst::Wasm(
-                $funcInst->type,
-                $m,
-                $funcInst->code,
-            );
+            if ($funcInst instanceof FuncInsts\Wasm) {
+                // @phpstan-ignore-next-line
+                $this->store->funcs[$funcAddr->value] = FuncInst::Wasm(
+                    $funcInst->type,
+                    $m,
+                    $funcInst->code,
+                );
+            }
         }
         foreach ($module->tables as $table) {
             $m->tableAddrs[] = $this->allocTable($table->type, Ref::RefNull($table->type->refType));

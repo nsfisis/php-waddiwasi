@@ -6,13 +6,21 @@ namespace Nsfisis\Waddiwasi\Execution;
 
 use Nsfisis\Waddiwasi\Structure\Instructions\Instr;
 use Nsfisis\Waddiwasi\Structure\Instructions\Instrs;
+use Nsfisis\Waddiwasi\Structure\Instructions\Instrs\Control\BlockType;
+use Nsfisis\Waddiwasi\Structure\Instructions\Instrs\Control\BlockTypes;
 use Nsfisis\Waddiwasi\Structure\Modules\DataModes;
 use Nsfisis\Waddiwasi\Structure\Modules\ElemModes;
 use Nsfisis\Waddiwasi\Structure\Modules\Module;
 use Nsfisis\Waddiwasi\Structure\Types\DataIdx;
 use Nsfisis\Waddiwasi\Structure\Types\ElemIdx;
+use Nsfisis\Waddiwasi\Structure\Types\FuncType;
+use Nsfisis\Waddiwasi\Structure\Types\LabelIdx;
+use Nsfisis\Waddiwasi\Structure\Types\NumType;
+use Nsfisis\Waddiwasi\Structure\Types\ResultType;
+use Nsfisis\Waddiwasi\Structure\Types\TableIdx;
+use Nsfisis\Waddiwasi\Structure\Types\ValType;
+use Nsfisis\Waddiwasi\Structure\Types\ValTypes;
 
-// @todo split this class into multiple classes
 final readonly class Runtime
 {
     private function __construct(
@@ -44,7 +52,7 @@ final readonly class Runtime
         foreach ($module->globals as $global) {
             $instrs = $global->init->instrs;
             array_pop($instrs); // drop "end"
-            $vals[] = $runtimeInit->evalInstrs($instrs);
+            $vals[] = $runtimeInit->evalInstrsForInit($instrs);
             assert($stack->top() === $frameInit);
         }
 
@@ -54,7 +62,7 @@ final readonly class Runtime
             foreach ($elem->init as $expr) {
                 $instrs = $expr->instrs;
                 array_pop($instrs); // drop "end"
-                $result = $runtimeInit->evalInstrs($instrs);
+                $result = $runtimeInit->evalInstrsForInit($instrs);
                 assert($result instanceof Vals\Ref);
                 $refs[] = $result->inner;
             }
@@ -86,9 +94,9 @@ final readonly class Runtime
                 $instrs[] = Instr::I32Const($n);
                 $instrs[] = Instr::TableInit($elem->mode->table, new ElemIdx($i));
                 $instrs[] = Instr::ElemDrop(new ElemIdx($i));
-                $runtime->execInstrs($instrs);
+                $runtime->execInstrsForInit($instrs);
             } elseif ($elem->mode instanceof ElemModes\Declarative) {
-                $runtime->execInstrs([Instr::ElemDrop(new ElemIdx($i))]);
+                $runtime->execInstrsForInit([Instr::ElemDrop(new ElemIdx($i))]);
             }
         }
         foreach ($module->datas as $i => $data) {
@@ -101,12 +109,12 @@ final readonly class Runtime
                 $instrs[] = Instr::I32Const($n);
                 $instrs[] = Instr::MemoryInit(new DataIdx($i));
                 $instrs[] = Instr::DataDrop(new DataIdx($i));
-                $runtime->execInstrs($instrs);
+                $runtime->execInstrsForInit($instrs);
             }
         }
 
         if ($module->start !== null) {
-            $runtime->execInstrs([Instr::Call($module->start->func)]);
+            $runtime->execInstrsForInit([Instr::Call($module->start->func)]);
         }
 
         assert($stack->top() === $frame);
@@ -115,447 +123,828 @@ final readonly class Runtime
         return new self($store, $stack, $moduleInst);
     }
 
-    public function invoke(): void
+    public function getExport(string $name): ?ExternVal
     {
+        foreach ($this->module->exports as $export) {
+            if ($name === $export->name) {
+                return $export->value;
+            }
+        }
+        return null;
+    }
+
+    public function getExportedMemory(string $name): ?MemInst
+    {
+        $export = $this->getExport($name);
+        if ($export instanceof ExternVals\Mem) {
+            return $this->store->mems[$export->addr->value];
+        }
+        return null;
+    }
+
+    /**
+     * @param list<Val> $vals
+     * @return list<Val>
+     */
+    public function invoke(string $name, array $vals): array
+    {
+        $export = $this->getExport($name);
+        assert($export instanceof ExternVals\Func);
+        $funcAddr = $export->addr;
+
+        $funcInst = $this->store->funcs[$funcAddr->value];
+        assert($funcInst instanceof FuncInsts\Wasm);
+        $paramTypes = $funcInst->type->params->types;
+        $resultTypes = $funcInst->type->results->types;
+        if (count($paramTypes) !== count($vals)) {
+            throw new \RuntimeException("invoke($name) invalid function arity: expected " . count($paramTypes) . ", got " . count($vals));
+        }
+        $f = StackEntry::Frame(0, [], new ModuleInst([], [], [], [], [], [], [], []));
+        $this->stack->push($f);
+        foreach ($vals as $val) {
+            $this->stack->pushValue($val);
+        }
+        $this->doInvokeFunc($funcAddr);
+        $results = [];
+        for ($i = 0; $i < count($resultTypes); $i++) {
+            $results[] = $this->stack->popValue();
+        }
+        $this->stack->pop();
+        return $results;
+    }
+
+    private function doInvokeFunc(FuncAddr $funcAddr): void
+    {
+        $fn = $this->store->funcs[$funcAddr->value];
+        if ($fn instanceof FuncInsts\Wasm) {
+            $this->doInvokeWasmFunc($fn);
+        } elseif ($fn instanceof FuncInsts\Host) {
+            $this->doInvokeHostFunc($fn);
+        } else {
+            throw new \RuntimeException("doInvokeFunc: unreachable");
+        }
+    }
+
+    private function doInvokeWasmFunc(FuncInsts\Wasm $fn): void
+    {
+        $paramTypes = $fn->type->params->types;
+        $n = count($paramTypes);
+        $resultTypes = $fn->type->results->types;
+        $m = count($resultTypes);
+        $ts = $fn->code->locals;
+        $instrs = $fn->code->body->instrs;
+        array_pop($instrs); // drop "end"
+        $vals = [];
+        for ($i = 0; $i < $n; $i++) {
+            $vals[] = $this->stack->popValue();
+        }
+        $f = StackEntry::Frame(
+            $m,
+            array_map(fn ($local) => self::defaultValueFromValType($local->type), $ts),
+            $fn->module,
+        );
+        $this->activateFrame($f);
+        $l = StackEntry::Label($m);
+        $this->execInstrs($instrs, $l);
+        $this->deactivateFrame($m);
+    }
+
+    private function activateFrame(StackEntries\Frame $f): void
+    {
+        $this->stack->push($f);
+    }
+
+    private function deactivateFrame(int $arity): void
+    {
+        $vals = [];
+        for ($i = 0; $i < $arity; $i++) {
+            $vals[] = $this->stack->popValue();
+        }
+        $this->stack->popEntriesToCurrentFrame();
+        for ($i = $arity - 1; 0 <= $i; $i--) {
+            $this->stack->pushValue($vals[$i]);
+        }
+    }
+
+    private function activateLabel(StackEntries\Label $l): void
+    {
+        $this->stack->push($l);
+    }
+
+    private function deactivateLabel(?int $arity): void
+    {
+        if ($arity === null) {
+            $vals = $this->stack->popValuesToLabel();
+        } else {
+            $vals = $this->stack->popNValues($arity);
+            $this->stack->popValuesToLabel();
+        }
+        for ($i = count($vals) - 1; 0 <= $i; $i--) {
+            $this->stack->pushValue($vals[$i]);
+        }
+    }
+
+    private function doInvokeHostFunc(FuncInsts\Host $f): void
+    {
+        ($f->callback)();
     }
 
     /**
      * @param list<Instr> $instrs
      */
-    private function execInstrs(array $instrs): void
+    private function execInstrs(
+        array $instrs,
+        StackEntries\Label $l,
+    ): ?ControlFlowResult {
+        $this->activateLabel($l);
+
+        foreach ($instrs as $i) {
+            $result = $this->execInstr($i);
+            if ($result !== null) {
+                return $result;
+            }
+        }
+
+        $this->deactivateLabel(null);
+        return null;
+    }
+
+    /**
+     * @param list<Instr> $instrs
+     */
+    private function execInstrsForInit(array $instrs): void
     {
         foreach ($instrs as $i) {
-            $this->interpret($i);
+            $this->execInstr($i);
         }
     }
 
     /**
      * @param list<Instr> $instrs
      */
-    private function evalInstrs(array $instrs): Val
+    private function evalInstrsForInit(array $instrs): Val
     {
-        $this->execInstrs($instrs);
+        $this->execInstrsForInit($instrs);
         $result = $this->stack->pop();
         assert($result instanceof StackEntries\Value);
         return $result->inner;
     }
 
-    private function interpret(Instr $instr): void
+    private function execInstr(Instr $instr): ?ControlFlowResult
     {
         if ($instr instanceof Instrs\Numeric\F32Abs) {
-            $v = $this->stack->pop();
-            assert($v instanceof StackEntries\Value);
-            assert($v->inner instanceof Vals\Num);
-            assert($v->inner->inner instanceof Nums\F32_);
-            $this->stack->push(StackEntry::Value(Val::Num(Num::F32($v->inner->inner))));
+            $v = $this->stack->popF32();
+            $this->stack->pushF32(abs($v));
         } elseif ($instr instanceof Instrs\Numeric\F32Add) {
-            assert(false, "not implemented " . $instr::class);
+            throw new \RuntimeException("F32Add: not implemented");
         } elseif ($instr instanceof Instrs\Numeric\F32Ceil) {
-            assert(false, "not implemented " . $instr::class);
+            $v = $this->stack->popF32();
+            $this->stack->pushF32(ceil($v));
         } elseif ($instr instanceof Instrs\Numeric\F32Const) {
-            $this->stack->push(StackEntry::Value(Val::Num(Num::F32($instr->value))));
+            $this->stack->pushValue(Val::NumF32($instr->value));
         } elseif ($instr instanceof Instrs\Numeric\F32ConvertI32S) {
-            assert(false, "not implemented " . $instr::class);
+            echo "TRACE (F32ConvertI32S)\n";
         } elseif ($instr instanceof Instrs\Numeric\F32ConvertI32U) {
-            assert(false, "not implemented " . $instr::class);
+            echo "TRACE (F32ConvertI32U)\n";
         } elseif ($instr instanceof Instrs\Numeric\F32ConvertI64S) {
-            assert(false, "not implemented " . $instr::class);
+            throw new \RuntimeException("F32ConvertI64S: not implemented");
         } elseif ($instr instanceof Instrs\Numeric\F32ConvertI64U) {
-            assert(false, "not implemented " . $instr::class);
+            throw new \RuntimeException("F32ConvertI64U: not implemented");
         } elseif ($instr instanceof Instrs\Numeric\F32CopySign) {
-            assert(false, "not implemented " . $instr::class);
+            throw new \RuntimeException("F32CopySign: not implemented");
         } elseif ($instr instanceof Instrs\Numeric\F32DemoteF64) {
-            assert(false, "not implemented " . $instr::class);
+            echo "TRACE (F32DemoteF64)\n";
         } elseif ($instr instanceof Instrs\Numeric\F32Div) {
-            assert(false, "not implemented " . $instr::class);
+            echo "TRACE (F32Div)\n";
         } elseif ($instr instanceof Instrs\Numeric\F32Eq) {
-            assert(false, "not implemented " . $instr::class);
+            throw new \RuntimeException("F32Eq: not implemented");
         } elseif ($instr instanceof Instrs\Numeric\F32Floor) {
-            assert(false, "not implemented " . $instr::class);
+            throw new \RuntimeException("F32Floor: not implemented");
         } elseif ($instr instanceof Instrs\Numeric\F32Ge) {
-            assert(false, "not implemented " . $instr::class);
+            throw new \RuntimeException("F32Ge: not implemented");
         } elseif ($instr instanceof Instrs\Numeric\F32Gt) {
-            assert(false, "not implemented " . $instr::class);
+            throw new \RuntimeException("F32Gt: not implemented");
         } elseif ($instr instanceof Instrs\Numeric\F32Le) {
-            assert(false, "not implemented " . $instr::class);
+            throw new \RuntimeException("F32Le: not implemented");
         } elseif ($instr instanceof Instrs\Numeric\F32Lt) {
-            assert(false, "not implemented " . $instr::class);
+            echo "TRACE (F32Lt)\n";
         } elseif ($instr instanceof Instrs\Numeric\F32Max) {
-            assert(false, "not implemented " . $instr::class);
+            throw new \RuntimeException("F32Max: not implemented");
         } elseif ($instr instanceof Instrs\Numeric\F32Min) {
-            assert(false, "not implemented " . $instr::class);
+            throw new \RuntimeException("F32Min: not implemented");
         } elseif ($instr instanceof Instrs\Numeric\F32Mul) {
-            assert(false, "not implemented " . $instr::class);
+            echo "TRACE (F32Mul)\n";
         } elseif ($instr instanceof Instrs\Numeric\F32Ne) {
-            assert(false, "not implemented " . $instr::class);
+            echo "TRACE (F32Ne)\n";
         } elseif ($instr instanceof Instrs\Numeric\F32Nearest) {
-            assert(false, "not implemented " . $instr::class);
+            throw new \RuntimeException("F32Nearest: not implemented");
         } elseif ($instr instanceof Instrs\Numeric\F32Neg) {
-            assert(false, "not implemented " . $instr::class);
+            throw new \RuntimeException("F32Neg: not implemented");
         } elseif ($instr instanceof Instrs\Numeric\F32ReinterpretI32) {
-            assert(false, "not implemented " . $instr::class);
+            echo "TRACE (F32ReinterpretI32)\n";
         } elseif ($instr instanceof Instrs\Numeric\F32ReinterpretI64) {
-            assert(false, "not implemented " . $instr::class);
+            throw new \RuntimeException("F32ReinterpretI64: not implemented");
         } elseif ($instr instanceof Instrs\Numeric\F32Sqrt) {
-            assert(false, "not implemented " . $instr::class);
+            throw new \RuntimeException("F32Sqrt: not implemented");
         } elseif ($instr instanceof Instrs\Numeric\F32Sub) {
-            assert(false, "not implemented " . $instr::class);
+            throw new \RuntimeException("F32Sub: not implemented");
         } elseif ($instr instanceof Instrs\Numeric\F32Trunc) {
-            assert(false, "not implemented " . $instr::class);
+            throw new \RuntimeException("F32Trunc: not implemented");
         } elseif ($instr instanceof Instrs\Numeric\F64Abs) {
-            assert(false, "not implemented " . $instr::class);
+            echo "TRACE (F64Abs)\n";
         } elseif ($instr instanceof Instrs\Numeric\F64Add) {
-            assert(false, "not implemented " . $instr::class);
+            echo "TRACE (F64Add)\n";
         } elseif ($instr instanceof Instrs\Numeric\F64Ceil) {
-            assert(false, "not implemented " . $instr::class);
+            echo "TRACE (F64Ceil)\n";
         } elseif ($instr instanceof Instrs\Numeric\F64Const) {
-            $this->stack->push(StackEntry::Value(Val::Num(Num::F64($instr->value))));
+            $this->stack->pushValue(Val::NumF64($instr->value));
         } elseif ($instr instanceof Instrs\Numeric\F64ConvertI32S) {
-            assert(false, "not implemented " . $instr::class);
+            echo "TRACE (F64ConvertI32S)\n";
         } elseif ($instr instanceof Instrs\Numeric\F64ConvertI32U) {
-            assert(false, "not implemented " . $instr::class);
+            echo "TRACE (F64ConvertI32U)\n";
         } elseif ($instr instanceof Instrs\Numeric\F64ConvertI64S) {
-            assert(false, "not implemented " . $instr::class);
+            echo "TRACE (F64ConvertI64S)\n";
         } elseif ($instr instanceof Instrs\Numeric\F64ConvertI64U) {
-            assert(false, "not implemented " . $instr::class);
+            echo "TRACE (F64ConvertI64U)\n";
         } elseif ($instr instanceof Instrs\Numeric\F64CopySign) {
-            assert(false, "not implemented " . $instr::class);
+            echo "TRACE (F64CopySign)\n";
         } elseif ($instr instanceof Instrs\Numeric\F64Div) {
-            assert(false, "not implemented " . $instr::class);
+            echo "TRACE (F64Div)\n";
         } elseif ($instr instanceof Instrs\Numeric\F64Eq) {
-            assert(false, "not implemented " . $instr::class);
+            echo "TRACE (F64Eq)\n";
         } elseif ($instr instanceof Instrs\Numeric\F64Floor) {
-            assert(false, "not implemented " . $instr::class);
+            echo "TRACE (F64Floor)\n";
         } elseif ($instr instanceof Instrs\Numeric\F64Ge) {
-            assert(false, "not implemented " . $instr::class);
+            echo "TRACE (F64Ge)\n";
         } elseif ($instr instanceof Instrs\Numeric\F64Gt) {
-            assert(false, "not implemented " . $instr::class);
+            echo "TRACE (F64Gt)\n";
         } elseif ($instr instanceof Instrs\Numeric\F64Le) {
-            assert(false, "not implemented " . $instr::class);
+            echo "TRACE (F64Le)\n";
         } elseif ($instr instanceof Instrs\Numeric\F64Lt) {
-            assert(false, "not implemented " . $instr::class);
+            echo "TRACE (F64Lt)\n";
         } elseif ($instr instanceof Instrs\Numeric\F64Max) {
-            assert(false, "not implemented " . $instr::class);
+            echo "TRACE (F64Max)\n";
         } elseif ($instr instanceof Instrs\Numeric\F64Min) {
-            assert(false, "not implemented " . $instr::class);
+            throw new \RuntimeException("F64Min: not implemented");
         } elseif ($instr instanceof Instrs\Numeric\F64Mul) {
-            assert(false, "not implemented " . $instr::class);
+            echo "TRACE (F64Mul)\n";
         } elseif ($instr instanceof Instrs\Numeric\F64Ne) {
-            assert(false, "not implemented " . $instr::class);
+            echo "TRACE (F64Ne)\n";
         } elseif ($instr instanceof Instrs\Numeric\F64Nearest) {
-            assert(false, "not implemented " . $instr::class);
+            throw new \RuntimeException("F64Nearest: not implemented");
         } elseif ($instr instanceof Instrs\Numeric\F64Neg) {
-            assert(false, "not implemented " . $instr::class);
+            echo "TRACE (F64Neg)\n";
         } elseif ($instr instanceof Instrs\Numeric\F64PromoteF32) {
-            assert(false, "not implemented " . $instr::class);
+            echo "TRACE (F64PromoteF32)\n";
         } elseif ($instr instanceof Instrs\Numeric\F64ReinterpretI32) {
-            assert(false, "not implemented " . $instr::class);
+            throw new \RuntimeException("F64ReinterpretI32: not implemented");
         } elseif ($instr instanceof Instrs\Numeric\F64ReinterpretI64) {
-            assert(false, "not implemented " . $instr::class);
+            echo "TRACE (F64ReinterpretI64)\n";
         } elseif ($instr instanceof Instrs\Numeric\F64Sqrt) {
-            assert(false, "not implemented " . $instr::class);
+            echo "TRACE (F64Sqrt)\n";
         } elseif ($instr instanceof Instrs\Numeric\F64Sub) {
-            assert(false, "not implemented " . $instr::class);
+            echo "TRACE (F64Sub)\n";
         } elseif ($instr instanceof Instrs\Numeric\F64Trunc) {
-            assert(false, "not implemented " . $instr::class);
+            throw new \RuntimeException("F64Trunc: not implemented");
         } elseif ($instr instanceof Instrs\Numeric\I32Add) {
-            assert(false, "not implemented " . $instr::class);
+            echo "TRACE (I32Add)\n";
         } elseif ($instr instanceof Instrs\Numeric\I32And) {
-            assert(false, "not implemented " . $instr::class);
+            $c2 = $this->stack->popI32();
+            $c1 = $this->stack->popI32();
+            $this->stack->pushI32($c1 & $c2);
         } elseif ($instr instanceof Instrs\Numeric\I32Clz) {
-            assert(false, "not implemented " . $instr::class);
+            echo "TRACE (I32Clz)\n";
         } elseif ($instr instanceof Instrs\Numeric\I32Const) {
-            $this->stack->push(StackEntry::Value(Val::Num(Num::I32($instr->value))));
+            $this->stack->pushValue(Val::NumI32($instr->value));
         } elseif ($instr instanceof Instrs\Numeric\I32Ctz) {
-            assert(false, "not implemented " . $instr::class);
+            echo "TRACE (I32Ctz)\n";
         } elseif ($instr instanceof Instrs\Numeric\I32DivS) {
-            assert(false, "not implemented " . $instr::class);
+            echo "TRACE (I32DivS)\n";
         } elseif ($instr instanceof Instrs\Numeric\I32DivU) {
-            assert(false, "not implemented " . $instr::class);
+            echo "TRACE (I32DivU)\n";
         } elseif ($instr instanceof Instrs\Numeric\I32Eq) {
-            assert(false, "not implemented " . $instr::class);
+            echo "TRACE (I32Eq)\n";
         } elseif ($instr instanceof Instrs\Numeric\I32Eqz) {
-            assert(false, "not implemented " . $instr::class);
+            echo "TRACE (I32Eqz)\n";
         } elseif ($instr instanceof Instrs\Numeric\I32Extend16S) {
-            assert(false, "not implemented " . $instr::class);
+            echo "TRACE (I32Extend16S)\n";
         } elseif ($instr instanceof Instrs\Numeric\I32Extend8S) {
-            assert(false, "not implemented " . $instr::class);
+            echo "TRACE (I32Extend8S)\n";
         } elseif ($instr instanceof Instrs\Numeric\I32GeS) {
-            assert(false, "not implemented " . $instr::class);
+            echo "TRACE (I32GeS)\n";
         } elseif ($instr instanceof Instrs\Numeric\I32GeU) {
-            assert(false, "not implemented " . $instr::class);
+            echo "TRACE (I32GeU)\n";
         } elseif ($instr instanceof Instrs\Numeric\I32GtS) {
-            assert(false, "not implemented " . $instr::class);
+            echo "TRACE (I32GtS)\n";
         } elseif ($instr instanceof Instrs\Numeric\I32GtU) {
-            assert(false, "not implemented " . $instr::class);
+            echo "TRACE (I32GtU)\n";
         } elseif ($instr instanceof Instrs\Numeric\I32LeS) {
-            assert(false, "not implemented " . $instr::class);
+            echo "TRACE (I32LeS)\n";
         } elseif ($instr instanceof Instrs\Numeric\I32LeU) {
-            assert(false, "not implemented " . $instr::class);
+            echo "TRACE (I32LeU)\n";
         } elseif ($instr instanceof Instrs\Numeric\I32LtS) {
-            assert(false, "not implemented " . $instr::class);
+            echo "TRACE (I32LtS)\n";
         } elseif ($instr instanceof Instrs\Numeric\I32LtU) {
-            assert(false, "not implemented " . $instr::class);
+            echo "TRACE (I32LtU)\n";
         } elseif ($instr instanceof Instrs\Numeric\I32Mul) {
-            assert(false, "not implemented " . $instr::class);
+            echo "TRACE (I32Mul)\n";
         } elseif ($instr instanceof Instrs\Numeric\I32Ne) {
-            assert(false, "not implemented " . $instr::class);
+            echo "TRACE (I32Ne)\n";
         } elseif ($instr instanceof Instrs\Numeric\I32Or) {
-            assert(false, "not implemented " . $instr::class);
+            echo "TRACE (I32Or)\n";
         } elseif ($instr instanceof Instrs\Numeric\I32Popcnt) {
-            assert(false, "not implemented " . $instr::class);
+            echo "TRACE (I32Popcnt)\n";
         } elseif ($instr instanceof Instrs\Numeric\I32ReinterpretF32) {
-            assert(false, "not implemented " . $instr::class);
+            echo "TRACE (I32ReinterpretF32)\n";
         } elseif ($instr instanceof Instrs\Numeric\I32ReinterpretF64) {
-            assert(false, "not implemented " . $instr::class);
+            throw new \RuntimeException("I32ReinterpretF64: not implemented");
         } elseif ($instr instanceof Instrs\Numeric\I32RemS) {
-            assert(false, "not implemented " . $instr::class);
+            echo "TRACE (I32RemS)\n";
         } elseif ($instr instanceof Instrs\Numeric\I32RemU) {
-            assert(false, "not implemented " . $instr::class);
+            echo "TRACE (I32RemU)\n";
         } elseif ($instr instanceof Instrs\Numeric\I32RotL) {
-            assert(false, "not implemented " . $instr::class);
+            echo "TRACE (I32RotL)\n";
         } elseif ($instr instanceof Instrs\Numeric\I32RotR) {
-            assert(false, "not implemented " . $instr::class);
+            echo "TRACE (I32RotR)\n";
         } elseif ($instr instanceof Instrs\Numeric\I32Shl) {
-            assert(false, "not implemented " . $instr::class);
+            echo "TRACE (I32Shl)\n";
         } elseif ($instr instanceof Instrs\Numeric\I32ShrS) {
-            assert(false, "not implemented " . $instr::class);
+            echo "TRACE (I32ShrS)\n";
         } elseif ($instr instanceof Instrs\Numeric\I32ShrU) {
-            assert(false, "not implemented " . $instr::class);
+            echo "TRACE (I32ShrU)\n";
         } elseif ($instr instanceof Instrs\Numeric\I32Sub) {
-            assert(false, "not implemented " . $instr::class);
+            $c2 = $this->stack->popI32();
+            $c1 = $this->stack->popI32();
+            $this->stack->pushI32($c1 - $c2);
         } elseif ($instr instanceof Instrs\Numeric\I32TruncF32S) {
-            assert(false, "not implemented " . $instr::class);
+            echo "TRACE (I32TruncF32S)\n";
         } elseif ($instr instanceof Instrs\Numeric\I32TruncF32U) {
-            assert(false, "not implemented " . $instr::class);
+            throw new \RuntimeException("I32TruncF32U: not implemented");
         } elseif ($instr instanceof Instrs\Numeric\I32TruncF64S) {
-            assert(false, "not implemented " . $instr::class);
+            echo "TRACE (I32TruncF64S)\n";
         } elseif ($instr instanceof Instrs\Numeric\I32TruncF64U) {
-            assert(false, "not implemented " . $instr::class);
+            echo "TRACE (I32TruncF64U)\n";
         } elseif ($instr instanceof Instrs\Numeric\I32TruncSatF32S) {
-            assert(false, "not implemented " . $instr::class);
+            throw new \RuntimeException("I32TruncSatF32S: not implemented");
         } elseif ($instr instanceof Instrs\Numeric\I32TruncSatF32U) {
-            assert(false, "not implemented " . $instr::class);
+            throw new \RuntimeException("I32TruncSatF32U: not implemented");
         } elseif ($instr instanceof Instrs\Numeric\I32TruncSatF64S) {
-            assert(false, "not implemented " . $instr::class);
+            throw new \RuntimeException("I32TruncSatF64S: not implemented");
         } elseif ($instr instanceof Instrs\Numeric\I32TruncSatF64U) {
-            assert(false, "not implemented " . $instr::class);
+            throw new \RuntimeException("I32TruncSatF64U: not implemented");
         } elseif ($instr instanceof Instrs\Numeric\I32WrapI64) {
-            assert(false, "not implemented " . $instr::class);
+            echo "TRACE (I32WrapI64)\n";
         } elseif ($instr instanceof Instrs\Numeric\I32Xor) {
-            assert(false, "not implemented " . $instr::class);
+            echo "TRACE (I32Xor)\n";
         } elseif ($instr instanceof Instrs\Numeric\I64Add) {
-            assert(false, "not implemented " . $instr::class);
+            echo "TRACE (I64Add)\n";
         } elseif ($instr instanceof Instrs\Numeric\I64And) {
-            assert(false, "not implemented " . $instr::class);
+            echo "TRACE (I64And)\n";
         } elseif ($instr instanceof Instrs\Numeric\I64Clz) {
-            assert(false, "not implemented " . $instr::class);
+            echo "TRACE (I64Clz)\n";
         } elseif ($instr instanceof Instrs\Numeric\I64Const) {
-            $this->stack->push(StackEntry::Value(Val::Num(Num::I64($instr->value))));
+            $this->stack->pushValue(Val::NumI64($instr->value));
         } elseif ($instr instanceof Instrs\Numeric\I64Ctz) {
-            assert(false, "not implemented " . $instr::class);
+            throw new \RuntimeException("I64Ctz: not implemented");
         } elseif ($instr instanceof Instrs\Numeric\I64DivS) {
-            assert(false, "not implemented " . $instr::class);
+            echo "TRACE (I64DivS)\n";
         } elseif ($instr instanceof Instrs\Numeric\I64DivU) {
-            assert(false, "not implemented " . $instr::class);
+            echo "TRACE (I64DivU)\n";
         } elseif ($instr instanceof Instrs\Numeric\I64Eq) {
-            assert(false, "not implemented " . $instr::class);
+            echo "TRACE (I64Eq)\n";
         } elseif ($instr instanceof Instrs\Numeric\I64Eqz) {
-            assert(false, "not implemented " . $instr::class);
+            echo "TRACE (I64Eqz)\n";
         } elseif ($instr instanceof Instrs\Numeric\I64Extend16S) {
-            assert(false, "not implemented " . $instr::class);
+            echo "TRACE (I64Extend16S)\n";
         } elseif ($instr instanceof Instrs\Numeric\I64Extend32S) {
-            assert(false, "not implemented " . $instr::class);
+            throw new \RuntimeException("I64Extend32S: not implemented");
         } elseif ($instr instanceof Instrs\Numeric\I64Extend8S) {
-            assert(false, "not implemented " . $instr::class);
+            throw new \RuntimeException("I64Extend8S: not implemented");
         } elseif ($instr instanceof Instrs\Numeric\I64ExtendI32S) {
-            assert(false, "not implemented " . $instr::class);
+            echo "TRACE (I64ExtendI32S)\n";
         } elseif ($instr instanceof Instrs\Numeric\I64ExtendI32U) {
-            assert(false, "not implemented " . $instr::class);
+            echo "TRACE (I64ExtendI32U)\n";
         } elseif ($instr instanceof Instrs\Numeric\I64GeS) {
-            assert(false, "not implemented " . $instr::class);
+            echo "TRACE (I64GeS)\n";
         } elseif ($instr instanceof Instrs\Numeric\I64GeU) {
-            assert(false, "not implemented " . $instr::class);
+            echo "TRACE (I64GeU)\n";
         } elseif ($instr instanceof Instrs\Numeric\I64GtS) {
-            assert(false, "not implemented " . $instr::class);
+            echo "TRACE (I64GtS)\n";
         } elseif ($instr instanceof Instrs\Numeric\I64GtU) {
-            assert(false, "not implemented " . $instr::class);
+            echo "TRACE (I64GtU)\n";
         } elseif ($instr instanceof Instrs\Numeric\I64LeS) {
-            assert(false, "not implemented " . $instr::class);
+            echo "TRACE (I64LeS)\n";
         } elseif ($instr instanceof Instrs\Numeric\I64LeU) {
-            assert(false, "not implemented " . $instr::class);
+            echo "TRACE (I64LeU)\n";
         } elseif ($instr instanceof Instrs\Numeric\I64LtS) {
-            assert(false, "not implemented " . $instr::class);
+            echo "TRACE (I64LtS)\n";
         } elseif ($instr instanceof Instrs\Numeric\I64LtU) {
-            assert(false, "not implemented " . $instr::class);
+            echo "TRACE (I64LtU)\n";
         } elseif ($instr instanceof Instrs\Numeric\I64Mul) {
-            assert(false, "not implemented " . $instr::class);
+            echo "TRACE (I64Mul)\n";
         } elseif ($instr instanceof Instrs\Numeric\I64Ne) {
-            assert(false, "not implemented " . $instr::class);
+            echo "TRACE (I64Ne)\n";
         } elseif ($instr instanceof Instrs\Numeric\I64Or) {
-            assert(false, "not implemented " . $instr::class);
+            echo "TRACE (I64Or)\n";
         } elseif ($instr instanceof Instrs\Numeric\I64Popcnt) {
-            assert(false, "not implemented " . $instr::class);
+            throw new \RuntimeException("I64Popcnt: not implemented");
         } elseif ($instr instanceof Instrs\Numeric\I64ReinterpretF32) {
-            assert(false, "not implemented " . $instr::class);
+            throw new \RuntimeException("I64ReinterpretF32: not implemented");
         } elseif ($instr instanceof Instrs\Numeric\I64ReinterpretF64) {
-            assert(false, "not implemented " . $instr::class);
+            echo "TRACE (I64ReinterpretF64)\n";
         } elseif ($instr instanceof Instrs\Numeric\I64RemS) {
-            assert(false, "not implemented " . $instr::class);
+            echo "TRACE (I64RemS)\n";
         } elseif ($instr instanceof Instrs\Numeric\I64RemU) {
-            assert(false, "not implemented " . $instr::class);
+            echo "TRACE (I64RemU)\n";
         } elseif ($instr instanceof Instrs\Numeric\I64RotL) {
-            assert(false, "not implemented " . $instr::class);
+            echo "TRACE (I64RotL)\n";
         } elseif ($instr instanceof Instrs\Numeric\I64RotR) {
-            assert(false, "not implemented " . $instr::class);
+            echo "TRACE (I64RotR)\n";
         } elseif ($instr instanceof Instrs\Numeric\I64Shl) {
-            assert(false, "not implemented " . $instr::class);
+            echo "TRACE (I64Shl)\n";
         } elseif ($instr instanceof Instrs\Numeric\I64ShrS) {
-            assert(false, "not implemented " . $instr::class);
+            echo "TRACE (I64ShrS)\n";
         } elseif ($instr instanceof Instrs\Numeric\I64ShrU) {
-            assert(false, "not implemented " . $instr::class);
+            echo "TRACE (I64ShrU)\n";
         } elseif ($instr instanceof Instrs\Numeric\I64Sub) {
-            assert(false, "not implemented " . $instr::class);
+            echo "TRACE (I64Sub)\n";
         } elseif ($instr instanceof Instrs\Numeric\I64TruncF32S) {
-            assert(false, "not implemented " . $instr::class);
+            throw new \RuntimeException("I64TruncF32S: not implemented");
         } elseif ($instr instanceof Instrs\Numeric\I64TruncF32U) {
-            assert(false, "not implemented " . $instr::class);
+            throw new \RuntimeException("I64TruncF32U: not implemented");
         } elseif ($instr instanceof Instrs\Numeric\I64TruncF64S) {
-            assert(false, "not implemented " . $instr::class);
+            echo "TRACE (I64TruncF64S)\n";
         } elseif ($instr instanceof Instrs\Numeric\I64TruncF64U) {
-            assert(false, "not implemented " . $instr::class);
+            echo "TRACE (I64TruncF64U)\n";
         } elseif ($instr instanceof Instrs\Numeric\I64TruncSatF32S) {
-            assert(false, "not implemented " . $instr::class);
+            throw new \RuntimeException("I64TruncSatF32S: not implemented");
         } elseif ($instr instanceof Instrs\Numeric\I64TruncSatF32U) {
-            assert(false, "not implemented " . $instr::class);
+            throw new \RuntimeException("I64TruncSatF32U: not implemented");
         } elseif ($instr instanceof Instrs\Numeric\I64TruncSatF64S) {
-            assert(false, "not implemented " . $instr::class);
+            throw new \RuntimeException("I64TruncSatF64S: not implemented");
         } elseif ($instr instanceof Instrs\Numeric\I64TruncSatF64U) {
-            assert(false, "not implemented " . $instr::class);
+            throw new \RuntimeException("I64TruncSatF64U: not implemented");
         } elseif ($instr instanceof Instrs\Numeric\I64Xor) {
-            assert(false, "not implemented " . $instr::class);
+            echo "TRACE (I64Xor)\n";
         } elseif ($instr instanceof Instrs\Reference\RefFunc) {
-            assert(false, "not implemented " . $instr::class);
+            $x = $instr->func;
+            $f = $this->stack->currentFrame();
+            $a = $f->module->funcAddrs[$x->value];
+            $this->stack->pushRefFunc($a);
         } elseif ($instr instanceof Instrs\Reference\RefIsNull) {
-            assert(false, "not implemented " . $instr::class);
+            $val = $this->stack->popRef();
+            $this->stack->pushBool($val instanceof Refs\RefNull);
         } elseif ($instr instanceof Instrs\Reference\RefNull) {
-            assert(false, "not implemented " . $instr::class);
+            $t = $instr->type;
+            $this->stack->pushRefNull($t);
         } elseif ($instr instanceof Instrs\Parametric\Drop) {
-            assert(false, "not implemented " . $instr::class);
+            $this->stack->pop();
         } elseif ($instr instanceof Instrs\Parametric\Select) {
-            assert(false, "not implemented " . $instr::class);
+            $c = $this->stack->popI32();
+            $val2 = $this->stack->pop();
+            assert($val2 !== null);
+            $val1 = $this->stack->pop();
+            assert($val1 !== null);
+            if ($c !== 0) {
+                $this->stack->push($val1);
+            } else {
+                $this->stack->push($val2);
+            }
         } elseif ($instr instanceof Instrs\Variable\GlobalGet) {
-            assert(false, "not implemented " . $instr::class);
+            $x = $instr->var;
+            $f = $this->stack->currentFrame();
+            $a = $f->module->globalAddrs[$x->value];
+            $glob = $this->store->globals[$a->value];
+            $val = $glob->value;
+            $this->stack->pushValue($val);
         } elseif ($instr instanceof Instrs\Variable\GlobalSet) {
-            assert(false, "not implemented " . $instr::class);
+            $x = $instr->var;
+            $f = $this->stack->currentFrame();
+            $a = $f->module->globalAddrs[$x->value];
+            $glob = $this->store->globals[$a->value];
+            $val = $this->stack->popValue();
+            $glob->value = $val;
         } elseif ($instr instanceof Instrs\Variable\LocalGet) {
-            assert(false, "not implemented " . $instr::class);
+            $x = $instr->var;
+            $f = $this->stack->currentFrame();
+            $val = $f->locals[$x->value];
+            $this->stack->pushValue($val);
         } elseif ($instr instanceof Instrs\Variable\LocalSet) {
-            assert(false, "not implemented " . $instr::class);
+            $x = $instr->var;
+            $f = $this->stack->currentFrame();
+            $val = $this->stack->popValue();
+            // @phpstan-ignore-next-line
+            $f->locals[$x->value] = $val;
         } elseif ($instr instanceof Instrs\Variable\LocalTee) {
-            assert(false, "not implemented " . $instr::class);
+            $x = $instr->var;
+            $f = $this->stack->currentFrame();
+            $val = $this->stack->popValue();
+            // @phpstan-ignore-next-line
+            $f->locals[$x->value] = $val;
+            $this->stack->pushValue($val);
         } elseif ($instr instanceof Instrs\Table\ElemDrop) {
-            assert(false, "not implemented " . $instr::class);
+            $x = $instr->elem;
+            $f = $this->stack->currentFrame();
+            $a = $f->module->elemAddrs[$x->value];
+            $elem = $this->store->elems[$a->value];
+            // @phpstan-ignore-next-line
+            $this->store->elems[$a->value] = new ElemInst($elem->type, []);
         } elseif ($instr instanceof Instrs\Table\TableCopy) {
-            assert(false, "not implemented " . $instr::class);
+            throw new \RuntimeException("TableCopy: not implemented");
         } elseif ($instr instanceof Instrs\Table\TableFill) {
-            assert(false, "not implemented " . $instr::class);
+            throw new \RuntimeException("TableFill: not implemented");
         } elseif ($instr instanceof Instrs\Table\TableGet) {
-            assert(false, "not implemented " . $instr::class);
+            throw new \RuntimeException("TableGet: not implemented");
         } elseif ($instr instanceof Instrs\Table\TableGrow) {
-            assert(false, "not implemented " . $instr::class);
+            throw new \RuntimeException("TableGrow: not implemented");
         } elseif ($instr instanceof Instrs\Table\TableInit) {
-            assert(false, "not implemented " . $instr::class);
+            $x = $instr->to;
+            $y = $instr->from;
+            $f = $this->stack->currentFrame();
+            $ta = $f->module->tableAddrs[$x->value];
+            $tab = $this->store->tables[$ta->value];
+            $ea = $f->module->elemAddrs[$y->value];
+            $elem = $this->store->elems[$ea->value];
+            $n = $this->stack->popI32();
+            $s = $this->stack->popI32();
+            $d = $this->stack->popI32();
+            if (count($elem->elem) < $s + $n) {
+                throw new TrapException("table.init: out of bounds");
+            }
+            if (count($tab->elem) < $d + $n) {
+                throw new TrapException("table.init: out of bounds");
+            }
+            for ($i = 0; $i < $n; $i++) {
+                $val = $elem->elem[$s];
+                $this->stack->pushI32($d);
+                $this->stack->pushValue(Val::Ref($val));
+                $this->execInstr(Instr::TableSet(new TableIdx($x->value)));
+                $d++;
+                $s++;
+            }
         } elseif ($instr instanceof Instrs\Table\TableSet) {
-            assert(false, "not implemented " . $instr::class);
+            $x = $instr->table;
+            $f = $this->stack->currentFrame();
+            $a = $f->module->tableAddrs[$x->value];
+            $tab = $this->store->tables[$a->value];
+            $val = $this->stack->popValue();
+            $i = $this->stack->popI32();
+            if (count($tab->elem) <= $i) {
+                throw new TrapException("table.set: out of bounds");
+            }
+            // @phpstan-ignore-next-line
+            $tab->elem[$i] = $val;
         } elseif ($instr instanceof Instrs\Table\TableSize) {
-            assert(false, "not implemented " . $instr::class);
+            throw new \RuntimeException("TableSize: not implemented");
         } elseif ($instr instanceof Instrs\Memory\DataDrop) {
-            assert(false, "not implemented " . $instr::class);
+            $x = $instr->data;
+            $f = $this->stack->currentFrame();
+            $a = $f->module->dataAddrs[$x->value];
+            // @phpstan-ignore-next-line
+            $this->store->datas[$a->value] = new DataInst([]);
         } elseif ($instr instanceof Instrs\Memory\F32Load) {
-            assert(false, "not implemented " . $instr::class);
+            echo "TRACE (F32Load)\n";
         } elseif ($instr instanceof Instrs\Memory\F32Store) {
-            assert(false, "not implemented " . $instr::class);
+            echo "TRACE (F32Store)\n";
         } elseif ($instr instanceof Instrs\Memory\F64Load) {
-            assert(false, "not implemented " . $instr::class);
+            echo "TRACE (F64Load)\n";
         } elseif ($instr instanceof Instrs\Memory\F64Store) {
-            assert(false, "not implemented " . $instr::class);
+            echo "TRACE (F64Store)\n";
         } elseif ($instr instanceof Instrs\Memory\I32Load) {
-            assert(false, "not implemented " . $instr::class);
+            echo "TRACE (I32Load)\n";
         } elseif ($instr instanceof Instrs\Memory\I32Load16S) {
-            assert(false, "not implemented " . $instr::class);
+            echo "TRACE (I32Load16S)\n";
         } elseif ($instr instanceof Instrs\Memory\I32Load16U) {
-            assert(false, "not implemented " . $instr::class);
+            echo "TRACE (I32Load16U)\n";
         } elseif ($instr instanceof Instrs\Memory\I32Load8S) {
-            assert(false, "not implemented " . $instr::class);
+            echo "TRACE (I32Load8S)\n";
         } elseif ($instr instanceof Instrs\Memory\I32Load8U) {
-            assert(false, "not implemented " . $instr::class);
+            echo "TRACE (I32Load8U)\n";
         } elseif ($instr instanceof Instrs\Memory\I32Store) {
-            assert(false, "not implemented " . $instr::class);
+            echo "TRACE (I32Store)\n";
         } elseif ($instr instanceof Instrs\Memory\I32Store16) {
-            assert(false, "not implemented " . $instr::class);
+            echo "TRACE (I32Store16)\n";
         } elseif ($instr instanceof Instrs\Memory\I32Store8) {
-            assert(false, "not implemented " . $instr::class);
+            $offset = $instr->offset;
+            $align = $instr->align;
+            $f = $this->stack->currentFrame();
+            $a = $f->module->memAddrs[0];
+            $mem = $this->store->mems[$a->value];
+            $c = $this->stack->popI32();
+            $i = $this->stack->popI32();
+            $ea = $i + $offset;
+            if (count($mem->data) < $ea + 1) {
+                throw new TrapException("i32.store8: out of bounds");
+            }
+            $n = $c & 0xFF;
+            // @phpstan-ignore-next-line
+            $mem->data[$ea] = $n;
         } elseif ($instr instanceof Instrs\Memory\I64Load) {
-            assert(false, "not implemented " . $instr::class);
+            echo "TRACE (I64Load)\n";
         } elseif ($instr instanceof Instrs\Memory\I64Load16S) {
-            assert(false, "not implemented " . $instr::class);
+            echo "TRACE (I64Load16S)\n";
         } elseif ($instr instanceof Instrs\Memory\I64Load16U) {
-            assert(false, "not implemented " . $instr::class);
+            echo "TRACE (I64Load16U)\n";
         } elseif ($instr instanceof Instrs\Memory\I64Load32S) {
-            assert(false, "not implemented " . $instr::class);
+            echo "TRACE (I64Load32S)\n";
         } elseif ($instr instanceof Instrs\Memory\I64Load32U) {
-            assert(false, "not implemented " . $instr::class);
+            echo "TRACE (I64Load32U)\n";
         } elseif ($instr instanceof Instrs\Memory\I64Load8S) {
-            assert(false, "not implemented " . $instr::class);
+            echo "TRACE (I64Load8S)\n";
         } elseif ($instr instanceof Instrs\Memory\I64Load8U) {
-            assert(false, "not implemented " . $instr::class);
+            echo "TRACE (I64Load8U)\n";
         } elseif ($instr instanceof Instrs\Memory\I64Store) {
-            assert(false, "not implemented " . $instr::class);
+            echo "TRACE (I64Store)\n";
         } elseif ($instr instanceof Instrs\Memory\I64Store16) {
-            assert(false, "not implemented " . $instr::class);
+            echo "TRACE (I64Store16)\n";
         } elseif ($instr instanceof Instrs\Memory\I64Store32) {
-            assert(false, "not implemented " . $instr::class);
+            echo "TRACE (I64Store32)\n";
         } elseif ($instr instanceof Instrs\Memory\I64Store8) {
-            assert(false, "not implemented " . $instr::class);
+            echo "TRACE (I64Store8)\n";
         } elseif ($instr instanceof Instrs\Memory\MemoryCopy) {
-            assert(false, "not implemented " . $instr::class);
+            throw new \RuntimeException("MemoryCopy: not implemented");
         } elseif ($instr instanceof Instrs\Memory\MemoryFill) {
-            assert(false, "not implemented " . $instr::class);
+            throw new \RuntimeException("MemoryFill: not implemented");
         } elseif ($instr instanceof Instrs\Memory\MemoryGrow) {
-            assert(false, "not implemented " . $instr::class);
+            throw new \RuntimeException("MemoryGrow: not implemented");
         } elseif ($instr instanceof Instrs\Memory\MemoryInit) {
-            assert(false, "not implemented " . $instr::class);
+            $x = $instr->data;
+            $f = $this->stack->currentFrame();
+            $ma = $f->module->memAddrs[0];
+            $mem = $this->store->mems[$ma->value];
+            $da = $f->module->dataAddrs[$x->value];
+            $data = $this->store->datas[$da->value];
+            $n = $this->stack->popI32();
+            $s = $this->stack->popI32();
+            $d = $this->stack->popI32();
+            if (count($data->data) < $s + $n) {
+                throw new TrapException("memory.init: out of bounds");
+            }
+            if (count($mem->data) < $d + $n) {
+                throw new TrapException("memory.init: out of bounds");
+            }
+            for ($i = 0; $i < $n; $i++) {
+                $b = $data->data[$s];
+                $this->stack->pushI32($d);
+                $this->stack->pushI32($b);
+                $this->execInstr(Instr::I32Store8(0, 0));
+                $d++;
+                $s++;
+            }
         } elseif ($instr instanceof Instrs\Memory\MemorySize) {
-            assert(false, "not implemented " . $instr::class);
+            $f = $this->stack->currentFrame();
+            $a = $f->module->memAddrs[0];
+            $mem = $this->store->mems[$a->value];
+            $szInByte = count($mem->data);
+            assert(is_int($szInByte / (64 * 1024)));
+            $sz = $szInByte / (64 * 1024);
+            $this->stack->pushI32($sz);
         } elseif ($instr instanceof Instrs\Control\Block) {
-            assert(false, "not implemented " . $instr::class);
+            $blockType = $instr->type;
+            $instrs = $instr->body;
+            $f = $this->stack->currentFrame();
+            $bt = self::expandBlockType($blockType, $f->module);
+            $n = count($bt->results->types);
+            $l = StackEntry::Label($n);
+            $result = $this->execInstrs($instrs, $l);
+            if ($result === null) {
+                // Do nothing.
+            } elseif ($result instanceof ControlFlowResults\Return_) {
+                return $result;
+            } elseif ($result instanceof ControlFlowResults\Br) {
+                if ($result->label->value === 0) {
+                    $this->deactivateLabel($n);
+                } else {
+                    $this->deactivateLabel($n);
+                    return ControlFlowResult::Br(new LabelIdx($result->label->value - 1));
+                }
+            } else {
+                throw new \RuntimeException("doInvokeWasmFunc: unreachable");
+            }
         } elseif ($instr instanceof Instrs\Control\Br) {
-            assert(false, "not implemented " . $instr::class);
+            $l = $instr->label;
+            return ControlFlowResult::Br($l);
         } elseif ($instr instanceof Instrs\Control\BrIf) {
-            assert(false, "not implemented " . $instr::class);
+            $l = $instr->label;
+            $c = $this->stack->popI32();
+            if ($c !== 0) {
+                return $this->execInstr(Instr::Br($l));
+            }
         } elseif ($instr instanceof Instrs\Control\BrTable) {
-            assert(false, "not implemented " . $instr::class);
+            $ls = $instr->labelTable;
+            $ln = $instr->defaultLabel;
+            $i = $this->stack->popI32();
+            if ($i < count($ls)) {
+                return $this->execInstr(Instr::Br($ls[$i]));
+            } else {
+                return $this->execInstr(Instr::Br($ln));
+            }
         } elseif ($instr instanceof Instrs\Control\Call) {
-            assert(false, "not implemented " . $instr::class);
+            $x = $instr->func;
+            $f = $this->stack->currentFrame();
+            $a = $f->module->funcAddrs[$x->value];
+            $this->doInvokeFunc($a);
         } elseif ($instr instanceof Instrs\Control\CallIndirect) {
-            assert(false, "not implemented " . $instr::class);
+            $x = $instr->funcTable;
+            $y = $instr->type;
+            $f = $this->stack->currentFrame();
+            $ta = $f->module->tableAddrs[$x->value];
+            $tab = $this->store->tables[$ta->value];
+            $ftExpect = $f->module->types[$y->value];
+            $i = $this->stack->popI32();
+            if (count($tab->elem) <= $i) {
+                throw new TrapException("call_indirect: out of bounds");
+            }
+            $r = $tab->elem[$i];
+            if ($r instanceof Refs\RefNull) {
+                throw new TrapException("call_indirect: ref.null");
+            }
+            assert($r instanceof Refs\RefFunc);
+            $a = $r->addr;
+            $fn = $this->store->funcs[$a->value];
+            assert($fn instanceof FuncInsts\Wasm || $fn instanceof FuncInsts\Host);
+            $ftActual = $fn->type;
+            if ($ftExpect->equals($ftActual)) {
+                throw new TrapException("call_indirect: type mismatch");
+            }
+            $this->doInvokeFunc($a);
         } elseif ($instr instanceof Instrs\Control\Else_) {
-            assert(false, "not implemented " . $instr::class);
+            // Do nothing.
         } elseif ($instr instanceof Instrs\Control\End) {
-            assert(false, "not implemented " . $instr::class);
+            // Do nothing.
         } elseif ($instr instanceof Instrs\Control\If_) {
-            assert(false, "not implemented " . $instr::class);
+            $blockType = $instr->type;
+            $instrs1 = $instr->thenBody;
+            $instrs2 = $instr->elseBody;
+            $c = $this->stack->popI32();
+            if ($c !== 0) {
+                return $this->execInstr(Instr::Block($blockType, $instrs1));
+            } else {
+                return $this->execInstr(Instr::Block($blockType, $instrs2));
+            }
         } elseif ($instr instanceof Instrs\Control\Loop) {
-            assert(false, "not implemented " . $instr::class);
+            $blockType = $instr->type;
+            $instrs = $instr->body;
+            $f = $this->stack->currentFrame();
+            $bt = self::expandBlockType($blockType, $f->module);
+            $n = count($bt->results->types);
+            $l = StackEntry::Label($n);
+            while (true) {
+                $result = $this->execInstrs($instrs, $l);
+                if ($result === null) {
+                    break;
+                } elseif ($result instanceof ControlFlowResults\Return_) {
+                    return $result;
+                } elseif ($result instanceof ControlFlowResults\Br) {
+                    if ($result->label->value === 0) {
+                        $this->deactivateLabel($n);
+                        continue;
+                    } else {
+                        $this->deactivateLabel($n);
+                        return ControlFlowResult::Br(new LabelIdx($result->label->value - 1));
+                    }
+                } else {
+                    throw new \RuntimeException("doInvokeWasmFunc: unreachable");
+                }
+            }
         } elseif ($instr instanceof Instrs\Control\Nop) {
-            assert(false, "not implemented " . $instr::class);
+            // Do nothing.
         } elseif ($instr instanceof Instrs\Control\Return_) {
-            assert(false, "not implemented " . $instr::class);
+            return ControlFlowResult::Return();
         } elseif ($instr instanceof Instrs\Control\Unreachable) {
-            assert(false, "not implemented " . $instr::class);
+            throw new TrapException("unreachable");
         } else {
-            assert(false);
+            throw new \RuntimeException("invalid instruction");
+        }
+        return null;
+    }
+
+    private static function defaultValueFromValType(ValType $type): Val
+    {
+        return match ($type::class) {
+            ValTypes\NumType::class => match ($type->inner) {
+                NumType::I32 => Val::NumI32(0),
+                NumType::I64 => Val::NumI64(0),
+                NumType::F32 => Val::NumF32(0),
+                NumType::F64 => Val::NumF64(0),
+            },
+            ValTypes\RefType::class => Val::RefNull($type->inner),
+            default => throw new \RuntimeException("unreachable"),
+        };
+    }
+
+    private static function expandBlockType(BlockType $bt, ModuleInst $module): FuncType
+    {
+        if ($bt instanceof BlockTypes\TypeIdx) {
+            return $module->types[$bt->inner->value];
+        } elseif ($bt instanceof BlockTypes\ValType) {
+            $t = $bt->inner;
+            return new FuncType(
+                new ResultType([]),
+                new ResultType($t === null ? [] : [$t]),
+            );
+        } else {
+            throw new \RuntimeException("expand(): invalid blocktype");
         }
     }
 }

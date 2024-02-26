@@ -4,9 +4,7 @@ declare(strict_types=1);
 
 namespace Nsfisis\Waddiwasi\Execution;
 
-use Nsfisis\Waddiwasi\Structure\Instructions\Instr;
-
-abstract readonly class StackEntry
+abstract class StackEntry
 {
     final public static function Value(Val $inner): StackEntries\Value
     {
@@ -15,13 +13,11 @@ abstract readonly class StackEntry
 
     /**
      * @param int<0, max> $arity
-     * @param list<Instr> $target
      */
     final public static function Label(
         int $arity,
-        array $target,
     ): StackEntries\Label {
-        return new StackEntries\Label($arity, $target);
+        return new StackEntries\Label($arity);
     }
 
     /**

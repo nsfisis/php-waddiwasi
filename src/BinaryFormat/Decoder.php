@@ -293,11 +293,11 @@ final class Decoder
         if ($b !== 0x60) {
             throw new InvalidBinaryFormatException("functype");
         }
-        $args = $this->decodeResultType();
-        $returns = $this->decodeResultType();
+        $params = $this->decodeResultType();
+        $results = $this->decodeResultType();
         return new FuncType(
-            $args,
-            $returns,
+            $params,
+            $results,
         );
     }
 

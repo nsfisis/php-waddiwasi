@@ -10,11 +10,11 @@ use Nsfisis\Waddiwasi\Structure\Types\FuncType;
 final readonly class Host extends FuncInst
 {
     /**
-     * @param callable $code
+     * @param callable $callback
      */
     public function __construct(
         public FuncType $type,
-        public mixed $code,
+        public mixed $callback,
     ) {
     }
 }

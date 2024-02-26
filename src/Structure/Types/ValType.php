@@ -20,4 +20,6 @@ abstract readonly class ValType
     {
         return new ValTypes\RefType($type);
     }
+
+    abstract public function equals(ValType $other): bool;
 }

@@ -6,13 +6,13 @@ namespace Nsfisis\Waddiwasi\Execution;
 
 use Nsfisis\Waddiwasi\Structure\Types\TableType;
 
-final readonly class TableInst
+final class TableInst
 {
     /**
      * @param list<Ref> $elem
      */
     public function __construct(
-        public TableType $type,
+        public readonly TableType $type,
         public array $elem,
     ) {
     }

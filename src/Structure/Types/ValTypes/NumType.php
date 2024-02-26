@@ -12,4 +12,10 @@ final readonly class NumType extends ValType
     protected function __construct(public OrigNumType $inner)
     {
     }
+
+    public function equals(ValType $other): bool
+    {
+        return $other instanceof self
+            && $this->inner === $other->inner;
+    }
 }

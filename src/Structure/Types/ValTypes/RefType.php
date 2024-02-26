@@ -12,4 +12,10 @@ final readonly class RefType extends ValType
     protected function __construct(public OrigRefType $inner)
     {
     }
+
+    public function equals(ValType $other): bool
+    {
+        return $other instanceof self
+            && $this->inner === $other->inner;
+    }
 }

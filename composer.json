@@ -26,6 +26,6 @@
     "scripts": {
         "ecs": "ecs check",
         "ecsfix": "ecs check --fix",
-        "phpstan": "phpstan analyse"
+        "phpstan": "phpstan --memory-limit=1G analyse"
     }
 }
