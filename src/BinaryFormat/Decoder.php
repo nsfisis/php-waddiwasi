@@ -727,7 +727,8 @@ final class Decoder
             case 0x3E: return Instr::I64Store32(...$this->decodeMemArg());
             case 0x3F:
                 if ($this->decodeByte() !== 0) {
-                    throw new InvalidBinaryFormatException("memory size");
+                    $this->seekBy(-1);
+                    throw new InvalidBinaryFormatException("Unexpected value while decoding an instruction `memory.size`, expected 0, but got " . $this->decodeByte());
                 }
                 return Instr::MemorySize();
             case 0x40:
@@ -916,7 +917,10 @@ final class Decoder
                         throw new InvalidBinaryFormatException("instr");
                 }
                 // no break
-            default: throw new InvalidBinaryFormatException("instr");
+            default:
+                $this->seekBy(-1);
+                $op = $this->decodeByte();
+                throw new InvalidBinaryFormatException("Unexpected opcode $op while decoding an instruction");
         }
     }
 
@@ -1011,6 +1015,11 @@ final class Decoder
         return ord($this->input[$this->pos++]);
     }
 
+    private function seekBy(int $offset): void
+    {
+        $this->pos += $offset;
+    }
+
     private function decodeU32(): int
     {
         return $this->decodeUnsignedLeb128(32);
@@ -1042,7 +1051,11 @@ final class Decoder
             $result |= ($b & 0b01111111) << $shiftBits;
             if ($b < 0b10000000) {
                 if (($b & 0b01000000) !== 0) {
-                    $result |= -(1 << $shiftBits);
+                    if ($shiftBits < $bits - 1) {
+                        $result |= -(1 << $shiftBits);
+                    } else {
+                        $result |= 1 << $shiftBits;
+                    }
                 }
                 return $result;
             }
@@ -1084,6 +1097,7 @@ final class Decoder
     {
         $this->ensureNBytesRemains(4);
         $result = unpack('g', $this->input, $this->pos);
+        $this->pos += 4;
         if ($result === false) {
             throw new InvalidBinaryFormatException("f32");
         }
@@ -1098,6 +1112,7 @@ final class Decoder
     {
         $this->ensureNBytesRemains(8);
         $result = unpack('e', $this->input, $this->pos);
+        $this->pos += 8;
         if ($result === false) {
             throw new InvalidBinaryFormatException("f64");
         }
