@@ -13,4 +13,9 @@ final readonly class RefNull extends Instr
         public RefType $type,
     ) {
     }
+
+    public static function opName(): string
+    {
+        return "ref.null";
+    }
 }

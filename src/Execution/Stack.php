@@ -9,6 +9,11 @@ use Nsfisis\Waddiwasi\Structure\Types\RefType;
 final class Stack
 {
     /**
+     * @var list<StackEntries\Frame>
+     */
+    private array $frames = [];
+
+    /**
      * @param list<StackEntry> $entries
      */
     public function __construct(
@@ -16,9 +21,15 @@ final class Stack
     ) {
     }
 
-    public function push(StackEntry $entry): void
+    public function pushFrame(StackEntries\Frame $frame): void
     {
-        $this->entries[] = $entry;
+        $this->push($frame);
+        $this->frames[] = $frame;
+    }
+
+    public function pushLabel(StackEntries\Label $label): void
+    {
+        $this->push($label);
     }
 
     public function pushValue(Val $val): void
@@ -78,15 +89,18 @@ final class Stack
         $this->pushValue(Val::RefExtern($addr));
     }
 
-    public function pop(): ?StackEntry
+    public function popFrame(): StackEntries\Frame
     {
-        return array_pop($this->entries);
+        $result = $this->pop();
+        assert($result instanceof StackEntries\Frame);
+        array_pop($this->frames);
+        return $result;
     }
 
     public function popValue(): Val
     {
         $result = $this->pop();
-        assert($result instanceof StackEntries\Value);
+        assert($result instanceof StackEntries\Value, 'Expected a value on the stack, but got ' . print_r($result, true));
         return $result->inner;
     }
 
@@ -175,9 +189,10 @@ final class Stack
     {
         while (!$this->isEmpty()) {
             if ($this->pop() instanceof StackEntries\Frame) {
-                return;
+                break;
             }
         }
+        array_pop($this->frames);
     }
 
     public function top(): ?StackEntry
@@ -198,11 +213,17 @@ final class Stack
 
     public function currentFrame(): StackEntries\Frame
     {
-        for ($i = count($this->entries) - 1; 0 <= $i; $i--) {
-            if ($this->entries[$i] instanceof StackEntries\Frame) {
-                return $this->entries[$i];
-            }
-        }
-        throw new \RuntimeException('No frame found');
+        assert(count($this->frames) !== 0);
+        return $this->frames[count($this->frames) - 1];
+    }
+
+    private function push(StackEntry $entry): void
+    {
+        $this->entries[] = $entry;
+    }
+
+    private function pop(): ?StackEntry
+    {
+        return array_pop($this->entries);
     }
 }

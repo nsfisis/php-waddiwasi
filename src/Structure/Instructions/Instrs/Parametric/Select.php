@@ -16,4 +16,9 @@ final readonly class Select extends Instr
         public array $types,
     ) {
     }
+
+    public static function opName(): string
+    {
+        return "select";
+    }
 }

@@ -974,4 +974,6 @@ abstract readonly class Instr
     {
         return new Control\Unreachable();
     }
+
+    abstract public static function opName(): string;
 }

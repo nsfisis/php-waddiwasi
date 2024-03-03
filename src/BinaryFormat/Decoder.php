@@ -931,7 +931,7 @@ final class Decoder
     {
         $align = $this->decodeU32();
         $offset = $this->decodeU32();
-        return [$align, $offset];
+        return [$offset, $align];
     }
 
     private function decodeBlockType(): BlockType
@@ -1049,6 +1049,7 @@ final class Decoder
         while (true) {
             $b = $this->decodeByte();
             $result |= ($b & 0b01111111) << $shiftBits;
+            $shiftBits += 7;
             if ($b < 0b10000000) {
                 if (($b & 0b01000000) !== 0) {
                     if ($shiftBits < $bits - 1) {
@@ -1059,7 +1060,6 @@ final class Decoder
                 }
                 return $result;
             }
-            $shiftBits += 7;
             if ($bits <= $shiftBits) {
                 throw new InvalidBinaryFormatException("signed leb128");
             }

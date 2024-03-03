@@ -13,4 +13,9 @@ final readonly class DataDrop extends Instr
         public DataIdx $data,
     ) {
     }
+
+    public static function opName(): string
+    {
+        return "data.drop";
+    }
 }

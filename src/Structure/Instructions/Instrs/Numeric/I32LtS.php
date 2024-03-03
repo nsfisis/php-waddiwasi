@@ -8,4 +8,8 @@ use Nsfisis\Waddiwasi\Structure\Instructions\Instr;
 
 final readonly class I32LtS extends Instr
 {
+    public static function opName(): string
+    {
+        return "i32.lt_s";
+    }
 }

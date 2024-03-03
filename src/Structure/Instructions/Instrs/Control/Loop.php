@@ -16,4 +16,9 @@ final readonly class Loop extends Instr
         public array $body,
     ) {
     }
+
+    public static function opName(): string
+    {
+        return "loop";
+    }
 }

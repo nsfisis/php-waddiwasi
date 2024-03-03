@@ -26,6 +26,10 @@
     "scripts": {
         "ecs": "ecs check",
         "ecsfix": "ecs check --fix",
-        "phpstan": "phpstan --memory-limit=1G analyse"
+        "phpstan": "phpstan --memory-limit=1G analyse",
+        "x": [
+            "@ecsfix -- src/Execution",
+            "@phpstan -- src/Execution"
+        ]
     }
 }

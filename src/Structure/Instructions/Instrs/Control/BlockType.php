@@ -18,4 +18,9 @@ abstract readonly class BlockType
     {
         return new BlockTypes\ValType($type);
     }
+
+    public static function opName(): string
+    {
+        return "hoge";
+    }
 }

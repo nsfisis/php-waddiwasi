@@ -13,4 +13,9 @@ final readonly class LocalGet extends Instr
         public LocalIdx $var,
     ) {
     }
+
+    public static function opName(): string
+    {
+        return "local.get";
+    }
 }

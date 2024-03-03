@@ -28,7 +28,8 @@ abstract class StackEntry
         int $arity,
         array $locals,
         ModuleInst $module,
+        string $debugName,
     ): StackEntries\Frame {
-        return new StackEntries\Frame($arity, $locals, $module);
+        return new StackEntries\Frame($arity, $locals, $module, $debugName);
     }
 }

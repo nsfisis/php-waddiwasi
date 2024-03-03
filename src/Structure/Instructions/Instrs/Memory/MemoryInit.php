@@ -13,4 +13,9 @@ final readonly class MemoryInit extends Instr
         public DataIdx $data,
     ) {
     }
+
+    public static function opName(): string
+    {
+        return "memory.init";
+    }
 }

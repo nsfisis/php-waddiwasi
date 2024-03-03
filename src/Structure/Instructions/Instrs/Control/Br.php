@@ -13,4 +13,9 @@ final readonly class Br extends Instr
         public LabelIdx $label,
     ) {
     }
+
+    public static function opName(): string
+    {
+        return "br";
+    }
 }

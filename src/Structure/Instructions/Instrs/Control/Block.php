@@ -16,4 +16,9 @@ final readonly class Block extends Instr
         public array $body,
     ) {
     }
+
+    public static function opName(): string
+    {
+        return "block";
+    }
 }

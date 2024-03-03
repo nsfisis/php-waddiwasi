@@ -8,4 +8,8 @@ use Nsfisis\Waddiwasi\Structure\Instructions\Instr;
 
 final readonly class I32Eq extends Instr
 {
+    public static function opName(): string
+    {
+        return "i32.eq";
+    }
 }

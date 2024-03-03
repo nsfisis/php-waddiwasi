@@ -18,4 +18,9 @@ final readonly class If_ extends Instr
         public array $elseBody,
     ) {
     }
+
+    public static function opName(): string
+    {
+        return "if";
+    }
 }

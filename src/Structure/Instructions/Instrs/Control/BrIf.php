@@ -13,4 +13,9 @@ final readonly class BrIf extends Instr
         public LabelIdx $label,
     ) {
     }
+
+    public static function opName(): string
+    {
+        return "br_if";
+    }
 }

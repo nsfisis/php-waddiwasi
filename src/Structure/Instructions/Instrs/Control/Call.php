@@ -13,4 +13,9 @@ final readonly class Call extends Instr
         public FuncIdx $func,
     ) {
     }
+
+    public static function opName(): string
+    {
+        return "call";
+    }
 }

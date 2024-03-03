@@ -17,4 +17,9 @@ final readonly class I32Store16 extends Instr
         public int $align,
     ) {
     }
+
+    public static function opName(): string
+    {
+        return "i32.store16";
+    }
 }

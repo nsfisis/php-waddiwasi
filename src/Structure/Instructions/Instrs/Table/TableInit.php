@@ -15,4 +15,9 @@ final readonly class TableInit extends Instr
         public ElemIdx $from,
     ) {
     }
+
+    public static function opName(): string
+    {
+        return "table.init";
+    }
 }

@@ -17,4 +17,9 @@ final readonly class F32Load extends Instr
         public int $align,
     ) {
     }
+
+    public static function opName(): string
+    {
+        return "f32.load";
+    }
 }

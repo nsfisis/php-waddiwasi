@@ -13,4 +13,9 @@ final readonly class TableSet extends Instr
         public TableIdx $table,
     ) {
     }
+
+    public static function opName(): string
+    {
+        return "table.set";
+    }
 }

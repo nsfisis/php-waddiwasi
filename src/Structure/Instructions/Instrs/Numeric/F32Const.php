@@ -15,4 +15,9 @@ final readonly class F32Const extends Instr
         public float $value,
     ) {
     }
+
+    public static function opName(): string
+    {
+        return "f32.const";
+    }
 }

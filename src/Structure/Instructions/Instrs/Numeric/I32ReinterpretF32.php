@@ -8,4 +8,8 @@ use Nsfisis\Waddiwasi\Structure\Instructions\Instr;
 
 final readonly class I32ReinterpretF32 extends Instr
 {
+    public static function opName(): string
+    {
+        return "i32.reinterpret_f32";
+    }
 }

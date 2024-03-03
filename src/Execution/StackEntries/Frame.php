@@ -18,6 +18,7 @@ final class Frame extends StackEntry
         public readonly int $arity,
         public array $locals,
         public readonly ModuleInst $module,
+        public string $debugName,
     ) {
     }
 }

@@ -130,6 +130,8 @@ final readonly class Allocator
     private function allocMem(MemType $memType): MemAddr
     {
         $minSize = $memType->limits->min;
+        // @todo hack
+        $minSize *= 8;
         $data = array_fill(0, $minSize * 64 * 1024, 0);
         $memInst = new MemInst($memType, $data);
         $this->store->mems[] = $memInst;

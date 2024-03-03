@@ -14,4 +14,9 @@ final readonly class TableCopy extends Instr
         public TableIdx $from,
     ) {
     }
+
+    public static function opName(): string
+    {
+        return "table.copy";
+    }
 }

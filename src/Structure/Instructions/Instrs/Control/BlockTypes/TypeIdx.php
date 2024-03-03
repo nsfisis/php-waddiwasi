@@ -12,4 +12,9 @@ final readonly class TypeIdx extends BlockType
     protected function __construct(public OrigTypeIdx $inner)
     {
     }
+
+    public static function opName(): string
+    {
+        return "hoge";
+    }
 }

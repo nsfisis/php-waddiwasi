@@ -8,4 +8,8 @@ use Nsfisis\Waddiwasi\Structure\Instructions\Instr;
 
 final readonly class I32TruncSatF32S extends Instr
 {
+    public static function opName(): string
+    {
+        return "i32.trunc_sat_f32_s";
+    }
 }

@@ -8,4 +8,8 @@ use Nsfisis\Waddiwasi\Structure\Instructions\Instr;
 
 final readonly class I32RotL extends Instr
 {
+    public static function opName(): string
+    {
+        return "i32.rot_l";
+    }
 }

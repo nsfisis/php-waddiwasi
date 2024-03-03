@@ -15,4 +15,9 @@ final readonly class F64Const extends Instr
         public float $value,
     ) {
     }
+
+    public static function opName(): string
+    {
+        return "f64.const";
+    }
 }

@@ -8,4 +8,8 @@ use Nsfisis\Waddiwasi\Structure\Instructions\Instr;
 
 final readonly class I32Extend8S extends Instr
 {
+    public static function opName(): string
+    {
+        return "i32.extend8_s";
+    }
 }

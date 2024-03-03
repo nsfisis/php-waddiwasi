@@ -13,4 +13,9 @@ final readonly class GlobalSet extends Instr
         public GlobalIdx $var,
     ) {
     }
+
+    public static function opName(): string
+    {
+        return "global.set";
+    }
 }

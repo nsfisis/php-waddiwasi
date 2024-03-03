@@ -17,4 +17,9 @@ final readonly class I32Load8U extends Instr
         public int $align,
     ) {
     }
+
+    public static function opName(): string
+    {
+        return "i32.load8_u";
+    }
 }

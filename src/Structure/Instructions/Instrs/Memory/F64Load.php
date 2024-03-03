@@ -17,4 +17,9 @@ final readonly class F64Load extends Instr
         public int $align,
     ) {
     }
+
+    public static function opName(): string
+    {
+        return "f64.load";
+    }
 }

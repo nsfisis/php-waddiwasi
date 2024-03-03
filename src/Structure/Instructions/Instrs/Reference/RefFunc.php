@@ -13,4 +13,9 @@ final readonly class RefFunc extends Instr
         public FuncIdx $func,
     ) {
     }
+
+    public static function opName(): string
+    {
+        return "ref.func";
+    }
 }

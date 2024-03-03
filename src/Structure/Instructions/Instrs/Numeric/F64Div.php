@@ -8,4 +8,8 @@ use Nsfisis\Waddiwasi\Structure\Instructions\Instr;
 
 final readonly class F64Div extends Instr
 {
+    public static function opName(): string
+    {
+        return "f64.div";
+    }
 }

@@ -17,4 +17,9 @@ final readonly class BrTable extends Instr
         public LabelIdx $defaultLabel,
     ) {
     }
+
+    public static function opName(): string
+    {
+        return "br_table";
+    }
 }

@@ -12,4 +12,9 @@ final readonly class ValType extends BlockType
     protected function __construct(public ?OrigValType $inner)
     {
     }
+
+    public static function opName(): string
+    {
+        return "hoge";
+    }
 }

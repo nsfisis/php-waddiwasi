@@ -8,4 +8,8 @@ use Nsfisis\Waddiwasi\Structure\Instructions\Instr;
 
 final readonly class I64TruncF64S extends Instr
 {
+    public static function opName(): string
+    {
+        return "i64.trunc_f64_s";
+    }
 }

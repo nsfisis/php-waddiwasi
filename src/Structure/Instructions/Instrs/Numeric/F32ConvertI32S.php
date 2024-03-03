@@ -8,4 +8,8 @@ use Nsfisis\Waddiwasi\Structure\Instructions\Instr;
 
 final readonly class F32ConvertI32S extends Instr
 {
+    public static function opName(): string
+    {
+        return "f32.convert_i32_s";
+    }
 }

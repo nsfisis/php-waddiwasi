@@ -15,4 +15,9 @@ final readonly class CallIndirect extends Instr
         public TypeIdx $type,
     ) {
     }
+
+    public static function opName(): string
+    {
+        return "call_indirect";
+    }
 }

@@ -13,4 +13,9 @@ final readonly class ElemDrop extends Instr
         public ElemIdx $elem,
     ) {
     }
+
+    public static function opName(): string
+    {
+        return "elem.drop";
+    }
 }

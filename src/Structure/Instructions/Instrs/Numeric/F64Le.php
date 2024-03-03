@@ -8,4 +8,8 @@ use Nsfisis\Waddiwasi\Structure\Instructions\Instr;
 
 final readonly class F64Le extends Instr
 {
+    public static function opName(): string
+    {
+        return "f64.le";
+    }
 }

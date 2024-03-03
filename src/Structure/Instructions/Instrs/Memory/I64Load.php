@@ -17,4 +17,9 @@ final readonly class I64Load extends Instr
         public int $align,
     ) {
     }
+
+    public static function opName(): string
+    {
+        return "i64.load";
+    }
 }
