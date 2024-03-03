@@ -698,9 +698,19 @@ final readonly class Runtime
             }
             $this->stack->pushI64($trailingZeros);
         } elseif ($instr instanceof Instrs\Numeric\I64DivS) {
-            throw new \RuntimeException("I64DivS: not implemented");
+            $c2 = $this->stack->popI64();
+            $c1 = $this->stack->popI64();
+            if ($c2 === 0) {
+                throw new TrapException("i64.div_s: divide by zero");
+            }
+            $this->stack->pushI64(intdiv($c1, $c2));
         } elseif ($instr instanceof Instrs\Numeric\I64DivU) {
-            throw new \RuntimeException("I64DivU: not implemented");
+            $c2 = $this->stack->popI64();
+            $c1 = $this->stack->popI64();
+            if ($c2 === 0) {
+                throw new TrapException("i64.div_u: divide by zero");
+            }
+            $this->stack->pushI64(intdiv($c1, $c2));
         } elseif ($instr instanceof Instrs\Numeric\I64Eq) {
             $c2 = $this->stack->popI64();
             $c1 = $this->stack->popI64();
@@ -800,7 +810,10 @@ final readonly class Runtime
         } elseif ($instr instanceof Instrs\Numeric\I64RemU) {
             throw new \RuntimeException("I64RemU: not implemented");
         } elseif ($instr instanceof Instrs\Numeric\I64RotL) {
-            throw new \RuntimeException("I64RotL: not implemented");
+            $i2 = $this->stack->popI64();
+            $i1 = $this->stack->popI64();
+            $k = $i2 % 64;
+            $this->stack->pushI64(($i1 << $k) | ($i1 >> (64 - $k)));
         } elseif ($instr instanceof Instrs\Numeric\I64RotR) {
             throw new \RuntimeException("I64RotR: not implemented");
         } elseif ($instr instanceof Instrs\Numeric\I64Shl) {
@@ -1150,10 +1163,8 @@ final readonly class Runtime
                                 // foreach ($instrs as $instr) {
                                 //     echo "  " . $instr::opName() . "\n";
                                 // }
-                                if ($f->debugName === "wasm: 2695") {
-                                    // push dummy
-                                    $this->stack->pushI32(0);
-                                }
+                                // WORKAROUND:
+                                $this->stack->pushI32(0);
                             }
                         }
                         $this->deactivateLabel($n);
