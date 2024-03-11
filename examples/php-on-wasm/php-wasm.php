@@ -29,15 +29,16 @@ const PHP_HELLO_WORLD = <<<'EOS'
 echo "Hello, World!\n";
 EOS;
 
-echo "Decoding...\n";
+fprintf(STDERR, "Decoding...\n");
 try {
     $module = (new Decoder($wasmBinary))->decode();
     // Debug::printImports($module);
 } catch (InvalidBinaryFormatException $e) {
-    echo $e->getMessage() . PHP_EOL;
+    fprintf(STDERR, $e->getMessage() . "\n");
+    exit(1);
 }
 
-echo "Instantiating...\n";
+fprintf(STDERR, "Instantiating...\n");
 $hostFuncs = [
     makeHostFunc('(i32, i32, i32) -> (i32)',                                    hostFunc__env__invoke_iii(...)),
     makeHostFunc('(i32, i32, i32, i32, i32) -> (i32)',                          hostFunc__env__invoke_iiiii(...)),
@@ -142,7 +143,7 @@ foreach ($hostFuncs as $hostFunc) {
 $runtime = Runtime::instantiate($store, $module, $externVals);
 $codePtr = allocateStringOnWasmMemory($runtime, PHP_HELLO_WORLD);
 
-echo "Executing...\n";
+fprintf(STDERR, "Executing...\n");
 $results = $runtime->invoke("php_wasm_run", [Val::NumI32($codePtr)]);
 assert(count($results) === 1);
 $result = $results[0];
@@ -150,7 +151,7 @@ assert($result instanceof Vals\Num);
 assert($result->inner instanceof Nums\I32);
 $exitCode = $result->inner->value;
 
-echo "Exit code: $exitCode\n";
+fprintf(STDERR, "Exit code: $exitCode\n");
 
 function allocateStringOnWasmMemory(Runtime $runtime, string $str): int {
     // Plus 1 for the null terminator in C.
