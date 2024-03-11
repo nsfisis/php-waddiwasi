@@ -1,0 +1,3180 @@
+<?xml version="1.0" standalone="no"?>
+<!DOCTYPE svg PUBLIC "-//W3C//DTD SVG 1.1//EN" "http://www.w3.org/Graphics/SVG/1.1/DTD/svg11.dtd">
+<svg version="1.1" width="1200" height="1590" onload="init(evt)" viewBox="0 0 1200 1590" xmlns="http://www.w3.org/2000/svg" xmlns:xlink="http://www.w3.org/1999/xlink">
+<!-- Flame graph stack visualization. See https://github.com/brendangregg/FlameGraph for latest version, and http://www.brendangregg.com/flamegraphs.html for examples. -->
+<!-- NOTES:  -->
+<defs>
+	<linearGradient id="background" y1="0" y2="1" x1="0" x2="0" >
+		<stop stop-color="#eeeeee" offset="5%" />
+		<stop stop-color="#eeeeb0" offset="95%" />
+	</linearGradient>
+</defs>
+<style type="text/css">
+	text { font-family:Verdana; font-size:12px; fill:rgb(0,0,0); }
+	#search, #ignorecase { opacity:0.1; cursor:pointer; }
+	#search:hover, #search.show, #ignorecase:hover, #ignorecase.show { opacity:1; }
+	#subtitle { text-anchor:middle; font-color:rgb(160,160,160); }
+	#title { text-anchor:middle; font-size:17px}
+	#unzoom { cursor:pointer; }
+	#frames > *:hover { stroke:black; stroke-width:0.5; cursor:pointer; }
+	.hide { display:none; }
+	.parent { opacity:0.5; }
+</style>
+<script type="text/ecmascript">
+<![CDATA[
+	"use strict";
+	var details, searchbtn, unzoombtn, matchedtxt, svg, searching, currentSearchTerm, ignorecase, ignorecaseBtn;
+	function init(evt) {
+		details = document.getElementById("details").firstChild;
+		searchbtn = document.getElementById("search");
+		ignorecaseBtn = document.getElementById("ignorecase");
+		unzoombtn = document.getElementById("unzoom");
+		matchedtxt = document.getElementById("matched");
+		svg = document.getElementsByTagName("svg")[0];
+		searching = 0;
+		currentSearchTerm = null;
+	}
+
+	window.addEventListener("click", function(e) {
+		var target = find_group(e.target);
+		if (target) {
+			if (target.nodeName == "a") {
+				if (e.ctrlKey === false) return;
+				e.preventDefault();
+			}
+			if (target.classList.contains("parent")) unzoom();
+			zoom(target);
+		}
+		else if (e.target.id == "unzoom") unzoom();
+		else if (e.target.id == "search") search_prompt();
+		else if (e.target.id == "ignorecase") toggle_ignorecase();
+	}, false)
+
+	// mouse-over for info
+	// show
+	window.addEventListener("mouseover", function(e) {
+		var target = find_group(e.target);
+		if (target) details.nodeValue = "Function: " + g_to_text(target);
+	}, false)
+
+	// clear
+	window.addEventListener("mouseout", function(e) {
+		var target = find_group(e.target);
+		if (target) details.nodeValue = ' ';
+	}, false)
+
+	// ctrl-F for search
+	window.addEventListener("keydown",function (e) {
+		if (e.keyCode === 114 || (e.ctrlKey && e.keyCode === 70)) {
+			e.preventDefault();
+			search_prompt();
+		}
+	}, false)
+
+	// ctrl-I to toggle case-sensitive search
+	window.addEventListener("keydown",function (e) {
+		if (e.ctrlKey && e.keyCode === 73) {
+			e.preventDefault();
+			toggle_ignorecase();
+		}
+	}, false)
+
+	// functions
+	function find_child(node, selector) {
+		var children = node.querySelectorAll(selector);
+		if (children.length) return children[0];
+		return;
+	}
+	function find_group(node) {
+		var parent = node.parentElement;
+		if (!parent) return;
+		if (parent.id == "frames") return node;
+		return find_group(parent);
+	}
+	function orig_save(e, attr, val) {
+		if (e.attributes["_orig_" + attr] != undefined) return;
+		if (e.attributes[attr] == undefined) return;
+		if (val == undefined) val = e.attributes[attr].value;
+		e.setAttribute("_orig_" + attr, val);
+	}
+	function orig_load(e, attr) {
+		if (e.attributes["_orig_"+attr] == undefined) return;
+		e.attributes[attr].value = e.attributes["_orig_" + attr].value;
+		e.removeAttribute("_orig_"+attr);
+	}
+	function g_to_text(e) {
+		var text = find_child(e, "title").firstChild.nodeValue;
+		return (text)
+	}
+	function g_to_func(e) {
+		var func = g_to_text(e);
+		// if there's any manipulation we want to do to the function
+		// name before it's searched, do it here before returning.
+		return (func);
+	}
+	function update_text(e) {
+		var r = find_child(e, "rect");
+		var t = find_child(e, "text");
+		var w = parseFloat(r.attributes.width.value) -3;
+		var txt = find_child(e, "title").textContent.replace(/\([^(]*\)$/,"");
+		t.attributes.x.value = parseFloat(r.attributes.x.value) + 3;
+
+		// Smaller than this size won't fit anything
+		if (w < 2 * 12 * 0.59) {
+			t.textContent = "";
+			return;
+		}
+
+		t.textContent = txt;
+		// Fit in full text width
+		if (/^ *$/.test(txt) || t.getSubStringLength(0, txt.length) < w)
+			return;
+
+		for (var x = txt.length - 2; x > 0; x--) {
+			if (t.getSubStringLength(0, x + 2) <= w) {
+				t.textContent = txt.substring(0, x) + "..";
+				return;
+			}
+		}
+		t.textContent = "";
+	}
+
+	// zoom
+	function zoom_reset(e) {
+		if (e.attributes != undefined) {
+			orig_load(e, "x");
+			orig_load(e, "width");
+		}
+		if (e.childNodes == undefined) return;
+		for (var i = 0, c = e.childNodes; i < c.length; i++) {
+			zoom_reset(c[i]);
+		}
+	}
+	function zoom_child(e, x, ratio) {
+		if (e.attributes != undefined) {
+			if (e.attributes.x != undefined) {
+				orig_save(e, "x");
+				e.attributes.x.value = (parseFloat(e.attributes.x.value) - x - 10) * ratio + 10;
+				if (e.tagName == "text")
+					e.attributes.x.value = find_child(e.parentNode, "rect[x]").attributes.x.value + 3;
+			}
+			if (e.attributes.width != undefined) {
+				orig_save(e, "width");
+				e.attributes.width.value = parseFloat(e.attributes.width.value) * ratio;
+			}
+		}
+
+		if (e.childNodes == undefined) return;
+		for (var i = 0, c = e.childNodes; i < c.length; i++) {
+			zoom_child(c[i], x - 10, ratio);
+		}
+	}
+	function zoom_parent(e) {
+		if (e.attributes) {
+			if (e.attributes.x != undefined) {
+				orig_save(e, "x");
+				e.attributes.x.value = 10;
+			}
+			if (e.attributes.width != undefined) {
+				orig_save(e, "width");
+				e.attributes.width.value = parseInt(svg.width.baseVal.value) - (10 * 2);
+			}
+		}
+		if (e.childNodes == undefined) return;
+		for (var i = 0, c = e.childNodes; i < c.length; i++) {
+			zoom_parent(c[i]);
+		}
+	}
+	function zoom(node) {
+		var attr = find_child(node, "rect").attributes;
+		var width = parseFloat(attr.width.value);
+		var xmin = parseFloat(attr.x.value);
+		var xmax = parseFloat(xmin + width);
+		var ymin = parseFloat(attr.y.value);
+		var ratio = (svg.width.baseVal.value - 2 * 10) / width;
+
+		// XXX: Workaround for JavaScript float issues (fix me)
+		var fudge = 0.0001;
+
+		unzoombtn.classList.remove("hide");
+
+		var el = document.getElementById("frames").children;
+		for (var i = 0; i < el.length; i++) {
+			var e = el[i];
+			var a = find_child(e, "rect").attributes;
+			var ex = parseFloat(a.x.value);
+			var ew = parseFloat(a.width.value);
+			var upstack;
+			// Is it an ancestor
+			if (0 == 0) {
+				upstack = parseFloat(a.y.value) > ymin;
+			} else {
+				upstack = parseFloat(a.y.value) < ymin;
+			}
+			if (upstack) {
+				// Direct ancestor
+				if (ex <= xmin && (ex+ew+fudge) >= xmax) {
+					e.classList.add("parent");
+					zoom_parent(e);
+					update_text(e);
+				}
+				// not in current path
+				else
+					e.classList.add("hide");
+			}
+			// Children maybe
+			else {
+				// no common path
+				if (ex < xmin || ex + fudge >= xmax) {
+					e.classList.add("hide");
+				}
+				else {
+					zoom_child(e, xmin, ratio);
+					update_text(e);
+				}
+			}
+		}
+		search();
+	}
+	function unzoom() {
+		unzoombtn.classList.add("hide");
+		var el = document.getElementById("frames").children;
+		for(var i = 0; i < el.length; i++) {
+			el[i].classList.remove("parent");
+			el[i].classList.remove("hide");
+			zoom_reset(el[i]);
+			update_text(el[i]);
+		}
+		search();
+	}
+
+	// search
+	function toggle_ignorecase() {
+		ignorecase = !ignorecase;
+		if (ignorecase) {
+			ignorecaseBtn.classList.add("show");
+		} else {
+			ignorecaseBtn.classList.remove("show");
+		}
+		reset_search();
+		search();
+	}
+	function reset_search() {
+		var el = document.querySelectorAll("#frames rect");
+		for (var i = 0; i < el.length; i++) {
+			orig_load(el[i], "fill")
+		}
+	}
+	function search_prompt() {
+		if (!searching) {
+			var term = prompt("Enter a search term (regexp " +
+			    "allowed, eg: ^ext4_)"
+			    + (ignorecase ? ", ignoring case" : "")
+			    + "\nPress Ctrl-i to toggle case sensitivity", "");
+			if (term != null) {
+				currentSearchTerm = term;
+				search();
+			}
+		} else {
+			reset_search();
+			searching = 0;
+			currentSearchTerm = null;
+			searchbtn.classList.remove("show");
+			searchbtn.firstChild.nodeValue = "Search"
+			matchedtxt.classList.add("hide");
+			matchedtxt.firstChild.nodeValue = ""
+		}
+	}
+	function search(term) {
+		if (currentSearchTerm === null) return;
+		var term = currentSearchTerm;
+
+		var re = new RegExp(term, ignorecase ? 'i' : '');
+		var el = document.getElementById("frames").children;
+		var matches = new Object();
+		var maxwidth = 0;
+		for (var i = 0; i < el.length; i++) {
+			var e = el[i];
+			var func = g_to_func(e);
+			var rect = find_child(e, "rect");
+			if (func == null || rect == null)
+				continue;
+
+			// Save max width. Only works as we have a root frame
+			var w = parseFloat(rect.attributes.width.value);
+			if (w > maxwidth)
+				maxwidth = w;
+
+			if (func.match(re)) {
+				// highlight
+				var x = parseFloat(rect.attributes.x.value);
+				orig_save(rect, "fill");
+				rect.attributes.fill.value = "rgb(230,0,230)";
+
+				// remember matches
+				if (matches[x] == undefined) {
+					matches[x] = w;
+				} else {
+					if (w > matches[x]) {
+						// overwrite with parent
+						matches[x] = w;
+					}
+				}
+				searching = 1;
+			}
+		}
+		if (!searching)
+			return;
+
+		searchbtn.classList.add("show");
+		searchbtn.firstChild.nodeValue = "Reset Search";
+
+		// calculate percent matched, excluding vertical overlap
+		var count = 0;
+		var lastx = -1;
+		var lastw = 0;
+		var keys = Array();
+		for (k in matches) {
+			if (matches.hasOwnProperty(k))
+				keys.push(k);
+		}
+		// sort the matched frames by their x location
+		// ascending, then width descending
+		keys.sort(function(a, b){
+			return a - b;
+		});
+		// Step through frames saving only the biggest bottom-up frames
+		// thanks to the sort order. This relies on the tree property
+		// where children are always smaller than their parents.
+		var fudge = 0.0001;	// JavaScript floating point
+		for (var k in keys) {
+			var x = parseFloat(keys[k]);
+			var w = matches[keys[k]];
+			if (x >= lastx + lastw - fudge) {
+				count += w;
+				lastx = x;
+				lastw = w;
+			}
+		}
+		// display matched percent
+		matchedtxt.classList.remove("hide");
+		var pct = 100 * count / maxwidth;
+		if (pct != 100) pct = pct.toFixed(1)
+		matchedtxt.firstChild.nodeValue = "Matched: " + pct + "%";
+	}
+]]>
+</script>
+<rect x="0.0" y="0" width="1200.0" height="1590.0" fill="url(#background)"  />
+<text id="title" x="600.00" y="24" >Flame Graph</text>
+<text id="details" x="10.00" y="1573" > </text>
+<text id="unzoom" x="10.00" y="24" class="hide">Reset Zoom</text>
+<text id="search" x="1090.00" y="24" >Search</text>
+<text id="ignorecase" x="1174.00" y="24" >ic</text>
+<text id="matched" x="1090.00" y="1573" > </text>
+<g id="frames">
+<g >
+<title>Nsfisis\Waddiwasi\Execution\Runtime::doInvokeFunc (318 samples, 22.35%)</title><rect x="852.5" y="309" width="263.7" height="15.0" fill="rgb(226,156,18)" rx="2" ry="2" />
+<text  x="855.50" y="319.5" >Nsfisis\Waddiwasi\Execution\Runtime..</text>
+</g>
+<g >
+<title>Nsfisis\Waddiwasi\Execution\Runtime::execInstrs (2 samples, 0.14%)</title><rect x="805.2" y="213" width="1.7" height="15.0" fill="rgb(252,25,11)" rx="2" ry="2" />
+<text  x="808.24" y="223.5" ></text>
+</g>
+<g >
+<title>&lt;unknown&gt; (2 samples, 0.14%)</title><rect x="717.3" y="1413" width="1.7" height="15.0" fill="rgb(212,118,25)" rx="2" ry="2" />
+<text  x="720.34" y="1423.5" ></text>
+</g>
+<g >
+<title>Nsfisis\Waddiwasi\Execution\Runtime::execInstr (2 samples, 0.14%)</title><rect x="805.2" y="357" width="1.7" height="15.0" fill="rgb(229,151,10)" rx="2" ry="2" />
+<text  x="808.24" y="367.5" ></text>
+</g>
+<g >
+<title>Nsfisis\Waddiwasi\Execution\Runtime::doInvokeWasmFunc (1 samples, 0.07%)</title><rect x="1117.0" y="709" width="0.9" height="15.0" fill="rgb(207,228,33)" rx="2" ry="2" />
+<text  x="1120.03" y="719.5" ></text>
+</g>
+<g >
+<title>Nsfisis\Waddiwasi\Execution\Runtime::doInvokeFunc (1 samples, 0.07%)</title><rect x="1116.2" y="245" width="0.8" height="15.0" fill="rgb(213,13,0)" rx="2" ry="2" />
+<text  x="1119.20" y="255.5" ></text>
+</g>
+<g >
+<title>Nsfisis\Waddiwasi\Execution\MemInst::storeByte (1 samples, 0.07%)</title><rect x="725.6" y="1413" width="0.9" height="15.0" fill="rgb(230,25,48)" rx="2" ry="2" />
+<text  x="728.63" y="1423.5" ></text>
+</g>
+<g >
+<title>Nsfisis\Waddiwasi\Execution\Runtime::execInstrs (2 samples, 0.14%)</title><rect x="827.6" y="213" width="1.7" height="15.0" fill="rgb(242,221,30)" rx="2" ry="2" />
+<text  x="830.62" y="223.5" ></text>
+</g>
+<g >
+<title>Nsfisis\Waddiwasi\Execution\Val::Num (4 samples, 0.28%)</title><rect x="1175.1" y="1525" width="3.3" height="15.0" fill="rgb(225,91,15)" rx="2" ry="2" />
+<text  x="1178.07" y="1535.5" ></text>
+</g>
+<g >
+<title>Nsfisis\Waddiwasi\Execution\Runtime::doInvokeFunc (1 samples, 0.07%)</title><rect x="789.5" y="757" width="0.8" height="15.0" fill="rgb(252,184,40)" rx="2" ry="2" />
+<text  x="792.48" y="767.5" ></text>
+</g>
+<g >
+<title>Nsfisis\Waddiwasi\Execution\Runtime::execInstr (2 samples, 0.14%)</title><rect x="840.1" y="645" width="1.6" height="15.0" fill="rgb(253,156,29)" rx="2" ry="2" />
+<text  x="843.06" y="655.5" ></text>
+</g>
+<g >
+<title>Nsfisis\Waddiwasi\Execution\Runtime::execInstr (399 samples, 28.04%)</title><rect x="787.0" y="1061" width="330.9" height="15.0" fill="rgb(216,22,26)" rx="2" ry="2" />
+<text  x="789.99" y="1071.5" >Nsfisis\Waddiwasi\Execution\Runtime::execInstr</text>
+</g>
+<g >
+<title>Nsfisis\Waddiwasi\Execution\Runtime::execInstrs (20 samples, 1.41%)</title><rect x="790.3" y="693" width="16.6" height="15.0" fill="rgb(205,26,54)" rx="2" ry="2" />
+<text  x="793.31" y="703.5" ></text>
+</g>
+<g >
+<title>Nsfisis\Waddiwasi\Execution\Runtime::execInstr (1 samples, 0.07%)</title><rect x="787.8" y="773" width="0.9" height="15.0" fill="rgb(205,37,27)" rx="2" ry="2" />
+<text  x="790.82" y="783.5" ></text>
+</g>
+<g >
+<title>Composer\Autoload\ClassLoader::loadClass (2 samples, 0.14%)</title><rect x="11.7" y="1461" width="1.6" height="15.0" fill="rgb(212,156,15)" rx="2" ry="2" />
+<text  x="14.66" y="1471.5" ></text>
+</g>
+<g >
+<title>Nsfisis\Waddiwasi\Execution\Runtime::doInvokeFunc (1 samples, 0.07%)</title><rect x="779.5" y="1173" width="0.9" height="15.0" fill="rgb(218,124,46)" rx="2" ry="2" />
+<text  x="782.53" y="1183.5" ></text>
+</g>
+<g >
+<title>Nsfisis\Waddiwasi\Execution\Runtime::execInstrs (6 samples, 0.42%)</title><rect x="782.0" y="1237" width="5.0" height="15.0" fill="rgb(253,217,48)" rx="2" ry="2" />
+<text  x="785.02" y="1247.5" ></text>
+</g>
+<g >
+<title>Nsfisis\Waddiwasi\Execution\Runtime::deactivateLabel (1 samples, 0.07%)</title><rect x="813.5" y="453" width="0.9" height="15.0" fill="rgb(244,54,12)" rx="2" ry="2" />
+<text  x="816.53" y="463.5" ></text>
+</g>
+<g >
+<title>Nsfisis\Waddiwasi\Execution\Runtime::execInstrs (4 samples, 0.28%)</title><rect x="782.8" y="949" width="3.4" height="15.0" fill="rgb(250,56,36)" rx="2" ry="2" />
+<text  x="785.85" y="959.5" ></text>
+</g>
+<g >
+<title>Nsfisis\Waddiwasi\Execution\Runtime::execInstr (399 samples, 28.04%)</title><rect x="787.0" y="1157" width="330.9" height="15.0" fill="rgb(250,93,24)" rx="2" ry="2" />
+<text  x="789.99" y="1167.5" >Nsfisis\Waddiwasi\Execution\Runtime::execInstr</text>
+</g>
+<g >
+<title>Nsfisis\Waddiwasi\Execution\Runtime::execInstrs (1 samples, 0.07%)</title><rect x="801.9" y="437" width="0.8" height="15.0" fill="rgb(254,40,0)" rx="2" ry="2" />
+<text  x="804.92" y="447.5" ></text>
+</g>
+<g >
+<title>Nsfisis\Waddiwasi\Execution\Runtime::execInstr (1 samples, 0.07%)</title><rect x="816.0" y="421" width="0.8" height="15.0" fill="rgb(233,106,33)" rx="2" ry="2" />
+<text  x="819.02" y="431.5" ></text>
+</g>
+<g >
+<title>Nsfisis\Waddiwasi\Execution\Stack::pushValue (10 samples, 0.70%)</title><rect x="1164.3" y="1525" width="8.3" height="15.0" fill="rgb(246,210,7)" rx="2" ry="2" />
+<text  x="1167.29" y="1535.5" ></text>
+</g>
+<g >
+<title>Nsfisis\Waddiwasi\Execution\Runtime::execInstrs (399 samples, 28.04%)</title><rect x="787.0" y="853" width="330.9" height="15.0" fill="rgb(218,145,33)" rx="2" ry="2" />
+<text  x="789.99" y="863.5" >Nsfisis\Waddiwasi\Execution\Runtime::execIns..</text>
+</g>
+<g >
+<title>Nsfisis\Waddiwasi\Execution\Runtime::doInvokeWasmFunc (319 samples, 22.42%)</title><rect x="852.5" y="581" width="264.5" height="15.0" fill="rgb(229,216,45)" rx="2" ry="2" />
+<text  x="855.50" y="591.5" >Nsfisis\Waddiwasi\Execution\Runtime..</text>
+</g>
+<g >
+<title>Nsfisis\Waddiwasi\Execution\Runtime::execInstr (399 samples, 28.04%)</title><rect x="787.0" y="1125" width="330.9" height="15.0" fill="rgb(220,15,42)" rx="2" ry="2" />
+<text  x="789.99" y="1135.5" >Nsfisis\Waddiwasi\Execution\Runtime::execInstr</text>
+</g>
+<g >
+<title>Nsfisis\Waddiwasi\Execution\Runtime::doInvokeFunc (319 samples, 22.42%)</title><rect x="852.5" y="725" width="264.5" height="15.0" fill="rgb(208,210,1)" rx="2" ry="2" />
+<text  x="855.50" y="735.5" >Nsfisis\Waddiwasi\Execution\Runtime..</text>
+</g>
+<g >
+<title>assert (1 samples, 0.07%)</title><rect x="622.0" y="1413" width="0.8" height="15.0" fill="rgb(211,220,39)" rx="2" ry="2" />
+<text  x="624.97" y="1423.5" ></text>
+</g>
+<g >
+<title>Nsfisis\Waddiwasi\Execution\Runtime::invokeByFuncAddr (410 samples, 28.81%)</title><rect x="777.9" y="1381" width="340.0" height="15.0" fill="rgb(229,194,22)" rx="2" ry="2" />
+<text  x="780.87" y="1391.5" >Nsfisis\Waddiwasi\Execution\Runtime::invokeByF..</text>
+</g>
+<g >
+<title>Nsfisis\Waddiwasi\Execution\Runtime::execInstrs (1 samples, 0.07%)</title><rect x="1117.0" y="757" width="0.9" height="15.0" fill="rgb(229,67,50)" rx="2" ry="2" />
+<text  x="1120.03" y="767.5" ></text>
+</g>
+<g >
+<title>Nsfisis\Waddiwasi\Execution\Runtime::execInstrs (1 samples, 0.07%)</title><rect x="779.5" y="1141" width="0.9" height="15.0" fill="rgb(206,177,27)" rx="2" ry="2" />
+<text  x="782.53" y="1151.5" ></text>
+</g>
+<g >
+<title>Nsfisis\Waddiwasi\Execution\Runtime::execInstr (402 samples, 28.25%)</title><rect x="309.4" y="1461" width="333.3" height="15.0" fill="rgb(232,123,3)" rx="2" ry="2" />
+<text  x="312.35" y="1471.5" >Nsfisis\Waddiwasi\Execution\Runtime::execInstr</text>
+</g>
+<g >
+<title>Nsfisis\Waddiwasi\Execution\Runtime::doInvokeFunc (4 samples, 0.28%)</title><rect x="803.6" y="565" width="3.3" height="15.0" fill="rgb(206,24,38)" rx="2" ry="2" />
+<text  x="806.58" y="575.5" ></text>
+</g>
+<g >
+<title>Nsfisis\Waddiwasi\Execution\Runtime::execInstrs (2 samples, 0.14%)</title><rect x="827.6" y="309" width="1.7" height="15.0" fill="rgb(210,9,53)" rx="2" ry="2" />
+<text  x="830.62" y="319.5" ></text>
+</g>
+<g >
+<title>Nsfisis\Waddiwasi\Execution\StackEntry::Value (1 samples, 0.07%)</title><rect x="1111.2" y="149" width="0.9" height="15.0" fill="rgb(223,188,8)" rx="2" ry="2" />
+<text  x="1114.22" y="159.5" ></text>
+</g>
+<g >
+<title>Nsfisis\Waddiwasi\Execution\Runtime::execInstrs (1 samples, 0.07%)</title><rect x="830.9" y="693" width="0.9" height="15.0" fill="rgb(241,36,53)" rx="2" ry="2" />
+<text  x="833.94" y="703.5" ></text>
+</g>
+<g >
+<title>Nsfisis\Waddiwasi\Execution\Stack::popI32 (4 samples, 0.28%)</title><rect x="726.5" y="1429" width="3.3" height="15.0" fill="rgb(251,44,29)" rx="2" ry="2" />
+<text  x="729.46" y="1439.5" ></text>
+</g>
+<g >
+<title>Nsfisis\Waddiwasi\Execution\Stack::pushValue (4 samples, 0.28%)</title><rect x="730.6" y="1445" width="3.3" height="15.0" fill="rgb(238,164,22)" rx="2" ry="2" />
+<text  x="733.60" y="1455.5" ></text>
+</g>
+<g >
+<title>Nsfisis\Waddiwasi\Execution\Runtime::doInvokeFunc (1 samples, 0.07%)</title><rect x="779.5" y="789" width="0.9" height="15.0" fill="rgb(210,27,42)" rx="2" ry="2" />
+<text  x="782.53" y="799.5" ></text>
+</g>
+<g >
+<title>Nsfisis\Waddiwasi\Execution\StackEntry::Value (2 samples, 0.14%)</title><rect x="1173.4" y="1525" width="1.7" height="15.0" fill="rgb(218,35,42)" rx="2" ry="2" />
+<text  x="1176.42" y="1535.5" ></text>
+</g>
+<g >
+<title>Nsfisis\Waddiwasi\Execution\Runtime::doInvokeFunc (1 samples, 0.07%)</title><rect x="779.5" y="885" width="0.9" height="15.0" fill="rgb(242,172,22)" rx="2" ry="2" />
+<text  x="782.53" y="895.5" ></text>
+</g>
+<g >
+<title>Nsfisis\Waddiwasi\Execution\Runtime::execInstrs (399 samples, 28.04%)</title><rect x="787.0" y="1237" width="330.9" height="15.0" fill="rgb(233,215,15)" rx="2" ry="2" />
+<text  x="789.99" y="1247.5" >Nsfisis\Waddiwasi\Execution\Runtime::execIns..</text>
+</g>
+<g >
+<title>Nsfisis\Waddiwasi\Execution\Runtime::execInstrs (2 samples, 0.14%)</title><rect x="805.2" y="469" width="1.7" height="15.0" fill="rgb(225,148,17)" rx="2" ry="2" />
+<text  x="808.24" y="479.5" ></text>
+</g>
+<g >
+<title>Nsfisis\Waddiwasi\Execution\Stack::push (2 samples, 0.14%)</title><rect x="572.2" y="1429" width="1.7" height="15.0" fill="rgb(226,171,23)" rx="2" ry="2" />
+<text  x="575.22" y="1439.5" ></text>
+</g>
+<g >
+<title>Nsfisis\Waddiwasi\Execution\Runtime::execInstr (6 samples, 0.42%)</title><rect x="847.5" y="677" width="5.0" height="15.0" fill="rgb(244,127,22)" rx="2" ry="2" />
+<text  x="850.53" y="687.5" ></text>
+</g>
+<g >
+<title>Nsfisis\Waddiwasi\Execution\Runtime::doInvokeWasmFunc (1 samples, 0.07%)</title><rect x="846.7" y="677" width="0.8" height="15.0" fill="rgb(215,86,5)" rx="2" ry="2" />
+<text  x="849.70" y="687.5" ></text>
+</g>
+<g >
+<title>Nsfisis\Waddiwasi\Execution\Runtime::execInstrs (1 samples, 0.07%)</title><rect x="1118.7" y="853" width="0.8" height="15.0" fill="rgb(212,56,27)" rx="2" ry="2" />
+<text  x="1121.69" y="863.5" ></text>
+</g>
+<g >
+<title>Nsfisis\Waddiwasi\Execution\Runtime::execInstrs (3 samples, 0.21%)</title><rect x="1117.9" y="1013" width="2.4" height="15.0" fill="rgb(206,190,34)" rx="2" ry="2" />
+<text  x="1120.86" y="1023.5" ></text>
+</g>
+<g >
+<title>Nsfisis\Waddiwasi\Execution\Runtime::execInstrs (1 samples, 0.07%)</title><rect x="1137.8" y="1477" width="0.8" height="15.0" fill="rgb(206,100,30)" rx="2" ry="2" />
+<text  x="1140.76" y="1487.5" ></text>
+</g>
+<g >
+<title>Nsfisis\Waddiwasi\Execution\Runtime::execInstrs (1 samples, 0.07%)</title><rect x="819.3" y="405" width="0.9" height="15.0" fill="rgb(230,128,42)" rx="2" ry="2" />
+<text  x="822.33" y="415.5" ></text>
+</g>
+<g >
+<title>Nsfisis\Waddiwasi\Execution\Runtime::doInvokeFunc (1 samples, 0.07%)</title><rect x="1118.7" y="757" width="0.8" height="15.0" fill="rgb(232,2,38)" rx="2" ry="2" />
+<text  x="1121.69" y="767.5" ></text>
+</g>
+<g >
+<title>count (1 samples, 0.07%)</title><rect x="725.6" y="1397" width="0.9" height="15.0" fill="rgb(232,150,8)" rx="2" ry="2" />
+<text  x="728.63" y="1407.5" ></text>
+</g>
+<g >
+<title>Nsfisis\Waddiwasi\Structure\Instructions\Instrs\Memory\I32Store8::__construct (3 samples, 0.21%)</title><rect x="773.7" y="1445" width="2.5" height="15.0" fill="rgb(207,29,7)" rx="2" ry="2" />
+<text  x="776.72" y="1455.5" ></text>
+</g>
+<g >
+<title>Nsfisis\Waddiwasi\Execution\Runtime::execInstr (19 samples, 1.34%)</title><rect x="791.1" y="645" width="15.8" height="15.0" fill="rgb(231,102,46)" rx="2" ry="2" />
+<text  x="794.14" y="655.5" ></text>
+</g>
+<g >
+<title>Nsfisis\Waddiwasi\Execution\MemInst::storeI32 (22 samples, 1.55%)</title><rect x="747.2" y="1445" width="18.2" height="15.0" fill="rgb(252,114,3)" rx="2" ry="2" />
+<text  x="750.19" y="1455.5" ></text>
+</g>
+<g >
+<title>Nsfisis\Waddiwasi\Execution\Runtime::execInstr (1 samples, 0.07%)</title><rect x="850.8" y="613" width="0.9" height="15.0" fill="rgb(222,130,46)" rx="2" ry="2" />
+<text  x="853.84" y="623.5" ></text>
+</g>
+<g >
+<title>Nsfisis\Waddiwasi\Execution\Runtime::doStoreI64 (11 samples, 0.77%)</title><rect x="1073.1" y="181" width="9.1" height="15.0" fill="rgb(228,115,29)" rx="2" ry="2" />
+<text  x="1076.08" y="191.5" ></text>
+</g>
+<g >
+<title>Nsfisis\Waddiwasi\Execution\Runtime::doInvokeWasmFunc (1 samples, 0.07%)</title><rect x="779.5" y="869" width="0.9" height="15.0" fill="rgb(242,106,31)" rx="2" ry="2" />
+<text  x="782.53" y="879.5" ></text>
+</g>
+<g >
+<title>Nsfisis\Waddiwasi\Execution\Runtime::execInstrs (8 samples, 0.56%)</title><rect x="809.4" y="533" width="6.6" height="15.0" fill="rgb(236,73,16)" rx="2" ry="2" />
+<text  x="812.38" y="543.5" ></text>
+</g>
+<g >
+<title>Nsfisis\Waddiwasi\Execution\Runtime::doInvokeFunc (1 samples, 0.07%)</title><rect x="787.8" y="725" width="0.9" height="15.0" fill="rgb(233,205,7)" rx="2" ry="2" />
+<text  x="790.82" y="735.5" ></text>
+</g>
+<g >
+<title>Nsfisis\Waddiwasi\Execution\Runtime::doInvokeWasmFunc (2 samples, 0.14%)</title><rect x="805.2" y="325" width="1.7" height="15.0" fill="rgb(215,218,13)" rx="2" ry="2" />
+<text  x="808.24" y="335.5" ></text>
+</g>
+<g >
+<title>Nsfisis\Waddiwasi\Execution\Runtime::execInstrs (1 samples, 0.07%)</title><rect x="820.2" y="501" width="0.8" height="15.0" fill="rgb(230,55,12)" rx="2" ry="2" />
+<text  x="823.16" y="511.5" ></text>
+</g>
+<g >
+<title>Nsfisis\Waddiwasi\Execution\Runtime::execInstrs (319 samples, 22.42%)</title><rect x="852.5" y="405" width="264.5" height="15.0" fill="rgb(249,183,45)" rx="2" ry="2" />
+<text  x="855.50" y="415.5" >Nsfisis\Waddiwasi\Execution\Runtime..</text>
+</g>
+<g >
+<title>Nsfisis\Waddiwasi\Execution\Runtime::execInstrs (319 samples, 22.42%)</title><rect x="852.5" y="341" width="264.5" height="15.0" fill="rgb(233,139,52)" rx="2" ry="2" />
+<text  x="855.50" y="351.5" >Nsfisis\Waddiwasi\Execution\Runtime..</text>
+</g>
+<g >
+<title>&lt;unknown&gt; (2 samples, 0.14%)</title><rect x="1176.7" y="1509" width="1.7" height="15.0" fill="rgb(251,175,22)" rx="2" ry="2" />
+<text  x="1179.73" y="1519.5" ></text>
+</g>
+<g >
+<title>Nsfisis\Waddiwasi\Execution\Runtime::execInstrs (1 samples, 0.07%)</title><rect x="1118.7" y="789" width="0.8" height="15.0" fill="rgb(254,66,12)" rx="2" ry="2" />
+<text  x="1121.69" y="799.5" ></text>
+</g>
+<g >
+<title>Nsfisis\Waddiwasi\Execution\Runtime::execInstr (1 samples, 0.07%)</title><rect x="850.8" y="581" width="0.9" height="15.0" fill="rgb(246,163,3)" rx="2" ry="2" />
+<text  x="853.84" y="591.5" ></text>
+</g>
+<g >
+<title>Nsfisis\Waddiwasi\Execution\Runtime::execInstrs (1 samples, 0.07%)</title><rect x="850.8" y="597" width="0.9" height="15.0" fill="rgb(232,33,32)" rx="2" ry="2" />
+<text  x="853.84" y="607.5" ></text>
+</g>
+<g >
+<title>Nsfisis\Waddiwasi\Execution\Runtime::execInstr (4 samples, 0.28%)</title><rect x="1117.9" y="1253" width="3.3" height="15.0" fill="rgb(231,14,38)" rx="2" ry="2" />
+<text  x="1120.86" y="1263.5" ></text>
+</g>
+<g >
+<title>Nsfisis\Waddiwasi\Execution\Runtime::doInvokeFunc (4 samples, 0.28%)</title><rect x="791.1" y="501" width="3.4" height="15.0" fill="rgb(223,226,50)" rx="2" ry="2" />
+<text  x="794.14" y="511.5" ></text>
+</g>
+<g >
+<title>&lt;unknown&gt; (1 samples, 0.07%)</title><rect x="1143.6" y="1429" width="0.8" height="15.0" fill="rgb(246,132,43)" rx="2" ry="2" />
+<text  x="1146.56" y="1439.5" ></text>
+</g>
+<g >
+<title>Nsfisis\Waddiwasi\Execution\Runtime::doInvokeWasmFunc (318 samples, 22.35%)</title><rect x="852.5" y="293" width="263.7" height="15.0" fill="rgb(225,199,44)" rx="2" ry="2" />
+<text  x="855.50" y="303.5" >Nsfisis\Waddiwasi\Execution\Runtime..</text>
+</g>
+<g >
+<title>Nsfisis\Waddiwasi\Execution\Runtime::execInstrs (2 samples, 0.14%)</title><rect x="792.8" y="405" width="1.7" height="15.0" fill="rgb(253,229,24)" rx="2" ry="2" />
+<text  x="795.80" y="415.5" ></text>
+</g>
+<g >
+<title>Nsfisis\Waddiwasi\Execution\Runtime::execInstrsForInit (600 samples, 42.16%)</title><rect x="278.7" y="1493" width="497.5" height="15.0" fill="rgb(223,42,35)" rx="2" ry="2" />
+<text  x="281.67" y="1503.5" >Nsfisis\Waddiwasi\Execution\Runtime::execInstrsForInit</text>
+</g>
+<g >
+<title>Nsfisis\Waddiwasi\Execution\StackEntries\Value::__construct (1 samples, 0.07%)</title><rect x="1161.0" y="1493" width="0.8" height="15.0" fill="rgb(235,132,20)" rx="2" ry="2" />
+<text  x="1163.98" y="1503.5" ></text>
+</g>
+<g >
+<title>Nsfisis\Waddiwasi\Execution\Runtime::execInstr (1 samples, 0.07%)</title><rect x="1118.7" y="805" width="0.8" height="15.0" fill="rgb(210,157,14)" rx="2" ry="2" />
+<text  x="1121.69" y="815.5" ></text>
+</g>
+<g >
+<title>Nsfisis\Waddiwasi\Execution\Runtime::doInvokeFunc (1 samples, 0.07%)</title><rect x="780.4" y="1141" width="0.8" height="15.0" fill="rgb(239,180,8)" rx="2" ry="2" />
+<text  x="783.36" y="1151.5" ></text>
+</g>
+<g >
+<title>Nsfisis\Waddiwasi\Execution\Stack::pushValue (1 samples, 0.07%)</title><rect x="1182.5" y="1413" width="0.9" height="15.0" fill="rgb(223,224,2)" rx="2" ry="2" />
+<text  x="1185.54" y="1423.5" ></text>
+</g>
+<g >
+<title>Nsfisis\Waddiwasi\Execution\Runtime::execInstrs (1 samples, 0.07%)</title><rect x="1116.2" y="277" width="0.8" height="15.0" fill="rgb(234,213,19)" rx="2" ry="2" />
+<text  x="1119.20" y="287.5" ></text>
+</g>
+<g >
+<title>Nsfisis\Waddiwasi\Execution\Runtime::doLoadI64 (1 samples, 0.07%)</title><rect x="790.3" y="661" width="0.8" height="15.0" fill="rgb(230,118,26)" rx="2" ry="2" />
+<text  x="793.31" y="671.5" ></text>
+</g>
+<g >
+<title>Nsfisis\Waddiwasi\Execution\Runtime::execInstr (3 samples, 0.21%)</title><rect x="1138.6" y="1509" width="2.5" height="15.0" fill="rgb(218,183,22)" rx="2" ry="2" />
+<text  x="1141.59" y="1519.5" ></text>
+</g>
+<g >
+<title>Nsfisis\Waddiwasi\Execution\Runtime::execInstrs (1 samples, 0.07%)</title><rect x="1159.3" y="1493" width="0.8" height="15.0" fill="rgb(242,48,4)" rx="2" ry="2" />
+<text  x="1162.32" y="1503.5" ></text>
+</g>
+<g >
+<title>Nsfisis\Waddiwasi\Execution\Runtime::execInstrs (2 samples, 0.14%)</title><rect x="806.9" y="565" width="1.7" height="15.0" fill="rgb(206,98,17)" rx="2" ry="2" />
+<text  x="809.89" y="575.5" ></text>
+</g>
+<g >
+<title>Nsfisis\Waddiwasi\Execution\Runtime::execInstrs (4 samples, 0.28%)</title><rect x="838.4" y="693" width="3.3" height="15.0" fill="rgb(209,38,51)" rx="2" ry="2" />
+<text  x="841.40" y="703.5" ></text>
+</g>
+<g >
+<title>Nsfisis\Waddiwasi\Execution\Runtime::execInstr (1 samples, 0.07%)</title><rect x="781.2" y="1125" width="0.8" height="15.0" fill="rgb(205,138,19)" rx="2" ry="2" />
+<text  x="784.19" y="1135.5" ></text>
+</g>
+<g >
+<title>Nsfisis\Waddiwasi\Execution\Runtime::execInstrs (4 samples, 0.28%)</title><rect x="826.8" y="341" width="3.3" height="15.0" fill="rgb(249,112,31)" rx="2" ry="2" />
+<text  x="829.80" y="351.5" ></text>
+</g>
+<g >
+<title>Nsfisis\Waddiwasi\Execution\Runtime::execInstr (1 samples, 0.07%)</title><rect x="801.9" y="357" width="0.8" height="15.0" fill="rgb(221,99,32)" rx="2" ry="2" />
+<text  x="804.92" y="367.5" ></text>
+</g>
+<g >
+<title>Nsfisis\Waddiwasi\Execution\Runtime::doInvokeWasmFunc (1 samples, 0.07%)</title><rect x="779.5" y="773" width="0.9" height="15.0" fill="rgb(248,46,32)" rx="2" ry="2" />
+<text  x="782.53" y="783.5" ></text>
+</g>
+<g >
+<title>Nsfisis\Waddiwasi\Execution\Runtime::execInstr (6 samples, 0.42%)</title><rect x="782.0" y="1093" width="5.0" height="15.0" fill="rgb(221,7,22)" rx="2" ry="2" />
+<text  x="785.02" y="1103.5" ></text>
+</g>
+<g >
+<title>print_r (1 samples, 0.07%)</title><rect x="763.8" y="1413" width="0.8" height="15.0" fill="rgb(253,99,46)" rx="2" ry="2" />
+<text  x="766.77" y="1423.5" ></text>
+</g>
+<g >
+<title>Nsfisis\Waddiwasi\Execution\Runtime::execInstr (1 samples, 0.07%)</title><rect x="779.5" y="805" width="0.9" height="15.0" fill="rgb(221,177,6)" rx="2" ry="2" />
+<text  x="782.53" y="815.5" ></text>
+</g>
+<g >
+<title>Nsfisis\Waddiwasi\Execution\Runtime::execInstrs (3 samples, 0.21%)</title><rect x="816.8" y="469" width="2.5" height="15.0" fill="rgb(235,117,11)" rx="2" ry="2" />
+<text  x="819.84" y="479.5" ></text>
+</g>
+<g >
+<title>Nsfisis\Waddiwasi\Execution\MemInst::storeI64 (3 samples, 0.21%)</title><rect x="1107.9" y="165" width="2.5" height="15.0" fill="rgb(231,181,24)" rx="2" ry="2" />
+<text  x="1110.91" y="175.5" ></text>
+</g>
+<g >
+<title>Nsfisis\Waddiwasi\Execution\Runtime::execInstr (1 samples, 0.07%)</title><rect x="1143.6" y="1509" width="0.8" height="15.0" fill="rgb(212,163,45)" rx="2" ry="2" />
+<text  x="1146.56" y="1519.5" ></text>
+</g>
+<g >
+<title>Nsfisis\Waddiwasi\Execution\Runtime::execInstrs (11 samples, 0.77%)</title><rect x="777.9" y="1269" width="9.1" height="15.0" fill="rgb(212,41,33)" rx="2" ry="2" />
+<text  x="780.87" y="1279.5" ></text>
+</g>
+<g >
+<title>Nsfisis\Waddiwasi\Execution\Runtime::execInstrs (3 samples, 0.21%)</title><rect x="1117.9" y="917" width="2.4" height="15.0" fill="rgb(225,187,49)" rx="2" ry="2" />
+<text  x="1120.86" y="927.5" ></text>
+</g>
+<g >
+<title>Nsfisis\Waddiwasi\Execution\ControlFlowResult::Return (1 samples, 0.07%)</title><rect x="1118.7" y="661" width="0.8" height="15.0" fill="rgb(233,150,26)" rx="2" ry="2" />
+<text  x="1121.69" y="671.5" ></text>
+</g>
+<g >
+<title>Nsfisis\Waddiwasi\Execution\Runtime::execInstrs (15 samples, 1.05%)</title><rect x="791.1" y="565" width="12.5" height="15.0" fill="rgb(210,222,14)" rx="2" ry="2" />
+<text  x="794.14" y="575.5" ></text>
+</g>
+<g >
+<title>&lt;unknown&gt; (1 samples, 0.07%)</title><rect x="568.9" y="1397" width="0.8" height="15.0" fill="rgb(238,170,54)" rx="2" ry="2" />
+<text  x="571.90" y="1407.5" ></text>
+</g>
+<g >
+<title>Nsfisis\Waddiwasi\Execution\Runtime::execInstrs (1 samples, 0.07%)</title><rect x="779.5" y="661" width="0.9" height="15.0" fill="rgb(229,151,7)" rx="2" ry="2" />
+<text  x="782.53" y="671.5" ></text>
+</g>
+<g >
+<title>Nsfisis\Waddiwasi\Execution\Runtime::execInstrs (1 samples, 0.07%)</title><rect x="1118.7" y="693" width="0.8" height="15.0" fill="rgb(241,205,54)" rx="2" ry="2" />
+<text  x="1121.69" y="703.5" ></text>
+</g>
+<g >
+<title>Nsfisis\Waddiwasi\Execution\Runtime::execInstrs (319 samples, 22.42%)</title><rect x="852.5" y="469" width="264.5" height="15.0" fill="rgb(223,61,43)" rx="2" ry="2" />
+<text  x="855.50" y="479.5" >Nsfisis\Waddiwasi\Execution\Runtime..</text>
+</g>
+<g >
+<title>Nsfisis\Waddiwasi\Execution\Runtime::execInstr (1 samples, 0.07%)</title><rect x="801.9" y="453" width="0.8" height="15.0" fill="rgb(208,80,10)" rx="2" ry="2" />
+<text  x="804.92" y="463.5" ></text>
+</g>
+<g >
+<title>Nsfisis\Waddiwasi\Execution\Runtime::doStoreI32 (53 samples, 3.72%)</title><rect x="581.3" y="1445" width="44.0" height="15.0" fill="rgb(223,147,20)" rx="2" ry="2" />
+<text  x="584.34" y="1455.5" >Nsfi..</text>
+</g>
+<g >
+<title>Nsfisis\Waddiwasi\Execution\Runtime::execInstrs (1 samples, 0.07%)</title><rect x="779.5" y="853" width="0.9" height="15.0" fill="rgb(244,158,37)" rx="2" ry="2" />
+<text  x="782.53" y="863.5" ></text>
+</g>
+<g >
+<title>Nsfisis\Waddiwasi\Execution\Runtime::doInvokeWasmFunc (5 samples, 0.35%)</title><rect x="1117.9" y="1413" width="4.1" height="15.0" fill="rgb(252,74,31)" rx="2" ry="2" />
+<text  x="1120.86" y="1423.5" ></text>
+</g>
+<g >
+<title>Nsfisis\Waddiwasi\Execution\Runtime::doInvokeFunc (3 samples, 0.21%)</title><rect x="811.0" y="469" width="2.5" height="15.0" fill="rgb(225,41,16)" rx="2" ry="2" />
+<text  x="814.04" y="479.5" ></text>
+</g>
+<g >
+<title>Nsfisis\Waddiwasi\Execution\Stack::popI32 (1 samples, 0.07%)</title><rect x="625.3" y="1445" width="0.8" height="15.0" fill="rgb(212,77,28)" rx="2" ry="2" />
+<text  x="628.29" y="1455.5" ></text>
+</g>
+<g >
+<title>Nsfisis\Waddiwasi\Execution\Runtime::execInstrs (9 samples, 0.63%)</title><rect x="822.6" y="501" width="7.5" height="15.0" fill="rgb(231,38,35)" rx="2" ry="2" />
+<text  x="825.65" y="511.5" ></text>
+</g>
+<g >
+<title>Nsfisis\Waddiwasi\Execution\Runtime::execInstrs (319 samples, 22.42%)</title><rect x="852.5" y="565" width="264.5" height="15.0" fill="rgb(248,29,18)" rx="2" ry="2" />
+<text  x="855.50" y="575.5" >Nsfisis\Waddiwasi\Execution\Runtime..</text>
+</g>
+<g >
+<title>Nsfisis\Waddiwasi\Structure\Instructions\Instr::TableInit (1 samples, 0.07%)</title><rect x="777.0" y="1493" width="0.9" height="15.0" fill="rgb(225,122,51)" rx="2" ry="2" />
+<text  x="780.04" y="1503.5" ></text>
+</g>
+<g >
+<title>Nsfisis\Waddiwasi\Execution\Runtime::execInstrs (344 samples, 24.17%)</title><rect x="832.6" y="821" width="285.3" height="15.0" fill="rgb(247,195,9)" rx="2" ry="2" />
+<text  x="835.60" y="831.5" >Nsfisis\Waddiwasi\Execution\Runtime::e..</text>
+</g>
+<g >
+<title>Nsfisis\Waddiwasi\Execution\Runtime::execInstr (10 samples, 0.70%)</title><rect x="795.3" y="485" width="8.3" height="15.0" fill="rgb(231,41,54)" rx="2" ry="2" />
+<text  x="798.28" y="495.5" ></text>
+</g>
+<g >
+<title>Nsfisis\Waddiwasi\Execution\Runtime::execInstrs (1 samples, 0.07%)</title><rect x="816.0" y="501" width="0.8" height="15.0" fill="rgb(223,219,2)" rx="2" ry="2" />
+<text  x="819.02" y="511.5" ></text>
+</g>
+<g >
+<title>Nsfisis\Waddiwasi\Structure\Instructions\Instrs\Memory\I32Store8::__construct (1 samples, 0.07%)</title><rect x="729.8" y="1429" width="0.8" height="15.0" fill="rgb(244,210,47)" rx="2" ry="2" />
+<text  x="732.78" y="1439.5" ></text>
+</g>
+<g >
+<title>Nsfisis\Waddiwasi\Execution\Nums\I32::__construct (1 samples, 0.07%)</title><rect x="1177.6" y="1493" width="0.8" height="15.0" fill="rgb(242,72,30)" rx="2" ry="2" />
+<text  x="1180.56" y="1503.5" ></text>
+</g>
+<g >
+<title>&lt;unknown&gt; (1 samples, 0.07%)</title><rect x="1140.2" y="1493" width="0.9" height="15.0" fill="rgb(219,143,46)" rx="2" ry="2" />
+<text  x="1143.25" y="1503.5" ></text>
+</g>
+<g >
+<title>Nsfisis\Waddiwasi\Execution\Runtime::doInvokeWasmFunc (1 samples, 0.07%)</title><rect x="801.9" y="389" width="0.8" height="15.0" fill="rgb(239,225,1)" rx="2" ry="2" />
+<text  x="804.92" y="399.5" ></text>
+</g>
+<g >
+<title>Nsfisis\Waddiwasi\Execution\Runtime::execInstrs (1 samples, 0.07%)</title><rect x="789.5" y="693" width="0.8" height="15.0" fill="rgb(253,179,48)" rx="2" ry="2" />
+<text  x="792.48" y="703.5" ></text>
+</g>
+<g >
+<title>array_fill (319 samples, 22.42%)</title><rect x="13.3" y="1461" width="264.5" height="15.0" fill="rgb(249,210,11)" rx="2" ry="2" />
+<text  x="16.32" y="1471.5" >array_fill</text>
+</g>
+<g >
+<title>Nsfisis\Waddiwasi\Execution\Runtime::execInstr (11 samples, 0.77%)</title><rect x="777.9" y="1253" width="9.1" height="15.0" fill="rgb(205,60,48)" rx="2" ry="2" />
+<text  x="780.87" y="1263.5" ></text>
+</g>
+<g >
+<title>Nsfisis\Waddiwasi\Execution\Runtime::execInstr (1 samples, 0.07%)</title><rect x="801.9" y="325" width="0.8" height="15.0" fill="rgb(252,99,14)" rx="2" ry="2" />
+<text  x="804.92" y="335.5" ></text>
+</g>
+<g >
+<title>Nsfisis\Waddiwasi\Execution\Runtime::execInstr (4 samples, 0.28%)</title><rect x="803.6" y="517" width="3.3" height="15.0" fill="rgb(227,149,0)" rx="2" ry="2" />
+<text  x="806.58" y="527.5" ></text>
+</g>
+<g >
+<title>Nsfisis\Waddiwasi\Execution\Runtime::execInstr (1 samples, 0.07%)</title><rect x="830.9" y="677" width="0.9" height="15.0" fill="rgb(250,111,48)" rx="2" ry="2" />
+<text  x="833.94" y="687.5" ></text>
+</g>
+<g >
+<title>Nsfisis\Waddiwasi\Execution\Runtime::execInstrs (1 samples, 0.07%)</title><rect x="779.5" y="1109" width="0.9" height="15.0" fill="rgb(253,170,50)" rx="2" ry="2" />
+<text  x="782.53" y="1119.5" ></text>
+</g>
+<g >
+<title>Nsfisis\Waddiwasi\Execution\Runtime::execInstrs (4 samples, 0.28%)</title><rect x="1117.9" y="1397" width="3.3" height="15.0" fill="rgb(207,156,29)" rx="2" ry="2" />
+<text  x="1120.86" y="1407.5" ></text>
+</g>
+<g >
+<title>Nsfisis\Waddiwasi\Execution\Runtime::execInstrs (1 samples, 0.07%)</title><rect x="820.2" y="469" width="0.8" height="15.0" fill="rgb(235,41,1)" rx="2" ry="2" />
+<text  x="823.16" y="479.5" ></text>
+</g>
+<g >
+<title>Nsfisis\Waddiwasi\Execution\Runtime::execInstrs (1 samples, 0.07%)</title><rect x="794.5" y="437" width="0.8" height="15.0" fill="rgb(236,61,18)" rx="2" ry="2" />
+<text  x="797.46" y="447.5" ></text>
+</g>
+<g >
+<title>Nsfisis\Waddiwasi\Execution\Runtime::execInstrs (2 samples, 0.14%)</title><rect x="840.1" y="629" width="1.6" height="15.0" fill="rgb(212,30,54)" rx="2" ry="2" />
+<text  x="843.06" y="639.5" ></text>
+</g>
+<g >
+<title>Nsfisis\Waddiwasi\Execution\Runtime::execInstr (18 samples, 1.26%)</title><rect x="837.6" y="741" width="14.9" height="15.0" fill="rgb(239,68,4)" rx="2" ry="2" />
+<text  x="840.58" y="751.5" ></text>
+</g>
+<g >
+<title>Nsfisis\Waddiwasi\Execution\Runtime::execInstrs (1 samples, 0.07%)</title><rect x="780.4" y="1109" width="0.8" height="15.0" fill="rgb(222,34,53)" rx="2" ry="2" />
+<text  x="783.36" y="1119.5" ></text>
+</g>
+<g >
+<title>Nsfisis\Waddiwasi\Execution\Runtime::doStoreI64 (1 samples, 0.07%)</title><rect x="781.2" y="1109" width="0.8" height="15.0" fill="rgb(244,81,5)" rx="2" ry="2" />
+<text  x="784.19" y="1119.5" ></text>
+</g>
+<g >
+<title>Nsfisis\Waddiwasi\Execution\Runtime::doInvokeWasmFunc (1 samples, 0.07%)</title><rect x="794.5" y="485" width="0.8" height="15.0" fill="rgb(216,163,39)" rx="2" ry="2" />
+<text  x="797.46" y="495.5" ></text>
+</g>
+<g >
+<title>Nsfisis\Waddiwasi\Execution\Runtime::execInstrs (3 samples, 0.21%)</title><rect x="813.5" y="469" width="2.5" height="15.0" fill="rgb(206,207,32)" rx="2" ry="2" />
+<text  x="816.53" y="479.5" ></text>
+</g>
+<g >
+<title>Nsfisis\Waddiwasi\Execution\Runtime::execInstrs (6 samples, 0.42%)</title><rect x="782.0" y="1205" width="5.0" height="15.0" fill="rgb(214,110,1)" rx="2" ry="2" />
+<text  x="785.02" y="1215.5" ></text>
+</g>
+<g >
+<title>Nsfisis\Waddiwasi\Execution\Runtime::doInvokeFunc (2 samples, 0.14%)</title><rect x="827.6" y="245" width="1.7" height="15.0" fill="rgb(233,203,18)" rx="2" ry="2" />
+<text  x="830.62" y="255.5" ></text>
+</g>
+<g >
+<title>Nsfisis\Waddiwasi\Execution\Runtime::execInstrs (10 samples, 0.70%)</title><rect x="795.3" y="501" width="8.3" height="15.0" fill="rgb(216,90,37)" rx="2" ry="2" />
+<text  x="798.28" y="511.5" ></text>
+</g>
+<g >
+<title>Nsfisis\Waddiwasi\Execution\Stack::pushValue (1 samples, 0.07%)</title><rect x="802.7" y="469" width="0.9" height="15.0" fill="rgb(238,41,19)" rx="2" ry="2" />
+<text  x="805.75" y="479.5" ></text>
+</g>
+<g >
+<title>Nsfisis\Waddiwasi\Execution\Runtime::execInstrs (6 samples, 0.42%)</title><rect x="782.0" y="1141" width="5.0" height="15.0" fill="rgb(247,195,35)" rx="2" ry="2" />
+<text  x="785.02" y="1151.5" ></text>
+</g>
+<g >
+<title>Nsfisis\Waddiwasi\Execution\Runtime::execInstr (1 samples, 0.07%)</title><rect x="1116.2" y="197" width="0.8" height="15.0" fill="rgb(216,217,41)" rx="2" ry="2" />
+<text  x="1119.20" y="207.5" ></text>
+</g>
+<g >
+<title>Nsfisis\Waddiwasi\Execution\StackEntry::Value (1 samples, 0.07%)</title><rect x="1097.1" y="165" width="0.9" height="15.0" fill="rgb(223,47,19)" rx="2" ry="2" />
+<text  x="1100.13" y="175.5" ></text>
+</g>
+<g >
+<title>&lt;unknown&gt; (1 samples, 0.07%)</title><rect x="732.3" y="1413" width="0.8" height="15.0" fill="rgb(253,155,45)" rx="2" ry="2" />
+<text  x="735.26" y="1423.5" ></text>
+</g>
+<g >
+<title>Nsfisis\Waddiwasi\Execution\Runtime::doInvokeWasmFunc (1 samples, 0.07%)</title><rect x="779.5" y="1157" width="0.9" height="15.0" fill="rgb(244,0,40)" rx="2" ry="2" />
+<text  x="782.53" y="1167.5" ></text>
+</g>
+<g >
+<title>Nsfisis\Waddiwasi\Execution\Runtime::execInstrs (399 samples, 28.04%)</title><rect x="787.0" y="1141" width="330.9" height="15.0" fill="rgb(249,216,40)" rx="2" ry="2" />
+<text  x="789.99" y="1151.5" >Nsfisis\Waddiwasi\Execution\Runtime::execIns..</text>
+</g>
+<g >
+<title>count (3 samples, 0.21%)</title><rect x="756.3" y="1413" width="2.5" height="15.0" fill="rgb(218,56,23)" rx="2" ry="2" />
+<text  x="759.31" y="1423.5" ></text>
+</g>
+<g >
+<title>Nsfisis\Waddiwasi\Execution\Runtime::execInstr (1 samples, 0.07%)</title><rect x="801.9" y="293" width="0.8" height="15.0" fill="rgb(249,226,26)" rx="2" ry="2" />
+<text  x="804.92" y="303.5" ></text>
+</g>
+<g >
+<title>&lt;unknown&gt; (1 samples, 0.07%)</title><rect x="641.0" y="1413" width="0.9" height="15.0" fill="rgb(253,41,26)" rx="2" ry="2" />
+<text  x="644.05" y="1423.5" ></text>
+</g>
+<g >
+<title>Nsfisis\Waddiwasi\Execution\Runtime::execInstrs (1 samples, 0.07%)</title><rect x="789.5" y="725" width="0.8" height="15.0" fill="rgb(236,2,12)" rx="2" ry="2" />
+<text  x="792.48" y="735.5" ></text>
+</g>
+<g >
+<title>Nsfisis\Waddiwasi\Execution\Runtime::execInstrs (2 samples, 0.14%)</title><rect x="827.6" y="149" width="1.7" height="15.0" fill="rgb(223,162,7)" rx="2" ry="2" />
+<text  x="830.62" y="159.5" ></text>
+</g>
+<g >
+<title>Composer\Autoload\ClassLoader::loadClass (1 samples, 0.07%)</title><rect x="777.0" y="1477" width="0.9" height="15.0" fill="rgb(242,94,39)" rx="2" ry="2" />
+<text  x="780.04" y="1487.5" ></text>
+</g>
+<g >
+<title>Nsfisis\Waddiwasi\Execution\Runtime::execInstrs (8 samples, 0.56%)</title><rect x="823.5" y="373" width="6.6" height="15.0" fill="rgb(211,177,41)" rx="2" ry="2" />
+<text  x="826.48" y="383.5" ></text>
+</g>
+<g >
+<title>all (1,423 samples, 100%)</title><rect x="10.0" y="1541" width="1180.0" height="15.0" fill="rgb(221,147,29)" rx="2" ry="2" />
+<text  x="13.00" y="1551.5" ></text>
+</g>
+<g >
+<title>Composer\Autoload\ClassLoader::loadClass (1 samples, 0.07%)</title><rect x="277.8" y="1461" width="0.9" height="15.0" fill="rgb(247,57,36)" rx="2" ry="2" />
+<text  x="280.84" y="1471.5" ></text>
+</g>
+<g >
+<title>Nsfisis\Waddiwasi\Execution\Runtime::doInvokeFunc (2 samples, 0.14%)</title><rect x="805.2" y="341" width="1.7" height="15.0" fill="rgb(221,62,28)" rx="2" ry="2" />
+<text  x="808.24" y="351.5" ></text>
+</g>
+<g >
+<title>Nsfisis\Waddiwasi\Execution\Runtime::deactivateLabel (1 samples, 0.07%)</title><rect x="852.5" y="213" width="0.8" height="15.0" fill="rgb(229,105,41)" rx="2" ry="2" />
+<text  x="855.50" y="223.5" ></text>
+</g>
+<g >
+<title>Nsfisis\Waddiwasi\Execution\StackEntry::Value (1 samples, 0.07%)</title><rect x="733.1" y="1429" width="0.8" height="15.0" fill="rgb(240,167,14)" rx="2" ry="2" />
+<text  x="736.09" y="1439.5" ></text>
+</g>
+<g >
+<title>Nsfisis\Waddiwasi\Execution\Runtime::execInstrs (2 samples, 0.14%)</title><rect x="805.2" y="309" width="1.7" height="15.0" fill="rgb(225,3,35)" rx="2" ry="2" />
+<text  x="808.24" y="319.5" ></text>
+</g>
+<g >
+<title>Nsfisis\Waddiwasi\Execution\Runtime::execInstrs (1 samples, 0.07%)</title><rect x="811.9" y="405" width="0.8" height="15.0" fill="rgb(218,134,39)" rx="2" ry="2" />
+<text  x="814.87" y="415.5" ></text>
+</g>
+<g >
+<title>Nsfisis\Waddiwasi\Execution\StackEntry::Value (1 samples, 0.07%)</title><rect x="1141.1" y="1509" width="0.8" height="15.0" fill="rgb(251,103,16)" rx="2" ry="2" />
+<text  x="1144.08" y="1519.5" ></text>
+</g>
+<g >
+<title>&lt;unknown&gt; (1 samples, 0.07%)</title><rect x="1107.1" y="165" width="0.8" height="15.0" fill="rgb(206,131,35)" rx="2" ry="2" />
+<text  x="1110.08" y="175.5" ></text>
+</g>
+<g >
+<title>Nsfisis\Waddiwasi\Execution\Runtime::execInstr (1 samples, 0.07%)</title><rect x="819.3" y="453" width="0.9" height="15.0" fill="rgb(233,175,21)" rx="2" ry="2" />
+<text  x="822.33" y="463.5" ></text>
+</g>
+<g >
+<title>Nsfisis\Waddiwasi\Execution\Runtime::execInstr (319 samples, 22.42%)</title><rect x="852.5" y="645" width="264.5" height="15.0" fill="rgb(248,130,11)" rx="2" ry="2" />
+<text  x="855.50" y="655.5" >Nsfisis\Waddiwasi\Execution\Runtime..</text>
+</g>
+<g >
+<title>Nsfisis\Waddiwasi\Execution\Stack::currentFrame (2 samples, 0.14%)</title><rect x="765.4" y="1445" width="1.7" height="15.0" fill="rgb(234,35,3)" rx="2" ry="2" />
+<text  x="768.43" y="1455.5" ></text>
+</g>
+<g >
+<title>Nsfisis\Waddiwasi\Execution\StackEntries\Value::__construct (1 samples, 0.07%)</title><rect x="636.1" y="1413" width="0.8" height="15.0" fill="rgb(238,99,33)" rx="2" ry="2" />
+<text  x="639.07" y="1423.5" ></text>
+</g>
+<g >
+<title>Nsfisis\Waddiwasi\Execution\Runtime::execInstrs (5 samples, 0.35%)</title><rect x="782.8" y="1013" width="4.2" height="15.0" fill="rgb(224,39,31)" rx="2" ry="2" />
+<text  x="785.85" y="1023.5" ></text>
+</g>
+<g >
+<title>Nsfisis\Waddiwasi\Execution\Runtime::execInstr (1 samples, 0.07%)</title><rect x="816.0" y="357" width="0.8" height="15.0" fill="rgb(236,80,51)" rx="2" ry="2" />
+<text  x="819.02" y="367.5" ></text>
+</g>
+<g >
+<title>&lt;unknown&gt; (2 samples, 0.14%)</title><rect x="1153.5" y="1509" width="1.7" height="15.0" fill="rgb(241,59,39)" rx="2" ry="2" />
+<text  x="1156.51" y="1519.5" ></text>
+</g>
+<g >
+<title>Nsfisis\Waddiwasi\Execution\Val::NumI32 (1 samples, 0.07%)</title><rect x="785.3" y="901" width="0.9" height="15.0" fill="rgb(245,108,17)" rx="2" ry="2" />
+<text  x="788.33" y="911.5" ></text>
+</g>
+<g >
+<title>Nsfisis\Waddiwasi\Execution\Runtime::execInstrs (5 samples, 0.35%)</title><rect x="782.8" y="1045" width="4.2" height="15.0" fill="rgb(246,186,15)" rx="2" ry="2" />
+<text  x="785.85" y="1055.5" ></text>
+</g>
+<g >
+<title>file_exists (1 samples, 0.07%)</title><rect x="10.8" y="1445" width="0.9" height="15.0" fill="rgb(241,198,33)" rx="2" ry="2" />
+<text  x="13.83" y="1455.5" ></text>
+</g>
+<g >
+<title>Nsfisis\Waddiwasi\Execution\Runtime::execInstrs (1 samples, 0.07%)</title><rect x="1117.0" y="661" width="0.9" height="15.0" fill="rgb(226,191,53)" rx="2" ry="2" />
+<text  x="1120.03" y="671.5" ></text>
+</g>
+<g >
+<title>Nsfisis\Waddiwasi\Execution\Runtime::execInstrs (1 samples, 0.07%)</title><rect x="791.1" y="405" width="0.9" height="15.0" fill="rgb(238,10,32)" rx="2" ry="2" />
+<text  x="794.14" y="415.5" ></text>
+</g>
+<g >
+<title>Nsfisis\Waddiwasi\Execution\Runtime::execInstr (2 samples, 0.14%)</title><rect x="840.1" y="613" width="1.6" height="15.0" fill="rgb(222,193,9)" rx="2" ry="2" />
+<text  x="843.06" y="623.5" ></text>
+</g>
+<g >
+<title>Nsfisis\Waddiwasi\Execution\Runtime::execInstrs (1 samples, 0.07%)</title><rect x="816.0" y="405" width="0.8" height="15.0" fill="rgb(253,79,26)" rx="2" ry="2" />
+<text  x="819.02" y="415.5" ></text>
+</g>
+<g >
+<title>&lt;unknown&gt; (22 samples, 1.55%)</title><rect x="700.8" y="1445" width="18.2" height="15.0" fill="rgb(223,162,8)" rx="2" ry="2" />
+<text  x="703.75" y="1455.5" ></text>
+</g>
+<g >
+<title>Nsfisis\Waddiwasi\Execution\Runtime::execInstr (2 samples, 0.14%)</title><rect x="805.2" y="453" width="1.7" height="15.0" fill="rgb(217,81,50)" rx="2" ry="2" />
+<text  x="808.24" y="463.5" ></text>
+</g>
+<g >
+<title>Nsfisis\Waddiwasi\Execution\Vals\Num::__construct (1 samples, 0.07%)</title><rect x="1154.3" y="1477" width="0.9" height="15.0" fill="rgb(227,10,47)" rx="2" ry="2" />
+<text  x="1157.34" y="1487.5" ></text>
+</g>
+<g >
+<title>Nsfisis\Waddiwasi\Execution\Runtime::execInstrs (399 samples, 28.04%)</title><rect x="787.0" y="917" width="330.9" height="15.0" fill="rgb(216,49,28)" rx="2" ry="2" />
+<text  x="789.99" y="927.5" >Nsfisis\Waddiwasi\Execution\Runtime::execIns..</text>
+</g>
+<g >
+<title>print_r (1 samples, 0.07%)</title><rect x="627.0" y="1413" width="0.8" height="15.0" fill="rgb(233,19,37)" rx="2" ry="2" />
+<text  x="629.95" y="1423.5" ></text>
+</g>
+<g >
+<title>Nsfisis\Waddiwasi\Execution\Runtime::execInstr (1 samples, 0.07%)</title><rect x="816.0" y="517" width="0.8" height="15.0" fill="rgb(243,202,36)" rx="2" ry="2" />
+<text  x="819.02" y="527.5" ></text>
+</g>
+<g >
+<title>Nsfisis\Waddiwasi\Execution\Runtime::execInstrs (3 samples, 0.21%)</title><rect x="816.8" y="405" width="2.5" height="15.0" fill="rgb(207,110,28)" rx="2" ry="2" />
+<text  x="819.84" y="415.5" ></text>
+</g>
+<g >
+<title>Nsfisis\Waddiwasi\Execution\Runtime::execInstr (1 samples, 0.07%)</title><rect x="779.5" y="677" width="0.9" height="15.0" fill="rgb(240,217,39)" rx="2" ry="2" />
+<text  x="782.53" y="687.5" ></text>
+</g>
+<g >
+<title>Nsfisis\Waddiwasi\Execution\Runtime::execInstr (1 samples, 0.07%)</title><rect x="780.4" y="1093" width="0.8" height="15.0" fill="rgb(234,108,43)" rx="2" ry="2" />
+<text  x="783.36" y="1103.5" ></text>
+</g>
+<g >
+<title>Nsfisis\Waddiwasi\Execution\Runtime::execInstrs (30 samples, 2.11%)</title><rect x="806.9" y="725" width="24.9" height="15.0" fill="rgb(254,19,45)" rx="2" ry="2" />
+<text  x="809.89" y="735.5" >N..</text>
+</g>
+<g >
+<title>Nsfisis\Waddiwasi\Execution\Runtime::execInstrs (317 samples, 22.28%)</title><rect x="853.3" y="213" width="262.9" height="15.0" fill="rgb(220,114,52)" rx="2" ry="2" />
+<text  x="856.33" y="223.5" >Nsfisis\Waddiwasi\Execution\Runtime..</text>
+</g>
+<g >
+<title>Composer\Autoload\ClassLoader::loadClass (1 samples, 0.07%)</title><rect x="776.2" y="1477" width="0.8" height="15.0" fill="rgb(213,57,18)" rx="2" ry="2" />
+<text  x="779.21" y="1487.5" ></text>
+</g>
+<g >
+<title>Nsfisis\Waddiwasi\Execution\Runtime::execInstr (2 samples, 0.14%)</title><rect x="805.2" y="197" width="1.7" height="15.0" fill="rgb(243,13,46)" rx="2" ry="2" />
+<text  x="808.24" y="207.5" ></text>
+</g>
+<g >
+<title>Nsfisis\Waddiwasi\Execution\Stack::currentFrame (1 samples, 0.07%)</title><rect x="818.5" y="373" width="0.8" height="15.0" fill="rgb(254,67,43)" rx="2" ry="2" />
+<text  x="821.50" y="383.5" ></text>
+</g>
+<g >
+<title>Nsfisis\Waddiwasi\Execution\Runtime::execInstr (3 samples, 0.21%)</title><rect x="1117.9" y="997" width="2.4" height="15.0" fill="rgb(239,154,45)" rx="2" ry="2" />
+<text  x="1120.86" y="1007.5" ></text>
+</g>
+<g >
+<title>Nsfisis\Waddiwasi\Execution\Runtime::execInstr (1 samples, 0.07%)</title><rect x="1159.3" y="1477" width="0.8" height="15.0" fill="rgb(210,116,9)" rx="2" ry="2" />
+<text  x="1162.32" y="1487.5" ></text>
+</g>
+<g >
+<title>Nsfisis\Waddiwasi\Execution\Runtime::execInstr (1 samples, 0.07%)</title><rect x="789.5" y="645" width="0.8" height="15.0" fill="rgb(242,69,13)" rx="2" ry="2" />
+<text  x="792.48" y="655.5" ></text>
+</g>
+<g >
+<title>Nsfisis\Waddiwasi\Execution\Stack::popI32 (6 samples, 0.42%)</title><rect x="617.8" y="1429" width="5.0" height="15.0" fill="rgb(221,52,4)" rx="2" ry="2" />
+<text  x="620.83" y="1439.5" ></text>
+</g>
+<g >
+<title>Nsfisis\Waddiwasi\Execution\Runtime::execInstrs (1 samples, 0.07%)</title><rect x="781.2" y="1141" width="0.8" height="15.0" fill="rgb(212,34,43)" rx="2" ry="2" />
+<text  x="784.19" y="1151.5" ></text>
+</g>
+<g >
+<title>ord (1 samples, 0.07%)</title><rect x="1142.7" y="1509" width="0.9" height="15.0" fill="rgb(209,14,17)" rx="2" ry="2" />
+<text  x="1145.73" y="1519.5" ></text>
+</g>
+<g >
+<title>Nsfisis\Waddiwasi\Execution\Runtime::execInstrs (1 samples, 0.07%)</title><rect x="811.9" y="373" width="0.8" height="15.0" fill="rgb(246,58,51)" rx="2" ry="2" />
+<text  x="814.87" y="383.5" ></text>
+</g>
+<g >
+<title>Nsfisis\Waddiwasi\Execution\Runtime::execInstr (2 samples, 0.14%)</title><rect x="827.6" y="325" width="1.7" height="15.0" fill="rgb(242,79,10)" rx="2" ry="2" />
+<text  x="830.62" y="335.5" ></text>
+</g>
+<g >
+<title>Nsfisis\Waddiwasi\Execution\Runtime::execInstrs (1 samples, 0.07%)</title><rect x="779.5" y="821" width="0.9" height="15.0" fill="rgb(207,193,54)" rx="2" ry="2" />
+<text  x="782.53" y="831.5" ></text>
+</g>
+<g >
+<title>Nsfisis\Waddiwasi\Execution\Runtime::execInstr (318 samples, 22.35%)</title><rect x="852.5" y="229" width="263.7" height="15.0" fill="rgb(209,104,20)" rx="2" ry="2" />
+<text  x="855.50" y="239.5" >Nsfisis\Waddiwasi\Execution\Runtime..</text>
+</g>
+<g >
+<title>Nsfisis\Waddiwasi\Execution\Runtime::execInstrs (2 samples, 0.14%)</title><rect x="840.1" y="661" width="1.6" height="15.0" fill="rgb(225,71,1)" rx="2" ry="2" />
+<text  x="843.06" y="671.5" ></text>
+</g>
+<g >
+<title>Nsfisis\Waddiwasi\Execution\Num::I32 (1 samples, 0.07%)</title><rect x="635.2" y="1413" width="0.9" height="15.0" fill="rgb(247,203,38)" rx="2" ry="2" />
+<text  x="638.24" y="1423.5" ></text>
+</g>
+<g >
+<title>count (1 samples, 0.07%)</title><rect x="772.9" y="1429" width="0.8" height="15.0" fill="rgb(242,186,34)" rx="2" ry="2" />
+<text  x="775.90" y="1439.5" ></text>
+</g>
+<g >
+<title>Nsfisis\Waddiwasi\Execution\Runtime::execInstr (6 samples, 0.42%)</title><rect x="782.0" y="1125" width="5.0" height="15.0" fill="rgb(250,46,18)" rx="2" ry="2" />
+<text  x="785.02" y="1135.5" ></text>
+</g>
+<g >
+<title>Nsfisis\Waddiwasi\Execution\StackEntry::Value (9 samples, 0.63%)</title><rect x="573.9" y="1429" width="7.4" height="15.0" fill="rgb(252,95,53)" rx="2" ry="2" />
+<text  x="576.88" y="1439.5" ></text>
+</g>
+<g >
+<title>count (1 samples, 0.07%)</title><rect x="728.9" y="1397" width="0.9" height="15.0" fill="rgb(235,34,1)" rx="2" ry="2" />
+<text  x="731.95" y="1407.5" ></text>
+</g>
+<g >
+<title>Nsfisis\Waddiwasi\Execution\Runtime::execInstr (3 samples, 0.21%)</title><rect x="1117.9" y="1029" width="2.4" height="15.0" fill="rgb(207,1,35)" rx="2" ry="2" />
+<text  x="1120.86" y="1039.5" ></text>
+</g>
+<g >
+<title>Nsfisis\Waddiwasi\Execution\Runtime::doInvokeWasmFunc (1 samples, 0.07%)</title><rect x="1182.5" y="1461" width="0.9" height="15.0" fill="rgb(206,85,42)" rx="2" ry="2" />
+<text  x="1185.54" y="1471.5" ></text>
+</g>
+<g >
+<title>Nsfisis\Waddiwasi\Execution\Runtime::doStoreI32 (1 samples, 0.07%)</title><rect x="794.5" y="501" width="0.8" height="15.0" fill="rgb(222,130,23)" rx="2" ry="2" />
+<text  x="797.46" y="511.5" ></text>
+</g>
+<g >
+<title>Nsfisis\Waddiwasi\Execution\Runtime::doInvokeFunc (1 samples, 0.07%)</title><rect x="779.5" y="725" width="0.9" height="15.0" fill="rgb(248,142,34)" rx="2" ry="2" />
+<text  x="782.53" y="735.5" ></text>
+</g>
+<g >
+<title>Nsfisis\Waddiwasi\Execution\Stack::popValue (2 samples, 0.14%)</title><rect x="620.3" y="1413" width="1.7" height="15.0" fill="rgb(252,157,32)" rx="2" ry="2" />
+<text  x="623.32" y="1423.5" ></text>
+</g>
+<g >
+<title>Nsfisis\Waddiwasi\Execution\Runtime::doInvokeWasmFunc (54 samples, 3.79%)</title><rect x="787.8" y="805" width="44.8" height="15.0" fill="rgb(217,33,21)" rx="2" ry="2" />
+<text  x="790.82" y="815.5" >Nsfi..</text>
+</g>
+<g >
+<title>Nsfisis\Waddiwasi\Execution\Runtime::doInvokeWasmFunc (1 samples, 0.07%)</title><rect x="780.4" y="1125" width="0.8" height="15.0" fill="rgb(218,77,27)" rx="2" ry="2" />
+<text  x="783.36" y="1135.5" ></text>
+</g>
+<g >
+<title>Nsfisis\Waddiwasi\Execution\Runtime::execInstrs (2 samples, 0.14%)</title><rect x="811.0" y="437" width="1.7" height="15.0" fill="rgb(254,222,13)" rx="2" ry="2" />
+<text  x="814.04" y="447.5" ></text>
+</g>
+<g >
+<title>Nsfisis\Waddiwasi\Execution\Runtime::execInstr (27 samples, 1.90%)</title><rect x="808.6" y="613" width="22.3" height="15.0" fill="rgb(225,118,41)" rx="2" ry="2" />
+<text  x="811.55" y="623.5" >N..</text>
+</g>
+<g >
+<title>Nsfisis\Waddiwasi\Execution\Runtime::doInvokeWasmFunc (29 samples, 2.04%)</title><rect x="806.9" y="677" width="24.0" height="15.0" fill="rgb(244,168,1)" rx="2" ry="2" />
+<text  x="809.89" y="687.5" >N..</text>
+</g>
+<g >
+<title>Nsfisis\Waddiwasi\Execution\Runtime::execInstrs (6 samples, 0.42%)</title><rect x="811.0" y="501" width="5.0" height="15.0" fill="rgb(232,41,16)" rx="2" ry="2" />
+<text  x="814.04" y="511.5" ></text>
+</g>
+<g >
+<title>Nsfisis\Waddiwasi\Execution\Runtime::execInstrs (1 samples, 0.07%)</title><rect x="779.5" y="949" width="0.9" height="15.0" fill="rgb(241,36,27)" rx="2" ry="2" />
+<text  x="782.53" y="959.5" ></text>
+</g>
+<g >
+<title>&lt;unknown&gt; (1 samples, 0.07%)</title><rect x="840.1" y="597" width="0.8" height="15.0" fill="rgb(211,162,36)" rx="2" ry="2" />
+<text  x="843.06" y="607.5" ></text>
+</g>
+<g >
+<title>&lt;unknown&gt; (65 samples, 4.57%)</title><rect x="518.3" y="1429" width="53.9" height="15.0" fill="rgb(207,72,53)" rx="2" ry="2" />
+<text  x="521.32" y="1439.5" >&lt;unkn..</text>
+</g>
+<g >
+<title>Nsfisis\Waddiwasi\Execution\Runtime::execInstrs (2 samples, 0.14%)</title><rect x="827.6" y="277" width="1.7" height="15.0" fill="rgb(225,144,48)" rx="2" ry="2" />
+<text  x="830.62" y="287.5" ></text>
+</g>
+<g >
+<title>Nsfisis\Waddiwasi\Execution\Stack::popI32 (8 samples, 0.56%)</title><rect x="767.1" y="1445" width="6.6" height="15.0" fill="rgb(206,54,29)" rx="2" ry="2" />
+<text  x="770.09" y="1455.5" ></text>
+</g>
+<g >
+<title>{closure}(/home/ken/src/php-waddiwasi/examples/php-on-wasm/php-wasm.php:249-258) (410 samples, 28.81%)</title><rect x="777.9" y="1397" width="340.0" height="15.0" fill="rgb(231,145,29)" rx="2" ry="2" />
+<text  x="780.87" y="1407.5" >{closure}(/home/ken/src/php-waddiwasi/examples..</text>
+</g>
+<g >
+<title>Nsfisis\Waddiwasi\Execution\Runtime::execInstrs (3 samples, 0.21%)</title><rect x="1117.9" y="949" width="2.4" height="15.0" fill="rgb(250,144,48)" rx="2" ry="2" />
+<text  x="1120.86" y="959.5" ></text>
+</g>
+<g >
+<title>Nsfisis\Waddiwasi\Execution\Runtime::doInvokeWasmFunc (5 samples, 0.35%)</title><rect x="782.8" y="1061" width="4.2" height="15.0" fill="rgb(240,138,7)" rx="2" ry="2" />
+<text  x="785.85" y="1071.5" ></text>
+</g>
+<g >
+<title>Nsfisis\Waddiwasi\Execution\Runtime::execInstr (1 samples, 0.07%)</title><rect x="1116.2" y="261" width="0.8" height="15.0" fill="rgb(209,145,45)" rx="2" ry="2" />
+<text  x="1119.20" y="271.5" ></text>
+</g>
+<g >
+<title>&lt;unknown&gt; (82 samples, 5.76%)</title><rect x="513.3" y="1445" width="68.0" height="15.0" fill="rgb(236,55,7)" rx="2" ry="2" />
+<text  x="516.35" y="1455.5" >&lt;unknown&gt;</text>
+</g>
+<g >
+<title>Nsfisis\Waddiwasi\Execution\Runtime::doInvokeFunc (4 samples, 0.28%)</title><rect x="838.4" y="725" width="3.3" height="15.0" fill="rgb(220,70,10)" rx="2" ry="2" />
+<text  x="841.40" y="735.5" ></text>
+</g>
+<g >
+<title>Nsfisis\Waddiwasi\Execution\Runtime::execInstr (399 samples, 28.04%)</title><rect x="787.0" y="1221" width="330.9" height="15.0" fill="rgb(248,44,1)" rx="2" ry="2" />
+<text  x="789.99" y="1231.5" >Nsfisis\Waddiwasi\Execution\Runtime::execInstr</text>
+</g>
+<g >
+<title>Nsfisis\Waddiwasi\Execution\Runtime::doInvokeFunc (399 samples, 28.04%)</title><rect x="787.0" y="885" width="330.9" height="15.0" fill="rgb(239,208,16)" rx="2" ry="2" />
+<text  x="789.99" y="895.5" >Nsfisis\Waddiwasi\Execution\Runtime::doInvok..</text>
+</g>
+<g >
+<title>Nsfisis\Waddiwasi\Execution\Runtime::execInstrs (4 samples, 0.28%)</title><rect x="791.1" y="469" width="3.4" height="15.0" fill="rgb(213,101,25)" rx="2" ry="2" />
+<text  x="794.14" y="479.5" ></text>
+</g>
+<g >
+<title>Nsfisis\Waddiwasi\Execution\Runtime::execInstrs (318 samples, 22.35%)</title><rect x="852.5" y="277" width="263.7" height="15.0" fill="rgb(213,63,52)" rx="2" ry="2" />
+<text  x="855.50" y="287.5" >Nsfisis\Waddiwasi\Execution\Runtime..</text>
+</g>
+<g >
+<title>Nsfisis\Waddiwasi\Execution\Runtime::execInstr (1 samples, 0.07%)</title><rect x="779.5" y="933" width="0.9" height="15.0" fill="rgb(206,52,24)" rx="2" ry="2" />
+<text  x="782.53" y="943.5" ></text>
+</g>
+<g >
+<title>Nsfisis\Waddiwasi\Execution\Runtime::doInvokeFunc (4 samples, 0.28%)</title><rect x="816.8" y="533" width="3.4" height="15.0" fill="rgb(225,90,11)" rx="2" ry="2" />
+<text  x="819.84" y="543.5" ></text>
+</g>
+<g >
+<title>Nsfisis\Waddiwasi\Structure\Instructions\Instr::I32Store8 (51 samples, 3.58%)</title><rect x="733.9" y="1461" width="42.3" height="15.0" fill="rgb(242,180,39)" rx="2" ry="2" />
+<text  x="736.92" y="1471.5" >Nsf..</text>
+</g>
+<g >
+<title>Nsfisis\Waddiwasi\Execution\Runtime::execInstr (1 samples, 0.07%)</title><rect x="801.9" y="261" width="0.8" height="15.0" fill="rgb(231,223,28)" rx="2" ry="2" />
+<text  x="804.92" y="271.5" ></text>
+</g>
+<g >
+<title>Nsfisis\Waddiwasi\Execution\StackEntries\Value::__construct (1 samples, 0.07%)</title><rect x="580.5" y="1413" width="0.8" height="15.0" fill="rgb(223,119,33)" rx="2" ry="2" />
+<text  x="583.51" y="1423.5" ></text>
+</g>
+<g >
+<title>Nsfisis\Waddiwasi\Execution\Runtime::doInvokeWasmFunc (415 samples, 29.16%)</title><rect x="777.9" y="1477" width="344.1" height="15.0" fill="rgb(205,37,34)" rx="2" ry="2" />
+<text  x="780.87" y="1487.5" >Nsfisis\Waddiwasi\Execution\Runtime::doInvokeW..</text>
+</g>
+<g >
+<title>Nsfisis\Waddiwasi\Execution\Runtime::execInstr (5 samples, 0.35%)</title><rect x="782.8" y="965" width="4.2" height="15.0" fill="rgb(250,3,23)" rx="2" ry="2" />
+<text  x="785.85" y="975.5" ></text>
+</g>
+<g >
+<title>Nsfisis\Waddiwasi\Execution\Runtime::execInstr (4 samples, 0.28%)</title><rect x="1117.9" y="1093" width="3.3" height="15.0" fill="rgb(237,14,36)" rx="2" ry="2" />
+<text  x="1120.86" y="1103.5" ></text>
+</g>
+<g >
+<title>Nsfisis\Waddiwasi\Execution\Runtime::execInstr (2 samples, 0.14%)</title><rect x="827.6" y="261" width="1.7" height="15.0" fill="rgb(205,141,39)" rx="2" ry="2" />
+<text  x="830.62" y="271.5" ></text>
+</g>
+<g >
+<title>Nsfisis\Waddiwasi\Execution\Runtime::doInvokeHostFunc (1 samples, 0.07%)</title><rect x="845.9" y="677" width="0.8" height="15.0" fill="rgb(245,34,11)" rx="2" ry="2" />
+<text  x="848.87" y="687.5" ></text>
+</g>
+<g >
+<title>Nsfisis\Waddiwasi\Execution\Runtime::execInstr (6 samples, 0.42%)</title><rect x="782.0" y="1189" width="5.0" height="15.0" fill="rgb(207,43,53)" rx="2" ry="2" />
+<text  x="785.02" y="1199.5" ></text>
+</g>
+<g >
+<title>Nsfisis\Waddiwasi\Execution\Runtime::execInstrs (2 samples, 0.14%)</title><rect x="827.6" y="117" width="1.7" height="15.0" fill="rgb(207,206,21)" rx="2" ry="2" />
+<text  x="830.62" y="127.5" ></text>
+</g>
+<g >
+<title>&lt;unknown&gt; (2 samples, 0.14%)</title><rect x="1135.3" y="1509" width="1.6" height="15.0" fill="rgb(242,121,48)" rx="2" ry="2" />
+<text  x="1138.27" y="1519.5" ></text>
+</g>
+<g >
+<title>pack (1 samples, 0.07%)</title><rect x="764.6" y="1429" width="0.8" height="15.0" fill="rgb(212,127,49)" rx="2" ry="2" />
+<text  x="767.60" y="1439.5" ></text>
+</g>
+<g >
+<title>&lt;unknown&gt; (1 samples, 0.07%)</title><rect x="1143.6" y="1493" width="0.8" height="15.0" fill="rgb(222,193,17)" rx="2" ry="2" />
+<text  x="1146.56" y="1503.5" ></text>
+</g>
+<g >
+<title>Nsfisis\Waddiwasi\Execution\StackEntry::Value (1 samples, 0.07%)</title><rect x="638.6" y="1445" width="0.8" height="15.0" fill="rgb(245,139,22)" rx="2" ry="2" />
+<text  x="641.56" y="1455.5" ></text>
+</g>
+<g >
+<title>Nsfisis\Waddiwasi\Execution\Runtime::execInstr (1 samples, 0.07%)</title><rect x="820.2" y="485" width="0.8" height="15.0" fill="rgb(208,28,35)" rx="2" ry="2" />
+<text  x="823.16" y="495.5" ></text>
+</g>
+<g >
+<title>Nsfisis\Waddiwasi\Execution\Val::Num (2 samples, 0.14%)</title><rect x="568.1" y="1413" width="1.6" height="15.0" fill="rgb(252,57,42)" rx="2" ry="2" />
+<text  x="571.07" y="1423.5" ></text>
+</g>
+<g >
+<title>Nsfisis\Waddiwasi\Execution\Runtime::execInstr (319 samples, 22.42%)</title><rect x="852.5" y="517" width="264.5" height="15.0" fill="rgb(222,147,46)" rx="2" ry="2" />
+<text  x="855.50" y="527.5" >Nsfisis\Waddiwasi\Execution\Runtime..</text>
+</g>
+<g >
+<title>{closure}(/home/ken/src/php-waddiwasi/vendor/composer/ClassLoader.php:575-577) (1 samples, 0.07%)</title><rect x="1118.7" y="629" width="0.8" height="15.0" fill="rgb(216,170,22)" rx="2" ry="2" />
+<text  x="1121.69" y="639.5" ></text>
+</g>
+<g >
+<title>{closure}(/home/ken/src/php-waddiwasi/vendor/composer/ClassLoader.php:575-577) (2 samples, 0.14%)</title><rect x="11.7" y="1445" width="1.6" height="15.0" fill="rgb(251,186,38)" rx="2" ry="2" />
+<text  x="14.66" y="1455.5" ></text>
+</g>
+<g >
+<title>Nsfisis\Waddiwasi\Execution\Stack::pop (1 samples, 0.07%)</title><rect x="724.8" y="1397" width="0.8" height="15.0" fill="rgb(226,215,1)" rx="2" ry="2" />
+<text  x="727.80" y="1407.5" ></text>
+</g>
+<g >
+<title>Nsfisis\Waddiwasi\Execution\Runtime::doInvokeFunc (15 samples, 1.05%)</title><rect x="791.1" y="597" width="12.5" height="15.0" fill="rgb(227,64,26)" rx="2" ry="2" />
+<text  x="794.14" y="607.5" ></text>
+</g>
+<g >
+<title>Nsfisis\Waddiwasi\Execution\Stack::pushI32 (110 samples, 7.73%)</title><rect x="642.7" y="1461" width="91.2" height="15.0" fill="rgb(242,72,10)" rx="2" ry="2" />
+<text  x="645.71" y="1471.5" >Nsfisis\Wa..</text>
+</g>
+<g >
+<title>Nsfisis\Waddiwasi\Execution\Runtime::execInstr (1 samples, 0.07%)</title><rect x="779.5" y="1093" width="0.9" height="15.0" fill="rgb(224,195,6)" rx="2" ry="2" />
+<text  x="782.53" y="1103.5" ></text>
+</g>
+<g >
+<title>Nsfisis\Waddiwasi\Execution\Runtime::deactivateLabel (1 samples, 0.07%)</title><rect x="807.7" y="517" width="0.9" height="15.0" fill="rgb(230,63,20)" rx="2" ry="2" />
+<text  x="810.72" y="527.5" ></text>
+</g>
+<g >
+<title>&lt;unknown&gt; (1 samples, 0.07%)</title><rect x="1154.3" y="1493" width="0.9" height="15.0" fill="rgb(205,156,17)" rx="2" ry="2" />
+<text  x="1157.34" y="1503.5" ></text>
+</g>
+<g >
+<title>Nsfisis\Waddiwasi\Execution\Runtime::doInvokeWasmFunc (1 samples, 0.07%)</title><rect x="820.2" y="517" width="0.8" height="15.0" fill="rgb(235,45,26)" rx="2" ry="2" />
+<text  x="823.16" y="527.5" ></text>
+</g>
+<g >
+<title>Nsfisis\Waddiwasi\Structure\Instructions\Instr::MemoryInit (1 samples, 0.07%)</title><rect x="776.2" y="1493" width="0.8" height="15.0" fill="rgb(212,214,26)" rx="2" ry="2" />
+<text  x="779.21" y="1503.5" ></text>
+</g>
+<g >
+<title>Nsfisis\Waddiwasi\Execution\Runtime::doInvokeFunc (1 samples, 0.07%)</title><rect x="779.5" y="1045" width="0.9" height="15.0" fill="rgb(216,48,13)" rx="2" ry="2" />
+<text  x="782.53" y="1055.5" ></text>
+</g>
+<g >
+<title>Nsfisis\Waddiwasi\Execution\Runtime::doInvokeWasmFunc (4 samples, 0.28%)</title><rect x="791.1" y="485" width="3.4" height="15.0" fill="rgb(234,109,8)" rx="2" ry="2" />
+<text  x="794.14" y="495.5" ></text>
+</g>
+<g >
+<title>Nsfisis\Waddiwasi\Execution\Runtime::execInstr (1 samples, 0.07%)</title><rect x="779.5" y="645" width="0.9" height="15.0" fill="rgb(237,219,9)" rx="2" ry="2" />
+<text  x="782.53" y="655.5" ></text>
+</g>
+<g >
+<title>Nsfisis\Waddiwasi\Execution\Runtime::execInstr (4 samples, 0.28%)</title><rect x="1117.9" y="1381" width="3.3" height="15.0" fill="rgb(212,44,43)" rx="2" ry="2" />
+<text  x="1120.86" y="1391.5" ></text>
+</g>
+<g >
+<title>Nsfisis\Waddiwasi\Execution\StackEntry::Value (3 samples, 0.21%)</title><rect x="1160.1" y="1509" width="2.5" height="15.0" fill="rgb(239,173,9)" rx="2" ry="2" />
+<text  x="1163.15" y="1519.5" ></text>
+</g>
+<g >
+<title>Nsfisis\Waddiwasi\Execution\Runtime::execInstr (3 samples, 0.21%)</title><rect x="1117.9" y="933" width="2.4" height="15.0" fill="rgb(210,200,10)" rx="2" ry="2" />
+<text  x="1120.86" y="943.5" ></text>
+</g>
+<g >
+<title>Nsfisis\Waddiwasi\Execution\Runtime::execInstr (2 samples, 0.14%)</title><rect x="806.9" y="549" width="1.7" height="15.0" fill="rgb(252,87,11)" rx="2" ry="2" />
+<text  x="809.89" y="559.5" ></text>
+</g>
+<g >
+<title>Nsfisis\Waddiwasi\Execution\Runtime::execInstr (319 samples, 22.42%)</title><rect x="852.5" y="741" width="264.5" height="15.0" fill="rgb(208,67,24)" rx="2" ry="2" />
+<text  x="855.50" y="751.5" >Nsfisis\Waddiwasi\Execution\Runtime..</text>
+</g>
+<g >
+<title>Nsfisis\Waddiwasi\Execution\Runtime::deactivateFrame (1 samples, 0.07%)</title><rect x="1143.6" y="1525" width="0.8" height="15.0" fill="rgb(212,0,43)" rx="2" ry="2" />
+<text  x="1146.56" y="1535.5" ></text>
+</g>
+<g >
+<title>Nsfisis\Waddiwasi\Execution\Runtime::execInstr (1 samples, 0.07%)</title><rect x="787.8" y="677" width="0.9" height="15.0" fill="rgb(220,57,34)" rx="2" ry="2" />
+<text  x="790.82" y="687.5" ></text>
+</g>
+<g >
+<title>Nsfisis\Waddiwasi\Execution\Runtime::execInstrs (2 samples, 0.14%)</title><rect x="805.2" y="373" width="1.7" height="15.0" fill="rgb(232,191,36)" rx="2" ry="2" />
+<text  x="808.24" y="383.5" ></text>
+</g>
+<g >
+<title>Nsfisis\Waddiwasi\Execution\MemInst::storeByte (5 samples, 0.35%)</title><rect x="754.7" y="1429" width="4.1" height="15.0" fill="rgb(215,98,26)" rx="2" ry="2" />
+<text  x="757.65" y="1439.5" ></text>
+</g>
+<g >
+<title>Nsfisis\Waddiwasi\Execution\Runtime::execInstrs (2 samples, 0.14%)</title><rect x="801.1" y="469" width="1.6" height="15.0" fill="rgb(223,15,51)" rx="2" ry="2" />
+<text  x="804.09" y="479.5" ></text>
+</g>
+<g >
+<title>Nsfisis\Waddiwasi\Execution\Runtime::execInstrs (399 samples, 28.04%)</title><rect x="787.0" y="1077" width="330.9" height="15.0" fill="rgb(225,31,53)" rx="2" ry="2" />
+<text  x="789.99" y="1087.5" >Nsfisis\Waddiwasi\Execution\Runtime::execIns..</text>
+</g>
+<g >
+<title>Nsfisis\Waddiwasi\Execution\Runtime::execInstr (1 samples, 0.07%)</title><rect x="789.5" y="709" width="0.8" height="15.0" fill="rgb(209,190,14)" rx="2" ry="2" />
+<text  x="792.48" y="719.5" ></text>
+</g>
+<g >
+<title>Nsfisis\Waddiwasi\Execution\Stack::popI64 (1 samples, 0.07%)</title><rect x="1092.2" y="165" width="0.8" height="15.0" fill="rgb(234,221,43)" rx="2" ry="2" />
+<text  x="1095.15" y="175.5" ></text>
+</g>
+<g >
+<title>Nsfisis\Waddiwasi\Execution\Runtime::execInstr (2 samples, 0.14%)</title><rect x="805.2" y="389" width="1.7" height="15.0" fill="rgb(250,139,3)" rx="2" ry="2" />
+<text  x="808.24" y="399.5" ></text>
+</g>
+<g >
+<title>Nsfisis\Waddiwasi\Execution\Stack::push (1 samples, 0.07%)</title><rect x="1110.4" y="149" width="0.8" height="15.0" fill="rgb(208,138,48)" rx="2" ry="2" />
+<text  x="1113.39" y="159.5" ></text>
+</g>
+<g >
+<title>Nsfisis\Waddiwasi\Execution\Runtime::execInstrs (19 samples, 1.34%)</title><rect x="791.1" y="661" width="15.8" height="15.0" fill="rgb(247,128,7)" rx="2" ry="2" />
+<text  x="794.14" y="671.5" ></text>
+</g>
+<g >
+<title>Nsfisis\Waddiwasi\Execution\Stack::popI32 (2 samples, 0.14%)</title><rect x="1087.2" y="181" width="1.6" height="15.0" fill="rgb(208,214,28)" rx="2" ry="2" />
+<text  x="1090.17" y="191.5" ></text>
+</g>
+<g >
+<title>Nsfisis\Waddiwasi\Execution\Runtime::execInstrs (3 samples, 0.21%)</title><rect x="1117.9" y="1077" width="2.4" height="15.0" fill="rgb(215,179,5)" rx="2" ry="2" />
+<text  x="1120.86" y="1087.5" ></text>
+</g>
+<g >
+<title>Nsfisis\Waddiwasi\Execution\Runtime::execInstr (2 samples, 0.14%)</title><rect x="811.0" y="421" width="1.7" height="15.0" fill="rgb(234,137,2)" rx="2" ry="2" />
+<text  x="814.04" y="431.5" ></text>
+</g>
+<g >
+<title>Nsfisis\Waddiwasi\Execution\Runtime::execInstr (1 samples, 0.07%)</title><rect x="794.5" y="453" width="0.8" height="15.0" fill="rgb(253,172,13)" rx="2" ry="2" />
+<text  x="797.46" y="463.5" ></text>
+</g>
+<g >
+<title>Nsfisis\Waddiwasi\Execution\Runtime::doInvokeWasmFunc (6 samples, 0.42%)</title><rect x="782.0" y="1157" width="5.0" height="15.0" fill="rgb(206,133,18)" rx="2" ry="2" />
+<text  x="785.02" y="1167.5" ></text>
+</g>
+<g >
+<title>Nsfisis\Waddiwasi\Execution\Runtime::execInstrs (1 samples, 0.07%)</title><rect x="1117.0" y="693" width="0.9" height="15.0" fill="rgb(217,96,1)" rx="2" ry="2" />
+<text  x="1120.03" y="703.5" ></text>
+</g>
+<g >
+<title>Nsfisis\Waddiwasi\Execution\Stack::popI32 (1 samples, 0.07%)</title><rect x="779.5" y="581" width="0.9" height="15.0" fill="rgb(243,24,8)" rx="2" ry="2" />
+<text  x="782.53" y="591.5" ></text>
+</g>
+<g >
+<title>Nsfisis\Waddiwasi\Execution\Runtime::execInstrs (399 samples, 28.04%)</title><rect x="787.0" y="1109" width="330.9" height="15.0" fill="rgb(252,99,36)" rx="2" ry="2" />
+<text  x="789.99" y="1119.5" >Nsfisis\Waddiwasi\Execution\Runtime::execIns..</text>
+</g>
+<g >
+<title>Nsfisis\Waddiwasi\Execution\Runtime::execInstr (2 samples, 0.14%)</title><rect x="805.2" y="293" width="1.7" height="15.0" fill="rgb(209,196,8)" rx="2" ry="2" />
+<text  x="808.24" y="303.5" ></text>
+</g>
+<g >
+<title>Nsfisis\Waddiwasi\Execution\Runtime::execInstr (1 samples, 0.07%)</title><rect x="816.0" y="485" width="0.8" height="15.0" fill="rgb(232,130,47)" rx="2" ry="2" />
+<text  x="819.02" y="495.5" ></text>
+</g>
+<g >
+<title>Nsfisis\Waddiwasi\Execution\MemInst::storeI32 (4 samples, 0.28%)</title><rect x="722.3" y="1429" width="3.3" height="15.0" fill="rgb(232,131,25)" rx="2" ry="2" />
+<text  x="725.31" y="1439.5" ></text>
+</g>
+<g >
+<title>Nsfisis\Waddiwasi\Execution\Runtime::execInstr (1 samples, 0.07%)</title><rect x="1137.8" y="1493" width="0.8" height="15.0" fill="rgb(226,127,39)" rx="2" ry="2" />
+<text  x="1140.76" y="1503.5" ></text>
+</g>
+<g >
+<title>Nsfisis\Waddiwasi\Execution\Stack::popValue (3 samples, 0.21%)</title><rect x="770.4" y="1429" width="2.5" height="15.0" fill="rgb(254,58,40)" rx="2" ry="2" />
+<text  x="773.41" y="1439.5" ></text>
+</g>
+<g >
+<title>Nsfisis\Waddiwasi\Execution\Runtime::doInvokeWasmFunc (8 samples, 0.56%)</title><rect x="809.4" y="549" width="6.6" height="15.0" fill="rgb(222,215,10)" rx="2" ry="2" />
+<text  x="812.38" y="559.5" ></text>
+</g>
+<g >
+<title>Nsfisis\Waddiwasi\Execution\Runtime::execInstr (3 samples, 0.21%)</title><rect x="816.8" y="421" width="2.5" height="15.0" fill="rgb(236,190,33)" rx="2" ry="2" />
+<text  x="819.84" y="431.5" ></text>
+</g>
+<g >
+<title>Nsfisis\Waddiwasi\Execution\StackEntry::Value (4 samples, 0.28%)</title><rect x="715.7" y="1429" width="3.3" height="15.0" fill="rgb(248,43,32)" rx="2" ry="2" />
+<text  x="718.68" y="1439.5" ></text>
+</g>
+<g >
+<title>&lt;unknown&gt; (1 samples, 0.07%)</title><rect x="579.7" y="1397" width="0.8" height="15.0" fill="rgb(226,35,29)" rx="2" ry="2" />
+<text  x="582.68" y="1407.5" ></text>
+</g>
+<g >
+<title>assert (8 samples, 0.56%)</title><rect x="1183.4" y="1525" width="6.6" height="15.0" fill="rgb(215,220,16)" rx="2" ry="2" />
+<text  x="1186.37" y="1535.5" ></text>
+</g>
+<g >
+<title>Nsfisis\Waddiwasi\Execution\Runtime::execInstr (2 samples, 0.14%)</title><rect x="805.2" y="229" width="1.7" height="15.0" fill="rgb(226,127,37)" rx="2" ry="2" />
+<text  x="808.24" y="239.5" ></text>
+</g>
+<g >
+<title>Nsfisis\Waddiwasi\Execution\Runtime::execInstr (1 samples, 0.07%)</title><rect x="811.9" y="357" width="0.8" height="15.0" fill="rgb(221,62,39)" rx="2" ry="2" />
+<text  x="814.87" y="367.5" ></text>
+</g>
+<g >
+<title>&lt;unknown&gt; (1 samples, 0.07%)</title><rect x="1143.6" y="1461" width="0.8" height="15.0" fill="rgb(213,29,51)" rx="2" ry="2" />
+<text  x="1146.56" y="1471.5" ></text>
+</g>
+<g >
+<title>{closure}(/home/ken/src/php-waddiwasi/examples/php-on-wasm/php-wasm.php:345-352) (399 samples, 28.04%)</title><rect x="787.0" y="981" width="330.9" height="15.0" fill="rgb(251,221,51)" rx="2" ry="2" />
+<text  x="789.99" y="991.5" >{closure}(/home/ken/src/php-waddiwasi/exampl..</text>
+</g>
+<g >
+<title>Nsfisis\Waddiwasi\Execution\Runtime::execInstrs (1 samples, 0.07%)</title><rect x="805.2" y="181" width="0.9" height="15.0" fill="rgb(237,140,17)" rx="2" ry="2" />
+<text  x="808.24" y="191.5" ></text>
+</g>
+<g >
+<title>Nsfisis\Waddiwasi\Execution\Runtime::doInvokeWasmFunc (399 samples, 28.04%)</title><rect x="787.0" y="869" width="330.9" height="15.0" fill="rgb(227,35,35)" rx="2" ry="2" />
+<text  x="789.99" y="879.5" >Nsfisis\Waddiwasi\Execution\Runtime::doInvok..</text>
+</g>
+<g >
+<title>Nsfisis\Waddiwasi\Execution\Stack::pushI32 (5 samples, 0.35%)</title><rect x="1093.8" y="181" width="4.2" height="15.0" fill="rgb(214,220,5)" rx="2" ry="2" />
+<text  x="1096.81" y="191.5" ></text>
+</g>
+<g >
+<title>Nsfisis\Waddiwasi\Execution\Stack::pushValue (1 samples, 0.07%)</title><rect x="1117.0" y="789" width="0.9" height="15.0" fill="rgb(229,102,9)" rx="2" ry="2" />
+<text  x="1120.03" y="799.5" ></text>
+</g>
+<g >
+<title>Nsfisis\Waddiwasi\Execution\Runtime::execInstr (51 samples, 3.58%)</title><rect x="790.3" y="741" width="42.3" height="15.0" fill="rgb(206,113,35)" rx="2" ry="2" />
+<text  x="793.31" y="751.5" >Nsf..</text>
+</g>
+<g >
+<title>Nsfisis\Waddiwasi\Execution\Runtime::execInstrs (6 samples, 0.42%)</title><rect x="782.0" y="1109" width="5.0" height="15.0" fill="rgb(205,77,44)" rx="2" ry="2" />
+<text  x="785.02" y="1119.5" ></text>
+</g>
+<g >
+<title>Nsfisis\Waddiwasi\Execution\Runtime::doInvokeWasmFunc (1 samples, 0.07%)</title><rect x="1116.2" y="229" width="0.8" height="15.0" fill="rgb(205,203,20)" rx="2" ry="2" />
+<text  x="1119.20" y="239.5" ></text>
+</g>
+<g >
+<title>Nsfisis\Waddiwasi\Execution\Runtime::execInstrs (1 samples, 0.07%)</title><rect x="779.5" y="1013" width="0.9" height="15.0" fill="rgb(253,60,18)" rx="2" ry="2" />
+<text  x="782.53" y="1023.5" ></text>
+</g>
+<g >
+<title>&lt;unknown&gt; (1 samples, 0.07%)</title><rect x="714.0" y="1397" width="0.8" height="15.0" fill="rgb(206,95,21)" rx="2" ry="2" />
+<text  x="717.02" y="1407.5" ></text>
+</g>
+<g >
+<title>Nsfisis\Waddiwasi\Execution\Stack::pushValue (22 samples, 1.55%)</title><rect x="1098.0" y="181" width="18.2" height="15.0" fill="rgb(215,125,19)" rx="2" ry="2" />
+<text  x="1100.96" y="191.5" ></text>
+</g>
+<g >
+<title>Nsfisis\Waddiwasi\Execution\Stack::popI64 (1 samples, 0.07%)</title><rect x="831.8" y="725" width="0.8" height="15.0" fill="rgb(245,79,26)" rx="2" ry="2" />
+<text  x="834.77" y="735.5" ></text>
+</g>
+<g >
+<title>Nsfisis\Waddiwasi\Execution\Runtime::doInvokeWasmFunc (4 samples, 0.28%)</title><rect x="816.8" y="517" width="3.4" height="15.0" fill="rgb(208,112,18)" rx="2" ry="2" />
+<text  x="819.84" y="527.5" ></text>
+</g>
+<g >
+<title>Nsfisis\Waddiwasi\Execution\Num::I32 (2 samples, 0.14%)</title><rect x="1162.6" y="1509" width="1.7" height="15.0" fill="rgb(231,1,54)" rx="2" ry="2" />
+<text  x="1165.64" y="1519.5" ></text>
+</g>
+<g >
+<title>Nsfisis\Waddiwasi\Execution\Runtime::doInvokeWasmFunc (4 samples, 0.28%)</title><rect x="778.7" y="1221" width="3.3" height="15.0" fill="rgb(206,166,21)" rx="2" ry="2" />
+<text  x="781.70" y="1231.5" ></text>
+</g>
+<g >
+<title>Nsfisis\Waddiwasi\Execution\Runtime::doInvokeWasmFunc (9 samples, 0.63%)</title><rect x="822.6" y="453" width="7.5" height="15.0" fill="rgb(221,70,48)" rx="2" ry="2" />
+<text  x="825.65" y="463.5" ></text>
+</g>
+<g >
+<title>Nsfisis\Waddiwasi\Execution\Runtime::execInstr (29 samples, 2.04%)</title><rect x="806.9" y="645" width="24.0" height="15.0" fill="rgb(250,27,50)" rx="2" ry="2" />
+<text  x="809.89" y="655.5" >N..</text>
+</g>
+<g >
+<title>Nsfisis\Waddiwasi\Execution\Runtime::doInvokeFunc (8 samples, 0.56%)</title><rect x="809.4" y="565" width="6.6" height="15.0" fill="rgb(240,205,7)" rx="2" ry="2" />
+<text  x="812.38" y="575.5" ></text>
+</g>
+<g >
+<title>count (2 samples, 0.14%)</title><rect x="612.0" y="1397" width="1.7" height="15.0" fill="rgb(220,72,26)" rx="2" ry="2" />
+<text  x="615.02" y="1407.5" ></text>
+</g>
+<g >
+<title>Nsfisis\Waddiwasi\Execution\Runtime::doInvokeWasmFunc (2 samples, 0.14%)</title><rect x="827.6" y="229" width="1.7" height="15.0" fill="rgb(243,134,30)" rx="2" ry="2" />
+<text  x="830.62" y="239.5" ></text>
+</g>
+<g >
+<title>Nsfisis\Waddiwasi\Execution\Runtime::execInstrs (399 samples, 28.04%)</title><rect x="787.0" y="1045" width="330.9" height="15.0" fill="rgb(241,201,54)" rx="2" ry="2" />
+<text  x="789.99" y="1055.5" >Nsfisis\Waddiwasi\Execution\Runtime::execIns..</text>
+</g>
+<g >
+<title>Nsfisis\Waddiwasi\Execution\Runtime::execInstrs (415 samples, 29.16%)</title><rect x="777.9" y="1461" width="344.1" height="15.0" fill="rgb(233,64,52)" rx="2" ry="2" />
+<text  x="780.87" y="1471.5" >Nsfisis\Waddiwasi\Execution\Runtime::execInstrs</text>
+</g>
+<g >
+<title>Nsfisis\Waddiwasi\Execution\Runtime::execInstr (6 samples, 0.42%)</title><rect x="782.0" y="1221" width="5.0" height="15.0" fill="rgb(211,113,11)" rx="2" ry="2" />
+<text  x="785.02" y="1231.5" ></text>
+</g>
+<g >
+<title>Nsfisis\Waddiwasi\Execution\Runtime::execInstr (1 samples, 0.07%)</title><rect x="779.5" y="965" width="0.9" height="15.0" fill="rgb(238,99,47)" rx="2" ry="2" />
+<text  x="782.53" y="975.5" ></text>
+</g>
+<g >
+<title>Nsfisis\Waddiwasi\Execution\Runtime::execInstrs (4 samples, 0.28%)</title><rect x="803.6" y="501" width="3.3" height="15.0" fill="rgb(238,103,15)" rx="2" ry="2" />
+<text  x="806.58" y="511.5" ></text>
+</g>
+<g >
+<title>Nsfisis\Waddiwasi\Execution\Runtime::doInvokeFunc (9 samples, 0.63%)</title><rect x="822.6" y="469" width="7.5" height="15.0" fill="rgb(240,170,37)" rx="2" ry="2" />
+<text  x="825.65" y="479.5" ></text>
+</g>
+<g >
+<title>Nsfisis\Waddiwasi\Execution\Runtime::execInstrs (4 samples, 0.28%)</title><rect x="778.7" y="1205" width="3.3" height="15.0" fill="rgb(227,173,32)" rx="2" ry="2" />
+<text  x="781.70" y="1215.5" ></text>
+</g>
+<g >
+<title>Nsfisis\Waddiwasi\Execution\Runtime::execInstrs (1 samples, 0.07%)</title><rect x="1117.0" y="629" width="0.9" height="15.0" fill="rgb(207,222,3)" rx="2" ry="2" />
+<text  x="1120.03" y="639.5" ></text>
+</g>
+<g >
+<title>Nsfisis\Waddiwasi\Execution\Runtime::doInvokeFunc (1 samples, 0.07%)</title><rect x="791.1" y="437" width="0.9" height="15.0" fill="rgb(214,118,1)" rx="2" ry="2" />
+<text  x="794.14" y="447.5" ></text>
+</g>
+<g >
+<title>count (1 samples, 0.07%)</title><rect x="619.5" y="1397" width="0.8" height="15.0" fill="rgb(216,30,7)" rx="2" ry="2" />
+<text  x="622.49" y="1407.5" ></text>
+</g>
+<g >
+<title>Nsfisis\Waddiwasi\Execution\Runtime::execInstr (2 samples, 0.14%)</title><rect x="1118.7" y="901" width="1.6" height="15.0" fill="rgb(207,142,40)" rx="2" ry="2" />
+<text  x="1121.69" y="911.5" ></text>
+</g>
+<g >
+<title>Nsfisis\Waddiwasi\Execution\Runtime::execInstr (319 samples, 22.42%)</title><rect x="852.5" y="613" width="264.5" height="15.0" fill="rgb(221,148,43)" rx="2" ry="2" />
+<text  x="855.50" y="623.5" >Nsfisis\Waddiwasi\Execution\Runtime..</text>
+</g>
+<g >
+<title>Nsfisis\Waddiwasi\Execution\Runtime::invoke (415 samples, 29.16%)</title><rect x="777.9" y="1509" width="344.1" height="15.0" fill="rgb(229,64,49)" rx="2" ry="2" />
+<text  x="780.87" y="1519.5" >Nsfisis\Waddiwasi\Execution\Runtime::invoke</text>
+</g>
+<g >
+<title>Nsfisis\Waddiwasi\Execution\StackEntry::Value (1 samples, 0.07%)</title><rect x="1088.0" y="165" width="0.8" height="15.0" fill="rgb(208,75,48)" rx="2" ry="2" />
+<text  x="1091.00" y="175.5" ></text>
+</g>
+<g >
+<title>Nsfisis\Waddiwasi\Execution\Runtime::execInstrs (4 samples, 0.28%)</title><rect x="1117.9" y="1333" width="3.3" height="15.0" fill="rgb(207,216,30)" rx="2" ry="2" />
+<text  x="1120.86" y="1343.5" ></text>
+</g>
+<g >
+<title>&lt;unknown&gt; (6 samples, 0.42%)</title><rect x="1166.8" y="1509" width="5.0" height="15.0" fill="rgb(228,59,41)" rx="2" ry="2" />
+<text  x="1169.78" y="1519.5" ></text>
+</g>
+<g >
+<title>Nsfisis\Waddiwasi\Execution\Runtime::execInstr (1 samples, 0.07%)</title><rect x="812.7" y="453" width="0.8" height="15.0" fill="rgb(233,101,36)" rx="2" ry="2" />
+<text  x="815.70" y="463.5" ></text>
+</g>
+<g >
+<title>Nsfisis\Waddiwasi\Execution\Runtime::doInvokeWasmFunc (2 samples, 0.14%)</title><rect x="806.9" y="613" width="1.7" height="15.0" fill="rgb(245,52,52)" rx="2" ry="2" />
+<text  x="809.89" y="623.5" ></text>
+</g>
+<g >
+<title>Composer\Autoload\ClassLoader::findFileWithExtension (1 samples, 0.07%)</title><rect x="10.8" y="1461" width="0.9" height="15.0" fill="rgb(223,58,48)" rx="2" ry="2" />
+<text  x="13.83" y="1471.5" ></text>
+</g>
+<g >
+<title>print_r (1 samples, 0.07%)</title><rect x="772.9" y="1413" width="0.8" height="15.0" fill="rgb(253,110,54)" rx="2" ry="2" />
+<text  x="775.90" y="1423.5" ></text>
+</g>
+<g >
+<title>Nsfisis\Waddiwasi\Execution\Stack::pushI32 (1 samples, 0.07%)</title><rect x="819.3" y="469" width="0.9" height="15.0" fill="rgb(249,225,11)" rx="2" ry="2" />
+<text  x="822.33" y="479.5" ></text>
+</g>
+<g >
+<title>Nsfisis\Waddiwasi\Execution\Runtime::doInvokeWasmFunc (4 samples, 0.28%)</title><rect x="838.4" y="709" width="3.3" height="15.0" fill="rgb(243,208,23)" rx="2" ry="2" />
+<text  x="841.40" y="719.5" ></text>
+</g>
+<g >
+<title>Nsfisis\Waddiwasi\Execution\MemInst::storeI32 (24 samples, 1.69%)</title><rect x="597.9" y="1429" width="19.9" height="15.0" fill="rgb(207,21,13)" rx="2" ry="2" />
+<text  x="600.93" y="1439.5" ></text>
+</g>
+<g >
+<title>Nsfisis\Waddiwasi\Execution\MemInst::storeByte (1 samples, 0.07%)</title><rect x="619.5" y="1413" width="0.8" height="15.0" fill="rgb(208,167,29)" rx="2" ry="2" />
+<text  x="622.49" y="1423.5" ></text>
+</g>
+<g >
+<title>Nsfisis\Waddiwasi\Execution\Runtime::execInstr (1 samples, 0.07%)</title><rect x="852.5" y="197" width="0.8" height="15.0" fill="rgb(254,17,2)" rx="2" ry="2" />
+<text  x="855.50" y="207.5" ></text>
+</g>
+<g >
+<title>Nsfisis\Waddiwasi\Execution\MemInst::storeByte (6 samples, 0.42%)</title><rect x="608.7" y="1413" width="5.0" height="15.0" fill="rgb(226,141,6)" rx="2" ry="2" />
+<text  x="611.71" y="1423.5" ></text>
+</g>
+<g >
+<title>Nsfisis\Waddiwasi\Execution\Runtime::execInstr (3 samples, 0.21%)</title><rect x="779.5" y="1189" width="2.5" height="15.0" fill="rgb(226,78,2)" rx="2" ry="2" />
+<text  x="782.53" y="1199.5" ></text>
+</g>
+<g >
+<title>Nsfisis\Waddiwasi\Execution\Runtime::execInstrs (1 samples, 0.07%)</title><rect x="1116.2" y="149" width="0.8" height="15.0" fill="rgb(209,127,54)" rx="2" ry="2" />
+<text  x="1119.20" y="159.5" ></text>
+</g>
+<g >
+<title>Nsfisis\Waddiwasi\Execution\Stack::popValue (3 samples, 0.21%)</title><rect x="1088.8" y="181" width="2.5" height="15.0" fill="rgb(206,145,54)" rx="2" ry="2" />
+<text  x="1091.83" y="191.5" ></text>
+</g>
+<g >
+<title>Nsfisis\Waddiwasi\Execution\Stack::pushI32 (1 samples, 0.07%)</title><rect x="787.8" y="645" width="0.9" height="15.0" fill="rgb(235,223,48)" rx="2" ry="2" />
+<text  x="790.82" y="655.5" ></text>
+</g>
+<g >
+<title>Nsfisis\Waddiwasi\Execution\Runtime::execInstr (1 samples, 0.07%)</title><rect x="1117.0" y="645" width="0.9" height="15.0" fill="rgb(228,222,36)" rx="2" ry="2" />
+<text  x="1120.03" y="655.5" ></text>
+</g>
+<g >
+<title>Nsfisis\Waddiwasi\Execution\Stack::popI32 (1 samples, 0.07%)</title><rect x="1120.3" y="1077" width="0.9" height="15.0" fill="rgb(233,151,39)" rx="2" ry="2" />
+<text  x="1123.34" y="1087.5" ></text>
+</g>
+<g >
+<title>Nsfisis\Waddiwasi\Execution\Runtime::execInstrs (2 samples, 0.14%)</title><rect x="805.2" y="437" width="1.7" height="15.0" fill="rgb(230,35,42)" rx="2" ry="2" />
+<text  x="808.24" y="447.5" ></text>
+</g>
+<g >
+<title>Nsfisis\Waddiwasi\Execution\Stack::popValue (1 samples, 0.07%)</title><rect x="831.8" y="709" width="0.8" height="15.0" fill="rgb(236,163,33)" rx="2" ry="2" />
+<text  x="834.77" y="719.5" ></text>
+</g>
+<g >
+<title>Nsfisis\Waddiwasi\Execution\Runtime::doInvokeWasmFunc (1 samples, 0.07%)</title><rect x="816.0" y="549" width="0.8" height="15.0" fill="rgb(226,50,6)" rx="2" ry="2" />
+<text  x="819.02" y="559.5" ></text>
+</g>
+<g >
+<title>Nsfisis\Waddiwasi\Execution\Runtime::execInstrs (1 samples, 0.07%)</title><rect x="850.8" y="629" width="0.9" height="15.0" fill="rgb(224,109,26)" rx="2" ry="2" />
+<text  x="853.84" y="639.5" ></text>
+</g>
+<g >
+<title>Nsfisis\Waddiwasi\Execution\Runtime::doInvokeWasmFunc (4 samples, 0.28%)</title><rect x="803.6" y="549" width="3.3" height="15.0" fill="rgb(220,73,49)" rx="2" ry="2" />
+<text  x="806.58" y="559.5" ></text>
+</g>
+<g >
+<title>Nsfisis\Waddiwasi\Execution\Runtime::execInstr (2 samples, 0.14%)</title><rect x="814.4" y="453" width="1.6" height="15.0" fill="rgb(249,176,24)" rx="2" ry="2" />
+<text  x="817.36" y="463.5" ></text>
+</g>
+<g >
+<title>Nsfisis\Waddiwasi\Execution\Runtime::execInstr (6 samples, 0.42%)</title><rect x="1082.2" y="181" width="5.0" height="15.0" fill="rgb(219,135,4)" rx="2" ry="2" />
+<text  x="1085.20" y="191.5" ></text>
+</g>
+<g >
+<title>Nsfisis\Waddiwasi\Execution\Runtime::execInstrs (1 samples, 0.07%)</title><rect x="801.9" y="341" width="0.8" height="15.0" fill="rgb(232,30,38)" rx="2" ry="2" />
+<text  x="804.92" y="351.5" ></text>
+</g>
+<g >
+<title>Nsfisis\Waddiwasi\Execution\Runtime::execInstrs (1 samples, 0.07%)</title><rect x="779.5" y="693" width="0.9" height="15.0" fill="rgb(221,175,26)" rx="2" ry="2" />
+<text  x="782.53" y="703.5" ></text>
+</g>
+<g >
+<title>Nsfisis\Waddiwasi\Execution\Runtime::doInvokeFunc (399 samples, 28.04%)</title><rect x="787.0" y="949" width="330.9" height="15.0" fill="rgb(238,119,49)" rx="2" ry="2" />
+<text  x="789.99" y="959.5" >Nsfisis\Waddiwasi\Execution\Runtime::doInvok..</text>
+</g>
+<g >
+<title>Nsfisis\Waddiwasi\Execution\Runtime::execInstr (8 samples, 0.56%)</title><rect x="823.5" y="389" width="6.6" height="15.0" fill="rgb(216,177,20)" rx="2" ry="2" />
+<text  x="826.48" y="399.5" ></text>
+</g>
+<g >
+<title>&lt;main&gt; (1,341 samples, 94.24%)</title><rect x="10.0" y="1525" width="1112.0" height="15.0" fill="rgb(228,34,24)" rx="2" ry="2" />
+<text  x="13.00" y="1535.5" >&lt;main&gt;</text>
+</g>
+<g >
+<title>Nsfisis\Waddiwasi\Execution\Runtime::doLoadI32 (1 samples, 0.07%)</title><rect x="851.7" y="661" width="0.8" height="15.0" fill="rgb(251,105,7)" rx="2" ry="2" />
+<text  x="854.67" y="671.5" ></text>
+</g>
+<g >
+<title>Nsfisis\Waddiwasi\Execution\StackEntry::Value (5 samples, 0.35%)</title><rect x="1112.1" y="165" width="4.1" height="15.0" fill="rgb(215,123,37)" rx="2" ry="2" />
+<text  x="1115.05" y="175.5" ></text>
+</g>
+<g >
+<title>Nsfisis\Waddiwasi\Execution\Stack::currentFrame (1 samples, 0.07%)</title><rect x="725.6" y="1429" width="0.9" height="15.0" fill="rgb(210,209,52)" rx="2" ry="2" />
+<text  x="728.63" y="1439.5" ></text>
+</g>
+<g >
+<title>Nsfisis\Waddiwasi\Execution\Runtime::doInvokeFunc (319 samples, 22.42%)</title><rect x="852.5" y="597" width="264.5" height="15.0" fill="rgb(207,142,30)" rx="2" ry="2" />
+<text  x="855.50" y="607.5" >Nsfisis\Waddiwasi\Execution\Runtime..</text>
+</g>
+<g >
+<title>Nsfisis\Waddiwasi\Execution\Runtime::execInstrs (2 samples, 0.14%)</title><rect x="783.7" y="917" width="1.6" height="15.0" fill="rgb(228,202,43)" rx="2" ry="2" />
+<text  x="786.68" y="927.5" ></text>
+</g>
+<g >
+<title>Nsfisis\Waddiwasi\Execution\Runtime::doInvokeFunc (1 samples, 0.07%)</title><rect x="801.9" y="405" width="0.8" height="15.0" fill="rgb(206,30,43)" rx="2" ry="2" />
+<text  x="804.92" y="415.5" ></text>
+</g>
+<g >
+<title>Nsfisis\Waddiwasi\Execution\Runtime::execInstr (11 samples, 0.77%)</title><rect x="843.4" y="709" width="9.1" height="15.0" fill="rgb(207,84,26)" rx="2" ry="2" />
+<text  x="846.38" y="719.5" ></text>
+</g>
+<g >
+<title>Nsfisis\Waddiwasi\Execution\Runtime::execInstr (399 samples, 28.04%)</title><rect x="787.0" y="1285" width="330.9" height="15.0" fill="rgb(205,53,20)" rx="2" ry="2" />
+<text  x="789.99" y="1295.5" >Nsfisis\Waddiwasi\Execution\Runtime::execInstr</text>
+</g>
+<g >
+<title>Nsfisis\Waddiwasi\Execution\Runtime::execInstrs (319 samples, 22.42%)</title><rect x="852.5" y="533" width="264.5" height="15.0" fill="rgb(221,166,26)" rx="2" ry="2" />
+<text  x="855.50" y="543.5" >Nsfisis\Waddiwasi\Execution\Runtime..</text>
+</g>
+<g >
+<title>Nsfisis\Waddiwasi\Execution\Runtime::doInvokeWasmFunc (1 samples, 0.07%)</title><rect x="787.8" y="709" width="0.9" height="15.0" fill="rgb(222,204,3)" rx="2" ry="2" />
+<text  x="790.82" y="719.5" ></text>
+</g>
+<g >
+<title>Nsfisis\Waddiwasi\Execution\Runtime::execInstrs (319 samples, 22.42%)</title><rect x="852.5" y="629" width="264.5" height="15.0" fill="rgb(217,57,53)" rx="2" ry="2" />
+<text  x="855.50" y="639.5" >Nsfisis\Waddiwasi\Execution\Runtime..</text>
+</g>
+<g >
+<title>Nsfisis\Waddiwasi\Execution\Runtime::doInvokeFunc (6 samples, 0.42%)</title><rect x="782.0" y="1173" width="5.0" height="15.0" fill="rgb(239,189,50)" rx="2" ry="2" />
+<text  x="785.02" y="1183.5" ></text>
+</g>
+<g >
+<title>Nsfisis\Waddiwasi\Execution\Runtime::execInstr (16 samples, 1.12%)</title><rect x="816.8" y="549" width="13.3" height="15.0" fill="rgb(238,134,8)" rx="2" ry="2" />
+<text  x="819.84" y="559.5" ></text>
+</g>
+<g >
+<title>Nsfisis\Waddiwasi\Execution\Runtime::execInstr (1 samples, 0.07%)</title><rect x="850.8" y="549" width="0.9" height="15.0" fill="rgb(246,185,23)" rx="2" ry="2" />
+<text  x="853.84" y="559.5" ></text>
+</g>
+<g >
+<title>Nsfisis\Waddiwasi\Execution\Runtime::execInstr (1 samples, 0.07%)</title><rect x="779.5" y="997" width="0.9" height="15.0" fill="rgb(206,57,50)" rx="2" ry="2" />
+<text  x="782.53" y="1007.5" ></text>
+</g>
+<g >
+<title>&lt;unknown&gt; (3 samples, 0.21%)</title><rect x="712.4" y="1413" width="2.4" height="15.0" fill="rgb(248,7,22)" rx="2" ry="2" />
+<text  x="715.36" y="1423.5" ></text>
+</g>
+<g >
+<title>Nsfisis\Waddiwasi\Execution\Runtime::execInstr (1 samples, 0.07%)</title><rect x="784.5" y="901" width="0.8" height="15.0" fill="rgb(212,220,21)" rx="2" ry="2" />
+<text  x="787.50" y="911.5" ></text>
+</g>
+<g >
+<title>Nsfisis\Waddiwasi\Execution\Runtime::execInstrs (1 samples, 0.07%)</title><rect x="780.4" y="1077" width="0.8" height="15.0" fill="rgb(208,227,33)" rx="2" ry="2" />
+<text  x="783.36" y="1087.5" ></text>
+</g>
+<g >
+<title>Nsfisis\Waddiwasi\Execution\Runtime::execInstrs (4 samples, 0.28%)</title><rect x="816.8" y="501" width="3.4" height="15.0" fill="rgb(243,212,31)" rx="2" ry="2" />
+<text  x="819.84" y="511.5" ></text>
+</g>
+<g >
+<title>Nsfisis\Waddiwasi\Execution\Runtime::execInstrs (3 samples, 0.21%)</title><rect x="816.8" y="437" width="2.5" height="15.0" fill="rgb(236,224,44)" rx="2" ry="2" />
+<text  x="819.84" y="447.5" ></text>
+</g>
+<g >
+<title>{closure}(/home/ken/src/php-waddiwasi/examples/php-on-wasm/php-wasm.php:754-769) (1 samples, 0.07%)</title><rect x="845.9" y="661" width="0.8" height="15.0" fill="rgb(213,183,41)" rx="2" ry="2" />
+<text  x="848.87" y="671.5" ></text>
+</g>
+<g >
+<title>Nsfisis\Waddiwasi\Execution\StackEntries\Value::__construct (1 samples, 0.07%)</title><rect x="1115.4" y="149" width="0.8" height="15.0" fill="rgb(217,132,36)" rx="2" ry="2" />
+<text  x="1118.37" y="159.5" ></text>
+</g>
+<g >
+<title>Nsfisis\Waddiwasi\Execution\Runtime::doInvokeFunc (399 samples, 28.04%)</title><rect x="787.0" y="1205" width="330.9" height="15.0" fill="rgb(206,158,26)" rx="2" ry="2" />
+<text  x="789.99" y="1215.5" >Nsfisis\Waddiwasi\Execution\Runtime::doInvok..</text>
+</g>
+<g >
+<title>Nsfisis\Waddiwasi\Execution\Runtime::execInstr (1 samples, 0.07%)</title><rect x="1118.7" y="677" width="0.8" height="15.0" fill="rgb(206,106,26)" rx="2" ry="2" />
+<text  x="1121.69" y="687.5" ></text>
+</g>
+<g >
+<title>Nsfisis\Waddiwasi\Execution\Runtime::doInvokeFunc (29 samples, 2.04%)</title><rect x="806.9" y="693" width="24.0" height="15.0" fill="rgb(239,137,9)" rx="2" ry="2" />
+<text  x="809.89" y="703.5" >N..</text>
+</g>
+<g >
+<title>Nsfisis\Waddiwasi\Execution\Runtime::doInvokeFunc (4 samples, 0.28%)</title><rect x="778.7" y="1237" width="3.3" height="15.0" fill="rgb(223,25,33)" rx="2" ry="2" />
+<text  x="781.70" y="1247.5" ></text>
+</g>
+<g >
+<title>Nsfisis\Waddiwasi\Execution\Runtime::execInstrs (3 samples, 0.21%)</title><rect x="1117.9" y="1045" width="2.4" height="15.0" fill="rgb(236,218,11)" rx="2" ry="2" />
+<text  x="1120.86" y="1055.5" ></text>
+</g>
+<g >
+<title>Nsfisis\Waddiwasi\Execution\Runtime::doInvokeWasmFunc (2 samples, 0.14%)</title><rect x="850.0" y="645" width="1.7" height="15.0" fill="rgb(249,109,45)" rx="2" ry="2" />
+<text  x="853.01" y="655.5" ></text>
+</g>
+<g >
+<title>&lt;unknown&gt; (6 samples, 0.42%)</title><rect x="575.5" y="1413" width="5.0" height="15.0" fill="rgb(207,165,1)" rx="2" ry="2" />
+<text  x="578.54" y="1423.5" ></text>
+</g>
+<g >
+<title>Nsfisis\Waddiwasi\Execution\Runtime::execInstrs (1 samples, 0.07%)</title><rect x="1116.2" y="309" width="0.8" height="15.0" fill="rgb(247,217,45)" rx="2" ry="2" />
+<text  x="1119.20" y="319.5" ></text>
+</g>
+<g >
+<title>Nsfisis\Waddiwasi\Execution\Runtime::execInstr (1 samples, 0.07%)</title><rect x="1118.7" y="837" width="0.8" height="15.0" fill="rgb(253,208,54)" rx="2" ry="2" />
+<text  x="1121.69" y="847.5" ></text>
+</g>
+<g >
+<title>Nsfisis\Waddiwasi\Execution\Val::Num (1 samples, 0.07%)</title><rect x="636.9" y="1413" width="0.8" height="15.0" fill="rgb(211,5,35)" rx="2" ry="2" />
+<text  x="639.90" y="1423.5" ></text>
+</g>
+<g >
+<title>&lt;unknown&gt; (1 samples, 0.07%)</title><rect x="787.8" y="629" width="0.9" height="15.0" fill="rgb(210,173,6)" rx="2" ry="2" />
+<text  x="790.82" y="639.5" ></text>
+</g>
+<g >
+<title>Nsfisis\Waddiwasi\Execution\Runtime::execInstr (2 samples, 0.14%)</title><rect x="780.4" y="1157" width="1.6" height="15.0" fill="rgb(233,29,23)" rx="2" ry="2" />
+<text  x="783.36" y="1167.5" ></text>
+</g>
+<g >
+<title>Nsfisis\Waddiwasi\Execution\Runtime::execInstrs (4 samples, 0.28%)</title><rect x="1117.9" y="1237" width="3.3" height="15.0" fill="rgb(232,81,30)" rx="2" ry="2" />
+<text  x="1120.86" y="1247.5" ></text>
+</g>
+<g >
+<title>Nsfisis\Waddiwasi\Execution\Runtime::execInstr (1 samples, 0.07%)</title><rect x="801.9" y="421" width="0.8" height="15.0" fill="rgb(234,128,50)" rx="2" ry="2" />
+<text  x="804.92" y="431.5" ></text>
+</g>
+<g >
+<title>Nsfisis\Waddiwasi\Execution\MemInst::storeI32 (1 samples, 0.07%)</title><rect x="1156.0" y="1493" width="0.8" height="15.0" fill="rgb(252,158,38)" rx="2" ry="2" />
+<text  x="1159.00" y="1503.5" ></text>
+</g>
+<g >
+<title>Nsfisis\Waddiwasi\Execution\Stack::popI64 (1 samples, 0.07%)</title><rect x="1096.3" y="165" width="0.8" height="15.0" fill="rgb(230,92,13)" rx="2" ry="2" />
+<text  x="1099.30" y="175.5" ></text>
+</g>
+<g >
+<title>&lt;unknown&gt; (13 samples, 0.91%)</title><rect x="704.9" y="1429" width="10.8" height="15.0" fill="rgb(232,137,24)" rx="2" ry="2" />
+<text  x="707.90" y="1439.5" ></text>
+</g>
+<g >
+<title>Nsfisis\Waddiwasi\Execution\Stack::pushValue (1 samples, 0.07%)</title><rect x="794.5" y="405" width="0.8" height="15.0" fill="rgb(239,27,20)" rx="2" ry="2" />
+<text  x="797.46" y="415.5" ></text>
+</g>
+<g >
+<title>Nsfisis\Waddiwasi\Execution\Runtime::execInstrs (8 samples, 0.56%)</title><rect x="823.5" y="405" width="6.6" height="15.0" fill="rgb(248,182,48)" rx="2" ry="2" />
+<text  x="826.48" y="415.5" ></text>
+</g>
+<g >
+<title>Nsfisis\Waddiwasi\Execution\Runtime::execInstrs (4 samples, 0.28%)</title><rect x="803.6" y="533" width="3.3" height="15.0" fill="rgb(232,179,1)" rx="2" ry="2" />
+<text  x="806.58" y="543.5" ></text>
+</g>
+<g >
+<title>Nsfisis\Waddiwasi\Execution\Runtime::execInstrs (319 samples, 22.42%)</title><rect x="852.5" y="661" width="264.5" height="15.0" fill="rgb(205,74,15)" rx="2" ry="2" />
+<text  x="855.50" y="671.5" >Nsfisis\Waddiwasi\Execution\Runtime..</text>
+</g>
+<g >
+<title>Nsfisis\Waddiwasi\Execution\Stack::pushValue (1 samples, 0.07%)</title><rect x="828.5" y="53" width="0.8" height="15.0" fill="rgb(248,69,48)" rx="2" ry="2" />
+<text  x="831.45" y="63.5" ></text>
+</g>
+<g >
+<title>Nsfisis\Waddiwasi\Execution\Runtime::execInstr (319 samples, 22.42%)</title><rect x="852.5" y="389" width="264.5" height="15.0" fill="rgb(219,19,1)" rx="2" ry="2" />
+<text  x="855.50" y="399.5" >Nsfisis\Waddiwasi\Execution\Runtime..</text>
+</g>
+<g >
+<title>Nsfisis\Waddiwasi\Execution\Runtime::execInstrs (318 samples, 22.35%)</title><rect x="852.5" y="245" width="263.7" height="15.0" fill="rgb(229,125,15)" rx="2" ry="2" />
+<text  x="855.50" y="255.5" >Nsfisis\Waddiwasi\Execution\Runtime..</text>
+</g>
+<g >
+<title>Nsfisis\Waddiwasi\Execution\Runtime::execInstr (53 samples, 3.72%)</title><rect x="788.7" y="773" width="43.9" height="15.0" fill="rgb(246,177,32)" rx="2" ry="2" />
+<text  x="791.65" y="783.5" >Nsfi..</text>
+</g>
+<g >
+<title>Nsfisis\Waddiwasi\Execution\Runtime::execInstr (2 samples, 0.14%)</title><rect x="827.6" y="101" width="1.7" height="15.0" fill="rgb(220,75,8)" rx="2" ry="2" />
+<text  x="830.62" y="111.5" ></text>
+</g>
+<g >
+<title>Nsfisis\Waddiwasi\Execution\Runtime::execInstrs (1 samples, 0.07%)</title><rect x="779.5" y="629" width="0.9" height="15.0" fill="rgb(218,152,52)" rx="2" ry="2" />
+<text  x="782.53" y="639.5" ></text>
+</g>
+<g >
+<title>Nsfisis\Waddiwasi\Execution\Runtime::execInstr (1 samples, 0.07%)</title><rect x="819.3" y="421" width="0.9" height="15.0" fill="rgb(225,179,32)" rx="2" ry="2" />
+<text  x="822.33" y="431.5" ></text>
+</g>
+<g >
+<title>array_pop (6 samples, 0.42%)</title><rect x="1178.4" y="1525" width="5.0" height="15.0" fill="rgb(220,74,22)" rx="2" ry="2" />
+<text  x="1181.39" y="1535.5" ></text>
+</g>
+<g >
+<title>Nsfisis\Waddiwasi\Execution\Stack::popI32 (1 samples, 0.07%)</title><rect x="790.3" y="645" width="0.8" height="15.0" fill="rgb(229,227,27)" rx="2" ry="2" />
+<text  x="793.31" y="655.5" ></text>
+</g>
+<g >
+<title>Nsfisis\Waddiwasi\Execution\Runtime::doInvokeFunc (11 samples, 0.77%)</title><rect x="777.9" y="1301" width="9.1" height="15.0" fill="rgb(218,26,14)" rx="2" ry="2" />
+<text  x="780.87" y="1311.5" ></text>
+</g>
+<g >
+<title>Nsfisis\Waddiwasi\Execution\Runtime::execInstr (399 samples, 28.04%)</title><rect x="787.0" y="1093" width="330.9" height="15.0" fill="rgb(212,31,51)" rx="2" ry="2" />
+<text  x="789.99" y="1103.5" >Nsfisis\Waddiwasi\Execution\Runtime::execInstr</text>
+</g>
+<g >
+<title>Nsfisis\Waddiwasi\Execution\Runtime::execInstrs (1 samples, 0.07%)</title><rect x="787.8" y="693" width="0.9" height="15.0" fill="rgb(208,148,22)" rx="2" ry="2" />
+<text  x="790.82" y="703.5" ></text>
+</g>
+<g >
+<title>Nsfisis\Waddiwasi\Execution\Runtime::doInvokeWasmFunc (2 samples, 0.14%)</title><rect x="811.0" y="453" width="1.7" height="15.0" fill="rgb(253,106,21)" rx="2" ry="2" />
+<text  x="814.04" y="463.5" ></text>
+</g>
+<g >
+<title>Nsfisis\Waddiwasi\Execution\Runtime::execInstr (3 samples, 0.21%)</title><rect x="816.8" y="389" width="2.5" height="15.0" fill="rgb(250,122,21)" rx="2" ry="2" />
+<text  x="819.84" y="399.5" ></text>
+</g>
+<g >
+<title>Nsfisis\Waddiwasi\Execution\Runtime::execInstr (19 samples, 1.34%)</title><rect x="791.1" y="613" width="15.8" height="15.0" fill="rgb(206,205,38)" rx="2" ry="2" />
+<text  x="794.14" y="623.5" ></text>
+</g>
+<g >
+<title>Nsfisis\Waddiwasi\Execution\Runtime::execInstrs (1 samples, 0.07%)</title><rect x="794.5" y="469" width="0.8" height="15.0" fill="rgb(234,31,0)" rx="2" ry="2" />
+<text  x="797.46" y="479.5" ></text>
+</g>
+<g >
+<title>Nsfisis\Waddiwasi\Execution\Runtime::execInstrs (2 samples, 0.14%)</title><rect x="805.2" y="405" width="1.7" height="15.0" fill="rgb(249,93,35)" rx="2" ry="2" />
+<text  x="808.24" y="415.5" ></text>
+</g>
+<g >
+<title>print_r (1 samples, 0.07%)</title><rect x="761.3" y="1413" width="0.8" height="15.0" fill="rgb(213,224,20)" rx="2" ry="2" />
+<text  x="764.29" y="1423.5" ></text>
+</g>
+<g >
+<title>Nsfisis\Waddiwasi\Execution\Runtime::doInvokeHostFunc (399 samples, 28.04%)</title><rect x="787.0" y="997" width="330.9" height="15.0" fill="rgb(222,226,51)" rx="2" ry="2" />
+<text  x="789.99" y="1007.5" >Nsfisis\Waddiwasi\Execution\Runtime::doInvok..</text>
+</g>
+<g >
+<title>Nsfisis\Waddiwasi\Execution\Runtime::execInstrs (1 samples, 0.07%)</title><rect x="816.0" y="533" width="0.8" height="15.0" fill="rgb(238,69,14)" rx="2" ry="2" />
+<text  x="819.02" y="543.5" ></text>
+</g>
+<g >
+<title>Nsfisis\Waddiwasi\Execution\Runtime::execInstr (319 samples, 22.42%)</title><rect x="852.5" y="453" width="264.5" height="15.0" fill="rgb(232,134,47)" rx="2" ry="2" />
+<text  x="855.50" y="463.5" >Nsfisis\Waddiwasi\Execution\Runtime..</text>
+</g>
+<g >
+<title>Nsfisis\Waddiwasi\Execution\Runtime::execInstrs (12 samples, 0.84%)</title><rect x="820.2" y="533" width="9.9" height="15.0" fill="rgb(236,103,33)" rx="2" ry="2" />
+<text  x="823.16" y="543.5" ></text>
+</g>
+<g >
+<title>Nsfisis\Waddiwasi\Execution\Runtime::execInstr (1 samples, 0.07%)</title><rect x="1118.7" y="709" width="0.8" height="15.0" fill="rgb(253,110,53)" rx="2" ry="2" />
+<text  x="1121.69" y="719.5" ></text>
+</g>
+<g >
+<title>Nsfisis\Waddiwasi\Execution\Runtime::execInstrs (1 samples, 0.07%)</title><rect x="789.5" y="661" width="0.8" height="15.0" fill="rgb(242,198,17)" rx="2" ry="2" />
+<text  x="792.48" y="671.5" ></text>
+</g>
+<g >
+<title>Nsfisis\Waddiwasi\Execution\Runtime::execInstr (11 samples, 0.77%)</title><rect x="821.0" y="517" width="9.1" height="15.0" fill="rgb(251,59,12)" rx="2" ry="2" />
+<text  x="823.99" y="527.5" ></text>
+</g>
+<g >
+<title>Nsfisis\Waddiwasi\Execution\Runtime::execInstrs (13 samples, 0.91%)</title><rect x="841.7" y="725" width="10.8" height="15.0" fill="rgb(222,187,20)" rx="2" ry="2" />
+<text  x="844.72" y="735.5" ></text>
+</g>
+<g >
+<title>Nsfisis\Waddiwasi\Execution\Runtime::execInstr (6 samples, 0.42%)</title><rect x="811.0" y="485" width="5.0" height="15.0" fill="rgb(232,100,1)" rx="2" ry="2" />
+<text  x="814.04" y="495.5" ></text>
+</g>
+<g >
+<title>Nsfisis\Waddiwasi\Execution\Runtime::execInstrs (1 samples, 0.07%)</title><rect x="819.3" y="437" width="0.9" height="15.0" fill="rgb(248,61,10)" rx="2" ry="2" />
+<text  x="822.33" y="447.5" ></text>
+</g>
+<g >
+<title>Nsfisis\Waddiwasi\Execution\Runtime::execInstr (1 samples, 0.07%)</title><rect x="779.5" y="613" width="0.9" height="15.0" fill="rgb(236,27,3)" rx="2" ry="2" />
+<text  x="782.53" y="623.5" ></text>
+</g>
+<g >
+<title>Nsfisis\Waddiwasi\Execution\Runtime::doInvokeFunc (319 samples, 22.42%)</title><rect x="852.5" y="501" width="264.5" height="15.0" fill="rgb(215,170,13)" rx="2" ry="2" />
+<text  x="855.50" y="511.5" >Nsfisis\Waddiwasi\Execution\Runtime..</text>
+</g>
+<g >
+<title>Nsfisis\Waddiwasi\Execution\Stack::popValue (1 samples, 0.07%)</title><rect x="625.3" y="1429" width="0.8" height="15.0" fill="rgb(241,140,21)" rx="2" ry="2" />
+<text  x="628.29" y="1439.5" ></text>
+</g>
+<g >
+<title>&lt;unknown&gt; (2 samples, 0.14%)</title><rect x="563.9" y="1397" width="1.7" height="15.0" fill="rgb(239,222,43)" rx="2" ry="2" />
+<text  x="566.93" y="1407.5" ></text>
+</g>
+<g >
+<title>Nsfisis\Waddiwasi\Execution\Runtime::execInstrs (319 samples, 22.42%)</title><rect x="852.5" y="693" width="264.5" height="15.0" fill="rgb(243,128,43)" rx="2" ry="2" />
+<text  x="855.50" y="703.5" >Nsfisis\Waddiwasi\Execution\Runtime..</text>
+</g>
+<g >
+<title>Nsfisis\Waddiwasi\Execution\Runtime::execInstr (1 samples, 0.07%)</title><rect x="1159.3" y="1509" width="0.8" height="15.0" fill="rgb(215,31,42)" rx="2" ry="2" />
+<text  x="1162.32" y="1519.5" ></text>
+</g>
+<g >
+<title>Nsfisis\Waddiwasi\Execution\Runtime::doInvokeWasmFunc (1 samples, 0.07%)</title><rect x="1116.2" y="165" width="0.8" height="15.0" fill="rgb(219,90,18)" rx="2" ry="2" />
+<text  x="1119.20" y="175.5" ></text>
+</g>
+<g >
+<title>Nsfisis\Waddiwasi\Execution\Runtime::instantiate (925 samples, 65.00%)</title><rect x="10.8" y="1509" width="767.1" height="15.0" fill="rgb(244,14,51)" rx="2" ry="2" />
+<text  x="13.83" y="1519.5" >Nsfisis\Waddiwasi\Execution\Runtime::instantiate</text>
+</g>
+<g >
+<title>Nsfisis\Waddiwasi\Execution\MemInst::storeByte (1 samples, 0.07%)</title><rect x="724.0" y="1413" width="0.8" height="15.0" fill="rgb(239,175,30)" rx="2" ry="2" />
+<text  x="726.97" y="1423.5" ></text>
+</g>
+<g >
+<title>Nsfisis\Waddiwasi\Execution\Runtime::execInstr (1 samples, 0.07%)</title><rect x="1117.0" y="613" width="0.9" height="15.0" fill="rgb(220,135,36)" rx="2" ry="2" />
+<text  x="1120.03" y="623.5" ></text>
+</g>
+<g >
+<title>Nsfisis\Waddiwasi\Execution\Stack::pushBool (1 samples, 0.07%)</title><rect x="786.2" y="949" width="0.8" height="15.0" fill="rgb(207,174,35)" rx="2" ry="2" />
+<text  x="789.16" y="959.5" ></text>
+</g>
+<g >
+<title>&lt;unknown&gt; (3 samples, 0.21%)</title><rect x="730.6" y="1429" width="2.5" height="15.0" fill="rgb(230,152,49)" rx="2" ry="2" />
+<text  x="733.60" y="1439.5" ></text>
+</g>
+<g >
+<title>Nsfisis\Waddiwasi\Execution\Runtime::doInvokeWasmFunc (319 samples, 22.42%)</title><rect x="852.5" y="485" width="264.5" height="15.0" fill="rgb(242,30,32)" rx="2" ry="2" />
+<text  x="855.50" y="495.5" >Nsfisis\Waddiwasi\Execution\Runtime..</text>
+</g>
+<g >
+<title>Nsfisis\Waddiwasi\Execution\Vals\Num::__construct (1 samples, 0.07%)</title><rect x="637.7" y="1413" width="0.9" height="15.0" fill="rgb(246,222,2)" rx="2" ry="2" />
+<text  x="640.73" y="1423.5" ></text>
+</g>
+<g >
+<title>Nsfisis\Waddiwasi\Execution\Stack::pushValue (1 samples, 0.07%)</title><rect x="787.8" y="661" width="0.9" height="15.0" fill="rgb(211,220,37)" rx="2" ry="2" />
+<text  x="790.82" y="671.5" ></text>
+</g>
+<g >
+<title>Nsfisis\Waddiwasi\Execution\Stack::pushI64 (1 samples, 0.07%)</title><rect x="806.1" y="181" width="0.8" height="15.0" fill="rgb(244,119,8)" rx="2" ry="2" />
+<text  x="809.06" y="191.5" ></text>
+</g>
+<g >
+<title>Nsfisis\Waddiwasi\Execution\MemInst::storeI32 (1 samples, 0.07%)</title><rect x="1144.4" y="1509" width="0.8" height="15.0" fill="rgb(223,122,23)" rx="2" ry="2" />
+<text  x="1147.39" y="1519.5" ></text>
+</g>
+<g >
+<title>Nsfisis\Waddiwasi\Execution\Runtime::doInvokeWasmFunc (19 samples, 1.34%)</title><rect x="836.7" y="773" width="15.8" height="15.0" fill="rgb(208,15,50)" rx="2" ry="2" />
+<text  x="839.75" y="783.5" ></text>
+</g>
+<g >
+<title>Nsfisis\Waddiwasi\Execution\Runtime::doInvokeWasmFunc (11 samples, 0.77%)</title><rect x="777.9" y="1285" width="9.1" height="15.0" fill="rgb(240,205,38)" rx="2" ry="2" />
+<text  x="780.87" y="1295.5" ></text>
+</g>
+<g >
+<title>Nsfisis\Waddiwasi\Execution\Runtime::execInstr (1 samples, 0.07%)</title><rect x="779.5" y="1125" width="0.9" height="15.0" fill="rgb(236,61,9)" rx="2" ry="2" />
+<text  x="782.53" y="1135.5" ></text>
+</g>
+<g >
+<title>Nsfisis\Waddiwasi\Execution\Runtime::doInvokeFunc (399 samples, 28.04%)</title><rect x="787.0" y="1013" width="330.9" height="15.0" fill="rgb(252,34,0)" rx="2" ry="2" />
+<text  x="789.99" y="1023.5" >Nsfisis\Waddiwasi\Execution\Runtime::doInvok..</text>
+</g>
+<g >
+<title>Nsfisis\Waddiwasi\Execution\Runtime::doStoreI32 (2 samples, 0.14%)</title><rect x="1155.2" y="1509" width="1.6" height="15.0" fill="rgb(250,21,15)" rx="2" ry="2" />
+<text  x="1158.17" y="1519.5" ></text>
+</g>
+<g >
+<title>Nsfisis\Waddiwasi\Execution\Runtime::execInstr (1 samples, 0.07%)</title><rect x="794.5" y="421" width="0.8" height="15.0" fill="rgb(220,113,17)" rx="2" ry="2" />
+<text  x="797.46" y="431.5" ></text>
+</g>
+<g >
+<title>Nsfisis\Waddiwasi\Execution\Runtime::execInstr (20 samples, 1.41%)</title><rect x="790.3" y="677" width="16.6" height="15.0" fill="rgb(211,189,41)" rx="2" ry="2" />
+<text  x="793.31" y="687.5" ></text>
+</g>
+<g >
+<title>Nsfisis\Waddiwasi\Execution\Runtime::execInstrs (399 samples, 28.04%)</title><rect x="787.0" y="1173" width="330.9" height="15.0" fill="rgb(235,206,10)" rx="2" ry="2" />
+<text  x="789.99" y="1183.5" >Nsfisis\Waddiwasi\Execution\Runtime::execIns..</text>
+</g>
+<g >
+<title>Nsfisis\Waddiwasi\Execution\Stack::pushValue (1 samples, 0.07%)</title><rect x="806.1" y="165" width="0.8" height="15.0" fill="rgb(247,71,5)" rx="2" ry="2" />
+<text  x="809.06" y="175.5" ></text>
+</g>
+<g >
+<title>Nsfisis\Waddiwasi\Execution\Runtime::execInstr (319 samples, 22.42%)</title><rect x="852.5" y="773" width="264.5" height="15.0" fill="rgb(233,92,37)" rx="2" ry="2" />
+<text  x="855.50" y="783.5" >Nsfisis\Waddiwasi\Execution\Runtime..</text>
+</g>
+<g >
+<title>Nsfisis\Waddiwasi\Execution\Runtime::execInstr (4 samples, 0.28%)</title><rect x="1117.9" y="1317" width="3.3" height="15.0" fill="rgb(247,111,46)" rx="2" ry="2" />
+<text  x="1120.86" y="1327.5" ></text>
+</g>
+<g >
+<title>Nsfisis\Waddiwasi\Execution\Val::Num (1 samples, 0.07%)</title><rect x="714.8" y="1413" width="0.9" height="15.0" fill="rgb(239,199,37)" rx="2" ry="2" />
+<text  x="717.85" y="1423.5" ></text>
+</g>
+<g >
+<title>Nsfisis\Waddiwasi\Execution\Val::Num (1 samples, 0.07%)</title><rect x="1170.9" y="1493" width="0.9" height="15.0" fill="rgb(235,225,43)" rx="2" ry="2" />
+<text  x="1173.93" y="1503.5" ></text>
+</g>
+<g >
+<title>Nsfisis\Waddiwasi\Execution\Runtime::execInstrs (2 samples, 0.14%)</title><rect x="780.4" y="1173" width="1.6" height="15.0" fill="rgb(235,93,14)" rx="2" ry="2" />
+<text  x="783.36" y="1183.5" ></text>
+</g>
+<g >
+<title>Nsfisis\Waddiwasi\Execution\Runtime::execInstr (2 samples, 0.14%)</title><rect x="827.6" y="293" width="1.7" height="15.0" fill="rgb(232,10,50)" rx="2" ry="2" />
+<text  x="830.62" y="303.5" ></text>
+</g>
+<g >
+<title>Nsfisis\Waddiwasi\Execution\Runtime::execInstr (319 samples, 22.42%)</title><rect x="852.5" y="325" width="264.5" height="15.0" fill="rgb(211,133,21)" rx="2" ry="2" />
+<text  x="855.50" y="335.5" >Nsfisis\Waddiwasi\Execution\Runtime..</text>
+</g>
+<g >
+<title>Nsfisis\Waddiwasi\Structure\Types\ResultType::equals (1 samples, 0.07%)</title><rect x="830.1" y="549" width="0.8" height="15.0" fill="rgb(209,195,44)" rx="2" ry="2" />
+<text  x="833.11" y="559.5" ></text>
+</g>
+<g >
+<title>Nsfisis\Waddiwasi\Execution\Runtime::execInstr (1 samples, 0.07%)</title><rect x="830.9" y="645" width="0.9" height="15.0" fill="rgb(226,68,30)" rx="2" ry="2" />
+<text  x="833.94" y="655.5" ></text>
+</g>
+<g >
+<title>Nsfisis\Waddiwasi\Execution\Runtime::doInvokeFunc (1 samples, 0.07%)</title><rect x="1116.2" y="181" width="0.8" height="15.0" fill="rgb(223,7,15)" rx="2" ry="2" />
+<text  x="1119.20" y="191.5" ></text>
+</g>
+<g >
+<title>Nsfisis\Waddiwasi\Execution\ControlFlowResult::Br (1 samples, 0.07%)</title><rect x="1086.3" y="165" width="0.9" height="15.0" fill="rgb(254,69,11)" rx="2" ry="2" />
+<text  x="1089.35" y="175.5" ></text>
+</g>
+<g >
+<title>Nsfisis\Waddiwasi\Execution\Runtime::execInstr (1 samples, 0.07%)</title><rect x="819.3" y="389" width="0.9" height="15.0" fill="rgb(237,123,49)" rx="2" ry="2" />
+<text  x="822.33" y="399.5" ></text>
+</g>
+<g >
+<title>Nsfisis\Waddiwasi\Execution\MemInst::storeByte (1 samples, 0.07%)</title><rect x="769.6" y="1429" width="0.8" height="15.0" fill="rgb(226,41,34)" rx="2" ry="2" />
+<text  x="772.58" y="1439.5" ></text>
+</g>
+<g >
+<title>Nsfisis\Waddiwasi\Execution\Runtime::execInstr (319 samples, 22.42%)</title><rect x="852.5" y="677" width="264.5" height="15.0" fill="rgb(225,68,53)" rx="2" ry="2" />
+<text  x="855.50" y="687.5" >Nsfisis\Waddiwasi\Execution\Runtime..</text>
+</g>
+<g >
+<title>Nsfisis\Waddiwasi\Execution\Stack::popValue (5 samples, 0.35%)</title><rect x="613.7" y="1413" width="4.1" height="15.0" fill="rgb(240,9,12)" rx="2" ry="2" />
+<text  x="616.68" y="1423.5" ></text>
+</g>
+<g >
+<title>Nsfisis\Waddiwasi\Execution\Runtime::execInstr (2 samples, 0.14%)</title><rect x="805.2" y="421" width="1.7" height="15.0" fill="rgb(230,103,3)" rx="2" ry="2" />
+<text  x="808.24" y="431.5" ></text>
+</g>
+<g >
+<title>&lt;unknown&gt; (1 samples, 0.07%)</title><rect x="1143.6" y="1445" width="0.8" height="15.0" fill="rgb(253,77,1)" rx="2" ry="2" />
+<text  x="1146.56" y="1455.5" ></text>
+</g>
+<g >
+<title>Nsfisis\Waddiwasi\Execution\Runtime::doInvokeWasmFunc (1 samples, 0.07%)</title><rect x="791.1" y="421" width="0.9" height="15.0" fill="rgb(247,169,4)" rx="2" ry="2" />
+<text  x="794.14" y="431.5" ></text>
+</g>
+<g >
+<title>Nsfisis\Waddiwasi\Execution\Runtime::execInstr (4 samples, 0.28%)</title><rect x="803.6" y="485" width="3.3" height="15.0" fill="rgb(218,200,44)" rx="2" ry="2" />
+<text  x="806.58" y="495.5" ></text>
+</g>
+<g >
+<title>Nsfisis\Waddiwasi\Execution\Runtime::execInstr (2 samples, 0.14%)</title><rect x="792.8" y="389" width="1.7" height="15.0" fill="rgb(242,20,50)" rx="2" ry="2" />
+<text  x="795.80" y="399.5" ></text>
+</g>
+<g >
+<title>Nsfisis\Waddiwasi\Execution\Runtime::doInvokeFunc (2 samples, 0.14%)</title><rect x="850.0" y="661" width="1.7" height="15.0" fill="rgb(212,29,42)" rx="2" ry="2" />
+<text  x="853.01" y="671.5" ></text>
+</g>
+<g >
+<title>Nsfisis\Waddiwasi\Execution\Runtime::doInvokeFunc (319 samples, 22.42%)</title><rect x="852.5" y="437" width="264.5" height="15.0" fill="rgb(213,173,24)" rx="2" ry="2" />
+<text  x="855.50" y="447.5" >Nsfisis\Waddiwasi\Execution\Runtime..</text>
+</g>
+<g >
+<title>Nsfisis\Waddiwasi\Execution\Runtime::execInstrs (1 samples, 0.07%)</title><rect x="1118.7" y="885" width="0.8" height="15.0" fill="rgb(248,66,9)" rx="2" ry="2" />
+<text  x="1121.69" y="895.5" ></text>
+</g>
+<g >
+<title>Nsfisis\Waddiwasi\Execution\Stack::push (1 samples, 0.07%)</title><rect x="1093.0" y="165" width="0.8" height="15.0" fill="rgb(210,167,48)" rx="2" ry="2" />
+<text  x="1095.98" y="175.5" ></text>
+</g>
+<g >
+<title>Nsfisis\Waddiwasi\Execution\Runtime::execInstrs (3 samples, 0.21%)</title><rect x="792.0" y="437" width="2.5" height="15.0" fill="rgb(243,31,36)" rx="2" ry="2" />
+<text  x="794.97" y="447.5" ></text>
+</g>
+<g >
+<title>Nsfisis\Waddiwasi\Execution\Runtime::doInvokeWasmFunc (1 samples, 0.07%)</title><rect x="789.5" y="741" width="0.8" height="15.0" fill="rgb(232,151,33)" rx="2" ry="2" />
+<text  x="792.48" y="751.5" ></text>
+</g>
+<g >
+<title>Nsfisis\Waddiwasi\Execution\Runtime::execInstrs (51 samples, 3.58%)</title><rect x="790.3" y="757" width="42.3" height="15.0" fill="rgb(206,123,54)" rx="2" ry="2" />
+<text  x="793.31" y="767.5" >Nsf..</text>
+</g>
+<g >
+<title>Nsfisis\Waddiwasi\Execution\Runtime::execInstrs (319 samples, 22.42%)</title><rect x="852.5" y="757" width="264.5" height="15.0" fill="rgb(238,21,46)" rx="2" ry="2" />
+<text  x="855.50" y="767.5" >Nsfisis\Waddiwasi\Execution\Runtime..</text>
+</g>
+<g >
+<title>Nsfisis\Waddiwasi\Execution\Runtime::doInvokeWasmFunc (319 samples, 22.42%)</title><rect x="852.5" y="421" width="264.5" height="15.0" fill="rgb(245,195,24)" rx="2" ry="2" />
+<text  x="855.50" y="431.5" >Nsfisis\Waddiwasi\Execution\Runtime..</text>
+</g>
+<g >
+<title>Nsfisis\Waddiwasi\Execution\Val::NumI32 (3 samples, 0.21%)</title><rect x="639.4" y="1445" width="2.5" height="15.0" fill="rgb(239,41,45)" rx="2" ry="2" />
+<text  x="642.39" y="1455.5" ></text>
+</g>
+<g >
+<title>Nsfisis\Waddiwasi\Execution\StackEntry::Value (1 samples, 0.07%)</title><rect x="806.1" y="149" width="0.8" height="15.0" fill="rgb(226,12,44)" rx="2" ry="2" />
+<text  x="809.06" y="159.5" ></text>
+</g>
+<g >
+<title>Nsfisis\Waddiwasi\Execution\Runtime::execInstrs (1 samples, 0.07%)</title><rect x="806.9" y="533" width="0.8" height="15.0" fill="rgb(213,180,6)" rx="2" ry="2" />
+<text  x="809.89" y="543.5" ></text>
+</g>
+<g >
+<title>Nsfisis\Waddiwasi\Execution\Runtime::execInstr (1 samples, 0.07%)</title><rect x="787.8" y="741" width="0.9" height="15.0" fill="rgb(253,214,14)" rx="2" ry="2" />
+<text  x="790.82" y="751.5" ></text>
+</g>
+<g >
+<title>Nsfisis\Waddiwasi\Execution\Runtime::execInstr (4 samples, 0.28%)</title><rect x="782.8" y="933" width="3.4" height="15.0" fill="rgb(215,191,10)" rx="2" ry="2" />
+<text  x="785.85" y="943.5" ></text>
+</g>
+<g >
+<title>Nsfisis\Waddiwasi\Execution\Runtime::doInvokeHostFunc (410 samples, 28.81%)</title><rect x="777.9" y="1413" width="340.0" height="15.0" fill="rgb(213,41,27)" rx="2" ry="2" />
+<text  x="780.87" y="1423.5" >Nsfisis\Waddiwasi\Execution\Runtime::doInvokeH..</text>
+</g>
+<g >
+<title>Nsfisis\Waddiwasi\Execution\Runtime::execInstrs (16 samples, 1.12%)</title><rect x="816.8" y="565" width="13.3" height="15.0" fill="rgb(233,206,51)" rx="2" ry="2" />
+<text  x="819.84" y="575.5" ></text>
+</g>
+<g >
+<title>Nsfisis\Waddiwasi\Execution\Runtime::doInvokeFunc (2 samples, 0.14%)</title><rect x="845.9" y="693" width="1.6" height="15.0" fill="rgb(250,1,14)" rx="2" ry="2" />
+<text  x="848.87" y="703.5" ></text>
+</g>
+<g >
+<title>Nsfisis\Waddiwasi\Execution\Runtime::execInstrs (4 samples, 0.28%)</title><rect x="1117.9" y="1365" width="3.3" height="15.0" fill="rgb(205,222,52)" rx="2" ry="2" />
+<text  x="1120.86" y="1375.5" ></text>
+</g>
+<g >
+<title>Nsfisis\Waddiwasi\Execution\Runtime::doInvokeWasmFunc (399 samples, 28.04%)</title><rect x="787.0" y="933" width="330.9" height="15.0" fill="rgb(231,202,10)" rx="2" ry="2" />
+<text  x="789.99" y="943.5" >Nsfisis\Waddiwasi\Execution\Runtime::doInvok..</text>
+</g>
+<g >
+<title>Nsfisis\Waddiwasi\Execution\Runtime::doInvokeFunc (2 samples, 0.14%)</title><rect x="827.6" y="181" width="1.7" height="15.0" fill="rgb(228,178,15)" rx="2" ry="2" />
+<text  x="830.62" y="191.5" ></text>
+</g>
+<g >
+<title>Nsfisis\Waddiwasi\Execution\Runtime::execInstrs (27 samples, 1.90%)</title><rect x="808.6" y="597" width="22.3" height="15.0" fill="rgb(241,119,44)" rx="2" ry="2" />
+<text  x="811.55" y="607.5" >N..</text>
+</g>
+<g >
+<title>Nsfisis\Waddiwasi\Execution\Runtime::execInstr (15 samples, 1.05%)</title><rect x="791.1" y="549" width="12.5" height="15.0" fill="rgb(231,184,19)" rx="2" ry="2" />
+<text  x="794.14" y="559.5" ></text>
+</g>
+<g >
+<title>Nsfisis\Waddiwasi\Execution\Runtime::execInstr (2 samples, 0.14%)</title><rect x="827.6" y="197" width="1.7" height="15.0" fill="rgb(213,87,6)" rx="2" ry="2" />
+<text  x="830.62" y="207.5" ></text>
+</g>
+<g >
+<title>Nsfisis\Waddiwasi\Execution\Runtime::doInvokeFunc (1 samples, 0.07%)</title><rect x="1182.5" y="1477" width="0.9" height="15.0" fill="rgb(242,197,19)" rx="2" ry="2" />
+<text  x="1185.54" y="1487.5" ></text>
+</g>
+<g >
+<title>Nsfisis\Waddiwasi\Execution\Runtime::doInvokeFunc (1 samples, 0.07%)</title><rect x="816.0" y="469" width="0.8" height="15.0" fill="rgb(239,177,38)" rx="2" ry="2" />
+<text  x="819.02" y="479.5" ></text>
+</g>
+<g >
+<title>Nsfisis\Waddiwasi\Execution\Stack::popValue (4 samples, 0.28%)</title><rect x="758.8" y="1429" width="3.3" height="15.0" fill="rgb(253,83,30)" rx="2" ry="2" />
+<text  x="761.80" y="1439.5" ></text>
+</g>
+<g >
+<title>print_r (1 samples, 0.07%)</title><rect x="762.9" y="1413" width="0.9" height="15.0" fill="rgb(209,4,34)" rx="2" ry="2" />
+<text  x="765.94" y="1423.5" ></text>
+</g>
+<g >
+<title>Nsfisis\Waddiwasi\Execution\Runtime::deactivateFrame (1 samples, 0.07%)</title><rect x="787.8" y="789" width="0.9" height="15.0" fill="rgb(231,227,10)" rx="2" ry="2" />
+<text  x="790.82" y="799.5" ></text>
+</g>
+<g >
+<title>Nsfisis\Waddiwasi\Execution\Runtime::doInvokeWasmFunc (399 samples, 28.04%)</title><rect x="787.0" y="1253" width="330.9" height="15.0" fill="rgb(222,219,23)" rx="2" ry="2" />
+<text  x="789.99" y="1263.5" >Nsfisis\Waddiwasi\Execution\Runtime::doInvok..</text>
+</g>
+<g >
+<title>Nsfisis\Waddiwasi\Structure\Types\FuncType::equals (1 samples, 0.07%)</title><rect x="830.1" y="565" width="0.8" height="15.0" fill="rgb(212,64,10)" rx="2" ry="2" />
+<text  x="833.11" y="575.5" ></text>
+</g>
+<g >
+<title>Nsfisis\Waddiwasi\Execution\Runtime::execInstr (399 samples, 28.04%)</title><rect x="787.0" y="901" width="330.9" height="15.0" fill="rgb(241,214,24)" rx="2" ry="2" />
+<text  x="789.99" y="911.5" >Nsfisis\Waddiwasi\Execution\Runtime::execInstr</text>
+</g>
+<g >
+<title>Nsfisis\Waddiwasi\Execution\Stack::push (2 samples, 0.14%)</title><rect x="1162.6" y="1525" width="1.7" height="15.0" fill="rgb(212,127,44)" rx="2" ry="2" />
+<text  x="1165.64" y="1535.5" ></text>
+</g>
+<g >
+<title>Nsfisis\Waddiwasi\Execution\Runtime::execInstrs (1 samples, 0.07%)</title><rect x="801.9" y="309" width="0.8" height="15.0" fill="rgb(224,110,28)" rx="2" ry="2" />
+<text  x="804.92" y="319.5" ></text>
+</g>
+<g >
+<title>Nsfisis\Waddiwasi\Execution\Runtime::execInstr (1 samples, 0.07%)</title><rect x="1182.5" y="1429" width="0.9" height="15.0" fill="rgb(233,218,37)" rx="2" ry="2" />
+<text  x="1185.54" y="1439.5" ></text>
+</g>
+<g >
+<title>Nsfisis\Waddiwasi\Execution\Runtime::doStoreI32 (1 samples, 0.07%)</title><rect x="816.0" y="565" width="0.8" height="15.0" fill="rgb(235,132,11)" rx="2" ry="2" />
+<text  x="819.02" y="575.5" ></text>
+</g>
+<g >
+<title>Nsfisis\Waddiwasi\Execution\Runtime::doInvokeWasmFunc (1 samples, 0.07%)</title><rect x="816.0" y="453" width="0.8" height="15.0" fill="rgb(240,71,15)" rx="2" ry="2" />
+<text  x="819.02" y="463.5" ></text>
+</g>
+<g >
+<title>print_r (1 samples, 0.07%)</title><rect x="772.1" y="1413" width="0.8" height="15.0" fill="rgb(220,226,34)" rx="2" ry="2" />
+<text  x="775.07" y="1423.5" ></text>
+</g>
+<g >
+<title>Nsfisis\Waddiwasi\Execution\Stack::push (2 samples, 0.14%)</title><rect x="1110.4" y="165" width="1.7" height="15.0" fill="rgb(226,50,9)" rx="2" ry="2" />
+<text  x="1113.39" y="175.5" ></text>
+</g>
+<g >
+<title>&lt;unknown&gt; (1 samples, 0.07%)</title><rect x="1169.3" y="1493" width="0.8" height="15.0" fill="rgb(249,182,22)" rx="2" ry="2" />
+<text  x="1172.27" y="1503.5" ></text>
+</g>
+<g >
+<title>Nsfisis\Waddiwasi\Execution\Runtime::execInstr (1 samples, 0.07%)</title><rect x="1117.0" y="741" width="0.9" height="15.0" fill="rgb(242,95,15)" rx="2" ry="2" />
+<text  x="1120.03" y="751.5" ></text>
+</g>
+<g >
+<title>Nsfisis\Waddiwasi\Execution\Runtime::execInstrs (1 samples, 0.07%)</title><rect x="1117.0" y="725" width="0.9" height="15.0" fill="rgb(237,28,39)" rx="2" ry="2" />
+<text  x="1120.03" y="735.5" ></text>
+</g>
+<g >
+<title>Nsfisis\Waddiwasi\Execution\Runtime::execInstrs (5 samples, 0.35%)</title><rect x="782.8" y="981" width="4.2" height="15.0" fill="rgb(210,92,9)" rx="2" ry="2" />
+<text  x="785.85" y="991.5" ></text>
+</g>
+<g >
+<title>Nsfisis\Waddiwasi\Execution\Runtime::execInstr (1 samples, 0.07%)</title><rect x="1182.5" y="1493" width="0.9" height="15.0" fill="rgb(233,92,0)" rx="2" ry="2" />
+<text  x="1185.54" y="1503.5" ></text>
+</g>
+<g >
+<title>Nsfisis\Waddiwasi\Execution\Runtime::execInstr (2 samples, 0.14%)</title><rect x="827.6" y="133" width="1.7" height="15.0" fill="rgb(225,89,37)" rx="2" ry="2" />
+<text  x="830.62" y="143.5" ></text>
+</g>
+<g >
+<title>Nsfisis\Waddiwasi\Execution\Runtime::execInstr (4 samples, 0.28%)</title><rect x="1117.9" y="1125" width="3.3" height="15.0" fill="rgb(249,98,20)" rx="2" ry="2" />
+<text  x="1120.86" y="1135.5" ></text>
+</g>
+<g >
+<title>Nsfisis\Waddiwasi\Execution\Runtime::doInvokeFunc (20 samples, 1.41%)</title><rect x="835.9" y="789" width="16.6" height="15.0" fill="rgb(253,148,51)" rx="2" ry="2" />
+<text  x="838.92" y="799.5" ></text>
+</g>
+<g >
+<title>Nsfisis\Waddiwasi\Execution\Runtime::execInstr (415 samples, 29.16%)</title><rect x="777.9" y="1445" width="344.1" height="15.0" fill="rgb(215,58,15)" rx="2" ry="2" />
+<text  x="780.87" y="1455.5" >Nsfisis\Waddiwasi\Execution\Runtime::execInstr</text>
+</g>
+<g >
+<title>Nsfisis\Waddiwasi\Execution\Runtime::execInstrs (19 samples, 1.34%)</title><rect x="791.1" y="629" width="15.8" height="15.0" fill="rgb(240,84,42)" rx="2" ry="2" />
+<text  x="794.14" y="639.5" ></text>
+</g>
+<g >
+<title>Nsfisis\Waddiwasi\Structure\Instructions\Instrs\Memory\I32Store8::opName (1 samples, 0.07%)</title><rect x="641.9" y="1445" width="0.8" height="15.0" fill="rgb(232,2,42)" rx="2" ry="2" />
+<text  x="644.88" y="1455.5" ></text>
+</g>
+<g >
+<title>&lt;unknown&gt; (1 samples, 0.07%)</title><rect x="732.3" y="1397" width="0.8" height="15.0" fill="rgb(209,30,32)" rx="2" ry="2" />
+<text  x="735.26" y="1407.5" ></text>
+</g>
+<g >
+<title>print_r (1 samples, 0.07%)</title><rect x="621.1" y="1397" width="0.9" height="15.0" fill="rgb(252,219,35)" rx="2" ry="2" />
+<text  x="624.15" y="1407.5" ></text>
+</g>
+<g >
+<title>Nsfisis\Waddiwasi\Execution\Runtime::execInstr (2 samples, 0.14%)</title><rect x="792.8" y="421" width="1.7" height="15.0" fill="rgb(224,165,52)" rx="2" ry="2" />
+<text  x="795.80" y="431.5" ></text>
+</g>
+<g >
+<title>Nsfisis\Waddiwasi\Execution\Runtime::execInstrs (4 samples, 0.28%)</title><rect x="1117.9" y="1109" width="3.3" height="15.0" fill="rgb(210,185,2)" rx="2" ry="2" />
+<text  x="1120.86" y="1119.5" ></text>
+</g>
+<g >
+<title>Nsfisis\Waddiwasi\Execution\Runtime::execInstrs (1 samples, 0.07%)</title><rect x="1116.2" y="213" width="0.8" height="15.0" fill="rgb(236,225,7)" rx="2" ry="2" />
+<text  x="1119.20" y="223.5" ></text>
+</g>
+<g >
+<title>Nsfisis\Waddiwasi\Execution\Runtime::execInstr (1 samples, 0.07%)</title><rect x="1118.7" y="869" width="0.8" height="15.0" fill="rgb(238,95,18)" rx="2" ry="2" />
+<text  x="1121.69" y="879.5" ></text>
+</g>
+<g >
+<title>Nsfisis\Waddiwasi\Execution\Runtime::deactivateLabel (1 samples, 0.07%)</title><rect x="816.0" y="341" width="0.8" height="15.0" fill="rgb(235,63,48)" rx="2" ry="2" />
+<text  x="819.02" y="351.5" ></text>
+</g>
+<g >
+<title>&lt;unknown&gt; (10 samples, 0.70%)</title><rect x="630.3" y="1429" width="8.3" height="15.0" fill="rgb(253,101,43)" rx="2" ry="2" />
+<text  x="633.27" y="1439.5" ></text>
+</g>
+<g >
+<title>Nsfisis\Waddiwasi\Execution\Runtime::execInstr (30 samples, 2.11%)</title><rect x="806.9" y="709" width="24.9" height="15.0" fill="rgb(219,129,33)" rx="2" ry="2" />
+<text  x="809.89" y="719.5" >N..</text>
+</g>
+<g >
+<title>Nsfisis\Waddiwasi\Execution\Runtime::execInstrs (1 samples, 0.07%)</title><rect x="816.0" y="373" width="0.8" height="15.0" fill="rgb(216,62,36)" rx="2" ry="2" />
+<text  x="819.02" y="383.5" ></text>
+</g>
+<g >
+<title>{closure}(/home/ken/src/php-waddiwasi/vendor/composer/ClassLoader.php:575-577) (1 samples, 0.07%)</title><rect x="277.8" y="1445" width="0.9" height="15.0" fill="rgb(239,8,32)" rx="2" ry="2" />
+<text  x="280.84" y="1455.5" ></text>
+</g>
+<g >
+<title>Nsfisis\Waddiwasi\Execution\Runtime::execInstr (7 samples, 0.49%)</title><rect x="810.2" y="517" width="5.8" height="15.0" fill="rgb(218,27,25)" rx="2" ry="2" />
+<text  x="813.21" y="527.5" ></text>
+</g>
+<g >
+<title>Nsfisis\Waddiwasi\Execution\Runtime::execInstrs (1 samples, 0.07%)</title><rect x="1182.5" y="1445" width="0.9" height="15.0" fill="rgb(207,187,36)" rx="2" ry="2" />
+<text  x="1185.54" y="1455.5" ></text>
+</g>
+<g >
+<title>Nsfisis\Waddiwasi\Execution\Allocator::allocModule (322 samples, 22.63%)</title><rect x="11.7" y="1493" width="267.0" height="15.0" fill="rgb(241,34,8)" rx="2" ry="2" />
+<text  x="14.66" y="1503.5" >Nsfisis\Waddiwasi\Execution\Allocat..</text>
+</g>
+<g >
+<title>count (1 samples, 0.07%)</title><rect x="1141.9" y="1509" width="0.8" height="15.0" fill="rgb(254,203,43)" rx="2" ry="2" />
+<text  x="1144.90" y="1519.5" ></text>
+</g>
+<g >
+<title>Nsfisis\Waddiwasi\Execution\Stack::pushValue (1 samples, 0.07%)</title><rect x="1119.5" y="885" width="0.8" height="15.0" fill="rgb(223,68,37)" rx="2" ry="2" />
+<text  x="1122.52" y="895.5" ></text>
+</g>
+<g >
+<title>Nsfisis\Waddiwasi\Execution\Vals\Num::__construct (3 samples, 0.21%)</title><rect x="569.7" y="1413" width="2.5" height="15.0" fill="rgb(228,101,18)" rx="2" ry="2" />
+<text  x="572.73" y="1423.5" ></text>
+</g>
+<g >
+<title>Nsfisis\Waddiwasi\Execution\StackEntries\Value::__construct (1 samples, 0.07%)</title><rect x="1172.6" y="1525" width="0.8" height="15.0" fill="rgb(230,163,0)" rx="2" ry="2" />
+<text  x="1175.59" y="1535.5" ></text>
+</g>
+<g >
+<title>Nsfisis\Waddiwasi\Execution\Runtime::execInstrs (29 samples, 2.04%)</title><rect x="806.9" y="661" width="24.0" height="15.0" fill="rgb(237,225,3)" rx="2" ry="2" />
+<text  x="809.89" y="671.5" >N..</text>
+</g>
+<g >
+<title>Nsfisis\Waddiwasi\Execution\Runtime::execInstr (5 samples, 0.35%)</title><rect x="782.8" y="997" width="4.2" height="15.0" fill="rgb(230,22,29)" rx="2" ry="2" />
+<text  x="785.85" y="1007.5" ></text>
+</g>
+<g >
+<title>Nsfisis\Waddiwasi\Execution\Runtime::execInstrs (2 samples, 0.14%)</title><rect x="806.9" y="597" width="1.7" height="15.0" fill="rgb(254,106,12)" rx="2" ry="2" />
+<text  x="809.89" y="607.5" ></text>
+</g>
+<g >
+<title>Nsfisis\Waddiwasi\Execution\Runtime::execInstrs (1 samples, 0.07%)</title><rect x="787.8" y="757" width="0.9" height="15.0" fill="rgb(248,196,14)" rx="2" ry="2" />
+<text  x="790.82" y="767.5" ></text>
+</g>
+<g >
+<title>Nsfisis\Waddiwasi\Execution\Runtime::execInstrs (4 samples, 0.28%)</title><rect x="803.6" y="597" width="3.3" height="15.0" fill="rgb(206,220,31)" rx="2" ry="2" />
+<text  x="806.58" y="607.5" ></text>
+</g>
+<g >
+<title>Nsfisis\Waddiwasi\Execution\Val::Num (1 samples, 0.07%)</title><rect x="638.6" y="1429" width="0.8" height="15.0" fill="rgb(232,127,31)" rx="2" ry="2" />
+<text  x="641.56" y="1439.5" ></text>
+</g>
+<g >
+<title>Nsfisis\Waddiwasi\Execution\Runtime::execInstrs (1 samples, 0.07%)</title><rect x="850.8" y="565" width="0.9" height="15.0" fill="rgb(233,30,25)" rx="2" ry="2" />
+<text  x="853.84" y="575.5" ></text>
+</g>
+<g >
+<title>Nsfisis\Waddiwasi\Execution\Runtime::execInstr (410 samples, 28.81%)</title><rect x="777.9" y="1317" width="340.0" height="15.0" fill="rgb(221,50,45)" rx="2" ry="2" />
+<text  x="780.87" y="1327.5" >Nsfisis\Waddiwasi\Execution\Runtime::execInstr</text>
+</g>
+<g >
+<title>Nsfisis\Waddiwasi\Execution\Runtime::execInstr (1 samples, 0.07%)</title><rect x="800.3" y="469" width="0.8" height="15.0" fill="rgb(209,203,36)" rx="2" ry="2" />
+<text  x="803.26" y="479.5" ></text>
+</g>
+<g >
+<title>Nsfisis\Waddiwasi\Execution\Runtime::doInvokeFunc (399 samples, 28.04%)</title><rect x="787.0" y="1269" width="330.9" height="15.0" fill="rgb(253,102,20)" rx="2" ry="2" />
+<text  x="789.99" y="1279.5" >Nsfisis\Waddiwasi\Execution\Runtime::doInvok..</text>
+</g>
+<g >
+<title>Nsfisis\Waddiwasi\Execution\Runtime::execInstr (3 samples, 0.21%)</title><rect x="1117.9" y="1061" width="2.4" height="15.0" fill="rgb(238,58,40)" rx="2" ry="2" />
+<text  x="1120.86" y="1071.5" ></text>
+</g>
+<g >
+<title>Nsfisis\Waddiwasi\Execution\Runtime::execInstrs (1 samples, 0.07%)</title><rect x="779.5" y="917" width="0.9" height="15.0" fill="rgb(228,89,35)" rx="2" ry="2" />
+<text  x="782.53" y="927.5" ></text>
+</g>
+<g >
+<title>{closure}(/home/ken/src/php-waddiwasi/vendor/composer/ClassLoader.php:575-577) (1 samples, 0.07%)</title><rect x="777.0" y="1461" width="0.9" height="15.0" fill="rgb(206,187,9)" rx="2" ry="2" />
+<text  x="780.04" y="1471.5" ></text>
+</g>
+<g >
+<title>Nsfisis\Waddiwasi\Execution\Runtime::doInvokeWasmFunc (1 samples, 0.07%)</title><rect x="1117.0" y="773" width="0.9" height="15.0" fill="rgb(237,6,14)" rx="2" ry="2" />
+<text  x="1120.03" y="783.5" ></text>
+</g>
+<g >
+<title>Nsfisis\Waddiwasi\Execution\Runtime::execInstr (4 samples, 0.28%)</title><rect x="1117.9" y="1221" width="3.3" height="15.0" fill="rgb(213,116,3)" rx="2" ry="2" />
+<text  x="1120.86" y="1231.5" ></text>
+</g>
+<g >
+<title>Nsfisis\Waddiwasi\Execution\StackEntries\Value::__construct (2 samples, 0.14%)</title><rect x="566.4" y="1413" width="1.7" height="15.0" fill="rgb(205,34,9)" rx="2" ry="2" />
+<text  x="569.42" y="1423.5" ></text>
+</g>
+<g >
+<title>Nsfisis\Waddiwasi\Execution\Stack::pushBool (3 samples, 0.21%)</title><rect x="1091.3" y="181" width="2.5" height="15.0" fill="rgb(215,172,27)" rx="2" ry="2" />
+<text  x="1094.32" y="191.5" ></text>
+</g>
+<g >
+<title>Nsfisis\Waddiwasi\Execution\Runtime::execInstr (4 samples, 0.28%)</title><rect x="1117.9" y="1189" width="3.3" height="15.0" fill="rgb(223,72,8)" rx="2" ry="2" />
+<text  x="1120.86" y="1199.5" ></text>
+</g>
+<g >
+<title>Nsfisis\Waddiwasi\Execution\Runtime::execInstr (27 samples, 1.90%)</title><rect x="808.6" y="581" width="22.3" height="15.0" fill="rgb(243,12,30)" rx="2" ry="2" />
+<text  x="811.55" y="591.5" >N..</text>
+</g>
+<g >
+<title>Nsfisis\Waddiwasi\Execution\Runtime::doInvokeFunc (415 samples, 29.16%)</title><rect x="777.9" y="1493" width="344.1" height="15.0" fill="rgb(216,154,5)" rx="2" ry="2" />
+<text  x="780.87" y="1503.5" >Nsfisis\Waddiwasi\Execution\Runtime::doInvokeF..</text>
+</g>
+<g >
+<title>assert (2 samples, 0.14%)</title><rect x="762.1" y="1429" width="1.7" height="15.0" fill="rgb(240,36,36)" rx="2" ry="2" />
+<text  x="765.12" y="1439.5" ></text>
+</g>
+<g >
+<title>Nsfisis\Waddiwasi\Execution\Allocator::allocMem (321 samples, 22.56%)</title><rect x="11.7" y="1477" width="266.1" height="15.0" fill="rgb(236,83,17)" rx="2" ry="2" />
+<text  x="14.66" y="1487.5" >Nsfisis\Waddiwasi\Execution\Allocat..</text>
+</g>
+<g >
+<title>Composer\Autoload\ClassLoader::loadClass (1 samples, 0.07%)</title><rect x="1118.7" y="645" width="0.8" height="15.0" fill="rgb(227,180,10)" rx="2" ry="2" />
+<text  x="1121.69" y="655.5" ></text>
+</g>
+<g >
+<title>Nsfisis\Waddiwasi\Execution\Runtime::execInstrs (15 samples, 1.05%)</title><rect x="791.1" y="533" width="12.5" height="15.0" fill="rgb(246,177,52)" rx="2" ry="2" />
+<text  x="794.14" y="543.5" ></text>
+</g>
+<g >
+<title>Nsfisis\Waddiwasi\Execution\Runtime::invokeByFuncAddr (399 samples, 28.04%)</title><rect x="787.0" y="965" width="330.9" height="15.0" fill="rgb(243,18,43)" rx="2" ry="2" />
+<text  x="789.99" y="975.5" >Nsfisis\Waddiwasi\Execution\Runtime::invokeB..</text>
+</g>
+<g >
+<title>assert (1 samples, 0.07%)</title><rect x="1081.4" y="165" width="0.8" height="15.0" fill="rgb(221,226,15)" rx="2" ry="2" />
+<text  x="1084.37" y="175.5" ></text>
+</g>
+<g >
+<title>Nsfisis\Waddiwasi\Execution\Runtime::execInstr (1 samples, 0.07%)</title><rect x="779.5" y="901" width="0.9" height="15.0" fill="rgb(248,31,13)" rx="2" ry="2" />
+<text  x="782.53" y="911.5" ></text>
+</g>
+<g >
+<title>&lt;unknown&gt; (1 samples, 0.07%)</title><rect x="1143.6" y="1477" width="0.8" height="15.0" fill="rgb(208,104,29)" rx="2" ry="2" />
+<text  x="1146.56" y="1487.5" ></text>
+</g>
+<g >
+<title>Nsfisis\Waddiwasi\Execution\Nums\I32::__construct (1 samples, 0.07%)</title><rect x="565.6" y="1397" width="0.8" height="15.0" fill="rgb(231,80,33)" rx="2" ry="2" />
+<text  x="568.59" y="1407.5" ></text>
+</g>
+<g >
+<title>array_pop (1 samples, 0.07%)</title><rect x="1121.2" y="1397" width="0.8" height="15.0" fill="rgb(252,3,18)" rx="2" ry="2" />
+<text  x="1124.17" y="1407.5" ></text>
+</g>
+<g >
+<title>Nsfisis\Waddiwasi\Execution\Runtime::execInstr (1 samples, 0.07%)</title><rect x="789.5" y="677" width="0.8" height="15.0" fill="rgb(215,163,11)" rx="2" ry="2" />
+<text  x="792.48" y="687.5" ></text>
+</g>
+<g >
+<title>Nsfisis\Waddiwasi\Execution\StackEntries\Value::__construct (1 samples, 0.07%)</title><rect x="806.1" y="133" width="0.8" height="15.0" fill="rgb(213,184,52)" rx="2" ry="2" />
+<text  x="809.06" y="143.5" ></text>
+</g>
+<g >
+<title>Nsfisis\Waddiwasi\Execution\Stack::pushValue (13 samples, 0.91%)</title><rect x="627.8" y="1445" width="10.8" height="15.0" fill="rgb(212,36,30)" rx="2" ry="2" />
+<text  x="630.78" y="1455.5" ></text>
+</g>
+<g >
+<title>Nsfisis\Waddiwasi\Execution\Runtime::execInstrs (4 samples, 0.28%)</title><rect x="1117.9" y="1269" width="3.3" height="15.0" fill="rgb(248,195,30)" rx="2" ry="2" />
+<text  x="1120.86" y="1279.5" ></text>
+</g>
+<g >
+<title>Nsfisis\Waddiwasi\Execution\Runtime::execInstrs (2 samples, 0.14%)</title><rect x="805.2" y="245" width="1.7" height="15.0" fill="rgb(206,121,20)" rx="2" ry="2" />
+<text  x="808.24" y="255.5" ></text>
+</g>
+<g >
+<title>Nsfisis\Waddiwasi\Execution\Runtime::execInstrs (6 samples, 0.42%)</title><rect x="847.5" y="693" width="5.0" height="15.0" fill="rgb(234,157,51)" rx="2" ry="2" />
+<text  x="850.53" y="703.5" ></text>
+</g>
+<g >
+<title>Nsfisis\Waddiwasi\Execution\Runtime::execInstrs (1 samples, 0.07%)</title><rect x="816.0" y="437" width="0.8" height="15.0" fill="rgb(238,148,10)" rx="2" ry="2" />
+<text  x="819.02" y="447.5" ></text>
+</g>
+<g >
+<title>Nsfisis\Waddiwasi\Execution\Runtime::execInstr (4 samples, 0.28%)</title><rect x="791.1" y="453" width="3.4" height="15.0" fill="rgb(244,212,36)" rx="2" ry="2" />
+<text  x="794.14" y="463.5" ></text>
+</g>
+<g >
+<title>Nsfisis\Waddiwasi\Execution\Runtime::execInstr (5 samples, 0.35%)</title><rect x="782.8" y="1029" width="4.2" height="15.0" fill="rgb(224,27,41)" rx="2" ry="2" />
+<text  x="785.85" y="1039.5" ></text>
+</g>
+<g >
+<title>Nsfisis\Waddiwasi\Execution\Stack::pushBool (1 samples, 0.07%)</title><rect x="785.3" y="917" width="0.9" height="15.0" fill="rgb(221,85,8)" rx="2" ry="2" />
+<text  x="788.33" y="927.5" ></text>
+</g>
+<g >
+<title>Nsfisis\Waddiwasi\Execution\ExternVal::Mem (1 samples, 0.07%)</title><rect x="277.8" y="1477" width="0.9" height="15.0" fill="rgb(220,138,17)" rx="2" ry="2" />
+<text  x="280.84" y="1487.5" ></text>
+</g>
+<g >
+<title>Nsfisis\Waddiwasi\Structure\Instructions\Instrs\Memory\I32Store8::__construct (3 samples, 0.21%)</title><rect x="622.8" y="1429" width="2.5" height="15.0" fill="rgb(210,210,0)" rx="2" ry="2" />
+<text  x="625.80" y="1439.5" ></text>
+</g>
+<g >
+<title>Nsfisis\Waddiwasi\Execution\Num::I32 (1 samples, 0.07%)</title><rect x="1170.1" y="1493" width="0.8" height="15.0" fill="rgb(254,122,8)" rx="2" ry="2" />
+<text  x="1173.10" y="1503.5" ></text>
+</g>
+<g >
+<title>&lt;unknown&gt; (15 samples, 1.05%)</title><rect x="554.0" y="1413" width="12.4" height="15.0" fill="rgb(239,2,11)" rx="2" ry="2" />
+<text  x="556.98" y="1423.5" ></text>
+</g>
+<g >
+<title>Nsfisis\Waddiwasi\Execution\Runtime::execInstrs (319 samples, 22.42%)</title><rect x="852.5" y="789" width="264.5" height="15.0" fill="rgb(224,161,50)" rx="2" ry="2" />
+<text  x="855.50" y="799.5" >Nsfisis\Waddiwasi\Execution\Runtime..</text>
+</g>
+<g >
+<title>Nsfisis\Waddiwasi\Execution\Runtime::execInstr (319 samples, 22.42%)</title><rect x="852.5" y="357" width="264.5" height="15.0" fill="rgb(208,228,33)" rx="2" ry="2" />
+<text  x="855.50" y="367.5" >Nsfisis\Waddiwasi\Execution\Runtime..</text>
+</g>
+<g >
+<title>{closure}(/home/ken/src/php-waddiwasi/vendor/composer/ClassLoader.php:575-577) (1 samples, 0.07%)</title><rect x="776.2" y="1461" width="0.8" height="15.0" fill="rgb(211,77,51)" rx="2" ry="2" />
+<text  x="779.21" y="1471.5" ></text>
+</g>
+<g >
+<title>Nsfisis\Waddiwasi\Execution\Runtime::execInstr (9 samples, 0.63%)</title><rect x="822.6" y="485" width="7.5" height="15.0" fill="rgb(236,205,50)" rx="2" ry="2" />
+<text  x="825.65" y="495.5" ></text>
+</g>
+<g >
+<title>Nsfisis\Waddiwasi\Execution\Runtime::execInstr (8 samples, 0.56%)</title><rect x="823.5" y="421" width="6.6" height="15.0" fill="rgb(229,157,47)" rx="2" ry="2" />
+<text  x="826.48" y="431.5" ></text>
+</g>
+<g >
+<title>Nsfisis\Waddiwasi\Execution\Runtime::execInstrs (1 samples, 0.07%)</title><rect x="1118.7" y="821" width="0.8" height="15.0" fill="rgb(246,167,37)" rx="2" ry="2" />
+<text  x="1121.69" y="831.5" ></text>
+</g>
+<g >
+<title>Nsfisis\Waddiwasi\Execution\Runtime::execInstr (3 samples, 0.21%)</title><rect x="1117.9" y="965" width="2.4" height="15.0" fill="rgb(210,94,23)" rx="2" ry="2" />
+<text  x="1120.86" y="975.5" ></text>
+</g>
+<g >
+<title>Nsfisis\Waddiwasi\Execution\Runtime::doInvokeFunc (2 samples, 0.14%)</title><rect x="805.2" y="277" width="1.7" height="15.0" fill="rgb(239,168,31)" rx="2" ry="2" />
+<text  x="808.24" y="287.5" ></text>
+</g>
+<g >
+<title>Nsfisis\Waddiwasi\Execution\Runtime::doInvokeWasmFunc (319 samples, 22.42%)</title><rect x="852.5" y="709" width="264.5" height="15.0" fill="rgb(224,223,17)" rx="2" ry="2" />
+<text  x="855.50" y="719.5" >Nsfisis\Waddiwasi\Execution\Runtime..</text>
+</g>
+<g >
+<title>Nsfisis\Waddiwasi\Execution\Runtime::execInstr (4 samples, 0.28%)</title><rect x="803.6" y="581" width="3.3" height="15.0" fill="rgb(231,171,6)" rx="2" ry="2" />
+<text  x="806.58" y="591.5" ></text>
+</g>
+<g >
+<title>Nsfisis\Waddiwasi\Execution\Runtime::execInstr (4 samples, 0.28%)</title><rect x="838.4" y="677" width="3.3" height="15.0" fill="rgb(243,169,0)" rx="2" ry="2" />
+<text  x="841.40" y="687.5" ></text>
+</g>
+<g >
+<title>Nsfisis\Waddiwasi\Execution\Runtime::execInstrs (1 samples, 0.07%)</title><rect x="840.9" y="597" width="0.8" height="15.0" fill="rgb(232,82,2)" rx="2" ry="2" />
+<text  x="843.89" y="607.5" ></text>
+</g>
+<g >
+<title>Nsfisis\Waddiwasi\Execution\Runtime::execInstr (1 samples, 0.07%)</title><rect x="811.9" y="389" width="0.8" height="15.0" fill="rgb(206,182,44)" rx="2" ry="2" />
+<text  x="814.87" y="399.5" ></text>
+</g>
+<g >
+<title>Nsfisis\Waddiwasi\Execution\Runtime::execInstr (1 samples, 0.07%)</title><rect x="816.0" y="389" width="0.8" height="15.0" fill="rgb(235,5,31)" rx="2" ry="2" />
+<text  x="819.02" y="399.5" ></text>
+</g>
+<g >
+<title>Nsfisis\Waddiwasi\Execution\Runtime::execInstrs (8 samples, 0.56%)</title><rect x="823.5" y="437" width="6.6" height="15.0" fill="rgb(245,15,12)" rx="2" ry="2" />
+<text  x="826.48" y="447.5" ></text>
+</g>
+<g >
+<title>Nsfisis\Waddiwasi\Execution\MemInst::storeByte (2 samples, 0.14%)</title><rect x="1108.7" y="149" width="1.7" height="15.0" fill="rgb(247,121,0)" rx="2" ry="2" />
+<text  x="1111.74" y="159.5" ></text>
+</g>
+<g >
+<title>Nsfisis\Waddiwasi\Execution\Runtime::doStoreI32 (1 samples, 0.07%)</title><rect x="1144.4" y="1525" width="0.8" height="15.0" fill="rgb(207,212,6)" rx="2" ry="2" />
+<text  x="1147.39" y="1535.5" ></text>
+</g>
+<g >
+<title>Nsfisis\Waddiwasi\Execution\Runtime::execInstrs (319 samples, 22.42%)</title><rect x="852.5" y="373" width="264.5" height="15.0" fill="rgb(233,90,42)" rx="2" ry="2" />
+<text  x="855.50" y="383.5" >Nsfisis\Waddiwasi\Execution\Runtime..</text>
+</g>
+<g >
+<title>Nsfisis\Waddiwasi\Execution\Runtime::doInvokeFunc (415 samples, 29.16%)</title><rect x="777.9" y="1429" width="344.1" height="15.0" fill="rgb(241,50,2)" rx="2" ry="2" />
+<text  x="780.87" y="1439.5" >Nsfisis\Waddiwasi\Execution\Runtime::doInvokeF..</text>
+</g>
+<g >
+<title>Nsfisis\Waddiwasi\Execution\Runtime::execInstr (319 samples, 22.42%)</title><rect x="852.5" y="549" width="264.5" height="15.0" fill="rgb(243,152,39)" rx="2" ry="2" />
+<text  x="855.50" y="559.5" >Nsfisis\Waddiwasi\Execution\Runtime..</text>
+</g>
+<g >
+<title>Nsfisis\Waddiwasi\Execution\Runtime::execInstrs (1 samples, 0.07%)</title><rect x="801.9" y="373" width="0.8" height="15.0" fill="rgb(241,180,36)" rx="2" ry="2" />
+<text  x="804.92" y="383.5" ></text>
+</g>
+<g >
+<title>count (1 samples, 0.07%)</title><rect x="763.8" y="1429" width="0.8" height="15.0" fill="rgb(228,151,9)" rx="2" ry="2" />
+<text  x="766.77" y="1439.5" ></text>
+</g>
+<g >
+<title>Nsfisis\Waddiwasi\Execution\Runtime::execInstrs (19 samples, 1.34%)</title><rect x="836.7" y="757" width="15.8" height="15.0" fill="rgb(217,193,54)" rx="2" ry="2" />
+<text  x="839.75" y="767.5" ></text>
+</g>
+<g >
+<title>Nsfisis\Waddiwasi\Execution\Runtime::doInvokeWasmFunc (410 samples, 28.81%)</title><rect x="777.9" y="1349" width="340.0" height="15.0" fill="rgb(220,31,19)" rx="2" ry="2" />
+<text  x="780.87" y="1359.5" >Nsfisis\Waddiwasi\Execution\Runtime::doInvokeW..</text>
+</g>
+<g >
+<title>Nsfisis\Waddiwasi\Execution\Runtime::execInstr (1 samples, 0.07%)</title><rect x="805.2" y="165" width="0.9" height="15.0" fill="rgb(232,2,2)" rx="2" ry="2" />
+<text  x="808.24" y="175.5" ></text>
+</g>
+<g >
+<title>Nsfisis\Waddiwasi\Execution\Runtime::execInstr (301 samples, 21.15%)</title><rect x="866.6" y="197" width="249.6" height="15.0" fill="rgb(210,65,36)" rx="2" ry="2" />
+<text  x="869.60" y="207.5" >Nsfisis\Waddiwasi\Execution\Runti..</text>
+</g>
+<g >
+<title>Nsfisis\Waddiwasi\Execution\Runtime::execInstr (600 samples, 42.16%)</title><rect x="278.7" y="1477" width="497.5" height="15.0" fill="rgb(241,110,3)" rx="2" ry="2" />
+<text  x="281.67" y="1487.5" >Nsfisis\Waddiwasi\Execution\Runtime::execInstr</text>
+</g>
+<g >
+<title>Nsfisis\Waddiwasi\Execution\Runtime::doInvokeWasmFunc (15 samples, 1.05%)</title><rect x="791.1" y="581" width="12.5" height="15.0" fill="rgb(220,92,31)" rx="2" ry="2" />
+<text  x="794.14" y="591.5" ></text>
+</g>
+<g >
+<title>Nsfisis\Waddiwasi\Execution\Runtime::execInstrs (1 samples, 0.07%)</title><rect x="779.5" y="757" width="0.9" height="15.0" fill="rgb(216,122,34)" rx="2" ry="2" />
+<text  x="782.53" y="767.5" ></text>
+</g>
+<g >
+<title>Nsfisis\Waddiwasi\Execution\Runtime::execInstr (2 samples, 0.14%)</title><rect x="806.9" y="581" width="1.7" height="15.0" fill="rgb(248,36,18)" rx="2" ry="2" />
+<text  x="809.89" y="591.5" ></text>
+</g>
+<g >
+<title>Nsfisis\Waddiwasi\Execution\Runtime::doInvokeFunc (20 samples, 1.41%)</title><rect x="790.3" y="725" width="16.6" height="15.0" fill="rgb(231,171,50)" rx="2" ry="2" />
+<text  x="793.31" y="735.5" ></text>
+</g>
+<g >
+<title>Nsfisis\Waddiwasi\Execution\Runtime::execInstr (1 samples, 0.07%)</title><rect x="794.5" y="389" width="0.8" height="15.0" fill="rgb(220,219,35)" rx="2" ry="2" />
+<text  x="797.46" y="399.5" ></text>
+</g>
+<g >
+<title>Nsfisis\Waddiwasi\Execution\Runtime::execInstr (1 samples, 0.07%)</title><rect x="1117.0" y="677" width="0.9" height="15.0" fill="rgb(207,86,25)" rx="2" ry="2" />
+<text  x="1120.03" y="687.5" ></text>
+</g>
+<g >
+<title>Nsfisis\Waddiwasi\Execution\StackEntry::Value (1 samples, 0.07%)</title><rect x="1090.5" y="165" width="0.8" height="15.0" fill="rgb(207,209,40)" rx="2" ry="2" />
+<text  x="1093.49" y="175.5" ></text>
+</g>
+<g >
+<title>&lt;unknown&gt; (1 samples, 0.07%)</title><rect x="1115.4" y="133" width="0.8" height="15.0" fill="rgb(205,170,36)" rx="2" ry="2" />
+<text  x="1118.37" y="143.5" ></text>
+</g>
+<g >
+<title>Nsfisis\Waddiwasi\Execution\Runtime::execInstr (4 samples, 0.28%)</title><rect x="1117.9" y="1157" width="3.3" height="15.0" fill="rgb(208,161,17)" rx="2" ry="2" />
+<text  x="1120.86" y="1167.5" ></text>
+</g>
+<g >
+<title>Nsfisis\Waddiwasi\Execution\Runtime::doInvokeFunc (410 samples, 28.81%)</title><rect x="777.9" y="1365" width="340.0" height="15.0" fill="rgb(215,22,47)" rx="2" ry="2" />
+<text  x="780.87" y="1375.5" >Nsfisis\Waddiwasi\Execution\Runtime::doInvokeF..</text>
+</g>
+<g >
+<title>Nsfisis\Waddiwasi\Execution\Stack::popValue (1 samples, 0.07%)</title><rect x="724.8" y="1413" width="0.8" height="15.0" fill="rgb(237,207,50)" rx="2" ry="2" />
+<text  x="727.80" y="1423.5" ></text>
+</g>
+<g >
+<title>Nsfisis\Waddiwasi\Execution\Runtime::execInstr (399 samples, 28.04%)</title><rect x="787.0" y="1029" width="330.9" height="15.0" fill="rgb(235,190,10)" rx="2" ry="2" />
+<text  x="789.99" y="1039.5" >Nsfisis\Waddiwasi\Execution\Runtime::execInstr</text>
+</g>
+<g >
+<title>Nsfisis\Waddiwasi\Execution\Stack::popValue (2 samples, 0.14%)</title><rect x="626.1" y="1429" width="1.7" height="15.0" fill="rgb(248,90,38)" rx="2" ry="2" />
+<text  x="629.12" y="1439.5" ></text>
+</g>
+<g >
+<title>count (1 samples, 0.07%)</title><rect x="829.3" y="325" width="0.8" height="15.0" fill="rgb(238,218,16)" rx="2" ry="2" />
+<text  x="832.28" y="335.5" ></text>
+</g>
+<g >
+<title>&lt;unknown&gt; (1 samples, 0.07%)</title><rect x="634.4" y="1413" width="0.8" height="15.0" fill="rgb(234,1,6)" rx="2" ry="2" />
+<text  x="637.41" y="1423.5" ></text>
+</g>
+<g >
+<title>Nsfisis\Waddiwasi\Execution\Runtime::execInstrs (4 samples, 0.28%)</title><rect x="1117.9" y="1205" width="3.3" height="15.0" fill="rgb(245,145,49)" rx="2" ry="2" />
+<text  x="1120.86" y="1215.5" ></text>
+</g>
+<g >
+<title>Nsfisis\Waddiwasi\Execution\Runtime::doInvokeWasmFunc (2 samples, 0.14%)</title><rect x="827.6" y="165" width="1.7" height="15.0" fill="rgb(232,85,13)" rx="2" ry="2" />
+<text  x="830.62" y="175.5" ></text>
+</g>
+<g >
+<title>&lt;unknown&gt; (26 samples, 1.83%)</title><rect x="1122.0" y="1525" width="21.6" height="15.0" fill="rgb(247,11,10)" rx="2" ry="2" />
+<text  x="1125.00" y="1535.5" >&lt;..</text>
+</g>
+<g >
+<title>Nsfisis\Waddiwasi\Execution\Stack::push (1 samples, 0.07%)</title><rect x="1171.8" y="1509" width="0.8" height="15.0" fill="rgb(230,51,41)" rx="2" ry="2" />
+<text  x="1174.76" y="1519.5" ></text>
+</g>
+<g >
+<title>Nsfisis\Waddiwasi\Execution\Stack::pushValue (1 samples, 0.07%)</title><rect x="1156.8" y="1509" width="0.9" height="15.0" fill="rgb(238,189,44)" rx="2" ry="2" />
+<text  x="1159.83" y="1519.5" ></text>
+</g>
+<g >
+<title>Nsfisis\Waddiwasi\Execution\Runtime::execInstr (1 samples, 0.07%)</title><rect x="779.5" y="1061" width="0.9" height="15.0" fill="rgb(229,137,24)" rx="2" ry="2" />
+<text  x="782.53" y="1071.5" ></text>
+</g>
+<g >
+<title>Nsfisis\Waddiwasi\Execution\Runtime::execInstrs (4 samples, 0.28%)</title><rect x="1117.9" y="1141" width="3.3" height="15.0" fill="rgb(228,83,6)" rx="2" ry="2" />
+<text  x="1120.86" y="1151.5" ></text>
+</g>
+<g >
+<title>Nsfisis\Waddiwasi\Execution\Runtime::execInstrs (410 samples, 28.81%)</title><rect x="777.9" y="1333" width="340.0" height="15.0" fill="rgb(218,158,18)" rx="2" ry="2" />
+<text  x="780.87" y="1343.5" >Nsfisis\Waddiwasi\Execution\Runtime::execInstrs</text>
+</g>
+<g >
+<title>Nsfisis\Waddiwasi\Execution\Runtime::execInstrs (1 samples, 0.07%)</title><rect x="801.9" y="277" width="0.8" height="15.0" fill="rgb(226,15,44)" rx="2" ry="2" />
+<text  x="804.92" y="287.5" ></text>
+</g>
+<g >
+<title>Nsfisis\Waddiwasi\Execution\Runtime::execInstr (1 samples, 0.07%)</title><rect x="1118.7" y="773" width="0.8" height="15.0" fill="rgb(243,184,33)" rx="2" ry="2" />
+<text  x="1121.69" y="783.5" ></text>
+</g>
+<g >
+<title>Nsfisis\Waddiwasi\Execution\Runtime::execInstr (1 samples, 0.07%)</title><rect x="791.1" y="389" width="0.9" height="15.0" fill="rgb(209,101,41)" rx="2" ry="2" />
+<text  x="794.14" y="399.5" ></text>
+</g>
+<g >
+<title>Nsfisis\Waddiwasi\Execution\MemInst::storeByte (1 samples, 0.07%)</title><rect x="728.9" y="1413" width="0.9" height="15.0" fill="rgb(254,173,51)" rx="2" ry="2" />
+<text  x="731.95" y="1423.5" ></text>
+</g>
+<g >
+<title>Nsfisis\Waddiwasi\Execution\Stack::pushI32 (1 samples, 0.07%)</title><rect x="1182.5" y="1509" width="0.9" height="15.0" fill="rgb(211,177,49)" rx="2" ry="2" />
+<text  x="1185.54" y="1519.5" ></text>
+</g>
+<g >
+<title>Nsfisis\Waddiwasi\Execution\Runtime::execInstr (15 samples, 1.05%)</title><rect x="791.1" y="517" width="12.5" height="15.0" fill="rgb(222,192,1)" rx="2" ry="2" />
+<text  x="794.14" y="527.5" ></text>
+</g>
+<g >
+<title>Nsfisis\Waddiwasi\Execution\Runtime::execInstrs (3 samples, 0.21%)</title><rect x="1117.9" y="981" width="2.4" height="15.0" fill="rgb(251,75,20)" rx="2" ry="2" />
+<text  x="1120.86" y="991.5" ></text>
+</g>
+<g >
+<title>Nsfisis\Waddiwasi\Execution\Runtime::execInstrs (53 samples, 3.72%)</title><rect x="788.7" y="789" width="43.9" height="15.0" fill="rgb(213,122,8)" rx="2" ry="2" />
+<text  x="791.65" y="799.5" >Nsfi..</text>
+</g>
+<g >
+<title>Nsfisis\Waddiwasi\Execution\MemInst::storeI64 (2 samples, 0.14%)</title><rect x="1079.7" y="165" width="1.7" height="15.0" fill="rgb(219,54,28)" rx="2" ry="2" />
+<text  x="1082.71" y="175.5" ></text>
+</g>
+<g >
+<title>Nsfisis\Waddiwasi\Execution\Num::I32 (1 samples, 0.07%)</title><rect x="641.0" y="1429" width="0.9" height="15.0" fill="rgb(214,137,28)" rx="2" ry="2" />
+<text  x="644.05" y="1439.5" ></text>
+</g>
+<g >
+<title>Nsfisis\Waddiwasi\Execution\Runtime::execInstrs (27 samples, 1.90%)</title><rect x="808.6" y="629" width="22.3" height="15.0" fill="rgb(209,149,48)" rx="2" ry="2" />
+<text  x="811.55" y="639.5" >N..</text>
+</g>
+<g >
+<title>Nsfisis\Waddiwasi\Execution\Runtime::execInstr (4 samples, 0.28%)</title><rect x="1117.9" y="1349" width="3.3" height="15.0" fill="rgb(231,31,20)" rx="2" ry="2" />
+<text  x="1120.86" y="1359.5" ></text>
+</g>
+<g >
+<title>Nsfisis\Waddiwasi\Execution\Runtime::doInvokeWasmFunc (20 samples, 1.41%)</title><rect x="790.3" y="709" width="16.6" height="15.0" fill="rgb(250,204,23)" rx="2" ry="2" />
+<text  x="793.31" y="719.5" ></text>
+</g>
+<g >
+<title>Nsfisis\Waddiwasi\Execution\Runtime::execInstrs (399 samples, 28.04%)</title><rect x="787.0" y="1301" width="330.9" height="15.0" fill="rgb(206,145,11)" rx="2" ry="2" />
+<text  x="789.99" y="1311.5" >Nsfisis\Waddiwasi\Execution\Runtime::execIns..</text>
+</g>
+<g >
+<title>Nsfisis\Waddiwasi\Execution\Runtime::execInstr (399 samples, 28.04%)</title><rect x="787.0" y="837" width="330.9" height="15.0" fill="rgb(238,185,45)" rx="2" ry="2" />
+<text  x="789.99" y="847.5" >Nsfisis\Waddiwasi\Execution\Runtime::execInstr</text>
+</g>
+<g >
+<title>Nsfisis\Waddiwasi\Execution\Runtime::wasmI32ToPhpInt (6 samples, 0.42%)</title><rect x="1157.7" y="1525" width="4.9" height="15.0" fill="rgb(225,80,47)" rx="2" ry="2" />
+<text  x="1160.66" y="1535.5" ></text>
+</g>
+<g >
+<title>Nsfisis\Waddiwasi\Execution\Runtime::doInvokeWasmFunc (1 samples, 0.07%)</title><rect x="779.5" y="1029" width="0.9" height="15.0" fill="rgb(236,203,37)" rx="2" ry="2" />
+<text  x="782.53" y="1039.5" ></text>
+</g>
+<g >
+<title>Nsfisis\Waddiwasi\Execution\Runtime::execInstr (318 samples, 22.35%)</title><rect x="852.5" y="261" width="263.7" height="15.0" fill="rgb(206,7,34)" rx="2" ry="2" />
+<text  x="855.50" y="271.5" >Nsfisis\Waddiwasi\Execution\Runtime..</text>
+</g>
+<g >
+<title>Nsfisis\Waddiwasi\Execution\Stack::popRef (2 samples, 0.14%)</title><rect x="626.1" y="1445" width="1.7" height="15.0" fill="rgb(241,209,49)" rx="2" ry="2" />
+<text  x="629.12" y="1455.5" ></text>
+</g>
+<g >
+<title>Nsfisis\Waddiwasi\Execution\Runtime::doInvokeFunc (2 samples, 0.14%)</title><rect x="806.9" y="629" width="1.7" height="15.0" fill="rgb(228,141,18)" rx="2" ry="2" />
+<text  x="809.89" y="639.5" ></text>
+</g>
+<g >
+<title>Nsfisis\Waddiwasi\Execution\Stack::pushValue (1 samples, 0.07%)</title><rect x="807.7" y="533" width="0.9" height="15.0" fill="rgb(218,171,32)" rx="2" ry="2" />
+<text  x="810.72" y="543.5" ></text>
+</g>
+<g >
+<title>Nsfisis\Waddiwasi\Execution\Runtime::execInstr (2 samples, 0.14%)</title><rect x="827.6" y="69" width="1.7" height="15.0" fill="rgb(219,88,5)" rx="2" ry="2" />
+<text  x="830.62" y="79.5" ></text>
+</g>
+<g >
+<title>Nsfisis\Waddiwasi\Execution\Runtime::execInstrs (1 samples, 0.07%)</title><rect x="779.5" y="1077" width="0.9" height="15.0" fill="rgb(206,15,24)" rx="2" ry="2" />
+<text  x="782.53" y="1087.5" ></text>
+</g>
+<g >
+<title>&lt;unknown&gt; (1 samples, 0.07%)</title><rect x="1111.2" y="133" width="0.9" height="15.0" fill="rgb(209,151,51)" rx="2" ry="2" />
+<text  x="1114.22" y="143.5" ></text>
+</g>
+<g >
+<title>Nsfisis\Waddiwasi\Execution\Runtime::doStoreI32 (14 samples, 0.98%)</title><rect x="719.0" y="1445" width="11.6" height="15.0" fill="rgb(246,204,37)" rx="2" ry="2" />
+<text  x="722.00" y="1455.5" ></text>
+</g>
+<g >
+<title>Nsfisis\Waddiwasi\Execution\Runtime::execInstr (344 samples, 24.17%)</title><rect x="832.6" y="805" width="285.3" height="15.0" fill="rgb(214,227,29)" rx="2" ry="2" />
+<text  x="835.60" y="815.5" >Nsfisis\Waddiwasi\Execution\Runtime::e..</text>
+</g>
+<g >
+<title>Nsfisis\Waddiwasi\Execution\Runtime::execInstr (1 samples, 0.07%)</title><rect x="1116.2" y="293" width="0.8" height="15.0" fill="rgb(223,203,0)" rx="2" ry="2" />
+<text  x="1119.20" y="303.5" ></text>
+</g>
+<g >
+<title>Nsfisis\Waddiwasi\Execution\Runtime::execInstr (1 samples, 0.07%)</title><rect x="779.5" y="741" width="0.9" height="15.0" fill="rgb(245,72,30)" rx="2" ry="2" />
+<text  x="782.53" y="751.5" ></text>
+</g>
+<g >
+<title>Nsfisis\Waddiwasi\Execution\Runtime::execInstrs (4 samples, 0.28%)</title><rect x="1117.9" y="1173" width="3.3" height="15.0" fill="rgb(231,146,27)" rx="2" ry="2" />
+<text  x="1120.86" y="1183.5" ></text>
+</g>
+<g >
+<title>Nsfisis\Waddiwasi\Execution\StackEntry::Value (1 samples, 0.07%)</title><rect x="1161.8" y="1493" width="0.8" height="15.0" fill="rgb(240,196,50)" rx="2" ry="2" />
+<text  x="1164.81" y="1503.5" ></text>
+</g>
+<g >
+<title>Nsfisis\Waddiwasi\Execution\Runtime::execInstr (1 samples, 0.07%)</title><rect x="806.9" y="517" width="0.8" height="15.0" fill="rgb(212,229,17)" rx="2" ry="2" />
+<text  x="809.89" y="527.5" ></text>
+</g>
+<g >
+<title>Nsfisis\Waddiwasi\Execution\Runtime::doInvokeWasmFunc (1 samples, 0.07%)</title><rect x="779.5" y="709" width="0.9" height="15.0" fill="rgb(252,74,17)" rx="2" ry="2" />
+<text  x="782.53" y="719.5" ></text>
+</g>
+<g >
+<title>Nsfisis\Waddiwasi\Execution\Runtime::doLoadI32 (1 samples, 0.07%)</title><rect x="779.5" y="597" width="0.9" height="15.0" fill="rgb(254,23,20)" rx="2" ry="2" />
+<text  x="782.53" y="607.5" ></text>
+</g>
+<g >
+<title>&lt;unknown&gt; (1 samples, 0.07%)</title><rect x="826.8" y="325" width="0.8" height="15.0" fill="rgb(232,227,16)" rx="2" ry="2" />
+<text  x="829.80" y="335.5" ></text>
+</g>
+<g >
+<title>Composer\Autoload\ClassLoader::loadClass (1 samples, 0.07%)</title><rect x="10.8" y="1493" width="0.9" height="15.0" fill="rgb(231,181,4)" rx="2" ry="2" />
+<text  x="13.83" y="1503.5" ></text>
+</g>
+<g >
+<title>Nsfisis\Waddiwasi\Execution\Runtime::execInstr (4 samples, 0.28%)</title><rect x="1117.9" y="1285" width="3.3" height="15.0" fill="rgb(210,197,48)" rx="2" ry="2" />
+<text  x="1120.86" y="1295.5" ></text>
+</g>
+<g >
+<title>Nsfisis\Waddiwasi\Execution\StackEntries\Value::__construct (1 samples, 0.07%)</title><rect x="1172.6" y="1509" width="0.8" height="15.0" fill="rgb(212,204,49)" rx="2" ry="2" />
+<text  x="1175.59" y="1519.5" ></text>
+</g>
+<g >
+<title>Nsfisis\Waddiwasi\Execution\Runtime::execInstrs (1 samples, 0.07%)</title><rect x="779.5" y="981" width="0.9" height="15.0" fill="rgb(254,126,52)" rx="2" ry="2" />
+<text  x="782.53" y="991.5" ></text>
+</g>
+<g >
+<title>Nsfisis\Waddiwasi\Execution\Runtime::execInstr (15 samples, 1.05%)</title><rect x="1145.2" y="1525" width="12.5" height="15.0" fill="rgb(243,181,39)" rx="2" ry="2" />
+<text  x="1148.22" y="1535.5" ></text>
+</g>
+<g >
+<title>Nsfisis\Waddiwasi\Execution\Runtime::doInvokeWasmFunc (2 samples, 0.14%)</title><rect x="805.2" y="261" width="1.7" height="15.0" fill="rgb(215,89,7)" rx="2" ry="2" />
+<text  x="808.24" y="271.5" ></text>
+</g>
+<g >
+<title>&lt;unknown&gt; (1 samples, 0.07%)</title><rect x="718.2" y="1397" width="0.8" height="15.0" fill="rgb(242,128,47)" rx="2" ry="2" />
+<text  x="721.17" y="1407.5" ></text>
+</g>
+<g >
+<title>Nsfisis\Waddiwasi\Execution\ControlFlowResult::Br (2 samples, 0.14%)</title><rect x="1136.9" y="1509" width="1.7" height="15.0" fill="rgb(217,111,17)" rx="2" ry="2" />
+<text  x="1139.93" y="1519.5" ></text>
+</g>
+<g >
+<title>Nsfisis\Waddiwasi\Execution\Runtime::doInvokeFunc (5 samples, 0.35%)</title><rect x="782.8" y="1077" width="4.2" height="15.0" fill="rgb(208,206,5)" rx="2" ry="2" />
+<text  x="785.85" y="1087.5" ></text>
+</g>
+<g >
+<title>Nsfisis\Waddiwasi\Execution\Runtime::execInstrs (4 samples, 0.28%)</title><rect x="1117.9" y="1301" width="3.3" height="15.0" fill="rgb(215,133,6)" rx="2" ry="2" />
+<text  x="1120.86" y="1311.5" ></text>
+</g>
+<g >
+<title>{closure}(/home/ken/src/php-waddiwasi/vendor/composer/ClassLoader.php:575-577) (1 samples, 0.07%)</title><rect x="10.8" y="1477" width="0.9" height="15.0" fill="rgb(233,210,47)" rx="2" ry="2" />
+<text  x="13.83" y="1487.5" ></text>
+</g>
+<g >
+<title>Nsfisis\Waddiwasi\Execution\Runtime::doInvokeFunc (54 samples, 3.79%)</title><rect x="787.8" y="821" width="44.8" height="15.0" fill="rgb(243,139,17)" rx="2" ry="2" />
+<text  x="790.82" y="831.5" >Nsfi..</text>
+</g>
+<g >
+<title>Nsfisis\Waddiwasi\Execution\Runtime::execInstrs (2 samples, 0.14%)</title><rect x="827.6" y="85" width="1.7" height="15.0" fill="rgb(228,177,14)" rx="2" ry="2" />
+<text  x="830.62" y="95.5" ></text>
+</g>
+<g >
+<title>Nsfisis\Waddiwasi\Execution\Runtime::execInstr (1 samples, 0.07%)</title><rect x="1182.5" y="1397" width="0.9" height="15.0" fill="rgb(249,28,27)" rx="2" ry="2" />
+<text  x="1185.54" y="1407.5" ></text>
+</g>
+<g >
+<title>Nsfisis\Waddiwasi\Execution\Runtime::execInstr (3 samples, 0.21%)</title><rect x="816.8" y="453" width="2.5" height="15.0" fill="rgb(247,69,22)" rx="2" ry="2" />
+<text  x="819.84" y="463.5" ></text>
+</g>
+<g >
+<title>print_r (4 samples, 0.28%)</title><rect x="614.5" y="1397" width="3.3" height="15.0" fill="rgb(241,104,17)" rx="2" ry="2" />
+<text  x="617.51" y="1407.5" ></text>
+</g>
+<g >
+<title>Nsfisis\Waddiwasi\Execution\Runtime::doInvokeWasmFunc (399 samples, 28.04%)</title><rect x="787.0" y="1189" width="330.9" height="15.0" fill="rgb(250,18,18)" rx="2" ry="2" />
+<text  x="789.99" y="1199.5" >Nsfisis\Waddiwasi\Execution\Runtime::doInvok..</text>
+</g>
+<g >
+<title>Nsfisis\Waddiwasi\Execution\Stack::popI64 (1 samples, 0.07%)</title><rect x="828.5" y="37" width="0.8" height="15.0" fill="rgb(215,13,36)" rx="2" ry="2" />
+<text  x="831.45" y="47.5" ></text>
+</g>
+<g >
+<title>Nsfisis\Waddiwasi\Execution\Runtime::doInvokeWasmFunc (1 samples, 0.07%)</title><rect x="1118.7" y="741" width="0.8" height="15.0" fill="rgb(247,199,40)" rx="2" ry="2" />
+<text  x="1121.69" y="751.5" ></text>
+</g>
+<g >
+<title>Nsfisis\Waddiwasi\Execution\Runtime::execInstrs (1 samples, 0.07%)</title><rect x="1117.0" y="597" width="0.9" height="15.0" fill="rgb(217,72,6)" rx="2" ry="2" />
+<text  x="1120.03" y="607.5" ></text>
+</g>
+<g >
+<title>Nsfisis\Waddiwasi\Execution\Runtime::execInstrs (1 samples, 0.07%)</title><rect x="846.7" y="661" width="0.8" height="15.0" fill="rgb(239,174,9)" rx="2" ry="2" />
+<text  x="849.70" y="671.5" ></text>
+</g>
+<g >
+<title>Nsfisis\Waddiwasi\Execution\Runtime::execInstrs (1 samples, 0.07%)</title><rect x="1118.7" y="725" width="0.8" height="15.0" fill="rgb(232,48,32)" rx="2" ry="2" />
+<text  x="1121.69" y="735.5" ></text>
+</g>
+<g >
+<title>Nsfisis\Waddiwasi\Execution\Runtime::execInstr (7 samples, 0.49%)</title><rect x="824.3" y="357" width="5.8" height="15.0" fill="rgb(252,83,0)" rx="2" ry="2" />
+<text  x="827.31" y="367.5" ></text>
+</g>
+<g >
+<title>Nsfisis\Waddiwasi\Execution\Runtime::execInstrs (1 samples, 0.07%)</title><rect x="830.9" y="661" width="0.9" height="15.0" fill="rgb(231,180,3)" rx="2" ry="2" />
+<text  x="833.94" y="671.5" ></text>
+</g>
+<g >
+<title>Nsfisis\Waddiwasi\Execution\Runtime::execInstr (4 samples, 0.28%)</title><rect x="816.8" y="485" width="3.4" height="15.0" fill="rgb(250,220,31)" rx="2" ry="2" />
+<text  x="819.84" y="495.5" ></text>
+</g>
+<g >
+<title>Nsfisis\Waddiwasi\Execution\Runtime::execInstr (1 samples, 0.07%)</title><rect x="779.5" y="837" width="0.9" height="15.0" fill="rgb(237,140,44)" rx="2" ry="2" />
+<text  x="782.53" y="847.5" ></text>
+</g>
+</g>
+</svg>

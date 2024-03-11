@@ -1,3 +1,7 @@
+.PHONY: prof
+prof:
+	@bash prof.sh
+
 .PHONY: bench
 bench:
 	hyperfine --warmup=1 --style=nocolor 'make run' | tee benchmarks/$$(date '+%Y%m%d-%H%M').log
