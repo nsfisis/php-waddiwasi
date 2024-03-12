@@ -152,6 +152,7 @@ assert($result->inner instanceof Nums\I32);
 $exitCode = $result->inner->value;
 
 fprintf(STDERR, "Exit code: $exitCode\n");
+fprintf(STDERR, "Memory peak usage: %s\n", memory_get_peak_usage());
 
 function allocateStringOnWasmMemory(Runtime $runtime, string $str): int {
     // Plus 1 for the null terminator in C.
