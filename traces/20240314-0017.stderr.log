@@ -1,0 +1,86 @@
+Decoding...
+Instantiating...
+Executing...
+
+Exit code: 0
+Memory peak usage: 196167096
+
+
+f64.gt: 5822
+i64.eq: 6844
+i64.rot_l: 7214
+i32.rem_u: 7514
+f64.convert_i32_s: 8184
+f64.mul: 8447
+f64.add: 15891
+f64.load: 27343
+i64.sub: 374408
+i64.extend_i32_s: 422130
+i32.wrap_i64: 519314
+f64.const: 620990
+i64.or: 624024
+i64.xor: 626794
+i64.gt_u: 643203
+i64.shl: 651724
+i64.ne: 679417
+i64.lt_u: 682598
+i64.shr_u: 759512
+i32.extend8_s: 772634
+i64.and: 781711
+i64.add: 795943
+i32.le_s: 809087
+f64.store: 828031
+i64.eqz: 833073
+i32.extend16_s: 858291
+i32.ge_s: 914941
+i32.load16_s: 992318
+i32.div_u: 1243117
+memory.size: 1256551
+i32.ctz: 1403188
+i32.gt_s: 1503873
+i32.load16_u: 1517678
+i64.mul: 1990329
+i64.extend_i32_u: 1991772
+i32.lt_s: 3103364
+i64.const: 3878957
+i32.clz: 4779941
+i32.store16: 4805122
+i32.rot_l: 5547141
+return: 5855388
+drop: 8047758
+br_table: 9237589
+global.get: 12700054
+i64.load: 16836794
+i32.le_u: 24530906
+i32.xor: 26406412
+global.set: 30090495
+select: 33903378
+i32.ge_u: 34438502
+i32.store8: 39403015
+i32.load8_s: 41766181
+i32.shr_u: 47353910
+i32.sub: 57122327
+i32.eq: 59400740
+i32.mul: 61560957
+i32.ne: 77086022
+i32.shl: 87734707
+i32.lt_u: 88109398
+i32.or: 89488171
+i32.gt_u: 99174737
+br: 115100722
+i32.eqz: 116394678
+i32.load8_u: 126637820
+local.set: 196328459
+i32.and: 234145567
+i32.const: 361401858
+i64.store: 363251598
+i32.store: 379808990
+local.tee: 436355291
+i32.load: 458435037
+br_if: 474058032
+i32.add: 594163062
+local.get: 844467033
+loop: 15238036021
+call_indirect: 15283895339
+call: 56955120662
+block: 120779495409

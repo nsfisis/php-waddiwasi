@@ -157,7 +157,7 @@ final class Runtime
      */
     public function getInstrMetrics(): array
     {
-        ksort($this->instrMetrics);
+        asort($this->instrMetrics);
         return $this->instrMetrics;
     }
 
@@ -324,10 +324,9 @@ final class Runtime
         static $debug = 0;
         // if ($debug >= 3) echo "Exec: " . $instr::opName() . "\n";
 
-        // $this->instrMetrics[$instr::opName()] ??= 0;
-        // $this->instrMetrics[$instr::opName()]++;
+        // $start = hrtime(true);
 
-        return match ($instr::class) {
+        $result = match ($instr::class) {
             Instrs\Numeric\F32Abs::class => $this->execInstrNumericF32Abs($instr),
             Instrs\Numeric\F32Add::class => $this->execInstrNumericF32Add($instr),
             Instrs\Numeric\F32Ceil::class => $this->execInstrNumericF32Ceil($instr),
@@ -534,6 +533,11 @@ final class Runtime
             Instrs\Control\Unreachable::class => $this->execInstrControlUnreachable($instr),
             default => throw new \RuntimeException("invalid instruction"),
         };
+
+        // $this->instrMetrics[$instr::opName()] ??= 0;
+        // $this->instrMetrics[$instr::opName()] += hrtime(true) - $start;
+
+        return $result;
     }
 
     private function execInstrNumericF32Abs(Instrs\Numeric\F32Abs $instr): void
