@@ -153,6 +153,10 @@ $exitCode = $result->inner->value;
 
 fprintf(STDERR, "Exit code: $exitCode\n");
 fprintf(STDERR, "Memory peak usage: %s\n", memory_get_peak_usage());
+fprintf(STDERR, "\n\n");
+foreach ($runtime->getInstrMetrics() as $instr => $count) {
+    fprintf(STDERR, "%s: %d\n", $instr, $count);
+}
 
 function allocateStringOnWasmMemory(Runtime $runtime, string $str): int {
     // Plus 1 for the null terminator in C.

@@ -1,0 +1,86 @@
+Decoding...
+Instantiating...
+Executing...
+
+Exit code: 0
+Memory peak usage: 251930488
+
+
+local.get: 3135728
+i32.const: 1589717
+i32.add: 812466
+local.tee: 758661
+br_if: 732305
+block: 723450
+i32.load: 564315
+br: 491022
+local.set: 439632
+i32.store: 362806
+i64.store: 306534
+i32.and: 249884
+i32.eqz: 198278
+i32.load8_u: 159431
+i32.gt_u: 117828
+i32.lt_u: 101169
+i32.ne: 92660
+i32.shl: 86408
+i32.or: 71541
+call: 70579
+i32.mul: 68122
+i32.eq: 66100
+i32.sub: 64081
+i32.load8_s: 54242
+i32.shr_u: 51699
+global.set: 51161
+loop: 44110
+i32.store8: 42849
+i32.ge_u: 33468
+select: 29114
+global.get: 25951
+i32.le_u: 25404
+return: 19633
+i32.xor: 18826
+drop: 15033
+i64.load: 12927
+call_indirect: 12643
+i64.const: 9965
+br_table: 6061
+i32.clz: 5130
+i32.rot_l: 2203
+i32.lt_s: 2161
+i32.store16: 1998
+i64.mul: 842
+i32.gt_s: 613
+i64.extend_i32_u: 592
+i32.load16_u: 426
+i64.add: 323
+i32.div_u: 284
+i32.extend16_s: 256
+i64.shr_u: 239
+i64.and: 226
+i32.ctz: 155
+i32.ge_s: 134
+memory.size: 130
+i32.load16_s: 81
+i32.extend8_s: 78
+i64.ne: 70
+i64.xor: 62
+i32.le_s: 49
+i64.shl: 47
+i64.or: 46
+i64.gt_u: 46
+i64.eqz: 42
+i32.wrap_i64: 32
+f64.const: 26
+f64.store: 24
+i64.lt_u: 17
+i64.sub: 16
+i64.extend_i32_s: 16
+f64.convert_i32_s: 4
+f64.add: 4
+i64.eq: 2
+f64.mul: 2
+f64.load: 2
+f64.gt: 2
+i64.rot_l: 1
+i32.rem_u: 1

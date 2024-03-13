@@ -21,8 +21,13 @@ use Nsfisis\Waddiwasi\Structure\Types\TableIdx;
 use Nsfisis\Waddiwasi\Structure\Types\ValType;
 use Nsfisis\Waddiwasi\Structure\Types\ValTypes;
 
-final readonly class Runtime
+final class Runtime
 {
+    /**
+     * @var array<string, int>
+     */
+    private array $instrMetrics = [];
+
     private function __construct(
         public readonly Store $store,
         public readonly Stack $stack,
@@ -149,6 +154,15 @@ final readonly class Runtime
             return $this->store->mems[$export->addr->value];
         }
         return null;
+    }
+
+    /**
+     * @return array<string, int>
+     */
+    public function getInstrMetrics(): array
+    {
+        ksort($this->instrMetrics);
+        return $this->instrMetrics;
     }
 
     /**
@@ -313,6 +327,9 @@ final readonly class Runtime
     {
         static $debug = 0;
         // if ($debug >= 3) echo "Exec: " . $instr::opName() . "\n";
+
+        // $this->instrMetrics[$instr::opName()] ??= 0;
+        // $this->instrMetrics[$instr::opName()]++;
 
         return match ($instr::class) {
             Instrs\Numeric\F32Abs::class => $this->execInstrNumericF32Abs($instr),
