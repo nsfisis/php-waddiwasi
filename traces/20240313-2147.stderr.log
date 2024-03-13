@@ -1,0 +1,14 @@
+Decoding...
+Instantiating...
+Executing...
+
+In MemoryReader.php line 92:
+                                                                           
+  failed to read memory. target_pid=19166, remote_address=0x308, errno=14  
+                                                                           
+
+inspector:trace [-p|--pid PID] [-d|--depth [DEPTH]] [-s|--sleep-ns [SLEEP-NS]] [-r|--max-retries [MAX-RETRIES]] [-S|--stop-process [STOP-PROCESS]] [--php-regex [PHP-REGEX]] [--libpthread-regex [LIBPTHREAD-REGEX]] [--zts-globals-regex [ZTS-GLOBALS-REGEX]] [--php-version [PHP-VERSION]] [--php-path [PHP-PATH]] [--libpthread-path [LIBPTHREAD-PATH]] [-t|--template [TEMPLATE]] [-o|--output OUTPUT] [--] [<cmd> [<args>...]]
+
+
+Exit code: 0
+Memory peak usage: 251918296
