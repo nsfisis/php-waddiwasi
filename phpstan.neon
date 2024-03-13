@@ -8,6 +8,7 @@ parameters:
     tipsOfTheDay: false
     paths:
         - src
+        - examples
     typeAliases:
         Byte: 'int'
         U32: 'int'

@@ -4,8 +4,6 @@ declare(strict_types=1);
 
 require_once __DIR__ . '/../../vendor/autoload.php';
 
-$wasmBinary = file_get_contents(__DIR__ . '/php-wasm.wasm');
-
 use Nsfisis\Waddiwasi\BinaryFormat\Decoder;
 use Nsfisis\Waddiwasi\BinaryFormat\InvalidBinaryFormatException;
 use Nsfisis\Waddiwasi\Debug\Debug;
@@ -27,6 +25,9 @@ const PHP_EMPTY = '';
 const PHP_HELLO_WORLD = <<<'EOS'
 echo "Hello, World!\n";
 EOS;
+
+$wasmBinary = file_get_contents(__DIR__ . '/php-wasm.wasm');
+assert($wasmBinary !== false);
 
 fprintf(STDERR, "Decoding...\n");
 try {
@@ -185,6 +186,7 @@ function wasm_stackSave(Runtime $runtime): int {
 
 function copyStringToWasmMemory(Runtime $runtime, int $dst, string $src): void {
     $mem = $runtime->getExportedMemory('memory');
+    assert($mem !== null);
     for ($i = 0; $i < strlen($src); $i++) {
         $ok = $mem->storeByte($dst + $i, ord($src[$i]));
         assert($ok);
@@ -226,9 +228,12 @@ function getWasmTableEntry(Runtime $runtime, int $funcPtr): int {
 
 function syscallGetStr(Runtime $runtime, int $ptr): string {
     $mem = $runtime->getExportedMemory('memory');
+    assert($mem !== null);
     $str = '';
     for ($i = $ptr; $mem->loadByte($i) !== 0; $i++) {
-        $str .= chr($mem->loadByte($i));
+        $c = $mem->loadByte($i);
+        assert($c !== null);
+        $str .= chr($c);
     }
     return $str;
 }
@@ -239,6 +244,7 @@ function syscallCalculateAt(Runtime $runtime, int $dirfd, string $path): string 
     }
     if ($dirfd === -100) {
         $dir = getcwd();
+        assert($dir !== false);
     } else {
         throw new \RuntimeException("syscallCalculateAt: not implemented ($dirfd)");
     }
@@ -616,14 +622,19 @@ function hostFunc__wasi_snapshot_preview1__fd_write(Runtime $runtime): void {
     assert($fd === 1 || $fd === 2, "fd: $fd");
 
     $mem = $runtime->getExportedMemory('memory');
+    assert($mem !== null);
 
     $nWritten = 0;
     for ($i = 0; $i < $iovcnt; $i++) {
         $ptr = $mem->loadI32($iov + $i * 8, 4, true);
+        assert($ptr !== null);
         $len = $mem->loadI32($iov + $i * 8 + 4, 4, true);
+        assert($len !== null);
         $buf = '';
         for ($j = 0; $j < $len; $j++) {
-            $buf .= chr($mem->loadByte($ptr + $j));
+            $c = $mem->loadByte($ptr + $j);
+            assert($c !== null);
+            $buf .= chr($c);
         }
         if ($fd === 1) {
             fputs(STDOUT, $buf);
@@ -678,8 +689,10 @@ function hostFunc__env__emscripten_memcpy_js(Runtime $runtime): void {
     $src = $runtime->stack->popI32();
     $dest = $runtime->stack->popI32();
     $mem = $runtime->getExportedMemory('memory');
+    assert($mem !== null);
     for ($i = 0; $i < $num; $i++) {
         $byte = $mem->loadByte($src + $i);
+        assert($byte !== null);
         $mem->storeByte($dest + $i, $byte);
     }
 }
@@ -715,6 +728,7 @@ function hostFunc__env____syscall_openat(Runtime $runtime): void {
     $path = syscallCalculateAt($runtime, $dirfd, $path);
 
     $mem = $runtime->getExportedMemory('memory');
+    assert($mem !== null);
 
     if ($varargs !== 0) {
         $mode = $mem->loadI32($varargs, 4, true);
@@ -763,6 +777,7 @@ function hostFunc__env____syscall_getcwd(Runtime $runtime): void {
         return;
     }
     $cwd = getcwd();
+    assert($cwd !== false);
     $cwdLen = strlen($cwd) + 1;
     if ($size < $cwdLen) {
         $runtime->stack->pushI32(-68);
