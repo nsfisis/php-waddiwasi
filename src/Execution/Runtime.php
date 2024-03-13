@@ -44,7 +44,7 @@ final class Runtime
         $moduleInstInit = $allocator->allocPreInitModule($module, $externVals);
 
         $stack = new Stack([]);
-        $frameInit = StackEntry::Frame(0, [], $moduleInstInit, 'preinit');
+        $frameInit = new Frame(0, [], $moduleInstInit, 'preinit');
         $stack->pushFrame($frameInit);
 
         $runtimeInit = new self($store, $stack, $moduleInstInit);
@@ -83,7 +83,7 @@ final class Runtime
 
         $runtime = new self($store, $stack, $moduleInst);
 
-        $frame = StackEntry::Frame(0, [], $moduleInst, 'init');
+        $frame = new Frame(0, [], $moduleInst, 'init');
         $stack->pushFrame($frame);
 
         foreach ($module->elems as $i => $elem) {
@@ -178,7 +178,7 @@ final class Runtime
         if (count($paramTypes) !== count($vals)) {
             throw new \RuntimeException("invoke($name) invalid function arity: expected " . count($paramTypes) . ", got " . count($vals));
         }
-        $f = StackEntry::Frame(0, [], new ModuleInst([], [], [], [], [], [], [], []), "export: $name");
+        $f = new Frame(0, [], new ModuleInst([], [], [], [], [], [], [], []), "export: $name");
         $this->stack->pushFrame($f);
         foreach ($vals as $val) {
             $this->stack->pushValue($val);
@@ -224,7 +224,7 @@ final class Runtime
         for ($i = 0; $i < $n; $i++) {
             $vals[] = $this->stack->popValue();
         }
-        $f = StackEntry::Frame(
+        $f = new Frame(
             $m,
             array_merge(
                 array_reverse($vals),
@@ -234,12 +234,12 @@ final class Runtime
             "wasm: $funcAddr",
         );
         $this->activateFrame($f);
-        $l = StackEntry::Label($m);
+        $l = new Label($m);
         $this->execInstrs($instrs, $l);
         $this->deactivateFrame($m);
     }
 
-    private function activateFrame(StackEntries\Frame $f): void
+    private function activateFrame(Frame $f): void
     {
         $this->stack->pushFrame($f);
     }
@@ -256,7 +256,7 @@ final class Runtime
         }
     }
 
-    private function activateLabel(StackEntries\Label $l): void
+    private function activateLabel(Label $l): void
     {
         $this->stack->pushLabel($l);
     }
@@ -284,7 +284,7 @@ final class Runtime
      */
     private function execInstrs(
         array $instrs,
-        StackEntries\Label $l,
+        Label $l,
     ): ?ControlFlowResult {
         $this->activateLabel($l);
 
@@ -2062,7 +2062,7 @@ final class Runtime
         $bt = self::expandBlockType($blockType, $f->module);
         assert(count($bt->params->types) === 0);
         $n = count($bt->results->types);
-        $l = StackEntry::Label($n);
+        $l = new Label($n);
         $result = $this->execInstrs($instrs, $l);
         if ($result === null) {
             // Do nothing.
@@ -2176,7 +2176,7 @@ final class Runtime
         $bt = self::expandBlockType($blockType, $f->module);
         assert(count($bt->params->types) === 0);
         $n = count($bt->results->types);
-        $l = StackEntry::Label($n);
+        $l = new Label($n);
         while (true) {
             $result = $this->execInstrs($instrs, $l);
             if ($result === null) {
@@ -2186,7 +2186,7 @@ final class Runtime
             } elseif ($result instanceof ControlFlowResults\Br) {
                 if ($result->label === 0) {
                     if ($n === 1) {
-                        if ($this->stack->top() instanceof StackEntries\Label) {
+                        if ($this->stack->top() instanceof Label) {
                             // echo "loop: top is label\n";
                             // echo "  f: " . $f->debugName . "\n";
                             // foreach ($instrs as $instr) {

@@ -9,32 +9,32 @@ use Nsfisis\Waddiwasi\Structure\Types\RefType;
 final class Stack
 {
     /**
-     * @var list<StackEntries\Frame>
+     * @var list<Frame>
      */
     private array $frames = [];
 
     /**
-     * @param list<StackEntry> $entries
+     * @param list<int|float|Ref|Frame|Label> $entries
      */
     public function __construct(
         private array $entries,
     ) {
     }
 
-    public function pushFrame(StackEntries\Frame $frame): void
+    public function pushFrame(Frame $frame): void
     {
         $this->push($frame);
         $this->frames[] = $frame;
     }
 
-    public function pushLabel(StackEntries\Label $label): void
+    public function pushLabel(Label $label): void
     {
         $this->push($label);
     }
 
     public function pushValue(int|float|Ref $val): void
     {
-        $this->push(StackEntry::Value($val));
+        $this->push($val);
     }
 
     public function pushBool(bool $value): void
@@ -57,10 +57,10 @@ final class Stack
         $this->pushValue(Ref::RefExtern($addr));
     }
 
-    public function popFrame(): StackEntries\Frame
+    public function popFrame(): Frame
     {
         $result = $this->pop();
-        assert($result instanceof StackEntries\Frame);
+        assert($result instanceof Frame);
         array_pop($this->frames);
         return $result;
     }
@@ -68,8 +68,11 @@ final class Stack
     public function popValue(): int|float|Ref
     {
         $result = $this->pop();
-        assert($result instanceof StackEntries\Value, 'Expected a value on the stack, but got ' . print_r($result, true));
-        return $result->inner;
+        assert(
+            is_int($result) || is_float($result) || $result instanceof Ref,
+            'Expected a value on the stack, but got ' . print_r($result, true),
+        );
+        return $result;
     }
 
     /**
@@ -116,11 +119,11 @@ final class Stack
         $results = [];
         while (!$this->isEmpty()) {
             $top = $this->pop();
-            if ($top instanceof StackEntries\Value) {
-                $results[] = $top->inner;
-            } else {
-                assert($top instanceof StackEntries\Label);
+            if ($top instanceof Label) {
                 break;
+            } else {
+                assert(is_int($top) || is_float($top) || $top instanceof Ref);
+                $results[] = $top;
             }
         }
         return $results;
@@ -129,14 +132,14 @@ final class Stack
     public function popEntriesToCurrentFrame(): void
     {
         while (!$this->isEmpty()) {
-            if ($this->pop() instanceof StackEntries\Frame) {
+            if ($this->pop() instanceof Frame) {
                 break;
             }
         }
         array_pop($this->frames);
     }
 
-    public function top(): ?StackEntry
+    public function top(): int|float|Ref|Frame|Label|null
     {
         $n = array_key_last($this->entries);
         return $n === null ? null : $this->entries[$n];
@@ -152,18 +155,18 @@ final class Stack
         return $this->count() === 0;
     }
 
-    public function currentFrame(): StackEntries\Frame
+    public function currentFrame(): Frame
     {
         assert(count($this->frames) !== 0);
         return $this->frames[count($this->frames) - 1];
     }
 
-    private function push(StackEntry $entry): void
+    private function push(int|float|Ref|Frame|Label $entry): void
     {
         $this->entries[] = $entry;
     }
 
-    private function pop(): ?StackEntry
+    private function pop(): int|float|Ref|Frame|Label|null
     {
         return array_pop($this->entries);
     }

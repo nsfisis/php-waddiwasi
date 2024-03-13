@@ -2,13 +2,9 @@
 
 declare(strict_types=1);
 
-namespace Nsfisis\Waddiwasi\Execution\StackEntries;
+namespace Nsfisis\Waddiwasi\Execution;
 
-use Nsfisis\Waddiwasi\Execution\ModuleInst;
-use Nsfisis\Waddiwasi\Execution\Ref;
-use Nsfisis\Waddiwasi\Execution\StackEntry;
-
-final class Frame extends StackEntry
+final class Frame
 {
     /**
      * @param int<0, max> $arity
