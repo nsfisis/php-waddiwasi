@@ -30,6 +30,21 @@ final class MemInst
     }
 
     /**
+     * @param list<int> $data
+     */
+    public function copyData(array $data, int $src, int $dst, int $len): void
+    {
+        assert(0 <= $len);
+        assert(0 <= $src);
+        assert(0 <= $dst);
+        assert($src + $len <= count($data));
+        assert($dst + $len <= $this->size());
+        for ($i = 0; $i < $len; $i++) {
+            $this->storeByte($dst + $i, $data[$src + $i]);
+        }
+    }
+
+    /**
      * @return ?S32
      */
     public function loadI32(int $ptr, int $n, bool $signed): ?int

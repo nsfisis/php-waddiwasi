@@ -1645,12 +1645,8 @@ final class Runtime
             throw new TrapException("table.init: out of bounds");
         }
         for ($i = 0; $i < $n; $i++) {
-            $val = $elem->elem[$s];
-            $this->stack->pushValue($d);
-            $this->stack->pushValue($val);
-            $this->execInstr(Instr::TableSet($x));
-            $d++;
-            $s++;
+            // @phpstan-ignore-next-line
+            $tab->elem[$d + $i] = $elem->elem[$s + $i];
         }
     }
 
@@ -1830,14 +1826,7 @@ final class Runtime
         if ($mem->size() < $d + $n) {
             throw new TrapException("memory.init: out of bounds");
         }
-        for ($i = 0; $i < $n; $i++) {
-            $b = $data->data[$s];
-            $this->stack->pushValue($d);
-            $this->stack->pushValue($b);
-            $this->execInstr(Instr::I32Store8(0, 0));
-            $d++;
-            $s++;
-        }
+        $mem->copyData($data->data, $s, $d, $n);
     }
 
     private function execInstrMemoryMemorySize(Instrs\Memory\MemorySize $instr): void
