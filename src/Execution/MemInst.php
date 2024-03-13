@@ -9,17 +9,24 @@ use Nsfisis\Waddiwasi\Structure\Types\MemType;
 final class MemInst
 {
     /**
-     * @param list<Byte> $data
+     * @var list<string>
      */
+    private array $data;
+
+    private const PAGE_SIZE = 64 * 1024;
+
     public function __construct(
         public readonly MemType $type,
-        private array $data,
     ) {
+        $minSize = $type->limits->min;
+        // @todo hack
+        $minSize *= 8;
+        $this->data = array_fill(0, $minSize, str_repeat("\0", self::PAGE_SIZE));
     }
 
     public function size(): int
     {
-        return count($this->data);
+        return count($this->data) * self::PAGE_SIZE;
     }
 
     /**
@@ -96,10 +103,13 @@ final class MemInst
      */
     public function loadByte(int $ptr): ?int
     {
-        if (count($this->data) < $ptr) {
+        if ($this->size() < $ptr) {
             return null;
         }
-        $c = $this->data[$ptr];
+        $page = $this->data[intdiv($ptr, self::PAGE_SIZE)];
+        $result = unpack('C', $page, $ptr % self::PAGE_SIZE);
+        assert($result !== false);
+        $c = $result[1];
         assert(0x00 <= $c && $c <= 0xFF);
         return $c;
     }
@@ -110,11 +120,11 @@ final class MemInst
     public function storeByte(int $ptr, int $c): bool
     {
         assert(0x00 <= $c && $c <= 0xFF);
-        if (count($this->data) < $ptr) {
+        if ($this->size() < $ptr) {
             return false;
         }
         // @phpstan-ignore-next-line
-        $this->data[$ptr] = $c;
+        $this->data[intdiv($ptr, self::PAGE_SIZE)][$ptr % self::PAGE_SIZE] = chr($c);
         return true;
     }
 
@@ -124,7 +134,7 @@ final class MemInst
      */
     public function storeI32(int $ptr, int $c, int $n): bool
     {
-        if (count($this->data) < $ptr + $n) {
+        if ($this->size() < $ptr + $n) {
             return false;
         }
         $buf = pack(match ($n) {
@@ -145,7 +155,7 @@ final class MemInst
      */
     public function storeI64(int $ptr, int $c, int $n): bool
     {
-        if (count($this->data) < $ptr + $n) {
+        if ($this->size() < $ptr + $n) {
             return false;
         }
         $buf = pack(match ($n) {
@@ -167,7 +177,7 @@ final class MemInst
      */
     public function storeF32(int $ptr, float $c): bool
     {
-        if (count($this->data) < $ptr + 4) {
+        if ($this->size() < $ptr + 4) {
             return false;
         }
         $buf = pack('f', $c);
@@ -183,7 +193,7 @@ final class MemInst
      */
     public function storeF64(int $ptr, float $c): bool
     {
-        if (count($this->data) < $ptr + 8) {
+        if ($this->size() < $ptr + 8) {
             return false;
         }
         $buf = pack('d', $c);
@@ -199,10 +209,16 @@ final class MemInst
             return null;
         }
         $buf = '';
-        for ($i = 0; $i < $len; $i++) {
-            $b = $this->data[$ptr + $i];
-            assert(0x00 <= $b && $b <= 0xFF);
-            $buf .= chr($b);
+        $idx = $ptr % self::PAGE_SIZE;
+        for ($p = intdiv($ptr, self::PAGE_SIZE); ; $p++) {
+            $page = $this->data[$p];
+            $readLen = min(self::PAGE_SIZE - $idx, $len);
+            $buf .= substr($page, $idx, $readLen);
+            $len -= $readLen;
+            if ($len === 0) {
+                break;
+            }
+            $idx = 0;
         }
         return $buf;
     }

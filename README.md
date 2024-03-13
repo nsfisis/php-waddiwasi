@@ -11,7 +11,7 @@ This is a WebAssembly runtime written in pure PHP.
 The PHP runtime can be compiled to WebAssembly binary. This Wasm runtime can execute it. Currently, "Hello, World!" program works on the PHP runtime on the Wasm runtime.
 
 ```
-$ php -d memory_limit=4G -d opcache.enable_cli=on -d opcache.jit=on -d opcache.jit_buffer_size=1G examples/php-on-wasm/php-wasm.php
+$ php -d memory_limit=256M -d opcache.enable_cli=on -d opcache.jit=on -d opcache.jit_buffer_size=1G examples/php-on-wasm/php-wasm.php
 ```
 
 
