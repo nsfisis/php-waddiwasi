@@ -13,6 +13,8 @@ final class Stack
      */
     private array $frames = [];
 
+    private ?Frame $currentFrame = null;
+
     /**
      * @param list<int|float|Ref|Frame|Label> $entries
      */
@@ -25,6 +27,7 @@ final class Stack
     {
         $this->push($frame);
         $this->frames[] = $frame;
+        $this->currentFrame = $frame;
     }
 
     public function pushLabel(Label $label): void
@@ -62,6 +65,11 @@ final class Stack
         $result = $this->pop();
         assert($result instanceof Frame);
         array_pop($this->frames);
+        if (count($this->frames) === 0) {
+            $this->currentFrame = null;
+        } else {
+            $this->currentFrame = end($this->frames);
+        }
         return $result;
     }
 
@@ -137,6 +145,11 @@ final class Stack
             }
         }
         array_pop($this->frames);
+        if (count($this->frames) === 0) {
+            $this->currentFrame = null;
+        } else {
+            $this->currentFrame = end($this->frames);
+        }
     }
 
     public function top(): int|float|Ref|Frame|Label|null
@@ -157,8 +170,8 @@ final class Stack
 
     public function currentFrame(): Frame
     {
-        assert(count($this->frames) !== 0);
-        return $this->frames[count($this->frames) - 1];
+        assert($this->currentFrame !== null);
+        return $this->currentFrame;
     }
 
     private function push(int|float|Ref|Frame|Label $entry): void
