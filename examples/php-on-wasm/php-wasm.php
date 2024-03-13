@@ -619,9 +619,9 @@ function hostFunc__wasi_snapshot_preview1__fd_write(Runtime $runtime): void {
 
     $nWritten = 0;
     for ($i = 0; $i < $iovcnt; $i++) {
-        $ptr = $mem->loadI32($iov + $i * 8, 4, true);
+        $ptr = $mem->loadI32_s32($iov + $i * 8);
         assert($ptr !== null);
-        $len = $mem->loadI32($iov + $i * 8 + 4, 4, true);
+        $len = $mem->loadI32_s32($iov + $i * 8 + 4);
         assert($len !== null);
         $buf = '';
         for ($j = 0; $j < $len; $j++) {
@@ -636,7 +636,7 @@ function hostFunc__wasi_snapshot_preview1__fd_write(Runtime $runtime): void {
         }
         $nWritten += $len;
     }
-    $mem->storeI32($pnum, $nWritten, 4);
+    $mem->storeI32_s32($pnum, $nWritten);
 
     $runtime->stack->pushValue(0);
 }
@@ -724,7 +724,7 @@ function hostFunc__env____syscall_openat(Runtime $runtime): void {
     assert($mem !== null);
 
     if ($varargs !== 0) {
-        $mode = $mem->loadI32($varargs, 4, true);
+        $mode = $mem->loadI32_s32($varargs);
         $varargs += 4;
     } else {
         $mode = 0;

@@ -47,19 +47,73 @@ final class MemInst
     /**
      * @return ?S32
      */
-    public function loadI32(int $ptr, int $n, bool $signed): ?int
+    public function loadI32_s8(int $ptr): ?int
     {
-        assert($n !== 4 || $signed);
-        $buf = $this->sliceNBytes($ptr, $n);
+        if ($this->size() < $ptr) {
+            return null;
+        }
+        $page = $this->data[intdiv($ptr, self::PAGE_SIZE)];
+        $result = unpack('c', $page, $ptr % self::PAGE_SIZE);
+        assert($result !== false);
+        $c = $result[1];
+        assert(-0x80 <= $c && $c <= 0x7F);
+        return $c;
+    }
+
+    /**
+     * @return ?S32
+     */
+    public function loadI32_u8(int $ptr): ?int
+    {
+        if ($this->size() < $ptr) {
+            return null;
+        }
+        $page = $this->data[intdiv($ptr, self::PAGE_SIZE)];
+        $result = unpack('C', $page, $ptr % self::PAGE_SIZE);
+        assert($result !== false);
+        $c = $result[1];
+        assert(0x00 <= $c && $c <= 0xFF);
+        return $c;
+    }
+
+    /**
+     * @return ?S32
+     */
+    public function loadI32_s16(int $ptr): ?int
+    {
+        $buf = $this->sliceNBytes($ptr, 2);
         if ($buf === null) {
             return null;
         }
-        $result = unpack(match ($n) {
-            1 => $signed ? 'c' : 'C',
-            2 => $signed ? 's' : 'S',
-            4 => 'l',
-            default => throw new \LogicException('Invalid byte length'),
-        }, $buf);
+        $result = unpack('s', $buf);
+        assert($result !== false);
+        return $result[1];
+    }
+
+    /**
+     * @return ?S32
+     */
+    public function loadI32_u16(int $ptr): ?int
+    {
+        $buf = $this->sliceNBytes($ptr, 2);
+        if ($buf === null) {
+            return null;
+        }
+        $result = unpack('S', $buf);
+        assert($result !== false);
+        return $result[1];
+    }
+
+    /**
+     * @return ?S32
+     */
+    public function loadI32_s32(int $ptr): ?int
+    {
+        $buf = $this->sliceNBytes($ptr, 4);
+        if ($buf === null) {
+            return null;
+        }
+        $result = unpack('l', $buf);
         assert($result !== false);
         return $result[1];
     }
@@ -67,20 +121,101 @@ final class MemInst
     /**
      * @return ?S64
      */
-    public function loadI64(int $ptr, int $n, bool $signed): ?int
+    public function loadI64_s8(int $ptr): ?int
     {
-        assert($n !== 8 || $signed);
-        $buf = $this->sliceNBytes($ptr, $n);
+        if ($this->size() < $ptr) {
+            return null;
+        }
+        $page = $this->data[intdiv($ptr, self::PAGE_SIZE)];
+        $result = unpack('c', $page, $ptr % self::PAGE_SIZE);
+        assert($result !== false);
+        $c = $result[1];
+        assert(-0x80 <= $c && $c <= 0x7F);
+        return $c;
+    }
+
+    /**
+     * @return ?S64
+     */
+    public function loadI64_u8(int $ptr): ?int
+    {
+        if ($this->size() < $ptr) {
+            return null;
+        }
+        $page = $this->data[intdiv($ptr, self::PAGE_SIZE)];
+        $result = unpack('C', $page, $ptr % self::PAGE_SIZE);
+        assert($result !== false);
+        $c = $result[1];
+        assert(0x00 <= $c && $c <= 0xFF);
+        return $c;
+    }
+
+    /**
+     * @return ?S64
+     */
+    public function loadI64_s16(int $ptr): ?int
+    {
+        $buf = $this->sliceNBytes($ptr, 2);
         if ($buf === null) {
             return null;
         }
-        $result = unpack(match ($n) {
-            1 => $signed ? 'c' : 'C',
-            2 => $signed ? 's' : 'S',
-            4 => $signed ? 'l' : 'L',
-            8 => 'q',
-            default => throw new \LogicException('Invalid byte length'),
-        }, $buf);
+        $result = unpack('s', $buf);
+        assert($result !== false);
+        return $result[1];
+    }
+
+    /**
+     * @return ?S64
+     */
+    public function loadI64_u16(int $ptr): ?int
+    {
+        $buf = $this->sliceNBytes($ptr, 2);
+        if ($buf === null) {
+            return null;
+        }
+        $result = unpack('S', $buf);
+        assert($result !== false);
+        return $result[1];
+    }
+
+    /**
+     * @return ?S64
+     */
+    public function loadI64_s32(int $ptr): ?int
+    {
+        $buf = $this->sliceNBytes($ptr, 4);
+        if ($buf === null) {
+            return null;
+        }
+        $result = unpack('l', $buf);
+        assert($result !== false);
+        return $result[1];
+    }
+
+    /**
+     * @return ?S64
+     */
+    public function loadI64_u32(int $ptr): ?int
+    {
+        $buf = $this->sliceNBytes($ptr, 4);
+        if ($buf === null) {
+            return null;
+        }
+        $result = unpack('L', $buf);
+        assert($result !== false);
+        return $result[1];
+    }
+
+    /**
+     * @return ?S64
+     */
+    public function loadI64_s64(int $ptr): ?int
+    {
+        $buf = $this->sliceNBytes($ptr, 8);
+        if ($buf === null) {
+            return null;
+        }
+        $result = unpack('q', $buf);
         assert($result !== false);
         return $result[1];
     }
@@ -147,18 +282,45 @@ final class MemInst
      * @param S32 $c
      * @return bool
      */
-    public function storeI32(int $ptr, int $c, int $n): bool
+    public function storeI32_s8(int $ptr, int $c): bool
     {
-        if ($this->size() < $ptr + $n) {
+        if ($this->size() < $ptr + 1) {
             return false;
         }
-        $buf = pack(match ($n) {
-            1 => 'c',
-            2 => 's',
-            4 => 'l',
-            default => throw new \LogicException('Invalid byte length'),
-        }, $c);
-        for ($i = 0; $i < $n; $i++) {
+        $buf = pack('s', $c);
+        for ($i = 0; $i < 1; $i++) {
+            $this->storeByte($ptr + $i, ord($buf[$i]));
+        }
+        return true;
+    }
+
+    /**
+     * @param S32 $c
+     * @return bool
+     */
+    public function storeI32_s16(int $ptr, int $c): bool
+    {
+        if ($this->size() < $ptr + 2) {
+            return false;
+        }
+        $buf = pack('s', $c);
+        for ($i = 0; $i < 2; $i++) {
+            $this->storeByte($ptr + $i, ord($buf[$i]));
+        }
+        return true;
+    }
+
+    /**
+     * @param S32 $c
+     * @return bool
+     */
+    public function storeI32_s32(int $ptr, int $c): bool
+    {
+        if ($this->size() < $ptr + 4) {
+            return false;
+        }
+        $buf = pack('l', $c);
+        for ($i = 0; $i < 4; $i++) {
             $this->storeByte($ptr + $i, ord($buf[$i]));
         }
         return true;
@@ -168,19 +330,54 @@ final class MemInst
      * @param S64 $c
      * @return bool
      */
-    public function storeI64(int $ptr, int $c, int $n): bool
+    public function storeI64_s8(int $ptr, int $c): bool
     {
-        if ($this->size() < $ptr + $n) {
+        return $this->storeByte($ptr, $c);
+    }
+
+    /**
+     * @param S64 $c
+     * @return bool
+     */
+    public function storeI64_s16(int $ptr, int $c): bool
+    {
+        if ($this->size() < $ptr + 2) {
             return false;
         }
-        $buf = pack(match ($n) {
-            1 => 'c',
-            2 => 's',
-            4 => 'l',
-            8 => 'q',
-            default => throw new \LogicException('Invalid byte length'),
-        }, $c);
-        for ($i = 0; $i < $n; $i++) {
+        $buf = pack('s', $c);
+        for ($i = 0; $i < 2; $i++) {
+            $this->storeByte($ptr + $i, ord($buf[$i]));
+        }
+        return true;
+    }
+
+    /**
+     * @param S64 $c
+     * @return bool
+     */
+    public function storeI64_s32(int $ptr, int $c): bool
+    {
+        if ($this->size() < $ptr + 4) {
+            return false;
+        }
+        $buf = pack('l', $c);
+        for ($i = 0; $i < 4; $i++) {
+            $this->storeByte($ptr + $i, ord($buf[$i]));
+        }
+        return true;
+    }
+
+    /**
+     * @param S64 $c
+     * @return bool
+     */
+    public function storeI64_s64(int $ptr, int $c): bool
+    {
+        if ($this->size() < $ptr + 8) {
+            return false;
+        }
+        $buf = pack('q', $c);
+        for ($i = 0; $i < 8; $i++) {
             $this->storeByte($ptr + $i, ord($buf[$i]));
         }
         return true;

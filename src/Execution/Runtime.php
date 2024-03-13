@@ -1686,7 +1686,17 @@ final class Runtime
 
     private function execInstrMemoryF32Store(Instrs\Memory\F32Store $instr): void
     {
-        $this->doStoreF32($instr->offset, $instr::opName());
+        $offset = $instr->offset;
+        $f = $this->stack->currentFrame();
+        $a = $f->module->memAddrs[0];
+        $mem = $this->store->mems[$a];
+        $c = $this->stack->popFloat();
+        $i = $this->stack->popInt();
+        $ea = $i + $offset;
+        $ok = $mem->storeF32($ea, $c);
+        if (!$ok) {
+            throw new TrapException($instr::opName() . ": out of bounds");
+        }
     }
 
     private function execInstrMemoryF64Load(Instrs\Memory\F64Load $instr): void
@@ -1696,102 +1706,302 @@ final class Runtime
 
     private function execInstrMemoryF64Store(Instrs\Memory\F64Store $instr): void
     {
-        $this->doStoreF64($instr->offset, $instr::opName());
+        $offset = $instr->offset;
+        $f = $this->stack->currentFrame();
+        $a = $f->module->memAddrs[0];
+        $mem = $this->store->mems[$a];
+        $c = $this->stack->popFloat();
+        $i = $this->stack->popInt();
+        $ea = $i + $offset;
+        $ok = $mem->storeF64($ea, $c);
+        if (!$ok) {
+            throw new TrapException($instr::opName() . ": out of bounds");
+        }
     }
 
     private function execInstrMemoryI32Load(Instrs\Memory\I32Load $instr): void
     {
-        $this->doLoadI32($instr->offset, 4, true, $instr::opName());
+        $offset = $instr->offset;
+        $f = $this->stack->currentFrame();
+        $a = $f->module->memAddrs[0];
+        $mem = $this->store->mems[$a];
+        $i = $this->stack->popInt();
+        $ea = $i + $offset;
+        $c = $mem->loadI32_s32($ea);
+        if ($c === null) {
+            throw new TrapException($instr::opName() . ": out of bounds");
+        }
+        $this->stack->pushValue($c);
     }
 
     private function execInstrMemoryI32Load16S(Instrs\Memory\I32Load16S $instr): void
     {
-        $this->doLoadI32($instr->offset, 2, true, $instr::opName());
+        $offset = $instr->offset;
+        $f = $this->stack->currentFrame();
+        $a = $f->module->memAddrs[0];
+        $mem = $this->store->mems[$a];
+        $i = $this->stack->popInt();
+        $ea = $i + $offset;
+        $c = $mem->loadI32_s16($ea);
+        if ($c === null) {
+            throw new TrapException($instr::opName() . ": out of bounds");
+        }
+        $this->stack->pushValue($c);
     }
 
     private function execInstrMemoryI32Load16U(Instrs\Memory\I32Load16U $instr): void
     {
-        $this->doLoadI32($instr->offset, 2, false, $instr::opName());
+        $offset = $instr->offset;
+        $f = $this->stack->currentFrame();
+        $a = $f->module->memAddrs[0];
+        $mem = $this->store->mems[$a];
+        $i = $this->stack->popInt();
+        $ea = $i + $offset;
+        $c = $mem->loadI32_u16($ea);
+        if ($c === null) {
+            throw new TrapException($instr::opName() . ": out of bounds");
+        }
+        $this->stack->pushValue($c);
     }
 
     private function execInstrMemoryI32Load8S(Instrs\Memory\I32Load8S $instr): void
     {
-        $this->doLoadI32($instr->offset, 1, true, $instr::opName());
+        $offset = $instr->offset;
+        $f = $this->stack->currentFrame();
+        $a = $f->module->memAddrs[0];
+        $mem = $this->store->mems[$a];
+        $i = $this->stack->popInt();
+        $ea = $i + $offset;
+        $c = $mem->loadI32_s8($ea);
+        if ($c === null) {
+            throw new TrapException($instr::opName() . ": out of bounds");
+        }
+        $this->stack->pushValue($c);
     }
 
     private function execInstrMemoryI32Load8U(Instrs\Memory\I32Load8U $instr): void
     {
-        $this->doLoadI32($instr->offset, 1, false, $instr::opName());
+        $offset = $instr->offset;
+        $f = $this->stack->currentFrame();
+        $a = $f->module->memAddrs[0];
+        $mem = $this->store->mems[$a];
+        $i = $this->stack->popInt();
+        $ea = $i + $offset;
+        $c = $mem->loadI32_u8($ea);
+        if ($c === null) {
+            throw new TrapException($instr::opName() . ": out of bounds");
+        }
+        $this->stack->pushValue($c);
     }
 
     private function execInstrMemoryI32Store(Instrs\Memory\I32Store $instr): void
     {
-        $this->doStoreI32($instr->offset, 4, $instr::opName());
+        $offset = $instr->offset;
+        $f = $this->stack->currentFrame();
+        $a = $f->module->memAddrs[0];
+        $mem = $this->store->mems[$a];
+        $c = $this->stack->popInt();
+        $i = $this->stack->popInt();
+        $ea = $i + $offset;
+        $ok = $mem->storeI32_s32($ea, $c);
+        if (!$ok) {
+            throw new TrapException($instr::opName() . ": out of bounds");
+        }
     }
 
     private function execInstrMemoryI32Store16(Instrs\Memory\I32Store16 $instr): void
     {
-        $this->doStoreI32($instr->offset, 2, $instr::opName());
+        $offset = $instr->offset;
+        $f = $this->stack->currentFrame();
+        $a = $f->module->memAddrs[0];
+        $mem = $this->store->mems[$a];
+        $c = $this->stack->popInt();
+        $i = $this->stack->popInt();
+        $ea = $i + $offset;
+        $ok = $mem->storeI32_s16($ea, $c);
+        if (!$ok) {
+            throw new TrapException($instr::opName() . ": out of bounds");
+        }
     }
 
     private function execInstrMemoryI32Store8(Instrs\Memory\I32Store8 $instr): void
     {
-        $this->doStoreI32($instr->offset, 1, $instr::opName());
+        $offset = $instr->offset;
+        $f = $this->stack->currentFrame();
+        $a = $f->module->memAddrs[0];
+        $mem = $this->store->mems[$a];
+        $c = $this->stack->popInt();
+        $i = $this->stack->popInt();
+        $ea = $i + $offset;
+        $ok = $mem->storeI32_s8($ea, $c);
+        if (!$ok) {
+            throw new TrapException($instr::opName() . ": out of bounds");
+        }
     }
 
     private function execInstrMemoryI64Load(Instrs\Memory\I64Load $instr): void
     {
-        $this->doLoadI64($instr->offset, 8, true, $instr::opName());
+        $offset = $instr->offset;
+        $f = $this->stack->currentFrame();
+        $a = $f->module->memAddrs[0];
+        $mem = $this->store->mems[$a];
+        $i = $this->stack->popInt();
+        $ea = $i + $offset;
+        $c = $mem->loadI64_s64($ea);
+        if ($c === null) {
+            throw new TrapException($instr::opName() . ": out of bounds");
+        }
+        $this->stack->pushValue($c);
     }
 
     private function execInstrMemoryI64Load16S(Instrs\Memory\I64Load16S $instr): void
     {
-        $this->doLoadI64($instr->offset, 2, true, $instr::opName());
+        $offset = $instr->offset;
+        $f = $this->stack->currentFrame();
+        $a = $f->module->memAddrs[0];
+        $mem = $this->store->mems[$a];
+        $i = $this->stack->popInt();
+        $ea = $i + $offset;
+        $c = $mem->loadI64_s16($ea);
+        if ($c === null) {
+            throw new TrapException($instr::opName() . ": out of bounds");
+        }
+        $this->stack->pushValue($c);
     }
 
     private function execInstrMemoryI64Load16U(Instrs\Memory\I64Load16U $instr): void
     {
-        $this->doLoadI64($instr->offset, 2, false, $instr::opName());
+        $offset = $instr->offset;
+        $f = $this->stack->currentFrame();
+        $a = $f->module->memAddrs[0];
+        $mem = $this->store->mems[$a];
+        $i = $this->stack->popInt();
+        $ea = $i + $offset;
+        $c = $mem->loadI64_u16($ea);
+        if ($c === null) {
+            throw new TrapException($instr::opName() . ": out of bounds");
+        }
+        $this->stack->pushValue($c);
     }
 
     private function execInstrMemoryI64Load32S(Instrs\Memory\I64Load32S $instr): void
     {
-        $this->doLoadI64($instr->offset, 4, true, $instr::opName());
+        $offset = $instr->offset;
+        $f = $this->stack->currentFrame();
+        $a = $f->module->memAddrs[0];
+        $mem = $this->store->mems[$a];
+        $i = $this->stack->popInt();
+        $ea = $i + $offset;
+        $c = $mem->loadI64_s32($ea);
+        if ($c === null) {
+            throw new TrapException($instr::opName() . ": out of bounds");
+        }
+        $this->stack->pushValue($c);
     }
 
     private function execInstrMemoryI64Load32U(Instrs\Memory\I64Load32U $instr): void
     {
-        $this->doLoadI64($instr->offset, 4, false, $instr::opName());
+        $offset = $instr->offset;
+        $f = $this->stack->currentFrame();
+        $a = $f->module->memAddrs[0];
+        $mem = $this->store->mems[$a];
+        $i = $this->stack->popInt();
+        $ea = $i + $offset;
+        $c = $mem->loadI64_u32($ea);
+        if ($c === null) {
+            throw new TrapException($instr::opName() . ": out of bounds");
+        }
+        $this->stack->pushValue($c);
     }
 
     private function execInstrMemoryI64Load8S(Instrs\Memory\I64Load8S $instr): void
     {
-        $this->doLoadI64($instr->offset, 1, true, $instr::opName());
+        $offset = $instr->offset;
+        $f = $this->stack->currentFrame();
+        $a = $f->module->memAddrs[0];
+        $mem = $this->store->mems[$a];
+        $i = $this->stack->popInt();
+        $ea = $i + $offset;
+        $c = $mem->loadI64_s8($ea);
+        if ($c === null) {
+            throw new TrapException($instr::opName() . ": out of bounds");
+        }
+        $this->stack->pushValue($c);
     }
 
     private function execInstrMemoryI64Load8U(Instrs\Memory\I64Load8U $instr): void
     {
-        $this->doLoadI64($instr->offset, 1, false, $instr::opName());
+        $offset = $instr->offset;
+        $f = $this->stack->currentFrame();
+        $a = $f->module->memAddrs[0];
+        $mem = $this->store->mems[$a];
+        $i = $this->stack->popInt();
+        $ea = $i + $offset;
+        $c = $mem->loadI64_u8($ea);
+        if ($c === null) {
+            throw new TrapException($instr::opName() . ": out of bounds");
+        }
+        $this->stack->pushValue($c);
     }
 
     private function execInstrMemoryI64Store(Instrs\Memory\I64Store $instr): void
     {
-        $this->doStoreI64($instr->offset, 8, $instr::opName());
+        $offset = $instr->offset;
+        $f = $this->stack->currentFrame();
+        $a = $f->module->memAddrs[0];
+        $mem = $this->store->mems[$a];
+        $c = $this->stack->popInt();
+        $i = $this->stack->popInt();
+        $ea = $i + $offset;
+        $ok = $mem->storeI64_s64($ea, $c);
+        if (!$ok) {
+            throw new TrapException($instr::opName() . ": out of bounds: $ea >= " . $mem->size());
+        }
     }
 
     private function execInstrMemoryI64Store16(Instrs\Memory\I64Store16 $instr): void
     {
-        $this->doStoreI64($instr->offset, 2, $instr::opName());
+        $offset = $instr->offset;
+        $f = $this->stack->currentFrame();
+        $a = $f->module->memAddrs[0];
+        $mem = $this->store->mems[$a];
+        $c = $this->stack->popInt();
+        $i = $this->stack->popInt();
+        $ea = $i + $offset;
+        $ok = $mem->storeI64_s16($ea, $c);
+        if (!$ok) {
+            throw new TrapException($instr::opName() . ": out of bounds: $ea >= " . $mem->size());
+        }
     }
 
     private function execInstrMemoryI64Store32(Instrs\Memory\I64Store32 $instr): void
     {
-        $this->doStoreI64($instr->offset, 4, $instr::opName());
+        $offset = $instr->offset;
+        $f = $this->stack->currentFrame();
+        $a = $f->module->memAddrs[0];
+        $mem = $this->store->mems[$a];
+        $c = $this->stack->popInt();
+        $i = $this->stack->popInt();
+        $ea = $i + $offset;
+        $ok = $mem->storeI64_s32($ea, $c);
+        if (!$ok) {
+            throw new TrapException($instr::opName() . ": out of bounds: $ea >= " . $mem->size());
+        }
     }
 
     private function execInstrMemoryI64Store8(Instrs\Memory\I64Store8 $instr): void
     {
-        $this->doStoreI64($instr->offset, 1, $instr::opName());
+        $offset = $instr->offset;
+        $f = $this->stack->currentFrame();
+        $a = $f->module->memAddrs[0];
+        $mem = $this->store->mems[$a];
+        $c = $this->stack->popInt();
+        $i = $this->stack->popInt();
+        $ea = $i + $offset;
+        $ok = $mem->storeI64_s8($ea, $c);
+        if (!$ok) {
+            throw new TrapException($instr::opName() . ": out of bounds: $ea >= " . $mem->size());
+        }
     }
 
     private function execInstrMemoryMemoryCopy(Instrs\Memory\MemoryCopy $instr): void
@@ -2009,34 +2219,6 @@ final class Runtime
         throw new TrapException("unreachable");
     }
 
-    private function doLoadI32(int $offset, int $n, bool $signed, string $instrOpName): void
-    {
-        $f = $this->stack->currentFrame();
-        $a = $f->module->memAddrs[0];
-        $mem = $this->store->mems[$a];
-        $i = $this->stack->popInt();
-        $ea = $i + $offset;
-        $c = $mem->loadI32($ea, $n, $signed);
-        if ($c === null) {
-            throw new TrapException("$instrOpName: out of bounds");
-        }
-        $this->stack->pushValue($c);
-    }
-
-    private function doLoadI64(int $offset, int $n, bool $signed, string $instrOpName): void
-    {
-        $f = $this->stack->currentFrame();
-        $a = $f->module->memAddrs[0];
-        $mem = $this->store->mems[$a];
-        $i = $this->stack->popInt();
-        $ea = $i + $offset;
-        $c = $mem->loadI64($ea, $n, $signed);
-        if ($c === null) {
-            throw new TrapException("$instrOpName: out of bounds");
-        }
-        $this->stack->pushValue($c);
-    }
-
     private function doLoadF32(int $offset, string $instrOpName): void
     {
         $f = $this->stack->currentFrame();
@@ -2063,62 +2245,6 @@ final class Runtime
             throw new TrapException("$instrOpName: out of bounds");
         }
         $this->stack->pushValue($c);
-    }
-
-    private function doStoreI32(int $offset, int $n, string $instrOpName): void
-    {
-        $f = $this->stack->currentFrame();
-        $a = $f->module->memAddrs[0];
-        $mem = $this->store->mems[$a];
-        $c = $this->stack->popInt();
-        $i = $this->stack->popInt();
-        $ea = $i + $offset;
-        $ok = $mem->storeI32($ea, $c, $n);
-        if (!$ok) {
-            throw new TrapException("$instrOpName: out of bounds");
-        }
-    }
-
-    private function doStoreI64(int $offset, int $n, string $instrOpName): void
-    {
-        $f = $this->stack->currentFrame();
-        $a = $f->module->memAddrs[0];
-        $mem = $this->store->mems[$a];
-        $c = $this->stack->popInt();
-        $i = $this->stack->popInt();
-        $ea = $i + $offset;
-        $ok = $mem->storeI64($ea, $c, $n);
-        if (!$ok) {
-            throw new TrapException("$instrOpName: out of bounds: $ea >= " . $mem->size());
-        }
-    }
-
-    private function doStoreF32(int $offset, string $instrOpName): void
-    {
-        $f = $this->stack->currentFrame();
-        $a = $f->module->memAddrs[0];
-        $mem = $this->store->mems[$a];
-        $c = $this->stack->popFloat();
-        $i = $this->stack->popInt();
-        $ea = $i + $offset;
-        $ok = $mem->storeF32($ea, $c);
-        if (!$ok) {
-            throw new TrapException("$instrOpName: out of bounds");
-        }
-    }
-
-    private function doStoreF64(int $offset, string $instrOpName): void
-    {
-        $f = $this->stack->currentFrame();
-        $a = $f->module->memAddrs[0];
-        $mem = $this->store->mems[$a];
-        $c = $this->stack->popFloat();
-        $i = $this->stack->popInt();
-        $ea = $i + $offset;
-        $ok = $mem->storeF64($ea, $c);
-        if (!$ok) {
-            throw new TrapException("$instrOpName: out of bounds");
-        }
     }
 
     private static function defaultValueFromValType(ValType $type): int|float|Ref
