@@ -13,12 +13,12 @@ abstract readonly class Ref
         return new Refs\RefNull($type);
     }
 
-    final public static function RefFunc(FuncAddr $addr): Refs\RefFunc
+    final public static function RefFunc(int $addr): Refs\RefFunc
     {
         return new Refs\RefFunc($addr);
     }
 
-    final public static function RefExtern(ExternAddr $addr): Refs\RefExtern
+    final public static function RefExtern(int $addr): Refs\RefExtern
     {
         return new Refs\RefExtern($addr);
     }

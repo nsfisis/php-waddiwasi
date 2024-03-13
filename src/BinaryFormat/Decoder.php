@@ -23,24 +23,15 @@ use Nsfisis\Waddiwasi\Structure\Modules\Mem;
 use Nsfisis\Waddiwasi\Structure\Modules\Module;
 use Nsfisis\Waddiwasi\Structure\Modules\Start;
 use Nsfisis\Waddiwasi\Structure\Modules\Table;
-use Nsfisis\Waddiwasi\Structure\Types\DataIdx;
-use Nsfisis\Waddiwasi\Structure\Types\ElemIdx;
-use Nsfisis\Waddiwasi\Structure\Types\FuncIdx;
 use Nsfisis\Waddiwasi\Structure\Types\FuncType;
-use Nsfisis\Waddiwasi\Structure\Types\GlobalIdx;
 use Nsfisis\Waddiwasi\Structure\Types\GlobalType;
-use Nsfisis\Waddiwasi\Structure\Types\LabelIdx;
 use Nsfisis\Waddiwasi\Structure\Types\Limits;
-use Nsfisis\Waddiwasi\Structure\Types\LocalIdx;
-use Nsfisis\Waddiwasi\Structure\Types\MemIdx;
 use Nsfisis\Waddiwasi\Structure\Types\MemType;
 use Nsfisis\Waddiwasi\Structure\Types\Mut;
 use Nsfisis\Waddiwasi\Structure\Types\NumType;
 use Nsfisis\Waddiwasi\Structure\Types\RefType;
 use Nsfisis\Waddiwasi\Structure\Types\ResultType;
-use Nsfisis\Waddiwasi\Structure\Types\TableIdx;
 use Nsfisis\Waddiwasi\Structure\Types\TableType;
-use Nsfisis\Waddiwasi\Structure\Types\TypeIdx;
 use Nsfisis\Waddiwasi\Structure\Types\ValType;
 use Nsfisis\Waddiwasi\Structure\Types\VecType;
 
@@ -206,7 +197,7 @@ final class Decoder
     }
 
     /**
-     * @return list<TypeIdx>
+     * @return list<int>
      */
     private function decodeFuncSecRest(): array
     {
@@ -439,7 +430,7 @@ final class Decoder
                     fn ($funcRef) => new Expr([Instr::RefFunc($funcRef)]),
                     $initFuncRefs,
                 ),
-                ElemMode::Active(new TableIdx(0), $offset),
+                ElemMode::Active(0, $offset),
             );
         } elseif ($mode === 1) {
             $refType = $this->decodeElemKind();
@@ -482,7 +473,7 @@ final class Decoder
             return new Elem(
                 RefType::FuncRef,
                 $init,
-                ElemMode::Active(new TableIdx(0), $offset),
+                ElemMode::Active(0, $offset),
             );
         } elseif ($mode === 5) {
             $refType = $this->decodeRefType();
@@ -539,7 +530,7 @@ final class Decoder
             return new Data(
                 $init,
                 DataMode::Active(
-                    new MemIdx(0),
+                    0,
                     $offset,
                 ),
             );
@@ -607,49 +598,49 @@ final class Decoder
         );
     }
 
-    private function decodeTypeIdx(): TypeIdx
+    private function decodeTypeIdx(): int
     {
-        return new TypeIdx($this->decodeU32());
+        return $this->decodeU32();
     }
 
-    private function decodeMemIdx(): MemIdx
+    private function decodeMemIdx(): int
     {
-        return new MemIdx($this->decodeU32());
+        return $this->decodeU32();
     }
 
-    private function decodeFuncIdx(): FuncIdx
+    private function decodeFuncIdx(): int
     {
-        return new FuncIdx($this->decodeU32());
+        return $this->decodeU32();
     }
 
-    private function decodeTableIdx(): TableIdx
+    private function decodeTableIdx(): int
     {
-        return new TableIdx($this->decodeU32());
+        return $this->decodeU32();
     }
 
-    private function decodeGlobalIdx(): GlobalIdx
+    private function decodeGlobalIdx(): int
     {
-        return new GlobalIdx($this->decodeU32());
+        return $this->decodeU32();
     }
 
-    private function decodeLocalIdx(): LocalIdx
+    private function decodeLocalIdx(): int
     {
-        return new LocalIdx($this->decodeU32());
+        return $this->decodeU32();
     }
 
-    private function decodeLabelIdx(): LabelIdx
+    private function decodeLabelIdx(): int
     {
-        return new LabelIdx($this->decodeU32());
+        return $this->decodeU32();
     }
 
-    private function decodeDataIdx(): DataIdx
+    private function decodeDataIdx(): int
     {
-        return new DataIdx($this->decodeU32());
+        return $this->decodeU32();
     }
 
-    private function decodeElemIdx(): ElemIdx
+    private function decodeElemIdx(): int
     {
-        return new ElemIdx($this->decodeU32());
+        return $this->decodeU32();
     }
 
     private function decodeExpr(): Expr
@@ -947,7 +938,7 @@ final class Decoder
             if ($type < 0) {
                 throw new InvalidBinaryFormatException("blocktype");
             }
-            return BlockType::TypeIdx(new TypeIdx($type));
+            return BlockType::TypeIdx($type);
         }
     }
 

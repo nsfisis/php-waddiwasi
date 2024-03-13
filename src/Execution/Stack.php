@@ -79,12 +79,12 @@ final class Stack
         $this->pushValue(Val::RefNull($type));
     }
 
-    public function pushRefFunc(FuncAddr $addr): void
+    public function pushRefFunc(int $addr): void
     {
         $this->pushValue(Val::RefFunc($addr));
     }
 
-    public function pushRefExtern(ExternAddr $addr): void
+    public function pushRefExtern(int $addr): void
     {
         $this->pushValue(Val::RefExtern($addr));
     }

@@ -10,12 +10,12 @@ final class ModuleInst
 {
     /**
      * @param list<FuncType> $types
-     * @param list<FuncAddr> $funcAddrs
-     * @param list<TableAddr> $tableAddrs
-     * @param list<MemAddr> $memAddrs
-     * @param list<GlobalAddr> $globalAddrs
-     * @param list<ElemAddr> $elemAddrs
-     * @param list<DataAddr> $dataAddrs
+     * @param list<int> $funcAddrs
+     * @param list<int> $tableAddrs
+     * @param list<int> $memAddrs
+     * @param list<int> $globalAddrs
+     * @param list<int> $elemAddrs
+     * @param list<int> $dataAddrs
      * @param list<ExportInst> $exports
      */
     public function __construct(

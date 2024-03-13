@@ -10,7 +10,6 @@ use Nsfisis\Waddiwasi\BinaryFormat\Decoder;
 use Nsfisis\Waddiwasi\BinaryFormat\InvalidBinaryFormatException;
 use Nsfisis\Waddiwasi\Debug\Debug;
 use Nsfisis\Waddiwasi\Execution\ExternVal;
-use Nsfisis\Waddiwasi\Execution\FuncAddr;
 use Nsfisis\Waddiwasi\Execution\FuncInst;
 use Nsfisis\Waddiwasi\Execution\Nums;
 use Nsfisis\Waddiwasi\Execution\Refs;
@@ -138,7 +137,7 @@ $store = Store::empty();
 $externVals = [];
 foreach ($hostFuncs as $hostFunc) {
     $store->funcs[] = $hostFunc;
-    $externVals[] = ExternVal::Func(new FuncAddr(count($store->funcs) - 1));
+    $externVals[] = ExternVal::Func(count($store->funcs) - 1);
 }
 $runtime = Runtime::instantiate($store, $module, $externVals);
 $codePtr = allocateStringOnWasmMemory($runtime, PHP_HELLO_WORLD);
@@ -212,7 +211,7 @@ function makeHostFunc(string $typeDef, callable $fn): FuncInst {
     return FuncInst::Host($type, $fn);
 }
 
-function getWasmTableEntry(Runtime $runtime, int $funcPtr): FuncAddr {
+function getWasmTableEntry(Runtime $runtime, int $funcPtr): int {
     static $wasmTable = null;
 
     if ($wasmTable === null) {

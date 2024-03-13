@@ -11,13 +11,9 @@ use Nsfisis\Waddiwasi\Structure\Instructions\Instrs\Control\BlockTypes;
 use Nsfisis\Waddiwasi\Structure\Modules\DataModes;
 use Nsfisis\Waddiwasi\Structure\Modules\ElemModes;
 use Nsfisis\Waddiwasi\Structure\Modules\Module;
-use Nsfisis\Waddiwasi\Structure\Types\DataIdx;
-use Nsfisis\Waddiwasi\Structure\Types\ElemIdx;
 use Nsfisis\Waddiwasi\Structure\Types\FuncType;
-use Nsfisis\Waddiwasi\Structure\Types\LabelIdx;
 use Nsfisis\Waddiwasi\Structure\Types\NumType;
 use Nsfisis\Waddiwasi\Structure\Types\ResultType;
-use Nsfisis\Waddiwasi\Structure\Types\TableIdx;
 use Nsfisis\Waddiwasi\Structure\Types\ValType;
 use Nsfisis\Waddiwasi\Structure\Types\ValTypes;
 
@@ -97,23 +93,23 @@ final class Runtime
                 array_pop($instrs); // drop "end"
                 $instrs[] = Instr::I32Const(0);
                 $instrs[] = Instr::I32Const($n);
-                $instrs[] = Instr::TableInit($elem->mode->table, new ElemIdx($i));
-                $instrs[] = Instr::ElemDrop(new ElemIdx($i));
+                $instrs[] = Instr::TableInit($elem->mode->table, $i);
+                $instrs[] = Instr::ElemDrop($i);
                 $runtime->execInstrsForInit($instrs);
             } elseif ($elem->mode instanceof ElemModes\Declarative) {
-                $runtime->execInstrsForInit([Instr::ElemDrop(new ElemIdx($i))]);
+                $runtime->execInstrsForInit([Instr::ElemDrop($i)]);
             }
         }
         foreach ($module->datas as $i => $data) {
             if ($data->mode instanceof DataModes\Active) {
-                assert($data->mode->memory->value === 0);
+                assert($data->mode->memory === 0);
                 $n = count($data->init);
                 $instrs = $data->mode->offset->instrs;
                 array_pop($instrs); // drop "end"
                 $instrs[] = Instr::I32Const(0);
                 $instrs[] = Instr::I32Const($n);
-                $instrs[] = Instr::MemoryInit(new DataIdx($i));
-                $instrs[] = Instr::DataDrop(new DataIdx($i));
+                $instrs[] = Instr::MemoryInit($i);
+                $instrs[] = Instr::DataDrop($i);
                 $runtime->execInstrsForInit($instrs);
             }
         }
@@ -142,7 +138,7 @@ final class Runtime
     {
         $export = $this->getExport($name);
         if ($export instanceof ExternVals\Table) {
-            return $this->store->tables[$export->addr->value];
+            return $this->store->tables[$export->addr];
         }
         return null;
     }
@@ -151,7 +147,7 @@ final class Runtime
     {
         $export = $this->getExport($name);
         if ($export instanceof ExternVals\Mem) {
-            return $this->store->mems[$export->addr->value];
+            return $this->store->mems[$export->addr];
         }
         return null;
     }
@@ -175,7 +171,7 @@ final class Runtime
         assert($export instanceof ExternVals\Func);
         $funcAddr = $export->addr;
 
-        $funcInst = $this->store->funcs[$funcAddr->value];
+        $funcInst = $this->store->funcs[$funcAddr];
         assert($funcInst instanceof FuncInsts\Wasm);
         $paramTypes = $funcInst->type->params->types;
         $resultTypes = $funcInst->type->results->types;
@@ -196,15 +192,15 @@ final class Runtime
         return $results;
     }
 
-    public function invokeByFuncAddr(FuncAddr $funcAddr): void
+    public function invokeByFuncAddr(int $funcAddr): void
     {
         $this->doInvokeFunc($funcAddr);
     }
 
-    private function doInvokeFunc(FuncAddr $funcAddr): void
+    private function doInvokeFunc(int $funcAddr): void
     {
-        // echo "Invoke: $funcAddr->value\n";
-        $fn = $this->store->funcs[$funcAddr->value];
+        // echo "Invoke: $funcAddr\n";
+        $fn = $this->store->funcs[$funcAddr];
         if ($fn instanceof FuncInsts\Wasm) {
             $this->doInvokeWasmFunc($fn, $funcAddr);
         } elseif ($fn instanceof FuncInsts\Host) {
@@ -212,10 +208,10 @@ final class Runtime
         } else {
             throw new \RuntimeException("doInvokeFunc: unreachable");
         }
-        // echo "Return: $funcAddr->value\n";
+        // echo "Return: $funcAddr\n";
     }
 
-    private function doInvokeWasmFunc(FuncInsts\Wasm $fn, FuncAddr $funcAddr): void
+    private function doInvokeWasmFunc(FuncInsts\Wasm $fn, int $funcAddr): void
     {
         $paramTypes = $fn->type->params->types;
         $n = count($paramTypes);
@@ -235,7 +231,7 @@ final class Runtime
                 array_map(fn ($local) => self::defaultValueFromValType($local->type), $ts),
             ),
             $fn->module,
-            "wasm: $funcAddr->value",
+            "wasm: $funcAddr",
         );
         $this->activateFrame($f);
         $l = StackEntry::Label($m);
@@ -1517,7 +1513,7 @@ final class Runtime
     {
         $x = $instr->func;
         $f = $this->stack->currentFrame();
-        $a = $f->module->funcAddrs[$x->value];
+        $a = $f->module->funcAddrs[$x];
         $this->stack->pushRefFunc($a);
     }
 
@@ -1554,8 +1550,8 @@ final class Runtime
     {
         $x = $instr->var;
         $f = $this->stack->currentFrame();
-        $a = $f->module->globalAddrs[$x->value];
-        $glob = $this->store->globals[$a->value];
+        $a = $f->module->globalAddrs[$x];
+        $glob = $this->store->globals[$a];
         $val = $glob->value;
         $this->stack->pushValue($val);
     }
@@ -1564,8 +1560,8 @@ final class Runtime
     {
         $x = $instr->var;
         $f = $this->stack->currentFrame();
-        $a = $f->module->globalAddrs[$x->value];
-        $glob = $this->store->globals[$a->value];
+        $a = $f->module->globalAddrs[$x];
+        $glob = $this->store->globals[$a];
         $val = $this->stack->popValue();
         $glob->value = $val;
     }
@@ -1574,9 +1570,9 @@ final class Runtime
     {
         $x = $instr->var;
         $f = $this->stack->currentFrame();
-        $val = $f->locals[$x->value] ?? null;
+        $val = $f->locals[$x] ?? null;
         if ($val === null) {
-            throw new \RuntimeException("local.get: local $x->value not found in [$f->debugName]");
+            throw new \RuntimeException("local.get: local $x not found in [$f->debugName]");
         }
         $this->stack->pushValue($val);
     }
@@ -1587,7 +1583,7 @@ final class Runtime
         $f = $this->stack->currentFrame();
         $val = $this->stack->popValue();
         // @phpstan-ignore-next-line
-        $f->locals[$x->value] = $val;
+        $f->locals[$x] = $val;
     }
 
     private function execInstrVariableLocalTee(Instrs\Variable\LocalTee $instr): void
@@ -1596,7 +1592,7 @@ final class Runtime
         $f = $this->stack->currentFrame();
         $val = $this->stack->popValue();
         // @phpstan-ignore-next-line
-        $f->locals[$x->value] = $val;
+        $f->locals[$x] = $val;
         $this->stack->pushValue($val);
     }
 
@@ -1604,10 +1600,10 @@ final class Runtime
     {
         $x = $instr->elem;
         $f = $this->stack->currentFrame();
-        $a = $f->module->elemAddrs[$x->value];
-        $elem = $this->store->elems[$a->value];
+        $a = $f->module->elemAddrs[$x];
+        $elem = $this->store->elems[$a];
         // @phpstan-ignore-next-line
-        $this->store->elems[$a->value] = new ElemInst($elem->type, []);
+        $this->store->elems[$a] = new ElemInst($elem->type, []);
     }
 
     private function execInstrTableTableCopy(Instrs\Table\TableCopy $instr): void
@@ -1635,10 +1631,10 @@ final class Runtime
         $x = $instr->to;
         $y = $instr->from;
         $f = $this->stack->currentFrame();
-        $ta = $f->module->tableAddrs[$x->value];
-        $tab = $this->store->tables[$ta->value];
-        $ea = $f->module->elemAddrs[$y->value];
-        $elem = $this->store->elems[$ea->value];
+        $ta = $f->module->tableAddrs[$x];
+        $tab = $this->store->tables[$ta];
+        $ea = $f->module->elemAddrs[$y];
+        $elem = $this->store->elems[$ea];
         $n = $this->stack->popI32();
         $s = $this->stack->popI32();
         $d = $this->stack->popI32();
@@ -1652,7 +1648,7 @@ final class Runtime
             $val = $elem->elem[$s];
             $this->stack->pushI32($d);
             $this->stack->pushValue(Val::Ref($val));
-            $this->execInstr(Instr::TableSet(new TableIdx($x->value)));
+            $this->execInstr(Instr::TableSet($x));
             $d++;
             $s++;
         }
@@ -1662,8 +1658,8 @@ final class Runtime
     {
         $x = $instr->table;
         $f = $this->stack->currentFrame();
-        $a = $f->module->tableAddrs[$x->value];
-        $tab = $this->store->tables[$a->value];
+        $a = $f->module->tableAddrs[$x];
+        $tab = $this->store->tables[$a];
         $val = $this->stack->popRef();
         $i = $this->stack->popI32();
         if (count($tab->elem) <= $i) {
@@ -1682,9 +1678,9 @@ final class Runtime
     {
         $x = $instr->data;
         $f = $this->stack->currentFrame();
-        $a = $f->module->dataAddrs[$x->value];
+        $a = $f->module->dataAddrs[$x];
         // @phpstan-ignore-next-line
-        $this->store->datas[$a->value] = new DataInst([]);
+        $this->store->datas[$a] = new DataInst([]);
     }
 
     private function execInstrMemoryF32Load(Instrs\Memory\F32Load $instr): void
@@ -1822,9 +1818,9 @@ final class Runtime
         $x = $instr->data;
         $f = $this->stack->currentFrame();
         $ma = $f->module->memAddrs[0];
-        $mem = $this->store->mems[$ma->value];
-        $da = $f->module->dataAddrs[$x->value];
-        $data = $this->store->datas[$da->value];
+        $mem = $this->store->mems[$ma];
+        $da = $f->module->dataAddrs[$x];
+        $data = $this->store->datas[$da];
         $n = $this->stack->popI32();
         $s = $this->stack->popI32();
         $d = $this->stack->popI32();
@@ -1848,7 +1844,7 @@ final class Runtime
     {
         $f = $this->stack->currentFrame();
         $a = $f->module->memAddrs[0];
-        $mem = $this->store->mems[$a->value];
+        $mem = $this->store->mems[$a];
         $szInByte = $mem->size();
         assert(is_int($szInByte / (64 * 1024)));
         $sz = $szInByte / (64 * 1024);
@@ -1870,11 +1866,11 @@ final class Runtime
         } elseif ($result instanceof ControlFlowResults\Return_) {
             return $result;
         } elseif ($result instanceof ControlFlowResults\Br) {
-            if ($result->label->value === 0) {
+            if ($result->label === 0) {
                 $this->deactivateLabel($n);
             } else {
                 $this->deactivateLabel($n);
-                return ControlFlowResult::Br(new LabelIdx($result->label->value - 1));
+                return ControlFlowResult::Br($result->label - 1);
             }
         } else {
             throw new \RuntimeException("block: unreachable");
@@ -1915,7 +1911,7 @@ final class Runtime
     {
         $x = $instr->func;
         $f = $this->stack->currentFrame();
-        $a = $f->module->funcAddrs[$x->value];
+        $a = $f->module->funcAddrs[$x];
         $this->doInvokeFunc($a);
     }
 
@@ -1924,9 +1920,9 @@ final class Runtime
         $x = $instr->funcTable;
         $y = $instr->type;
         $f = $this->stack->currentFrame();
-        $ta = $f->module->tableAddrs[$x->value];
-        $tab = $this->store->tables[$ta->value];
-        $ftExpect = $f->module->types[$y->value];
+        $ta = $f->module->tableAddrs[$x];
+        $tab = $this->store->tables[$ta];
+        $ftExpect = $f->module->types[$y];
         $i = self::wasmI32ToPhpInt($this->stack->popI32());
         if (count($tab->elem) <= $i) {
             throw new TrapException("call_indirect: out of bounds");
@@ -1937,7 +1933,7 @@ final class Runtime
         }
         assert($r instanceof Refs\RefFunc);
         $a = $r->addr;
-        $fn = $this->store->funcs[$a->value];
+        $fn = $this->store->funcs[$a];
         assert($fn instanceof FuncInsts\Wasm || $fn instanceof FuncInsts\Host);
         $ftActual = $fn->type;
         if (!$ftExpect->equals($ftActual)) {
@@ -1985,7 +1981,7 @@ final class Runtime
             } elseif ($result instanceof ControlFlowResults\Return_) {
                 return $result;
             } elseif ($result instanceof ControlFlowResults\Br) {
-                if ($result->label->value === 0) {
+                if ($result->label === 0) {
                     if ($n === 1) {
                         if ($this->stack->top() instanceof StackEntries\Label) {
                             // echo "loop: top is label\n";
@@ -2001,7 +1997,7 @@ final class Runtime
                     continue;
                 } else {
                     $this->deactivateLabel($n);
-                    return ControlFlowResult::Br(new LabelIdx($result->label->value - 1));
+                    return ControlFlowResult::Br($result->label - 1);
                 }
             } else {
                 throw new \RuntimeException("loop: unreachable");
@@ -2028,7 +2024,7 @@ final class Runtime
     {
         $f = $this->stack->currentFrame();
         $a = $f->module->memAddrs[0];
-        $mem = $this->store->mems[$a->value];
+        $mem = $this->store->mems[$a];
         $i = $this->stack->popI32();
         $ea = $i + $offset;
         $c = $mem->loadI32($ea, $n, $signed);
@@ -2042,7 +2038,7 @@ final class Runtime
     {
         $f = $this->stack->currentFrame();
         $a = $f->module->memAddrs[0];
-        $mem = $this->store->mems[$a->value];
+        $mem = $this->store->mems[$a];
         $i = $this->stack->popI32();
         $ea = $i + $offset;
         $c = $mem->loadI64($ea, $n, $signed);
@@ -2056,7 +2052,7 @@ final class Runtime
     {
         $f = $this->stack->currentFrame();
         $a = $f->module->memAddrs[0];
-        $mem = $this->store->mems[$a->value];
+        $mem = $this->store->mems[$a];
         $i = $this->stack->popI32();
         $ea = $i + $offset;
         $c = $mem->loadF32($ea);
@@ -2070,7 +2066,7 @@ final class Runtime
     {
         $f = $this->stack->currentFrame();
         $a = $f->module->memAddrs[0];
-        $mem = $this->store->mems[$a->value];
+        $mem = $this->store->mems[$a];
         $i = $this->stack->popI32();
         $ea = $i + $offset;
         $c = $mem->loadF64($ea);
@@ -2084,7 +2080,7 @@ final class Runtime
     {
         $f = $this->stack->currentFrame();
         $a = $f->module->memAddrs[0];
-        $mem = $this->store->mems[$a->value];
+        $mem = $this->store->mems[$a];
         $c = $this->stack->popI32();
         $i = $this->stack->popI32();
         $ea = $i + $offset;
@@ -2098,7 +2094,7 @@ final class Runtime
     {
         $f = $this->stack->currentFrame();
         $a = $f->module->memAddrs[0];
-        $mem = $this->store->mems[$a->value];
+        $mem = $this->store->mems[$a];
         $c = $this->stack->popI64();
         $i = $this->stack->popI32();
         $ea = $i + $offset;
@@ -2112,7 +2108,7 @@ final class Runtime
     {
         $f = $this->stack->currentFrame();
         $a = $f->module->memAddrs[0];
-        $mem = $this->store->mems[$a->value];
+        $mem = $this->store->mems[$a];
         $c = $this->stack->popF32();
         $i = $this->stack->popI32();
         $ea = $i + $offset;
@@ -2126,7 +2122,7 @@ final class Runtime
     {
         $f = $this->stack->currentFrame();
         $a = $f->module->memAddrs[0];
-        $mem = $this->store->mems[$a->value];
+        $mem = $this->store->mems[$a];
         $c = $this->stack->popF64();
         $i = $this->stack->popI32();
         $ea = $i + $offset;
@@ -2153,7 +2149,7 @@ final class Runtime
     private static function expandBlockType(BlockType $bt, ModuleInst $module): FuncType
     {
         if ($bt instanceof BlockTypes\TypeIdx) {
-            return $module->types[$bt->inner->value];
+            return $module->types[$bt->inner];
         } elseif ($bt instanceof BlockTypes\ValType) {
             $t = $bt->inner;
             return new FuncType(

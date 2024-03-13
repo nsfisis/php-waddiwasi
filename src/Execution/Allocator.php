@@ -46,7 +46,7 @@ final readonly class Allocator
      * @param list<ExternVal> $externVals
      * @param list<Val> $vals
      * @param list<list<Ref>> $refsList
-     * @param list<FuncAddr> $preAllocatedFuncs
+     * @param list<int> $preAllocatedFuncs
      */
     public function allocModule(
         Module $module,
@@ -69,10 +69,10 @@ final readonly class Allocator
 
         foreach ($preAllocatedFuncs as $funcAddr) {
             $m->funcAddrs[] = $funcAddr;
-            $funcInst = $this->store->funcs[$funcAddr->value];
+            $funcInst = $this->store->funcs[$funcAddr];
             if ($funcInst instanceof FuncInsts\Wasm) {
                 // @phpstan-ignore-next-line
-                $this->store->funcs[$funcAddr->value] = FuncInst::Wasm(
+                $this->store->funcs[$funcAddr] = FuncInst::Wasm(
                     $funcInst->type,
                     $m,
                     $funcInst->code,
@@ -98,10 +98,10 @@ final readonly class Allocator
 
         foreach ($module->exports as $export) {
             $value = match ($export->desc::class) {
-                ExportDescs\Func::class => ExternVal::Func($m->funcAddrs[$export->desc->func->value]),
-                ExportDescs\Table::class => ExternVal::Table($m->tableAddrs[$export->desc->table->value]),
-                ExportDescs\Mem::class => ExternVal::Mem($m->memAddrs[$export->desc->mem->value]),
-                ExportDescs\Global_::class => ExternVal::Global_($m->globalAddrs[$export->desc->global->value]),
+                ExportDescs\Func::class => ExternVal::Func($m->funcAddrs[$export->desc->func]),
+                ExportDescs\Table::class => ExternVal::Table($m->tableAddrs[$export->desc->table]),
+                ExportDescs\Mem::class => ExternVal::Mem($m->memAddrs[$export->desc->mem]),
+                ExportDescs\Global_::class => ExternVal::Global_($m->globalAddrs[$export->desc->global]),
                 default => throw new \RuntimeException("unreachable"),
             };
             $m->exports[] = new ExportInst($export->name, $value);
@@ -110,54 +110,54 @@ final readonly class Allocator
         return $m;
     }
 
-    private function allocFunc(Func $func, ModuleInst $moduleInst): FuncAddr
+    private function allocFunc(Func $func, ModuleInst $moduleInst): int
     {
-        $funcType = $moduleInst->types[$func->type->value];
+        $funcType = $moduleInst->types[$func->type];
         $funcInst = FuncInst::Wasm($funcType, $moduleInst, $func);
         $this->store->funcs[] = $funcInst;
-        return new FuncAddr(count($this->store->funcs) - 1);
+        return count($this->store->funcs) - 1;
     }
 
-    private function allocTable(TableType $tableType, Ref $ref): TableAddr
+    private function allocTable(TableType $tableType, Ref $ref): int
     {
         $minSize = $tableType->limits->min;
         $elem = array_fill(0, $minSize, $ref);
         $tableInst = new TableInst($tableType, $elem);
         $this->store->tables[] = $tableInst;
-        return new TableAddr(count($this->store->tables) - 1);
+        return count($this->store->tables) - 1;
     }
 
-    private function allocMem(MemType $memType): MemAddr
+    private function allocMem(MemType $memType): int
     {
         $memInst = new MemInst($memType);
         $this->store->mems[] = $memInst;
-        return new MemAddr(count($this->store->mems) - 1);
+        return count($this->store->mems) - 1;
     }
 
-    private function allocGlobal(GlobalType $globalType, Val $val): GlobalAddr
+    private function allocGlobal(GlobalType $globalType, Val $val): int
     {
         $globalInst = new GlobalInst($globalType, $val);
         $this->store->globals[] = $globalInst;
-        return new GlobalAddr(count($this->store->globals) - 1);
+        return count($this->store->globals) - 1;
     }
 
     /**
      * @param list<Ref> $elem
      */
-    private function allocElem(RefType $refType, array $elem): ElemAddr
+    private function allocElem(RefType $refType, array $elem): int
     {
         $elemInst = new ElemInst($refType, $elem);
         $this->store->elems[] = $elemInst;
-        return new ElemAddr(count($this->store->elems) - 1);
+        return count($this->store->elems) - 1;
     }
 
     /**
      * @param list<Byte> $data
      */
-    private function allocData(array $data): DataAddr
+    private function allocData(array $data): int
     {
         $dataInst = new DataInst($data);
         $this->store->datas[] = $dataInst;
-        return new DataAddr(count($this->store->datas) - 1);
+        return count($this->store->datas) - 1;
     }
 }

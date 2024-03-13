@@ -6,22 +6,22 @@ namespace Nsfisis\Waddiwasi\Execution;
 
 abstract readonly class ExternVal
 {
-    final public static function Func(FuncAddr $addr): ExternVals\Func
+    final public static function Func(int $addr): ExternVals\Func
     {
         return new ExternVals\Func($addr);
     }
 
-    final public static function Table(TableAddr $addr): ExternVals\Table
+    final public static function Table(int $addr): ExternVals\Table
     {
         return new ExternVals\Table($addr);
     }
 
-    final public static function Mem(MemAddr $addr): ExternVals\Mem
+    final public static function Mem(int $addr): ExternVals\Mem
     {
         return new ExternVals\Mem($addr);
     }
 
-    final public static function Global_(GlobalAddr $addr): ExternVals\Global_
+    final public static function Global_(int $addr): ExternVals\Global_
     {
         return new ExternVals\Global_($addr);
     }

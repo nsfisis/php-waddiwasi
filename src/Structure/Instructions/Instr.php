@@ -12,15 +12,7 @@ use Nsfisis\Waddiwasi\Structure\Instructions\Instrs\Parametric;
 use Nsfisis\Waddiwasi\Structure\Instructions\Instrs\Reference;
 use Nsfisis\Waddiwasi\Structure\Instructions\Instrs\Table;
 use Nsfisis\Waddiwasi\Structure\Instructions\Instrs\Variable;
-use Nsfisis\Waddiwasi\Structure\Types\DataIdx;
-use Nsfisis\Waddiwasi\Structure\Types\ElemIdx;
-use Nsfisis\Waddiwasi\Structure\Types\FuncIdx;
-use Nsfisis\Waddiwasi\Structure\Types\GlobalIdx;
-use Nsfisis\Waddiwasi\Structure\Types\LabelIdx;
-use Nsfisis\Waddiwasi\Structure\Types\LocalIdx;
 use Nsfisis\Waddiwasi\Structure\Types\RefType;
-use Nsfisis\Waddiwasi\Structure\Types\TableIdx;
-use Nsfisis\Waddiwasi\Structure\Types\TypeIdx;
 use Nsfisis\Waddiwasi\Structure\Types\ValType;
 
 abstract readonly class Instr
@@ -616,7 +608,7 @@ abstract readonly class Instr
     }
 
     // Reference instructions
-    final public static function RefFunc(FuncIdx $func): Reference\RefFunc
+    final public static function RefFunc(int $func): Reference\RefFunc
     {
         return new Reference\RefFunc($func);
     }
@@ -643,63 +635,63 @@ abstract readonly class Instr
     }
 
     // Variable instructions
-    final public static function GlobalGet(GlobalIdx $var): Variable\GlobalGet
+    final public static function GlobalGet(int $var): Variable\GlobalGet
     {
         return new Variable\GlobalGet($var);
     }
-    final public static function GlobalSet(GlobalIdx $var): Variable\GlobalSet
+    final public static function GlobalSet(int $var): Variable\GlobalSet
     {
         return new Variable\GlobalSet($var);
     }
-    final public static function LocalGet(LocalIdx $var): Variable\LocalGet
+    final public static function LocalGet(int $var): Variable\LocalGet
     {
         return new Variable\LocalGet($var);
     }
-    final public static function LocalSet(LocalIdx $var): Variable\LocalSet
+    final public static function LocalSet(int $var): Variable\LocalSet
     {
         return new Variable\LocalSet($var);
     }
-    final public static function LocalTee(LocalIdx $var): Variable\LocalTee
+    final public static function LocalTee(int $var): Variable\LocalTee
     {
         return new Variable\LocalTee($var);
     }
 
     // Table instructions
-    final public static function ElemDrop(ElemIdx $elem): Table\ElemDrop
+    final public static function ElemDrop(int $elem): Table\ElemDrop
     {
         return new Table\ElemDrop($elem);
     }
-    final public static function TableCopy(TableIdx $to, TableIdx $from): Table\TableCopy
+    final public static function TableCopy(int $to, int $from): Table\TableCopy
     {
         return new Table\TableCopy($to, $from);
     }
-    final public static function TableFill(TableIdx $table): Table\TableFill
+    final public static function TableFill(int $table): Table\TableFill
     {
         return new Table\TableFill($table);
     }
-    final public static function TableGet(TableIdx $table): Table\TableGet
+    final public static function TableGet(int $table): Table\TableGet
     {
         return new Table\TableGet($table);
     }
-    final public static function TableGrow(TableIdx $table): Table\TableGrow
+    final public static function TableGrow(int $table): Table\TableGrow
     {
         return new Table\TableGrow($table);
     }
-    final public static function TableInit(TableIdx $to, ElemIdx $from): Table\TableInit
+    final public static function TableInit(int $to, int $from): Table\TableInit
     {
         return new Table\TableInit($to, $from);
     }
-    final public static function TableSet(TableIdx $table): Table\TableSet
+    final public static function TableSet(int $table): Table\TableSet
     {
         return new Table\TableSet($table);
     }
-    final public static function TableSize(TableIdx $table): Table\TableSize
+    final public static function TableSize(int $table): Table\TableSize
     {
         return new Table\TableSize($table);
     }
 
     // Memory instructions
-    final public static function DataDrop(DataIdx $data): Memory\DataDrop
+    final public static function DataDrop(int $data): Memory\DataDrop
     {
         return new Memory\DataDrop($data);
     }
@@ -899,7 +891,7 @@ abstract readonly class Instr
     {
         return new Memory\MemoryGrow();
     }
-    final public static function MemoryInit(DataIdx $data): Memory\MemoryInit
+    final public static function MemoryInit(int $data): Memory\MemoryInit
     {
         return new Memory\MemoryInit($data);
     }
@@ -916,26 +908,26 @@ abstract readonly class Instr
     {
         return new Control\Block($type, $body);
     }
-    final public static function Br(LabelIdx $label): Control\Br
+    final public static function Br(int $label): Control\Br
     {
         return new Control\Br($label);
     }
-    final public static function BrIf(LabelIdx $label): Control\BrIf
+    final public static function BrIf(int $label): Control\BrIf
     {
         return new Control\BrIf($label);
     }
     /**
-     * @param list<LabelIdx> $labelTable
+     * @param list<int> $labelTable
      */
-    final public static function BrTable(array $labelTable, LabelIdx $defaultLabel): Control\BrTable
+    final public static function BrTable(array $labelTable, int $defaultLabel): Control\BrTable
     {
         return new Control\BrTable($labelTable, $defaultLabel);
     }
-    final public static function Call(FuncIdx $func): Control\Call
+    final public static function Call(int $func): Control\Call
     {
         return new Control\Call($func);
     }
-    final public static function CallIndirect(TableIdx $funcTable, TypeIdx $type): Control\CallIndirect
+    final public static function CallIndirect(int $funcTable, int $type): Control\CallIndirect
     {
         return new Control\CallIndirect($funcTable, $type);
     }

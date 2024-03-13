@@ -55,12 +55,12 @@ abstract readonly class Val
         return self::Ref(Ref::RefNull($type));
     }
 
-    final public static function RefFunc(FuncAddr $addr): Vals\Ref
+    final public static function RefFunc(int $addr): Vals\Ref
     {
         return self::Ref(Ref::RefFunc($addr));
     }
 
-    final public static function RefExtern(ExternAddr $addr): Vals\Ref
+    final public static function RefExtern(int $addr): Vals\Ref
     {
         return self::Ref(Ref::RefExtern($addr));
     }

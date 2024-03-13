@@ -7,11 +7,10 @@ namespace Nsfisis\Waddiwasi\Structure\Modules;
 use Nsfisis\Waddiwasi\Structure\Types\GlobalType;
 use Nsfisis\Waddiwasi\Structure\Types\MemType;
 use Nsfisis\Waddiwasi\Structure\Types\TableType;
-use Nsfisis\Waddiwasi\Structure\Types\TypeIdx;
 
 abstract readonly class ImportDesc
 {
-    final public static function Func(TypeIdx $func): ImportDescs\Func
+    final public static function Func(int $func): ImportDescs\Func
     {
         return new ImportDescs\Func($func);
     }

@@ -15,7 +15,6 @@ use Nsfisis\Waddiwasi\Structure\Types\NumType;
 use Nsfisis\Waddiwasi\Structure\Types\RefType;
 use Nsfisis\Waddiwasi\Structure\Types\ResultType;
 use Nsfisis\Waddiwasi\Structure\Types\TableType;
-use Nsfisis\Waddiwasi\Structure\Types\TypeIdx;
 use Nsfisis\Waddiwasi\Structure\Types\ValType;
 use Nsfisis\Waddiwasi\Structure\Types\ValTypes;
 
@@ -45,9 +44,9 @@ final readonly class Debug
         }
     }
 
-    private static function typeIdxToString(TypeIdx $idx, Module $module): string
+    private static function typeIdxToString(int $idx, Module $module): string
     {
-        $type = $module->types[$idx->value];
+        $type = $module->types[$idx];
         return self::funcTypeToString($type);
     }
 
