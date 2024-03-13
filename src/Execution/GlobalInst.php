@@ -10,7 +10,7 @@ final class GlobalInst
 {
     public function __construct(
         public readonly GlobalType $type,
-        public Val $value,
+        public int|float|Ref $value,
     ) {
     }
 }

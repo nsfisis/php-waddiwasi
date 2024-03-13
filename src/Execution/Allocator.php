@@ -44,7 +44,7 @@ final readonly class Allocator
 
     /**
      * @param list<ExternVal> $externVals
-     * @param list<Val> $vals
+     * @param list<int|float|Ref> $vals
      * @param list<list<Ref>> $refsList
      * @param list<int> $preAllocatedFuncs
      */
@@ -134,7 +134,7 @@ final readonly class Allocator
         return count($this->store->mems) - 1;
     }
 
-    private function allocGlobal(GlobalType $globalType, Val $val): int
+    private function allocGlobal(GlobalType $globalType, int|float|Ref $val): int
     {
         $globalInst = new GlobalInst($globalType, $val);
         $this->store->globals[] = $globalInst;

@@ -6,7 +6,7 @@ namespace Nsfisis\Waddiwasi\Execution;
 
 abstract class StackEntry
 {
-    final public static function Value(Val $inner): StackEntries\Value
+    final public static function Value(int|float|Ref $inner): StackEntries\Value
     {
         return new StackEntries\Value($inner);
     }
@@ -22,7 +22,7 @@ abstract class StackEntry
 
     /**
      * @param int<0, max> $arity
-     * @param list<Val> $locals
+     * @param list<int|float|Ref> $locals
      */
     final public static function Frame(
         int $arity,

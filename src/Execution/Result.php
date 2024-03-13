@@ -7,7 +7,7 @@ namespace Nsfisis\Waddiwasi\Execution;
 abstract readonly class Result
 {
     /**
-     * @param list<Val> $values
+     * @param list<int|float|Ref> $values
      */
     final public static function Values(array $values): Results\Values
     {

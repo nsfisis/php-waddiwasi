@@ -32,61 +32,29 @@ final class Stack
         $this->push($label);
     }
 
-    public function pushValue(Val $val): void
+    public function pushValue(int|float|Ref $val): void
     {
         $this->push(StackEntry::Value($val));
     }
 
     public function pushBool(bool $value): void
     {
-        $this->pushValue(Val::NumI32((int)$value));
-    }
-
-    /**
-     * @param S32 $value
-     */
-    public function pushI32(int $value): void
-    {
-        $this->pushValue(Val::NumI32($value));
-    }
-
-    /**
-     * @param S64 $value
-     */
-    public function pushI64(int $value): void
-    {
-        $this->pushValue(Val::NumI64($value));
-    }
-
-    /**
-     * @param F32 $value
-     */
-    public function pushF32(float $value): void
-    {
-        $this->pushValue(Val::NumF32($value));
-    }
-
-    /**
-     * @param F64 $value
-     */
-    public function pushF64(float $value): void
-    {
-        $this->pushValue(Val::NumF64($value));
+        $this->pushValue((int)$value);
     }
 
     public function pushRefNull(RefType $type): void
     {
-        $this->pushValue(Val::RefNull($type));
+        $this->pushValue(Ref::RefNull($type));
     }
 
     public function pushRefFunc(int $addr): void
     {
-        $this->pushValue(Val::RefFunc($addr));
+        $this->pushValue(Ref::RefFunc($addr));
     }
 
     public function pushRefExtern(int $addr): void
     {
-        $this->pushValue(Val::RefExtern($addr));
+        $this->pushValue(Ref::RefExtern($addr));
     }
 
     public function popFrame(): StackEntries\Frame
@@ -97,7 +65,7 @@ final class Stack
         return $result;
     }
 
-    public function popValue(): Val
+    public function popValue(): int|float|Ref
     {
         $result = $this->pop();
         assert($result instanceof StackEntries\Value, 'Expected a value on the stack, but got ' . print_r($result, true));
@@ -105,7 +73,7 @@ final class Stack
     }
 
     /**
-     * @return list<Val>
+     * @return list<int|float|Ref>
      */
     public function popNValues(int $n): array
     {
@@ -116,59 +84,32 @@ final class Stack
         return $results;
     }
 
-    /**
-     * @return S32
-     */
-    public function popI32(): int
+    public function popInt(): int
     {
         $v = $this->popValue();
-        assert($v instanceof Vals\Num);
-        assert($v->inner instanceof Nums\I32);
-        return $v->inner->value;
-    }
-
-    /**
-     * @return S64
-     */
-    public function popI64(): int
-    {
-        $v = $this->popValue();
-        assert($v instanceof Vals\Num);
-        assert($v->inner instanceof Nums\I64);
-        return $v->inner->value;
+        assert(is_int($v));
+        return $v;
     }
 
     /**
      * @return F32
      */
-    public function popF32(): float
+    public function popFloat(): float
     {
         $v = $this->popValue();
-        assert($v instanceof Vals\Num);
-        assert($v->inner instanceof Nums\F32_);
-        return $v->inner->value;
-    }
-
-    /**
-     * @return F64
-     */
-    public function popF64(): float
-    {
-        $v = $this->popValue();
-        assert($v instanceof Vals\Num);
-        assert($v->inner instanceof Nums\F64_);
-        return $v->inner->value;
+        assert(is_float($v));
+        return $v;
     }
 
     public function popRef(): Ref
     {
         $v = $this->popValue();
-        assert($v instanceof Vals\Ref);
-        return $v->inner;
+        assert($v instanceof Ref);
+        return $v;
     }
 
     /**
-     * @return list<Val>
+     * @return list<int|float|Ref>
      */
     public function popValuesToLabel(): array
     {

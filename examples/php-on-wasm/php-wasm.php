@@ -9,12 +9,9 @@ use Nsfisis\Waddiwasi\BinaryFormat\InvalidBinaryFormatException;
 use Nsfisis\Waddiwasi\Debug\Debug;
 use Nsfisis\Waddiwasi\Execution\ExternVal;
 use Nsfisis\Waddiwasi\Execution\FuncInst;
-use Nsfisis\Waddiwasi\Execution\Nums;
 use Nsfisis\Waddiwasi\Execution\Refs;
 use Nsfisis\Waddiwasi\Execution\Runtime;
 use Nsfisis\Waddiwasi\Execution\Store;
-use Nsfisis\Waddiwasi\Execution\Val;
-use Nsfisis\Waddiwasi\Execution\Vals;
 use Nsfisis\Waddiwasi\Structure\Types\FuncType;
 use Nsfisis\Waddiwasi\Structure\Types\NumType;
 use Nsfisis\Waddiwasi\Structure\Types\ResultType;
@@ -144,12 +141,10 @@ $runtime = Runtime::instantiate($store, $module, $externVals);
 $codePtr = allocateStringOnWasmMemory($runtime, PHP_HELLO_WORLD);
 
 fprintf(STDERR, "Executing...\n");
-$results = $runtime->invoke("php_wasm_run", [Val::NumI32($codePtr)]);
+$results = $runtime->invoke("php_wasm_run", [$codePtr]);
 assert(count($results) === 1);
-$result = $results[0];
-assert($result instanceof Vals\Num);
-assert($result->inner instanceof Nums\I32);
-$exitCode = $result->inner->value;
+$exitCode = $results[0];
+assert(is_int($exitCode));
 
 fprintf(STDERR, "Exit code: $exitCode\n");
 fprintf(STDERR, "Memory peak usage: %s\n", memory_get_peak_usage());
@@ -167,21 +162,19 @@ function allocateStringOnWasmMemory(Runtime $runtime, string $str): int {
 }
 
 function wasm_stackAlloc(Runtime $runtime, int $size): int {
-    $results = $runtime->invoke("stackAlloc", [Val::NumI32($size)]);
+    $results = $runtime->invoke("stackAlloc", [$size]);
     assert(count($results) === 1);
     $result = $results[0];
-    assert($result instanceof Vals\Num);
-    assert($result->inner instanceof Nums\I32);
-    return $result->inner->value;
+    assert(is_int($result));
+    return $result;
 }
 
 function wasm_stackSave(Runtime $runtime): int {
     $results = $runtime->invoke("stackSave", []);
     assert(count($results) === 1);
     $result = $results[0];
-    assert($result instanceof Vals\Num);
-    assert($result->inner instanceof Nums\I32);
-    return $result->inner->value;
+    assert(is_int($result));
+    return $result;
 }
 
 function copyStringToWasmMemory(Runtime $runtime, int $dst, string $src): void {
@@ -257,35 +250,35 @@ function syscallCalculateAt(Runtime $runtime, int $dirfd, string $path): string 
 
 // Type: (i32, i32, i32) -> (i32)
 function hostFunc__env__invoke_iii(Runtime $runtime): void {
-    $a2 = $runtime->stack->popI32();
-    $a1 = $runtime->stack->popI32();
-    $index = $runtime->stack->popI32();
+    $a2 = $runtime->stack->popInt();
+    $a1 = $runtime->stack->popInt();
+    $index = $runtime->stack->popInt();
     $sp = wasm_stackSave($runtime);
     $func = getWasmTableEntry($runtime, $index);
-    $runtime->stack->pushI32($a1);
-    $runtime->stack->pushI32($a2);
+    $runtime->stack->pushValue($a1);
+    $runtime->stack->pushValue($a2);
     $runtime->invokeByFuncAddr($func);
 }
 
 // Type: (i32, i32, i32, i32, i32) -> (i32)
 function hostFunc__env__invoke_iiiii(Runtime $runtime): void {
-    $a4 = $runtime->stack->popI32();
-    $a3 = $runtime->stack->popI32();
-    $a2 = $runtime->stack->popI32();
-    $a1 = $runtime->stack->popI32();
-    $index = $runtime->stack->popI32();
+    $a4 = $runtime->stack->popInt();
+    $a3 = $runtime->stack->popInt();
+    $a2 = $runtime->stack->popInt();
+    $a1 = $runtime->stack->popInt();
+    $index = $runtime->stack->popInt();
     $sp = wasm_stackSave($runtime);
     $func = getWasmTableEntry($runtime, $index);
-    $runtime->stack->pushI32($a1);
-    $runtime->stack->pushI32($a2);
-    $runtime->stack->pushI32($a3);
-    $runtime->stack->pushI32($a4);
+    $runtime->stack->pushValue($a1);
+    $runtime->stack->pushValue($a2);
+    $runtime->stack->pushValue($a3);
+    $runtime->stack->pushValue($a4);
     $runtime->invokeByFuncAddr($func);
 }
 
 // Type: (i32) -> ()
 function hostFunc__env__invoke_v(Runtime $runtime): void {
-    $index = $runtime->stack->popI32();
+    $index = $runtime->stack->popInt();
     $sp = wasm_stackSave($runtime);
     $func = getWasmTableEntry($runtime, $index);
     $runtime->invokeByFuncAddr($func);
@@ -293,25 +286,25 @@ function hostFunc__env__invoke_v(Runtime $runtime): void {
 
 // Type: (i32, i32, i32, i32) -> (i32)
 function hostFunc__env__invoke_iiii(Runtime $runtime): void {
-    $a3 = $runtime->stack->popI32();
-    $a2 = $runtime->stack->popI32();
-    $a1 = $runtime->stack->popI32();
-    $index = $runtime->stack->popI32();
+    $a3 = $runtime->stack->popInt();
+    $a2 = $runtime->stack->popInt();
+    $a1 = $runtime->stack->popInt();
+    $index = $runtime->stack->popInt();
     $sp = wasm_stackSave($runtime);
     $func = getWasmTableEntry($runtime, $index);
-    $runtime->stack->pushI32($a1);
-    $runtime->stack->pushI32($a2);
-    $runtime->stack->pushI32($a3);
+    $runtime->stack->pushValue($a1);
+    $runtime->stack->pushValue($a2);
+    $runtime->stack->pushValue($a3);
     $runtime->invokeByFuncAddr($func);
 }
 
 // Type: (i32, i32) -> (i32)
 function hostFunc__env__invoke_ii(Runtime $runtime): void {
-    $a1 = $runtime->stack->popI32();
-    $index = $runtime->stack->popI32();
+    $a1 = $runtime->stack->popInt();
+    $index = $runtime->stack->popInt();
     $sp = wasm_stackSave($runtime);
     $func = getWasmTableEntry($runtime, $index);
-    $runtime->stack->pushI32($a1);
+    $runtime->stack->pushValue($a1);
     $runtime->invokeByFuncAddr($func);
 }
 
@@ -327,43 +320,43 @@ function hostFunc__env__exit(Runtime $runtime): void {
 
 // Type: (i32, i32, i32, i32) -> ()
 function hostFunc__env__invoke_viii(Runtime $runtime): void {
-    $a3 = $runtime->stack->popI32();
-    $a2 = $runtime->stack->popI32();
-    $a1 = $runtime->stack->popI32();
-    $index = $runtime->stack->popI32();
+    $a3 = $runtime->stack->popInt();
+    $a2 = $runtime->stack->popInt();
+    $a1 = $runtime->stack->popInt();
+    $index = $runtime->stack->popInt();
     $sp = wasm_stackSave($runtime);
     $func = getWasmTableEntry($runtime, $index);
-    $runtime->stack->pushI32($a1);
-    $runtime->stack->pushI32($a2);
-    $runtime->stack->pushI32($a3);
+    $runtime->stack->pushValue($a1);
+    $runtime->stack->pushValue($a2);
+    $runtime->stack->pushValue($a3);
     $runtime->invokeByFuncAddr($func);
 }
 
 // Type: (i32, i32, i32) -> ()
 function hostFunc__env__invoke_vii(Runtime $runtime): void {
-    $a2 = $runtime->stack->popI32();
-    $a1 = $runtime->stack->popI32();
-    $index = $runtime->stack->popI32();
+    $a2 = $runtime->stack->popInt();
+    $a1 = $runtime->stack->popInt();
+    $index = $runtime->stack->popInt();
     $sp = wasm_stackSave($runtime);
     $func = getWasmTableEntry($runtime, $index);
-    $runtime->stack->pushI32($a1);
-    $runtime->stack->pushI32($a2);
+    $runtime->stack->pushValue($a1);
+    $runtime->stack->pushValue($a2);
     $runtime->invokeByFuncAddr($func);
 }
 
 // Type: (i32, i32) -> ()
 function hostFunc__env__invoke_vi(Runtime $runtime): void {
-    $a1 = $runtime->stack->popI32();
-    $index = $runtime->stack->popI32();
+    $a1 = $runtime->stack->popInt();
+    $index = $runtime->stack->popInt();
     $sp = wasm_stackSave($runtime);
     $func = getWasmTableEntry($runtime, $index);
-    $runtime->stack->pushI32($a1);
+    $runtime->stack->pushValue($a1);
     $runtime->invokeByFuncAddr($func);
 }
 
 // Type: (i32) -> (i32)
 function hostFunc__env__invoke_i(Runtime $runtime): void {
-    $index = $runtime->stack->popI32();
+    $index = $runtime->stack->popInt();
     $sp = wasm_stackSave($runtime);
     $func = getWasmTableEntry($runtime, $index);
     $runtime->invokeByFuncAddr($func);
@@ -371,113 +364,113 @@ function hostFunc__env__invoke_i(Runtime $runtime): void {
 
 // Type: (i32, i32, i32, i32, i32, i32, i32) -> (i32)
 function hostFunc__env__invoke_iiiiiii(Runtime $runtime): void {
-    $a6 = $runtime->stack->popI32();
-    $a5 = $runtime->stack->popI32();
-    $a4 = $runtime->stack->popI32();
-    $a3 = $runtime->stack->popI32();
-    $a2 = $runtime->stack->popI32();
-    $a1 = $runtime->stack->popI32();
-    $index = $runtime->stack->popI32();
+    $a6 = $runtime->stack->popInt();
+    $a5 = $runtime->stack->popInt();
+    $a4 = $runtime->stack->popInt();
+    $a3 = $runtime->stack->popInt();
+    $a2 = $runtime->stack->popInt();
+    $a1 = $runtime->stack->popInt();
+    $index = $runtime->stack->popInt();
     $sp = wasm_stackSave($runtime);
     $func = getWasmTableEntry($runtime, $index);
-    $runtime->stack->pushI32($a1);
-    $runtime->stack->pushI32($a2);
-    $runtime->stack->pushI32($a3);
-    $runtime->stack->pushI32($a4);
-    $runtime->stack->pushI32($a5);
-    $runtime->stack->pushI32($a6);
+    $runtime->stack->pushValue($a1);
+    $runtime->stack->pushValue($a2);
+    $runtime->stack->pushValue($a3);
+    $runtime->stack->pushValue($a4);
+    $runtime->stack->pushValue($a5);
+    $runtime->stack->pushValue($a6);
     $runtime->invokeByFuncAddr($func);
 }
 
 // Type: (i32, i32, i32, i32) -> ()
 function hostFunc__env____assert_fail(Runtime $runtime): void {
-    $a3 = $runtime->stack->popI32();
-    $a2 = $runtime->stack->popI32();
-    $a1 = $runtime->stack->popI32();
-    $index = $runtime->stack->popI32();
+    $a3 = $runtime->stack->popInt();
+    $a2 = $runtime->stack->popInt();
+    $a1 = $runtime->stack->popInt();
+    $index = $runtime->stack->popInt();
     $sp = wasm_stackSave($runtime);
     $func = getWasmTableEntry($runtime, $index);
-    $runtime->stack->pushI32($a1);
-    $runtime->stack->pushI32($a2);
-    $runtime->stack->pushI32($a3);
+    $runtime->stack->pushValue($a1);
+    $runtime->stack->pushValue($a2);
+    $runtime->stack->pushValue($a3);
     $runtime->invokeByFuncAddr($func);
 }
 
 // Type: (i32, i32, i32, i32, i32) -> ()
 function hostFunc__env__invoke_viiii(Runtime $runtime): void {
-    $a4 = $runtime->stack->popI32();
-    $a3 = $runtime->stack->popI32();
-    $a2 = $runtime->stack->popI32();
-    $a1 = $runtime->stack->popI32();
-    $index = $runtime->stack->popI32();
+    $a4 = $runtime->stack->popInt();
+    $a3 = $runtime->stack->popInt();
+    $a2 = $runtime->stack->popInt();
+    $a1 = $runtime->stack->popInt();
+    $index = $runtime->stack->popInt();
     $sp = wasm_stackSave($runtime);
     $func = getWasmTableEntry($runtime, $index);
-    $runtime->stack->pushI32($a1);
-    $runtime->stack->pushI32($a2);
-    $runtime->stack->pushI32($a3);
-    $runtime->stack->pushI32($a4);
+    $runtime->stack->pushValue($a1);
+    $runtime->stack->pushValue($a2);
+    $runtime->stack->pushValue($a3);
+    $runtime->stack->pushValue($a4);
     $runtime->invokeByFuncAddr($func);
 }
 
 // Type: (i32, i32, i32, i32, i32, i32) -> ()
 function hostFunc__env__invoke_viiiii(Runtime $runtime): void {
-    $a5 = $runtime->stack->popI32();
-    $a4 = $runtime->stack->popI32();
-    $a3 = $runtime->stack->popI32();
-    $a2 = $runtime->stack->popI32();
-    $a1 = $runtime->stack->popI32();
-    $index = $runtime->stack->popI32();
+    $a5 = $runtime->stack->popInt();
+    $a4 = $runtime->stack->popInt();
+    $a3 = $runtime->stack->popInt();
+    $a2 = $runtime->stack->popInt();
+    $a1 = $runtime->stack->popInt();
+    $index = $runtime->stack->popInt();
     $sp = wasm_stackSave($runtime);
     $func = getWasmTableEntry($runtime, $index);
-    $runtime->stack->pushI32($a1);
-    $runtime->stack->pushI32($a2);
-    $runtime->stack->pushI32($a3);
-    $runtime->stack->pushI32($a4);
-    $runtime->stack->pushI32($a5);
+    $runtime->stack->pushValue($a1);
+    $runtime->stack->pushValue($a2);
+    $runtime->stack->pushValue($a3);
+    $runtime->stack->pushValue($a4);
+    $runtime->stack->pushValue($a5);
     $runtime->invokeByFuncAddr($func);
 }
 
 // Type: (i32, i32, i32, i32, i32, i32) -> (i32)
 function hostFunc__env__invoke_iiiiii(Runtime $runtime): void {
-    $a5 = $runtime->stack->popI32();
-    $a4 = $runtime->stack->popI32();
-    $a3 = $runtime->stack->popI32();
-    $a2 = $runtime->stack->popI32();
-    $a1 = $runtime->stack->popI32();
-    $index = $runtime->stack->popI32();
+    $a5 = $runtime->stack->popInt();
+    $a4 = $runtime->stack->popInt();
+    $a3 = $runtime->stack->popInt();
+    $a2 = $runtime->stack->popInt();
+    $a1 = $runtime->stack->popInt();
+    $index = $runtime->stack->popInt();
     $sp = wasm_stackSave($runtime);
     $func = getWasmTableEntry($runtime, $index);
-    $runtime->stack->pushI32($a1);
-    $runtime->stack->pushI32($a2);
-    $runtime->stack->pushI32($a3);
-    $runtime->stack->pushI32($a4);
-    $runtime->stack->pushI32($a5);
+    $runtime->stack->pushValue($a1);
+    $runtime->stack->pushValue($a2);
+    $runtime->stack->pushValue($a3);
+    $runtime->stack->pushValue($a4);
+    $runtime->stack->pushValue($a5);
     $runtime->invokeByFuncAddr($func);
 }
 
 // Type: (i32, i32, i32, i32, i32, i32, i32, i32, i32, i32) -> (i32)
 function hostFunc__env__invoke_iiiiiiiiii(Runtime $runtime): void {
-    $a9 = $runtime->stack->popI32();
-    $a8 = $runtime->stack->popI32();
-    $a7 = $runtime->stack->popI32();
-    $a6 = $runtime->stack->popI32();
-    $a5 = $runtime->stack->popI32();
-    $a4 = $runtime->stack->popI32();
-    $a3 = $runtime->stack->popI32();
-    $a2 = $runtime->stack->popI32();
-    $a1 = $runtime->stack->popI32();
-    $index = $runtime->stack->popI32();
+    $a9 = $runtime->stack->popInt();
+    $a8 = $runtime->stack->popInt();
+    $a7 = $runtime->stack->popInt();
+    $a6 = $runtime->stack->popInt();
+    $a5 = $runtime->stack->popInt();
+    $a4 = $runtime->stack->popInt();
+    $a3 = $runtime->stack->popInt();
+    $a2 = $runtime->stack->popInt();
+    $a1 = $runtime->stack->popInt();
+    $index = $runtime->stack->popInt();
     $sp = wasm_stackSave($runtime);
     $func = getWasmTableEntry($runtime, $index);
-    $runtime->stack->pushI32($a1);
-    $runtime->stack->pushI32($a2);
-    $runtime->stack->pushI32($a3);
-    $runtime->stack->pushI32($a4);
-    $runtime->stack->pushI32($a5);
-    $runtime->stack->pushI32($a6);
-    $runtime->stack->pushI32($a7);
-    $runtime->stack->pushI32($a8);
-    $runtime->stack->pushI32($a9);
+    $runtime->stack->pushValue($a1);
+    $runtime->stack->pushValue($a2);
+    $runtime->stack->pushValue($a3);
+    $runtime->stack->pushValue($a4);
+    $runtime->stack->pushValue($a5);
+    $runtime->stack->pushValue($a6);
+    $runtime->stack->pushValue($a7);
+    $runtime->stack->pushValue($a8);
+    $runtime->stack->pushValue($a9);
     $runtime->invokeByFuncAddr($func);
 }
 
@@ -523,39 +516,39 @@ function hostFunc__env__getnameinfo(Runtime $runtime): void {
 
 // Type: (i32, i32, i32, i32, i32, i32, i32) -> ()
 function hostFunc__env__invoke_viiiiii(Runtime $runtime): void {
-    $a6 = $runtime->stack->popI32();
-    $a5 = $runtime->stack->popI32();
-    $a4 = $runtime->stack->popI32();
-    $a3 = $runtime->stack->popI32();
-    $a2 = $runtime->stack->popI32();
-    $a1 = $runtime->stack->popI32();
-    $index = $runtime->stack->popI32();
+    $a6 = $runtime->stack->popInt();
+    $a5 = $runtime->stack->popInt();
+    $a4 = $runtime->stack->popInt();
+    $a3 = $runtime->stack->popInt();
+    $a2 = $runtime->stack->popInt();
+    $a1 = $runtime->stack->popInt();
+    $index = $runtime->stack->popInt();
     $sp = wasm_stackSave($runtime);
     $func = getWasmTableEntry($runtime, $index);
-    $runtime->stack->pushI32($a1);
-    $runtime->stack->pushI32($a2);
-    $runtime->stack->pushI32($a3);
-    $runtime->stack->pushI32($a4);
-    $runtime->stack->pushI32($a5);
-    $runtime->stack->pushI32($a6);
+    $runtime->stack->pushValue($a1);
+    $runtime->stack->pushValue($a2);
+    $runtime->stack->pushValue($a3);
+    $runtime->stack->pushValue($a4);
+    $runtime->stack->pushValue($a5);
+    $runtime->stack->pushValue($a6);
     $runtime->invokeByFuncAddr($func);
 }
 
 // Type: (i32, i32, i32, f64, i32, i32) -> ()
 function hostFunc__env__invoke_viidii(Runtime $runtime): void {
-    $a5 = $runtime->stack->popI32();
-    $a4 = $runtime->stack->popI32();
-    $a3 = $runtime->stack->popF64();
-    $a2 = $runtime->stack->popI32();
-    $a1 = $runtime->stack->popI32();
-    $index = $runtime->stack->popI32();
+    $a5 = $runtime->stack->popInt();
+    $a4 = $runtime->stack->popInt();
+    $a3 = $runtime->stack->popFloat();
+    $a2 = $runtime->stack->popInt();
+    $a1 = $runtime->stack->popInt();
+    $index = $runtime->stack->popInt();
     $sp = wasm_stackSave($runtime);
     $func = getWasmTableEntry($runtime, $index);
-    $runtime->stack->pushI32($a1);
-    $runtime->stack->pushI32($a2);
-    $runtime->stack->pushF64($a3);
-    $runtime->stack->pushI32($a4);
-    $runtime->stack->pushI32($a5);
+    $runtime->stack->pushValue($a1);
+    $runtime->stack->pushValue($a2);
+    $runtime->stack->pushValue($a3);
+    $runtime->stack->pushValue($a4);
+    $runtime->stack->pushValue($a5);
     $runtime->invokeByFuncAddr($func);
 }
 
@@ -607,13 +600,13 @@ function hostFunc__wasi_snapshot_preview1__fd_read(Runtime $runtime): void {
 // Type: (i32, i32, i32, i32) -> (i32)
 function hostFunc__wasi_snapshot_preview1__fd_write(Runtime $runtime): void {
     // Output pointer to the number of bytes written.
-    $pnum = $runtime->stack->popI32();
+    $pnum = $runtime->stack->popInt();
     // Length of the array of iov structs.
-    $iovcnt = $runtime->stack->popI32();
+    $iovcnt = $runtime->stack->popInt();
     // Pointer to the array of iov structs.
-    $iov = $runtime->stack->popI32();
+    $iov = $runtime->stack->popInt();
     // File descripter.
-    $fd = $runtime->stack->popI32();
+    $fd = $runtime->stack->popInt();
 
     // struct iov {
     //   ptr: u32, pointer to the data
@@ -645,7 +638,7 @@ function hostFunc__wasi_snapshot_preview1__fd_write(Runtime $runtime): void {
     }
     $mem->storeI32($pnum, $nWritten, 4);
 
-    $runtime->stack->pushI32(0);
+    $runtime->stack->pushValue(0);
 }
 
 // Type: (i32) -> ()
@@ -685,9 +678,9 @@ function hostFunc__env____syscall_dup3(Runtime $runtime): void {
 
 // Type: (i32, i32, i32) -> ()
 function hostFunc__env__emscripten_memcpy_js(Runtime $runtime): void {
-    $num = $runtime->stack->popI32();
-    $src = $runtime->stack->popI32();
-    $dest = $runtime->stack->popI32();
+    $num = $runtime->stack->popInt();
+    $src = $runtime->stack->popInt();
+    $dest = $runtime->stack->popInt();
     $mem = $runtime->getExportedMemory('memory');
     assert($mem !== null);
     for ($i = 0; $i < $num; $i++) {
@@ -719,10 +712,10 @@ function hostFunc__env____syscall_fdatasync(Runtime $runtime): void {
 
 // Type: (i32, i32, i32, i32) -> (i32)
 function hostFunc__env____syscall_openat(Runtime $runtime): void {
-    $varargs = $runtime->stack->popI32();
-    $flags = $runtime->stack->popI32();
-    $path = $runtime->stack->popI32();
-    $dirfd = $runtime->stack->popI32();
+    $varargs = $runtime->stack->popInt();
+    $flags = $runtime->stack->popInt();
+    $path = $runtime->stack->popInt();
+    $dirfd = $runtime->stack->popInt();
 
     $path = syscallGetStr($runtime, $path);
     $path = syscallCalculateAt($runtime, $dirfd, $path);
@@ -740,7 +733,7 @@ function hostFunc__env____syscall_openat(Runtime $runtime): void {
     // echo "syscall_openat: $path, $flags, $mode\n";
 
     // no such file
-    $runtime->stack->pushI32(-44);
+    $runtime->stack->pushValue(-44);
 }
 
 // Type: (i32, i32) -> (i32)
@@ -770,21 +763,21 @@ function hostFunc__wasi_snapshot_preview1__fd_sync(Runtime $runtime): void {
 
 // Type: (i32, i32) -> (i32)
 function hostFunc__env____syscall_getcwd(Runtime $runtime): void {
-    $size = $runtime->stack->popI32();
-    $bufPtr = $runtime->stack->popI32();
+    $size = $runtime->stack->popInt();
+    $bufPtr = $runtime->stack->popInt();
     if ($size === 0) {
-        $runtime->stack->pushI32(-28);
+        $runtime->stack->pushValue(-28);
         return;
     }
     $cwd = getcwd();
     assert($cwd !== false);
     $cwdLen = strlen($cwd) + 1;
     if ($size < $cwdLen) {
-        $runtime->stack->pushI32(-68);
+        $runtime->stack->pushValue(-68);
         return;
     }
     copyStringToWasmMemory($runtime, $bufPtr, $cwd);
-    $runtime->stack->pushI32($cwdLen);
+    $runtime->stack->pushValue($cwdLen);
 }
 
 // Type: (i32) -> ()
@@ -864,9 +857,9 @@ function hostFunc__env__emscripten_get_heap_max(Runtime $runtime): void {
 
 // Type: (i32, i32, i32) -> ()
 function hostFunc__env___tzset_js(Runtime $runtime): void {
-    $tzname = $runtime->stack->popI32();
-    $daylight = $runtime->stack->popI32();
-    $timezone = $runtime->stack->popI32();
+    $tzname = $runtime->stack->popInt();
+    $daylight = $runtime->stack->popInt();
+    $timezone = $runtime->stack->popInt();
     // Do nothing ;)
 }
 

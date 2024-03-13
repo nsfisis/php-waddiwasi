@@ -64,8 +64,8 @@ final class Runtime
                 $instrs = $expr->instrs;
                 array_pop($instrs); // drop "end"
                 $result = $runtimeInit->evalInstrsForInit($instrs);
-                assert($result instanceof Vals\Ref);
-                $refs[] = $result->inner;
+                assert($result instanceof Ref);
+                $refs[] = $result;
             }
             $refsList[] = $refs;
         }
@@ -162,8 +162,8 @@ final class Runtime
     }
 
     /**
-     * @param list<Val> $vals
-     * @return list<Val>
+     * @param list<int|float|Ref> $vals
+     * @return list<int|float|Ref>
      */
     public function invoke(string $name, array $vals): array
     {
@@ -312,7 +312,7 @@ final class Runtime
     /**
      * @param list<Instr> $instrs
      */
-    private function evalInstrsForInit(array $instrs): Val
+    private function evalInstrsForInit(array $instrs): int|float|Ref
     {
         $this->execInstrsForInit($instrs);
         $result = $this->stack->popValue();
@@ -538,26 +538,26 @@ final class Runtime
 
     private function execInstrNumericF32Abs(Instrs\Numeric\F32Abs $instr): void
     {
-        $v = $this->stack->popF32();
-        $this->stack->pushF32(abs($v));
+        $v = $this->stack->popFloat();
+        $this->stack->pushValue(abs($v));
     }
 
     private function execInstrNumericF32Add(Instrs\Numeric\F32Add $instr): void
     {
-        $c2 = $this->stack->popF32();
-        $c1 = $this->stack->popF32();
-        $this->stack->pushF32($c1 + $c2);
+        $c2 = $this->stack->popFloat();
+        $c1 = $this->stack->popFloat();
+        $this->stack->pushValue($c1 + $c2);
     }
 
     private function execInstrNumericF32Ceil(Instrs\Numeric\F32Ceil $instr): void
     {
-        $v = $this->stack->popF32();
-        $this->stack->pushF32(ceil($v));
+        $v = $this->stack->popFloat();
+        $this->stack->pushValue(ceil($v));
     }
 
     private function execInstrNumericF32Const(Instrs\Numeric\F32Const $instr): void
     {
-        $this->stack->pushValue(Val::NumF32($instr->value));
+        $this->stack->pushValue($instr->value);
     }
 
     private function execInstrNumericF32ConvertI32S(Instrs\Numeric\F32ConvertI32S $instr): void
@@ -592,9 +592,9 @@ final class Runtime
 
     private function execInstrNumericF32Div(Instrs\Numeric\F32Div $instr): void
     {
-        $c2 = $this->stack->popF32();
-        $c1 = $this->stack->popF32();
-        $this->stack->pushF32($c1 / $c2);
+        $c2 = $this->stack->popFloat();
+        $c1 = $this->stack->popFloat();
+        $this->stack->pushValue($c1 / $c2);
     }
 
     private function execInstrNumericF32Eq(Instrs\Numeric\F32Eq $instr): void
@@ -609,51 +609,51 @@ final class Runtime
 
     private function execInstrNumericF32Ge(Instrs\Numeric\F32Ge $instr): void
     {
-        $c2 = $this->stack->popF32();
-        $c1 = $this->stack->popF32();
+        $c2 = $this->stack->popFloat();
+        $c1 = $this->stack->popFloat();
         $this->stack->pushBool($c1 >= $c2);
     }
 
     private function execInstrNumericF32Gt(Instrs\Numeric\F32Gt $instr): void
     {
-        $c2 = $this->stack->popF32();
-        $c1 = $this->stack->popF32();
+        $c2 = $this->stack->popFloat();
+        $c1 = $this->stack->popFloat();
         $this->stack->pushBool($c1 > $c2);
     }
 
     private function execInstrNumericF32Le(Instrs\Numeric\F32Le $instr): void
     {
-        $c2 = $this->stack->popF32();
-        $c1 = $this->stack->popF32();
+        $c2 = $this->stack->popFloat();
+        $c1 = $this->stack->popFloat();
         $this->stack->pushBool($c1 <= $c2);
     }
 
     private function execInstrNumericF32Lt(Instrs\Numeric\F32Lt $instr): void
     {
-        $c2 = $this->stack->popF32();
-        $c1 = $this->stack->popF32();
+        $c2 = $this->stack->popFloat();
+        $c1 = $this->stack->popFloat();
         $this->stack->pushBool($c1 < $c2);
     }
 
     private function execInstrNumericF32Max(Instrs\Numeric\F32Max $instr): void
     {
-        $c2 = $this->stack->popF32();
-        $c1 = $this->stack->popF32();
-        $this->stack->pushF32(max($c1, $c2));
+        $c2 = $this->stack->popFloat();
+        $c1 = $this->stack->popFloat();
+        $this->stack->pushValue(max($c1, $c2));
     }
 
     private function execInstrNumericF32Min(Instrs\Numeric\F32Min $instr): void
     {
-        $c2 = $this->stack->popF32();
-        $c1 = $this->stack->popF32();
-        $this->stack->pushF32(min($c1, $c2));
+        $c2 = $this->stack->popFloat();
+        $c1 = $this->stack->popFloat();
+        $this->stack->pushValue(min($c1, $c2));
     }
 
     private function execInstrNumericF32Mul(Instrs\Numeric\F32Mul $instr): void
     {
-        $c2 = $this->stack->popF32();
-        $c1 = $this->stack->popF32();
-        $this->stack->pushF32($c1 * $c2);
+        $c2 = $this->stack->popFloat();
+        $c1 = $this->stack->popFloat();
+        $this->stack->pushValue($c1 * $c2);
     }
 
     private function execInstrNumericF32Ne(Instrs\Numeric\F32Ne $instr): void
@@ -668,8 +668,8 @@ final class Runtime
 
     private function execInstrNumericF32Neg(Instrs\Numeric\F32Neg $instr): void
     {
-        $c1 = $this->stack->popF32();
-        $this->stack->pushF32(-$c1);
+        $c1 = $this->stack->popFloat();
+        $this->stack->pushValue(-$c1);
     }
 
     private function execInstrNumericF32ReinterpretI32(Instrs\Numeric\F32ReinterpretI32 $instr): void
@@ -684,15 +684,15 @@ final class Runtime
 
     private function execInstrNumericF32Sqrt(Instrs\Numeric\F32Sqrt $instr): void
     {
-        $c1 = $this->stack->popF32();
-        $this->stack->pushF32(sqrt($c1));
+        $c1 = $this->stack->popFloat();
+        $this->stack->pushValue(sqrt($c1));
     }
 
     private function execInstrNumericF32Sub(Instrs\Numeric\F32Sub $instr): void
     {
-        $c2 = $this->stack->popF32();
-        $c1 = $this->stack->popF32();
-        $this->stack->pushF32($c1 - $c2);
+        $c2 = $this->stack->popFloat();
+        $c1 = $this->stack->popFloat();
+        $this->stack->pushValue($c1 - $c2);
     }
 
     private function execInstrNumericF32Trunc(Instrs\Numeric\F32Trunc $instr): void
@@ -702,50 +702,50 @@ final class Runtime
 
     private function execInstrNumericF64Abs(Instrs\Numeric\F64Abs $instr): void
     {
-        $c1 = $this->stack->popF64();
-        $this->stack->pushF64(abs($c1));
+        $c1 = $this->stack->popFloat();
+        $this->stack->pushValue(abs($c1));
     }
 
     private function execInstrNumericF64Add(Instrs\Numeric\F64Add $instr): void
     {
-        $c2 = $this->stack->popF64();
-        $c1 = $this->stack->popF64();
-        $this->stack->pushF64($c1 + $c2);
+        $c2 = $this->stack->popFloat();
+        $c1 = $this->stack->popFloat();
+        $this->stack->pushValue($c1 + $c2);
     }
 
     private function execInstrNumericF64Ceil(Instrs\Numeric\F64Ceil $instr): void
     {
-        $c1 = $this->stack->popF64();
-        $this->stack->pushF64(ceil($c1));
+        $c1 = $this->stack->popFloat();
+        $this->stack->pushValue(ceil($c1));
     }
 
     private function execInstrNumericF64Const(Instrs\Numeric\F64Const $instr): void
     {
-        $this->stack->pushValue(Val::NumF64($instr->value));
+        $this->stack->pushValue($instr->value);
     }
 
     private function execInstrNumericF64ConvertI32S(Instrs\Numeric\F64ConvertI32S $instr): void
     {
-        $c = $this->stack->popI32();
-        $this->stack->pushF64((float) $c);
+        $c = $this->stack->popInt();
+        $this->stack->pushValue((float) $c);
     }
 
     private function execInstrNumericF64ConvertI32U(Instrs\Numeric\F64ConvertI32U $instr): void
     {
-        $c = $this->stack->popI32();
-        $this->stack->pushF64((float) $c);
+        $c = $this->stack->popInt();
+        $this->stack->pushValue((float) $c);
     }
 
     private function execInstrNumericF64ConvertI64S(Instrs\Numeric\F64ConvertI64S $instr): void
     {
-        $c = $this->stack->popI64();
-        $this->stack->pushF64((float) $c);
+        $c = $this->stack->popInt();
+        $this->stack->pushValue((float) $c);
     }
 
     private function execInstrNumericF64ConvertI64U(Instrs\Numeric\F64ConvertI64U $instr): void
     {
-        $c = $this->stack->popI64();
-        $this->stack->pushF64((float) $c);
+        $c = $this->stack->popInt();
+        $this->stack->pushValue((float) $c);
     }
 
     private function execInstrNumericF64CopySign(Instrs\Numeric\F64CopySign $instr): void
@@ -755,9 +755,9 @@ final class Runtime
 
     private function execInstrNumericF64Div(Instrs\Numeric\F64Div $instr): void
     {
-        $c2 = $this->stack->popF64();
-        $c1 = $this->stack->popF64();
-        $this->stack->pushF64($c1 / $c2);
+        $c2 = $this->stack->popFloat();
+        $c1 = $this->stack->popFloat();
+        $this->stack->pushValue($c1 / $c2);
     }
 
     private function execInstrNumericF64Eq(Instrs\Numeric\F64Eq $instr): void
@@ -772,51 +772,51 @@ final class Runtime
 
     private function execInstrNumericF64Ge(Instrs\Numeric\F64Ge $instr): void
     {
-        $c2 = $this->stack->popF64();
-        $c1 = $this->stack->popF64();
+        $c2 = $this->stack->popFloat();
+        $c1 = $this->stack->popFloat();
         $this->stack->pushBool($c1 >= $c2);
     }
 
     private function execInstrNumericF64Gt(Instrs\Numeric\F64Gt $instr): void
     {
-        $c2 = $this->stack->popF64();
-        $c1 = $this->stack->popF64();
+        $c2 = $this->stack->popFloat();
+        $c1 = $this->stack->popFloat();
         $this->stack->pushBool($c1 > $c2);
     }
 
     private function execInstrNumericF64Le(Instrs\Numeric\F64Le $instr): void
     {
-        $c2 = $this->stack->popF64();
-        $c1 = $this->stack->popF64();
+        $c2 = $this->stack->popFloat();
+        $c1 = $this->stack->popFloat();
         $this->stack->pushBool($c1 <= $c2);
     }
 
     private function execInstrNumericF64Lt(Instrs\Numeric\F64Lt $instr): void
     {
-        $c2 = $this->stack->popF64();
-        $c1 = $this->stack->popF64();
+        $c2 = $this->stack->popFloat();
+        $c1 = $this->stack->popFloat();
         $this->stack->pushBool($c1 < $c2);
     }
 
     private function execInstrNumericF64Max(Instrs\Numeric\F64Max $instr): void
     {
-        $c2 = $this->stack->popF64();
-        $c1 = $this->stack->popF64();
-        $this->stack->pushF64(max($c1, $c2));
+        $c2 = $this->stack->popFloat();
+        $c1 = $this->stack->popFloat();
+        $this->stack->pushValue(max($c1, $c2));
     }
 
     private function execInstrNumericF64Min(Instrs\Numeric\F64Min $instr): void
     {
-        $c2 = $this->stack->popF64();
-        $c1 = $this->stack->popF64();
-        $this->stack->pushF64(min($c1, $c2));
+        $c2 = $this->stack->popFloat();
+        $c1 = $this->stack->popFloat();
+        $this->stack->pushValue(min($c1, $c2));
     }
 
     private function execInstrNumericF64Mul(Instrs\Numeric\F64Mul $instr): void
     {
-        $c2 = $this->stack->popF64();
-        $c1 = $this->stack->popF64();
-        $this->stack->pushF64($c1 * $c2);
+        $c2 = $this->stack->popFloat();
+        $c1 = $this->stack->popFloat();
+        $this->stack->pushValue($c1 * $c2);
     }
 
     private function execInstrNumericF64Ne(Instrs\Numeric\F64Ne $instr): void
@@ -831,8 +831,8 @@ final class Runtime
 
     private function execInstrNumericF64Neg(Instrs\Numeric\F64Neg $instr): void
     {
-        $c1 = $this->stack->popF64();
-        $this->stack->pushF64(-$c1);
+        $c1 = $this->stack->popFloat();
+        $this->stack->pushValue(-$c1);
     }
 
     private function execInstrNumericF64PromoteF32(Instrs\Numeric\F64PromoteF32 $instr): void
@@ -852,15 +852,15 @@ final class Runtime
 
     private function execInstrNumericF64Sqrt(Instrs\Numeric\F64Sqrt $instr): void
     {
-        $c1 = $this->stack->popF64();
-        $this->stack->pushF64(sqrt($c1));
+        $c1 = $this->stack->popFloat();
+        $this->stack->pushValue(sqrt($c1));
     }
 
     private function execInstrNumericF64Sub(Instrs\Numeric\F64Sub $instr): void
     {
-        $c2 = $this->stack->popF64();
-        $c1 = $this->stack->popF64();
-        $this->stack->pushF64($c1 - $c2);
+        $c2 = $this->stack->popFloat();
+        $c1 = $this->stack->popFloat();
+        $this->stack->pushValue($c1 - $c2);
     }
 
     private function execInstrNumericF64Trunc(Instrs\Numeric\F64Trunc $instr): void
@@ -870,21 +870,21 @@ final class Runtime
 
     private function execInstrNumericI32Add(Instrs\Numeric\I32Add $instr): void
     {
-        $c2 = $this->stack->popI32();
-        $c1 = $this->stack->popI32();
-        $this->stack->pushI32(($c1 + $c2) % 0x100000000);
+        $c2 = $this->stack->popInt();
+        $c1 = $this->stack->popInt();
+        $this->stack->pushValue(($c1 + $c2) % 0x100000000);
     }
 
     private function execInstrNumericI32And(Instrs\Numeric\I32And $instr): void
     {
-        $c2 = self::wasmI32ToPhpInt($this->stack->popI32());
-        $c1 = self::wasmI32ToPhpInt($this->stack->popI32());
-        $this->stack->pushI32(self::phpIntToWasmI32(($c1 & $c2) & 0xFFFFFFFF));
+        $c2 = self::wasmI32ToPhpInt($this->stack->popInt());
+        $c1 = self::wasmI32ToPhpInt($this->stack->popInt());
+        $this->stack->pushValue(self::phpIntToWasmI32(($c1 & $c2) & 0xFFFFFFFF));
     }
 
     private function execInstrNumericI32Clz(Instrs\Numeric\I32Clz $instr): void
     {
-        $i = self::wasmI32ToPhpInt($this->stack->popI32());
+        $i = self::wasmI32ToPhpInt($this->stack->popInt());
         $leadingZeros = 0;
         for ($j = 31; 0 <= $j; $j--) {
             if (($i & (1 << $j)) === 0) {
@@ -893,17 +893,17 @@ final class Runtime
                 break;
             }
         }
-        $this->stack->pushI32($leadingZeros);
+        $this->stack->pushValue($leadingZeros);
     }
 
     private function execInstrNumericI32Const(Instrs\Numeric\I32Const $instr): void
     {
-        $this->stack->pushValue(Val::NumI32($instr->value));
+        $this->stack->pushValue($instr->value);
     }
 
     private function execInstrNumericI32Ctz(Instrs\Numeric\I32Ctz $instr): void
     {
-        $i = self::wasmI32ToPhpInt($this->stack->popI32());
+        $i = self::wasmI32ToPhpInt($this->stack->popInt());
         $trailingZeros = 0;
         for ($j = 0; $j < 32; $j++) {
             if (($i & (1 << $j)) === 0) {
@@ -912,7 +912,7 @@ final class Runtime
                 break;
             }
         }
-        $this->stack->pushI32($trailingZeros);
+        $this->stack->pushValue($trailingZeros);
     }
 
     private function execInstrNumericI32DivS(Instrs\Numeric\I32DivS $instr): void
@@ -922,120 +922,120 @@ final class Runtime
 
     private function execInstrNumericI32DivU(Instrs\Numeric\I32DivU $instr): void
     {
-        $c2 = $this->stack->popI32();
-        $c1 = $this->stack->popI32();
+        $c2 = $this->stack->popInt();
+        $c1 = $this->stack->popInt();
         if ($c2 === 0) {
             throw new TrapException("i32.div_u: divide by zero");
         }
-        $this->stack->pushI32(intdiv($c1, $c2));
+        $this->stack->pushValue(intdiv($c1, $c2));
     }
 
     private function execInstrNumericI32Eq(Instrs\Numeric\I32Eq $instr): void
     {
-        $c2 = $this->stack->popI32();
-        $c1 = $this->stack->popI32();
+        $c2 = $this->stack->popInt();
+        $c1 = $this->stack->popInt();
         $this->stack->pushBool($c1 === $c2);
     }
 
     private function execInstrNumericI32Eqz(Instrs\Numeric\I32Eqz $instr): void
     {
-        $c1 = $this->stack->popI32();
+        $c1 = $this->stack->popInt();
         $this->stack->pushBool($c1 === 0);
     }
 
     private function execInstrNumericI32Extend16S(Instrs\Numeric\I32Extend16S $instr): void
     {
-        $c1 = self::wasmI32ToPhpInt($this->stack->popI32());
+        $c1 = self::wasmI32ToPhpInt($this->stack->popInt());
         $c2 = $c1 & 0xFFFF;
         $result = unpack('s', pack('S', $c2));
         assert($result !== false);
-        $this->stack->pushI32($result[1]);
+        $this->stack->pushValue($result[1]);
     }
 
     private function execInstrNumericI32Extend8S(Instrs\Numeric\I32Extend8S $instr): void
     {
-        $c1 = self::wasmI32ToPhpInt($this->stack->popI32());
+        $c1 = self::wasmI32ToPhpInt($this->stack->popInt());
         $c2 = $c1 & 0xFF;
         $result = unpack('c', pack('C', $c2));
         assert($result !== false);
-        $this->stack->pushI32($result[1]);
+        $this->stack->pushValue($result[1]);
     }
 
     private function execInstrNumericI32GeS(Instrs\Numeric\I32GeS $instr): void
     {
-        $c2 = $this->stack->popI32();
-        $c1 = $this->stack->popI32();
+        $c2 = $this->stack->popInt();
+        $c1 = $this->stack->popInt();
         $this->stack->pushBool($c1 >= $c2);
     }
 
     private function execInstrNumericI32GeU(Instrs\Numeric\I32GeU $instr): void
     {
-        $c2 = self::wasmI32ToPhpInt($this->stack->popI32());
-        $c1 = self::wasmI32ToPhpInt($this->stack->popI32());
+        $c2 = self::wasmI32ToPhpInt($this->stack->popInt());
+        $c1 = self::wasmI32ToPhpInt($this->stack->popInt());
         $this->stack->pushBool($c1 >= $c2);
     }
 
     private function execInstrNumericI32GtS(Instrs\Numeric\I32GtS $instr): void
     {
-        $c2 = $this->stack->popI32();
-        $c1 = $this->stack->popI32();
+        $c2 = $this->stack->popInt();
+        $c1 = $this->stack->popInt();
         $this->stack->pushBool($c1 > $c2);
     }
 
     private function execInstrNumericI32GtU(Instrs\Numeric\I32GtU $instr): void
     {
-        $c2 = self::wasmI32ToPhpInt($this->stack->popI32());
-        $c1 = self::wasmI32ToPhpInt($this->stack->popI32());
+        $c2 = self::wasmI32ToPhpInt($this->stack->popInt());
+        $c1 = self::wasmI32ToPhpInt($this->stack->popInt());
         $this->stack->pushBool($c1 > $c2);
     }
 
     private function execInstrNumericI32LeS(Instrs\Numeric\I32LeS $instr): void
     {
-        $c2 = $this->stack->popI32();
-        $c1 = $this->stack->popI32();
+        $c2 = $this->stack->popInt();
+        $c1 = $this->stack->popInt();
         $this->stack->pushBool($c1 <= $c2);
     }
 
     private function execInstrNumericI32LeU(Instrs\Numeric\I32LeU $instr): void
     {
-        $c2 = self::wasmI32ToPhpInt($this->stack->popI32());
-        $c1 = self::wasmI32ToPhpInt($this->stack->popI32());
+        $c2 = self::wasmI32ToPhpInt($this->stack->popInt());
+        $c1 = self::wasmI32ToPhpInt($this->stack->popInt());
         $this->stack->pushBool($c1 <= $c2);
     }
 
     private function execInstrNumericI32LtS(Instrs\Numeric\I32LtS $instr): void
     {
-        $c2 = $this->stack->popI32();
-        $c1 = $this->stack->popI32();
+        $c2 = $this->stack->popInt();
+        $c1 = $this->stack->popInt();
         $this->stack->pushBool($c1 < $c2);
     }
 
     private function execInstrNumericI32LtU(Instrs\Numeric\I32LtU $instr): void
     {
-        $c2 = self::wasmI32ToPhpInt($this->stack->popI32());
-        $c1 = self::wasmI32ToPhpInt($this->stack->popI32());
+        $c2 = self::wasmI32ToPhpInt($this->stack->popInt());
+        $c1 = self::wasmI32ToPhpInt($this->stack->popInt());
         $this->stack->pushBool($c1 < $c2);
     }
 
     private function execInstrNumericI32Mul(Instrs\Numeric\I32Mul $instr): void
     {
-        $c2 = $this->stack->popI32();
-        $c1 = $this->stack->popI32();
-        $this->stack->pushI32(self::phpIntToWasmI32(($c1 * $c2) & 0xFFFFFFFF));
+        $c2 = $this->stack->popInt();
+        $c1 = $this->stack->popInt();
+        $this->stack->pushValue(self::phpIntToWasmI32(($c1 * $c2) & 0xFFFFFFFF));
     }
 
     private function execInstrNumericI32Ne(Instrs\Numeric\I32Ne $instr): void
     {
-        $c2 = $this->stack->popI32();
-        $c1 = $this->stack->popI32();
+        $c2 = $this->stack->popInt();
+        $c1 = $this->stack->popInt();
         $this->stack->pushBool($c1 !== $c2);
     }
 
     private function execInstrNumericI32Or(Instrs\Numeric\I32Or $instr): void
     {
-        $c2 = self::wasmI32ToPhpInt($this->stack->popI32());
-        $c1 = self::wasmI32ToPhpInt($this->stack->popI32());
-        $this->stack->pushI32(self::phpIntToWasmI32(($c1 | $c2) & 0xFFFFFFFF));
+        $c2 = self::wasmI32ToPhpInt($this->stack->popInt());
+        $c1 = self::wasmI32ToPhpInt($this->stack->popInt());
+        $this->stack->pushValue(self::phpIntToWasmI32(($c1 | $c2) & 0xFFFFFFFF));
     }
 
     private function execInstrNumericI32Popcnt(Instrs\Numeric\I32Popcnt $instr): void
@@ -1060,20 +1060,20 @@ final class Runtime
 
     private function execInstrNumericI32RemU(Instrs\Numeric\I32RemU $instr): void
     {
-        $c2 = $this->stack->popI32();
-        $c1 = $this->stack->popI32();
+        $c2 = $this->stack->popInt();
+        $c1 = $this->stack->popInt();
         if ($c2 === 0) {
             throw new TrapException("i32.rem_u: divide by zero");
         }
-        $this->stack->pushI32($c1 % $c2);
+        $this->stack->pushValue($c1 % $c2);
     }
 
     private function execInstrNumericI32RotL(Instrs\Numeric\I32RotL $instr): void
     {
-        $i2 = self::wasmI32ToPhpInt($this->stack->popI32());
-        $i1 = self::wasmI32ToPhpInt($this->stack->popI32());
+        $i2 = self::wasmI32ToPhpInt($this->stack->popInt());
+        $i1 = self::wasmI32ToPhpInt($this->stack->popInt());
         $k = $i2 % 32;
-        $this->stack->pushI32(self::phpIntToWasmI32((($i1 << $k) | ($i1 >> (32 - $k))) & 0xFFFFFFFF));
+        $this->stack->pushValue(self::phpIntToWasmI32((($i1 << $k) | ($i1 >> (32 - $k))) & 0xFFFFFFFF));
     }
 
     private function execInstrNumericI32RotR(Instrs\Numeric\I32RotR $instr): void
@@ -1083,38 +1083,38 @@ final class Runtime
 
     private function execInstrNumericI32Shl(Instrs\Numeric\I32Shl $instr): void
     {
-        $c2 = self::wasmI32ToPhpInt($this->stack->popI32());
+        $c2 = self::wasmI32ToPhpInt($this->stack->popInt());
         $k = $c2 % 32;
-        $c1 = $this->stack->popI32();
-        $this->stack->pushI32(self::phpIntToWasmI32(($c1 << $k) & 0xFFFFFFFF));
+        $c1 = $this->stack->popInt();
+        $this->stack->pushValue(self::phpIntToWasmI32(($c1 << $k) & 0xFFFFFFFF));
     }
 
     private function execInstrNumericI32ShrS(Instrs\Numeric\I32ShrS $instr): void
     {
-        $c2 = self::wasmI32ToPhpInt($this->stack->popI32());
+        $c2 = self::wasmI32ToPhpInt($this->stack->popInt());
         $k = $c2 % 32;
-        $c1 = self::wasmI32ToPhpInt($this->stack->popI32());
+        $c1 = self::wasmI32ToPhpInt($this->stack->popInt());
         $signed = $c1 & 0x80000000;
         if ($signed !== 0) {
-            $this->stack->pushI32(self::phpIntToWasmI32(($c1 >> $k) & 0x80000000));
+            $this->stack->pushValue(self::phpIntToWasmI32(($c1 >> $k) & 0x80000000));
         } else {
-            $this->stack->pushI32($c1 >> $k);
+            $this->stack->pushValue($c1 >> $k);
         }
     }
 
     private function execInstrNumericI32ShrU(Instrs\Numeric\I32ShrU $instr): void
     {
-        $c2 = self::wasmI32ToPhpInt($this->stack->popI32());
+        $c2 = self::wasmI32ToPhpInt($this->stack->popInt());
         $k = $c2 % 32;
-        $c1 = self::wasmI32ToPhpInt($this->stack->popI32());
-        $this->stack->pushI32($c1 >> $k);
+        $c1 = self::wasmI32ToPhpInt($this->stack->popInt());
+        $this->stack->pushValue($c1 >> $k);
     }
 
     private function execInstrNumericI32Sub(Instrs\Numeric\I32Sub $instr): void
     {
-        $c2 = $this->stack->popI32();
-        $c1 = $this->stack->popI32();
-        $this->stack->pushI32(($c1 - $c2) % 0x100000000);
+        $c2 = $this->stack->popInt();
+        $c1 = $this->stack->popInt();
+        $this->stack->pushValue(($c1 - $c2) % 0x100000000);
     }
 
     private function execInstrNumericI32TruncF32S(Instrs\Numeric\I32TruncF32S $instr): void
@@ -1159,34 +1159,34 @@ final class Runtime
 
     private function execInstrNumericI32WrapI64(Instrs\Numeric\I32WrapI64 $instr): void
     {
-        $c1 = $this->stack->popI64();
-        $this->stack->pushI32($c1 & 0xFFFFFFFF);
+        $c1 = $this->stack->popInt();
+        $this->stack->pushValue($c1 & 0xFFFFFFFF);
     }
 
     private function execInstrNumericI32Xor(Instrs\Numeric\I32Xor $instr): void
     {
-        $c2 = self::wasmI32ToPhpInt($this->stack->popI32());
-        $c1 = self::wasmI32ToPhpInt($this->stack->popI32());
-        $this->stack->pushI32(self::phpIntToWasmI32(($c1 ^ $c2) & 0xFFFFFFFF));
+        $c2 = self::wasmI32ToPhpInt($this->stack->popInt());
+        $c1 = self::wasmI32ToPhpInt($this->stack->popInt());
+        $this->stack->pushValue(self::phpIntToWasmI32(($c1 ^ $c2) & 0xFFFFFFFF));
     }
 
     private function execInstrNumericI64Add(Instrs\Numeric\I64Add $instr): void
     {
-        $c2 = $this->stack->popI64();
-        $c1 = $this->stack->popI64();
-        $this->stack->pushI64($c1 + $c2);
+        $c2 = $this->stack->popInt();
+        $c1 = $this->stack->popInt();
+        $this->stack->pushValue($c1 + $c2);
     }
 
     private function execInstrNumericI64And(Instrs\Numeric\I64And $instr): void
     {
-        $c2 = $this->stack->popI64();
-        $c1 = $this->stack->popI64();
-        $this->stack->pushI64($c1 & $c2);
+        $c2 = $this->stack->popInt();
+        $c1 = $this->stack->popInt();
+        $this->stack->pushValue($c1 & $c2);
     }
 
     private function execInstrNumericI64Clz(Instrs\Numeric\I64Clz $instr): void
     {
-        $i = $this->stack->popI64();
+        $i = $this->stack->popInt();
         $leadingZeros = 0;
         for ($j = 63; 0 <= $j; $j--) {
             if ($j === 63) {
@@ -1203,17 +1203,17 @@ final class Runtime
                 }
             }
         }
-        $this->stack->pushI64($leadingZeros);
+        $this->stack->pushValue($leadingZeros);
     }
 
     private function execInstrNumericI64Const(Instrs\Numeric\I64Const $instr): void
     {
-        $this->stack->pushValue(Val::NumI64($instr->value));
+        $this->stack->pushValue($instr->value);
     }
 
     private function execInstrNumericI64Ctz(Instrs\Numeric\I64Ctz $instr): void
     {
-        $i = $this->stack->popI64();
+        $i = $this->stack->popInt();
         $trailingZeros = 0;
         for ($j = 0; $j < 64; $j++) {
             if ($j === 63) {
@@ -1228,169 +1228,169 @@ final class Runtime
                 }
             }
         }
-        $this->stack->pushI64($trailingZeros);
+        $this->stack->pushValue($trailingZeros);
     }
 
     private function execInstrNumericI64DivS(Instrs\Numeric\I64DivS $instr): void
     {
-        $c2 = $this->stack->popI64();
-        $c1 = $this->stack->popI64();
+        $c2 = $this->stack->popInt();
+        $c1 = $this->stack->popInt();
         if ($c2 === 0) {
             throw new TrapException("i64.div_s: divide by zero");
         }
-        $this->stack->pushI64(intdiv($c1, $c2));
+        $this->stack->pushValue(intdiv($c1, $c2));
     }
 
     private function execInstrNumericI64DivU(Instrs\Numeric\I64DivU $instr): void
     {
-        $c2 = $this->stack->popI64();
-        $c1 = $this->stack->popI64();
+        $c2 = $this->stack->popInt();
+        $c1 = $this->stack->popInt();
         if ($c2 === 0) {
             throw new TrapException("i64.div_u: divide by zero");
         }
-        $this->stack->pushI64(intdiv($c1, $c2));
+        $this->stack->pushValue(intdiv($c1, $c2));
     }
 
     private function execInstrNumericI64Eq(Instrs\Numeric\I64Eq $instr): void
     {
-        $c2 = $this->stack->popI64();
-        $c1 = $this->stack->popI64();
+        $c2 = $this->stack->popInt();
+        $c1 = $this->stack->popInt();
         $this->stack->pushBool($c1 === $c2);
     }
 
     private function execInstrNumericI64Eqz(Instrs\Numeric\I64Eqz $instr): void
     {
-        $c1 = $this->stack->popI64();
+        $c1 = $this->stack->popInt();
         $this->stack->pushBool($c1 === 0);
     }
 
     private function execInstrNumericI64Extend16S(Instrs\Numeric\I64Extend16S $instr): void
     {
-        $c1 = $this->stack->popI64();
+        $c1 = $this->stack->popInt();
         $c2 = $c1 & 0xFFFF;
         $result = unpack('s', pack('S', $c2));
         assert($result !== false);
-        $this->stack->pushI64($result[1]);
+        $this->stack->pushValue($result[1]);
     }
 
     private function execInstrNumericI64Extend32S(Instrs\Numeric\I64Extend32S $instr): void
     {
-        $c1 = $this->stack->popI64();
+        $c1 = $this->stack->popInt();
         $c2 = $c1 & 0xFFFFFFFF;
         $result = unpack('l', pack('L', $c2));
         assert($result !== false);
-        $this->stack->pushI64($result[1]);
+        $this->stack->pushValue($result[1]);
     }
 
     private function execInstrNumericI64Extend8S(Instrs\Numeric\I64Extend8S $instr): void
     {
-        $c1 = $this->stack->popI64();
+        $c1 = $this->stack->popInt();
         $c2 = $c1 & 0xFF;
         $result = unpack('c', pack('C', $c2));
         assert($result !== false);
-        $this->stack->pushI64($result[1]);
+        $this->stack->pushValue($result[1]);
     }
 
     private function execInstrNumericI64ExtendI32S(Instrs\Numeric\I64ExtendI32S $instr): void
     {
-        $c1 = $this->stack->popI32();
-        $this->stack->pushI64($c1);
+        $c1 = $this->stack->popInt();
+        $this->stack->pushValue($c1);
     }
 
     private function execInstrNumericI64ExtendI32U(Instrs\Numeric\I64ExtendI32U $instr): void
     {
-        $c1 = self::wasmI32ToPhpInt($this->stack->popI32());
+        $c1 = self::wasmI32ToPhpInt($this->stack->popInt());
         $c2 = $c1 & 0xFFFFFFFF;
-        $this->stack->pushI64($c2);
+        $this->stack->pushValue($c2);
     }
 
     private function execInstrNumericI64GeS(Instrs\Numeric\I64GeS $instr): void
     {
-        $c2 = $this->stack->popI64();
-        $c1 = $this->stack->popI64();
+        $c2 = $this->stack->popInt();
+        $c1 = $this->stack->popInt();
         $this->stack->pushBool($c1 >= $c2);
     }
 
     private function execInstrNumericI64GeU(Instrs\Numeric\I64GeU $instr): void
     {
-        $c2 = $this->stack->popI64();
+        $c2 = $this->stack->popInt();
         $c2Packed = pack('J', $c2);
-        $c1 = $this->stack->popI64();
+        $c1 = $this->stack->popInt();
         $c1Packed = pack('J', $c1);
         $this->stack->pushBool($c1Packed >= $c2Packed);
     }
 
     private function execInstrNumericI64GtS(Instrs\Numeric\I64GtS $instr): void
     {
-        $c2 = $this->stack->popI64();
-        $c1 = $this->stack->popI64();
+        $c2 = $this->stack->popInt();
+        $c1 = $this->stack->popInt();
         $this->stack->pushBool($c1 > $c2);
     }
 
     private function execInstrNumericI64GtU(Instrs\Numeric\I64GtU $instr): void
     {
-        $c2 = $this->stack->popI64();
+        $c2 = $this->stack->popInt();
         $c2Packed = pack('J', $c2);
-        $c1 = $this->stack->popI64();
+        $c1 = $this->stack->popInt();
         $c1Packed = pack('J', $c1);
         $this->stack->pushBool($c1Packed > $c2Packed);
     }
 
     private function execInstrNumericI64LeS(Instrs\Numeric\I64LeS $instr): void
     {
-        $c2 = $this->stack->popI64();
-        $c1 = $this->stack->popI64();
+        $c2 = $this->stack->popInt();
+        $c1 = $this->stack->popInt();
         $this->stack->pushBool($c1 <= $c2);
     }
 
     private function execInstrNumericI64LeU(Instrs\Numeric\I64LeU $instr): void
     {
-        $c2 = $this->stack->popI64();
+        $c2 = $this->stack->popInt();
         $c2Packed = pack('J', $c2);
-        $c1 = $this->stack->popI64();
+        $c1 = $this->stack->popInt();
         $c1Packed = pack('J', $c1);
         $this->stack->pushBool($c1Packed <= $c2Packed);
     }
 
     private function execInstrNumericI64LtS(Instrs\Numeric\I64LtS $instr): void
     {
-        $c2 = $this->stack->popI64();
-        $c1 = $this->stack->popI64();
+        $c2 = $this->stack->popInt();
+        $c1 = $this->stack->popInt();
         $this->stack->pushBool($c1 < $c2);
     }
 
     private function execInstrNumericI64LtU(Instrs\Numeric\I64LtU $instr): void
     {
-        $c2 = $this->stack->popI64();
+        $c2 = $this->stack->popInt();
         $c2Packed = pack('J', $c2);
-        $c1 = $this->stack->popI64();
+        $c1 = $this->stack->popInt();
         $c1Packed = pack('J', $c1);
         $this->stack->pushBool($c1Packed < $c2Packed);
     }
 
     private function execInstrNumericI64Mul(Instrs\Numeric\I64Mul $instr): void
     {
-        $c2 = $this->stack->popI64();
-        $c1 = $this->stack->popI64();
+        $c2 = $this->stack->popInt();
+        $c1 = $this->stack->popInt();
         if ($c1 === (1 << 32) - 1 && $c2 === (1 << 32) + 1) {
-            $this->stack->pushI64(-1);
+            $this->stack->pushValue(-1);
         } else {
-            $this->stack->pushI64($c1 * $c2);
+            $this->stack->pushValue($c1 * $c2);
         }
     }
 
     private function execInstrNumericI64Ne(Instrs\Numeric\I64Ne $instr): void
     {
-        $c2 = $this->stack->popI64();
-        $c1 = $this->stack->popI64();
+        $c2 = $this->stack->popInt();
+        $c1 = $this->stack->popInt();
         $this->stack->pushBool($c1 !== $c2);
     }
 
     private function execInstrNumericI64Or(Instrs\Numeric\I64Or $instr): void
     {
-        $c2 = $this->stack->popI64();
-        $c1 = $this->stack->popI64();
-        $this->stack->pushI64($c1 | $c2);
+        $c2 = $this->stack->popInt();
+        $c1 = $this->stack->popInt();
+        $this->stack->pushValue($c1 | $c2);
     }
 
     private function execInstrNumericI64Popcnt(Instrs\Numeric\I64Popcnt $instr): void
@@ -1420,10 +1420,10 @@ final class Runtime
 
     private function execInstrNumericI64RotL(Instrs\Numeric\I64RotL $instr): void
     {
-        $i2 = $this->stack->popI64();
-        $i1 = $this->stack->popI64();
+        $i2 = $this->stack->popInt();
+        $i1 = $this->stack->popInt();
         $k = $i2 % 64;
-        $this->stack->pushI64(($i1 << $k) | ($i1 >> (64 - $k)));
+        $this->stack->pushValue(($i1 << $k) | ($i1 >> (64 - $k)));
     }
 
     private function execInstrNumericI64RotR(Instrs\Numeric\I64RotR $instr): void
@@ -1433,33 +1433,33 @@ final class Runtime
 
     private function execInstrNumericI64Shl(Instrs\Numeric\I64Shl $instr): void
     {
-        $c2 = $this->stack->popI64();
+        $c2 = $this->stack->popInt();
         $k = $c2 % 64;
-        $c1 = $this->stack->popI64();
-        $this->stack->pushI64($c1 << $k);
+        $c1 = $this->stack->popInt();
+        $this->stack->pushValue($c1 << $k);
     }
 
     private function execInstrNumericI64ShrS(Instrs\Numeric\I64ShrS $instr): void
     {
-        $c2 = $this->stack->popI64();
+        $c2 = $this->stack->popInt();
         $k = $c2 % 64;
-        $c1 = $this->stack->popI64();
-        $this->stack->pushI64($c1 >> $k);
+        $c1 = $this->stack->popInt();
+        $this->stack->pushValue($c1 >> $k);
     }
 
     private function execInstrNumericI64ShrU(Instrs\Numeric\I64ShrU $instr): void
     {
-        $c2 = $this->stack->popI64();
+        $c2 = $this->stack->popInt();
         $k = $c2 % 64;
-        $c1 = $this->stack->popI64();
-        $this->stack->pushI64($c1 >> $k);
+        $c1 = $this->stack->popInt();
+        $this->stack->pushValue($c1 >> $k);
     }
 
     private function execInstrNumericI64Sub(Instrs\Numeric\I64Sub $instr): void
     {
-        $c2 = $this->stack->popI64();
-        $c1 = $this->stack->popI64();
-        $this->stack->pushI64($c1 - $c2);
+        $c2 = $this->stack->popInt();
+        $c1 = $this->stack->popInt();
+        $this->stack->pushValue($c1 - $c2);
     }
 
     private function execInstrNumericI64TruncF32S(Instrs\Numeric\I64TruncF32S $instr): void
@@ -1504,9 +1504,9 @@ final class Runtime
 
     private function execInstrNumericI64Xor(Instrs\Numeric\I64Xor $instr): void
     {
-        $c2 = $this->stack->popI64();
-        $c1 = $this->stack->popI64();
-        $this->stack->pushI64($c1 ^ $c2);
+        $c2 = $this->stack->popInt();
+        $c1 = $this->stack->popInt();
+        $this->stack->pushValue($c1 ^ $c2);
     }
 
     private function execInstrReferenceRefFunc(Instrs\Reference\RefFunc $instr): void
@@ -1536,7 +1536,7 @@ final class Runtime
 
     private function execInstrParametricSelect(Instrs\Parametric\Select $instr): void
     {
-        $c = $this->stack->popI32();
+        $c = $this->stack->popInt();
         $val2 = $this->stack->popValue();
         $val1 = $this->stack->popValue();
         if ($c !== 0) {
@@ -1635,9 +1635,9 @@ final class Runtime
         $tab = $this->store->tables[$ta];
         $ea = $f->module->elemAddrs[$y];
         $elem = $this->store->elems[$ea];
-        $n = $this->stack->popI32();
-        $s = $this->stack->popI32();
-        $d = $this->stack->popI32();
+        $n = $this->stack->popInt();
+        $s = $this->stack->popInt();
+        $d = $this->stack->popInt();
         if (count($elem->elem) < $s + $n) {
             throw new TrapException("table.init: out of bounds");
         }
@@ -1646,8 +1646,8 @@ final class Runtime
         }
         for ($i = 0; $i < $n; $i++) {
             $val = $elem->elem[$s];
-            $this->stack->pushI32($d);
-            $this->stack->pushValue(Val::Ref($val));
+            $this->stack->pushValue($d);
+            $this->stack->pushValue($val);
             $this->execInstr(Instr::TableSet($x));
             $d++;
             $s++;
@@ -1661,7 +1661,7 @@ final class Runtime
         $a = $f->module->tableAddrs[$x];
         $tab = $this->store->tables[$a];
         $val = $this->stack->popRef();
-        $i = $this->stack->popI32();
+        $i = $this->stack->popInt();
         if (count($tab->elem) <= $i) {
             throw new TrapException("table.set: out of bounds");
         }
@@ -1821,9 +1821,9 @@ final class Runtime
         $mem = $this->store->mems[$ma];
         $da = $f->module->dataAddrs[$x];
         $data = $this->store->datas[$da];
-        $n = $this->stack->popI32();
-        $s = $this->stack->popI32();
-        $d = $this->stack->popI32();
+        $n = $this->stack->popInt();
+        $s = $this->stack->popInt();
+        $d = $this->stack->popInt();
         if (count($data->data) < $s + $n) {
             throw new TrapException("memory.init: out of bounds");
         }
@@ -1832,8 +1832,8 @@ final class Runtime
         }
         for ($i = 0; $i < $n; $i++) {
             $b = $data->data[$s];
-            $this->stack->pushI32($d);
-            $this->stack->pushI32($b);
+            $this->stack->pushValue($d);
+            $this->stack->pushValue($b);
             $this->execInstr(Instr::I32Store8(0, 0));
             $d++;
             $s++;
@@ -1848,7 +1848,7 @@ final class Runtime
         $szInByte = $mem->size();
         assert(is_int($szInByte / (64 * 1024)));
         $sz = $szInByte / (64 * 1024);
-        $this->stack->pushI32($sz);
+        $this->stack->pushValue($sz);
     }
 
     private function execInstrControlBlock(Instrs\Control\Block $instr): ?ControlFlowResult
@@ -1887,7 +1887,7 @@ final class Runtime
     private function execInstrControlBrIf(Instrs\Control\BrIf $instr): ?ControlFlowResult
     {
         $l = $instr->label;
-        $c = $this->stack->popI32();
+        $c = $this->stack->popInt();
         if ($c !== 0) {
             return $this->execInstr(Instr::Br($l));
         } else {
@@ -1899,7 +1899,7 @@ final class Runtime
     {
         $ls = $instr->labelTable;
         $ln = $instr->defaultLabel;
-        $i = self::wasmI32ToPhpInt($this->stack->popI32());
+        $i = self::wasmI32ToPhpInt($this->stack->popInt());
         if ($i < count($ls)) {
             return $this->execInstr(Instr::Br($ls[$i]));
         } else {
@@ -1923,7 +1923,7 @@ final class Runtime
         $ta = $f->module->tableAddrs[$x];
         $tab = $this->store->tables[$ta];
         $ftExpect = $f->module->types[$y];
-        $i = self::wasmI32ToPhpInt($this->stack->popI32());
+        $i = self::wasmI32ToPhpInt($this->stack->popInt());
         if (count($tab->elem) <= $i) {
             throw new TrapException("call_indirect: out of bounds");
         }
@@ -1957,7 +1957,7 @@ final class Runtime
         $blockType = $instr->type;
         $instrs1 = $instr->thenBody;
         $instrs2 = $instr->elseBody;
-        $c = $this->stack->popI32();
+        $c = $this->stack->popInt();
         if ($c !== 0) {
             return $this->execInstr(Instr::Block($blockType, $instrs1));
         } else {
@@ -1990,7 +1990,7 @@ final class Runtime
                             //     echo "  " . $instr::opName() . "\n";
                             // }
                             // WORKAROUND:
-                            $this->stack->pushI32(0);
+                            $this->stack->pushValue(0);
                         }
                     }
                     $this->deactivateLabel($n);
@@ -2025,13 +2025,13 @@ final class Runtime
         $f = $this->stack->currentFrame();
         $a = $f->module->memAddrs[0];
         $mem = $this->store->mems[$a];
-        $i = $this->stack->popI32();
+        $i = $this->stack->popInt();
         $ea = $i + $offset;
         $c = $mem->loadI32($ea, $n, $signed);
         if ($c === null) {
             throw new TrapException("$instrOpName: out of bounds");
         }
-        $this->stack->pushI32($c);
+        $this->stack->pushValue($c);
     }
 
     private function doLoadI64(int $offset, int $n, bool $signed, string $instrOpName): void
@@ -2039,13 +2039,13 @@ final class Runtime
         $f = $this->stack->currentFrame();
         $a = $f->module->memAddrs[0];
         $mem = $this->store->mems[$a];
-        $i = $this->stack->popI32();
+        $i = $this->stack->popInt();
         $ea = $i + $offset;
         $c = $mem->loadI64($ea, $n, $signed);
         if ($c === null) {
             throw new TrapException("$instrOpName: out of bounds");
         }
-        $this->stack->pushI64($c);
+        $this->stack->pushValue($c);
     }
 
     private function doLoadF32(int $offset, string $instrOpName): void
@@ -2053,13 +2053,13 @@ final class Runtime
         $f = $this->stack->currentFrame();
         $a = $f->module->memAddrs[0];
         $mem = $this->store->mems[$a];
-        $i = $this->stack->popI32();
+        $i = $this->stack->popInt();
         $ea = $i + $offset;
         $c = $mem->loadF32($ea);
         if ($c === null) {
             throw new TrapException("$instrOpName: out of bounds");
         }
-        $this->stack->pushF64($c);
+        $this->stack->pushValue($c);
     }
 
     private function doLoadF64(int $offset, string $instrOpName): void
@@ -2067,13 +2067,13 @@ final class Runtime
         $f = $this->stack->currentFrame();
         $a = $f->module->memAddrs[0];
         $mem = $this->store->mems[$a];
-        $i = $this->stack->popI32();
+        $i = $this->stack->popInt();
         $ea = $i + $offset;
         $c = $mem->loadF64($ea);
         if ($c === null) {
             throw new TrapException("$instrOpName: out of bounds");
         }
-        $this->stack->pushF64($c);
+        $this->stack->pushValue($c);
     }
 
     private function doStoreI32(int $offset, int $n, string $instrOpName): void
@@ -2081,8 +2081,8 @@ final class Runtime
         $f = $this->stack->currentFrame();
         $a = $f->module->memAddrs[0];
         $mem = $this->store->mems[$a];
-        $c = $this->stack->popI32();
-        $i = $this->stack->popI32();
+        $c = $this->stack->popInt();
+        $i = $this->stack->popInt();
         $ea = $i + $offset;
         $ok = $mem->storeI32($ea, $c, $n);
         if (!$ok) {
@@ -2095,8 +2095,8 @@ final class Runtime
         $f = $this->stack->currentFrame();
         $a = $f->module->memAddrs[0];
         $mem = $this->store->mems[$a];
-        $c = $this->stack->popI64();
-        $i = $this->stack->popI32();
+        $c = $this->stack->popInt();
+        $i = $this->stack->popInt();
         $ea = $i + $offset;
         $ok = $mem->storeI64($ea, $c, $n);
         if (!$ok) {
@@ -2109,8 +2109,8 @@ final class Runtime
         $f = $this->stack->currentFrame();
         $a = $f->module->memAddrs[0];
         $mem = $this->store->mems[$a];
-        $c = $this->stack->popF32();
-        $i = $this->stack->popI32();
+        $c = $this->stack->popFloat();
+        $i = $this->stack->popInt();
         $ea = $i + $offset;
         $ok = $mem->storeF32($ea, $c);
         if (!$ok) {
@@ -2123,8 +2123,8 @@ final class Runtime
         $f = $this->stack->currentFrame();
         $a = $f->module->memAddrs[0];
         $mem = $this->store->mems[$a];
-        $c = $this->stack->popF64();
-        $i = $this->stack->popI32();
+        $c = $this->stack->popFloat();
+        $i = $this->stack->popInt();
         $ea = $i + $offset;
         $ok = $mem->storeF64($ea, $c);
         if (!$ok) {
@@ -2132,16 +2132,16 @@ final class Runtime
         }
     }
 
-    private static function defaultValueFromValType(ValType $type): Val
+    private static function defaultValueFromValType(ValType $type): int|float|Ref
     {
         return match ($type::class) {
             ValTypes\NumType::class => match ($type->inner) {
-                NumType::I32 => Val::NumI32(0),
-                NumType::I64 => Val::NumI64(0),
-                NumType::F32 => Val::NumF32(0),
-                NumType::F64 => Val::NumF64(0),
+                NumType::I32 => 0,
+                NumType::I64 => 0,
+                NumType::F32 => 0.0,
+                NumType::F64 => 0.0,
             },
-            ValTypes\RefType::class => Val::RefNull($type->inner),
+            ValTypes\RefType::class => Ref::RefNull($type->inner),
             default => throw new \RuntimeException("unreachable"),
         };
     }
