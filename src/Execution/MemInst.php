@@ -9,13 +9,11 @@ use function assert;
 use function chr;
 use function count;
 use function ord;
+use function strlen;
 
 final class MemInst
 {
-    /**
-     * @var list<string>
-     */
-    private array $data;
+    private string $data;
 
     private const PAGE_SIZE = 64 * 1024;
 
@@ -25,12 +23,12 @@ final class MemInst
         $minSize = $type->limits->min;
         // @todo hack
         $minSize *= 8;
-        $this->data = array_fill(0, $minSize, str_repeat("\0", self::PAGE_SIZE));
+        $this->data = str_repeat("\0", $minSize * self::PAGE_SIZE);
     }
 
     public function size(): int
     {
-        return count($this->data) * self::PAGE_SIZE;
+        return strlen($this->data);
     }
 
     /**
@@ -56,8 +54,7 @@ final class MemInst
         if ($this->size() < $ptr) {
             return null;
         }
-        $page = $this->data[intdiv($ptr, self::PAGE_SIZE)];
-        $result = unpack('c', $page, $ptr % self::PAGE_SIZE);
+        $result = unpack('c', $this->data, $ptr);
         assert($result !== false);
         $c = $result[1];
         assert(-0x80 <= $c && $c <= 0x7F);
@@ -72,8 +69,7 @@ final class MemInst
         if ($this->size() < $ptr) {
             return null;
         }
-        $page = $this->data[intdiv($ptr, self::PAGE_SIZE)];
-        $result = unpack('C', $page, $ptr % self::PAGE_SIZE);
+        $result = unpack('C', $this->data, $ptr);
         assert($result !== false);
         $c = $result[1];
         assert(0x00 <= $c && $c <= 0xFF);
@@ -130,8 +126,7 @@ final class MemInst
         if ($this->size() < $ptr) {
             return null;
         }
-        $page = $this->data[intdiv($ptr, self::PAGE_SIZE)];
-        $result = unpack('c', $page, $ptr % self::PAGE_SIZE);
+        $result = unpack('c', $this->data, $ptr);
         assert($result !== false);
         $c = $result[1];
         assert(-0x80 <= $c && $c <= 0x7F);
@@ -146,8 +141,7 @@ final class MemInst
         if ($this->size() < $ptr) {
             return null;
         }
-        $page = $this->data[intdiv($ptr, self::PAGE_SIZE)];
-        $result = unpack('C', $page, $ptr % self::PAGE_SIZE);
+        $result = unpack('C', $this->data, $ptr);
         assert($result !== false);
         $c = $result[1];
         assert(0x00 <= $c && $c <= 0xFF);
@@ -260,8 +254,7 @@ final class MemInst
         if ($this->size() < $ptr) {
             return null;
         }
-        $page = $this->data[intdiv($ptr, self::PAGE_SIZE)];
-        $result = unpack('C', $page, $ptr % self::PAGE_SIZE);
+        $result = unpack('C', $this->data, $ptr);
         assert($result !== false);
         $c = $result[1];
         assert(0x00 <= $c && $c <= 0xFF);
@@ -277,8 +270,7 @@ final class MemInst
         if ($this->size() < $ptr) {
             return false;
         }
-        // @phpstan-ignore-next-line
-        $this->data[intdiv($ptr, self::PAGE_SIZE)][$ptr % self::PAGE_SIZE] = chr($c);
+        $this->data[$ptr] = chr($c);
         return true;
     }
 
@@ -424,18 +416,6 @@ final class MemInst
         if ($this->size() < $ptr + $len) {
             return null;
         }
-        $buf = '';
-        $idx = $ptr % self::PAGE_SIZE;
-        for ($p = intdiv($ptr, self::PAGE_SIZE); ; $p++) {
-            $page = $this->data[$p];
-            $readLen = min(self::PAGE_SIZE - $idx, $len);
-            $buf .= substr($page, $idx, $readLen);
-            $len -= $readLen;
-            if ($len === 0) {
-                break;
-            }
-            $idx = 0;
-        }
-        return $buf;
+        return substr($this->data, $ptr, $len);
     }
 }
