@@ -289,7 +289,7 @@ final class Runtime
     private function execInstrs(
         array $instrs,
         Label $l,
-    ): ?ControlFlowResult {
+    ): ?int {
         $this->activateLabel($l);
 
         foreach ($instrs as $i => $instr) {
@@ -323,7 +323,7 @@ final class Runtime
         return $result;
     }
 
-    private function execInstr(Instr $instr): ?ControlFlowResult
+    private function execInstr(Instr $instr): ?int
     {
         static $debug = 0;
         // if ($debug >= 3) echo "Exec: " . $instr::opName() . "\n";
@@ -2059,7 +2059,7 @@ final class Runtime
         $this->stack->pushValue($sz);
     }
 
-    private function execInstrControlBlock(Instrs\Control\Block $instr): ?ControlFlowResult
+    private function execInstrControlBlock(Instrs\Control\Block $instr): ?int
     {
         $blockType = $instr->type;
         $instrs = $instr->body;
@@ -2071,47 +2071,42 @@ final class Runtime
         $result = $this->execInstrs($instrs, $l);
         if ($result === null) {
             // Do nothing.
-        } elseif ($result instanceof ControlFlowResults\Return_) {
-            return $result;
-        } elseif ($result instanceof ControlFlowResults\Br) {
-            if ($result->label === 0) {
-                $this->deactivateLabel($n);
-            } else {
-                $this->deactivateLabel($n);
-                return ControlFlowResult::Br($result->label - 1);
-            }
+        } elseif ($result === -1) {
+            return -1;
+        } elseif ($result === 0) {
+            $this->deactivateLabel($n);
         } else {
-            throw new RuntimeException("block: unreachable");
+            $this->deactivateLabel($n);
+            return $result - 1;
         }
         return null;
     }
 
-    private function execInstrControlBr(Instrs\Control\Br $instr): ControlFlowResult
+    private function execInstrControlBr(Instrs\Control\Br $instr): int
     {
-        $l = $instr->label;
-        return ControlFlowResult::Br($l);
+        return $instr->label;
     }
 
-    private function execInstrControlBrIf(Instrs\Control\BrIf $instr): ?ControlFlowResult
+    private function execInstrControlBrIf(Instrs\Control\BrIf $instr): ?int
     {
         $l = $instr->label;
         $c = $this->stack->popInt();
         if ($c !== 0) {
-            return ControlFlowResult::Br($l);
+            return $l;
         } else {
             return null;
         }
     }
 
-    private function execInstrControlBrTable(Instrs\Control\BrTable $instr): ControlFlowResult
+    private function execInstrControlBrTable(Instrs\Control\BrTable $instr): int
     {
         $ls = $instr->labelTable;
         $ln = $instr->defaultLabel;
         $i = self::wasmI32ToPhpInt($this->stack->popInt());
         if ($i < count($ls)) {
-            return ControlFlowResult::Br($ls[$i]);
+            return $ls[$i];
         } else {
-            return ControlFlowResult::Br($ln);
+            return $ln;
         }
     }
 
@@ -2160,7 +2155,7 @@ final class Runtime
         // Do nothing.
     }
 
-    private function execInstrControlIf_(Instrs\Control\If_ $instr): ?ControlFlowResult
+    private function execInstrControlIf_(Instrs\Control\If_ $instr): ?int
     {
         $blockType = $instr->type;
         $instrs1 = $instr->thenBody;
@@ -2173,7 +2168,7 @@ final class Runtime
         }
     }
 
-    private function execInstrControlLoop(Instrs\Control\Loop $instr): ?ControlFlowResult
+    private function execInstrControlLoop(Instrs\Control\Loop $instr): ?int
     {
         $blockType = $instr->type;
         $instrs = $instr->body;
@@ -2186,29 +2181,25 @@ final class Runtime
             $result = $this->execInstrs($instrs, $l);
             if ($result === null) {
                 return null;
-            } elseif ($result instanceof ControlFlowResults\Return_) {
-                return $result;
-            } elseif ($result instanceof ControlFlowResults\Br) {
-                if ($result->label === 0) {
-                    if ($n === 1) {
-                        if ($this->stack->top() instanceof Label) {
-                            // echo "loop: top is label\n";
-                            // echo "  f: " . $f->debugName . "\n";
-                            // foreach ($instrs as $instr) {
-                            //     echo "  " . $instr::opName() . "\n";
-                            // }
-                            // WORKAROUND:
-                            $this->stack->pushValue(0);
-                        }
+            } elseif ($result === -1) {
+                return -1;
+            } elseif ($result === 0) {
+                if ($n === 1) {
+                    if ($this->stack->top() instanceof Label) {
+                        // echo "loop: top is label\n";
+                        // echo "  f: " . $f->debugName . "\n";
+                        // foreach ($instrs as $instr) {
+                        //     echo "  " . $instr::opName() . "\n";
+                        // }
+                        // WORKAROUND:
+                        $this->stack->pushValue(0);
                     }
-                    $this->deactivateLabel($n);
-                    continue;
-                } else {
-                    $this->deactivateLabel($n);
-                    return ControlFlowResult::Br($result->label - 1);
                 }
+                $this->deactivateLabel($n);
+                continue;
             } else {
-                throw new RuntimeException("loop: unreachable");
+                $this->deactivateLabel($n);
+                return $result - 1;
             }
         }
     }
@@ -2218,9 +2209,9 @@ final class Runtime
         // Do nothing.
     }
 
-    private function execInstrControlReturn_(Instrs\Control\Return_ $instr): ControlFlowResult
+    private function execInstrControlReturn_(Instrs\Control\Return_ $instr): int
     {
-        return ControlFlowResult::Return();
+        return -1;
     }
 
     private function execInstrControlUnreachable(Instrs\Control\Unreachable $instr): void
