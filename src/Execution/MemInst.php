@@ -5,6 +5,10 @@ declare(strict_types=1);
 namespace Nsfisis\Waddiwasi\Execution;
 
 use Nsfisis\Waddiwasi\Structure\Types\MemType;
+use function assert;
+use function chr;
+use function count;
+use function ord;
 
 final class MemInst
 {

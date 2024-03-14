@@ -5,6 +5,10 @@ declare(strict_types=1);
 namespace Nsfisis\Waddiwasi\Execution;
 
 use Nsfisis\Waddiwasi\Structure\Types\RefType;
+use function assert;
+use function count;
+use function is_float;
+use function is_int;
 
 final class Stack
 {

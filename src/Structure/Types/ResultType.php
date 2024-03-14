@@ -4,6 +4,8 @@ declare(strict_types=1);
 
 namespace Nsfisis\Waddiwasi\Structure\Types;
 
+use function count;
+
 final readonly class ResultType
 {
     /**

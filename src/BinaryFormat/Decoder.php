@@ -34,6 +34,13 @@ use Nsfisis\Waddiwasi\Structure\Types\ResultType;
 use Nsfisis\Waddiwasi\Structure\Types\TableType;
 use Nsfisis\Waddiwasi\Structure\Types\ValType;
 use Nsfisis\Waddiwasi\Structure\Types\VecType;
+use function assert;
+use function count;
+use function get_class;
+use function in_array;
+use function is_float;
+use function ord;
+use function strlen;
 
 final class Decoder
 {
