@@ -328,7 +328,7 @@ final class Runtime
         static $debug = 0;
         // if ($debug >= 3) echo "Exec: " . $instr::opName() . "\n";
 
-        // $start = hrtime(true);
+        // $startTime = hrtime(true);
 
         $result = match ($instr::class) {
             Instrs\Numeric\F32Abs::class => $this->execInstrNumericF32Abs($instr),
@@ -540,7 +540,7 @@ final class Runtime
 
         // $this->instrMetrics[$instr::opName()] ??= [0, 0];
         // $this->instrMetrics[$instr::opName()][0] += 1;
-        // $this->instrMetrics[$instr::opName()][1] += hrtime(true) - $start;
+        // $this->instrMetrics[$instr::opName()][1] += hrtime(true) - $startTime;
 
         return $result;
     }
@@ -2097,21 +2097,21 @@ final class Runtime
         $l = $instr->label;
         $c = $this->stack->popInt();
         if ($c !== 0) {
-            return $this->execInstr(Instr::Br($l));
+            return ControlFlowResult::Br($l);
         } else {
             return null;
         }
     }
 
-    private function execInstrControlBrTable(Instrs\Control\BrTable $instr): ?ControlFlowResult
+    private function execInstrControlBrTable(Instrs\Control\BrTable $instr): ControlFlowResult
     {
         $ls = $instr->labelTable;
         $ln = $instr->defaultLabel;
         $i = self::wasmI32ToPhpInt($this->stack->popInt());
         if ($i < count($ls)) {
-            return $this->execInstr(Instr::Br($ls[$i]));
+            return ControlFlowResult::Br($ls[$i]);
         } else {
-            return $this->execInstr(Instr::Br($ln));
+            return ControlFlowResult::Br($ln);
         }
     }
 
