@@ -149,8 +149,8 @@ assert(is_int($exitCode));
 fprintf(STDERR, "Exit code: $exitCode\n");
 fprintf(STDERR, "Memory peak usage: %s\n", memory_get_peak_usage());
 fprintf(STDERR, "\n\n");
-foreach ($runtime->getInstrMetrics() as $instr => $count) {
-    fprintf(STDERR, "%s: %d\n", $instr, $count);
+foreach ($runtime->getInstrMetrics() as $instr => [$count, $time]) {
+    fprintf(STDERR, "%s: %d %d %f\n", $instr, $time, $count, $time / $count);
 }
 
 function allocateStringOnWasmMemory(Runtime $runtime, string $str): int {

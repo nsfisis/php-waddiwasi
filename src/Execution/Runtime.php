@@ -24,7 +24,7 @@ use function is_int;
 final class Runtime
 {
     /**
-     * @var array<string, int>
+     * @var array<string, array{int, int}>
      */
     private array $instrMetrics = [];
 
@@ -157,7 +157,7 @@ final class Runtime
     }
 
     /**
-     * @return array<string, int>
+     * @return array<string, array{int, int}>
      */
     public function getInstrMetrics(): array
     {
@@ -538,8 +538,9 @@ final class Runtime
             default => throw new RuntimeException("invalid instruction"),
         };
 
-        // $this->instrMetrics[$instr::opName()] ??= 0;
-        // $this->instrMetrics[$instr::opName()] += hrtime(true) - $start;
+        // $this->instrMetrics[$instr::opName()] ??= [0, 0];
+        // $this->instrMetrics[$instr::opName()][0] += 1;
+        // $this->instrMetrics[$instr::opName()][1] += hrtime(true) - $start;
 
         return $result;
     }
