@@ -18,4 +18,4 @@ $ php -d zend.assertions=-1 -d memory_limit=512M -d opcache.enable_cli=on -d opc
 
 # License
 
-See LICENSE.
+See [LICENSE](./LICENSE).
