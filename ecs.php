@@ -10,6 +10,7 @@ use PhpCsFixer\Fixer\FunctionNotation\NativeFunctionInvocationFixer;
 return function (ECSConfig $ecsConfig): void {
     $ecsConfig->paths([
         __DIR__ . '/src',
+        __DIR__ . '/examples',
     ]);
     $ecsConfig->sets([
         SetList::CLEAN_CODE,
