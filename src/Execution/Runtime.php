@@ -203,7 +203,6 @@ final class Runtime
 
     private function doInvokeFunc(int $funcAddr): void
     {
-        // echo "Invoke: $funcAddr\n";
         $fn = $this->store->funcs[$funcAddr];
         if ($fn instanceof FuncInsts\Wasm) {
             $this->doInvokeWasmFunc($fn, $funcAddr);
@@ -212,7 +211,6 @@ final class Runtime
         } else {
             throw new RuntimeException("doInvokeFunc: unreachable");
         }
-        // echo "Return: $funcAddr\n";
     }
 
     private function doInvokeWasmFunc(FuncInsts\Wasm $fn, int $funcAddr): void
@@ -325,12 +323,7 @@ final class Runtime
 
     private function execInstr(Instr $instr): ?int
     {
-        static $debug = 0;
-        // if ($debug >= 3) echo "Exec: " . $instr::opName() . "\n";
-
-        // $startTime = hrtime(true);
-
-        $result = match ($instr::class) {
+        return match ($instr::class) {
             Instrs\Numeric\F32Abs::class => $this->execInstrNumericF32Abs($instr),
             Instrs\Numeric\F32Add::class => $this->execInstrNumericF32Add($instr),
             Instrs\Numeric\F32Ceil::class => $this->execInstrNumericF32Ceil($instr),
@@ -537,12 +530,6 @@ final class Runtime
             Instrs\Control\Unreachable::class => $this->execInstrControlUnreachable($instr),
             default => throw new RuntimeException("invalid instruction"),
         };
-
-        // $this->instrMetrics[$instr::opName()] ??= [0, 0];
-        // $this->instrMetrics[$instr::opName()][0] += 1;
-        // $this->instrMetrics[$instr::opName()][1] += hrtime(true) - $startTime;
-
-        return $result;
     }
 
     private function execInstrNumericF32Abs(Instrs\Numeric\F32Abs $instr): void
@@ -2186,11 +2173,6 @@ final class Runtime
             } elseif ($result === 0) {
                 if ($n === 1) {
                     if ($this->stack->top() instanceof Label) {
-                        // echo "loop: top is label\n";
-                        // echo "  f: " . $f->debugName . "\n";
-                        // foreach ($instrs as $instr) {
-                        //     echo "  " . $instr::opName() . "\n";
-                        // }
                         // WORKAROUND:
                         $this->stack->pushValue(0);
                     }

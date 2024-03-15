@@ -6,7 +6,6 @@ require_once __DIR__ . '/../../vendor/autoload.php';
 
 use Nsfisis\Waddiwasi\BinaryFormat\Decoder;
 use Nsfisis\Waddiwasi\BinaryFormat\InvalidBinaryFormatException;
-use Nsfisis\Waddiwasi\Debug\Debug;
 use Nsfisis\Waddiwasi\Execution\ExternVal;
 use Nsfisis\Waddiwasi\Execution\FuncInst;
 use Nsfisis\Waddiwasi\Execution\Refs;
@@ -26,16 +25,13 @@ EOS;
 $wasmBinary = file_get_contents(__DIR__ . '/php-wasm.wasm');
 \assert($wasmBinary !== false);
 
-fprintf(STDERR, "Decoding...\n");
 try {
     $module = (new Decoder($wasmBinary))->decode();
-    // Debug::printImports($module);
 } catch (InvalidBinaryFormatException $e) {
     fprintf(STDERR, $e->getMessage() . "\n");
     exit(1);
 }
 
-fprintf(STDERR, "Instantiating...\n");
 $hostFuncs = [
     makeHostFunc('(i32, i32, i32) -> (i32)', hostFunc__env__invoke_iii(...)),
     makeHostFunc('(i32, i32, i32, i32, i32) -> (i32)', hostFunc__env__invoke_iiiii(...)),
@@ -140,18 +136,10 @@ foreach ($hostFuncs as $hostFunc) {
 $runtime = Runtime::instantiate($store, $module, $externVals);
 $codePtr = allocateStringOnWasmMemory($runtime, PHP_HELLO_WORLD);
 
-fprintf(STDERR, "Executing...\n");
 $results = $runtime->invoke("php_wasm_run", [$codePtr]);
 \assert(\count($results) === 1);
 $exitCode = $results[0];
 \assert(\is_int($exitCode));
-
-fprintf(STDERR, "Exit code: $exitCode\n");
-fprintf(STDERR, "Memory peak usage: %s\n", memory_get_peak_usage());
-fprintf(STDERR, "\n\n");
-foreach ($runtime->getInstrMetrics() as $instr => [$count, $time]) {
-    fprintf(STDERR, "%s: %d %d %f\n", $instr, $time, $count, $time / $count);
-}
 
 function allocateStringOnWasmMemory(Runtime $runtime, string $str): int
 {
@@ -787,8 +775,6 @@ function hostFunc__env____syscall_openat(Runtime $runtime): void
     } else {
         $mode = 0;
     }
-
-    // echo "syscall_openat: $path, $flags, $mode\n";
 
     // no such file
     $runtime->stack->pushValue(-44);
