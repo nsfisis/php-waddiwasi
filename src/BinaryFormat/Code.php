@@ -4,16 +4,17 @@ declare(strict_types=1);
 
 namespace Nsfisis\Waddiwasi\BinaryFormat;
 
-use Nsfisis\Waddiwasi\Structure\Instructions\Expr;
+use Nsfisis\Waddiwasi\Structure\Instructions\Instr;
 
 final readonly class Code
 {
     /**
      * @param list<Locals> $compressedLocals
+     * @param list<Instr> $body
      */
     public function __construct(
         public array $compressedLocals,
-        public Expr $body,
+        public array $body,
     ) {
     }
 }

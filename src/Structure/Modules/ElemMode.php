@@ -4,7 +4,7 @@ declare(strict_types=1);
 
 namespace Nsfisis\Waddiwasi\Structure\Modules;
 
-use Nsfisis\Waddiwasi\Structure\Instructions\Expr;
+use Nsfisis\Waddiwasi\Structure\Instructions\Instr;
 
 abstract readonly class ElemMode
 {
@@ -13,9 +13,12 @@ abstract readonly class ElemMode
         return new ElemModes\Passive();
     }
 
+    /**
+     * @param list<Instr> $offset
+     */
     final public static function Active(
         int $table,
-        Expr $offset,
+        array $offset,
     ): ElemModes\Active {
         return new ElemModes\Active($table, $offset);
     }

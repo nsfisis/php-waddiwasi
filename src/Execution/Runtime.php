@@ -55,9 +55,7 @@ final class Runtime
 
         $vals = [];
         foreach ($module->globals as $global) {
-            $instrs = $global->init->instrs;
-            array_pop($instrs); // drop "end"
-            $vals[] = $runtimeInit->evalInstrsForInit($instrs);
+            $vals[] = $runtimeInit->evalInstrsForInit($global->init);
             assert($stack->top() === $frameInit);
         }
 
@@ -65,9 +63,7 @@ final class Runtime
         foreach ($module->elems as $elem) {
             $refs = [];
             foreach ($elem->init as $expr) {
-                $instrs = $expr->instrs;
-                array_pop($instrs); // drop "end"
-                $result = $runtimeInit->evalInstrsForInit($instrs);
+                $result = $runtimeInit->evalInstrsForInit($expr);
                 assert($result instanceof Ref);
                 $refs[] = $result;
             }
@@ -93,8 +89,7 @@ final class Runtime
         foreach ($module->elems as $i => $elem) {
             if ($elem->mode instanceof ElemModes\Active) {
                 $n = count($elem->init);
-                $instrs = $elem->mode->offset->instrs;
-                array_pop($instrs); // drop "end"
+                $instrs = $elem->mode->offset;
                 $instrs[] = Instr::I32Const(0);
                 $instrs[] = Instr::I32Const($n);
                 $instrs[] = Instr::TableInit($elem->mode->table, $i);
@@ -108,8 +103,7 @@ final class Runtime
             if ($data->mode instanceof DataModes\Active) {
                 assert($data->mode->memory === 0);
                 $n = count($data->init);
-                $instrs = $data->mode->offset->instrs;
-                array_pop($instrs); // drop "end"
+                $instrs = $data->mode->offset;
                 $instrs[] = Instr::I32Const(0);
                 $instrs[] = Instr::I32Const($n);
                 $instrs[] = Instr::MemoryInit($i);
@@ -220,8 +214,6 @@ final class Runtime
         $resultTypes = $fn->type->results->types;
         $m = count($resultTypes);
         $ts = $fn->code->locals;
-        $instrs = $fn->code->body->instrs;
-        array_pop($instrs); // drop "end"
         $vals = [];
         for ($i = 0; $i < $n; $i++) {
             $vals[] = $this->stack->popValue();
@@ -237,7 +229,7 @@ final class Runtime
         );
         $this->activateFrame($f);
         $l = new Label($m);
-        $this->execInstrs($instrs, $l);
+        $this->execInstrs($fn->code->body, $l);
         $this->deactivateFrame($m);
     }
 

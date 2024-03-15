@@ -4,7 +4,6 @@ declare(strict_types=1);
 
 namespace Nsfisis\Waddiwasi\BinaryFormat;
 
-use Nsfisis\Waddiwasi\Structure\Instructions\Expr;
 use Nsfisis\Waddiwasi\Structure\Instructions\Instr;
 use Nsfisis\Waddiwasi\Structure\Instructions\Instrs;
 use Nsfisis\Waddiwasi\Structure\Instructions\Instrs\Control\BlockType;
@@ -434,7 +433,7 @@ final class Decoder
             return new Elem(
                 RefType::FuncRef,
                 array_map(
-                    fn ($funcRef) => new Expr([Instr::RefFunc($funcRef)]),
+                    fn ($funcRef) => [Instr::RefFunc($funcRef)],
                     $initFuncRefs,
                 ),
                 ElemMode::Active(0, $offset),
@@ -445,7 +444,7 @@ final class Decoder
             return new Elem(
                 $refType,
                 array_map(
-                    fn ($funcRef) => new Expr([Instr::RefFunc($funcRef)]),
+                    fn ($funcRef) => [Instr::RefFunc($funcRef)],
                     $initFuncRefs,
                 ),
                 ElemMode::Passive(),
@@ -458,7 +457,7 @@ final class Decoder
             return new Elem(
                 $refType,
                 array_map(
-                    fn ($funcRef) => new Expr([Instr::RefFunc($funcRef)]),
+                    fn ($funcRef) => [Instr::RefFunc($funcRef)],
                     $initFuncRefs,
                 ),
                 ElemMode::Active($table, $offset),
@@ -469,7 +468,7 @@ final class Decoder
             return new Elem(
                 $refType,
                 array_map(
-                    fn ($funcRef) => new Expr([Instr::RefFunc($funcRef)]),
+                    fn ($funcRef) => [Instr::RefFunc($funcRef)],
                     $initFuncRefs,
                 ),
                 ElemMode::Declarative(),
@@ -650,9 +649,12 @@ final class Decoder
         return $this->decodeU32();
     }
 
-    private function decodeExpr(): Expr
+    /**
+     * @return list<Instr>
+     */
+    private function decodeExpr(): array
     {
-        return new Expr($this->decodeInstrsUntil([Instrs\Control\End::class])[0]);
+        return $this->decodeInstrsUntil([Instrs\Control\End::class])[0];
     }
 
     private function decodeInstr(): Instr

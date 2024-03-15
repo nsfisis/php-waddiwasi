@@ -4,7 +4,7 @@ declare(strict_types=1);
 
 namespace Nsfisis\Waddiwasi\Structure\Modules;
 
-use Nsfisis\Waddiwasi\Structure\Instructions\Expr;
+use Nsfisis\Waddiwasi\Structure\Instructions\Instr;
 
 abstract readonly class DataMode
 {
@@ -13,9 +13,12 @@ abstract readonly class DataMode
         return new DataModes\Passive();
     }
 
+    /**
+     * @param list<Instr> $offset
+     */
     final public static function Active(
         int $memory,
-        Expr $offset,
+        array $offset,
     ): DataModes\Active {
         return new DataModes\Active($memory, $offset);
     }
