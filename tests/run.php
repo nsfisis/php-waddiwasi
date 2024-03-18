@@ -157,6 +157,20 @@ function runTestsuite(array $testsuiteDefinition, string $testsuiteName): void
                     if (count($actionArgs) === 0) {
                         $results = $runtime->invoke($actionField, []);
                         assert(count($expected) === count($results));
+                        for ($i = 0; $i < count($expected); $i++) {
+                            $e = $expected[$i];
+                            $r = $results[$i];
+                            if ($e['type'] === 'f32') {
+                                $v = unpack('g', pack('l', (int)$e['value']))[1];
+                                assert($v === $r, "$v !== $r (at $command[line])");
+                            } else if ($e['type'] === 'f64') {
+                                $v = unpack('e', pack('q', (int)$e['value']))[1];
+                                assert($v === $r, "$v !== $r (at $command[line])");
+                            } else {
+                                $v = (int)$e['value'];
+                                assert($v === $r, "$v !== $r (at $command[line])");
+                            }
+                        }
                     }
                 } else {
                 }

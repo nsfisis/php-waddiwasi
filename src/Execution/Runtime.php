@@ -187,7 +187,7 @@ final class Runtime
             $results[] = $this->stack->popValue();
         }
         $this->stack->popFrame();
-        return $results;
+        return array_reverse($results);
     }
 
     public function invokeByFuncAddr(int $funcAddr): void
