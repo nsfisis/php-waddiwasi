@@ -7,6 +7,7 @@ namespace Nsfisis\Waddiwasi\Tests\SpecTestsuites;
 use Nsfisis\Waddiwasi\BinaryFormat\Decoder;
 use Nsfisis\Waddiwasi\Execution\Runtime;
 use Nsfisis\Waddiwasi\Execution\Store;
+use Nsfisis\Waddiwasi\Execution\TrapException;
 use PHPUnit\Framework\TestCase;
 use function count;
 
@@ -14,7 +15,7 @@ final class CoreTest extends TestCase
 {
     public function testAddress(): void
     {
-        // $this->runSpecTestsuite('address');
+        $this->runSpecTestsuite('address');
     }
 
     public function testAlign(): void
@@ -488,7 +489,14 @@ final class CoreTest extends TestCase
                     $this->assertTrue(false, "assert_invalid");
                     break;
                 case 'assert_malformed':
-                    $this->assertTrue(false, "assert_malformed");
+                    $commandFilename = $command['filename'];
+                    $commandText = $command['text'];
+                    $commandModuleType = $command['module_type'];
+                    if ($commandModuleType === 'text') {
+                        // Text format is not supported.
+                    } else {
+                        $this->assertTrue(false, "assert_malformed");
+                    }
                     break;
                 case 'assert_return':
                     $targetModuleName = $command['module'] ?? '_';
@@ -500,32 +508,46 @@ final class CoreTest extends TestCase
                     if ($actionType === 'invoke') {
                         $actionArgs = $action['args'];
                         $runtime = $runtimes[$targetModuleName];
-                        if (count($actionArgs) === 0) {
-                            $actualResults = $runtime->invoke($actionField, []);
-                            $this->assertCount(count($expectedResults), $actualResults, "at $command[line]");
-                            for ($i = 0; $i < count($expectedResults); $i++) {
-                                $expectedResult = $expectedResults[$i];
-                                $actualResult = $actualResults[$i];
-                                if ($expectedResult['type'] === 'f32') {
-                                    $expectedValue = unpack('g', pack('l', (int)$expectedResult['value']))[1];
-                                    $this->assertSame($expectedValue, $actualResult, "at $command[line]");
-                                } elseif ($expectedResult['type'] === 'f64') {
-                                    $expectedValue = unpack('e', pack('q', (int)$expectedResult['value']))[1];
-                                    $this->assertSame($expectedValue, $actualResult, "at $command[line]");
-                                } else {
-                                    $expectedValue = (int)$expectedResult['value'];
-                                    $this->assertSame($expectedValue, $actualResult, "at $command[line]");
-                                }
-                            }
-                        } else {
-                            $this->assertTrue(false, "assert_return: TODO");
+                        try {
+                            $this->assertWasmInvokeResults(
+                                $expectedResults,
+                                $runtime->invoke(
+                                    $actionField,
+                                    array_map($this->toWasmArg(...), $actionArgs),
+                                ),
+                                "at $command[line]",
+                            );
+                        } catch (TrapException $e) {
+                            $this->assertTrue(false, "assert_return: trap, $e at $command[line]");
                         }
                     } else {
                         $this->assertTrue(false, "assert_return: unknown action, $actionType");
                     }
                     break;
                 case 'assert_trap':
-                    $this->assertTrue(false, "assert_trap");
+                    $targetModuleName = $command['module'] ?? '_';
+                    $targetModule = $modules[$targetModuleName];
+                    $expectedResults = $command['expected'];
+                    $action = $command['action'];
+                    $actionType = $action['type'];
+                    $actionField = $action['field'];
+                    if ($actionType === 'invoke') {
+                        $actionArgs = $action['args'];
+                        $runtime = $runtimes[$targetModuleName];
+                        $exception = null;
+                        try {
+                            $runtime->invoke(
+                                $actionField,
+                                array_map($this->toWasmArg(...), $actionArgs),
+                            );
+                        } catch (TrapException $e) {
+                            $exception = $e;
+                        }
+                        $this->assertNotNull($exception, "at $command[line]");
+                        // @todo check trap message
+                    } else {
+                        $this->assertTrue(false, "assert_trap: unknown action, $actionType");
+                    }
                     break;
                 case 'assert_uninstantiable':
                     $this->assertTrue(false, "assert_uninstantiable");
@@ -536,6 +558,84 @@ final class CoreTest extends TestCase
                 case 'register':
                     $this->assertTrue(false, "register");
                     break;
+            }
+        }
+    }
+
+    /**
+     * @param array{type: string, value: string} $arg
+     */
+    private function toWasmArg(array $arg): int|float
+    {
+        $type = $arg['type'];
+        $value = $arg['value'];
+        return match ($type) {
+            'i32' => (int)$value,
+            'i64' => (int)$value,
+            'f32' => unpack('g', pack('l', (int)$value))[1],
+            'f64' => unpack('e', pack('q', (int)$value))[1],
+            default => $this->assertTrue(false, "unknown arg type: $type"),
+        };
+    }
+
+    /**
+     * @param list<mixed> $actualResults
+     * @param list<array{type: string, value: string}> $expectedResults
+     */
+    private function assertWasmInvokeResults(
+        array $expectedResults,
+        array $actualResults,
+        string $message = '',
+    ): void {
+        if ($message !== '') {
+            $message = " ($message)";
+        }
+        $this->assertCount(
+            count($expectedResults),
+            $actualResults,
+            "results count mismatch" . $message,
+        );
+
+        for ($i = 0; $i < count($expectedResults); $i++) {
+            $expectedResult = $expectedResults[$i];
+            $actualResult = $actualResults[$i];
+            if ($expectedResult['type'] === 'f32') {
+                $expectedValue = unpack('g', pack('l', (int)$expectedResult['value']))[1];
+                if (is_nan($expectedValue)) {
+                    // @todo check NaN bit pattern.
+                    $this->assertTrue(
+                        is_nan($actualResult),
+                        "result $i is not NaN" . $message,
+                    );
+                } else {
+                    $this->assertSame(
+                        $expectedValue,
+                        $actualResult,
+                        "result $i mismatch" . $message,
+                    );
+                }
+            } elseif ($expectedResult['type'] === 'f64') {
+                $expectedValue = unpack('e', pack('q', (int)$expectedResult['value']))[1];
+                if (is_nan($expectedValue)) {
+                    // @todo check NaN bit pattern.
+                    $this->assertTrue(
+                        is_nan($actualResult),
+                        "result $i is not NaN" . $message,
+                    );
+                } else {
+                    $this->assertSame(
+                        $expectedValue,
+                        $actualResult,
+                        "result $i mismatch" . $message,
+                    );
+                }
+            } else {
+                $expectedValue = (int)$expectedResult['value'];
+                $this->assertSame(
+                    $expectedValue,
+                    $actualResult,
+                    "result $i mismatch" . $message,
+                );
             }
         }
     }
