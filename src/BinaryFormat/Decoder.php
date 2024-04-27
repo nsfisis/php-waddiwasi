@@ -1052,10 +1052,14 @@ final class Decoder
             $shiftBits += 7;
             if ($b < 0b10000000) {
                 if (($b & 0b01000000) !== 0) {
-                    if ($shiftBits < $bits - 1) {
-                        $result |= -(1 << $shiftBits);
+                    if ($bits === 32) {
+                        $result |= (-1) ^ (1 << $shiftBits) - 1;
                     } else {
-                        $result |= 1 << $shiftBits;
+                        if ($shiftBits < $bits - 1) {
+                            $result |= -(1 << $shiftBits);
+                        } else {
+                            $result |= 1 << $shiftBits;
+                        }
                     }
                 }
                 return $result;

@@ -12,7 +12,7 @@ final class TableInst
      * @param list<Ref> $elem
      */
     public function __construct(
-        public readonly TableType $type,
+        public TableType $type,
         public array $elem,
     ) {
     }

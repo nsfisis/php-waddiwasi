@@ -15,4 +15,10 @@ final readonly class Limits
         public ?int $max,
     ) {
     }
+
+    public function isValid(): bool
+    {
+        return 0 <= $this->min &&
+            ($this->max === null || $this->min <= $this->max);
+    }
 }

@@ -6,6 +6,7 @@ namespace Nsfisis\Waddiwasi\Execution;
 
 use FFI;
 use FFI\CData;
+use Nsfisis\Waddiwasi\Structure\Types\Limits;
 use Nsfisis\Waddiwasi\Structure\Types\MemType;
 use function assert;
 use function count;
@@ -13,6 +14,8 @@ use function count;
 final class MemInst
 {
     private const PAGE_SIZE = 64 * 1024;
+
+    private const MAX_PAGES = 0x10000;
 
     private CData $dataU8;
     private CData $dataS8;
@@ -54,19 +57,63 @@ final class MemInst
     private CData $dataF64_6;
     private CData $dataF64_7;
 
-    private readonly int $dataSize;
+    private int $dataSize;
 
     private readonly FFI $ffi;
 
     public function __construct(
-        public readonly MemType $type,
+        public MemType $type,
     ) {
         $this->ffi = FFI::cdef();
+        $this->initInternalMemory($type->limits->min);
+    }
 
-        $minSize = $type->limits->min;
-        // @todo hack
-        $minSize *= 8;
-        $this->dataSize = $minSize * self::PAGE_SIZE;
+    public function size(): int
+    {
+        return $this->dataSize;
+    }
+
+    public function nPages(): int
+    {
+        return $this->size() / self::PAGE_SIZE;
+    }
+
+    /**
+     * @return int
+     *   Returns the original size of the memory in pages or -1 if failed.
+     */
+    public function grow(int $n): int
+    {
+        $sz = $this->nPages();
+        $len = $sz + $n;
+        if (self::MAX_PAGES < $len) {
+            return -1;
+        }
+
+        $limits = $this->type->limits;
+        $limits_ = new Limits($len, $limits->max);
+        if (!$limits_->isValid()) {
+            return -1;
+        }
+
+        $originalSize = $this->size();
+        // @phpstan-ignore-next-line
+        $originalData = $this->ffi->new("uint8_t[$originalSize]");
+        assert($originalData !== null);
+
+        $this->initInternalMemory($len);
+
+        for ($i = 0; $i < $originalSize; $i++) {
+            // @phpstan-ignore-next-line
+            $this->dataU8[$i] = $originalData[$i];
+        }
+
+        return $sz;
+    }
+
+    private function initInternalMemory(int $n): void
+    {
+        $this->dataSize = $n * self::PAGE_SIZE;
 
         // @phpstan-ignore-next-line
         $this->dataU8 = $this->ffi->new("uint8_t[$this->dataSize+8]");
@@ -160,11 +207,6 @@ final class MemInst
         FFI::memset($this->dataU8, 0, $this->dataSize);
     }
 
-    public function size(): int
-    {
-        return $this->dataSize;
-    }
-
     /**
      * @param list<int> $data
      */
@@ -177,6 +219,35 @@ final class MemInst
         assert($dst + $len <= $this->size());
         for ($i = 0; $i < $len; $i++) {
             $this->storeByte($dst + $i, $data[$src + $i]);
+        }
+    }
+
+    public function memcpy(int $dst, int $src, int $len): void
+    {
+        assert(0 <= $len);
+        assert(0 <= $src);
+        assert(0 <= $dst);
+        assert($src + $len <= $this->size());
+        assert($dst + $len <= $this->size());
+        if ($src === $dst || $len === 0) {
+            return;
+        }
+        for ($i = 0; $i < $len; $i++) {
+            $s = ($dst < $src) ? ($src + $i) : ($src + $len - 1 - $i);
+            $d = ($dst < $src) ? ($dst + $i) : ($dst + $len - 1 - $i);
+            $x = $this->loadByte($s);
+            assert($x !== null);
+            $this->storeByte($d, $x);
+        }
+    }
+
+    public function memset(int $dst, int $c, int $len): void
+    {
+        assert(0 <= $len);
+        assert(0 <= $dst);
+        assert($dst + $len <= $this->size());
+        for ($i = 0; $i < $len; $i++) {
+            $this->storeI32_s8($dst + $i, $c);
         }
     }
 
