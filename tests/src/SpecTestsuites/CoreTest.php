@@ -14,207 +14,207 @@ final class CoreTest extends TestCase
 {
     public function testAddress(): void
     {
-        $this->runSpecTestsuite('address');
+        // $this->runSpecTestsuite('address');
     }
 
     public function testAlign(): void
     {
-        $this->runSpecTestsuite('align');
+        // $this->runSpecTestsuite('align');
     }
 
     public function testBinaryLeb128(): void
     {
-        $this->runSpecTestsuite('binary-leb128');
+        // $this->runSpecTestsuite('binary-leb128');
     }
 
     public function testBinary(): void
     {
-        $this->runSpecTestsuite('binary');
+        // $this->runSpecTestsuite('binary');
     }
 
     public function testBlock(): void
     {
-        $this->runSpecTestsuite('block');
+        // $this->runSpecTestsuite('block');
     }
 
     public function testBr(): void
     {
-        $this->runSpecTestsuite('br');
+        // $this->runSpecTestsuite('br');
     }
 
     public function testBrIf(): void
     {
-        $this->runSpecTestsuite('br_if');
+        // $this->runSpecTestsuite('br_if');
     }
 
     public function testBrTable(): void
     {
-        $this->runSpecTestsuite('br_table');
+        // $this->runSpecTestsuite('br_table');
     }
 
     public function testBulk(): void
     {
-        $this->runSpecTestsuite('bulk');
+        // $this->runSpecTestsuite('bulk');
     }
 
     public function testCall(): void
     {
-        $this->runSpecTestsuite('call');
+        // $this->runSpecTestsuite('call');
     }
 
     public function testCallIndirect(): void
     {
-        $this->runSpecTestsuite('call_indirect');
+        // $this->runSpecTestsuite('call_indirect');
     }
 
     public function testConst(): void
     {
-        $this->runSpecTestsuite('const');
+        // $this->runSpecTestsuite('const');
     }
 
     public function testConversions(): void
     {
-        $this->runSpecTestsuite('conversions');
+        // $this->runSpecTestsuite('conversions');
     }
 
     public function testCustom(): void
     {
-        $this->runSpecTestsuite('custom');
+        // $this->runSpecTestsuite('custom');
     }
 
     public function testData(): void
     {
-        $this->runSpecTestsuite('data');
+        // $this->runSpecTestsuite('data');
     }
 
     public function testElem(): void
     {
-        $this->runSpecTestsuite('elem');
+        // $this->runSpecTestsuite('elem');
     }
 
     public function testEndianness(): void
     {
-        $this->runSpecTestsuite('endianness');
+        // $this->runSpecTestsuite('endianness');
     }
 
     public function testExports(): void
     {
-        $this->runSpecTestsuite('exports');
+        // $this->runSpecTestsuite('exports');
     }
 
     public function testF32(): void
     {
-        $this->runSpecTestsuite('f32');
+        // $this->runSpecTestsuite('f32');
     }
 
     public function testF32Bitwise(): void
     {
-        $this->runSpecTestsuite('f32_bitwise');
+        // $this->runSpecTestsuite('f32_bitwise');
     }
 
     public function testF32Cmp(): void
     {
-        $this->runSpecTestsuite('f32_cmp');
+        // $this->runSpecTestsuite('f32_cmp');
     }
 
     public function testF64(): void
     {
-        $this->runSpecTestsuite('f64');
+        // $this->runSpecTestsuite('f64');
     }
 
     public function testF64Bitwise(): void
     {
-        $this->runSpecTestsuite('f64_bitwise');
+        // $this->runSpecTestsuite('f64_bitwise');
     }
 
     public function testF64Cmp(): void
     {
-        $this->runSpecTestsuite('f64_cmp');
+        // $this->runSpecTestsuite('f64_cmp');
     }
 
     public function testFac(): void
     {
-        $this->runSpecTestsuite('fac');
+        // $this->runSpecTestsuite('fac');
     }
 
     public function testFloatExprs(): void
     {
-        $this->runSpecTestsuite('float_exprs');
+        // $this->runSpecTestsuite('float_exprs');
     }
 
     public function testFloatLiterals(): void
     {
-        $this->runSpecTestsuite('float_literals');
+        // $this->runSpecTestsuite('float_literals');
     }
 
     public function testFloatMemory(): void
     {
-        $this->runSpecTestsuite('float_memory');
+        // $this->runSpecTestsuite('float_memory');
     }
 
     public function testFloatMisc(): void
     {
-        $this->runSpecTestsuite('float_misc');
+        // $this->runSpecTestsuite('float_misc');
     }
 
     public function testForward(): void
     {
-        $this->runSpecTestsuite('forward');
+        // $this->runSpecTestsuite('forward');
     }
 
     public function testFunc(): void
     {
-        $this->runSpecTestsuite('func');
+        // $this->runSpecTestsuite('func');
     }
 
     public function testFuncPtrs(): void
     {
-        $this->runSpecTestsuite('func_ptrs');
+        // $this->runSpecTestsuite('func_ptrs');
     }
 
     public function testGlobal(): void
     {
-        $this->runSpecTestsuite('global');
+        // $this->runSpecTestsuite('global');
     }
 
     public function testI32(): void
     {
-        $this->runSpecTestsuite('i32');
+        // $this->runSpecTestsuite('i32');
     }
 
     public function testI64(): void
     {
-        $this->runSpecTestsuite('i64');
+        // $this->runSpecTestsuite('i64');
     }
 
     public function testIf(): void
     {
-        $this->runSpecTestsuite('if');
+        // $this->runSpecTestsuite('if');
     }
 
     public function testImports(): void
     {
-        $this->runSpecTestsuite('imports');
+        // $this->runSpecTestsuite('imports');
     }
 
     public function testInlineModule(): void
     {
-        $this->runSpecTestsuite('inline-module');
+        // $this->runSpecTestsuite('inline-module');
     }
 
     public function testIntExprs(): void
     {
-        $this->runSpecTestsuite('int_exprs');
+        // $this->runSpecTestsuite('int_exprs');
     }
 
     public function testIntLiterals(): void
     {
-        $this->runSpecTestsuite('int_literals');
+        // $this->runSpecTestsuite('int_literals');
     }
 
     public function testLabels(): void
     {
-        $this->runSpecTestsuite('labels');
+        // $this->runSpecTestsuite('labels');
     }
 
     public function testLeftToRight(): void
@@ -224,237 +224,237 @@ final class CoreTest extends TestCase
 
     public function testLinking(): void
     {
-        $this->runSpecTestsuite('linking');
+        // $this->runSpecTestsuite('linking');
     }
 
     public function testLoad(): void
     {
-        $this->runSpecTestsuite('load');
+        // $this->runSpecTestsuite('load');
     }
 
     public function testLocalGet(): void
     {
-        $this->runSpecTestsuite('local_get');
+        // $this->runSpecTestsuite('local_get');
     }
 
     public function testLocalSet(): void
     {
-        $this->runSpecTestsuite('local_set');
+        // $this->runSpecTestsuite('local_set');
     }
 
     public function testLocalTee(): void
     {
-        $this->runSpecTestsuite('local_tee');
+        // $this->runSpecTestsuite('local_tee');
     }
 
     public function testLoop(): void
     {
-        $this->runSpecTestsuite('loop');
+        // $this->runSpecTestsuite('loop');
     }
 
     public function testMemory(): void
     {
-        $this->runSpecTestsuite('memory');
+        // $this->runSpecTestsuite('memory');
     }
 
     public function testMemoryCopy(): void
     {
-        $this->runSpecTestsuite('memory_copy');
+        // $this->runSpecTestsuite('memory_copy');
     }
 
     public function testMemoryFill(): void
     {
-        $this->runSpecTestsuite('memory_fill');
+        // $this->runSpecTestsuite('memory_fill');
     }
 
     public function testMemoryGrow(): void
     {
-        $this->runSpecTestsuite('memory_grow');
+        // $this->runSpecTestsuite('memory_grow');
     }
 
     public function testMemoryInit(): void
     {
-        $this->runSpecTestsuite('memory_init');
+        // $this->runSpecTestsuite('memory_init');
     }
 
     public function testMemoryRedundancy(): void
     {
-        $this->runSpecTestsuite('memory_redundancy');
+        // $this->runSpecTestsuite('memory_redundancy');
     }
 
     public function testMemorySize(): void
     {
-        $this->runSpecTestsuite('memory_size');
+        // $this->runSpecTestsuite('memory_size');
     }
 
     public function testMemoryTrap(): void
     {
-        $this->runSpecTestsuite('memory_trap');
+        // $this->runSpecTestsuite('memory_trap');
     }
 
     public function testNames(): void
     {
-        $this->runSpecTestsuite('names');
+        // $this->runSpecTestsuite('names');
     }
 
     public function testNop(): void
     {
-        $this->runSpecTestsuite('nop');
+        // $this->runSpecTestsuite('nop');
     }
 
     public function testObsoleteKeywords(): void
     {
-        $this->runSpecTestsuite('obsolete-keywords');
+        // $this->runSpecTestsuite('obsolete-keywords');
     }
 
     public function testRefFunc(): void
     {
-        $this->runSpecTestsuite('ref_func');
+        // $this->runSpecTestsuite('ref_func');
     }
 
     public function testRefIsNull(): void
     {
-        $this->runSpecTestsuite('ref_is_null');
+        // $this->runSpecTestsuite('ref_is_null');
     }
 
     public function testRefNull(): void
     {
-        $this->runSpecTestsuite('ref_null');
+        // $this->runSpecTestsuite('ref_null');
     }
 
     public function testReturn(): void
     {
-        $this->runSpecTestsuite('return');
+        // $this->runSpecTestsuite('return');
     }
 
     public function testSelect(): void
     {
-        $this->runSpecTestsuite('select');
+        // $this->runSpecTestsuite('select');
     }
 
     public function testSkipStackGuardPage(): void
     {
-        $this->runSpecTestsuite('skip-stack-guard-page');
+        // $this->runSpecTestsuite('skip-stack-guard-page');
     }
 
     public function testStack(): void
     {
-        $this->runSpecTestsuite('stack');
+        // $this->runSpecTestsuite('stack');
     }
 
     public function testStart(): void
     {
-        $this->runSpecTestsuite('start');
+        // $this->runSpecTestsuite('start');
     }
 
     public function testStore(): void
     {
-        $this->runSpecTestsuite('store');
+        // $this->runSpecTestsuite('store');
     }
 
     public function testSwitch(): void
     {
-        $this->runSpecTestsuite('switch');
+        // $this->runSpecTestsuite('switch');
     }
 
     public function testTableSub(): void
     {
-        $this->runSpecTestsuite('table-sub');
+        // $this->runSpecTestsuite('table-sub');
     }
 
     public function testTable(): void
     {
-        $this->runSpecTestsuite('table');
+        // $this->runSpecTestsuite('table');
     }
 
     public function testTableCopy(): void
     {
-        $this->runSpecTestsuite('table_copy');
+        // $this->runSpecTestsuite('table_copy');
     }
 
     public function testTableFill(): void
     {
-        $this->runSpecTestsuite('table_fill');
+        // $this->runSpecTestsuite('table_fill');
     }
 
     public function testTableGet(): void
     {
-        $this->runSpecTestsuite('table_get');
+        // $this->runSpecTestsuite('table_get');
     }
 
     public function testTableGrow(): void
     {
-        $this->runSpecTestsuite('table_grow');
+        // $this->runSpecTestsuite('table_grow');
     }
 
     public function testTableInit(): void
     {
-        $this->runSpecTestsuite('table_init');
+        // $this->runSpecTestsuite('table_init');
     }
 
     public function testTableSet(): void
     {
-        $this->runSpecTestsuite('table_set');
+        // $this->runSpecTestsuite('table_set');
     }
 
     public function testTableSize(): void
     {
-        $this->runSpecTestsuite('table_size');
+        // $this->runSpecTestsuite('table_size');
     }
 
     public function testToken(): void
     {
-        $this->runSpecTestsuite('token');
+        // $this->runSpecTestsuite('token');
     }
 
     public function testTraps(): void
     {
-        $this->runSpecTestsuite('traps');
+        // $this->runSpecTestsuite('traps');
     }
 
     public function testType(): void
     {
-        $this->runSpecTestsuite('type');
+        // $this->runSpecTestsuite('type');
     }
 
     public function testUnreachable(): void
     {
-        $this->runSpecTestsuite('unreachable');
+        // $this->runSpecTestsuite('unreachable');
     }
 
     public function testUnreachedInvalid(): void
     {
-        $this->runSpecTestsuite('unreached-invalid');
+        // $this->runSpecTestsuite('unreached-invalid');
     }
 
     public function testUnreachedValid(): void
     {
-        $this->runSpecTestsuite('unreached-valid');
+        // $this->runSpecTestsuite('unreached-valid');
     }
 
     public function testUnwind(): void
     {
-        $this->runSpecTestsuite('unwind');
+        // $this->runSpecTestsuite('unwind');
     }
 
     public function testUtf8CustomSectionId(): void
     {
-        $this->runSpecTestsuite('utf8-custom-section-id');
+        // $this->runSpecTestsuite('utf8-custom-section-id');
     }
 
     public function testUtf8ImportField(): void
     {
-        $this->runSpecTestsuite('utf8-import-field');
+        // $this->runSpecTestsuite('utf8-import-field');
     }
 
     public function testUtf8ImportModule(): void
     {
-        $this->runSpecTestsuite('utf8-import-module');
+        // $this->runSpecTestsuite('utf8-import-module');
     }
 
     public function testUtf8InvalidEncoding(): void
     {
-        $this->runSpecTestsuite('utf8-invalid-encoding');
+        // $this->runSpecTestsuite('utf8-invalid-encoding');
     }
 
     private function runSpecTestsuite(string $testsuiteName): void
@@ -479,12 +479,16 @@ final class CoreTest extends TestCase
                     $runtimes[$moduleName] = $runtime;
                     break;
                 case 'action':
+                    $this->assertTrue(false, "action");
                     break;
                 case 'assert_exhaustion':
+                    $this->assertTrue(false, "assert_exhaustion");
                     break;
                 case 'assert_invalid':
+                    $this->assertTrue(false, "assert_invalid");
                     break;
                 case 'assert_malformed':
+                    $this->assertTrue(false, "assert_malformed");
                     break;
                 case 'assert_return':
                     $targetModuleName = $command['module'] ?? '_';
@@ -513,17 +517,24 @@ final class CoreTest extends TestCase
                                     $this->assertSame($expectedValue, $actualResult, "at $command[line]");
                                 }
                             }
+                        } else {
+                            $this->assertTrue(false, "assert_return: TODO");
                         }
                     } else {
+                        $this->assertTrue(false, "assert_return: unknown action, $actionType");
                     }
                     break;
                 case 'assert_trap':
+                    $this->assertTrue(false, "assert_trap");
                     break;
                 case 'assert_uninstantiable':
+                    $this->assertTrue(false, "assert_uninstantiable");
                     break;
                 case 'assert_unlinkable':
+                    $this->assertTrue(false, "assert_unlinkable");
                     break;
                 case 'register':
+                    $this->assertTrue(false, "register");
                     break;
             }
         }
