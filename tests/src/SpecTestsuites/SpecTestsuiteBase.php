@@ -5,6 +5,7 @@ declare(strict_types=1);
 namespace Nsfisis\Waddiwasi\Tests\SpecTestsuites;
 
 use Nsfisis\Waddiwasi\BinaryFormat\Decoder;
+use Nsfisis\Waddiwasi\BinaryFormat\InvalidBinaryFormatException;
 use Nsfisis\Waddiwasi\Execution\Runtime;
 use Nsfisis\Waddiwasi\Execution\Store;
 use Nsfisis\Waddiwasi\Execution\TrapException;
@@ -96,7 +97,16 @@ abstract class SpecTestsuiteBase extends TestCase
         string $text,
         int $line,
     ): void {
-        $this->assertTrue(false, "assert_malformed");
+        $filePath = __DIR__ . "/../../fixtures/spec_testsuites/core/$filename";
+        $wasmBinary = file_get_contents($filePath);
+        $exception = null;
+        try {
+            (new Decoder($wasmBinary))->decode();
+        } catch (InvalidBinaryFormatException $e) {
+            $exception = $e;
+        }
+        // @todo Check error message.
+        $this->assertNotNull($exception, "decoding $filename is expected to fail (at $line)");
     }
 
     protected function runAssertInvalidCommand(
