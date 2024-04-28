@@ -1895,7 +1895,7 @@ final class Runtime
         $ea = $i + $offset;
         $ok = $mem->storeF32($ea, $c);
         if (!$ok) {
-            throw new TrapException($instr::opName() . ": out of bounds");
+            throw new TrapException($instr::opName() . ": out of bounds", trapKind: TrapKind::OutOfBoundsMemoryAccess);
         }
     }
 
@@ -1915,7 +1915,7 @@ final class Runtime
         $ea = $i + $offset;
         $ok = $mem->storeF64($ea, $c);
         if (!$ok) {
-            throw new TrapException($instr::opName() . ": out of bounds");
+            throw new TrapException($instr::opName() . ": out of bounds", trapKind: TrapKind::OutOfBoundsMemoryAccess);
         }
     }
 
@@ -1929,7 +1929,7 @@ final class Runtime
         $ea = $i + $offset;
         $c = $mem->loadI32_s32($ea);
         if ($c === null) {
-            throw new TrapException($instr::opName() . ": out of bounds");
+            throw new TrapException($instr::opName() . ": out of bounds", trapKind: TrapKind::OutOfBoundsMemoryAccess);
         }
         $this->stack->pushValue($c);
     }
@@ -1944,7 +1944,7 @@ final class Runtime
         $ea = $i + $offset;
         $c = $mem->loadI32_s16($ea);
         if ($c === null) {
-            throw new TrapException($instr::opName() . ": out of bounds");
+            throw new TrapException($instr::opName() . ": out of bounds", trapKind: TrapKind::OutOfBoundsMemoryAccess);
         }
         $this->stack->pushValue($c);
     }
@@ -1959,7 +1959,7 @@ final class Runtime
         $ea = $i + $offset;
         $c = $mem->loadI32_u16($ea);
         if ($c === null) {
-            throw new TrapException($instr::opName() . ": out of bounds");
+            throw new TrapException($instr::opName() . ": out of bounds", trapKind: TrapKind::OutOfBoundsMemoryAccess);
         }
         $this->stack->pushValue($c);
     }
@@ -1974,7 +1974,7 @@ final class Runtime
         $ea = $i + $offset;
         $c = $mem->loadI32_s8($ea);
         if ($c === null) {
-            throw new TrapException($instr::opName() . ": out of bounds");
+            throw new TrapException($instr::opName() . ": out of bounds", trapKind: TrapKind::OutOfBoundsMemoryAccess);
         }
         $this->stack->pushValue($c);
     }
@@ -1989,7 +1989,7 @@ final class Runtime
         $ea = $i + $offset;
         $c = $mem->loadI32_u8($ea);
         if ($c === null) {
-            throw new TrapException($instr::opName() . ": out of bounds");
+            throw new TrapException($instr::opName() . ": out of bounds", trapKind: TrapKind::OutOfBoundsMemoryAccess);
         }
         $this->stack->pushValue($c);
     }
@@ -2005,7 +2005,7 @@ final class Runtime
         $ea = $i + $offset;
         $ok = $mem->storeI32_s32($ea, $c);
         if (!$ok) {
-            throw new TrapException($instr::opName() . ": out of bounds");
+            throw new TrapException($instr::opName() . ": out of bounds", trapKind: TrapKind::OutOfBoundsMemoryAccess);
         }
     }
 
@@ -2020,7 +2020,7 @@ final class Runtime
         $ea = $i + $offset;
         $ok = $mem->storeI32_s16($ea, $c);
         if (!$ok) {
-            throw new TrapException($instr::opName() . ": out of bounds");
+            throw new TrapException($instr::opName() . ": out of bounds", trapKind: TrapKind::OutOfBoundsMemoryAccess);
         }
     }
 
@@ -2035,7 +2035,7 @@ final class Runtime
         $ea = $i + $offset;
         $ok = $mem->storeI32_s8($ea, $c);
         if (!$ok) {
-            throw new TrapException($instr::opName() . ": out of bounds");
+            throw new TrapException($instr::opName() . ": out of bounds", trapKind: TrapKind::OutOfBoundsMemoryAccess);
         }
     }
 
@@ -2049,7 +2049,7 @@ final class Runtime
         $ea = $i + $offset;
         $c = $mem->loadI64_s64($ea);
         if ($c === null) {
-            throw new TrapException($instr::opName() . ": out of bounds");
+            throw new TrapException($instr::opName() . ": out of bounds", trapKind: TrapKind::OutOfBoundsMemoryAccess);
         }
         $this->stack->pushValue($c);
     }
@@ -2064,7 +2064,7 @@ final class Runtime
         $ea = $i + $offset;
         $c = $mem->loadI64_s16($ea);
         if ($c === null) {
-            throw new TrapException($instr::opName() . ": out of bounds");
+            throw new TrapException($instr::opName() . ": out of bounds", trapKind: TrapKind::OutOfBoundsMemoryAccess);
         }
         $this->stack->pushValue($c);
     }
@@ -2079,7 +2079,7 @@ final class Runtime
         $ea = $i + $offset;
         $c = $mem->loadI64_u16($ea);
         if ($c === null) {
-            throw new TrapException($instr::opName() . ": out of bounds");
+            throw new TrapException($instr::opName() . ": out of bounds", trapKind: TrapKind::OutOfBoundsMemoryAccess);
         }
         $this->stack->pushValue($c);
     }
@@ -2094,7 +2094,7 @@ final class Runtime
         $ea = $i + $offset;
         $c = $mem->loadI64_s32($ea);
         if ($c === null) {
-            throw new TrapException($instr::opName() . ": out of bounds");
+            throw new TrapException($instr::opName() . ": out of bounds", trapKind: TrapKind::OutOfBoundsMemoryAccess);
         }
         $this->stack->pushValue($c);
     }
@@ -2109,7 +2109,7 @@ final class Runtime
         $ea = $i + $offset;
         $c = $mem->loadI64_u32($ea);
         if ($c === null) {
-            throw new TrapException($instr::opName() . ": out of bounds");
+            throw new TrapException($instr::opName() . ": out of bounds", trapKind: TrapKind::OutOfBoundsMemoryAccess);
         }
         $this->stack->pushValue($c);
     }
@@ -2124,7 +2124,7 @@ final class Runtime
         $ea = $i + $offset;
         $c = $mem->loadI64_s8($ea);
         if ($c === null) {
-            throw new TrapException($instr::opName() . ": out of bounds");
+            throw new TrapException($instr::opName() . ": out of bounds", trapKind: TrapKind::OutOfBoundsMemoryAccess);
         }
         $this->stack->pushValue($c);
     }
@@ -2139,7 +2139,7 @@ final class Runtime
         $ea = $i + $offset;
         $c = $mem->loadI64_u8($ea);
         if ($c === null) {
-            throw new TrapException($instr::opName() . ": out of bounds");
+            throw new TrapException($instr::opName() . ": out of bounds", trapKind: TrapKind::OutOfBoundsMemoryAccess);
         }
         $this->stack->pushValue($c);
     }
@@ -2155,7 +2155,7 @@ final class Runtime
         $ea = $i + $offset;
         $ok = $mem->storeI64_s64($ea, $c);
         if (!$ok) {
-            throw new TrapException($instr::opName() . ": out of bounds: $ea >= " . $mem->size());
+            throw new TrapException($instr::opName() . ": out of bounds: $ea >= " . $mem->size(), trapKind: TrapKind::OutOfBoundsMemoryAccess);
         }
     }
 
@@ -2170,7 +2170,7 @@ final class Runtime
         $ea = $i + $offset;
         $ok = $mem->storeI64_s16($ea, $c);
         if (!$ok) {
-            throw new TrapException($instr::opName() . ": out of bounds: $ea >= " . $mem->size());
+            throw new TrapException($instr::opName() . ": out of bounds: $ea >= " . $mem->size(), trapKind: TrapKind::OutOfBoundsMemoryAccess);
         }
     }
 
@@ -2185,7 +2185,7 @@ final class Runtime
         $ea = $i + $offset;
         $ok = $mem->storeI64_s32($ea, $c);
         if (!$ok) {
-            throw new TrapException($instr::opName() . ": out of bounds: $ea >= " . $mem->size());
+            throw new TrapException($instr::opName() . ": out of bounds: $ea >= " . $mem->size(), trapKind: TrapKind::OutOfBoundsMemoryAccess);
         }
     }
 
@@ -2200,7 +2200,7 @@ final class Runtime
         $ea = $i + $offset;
         $ok = $mem->storeI64_s8($ea, $c);
         if (!$ok) {
-            throw new TrapException($instr::opName() . ": out of bounds: $ea >= " . $mem->size());
+            throw new TrapException($instr::opName() . ": out of bounds: $ea >= " . $mem->size(), trapKind: TrapKind::OutOfBoundsMemoryAccess);
         }
     }
 
@@ -2213,7 +2213,7 @@ final class Runtime
         $s = $this->stack->popInt();
         $d = $this->stack->popInt();
         if ($mem->size() < $s + $n || $mem->size() < $d + $n) {
-            throw new TrapException("memory.copy: out of bounds");
+            throw new TrapException("memory.copy: out of bounds", trapKind: TrapKind::OutOfBoundsMemoryAccess);
         }
         $mem->memcpy($d, $s, $n);
     }
@@ -2227,7 +2227,7 @@ final class Runtime
         $val = $this->stack->popInt();
         $d = $this->stack->popInt();
         if ($mem->size() < $d + $n) {
-            throw new TrapException("memory.fill: out of bounds");
+            throw new TrapException("memory.fill: out of bounds", trapKind: TrapKind::OutOfBoundsMemoryAccess);
         }
         $mem->memset($d, $val, $n);
     }
@@ -2254,10 +2254,10 @@ final class Runtime
         $s = $this->stack->popInt();
         $d = $this->stack->popInt();
         if (count($data->data) < $s + $n) {
-            throw new TrapException("memory.init: out of bounds");
+            throw new TrapException("memory.init: out of bounds", trapKind: TrapKind::OutOfBoundsMemoryAccess);
         }
         if ($mem->size() < $d + $n) {
-            throw new TrapException("memory.init: out of bounds");
+            throw new TrapException("memory.init: out of bounds", trapKind: TrapKind::OutOfBoundsMemoryAccess);
         }
         $mem->copyData($data->data, $s, $d, $n);
     }
@@ -2437,7 +2437,7 @@ final class Runtime
         $ea = $i + $offset;
         $c = $mem->loadF32($ea);
         if ($c === null) {
-            throw new TrapException("$instrOpName: out of bounds");
+            throw new TrapException("$instrOpName: out of bounds", trapKind: TrapKind::OutOfBoundsMemoryAccess);
         }
         $this->stack->pushValue($c);
     }
@@ -2451,7 +2451,7 @@ final class Runtime
         $ea = $i + $offset;
         $c = $mem->loadF64($ea);
         if ($c === null) {
-            throw new TrapException("$instrOpName: out of bounds");
+            throw new TrapException("$instrOpName: out of bounds", trapKind: TrapKind::OutOfBoundsMemoryAccess);
         }
         $this->stack->pushValue($c);
     }
