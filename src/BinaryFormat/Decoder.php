@@ -33,11 +33,13 @@ use Nsfisis\Waddiwasi\Structure\Types\ResultType;
 use Nsfisis\Waddiwasi\Structure\Types\TableType;
 use Nsfisis\Waddiwasi\Structure\Types\ValType;
 use Nsfisis\Waddiwasi\Structure\Types\VecType;
+use function array_reduce;
 use function assert;
 use function count;
 use function get_class;
 use function in_array;
 use function is_float;
+use function is_int;
 use function ord;
 use function strlen;
 
@@ -76,11 +78,18 @@ final class Decoder
             throw new InvalidBinaryFormatException("eof");
         }
         if ($dataCount === null) {
-            // TODO: dataidx(code) must be empty
+            foreach ($codes as $code) {
+                if ($this->countDataIndicesUsedInCode($code) !== 0) {
+                    throw new InvalidBinaryFormatException("datacount section is required");
+                }
+            }
         } else {
             if (count($datas) !== $dataCount) {
                 throw new InvalidBinaryFormatException("datasec");
             }
+        }
+        if (count($typeIndices) !== count($codes)) {
+            throw new InvalidBinaryFormatException("number of funcs and codes does not match");
         }
 
         $funcs = [];
@@ -597,6 +606,10 @@ final class Decoder
     private function decodeLocals(): Locals
     {
         $count = $this->decodeU32();
+        // @todo Provide a way to configure the limit.
+        if (1024 < $count) {
+            throw new InvalidBinaryFormatException("too many local variables");
+        }
         $type = $this->decodeValType();
         return new Locals(
             $count,
@@ -1171,5 +1184,24 @@ final class Decoder
             $s .= mb_chr($code, 'UTF-8');
         }
         return $s;
+    }
+
+    /**
+     * @return 0|positive-int
+     */
+    private function countDataIndicesUsedInCode(Code $code): int
+    {
+        $result = array_reduce(
+            $code->body,
+            fn ($acc, $instr) => $acc + match ($instr::class) {
+                Instrs\Memory\DataDrop::class => 1,
+                Instrs\Memory\MemoryInit::class => 1,
+                default => 0,
+            },
+            0,
+        );
+        assert(is_int($result), '$result is guaranteed not to exceed the maximum value of an integer because the number of instructions in $code is limited');
+        assert(0 <= $result, '$result is guaranteed to be non-negative because it is the sum of non-negative integers');
+        return $result;
     }
 }
