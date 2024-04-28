@@ -256,7 +256,7 @@ final class MemInst
      */
     public function loadI32_s8(int $ptr): ?int
     {
-        if ($this->size() <= $ptr + 1) {
+        if ($this->size() < $ptr + 1) {
             return null;
         }
         // @phpstan-ignore-next-line
@@ -270,7 +270,7 @@ final class MemInst
      */
     public function loadI32_u8(int $ptr): ?int
     {
-        if ($this->size() <= $ptr + 1) {
+        if ($this->size() < $ptr + 1) {
             return null;
         }
         // @phpstan-ignore-next-line
@@ -284,7 +284,7 @@ final class MemInst
      */
     public function loadI32_s16(int $ptr): ?int
     {
-        if ($this->size() <= $ptr + 2) {
+        if ($this->size() < $ptr + 2) {
             return null;
         }
         // @phpstan-ignore-next-line
@@ -298,7 +298,7 @@ final class MemInst
      */
     public function loadI32_u16(int $ptr): ?int
     {
-        if ($this->size() <= $ptr + 2) {
+        if ($this->size() < $ptr + 2) {
             return null;
         }
         // @phpstan-ignore-next-line
@@ -312,7 +312,7 @@ final class MemInst
      */
     public function loadI32_s32(int $ptr): ?int
     {
-        if ($this->size() <= $ptr + 4) {
+        if ($this->size() < $ptr + 4) {
             return null;
         }
         // @phpstan-ignore-next-line
@@ -326,7 +326,7 @@ final class MemInst
      */
     public function loadI64_s8(int $ptr): ?int
     {
-        if ($this->size() <= $ptr + 1) {
+        if ($this->size() < $ptr + 1) {
             return null;
         }
         // @phpstan-ignore-next-line
@@ -340,7 +340,7 @@ final class MemInst
      */
     public function loadI64_u8(int $ptr): ?int
     {
-        if ($this->size() <= $ptr + 1) {
+        if ($this->size() < $ptr + 1) {
             return null;
         }
         // @phpstan-ignore-next-line
@@ -354,7 +354,7 @@ final class MemInst
      */
     public function loadI64_s16(int $ptr): ?int
     {
-        if ($this->size() <= $ptr + 2) {
+        if ($this->size() < $ptr + 2) {
             return null;
         }
         // @phpstan-ignore-next-line
@@ -368,7 +368,7 @@ final class MemInst
      */
     public function loadI64_u16(int $ptr): ?int
     {
-        if ($this->size() <= $ptr + 2) {
+        if ($this->size() < $ptr + 2) {
             return null;
         }
         // @phpstan-ignore-next-line
@@ -382,7 +382,7 @@ final class MemInst
      */
     public function loadI64_s32(int $ptr): ?int
     {
-        if ($this->size() <= $ptr + 4) {
+        if ($this->size() < $ptr + 4) {
             return null;
         }
         // @phpstan-ignore-next-line
@@ -396,7 +396,7 @@ final class MemInst
      */
     public function loadI64_u32(int $ptr): ?int
     {
-        if ($this->size() <= $ptr + 4) {
+        if ($this->size() < $ptr + 4) {
             return null;
         }
         // @phpstan-ignore-next-line
@@ -410,7 +410,7 @@ final class MemInst
      */
     public function loadI64_s64(int $ptr): ?int
     {
-        if ($this->size() <= $ptr + 8) {
+        if ($this->size() < $ptr + 8) {
             return null;
         }
         // @phpstan-ignore-next-line
@@ -424,7 +424,7 @@ final class MemInst
      */
     public function loadF32(int $ptr): ?float
     {
-        if ($this->size() <= $ptr + 4) {
+        if ($this->size() < $ptr + 4) {
             return null;
         }
         // @phpstan-ignore-next-line
@@ -436,7 +436,7 @@ final class MemInst
      */
     public function loadF64(int $ptr): ?float
     {
-        if ($this->size() <= $ptr + 8) {
+        if ($this->size() < $ptr + 8) {
             return null;
         }
         // @phpstan-ignore-next-line
@@ -448,7 +448,7 @@ final class MemInst
      */
     public function loadByte(int $ptr): ?int
     {
-        if ($this->size() <= $ptr + 1) {
+        if ($this->size() < $ptr + 1) {
             return null;
         }
         // @phpstan-ignore-next-line
@@ -460,7 +460,7 @@ final class MemInst
      */
     public function storeByte(int $ptr, int $c): bool
     {
-        if ($this->size() <= $ptr + 1) {
+        if ($this->size() < $ptr + 1) {
             return false;
         }
         // @phpstan-ignore-next-line
@@ -474,7 +474,7 @@ final class MemInst
      */
     public function storeI32_s8(int $ptr, int $c): bool
     {
-        if ($this->size() <= $ptr + 1) {
+        if ($this->size() < $ptr + 1) {
             return false;
         }
         // @phpstan-ignore-next-line
@@ -488,7 +488,7 @@ final class MemInst
      */
     public function storeI32_s16(int $ptr, int $c): bool
     {
-        if ($this->size() <= $ptr + 2) {
+        if ($this->size() < $ptr + 2) {
             return false;
         }
         // @phpstan-ignore-next-line
@@ -502,7 +502,7 @@ final class MemInst
      */
     public function storeI32_s32(int $ptr, int $c): bool
     {
-        if ($this->size() <= $ptr + 4) {
+        if ($this->size() < $ptr + 4) {
             return false;
         }
         // @phpstan-ignore-next-line
@@ -516,7 +516,7 @@ final class MemInst
      */
     public function storeI64_s8(int $ptr, int $c): bool
     {
-        if ($this->size() <= $ptr + 1) {
+        if ($this->size() < $ptr + 1) {
             return false;
         }
         // @phpstan-ignore-next-line
@@ -530,7 +530,7 @@ final class MemInst
      */
     public function storeI64_s16(int $ptr, int $c): bool
     {
-        if ($this->size() <= $ptr + 2) {
+        if ($this->size() < $ptr + 2) {
             return false;
         }
         // @phpstan-ignore-next-line
@@ -544,7 +544,7 @@ final class MemInst
      */
     public function storeI64_s32(int $ptr, int $c): bool
     {
-        if ($this->size() <= $ptr + 4) {
+        if ($this->size() < $ptr + 4) {
             return false;
         }
         // @phpstan-ignore-next-line
@@ -558,7 +558,7 @@ final class MemInst
      */
     public function storeI64_s64(int $ptr, int $c): bool
     {
-        if ($this->size() <= $ptr + 8) {
+        if ($this->size() < $ptr + 8) {
             return false;
         }
         // @phpstan-ignore-next-line
@@ -572,7 +572,7 @@ final class MemInst
      */
     public function storeF32(int $ptr, float $c): bool
     {
-        if ($this->size() <= $ptr + 4) {
+        if ($this->size() < $ptr + 4) {
             return false;
         }
         // @phpstan-ignore-next-line
@@ -586,7 +586,7 @@ final class MemInst
      */
     public function storeF64(int $ptr, float $c): bool
     {
-        if ($this->size() <= $ptr + 8) {
+        if ($this->size() < $ptr + 8) {
             return false;
         }
         // @phpstan-ignore-next-line
