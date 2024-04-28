@@ -8,6 +8,7 @@ use Nsfisis\Waddiwasi\BinaryFormat\Decoder;
 use Nsfisis\Waddiwasi\Execution\Runtime;
 use Nsfisis\Waddiwasi\Execution\Store;
 use Nsfisis\Waddiwasi\Execution\TrapException;
+use Nsfisis\Waddiwasi\Execution\TrapKind;
 use PHPUnit\Framework\TestCase;
 use function count;
 
@@ -84,7 +85,7 @@ abstract class SpecTestsuiteBase extends TestCase
                 $exception = $e;
             }
             $this->assertNotNull($exception, "at $line");
-            // @todo check trap message
+            $this->assertTrapKind($text, $e->getTrapKind(), "at $line");
         } else {
             $this->assertTrue(false, "assert_trap: unknown action, $actionType");
         }
@@ -176,7 +177,7 @@ abstract class SpecTestsuiteBase extends TestCase
         $this->assertCount(
             count($expectedResults),
             $actualResults,
-            "results count mismatch" . $message,
+            'results count mismatch' . $message,
         );
 
         for ($i = 0; $i < count($expectedResults); $i++) {
@@ -221,5 +222,24 @@ abstract class SpecTestsuiteBase extends TestCase
                 );
             }
         }
+    }
+
+    private function assertTrapKind(
+        string $expectedErrorMessage,
+        TrapKind $kind,
+        string $message = '',
+    ): void {
+        if ($message !== '') {
+            $message = " ($message)";
+        }
+        $actualErrorMessage = match ($kind) {
+            TrapKind::OutOfBoundsMemoryAccess => 'out of bounds memory access',
+            TrapKind::Unknown => 'unknown',
+        };
+        $this->assertSame(
+            $expectedErrorMessage,
+            $actualErrorMessage,
+            'trap kind mismatch' . $message,
+        );
     }
 }
