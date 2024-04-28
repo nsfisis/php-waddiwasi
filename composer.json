@@ -32,7 +32,7 @@
             "@test"
         ],
         "ecs": "ecs check",
-        "ecsfix": "ecs check --fix",
+        "ecsfix": "ecs --memory-limit=1G check --fix",
         "lint": [
             "@ecs",
             "@phpstan"
