@@ -2301,7 +2301,7 @@ final class Runtime
         } elseif ($result === 0) {
             $this->deactivateLabel($n);
         } else {
-            $this->deactivateLabel($n);
+            $this->deactivateLabel(null);
             return $result - 1;
         }
         return null;
@@ -2412,7 +2412,7 @@ final class Runtime
                 $this->deactivateLabel($m);
                 continue;
             } else {
-                $this->deactivateLabel($m);
+                $this->deactivateLabel(null);
                 return $result - 1;
             }
         }
