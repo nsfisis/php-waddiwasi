@@ -19,9 +19,22 @@ use Nsfisis\Waddiwasi\Structure\Types\TableType;
 use Nsfisis\Waddiwasi\Structure\Types\ValType;
 use Nsfisis\Waddiwasi\Structure\Types\ValTypes;
 use RuntimeException;
+use function abs;
+use function array_map;
+use function array_merge;
+use function array_reverse;
 use function assert;
+use function ceil;
 use function count;
+use function floor;
+use function intdiv;
 use function is_int;
+use function max;
+use function min;
+use function pack;
+use function round;
+use function sqrt;
+use function unpack;
 
 final class Runtime
 {
@@ -184,10 +197,7 @@ final class Runtime
             $this->stack->pushValue($val);
         }
         $this->doInvokeFunc($funcAddr);
-        $results = [];
-        for ($i = 0; $i < count($resultTypes); $i++) {
-            $results[] = $this->stack->popValue();
-        }
+        $results = $this->stack->popNValues(count($resultTypes));
         $this->stack->popFrame();
         return array_reverse($results);
     }
@@ -216,10 +226,7 @@ final class Runtime
         $resultTypes = $fn->type->results->types;
         $m = count($resultTypes);
         $ts = $fn->code->locals;
-        $vals = [];
-        for ($i = 0; $i < $n; $i++) {
-            $vals[] = $this->stack->popValue();
-        }
+        $vals = $this->stack->popNValues($n);
         $f = new Frame(
             $m,
             array_merge(
@@ -242,10 +249,7 @@ final class Runtime
 
     private function deactivateFrame(int $arity): void
     {
-        $vals = [];
-        for ($i = 0; $i < $arity; $i++) {
-            $vals[] = $this->stack->popValue();
-        }
+        $vals = $this->stack->popNValues($arity);
         $this->stack->popEntriesToCurrentFrame();
         for ($i = $arity - 1; 0 <= $i; $i--) {
             $this->stack->pushValue($vals[$i]);
