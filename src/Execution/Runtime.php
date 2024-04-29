@@ -2388,9 +2388,8 @@ final class Runtime
         $instrs = $instr->body;
         $f = $this->stack->currentFrame();
         $bt = self::expandBlockType($blockType, $f->module);
-        assert(count($bt->params->types) === 0);
-        $n = count($bt->results->types);
-        $l = new Label($n);
+        $m = count($bt->params->types);
+        $l = new Label($m);
         while (true) {
             $result = $this->execInstrs($instrs, $l);
             if ($result === null) {
@@ -2398,16 +2397,10 @@ final class Runtime
             } elseif ($result === -1) {
                 return -1;
             } elseif ($result === 0) {
-                if ($n === 1) {
-                    if ($this->stack->top() instanceof Label) {
-                        // WORKAROUND:
-                        $this->stack->pushValue(0);
-                    }
-                }
-                $this->deactivateLabel($n);
+                $this->deactivateLabel($m);
                 continue;
             } else {
-                $this->deactivateLabel($n);
+                $this->deactivateLabel($m);
                 return $result - 1;
             }
         }
