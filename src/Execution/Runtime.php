@@ -238,7 +238,7 @@ final class Runtime
         );
         $this->activateFrame($f);
         $l = new Label($m);
-        $this->execInstrs($fn->code->body, $l);
+        $this->execInstrs($fn->code->body, $l, null);
         $this->deactivateFrame($m);
     }
 
@@ -281,12 +281,19 @@ final class Runtime
 
     /**
      * @param list<Instr> $instrs
+     * @param ?list<int|float|Ref> $params
      */
     private function execInstrs(
         array $instrs,
         Label $l,
+        ?array $params,
     ): ?int {
         $this->activateLabel($l);
+        if ($params !== null) {
+            foreach ($params as $param) {
+                $this->stack->pushValue($param);
+            }
+        }
 
         foreach ($instrs as $i => $instr) {
             $result = $this->execInstr($instr);
@@ -2283,10 +2290,10 @@ final class Runtime
         $instrs = $instr->body;
         $f = $this->stack->currentFrame();
         $bt = self::expandBlockType($blockType, $f->module);
-        assert(count($bt->params->types) === 0);
+        $params = array_reverse($this->stack->popNValues(count($bt->params->types)));
         $n = count($bt->results->types);
         $l = new Label($n);
-        $result = $this->execInstrs($instrs, $l);
+        $result = $this->execInstrs($instrs, $l, $params);
         if ($result === null) {
             // Do nothing.
         } elseif ($result === -1) {
@@ -2392,10 +2399,11 @@ final class Runtime
         $instrs = $instr->body;
         $f = $this->stack->currentFrame();
         $bt = self::expandBlockType($blockType, $f->module);
+        $params = array_reverse($this->stack->popNValues(count($bt->params->types)));
         $m = count($bt->params->types);
         $l = new Label($m);
         while (true) {
-            $result = $this->execInstrs($instrs, $l);
+            $result = $this->execInstrs($instrs, $l, $params);
             if ($result === null) {
                 return null;
             } elseif ($result === -1) {
