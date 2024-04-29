@@ -6,6 +6,7 @@ namespace Nsfisis\Waddiwasi\Tests\SpecTestsuites\Core;
 
 use Nsfisis\Waddiwasi\Tests\SpecTestsuites\SpecTestsuiteBase;
 use PHPUnit\Framework\Attributes\Depends;
+use PHPUnit\Framework\Attributes\DoesNotPerformAssertions;
 
 final class MemoryInitTest extends SpecTestsuiteBase
 {
@@ -22,6 +23,7 @@ final class MemoryInitTest extends SpecTestsuiteBase
     public function testAction1(): void
     {
         $this->runActionCommand(
+            module: null,
             action: ['type' => 'invoke', 'field' => 'test', 'args' => []],
             line: 17,
         );
@@ -371,6 +373,7 @@ final class MemoryInitTest extends SpecTestsuiteBase
     public function testAction33(): void
     {
         $this->runActionCommand(
+            module: null,
             action: ['type' => 'invoke', 'field' => 'test', 'args' => []],
             line: 61,
         );
@@ -720,6 +723,7 @@ final class MemoryInitTest extends SpecTestsuiteBase
     public function testAction65(): void
     {
         $this->runActionCommand(
+            module: null,
             action: ['type' => 'invoke', 'field' => 'test', 'args' => []],
             line: 105,
         );
@@ -1069,6 +1073,7 @@ final class MemoryInitTest extends SpecTestsuiteBase
     public function testAction97(): void
     {
         $this->runActionCommand(
+            module: null,
             action: ['type' => 'invoke', 'field' => 'test', 'args' => []],
             line: 157,
         );
@@ -1438,6 +1443,7 @@ final class MemoryInitTest extends SpecTestsuiteBase
     public function testAction131(): void
     {
         $this->runActionCommand(
+            module: null,
             action: ['type' => 'invoke', 'field' => 'test', 'args' => []],
             line: 209,
         );
@@ -1519,6 +1525,7 @@ final class MemoryInitTest extends SpecTestsuiteBase
     public function testAction139(): void
     {
         $this->runActionCommand(
+            module: null,
             action: ['type' => 'invoke', 'field' => 'test', 'args' => []],
             line: 246,
         );
@@ -1622,6 +1629,7 @@ final class MemoryInitTest extends SpecTestsuiteBase
     public function testAction149(): void
     {
         $this->runActionCommand(
+            module: null,
             action: ['type' => 'invoke', 'field' => 'test', 'args' => []],
             line: 281,
         );
@@ -1662,6 +1670,7 @@ final class MemoryInitTest extends SpecTestsuiteBase
     public function testAction153(): void
     {
         $this->runActionCommand(
+            module: null,
             action: ['type' => 'invoke', 'field' => 'test', 'args' => []],
             line: 295,
         );
@@ -1681,6 +1690,7 @@ final class MemoryInitTest extends SpecTestsuiteBase
     public function testAction155(): void
     {
         $this->runActionCommand(
+            module: null,
             action: ['type' => 'invoke', 'field' => 'test', 'args' => []],
             line: 302,
         );

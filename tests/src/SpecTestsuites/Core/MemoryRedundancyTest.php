@@ -6,6 +6,7 @@ namespace Nsfisis\Waddiwasi\Tests\SpecTestsuites\Core;
 
 use Nsfisis\Waddiwasi\Tests\SpecTestsuites\SpecTestsuiteBase;
 use PHPUnit\Framework\Attributes\Depends;
+use PHPUnit\Framework\Attributes\DoesNotPerformAssertions;
 
 final class MemoryRedundancyTest extends SpecTestsuiteBase
 {
@@ -33,6 +34,7 @@ final class MemoryRedundancyTest extends SpecTestsuiteBase
     public function testAction2(): void
     {
         $this->runActionCommand(
+            module: null,
             action: ['type' => 'invoke', 'field' => 'zero_everything', 'args' => []],
             line: 60,
         );
@@ -53,6 +55,7 @@ final class MemoryRedundancyTest extends SpecTestsuiteBase
     public function testAction4(): void
     {
         $this->runActionCommand(
+            module: null,
             action: ['type' => 'invoke', 'field' => 'zero_everything', 'args' => []],
             line: 62,
         );
@@ -73,6 +76,7 @@ final class MemoryRedundancyTest extends SpecTestsuiteBase
     public function testAction6(): void
     {
         $this->runActionCommand(
+            module: null,
             action: ['type' => 'invoke', 'field' => 'zero_everything', 'args' => []],
             line: 64,
         );

@@ -6,6 +6,7 @@ namespace Nsfisis\Waddiwasi\Tests\SpecTestsuites\Core;
 
 use Nsfisis\Waddiwasi\Tests\SpecTestsuites\SpecTestsuiteBase;
 use PHPUnit\Framework\Attributes\Depends;
+use PHPUnit\Framework\Attributes\DoesNotPerformAssertions;
 
 final class RefIsNullTest extends SpecTestsuiteBase
 {
@@ -55,6 +56,7 @@ final class RefIsNullTest extends SpecTestsuiteBase
     public function testAction4(): void
     {
         $this->runActionCommand(
+            module: null,
             action: ['type' => 'invoke', 'field' => 'init', 'args' => [['type' => 'externref', 'value' => '0']]],
             line: 35,
         );
@@ -108,6 +110,7 @@ final class RefIsNullTest extends SpecTestsuiteBase
     public function testAction9(): void
     {
         $this->runActionCommand(
+            module: null,
             action: ['type' => 'invoke', 'field' => 'deinit', 'args' => []],
             line: 43,
         );

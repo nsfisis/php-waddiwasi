@@ -6,6 +6,7 @@ namespace Nsfisis\Waddiwasi\Tests\SpecTestsuites\Core;
 
 use Nsfisis\Waddiwasi\Tests\SpecTestsuites\SpecTestsuiteBase;
 use PHPUnit\Framework\Attributes\Depends;
+use PHPUnit\Framework\Attributes\DoesNotPerformAssertions;
 
 final class FloatMemoryTest extends SpecTestsuiteBase
 {
@@ -44,6 +45,7 @@ final class FloatMemoryTest extends SpecTestsuiteBase
     public function testAction3(): void
     {
         $this->runActionCommand(
+            module: null,
             action: ['type' => 'invoke', 'field' => 'reset', 'args' => []],
             line: 17,
         );
@@ -75,6 +77,7 @@ final class FloatMemoryTest extends SpecTestsuiteBase
     public function testAction6(): void
     {
         $this->runActionCommand(
+            module: null,
             action: ['type' => 'invoke', 'field' => 'f32.store', 'args' => []],
             line: 20,
         );
@@ -106,6 +109,7 @@ final class FloatMemoryTest extends SpecTestsuiteBase
     public function testAction9(): void
     {
         $this->runActionCommand(
+            module: null,
             action: ['type' => 'invoke', 'field' => 'reset', 'args' => []],
             line: 23,
         );
@@ -137,6 +141,7 @@ final class FloatMemoryTest extends SpecTestsuiteBase
     public function testAction12(): void
     {
         $this->runActionCommand(
+            module: null,
             action: ['type' => 'invoke', 'field' => 'i32.store', 'args' => []],
             line: 26,
         );
@@ -200,6 +205,7 @@ final class FloatMemoryTest extends SpecTestsuiteBase
     public function testAction18(): void
     {
         $this->runActionCommand(
+            module: null,
             action: ['type' => 'invoke', 'field' => 'reset', 'args' => []],
             line: 42,
         );
@@ -231,6 +237,7 @@ final class FloatMemoryTest extends SpecTestsuiteBase
     public function testAction21(): void
     {
         $this->runActionCommand(
+            module: null,
             action: ['type' => 'invoke', 'field' => 'f64.store', 'args' => []],
             line: 45,
         );
@@ -262,6 +269,7 @@ final class FloatMemoryTest extends SpecTestsuiteBase
     public function testAction24(): void
     {
         $this->runActionCommand(
+            module: null,
             action: ['type' => 'invoke', 'field' => 'reset', 'args' => []],
             line: 48,
         );
@@ -293,6 +301,7 @@ final class FloatMemoryTest extends SpecTestsuiteBase
     public function testAction27(): void
     {
         $this->runActionCommand(
+            module: null,
             action: ['type' => 'invoke', 'field' => 'i64.store', 'args' => []],
             line: 51,
         );
@@ -356,6 +365,7 @@ final class FloatMemoryTest extends SpecTestsuiteBase
     public function testAction33(): void
     {
         $this->runActionCommand(
+            module: null,
             action: ['type' => 'invoke', 'field' => 'reset', 'args' => []],
             line: 69,
         );
@@ -387,6 +397,7 @@ final class FloatMemoryTest extends SpecTestsuiteBase
     public function testAction36(): void
     {
         $this->runActionCommand(
+            module: null,
             action: ['type' => 'invoke', 'field' => 'f32.store', 'args' => []],
             line: 72,
         );
@@ -418,6 +429,7 @@ final class FloatMemoryTest extends SpecTestsuiteBase
     public function testAction39(): void
     {
         $this->runActionCommand(
+            module: null,
             action: ['type' => 'invoke', 'field' => 'reset', 'args' => []],
             line: 75,
         );
@@ -449,6 +461,7 @@ final class FloatMemoryTest extends SpecTestsuiteBase
     public function testAction42(): void
     {
         $this->runActionCommand(
+            module: null,
             action: ['type' => 'invoke', 'field' => 'i32.store', 'args' => []],
             line: 78,
         );
@@ -512,6 +525,7 @@ final class FloatMemoryTest extends SpecTestsuiteBase
     public function testAction48(): void
     {
         $this->runActionCommand(
+            module: null,
             action: ['type' => 'invoke', 'field' => 'reset', 'args' => []],
             line: 94,
         );
@@ -543,6 +557,7 @@ final class FloatMemoryTest extends SpecTestsuiteBase
     public function testAction51(): void
     {
         $this->runActionCommand(
+            module: null,
             action: ['type' => 'invoke', 'field' => 'f64.store', 'args' => []],
             line: 97,
         );
@@ -574,6 +589,7 @@ final class FloatMemoryTest extends SpecTestsuiteBase
     public function testAction54(): void
     {
         $this->runActionCommand(
+            module: null,
             action: ['type' => 'invoke', 'field' => 'reset', 'args' => []],
             line: 100,
         );
@@ -605,6 +621,7 @@ final class FloatMemoryTest extends SpecTestsuiteBase
     public function testAction57(): void
     {
         $this->runActionCommand(
+            module: null,
             action: ['type' => 'invoke', 'field' => 'i64.store', 'args' => []],
             line: 103,
         );
@@ -668,6 +685,7 @@ final class FloatMemoryTest extends SpecTestsuiteBase
     public function testAction63(): void
     {
         $this->runActionCommand(
+            module: null,
             action: ['type' => 'invoke', 'field' => 'reset', 'args' => []],
             line: 121,
         );
@@ -699,6 +717,7 @@ final class FloatMemoryTest extends SpecTestsuiteBase
     public function testAction66(): void
     {
         $this->runActionCommand(
+            module: null,
             action: ['type' => 'invoke', 'field' => 'f32.store', 'args' => []],
             line: 124,
         );
@@ -730,6 +749,7 @@ final class FloatMemoryTest extends SpecTestsuiteBase
     public function testAction69(): void
     {
         $this->runActionCommand(
+            module: null,
             action: ['type' => 'invoke', 'field' => 'reset', 'args' => []],
             line: 127,
         );
@@ -761,6 +781,7 @@ final class FloatMemoryTest extends SpecTestsuiteBase
     public function testAction72(): void
     {
         $this->runActionCommand(
+            module: null,
             action: ['type' => 'invoke', 'field' => 'i32.store', 'args' => []],
             line: 130,
         );
@@ -824,6 +845,7 @@ final class FloatMemoryTest extends SpecTestsuiteBase
     public function testAction78(): void
     {
         $this->runActionCommand(
+            module: null,
             action: ['type' => 'invoke', 'field' => 'reset', 'args' => []],
             line: 146,
         );
@@ -855,6 +877,7 @@ final class FloatMemoryTest extends SpecTestsuiteBase
     public function testAction81(): void
     {
         $this->runActionCommand(
+            module: null,
             action: ['type' => 'invoke', 'field' => 'f64.store', 'args' => []],
             line: 149,
         );
@@ -886,6 +909,7 @@ final class FloatMemoryTest extends SpecTestsuiteBase
     public function testAction84(): void
     {
         $this->runActionCommand(
+            module: null,
             action: ['type' => 'invoke', 'field' => 'reset', 'args' => []],
             line: 152,
         );
@@ -917,6 +941,7 @@ final class FloatMemoryTest extends SpecTestsuiteBase
     public function testAction87(): void
     {
         $this->runActionCommand(
+            module: null,
             action: ['type' => 'invoke', 'field' => 'i64.store', 'args' => []],
             line: 155,
         );

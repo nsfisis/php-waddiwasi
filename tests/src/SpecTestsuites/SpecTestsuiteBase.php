@@ -39,27 +39,14 @@ abstract class SpecTestsuiteBase extends TestCase
         array $expected,
         int $line,
     ): void {
-        $targetModuleName = $module ?? '_';
-        $targetModule = self::$modules[$targetModuleName];
-        $actionType = $action['type'];
-        $actionField = $action['field'];
-        if ($actionType === 'invoke') {
-            $actionArgs = $action['args'];
-            $runtime = self::$runtimes[$targetModuleName];
-            try {
-                $this->assertWasmInvokeResults(
-                    $expected,
-                    $runtime->invoke(
-                        $actionField,
-                        array_map($this->toWasmArg(...), $actionArgs),
-                    ),
-                    "at $line",
-                );
-            } catch (TrapException $e) {
-                $this->assertTrue(false, "assert_return: trap, $e at $line");
-            }
-        } else {
-            $this->assertTrue(false, "assert_return: unknown action, $actionType");
+        try {
+            $this->assertWasmInvokeResults(
+                $expected,
+                $this->doAction($module, $action),
+                "at $line",
+            );
+        } catch (TrapException $e) {
+            $this->assertTrue(false, "assert_return: trap, $e at $line");
         }
     }
 
@@ -69,27 +56,14 @@ abstract class SpecTestsuiteBase extends TestCase
         string $text,
         int $line,
     ): void {
-        $targetModuleName = $module ?? '_';
-        $targetModule = self::$modules[$targetModuleName];
-        $actionType = $action['type'];
-        $actionField = $action['field'];
-        if ($actionType === 'invoke') {
-            $actionArgs = $action['args'];
-            $runtime = self::$runtimes[$targetModuleName];
-            $exception = null;
-            try {
-                $runtime->invoke(
-                    $actionField,
-                    array_map($this->toWasmArg(...), $actionArgs),
-                );
-            } catch (TrapException $e) {
-                $exception = $e;
-            }
-            $this->assertNotNull($exception, "at $line");
-            $this->assertTrapKind($text, $e->getTrapKind(), "at $line");
-        } else {
-            $this->assertTrue(false, "assert_trap: unknown action, $actionType");
+        $exception = null;
+        try {
+            $this->doAction($module, $action);
+        } catch (TrapException $e) {
+            $exception = $e;
         }
+        $this->assertNotNull($exception, "at $line");
+        $this->assertTrapKind($text, $e->getTrapKind(), "at $line");
     }
 
     protected function runAssertMalformedCommand(
@@ -143,10 +117,12 @@ abstract class SpecTestsuiteBase extends TestCase
     }
 
     protected function runActionCommand(
+        ?string $module,
         array $action,
         int $line,
     ): void {
-        $this->assertTrue(false, "action");
+        $this->doAction($module, $action);
+        $this->assertTrue(true);
     }
 
     protected function runRegisterCommand(
@@ -171,6 +147,26 @@ abstract class SpecTestsuiteBase extends TestCase
             'f64' => unpack('e', pack('q', (int)$value))[1],
             default => $this->assertTrue(false, "unknown arg type: $type"),
         };
+    }
+
+    private function doAction(
+        ?string $module,
+        array $action,
+    ): array {
+        $targetModuleName = $module ?? '_';
+        $targetModule = self::$modules[$targetModuleName];
+        $actionType = $action['type'];
+        $actionField = $action['field'];
+        if ($actionType === 'invoke') {
+            $actionArgs = $action['args'];
+            $runtime = self::$runtimes[$targetModuleName];
+            return $runtime->invoke(
+                $actionField,
+                array_map($this->toWasmArg(...), $actionArgs),
+            );
+        } else {
+            $this->assertTrue(false, "unknown action: $actionType");
+        }
     }
 
     /**

@@ -6,6 +6,7 @@ namespace Nsfisis\Waddiwasi\Tests\SpecTestsuites\Core;
 
 use Nsfisis\Waddiwasi\Tests\SpecTestsuites\SpecTestsuiteBase;
 use PHPUnit\Framework\Attributes\Depends;
+use PHPUnit\Framework\Attributes\DoesNotPerformAssertions;
 
 final class RefFuncTest extends SpecTestsuiteBase
 {
@@ -108,6 +109,7 @@ final class RefFuncTest extends SpecTestsuiteBase
     public function testAction9(): void
     {
         $this->runActionCommand(
+            module: null,
             action: ['type' => 'invoke', 'field' => 'set-g', 'args' => []],
             line: 63,
         );
@@ -128,6 +130,7 @@ final class RefFuncTest extends SpecTestsuiteBase
     public function testAction11(): void
     {
         $this->runActionCommand(
+            module: null,
             action: ['type' => 'invoke', 'field' => 'set-f', 'args' => []],
             line: 65,
         );

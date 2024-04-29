@@ -6,6 +6,7 @@ namespace Nsfisis\Waddiwasi\Tests\SpecTestsuites\Core;
 
 use Nsfisis\Waddiwasi\Tests\SpecTestsuites\SpecTestsuiteBase;
 use PHPUnit\Framework\Attributes\Depends;
+use PHPUnit\Framework\Attributes\DoesNotPerformAssertions;
 
 final class TableCopyTest extends SpecTestsuiteBase
 {
@@ -42,6 +43,7 @@ final class TableCopyTest extends SpecTestsuiteBase
     public function testAction3(): void
     {
         $this->runActionCommand(
+            module: null,
             action: ['type' => 'invoke', 'field' => 'test', 'args' => []],
             line: 45,
         );
@@ -721,6 +723,7 @@ final class TableCopyTest extends SpecTestsuiteBase
     public function testAction65(): void
     {
         $this->runActionCommand(
+            module: null,
             action: ['type' => 'invoke', 'field' => 'test', 'args' => []],
             line: 137,
         );
@@ -1400,6 +1403,7 @@ final class TableCopyTest extends SpecTestsuiteBase
     public function testAction127(): void
     {
         $this->runActionCommand(
+            module: null,
             action: ['type' => 'invoke', 'field' => 'test', 'args' => []],
             line: 229,
         );
@@ -2079,6 +2083,7 @@ final class TableCopyTest extends SpecTestsuiteBase
     public function testAction189(): void
     {
         $this->runActionCommand(
+            module: null,
             action: ['type' => 'invoke', 'field' => 'test', 'args' => []],
             line: 321,
         );
@@ -2758,6 +2763,7 @@ final class TableCopyTest extends SpecTestsuiteBase
     public function testAction251(): void
     {
         $this->runActionCommand(
+            module: null,
             action: ['type' => 'invoke', 'field' => 'test', 'args' => []],
             line: 413,
         );
@@ -3437,6 +3443,7 @@ final class TableCopyTest extends SpecTestsuiteBase
     public function testAction313(): void
     {
         $this->runActionCommand(
+            module: null,
             action: ['type' => 'invoke', 'field' => 'test', 'args' => []],
             line: 505,
         );
@@ -4116,6 +4123,7 @@ final class TableCopyTest extends SpecTestsuiteBase
     public function testAction375(): void
     {
         $this->runActionCommand(
+            module: null,
             action: ['type' => 'invoke', 'field' => 'test', 'args' => []],
             line: 597,
         );
@@ -4795,6 +4803,7 @@ final class TableCopyTest extends SpecTestsuiteBase
     public function testAction437(): void
     {
         $this->runActionCommand(
+            module: null,
             action: ['type' => 'invoke', 'field' => 'test', 'args' => []],
             line: 689,
         );
@@ -5474,6 +5483,7 @@ final class TableCopyTest extends SpecTestsuiteBase
     public function testAction499(): void
     {
         $this->runActionCommand(
+            module: null,
             action: ['type' => 'invoke', 'field' => 'test', 'args' => []],
             line: 781,
         );
@@ -6153,6 +6163,7 @@ final class TableCopyTest extends SpecTestsuiteBase
     public function testAction561(): void
     {
         $this->runActionCommand(
+            module: null,
             action: ['type' => 'invoke', 'field' => 'test', 'args' => []],
             line: 873,
         );
@@ -6832,6 +6843,7 @@ final class TableCopyTest extends SpecTestsuiteBase
     public function testAction623(): void
     {
         $this->runActionCommand(
+            module: null,
             action: ['type' => 'invoke', 'field' => 'test', 'args' => []],
             line: 965,
         );
@@ -7511,6 +7523,7 @@ final class TableCopyTest extends SpecTestsuiteBase
     public function testAction685(): void
     {
         $this->runActionCommand(
+            module: null,
             action: ['type' => 'invoke', 'field' => 'test', 'args' => []],
             line: 1057,
         );
@@ -8190,6 +8203,7 @@ final class TableCopyTest extends SpecTestsuiteBase
     public function testAction747(): void
     {
         $this->runActionCommand(
+            module: null,
             action: ['type' => 'invoke', 'field' => 'test', 'args' => []],
             line: 1149,
         );
@@ -8869,6 +8883,7 @@ final class TableCopyTest extends SpecTestsuiteBase
     public function testAction809(): void
     {
         $this->runActionCommand(
+            module: null,
             action: ['type' => 'invoke', 'field' => 'test', 'args' => []],
             line: 1241,
         );
@@ -9548,6 +9563,7 @@ final class TableCopyTest extends SpecTestsuiteBase
     public function testAction871(): void
     {
         $this->runActionCommand(
+            module: null,
             action: ['type' => 'invoke', 'field' => 'test', 'args' => []],
             line: 1333,
         );
@@ -10227,6 +10243,7 @@ final class TableCopyTest extends SpecTestsuiteBase
     public function testAction933(): void
     {
         $this->runActionCommand(
+            module: null,
             action: ['type' => 'invoke', 'field' => 'test', 'args' => []],
             line: 1425,
         );
@@ -10906,6 +10923,7 @@ final class TableCopyTest extends SpecTestsuiteBase
     public function testAction995(): void
     {
         $this->runActionCommand(
+            module: null,
             action: ['type' => 'invoke', 'field' => 'test', 'args' => []],
             line: 1517,
         );
@@ -11585,6 +11603,7 @@ final class TableCopyTest extends SpecTestsuiteBase
     public function testAction1057(): void
     {
         $this->runActionCommand(
+            module: null,
             action: ['type' => 'invoke', 'field' => 'test', 'args' => []],
             line: 1609,
         );
@@ -12348,6 +12367,7 @@ final class TableCopyTest extends SpecTestsuiteBase
     public function testAction1127(): void
     {
         $this->runActionCommand(
+            module: null,
             action: ['type' => 'invoke', 'field' => 'test', 'args' => []],
             line: 1794,
         );
@@ -12367,6 +12387,7 @@ final class TableCopyTest extends SpecTestsuiteBase
     public function testAction1129(): void
     {
         $this->runActionCommand(
+            module: null,
             action: ['type' => 'invoke', 'field' => 'test', 'args' => []],
             line: 1819,
         );
@@ -12407,6 +12428,7 @@ final class TableCopyTest extends SpecTestsuiteBase
     public function testAction1133(): void
     {
         $this->runActionCommand(
+            module: null,
             action: ['type' => 'invoke', 'field' => 'test', 'args' => []],
             line: 1869,
         );
@@ -12447,6 +12469,7 @@ final class TableCopyTest extends SpecTestsuiteBase
     public function testAction1137(): void
     {
         $this->runActionCommand(
+            module: null,
             action: ['type' => 'invoke', 'field' => 'test', 'args' => []],
             line: 1919,
         );
@@ -12571,6 +12594,7 @@ final class TableCopyTest extends SpecTestsuiteBase
     public function testAction1149(): void
     {
         $this->runActionCommand(
+            module: null,
             action: ['type' => 'invoke', 'field' => 'test', 'args' => []],
             line: 2069,
         );
@@ -12590,6 +12614,7 @@ final class TableCopyTest extends SpecTestsuiteBase
     public function testAction1151(): void
     {
         $this->runActionCommand(
+            module: null,
             action: ['type' => 'invoke', 'field' => 'test', 'args' => []],
             line: 2094,
         );
@@ -12630,6 +12655,7 @@ final class TableCopyTest extends SpecTestsuiteBase
     public function testAction1155(): void
     {
         $this->runActionCommand(
+            module: null,
             action: ['type' => 'invoke', 'field' => 'test', 'args' => []],
             line: 2144,
         );
@@ -12670,6 +12696,7 @@ final class TableCopyTest extends SpecTestsuiteBase
     public function testAction1159(): void
     {
         $this->runActionCommand(
+            module: null,
             action: ['type' => 'invoke', 'field' => 'test', 'args' => []],
             line: 2194,
         );

@@ -217,6 +217,7 @@ function buildActionCommandTest(array $command): array
     return [
         'method' => 'runActionCommand',
         'args' => [
+            'module' => $command['module'] ?? null,
             'action' => $command['action'],
         ],
     ];

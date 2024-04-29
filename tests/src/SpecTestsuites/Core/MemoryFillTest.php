@@ -6,6 +6,7 @@ namespace Nsfisis\Waddiwasi\Tests\SpecTestsuites\Core;
 
 use Nsfisis\Waddiwasi\Tests\SpecTestsuites\SpecTestsuiteBase;
 use PHPUnit\Framework\Attributes\Depends;
+use PHPUnit\Framework\Attributes\DoesNotPerformAssertions;
 
 final class MemoryFillTest extends SpecTestsuiteBase
 {
@@ -22,6 +23,7 @@ final class MemoryFillTest extends SpecTestsuiteBase
     public function testAction1(): void
     {
         $this->runActionCommand(
+            module: null,
             action: ['type' => 'invoke', 'field' => 'test', 'args' => []],
             line: 22,
         );
@@ -105,6 +107,7 @@ final class MemoryFillTest extends SpecTestsuiteBase
     public function testAction9(): void
     {
         $this->runActionCommand(
+            module: null,
             action: ['type' => 'invoke', 'field' => 'test', 'args' => []],
             line: 80,
         );
@@ -135,6 +138,7 @@ final class MemoryFillTest extends SpecTestsuiteBase
     public function testAction12(): void
     {
         $this->runActionCommand(
+            module: null,
             action: ['type' => 'invoke', 'field' => 'test', 'args' => []],
             line: 100,
         );
@@ -175,6 +179,7 @@ final class MemoryFillTest extends SpecTestsuiteBase
     public function testAction16(): void
     {
         $this->runActionCommand(
+            module: null,
             action: ['type' => 'invoke', 'field' => 'test', 'args' => []],
             line: 136,
         );
@@ -227,6 +232,7 @@ final class MemoryFillTest extends SpecTestsuiteBase
     public function testAction21(): void
     {
         $this->runActionCommand(
+            module: null,
             action: ['type' => 'invoke', 'field' => 'test', 'args' => []],
             line: 162,
         );

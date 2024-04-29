@@ -6,6 +6,7 @@ namespace Nsfisis\Waddiwasi\Tests\SpecTestsuites\Core;
 
 use Nsfisis\Waddiwasi\Tests\SpecTestsuites\SpecTestsuiteBase;
 use PHPUnit\Framework\Attributes\Depends;
+use PHPUnit\Framework\Attributes\DoesNotPerformAssertions;
 
 final class TableGetTest extends SpecTestsuiteBase
 {
@@ -22,6 +23,7 @@ final class TableGetTest extends SpecTestsuiteBase
     public function testAction1(): void
     {
         $this->runActionCommand(
+            module: null,
             action: ['type' => 'invoke', 'field' => 'init', 'args' => [['type' => 'externref', 'value' => '1']]],
             line: 24,
         );

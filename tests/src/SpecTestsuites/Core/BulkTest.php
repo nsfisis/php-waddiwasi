@@ -6,6 +6,7 @@ namespace Nsfisis\Waddiwasi\Tests\SpecTestsuites\Core;
 
 use Nsfisis\Waddiwasi\Tests\SpecTestsuites\SpecTestsuiteBase;
 use PHPUnit\Framework\Attributes\Depends;
+use PHPUnit\Framework\Attributes\DoesNotPerformAssertions;
 
 final class BulkTest extends SpecTestsuiteBase
 {
@@ -42,6 +43,7 @@ final class BulkTest extends SpecTestsuiteBase
     public function testAction3(): void
     {
         $this->runActionCommand(
+            module: null,
             action: ['type' => 'invoke', 'field' => 'fill', 'args' => [['type' => 'i32', 'value' => '1'], ['type' => 'i32', 'value' => '255'], ['type' => 'i32', 'value' => '3']]],
             line: 27,
         );
@@ -106,6 +108,7 @@ final class BulkTest extends SpecTestsuiteBase
     public function testAction9(): void
     {
         $this->runActionCommand(
+            module: null,
             action: ['type' => 'invoke', 'field' => 'fill', 'args' => [['type' => 'i32', 'value' => '0'], ['type' => 'i32', 'value' => '48042'], ['type' => 'i32', 'value' => '2']]],
             line: 35,
         );
@@ -137,6 +140,7 @@ final class BulkTest extends SpecTestsuiteBase
     public function testAction12(): void
     {
         $this->runActionCommand(
+            module: null,
             action: ['type' => 'invoke', 'field' => 'fill', 'args' => [['type' => 'i32', 'value' => '0'], ['type' => 'i32', 'value' => '0'], ['type' => 'i32', 'value' => '65536']]],
             line: 40,
         );
@@ -179,6 +183,7 @@ final class BulkTest extends SpecTestsuiteBase
     public function testAction16(): void
     {
         $this->runActionCommand(
+            module: null,
             action: ['type' => 'invoke', 'field' => 'fill', 'args' => [['type' => 'i32', 'value' => '65536'], ['type' => 'i32', 'value' => '0'], ['type' => 'i32', 'value' => '0']]],
             line: 49,
         );
@@ -209,6 +214,7 @@ final class BulkTest extends SpecTestsuiteBase
     public function testAction19(): void
     {
         $this->runActionCommand(
+            module: null,
             action: ['type' => 'invoke', 'field' => 'copy', 'args' => [['type' => 'i32', 'value' => '10'], ['type' => 'i32', 'value' => '0'], ['type' => 'i32', 'value' => '4']]],
             line: 71,
         );
@@ -284,6 +290,7 @@ final class BulkTest extends SpecTestsuiteBase
     public function testAction26(): void
     {
         $this->runActionCommand(
+            module: null,
             action: ['type' => 'invoke', 'field' => 'copy', 'args' => [['type' => 'i32', 'value' => '8'], ['type' => 'i32', 'value' => '10'], ['type' => 'i32', 'value' => '4']]],
             line: 81,
         );
@@ -359,6 +366,7 @@ final class BulkTest extends SpecTestsuiteBase
     public function testAction33(): void
     {
         $this->runActionCommand(
+            module: null,
             action: ['type' => 'invoke', 'field' => 'copy', 'args' => [['type' => 'i32', 'value' => '10'], ['type' => 'i32', 'value' => '7'], ['type' => 'i32', 'value' => '6']]],
             line: 90,
         );
@@ -445,6 +453,7 @@ final class BulkTest extends SpecTestsuiteBase
     public function testAction41(): void
     {
         $this->runActionCommand(
+            module: null,
             action: ['type' => 'invoke', 'field' => 'copy', 'args' => [['type' => 'i32', 'value' => '65280'], ['type' => 'i32', 'value' => '0'], ['type' => 'i32', 'value' => '256']]],
             line: 100,
         );
@@ -454,6 +463,7 @@ final class BulkTest extends SpecTestsuiteBase
     public function testAction42(): void
     {
         $this->runActionCommand(
+            module: null,
             action: ['type' => 'invoke', 'field' => 'copy', 'args' => [['type' => 'i32', 'value' => '65024'], ['type' => 'i32', 'value' => '65280'], ['type' => 'i32', 'value' => '256']]],
             line: 101,
         );
@@ -463,6 +473,7 @@ final class BulkTest extends SpecTestsuiteBase
     public function testAction43(): void
     {
         $this->runActionCommand(
+            module: null,
             action: ['type' => 'invoke', 'field' => 'copy', 'args' => [['type' => 'i32', 'value' => '65536'], ['type' => 'i32', 'value' => '0'], ['type' => 'i32', 'value' => '0']]],
             line: 104,
         );
@@ -472,6 +483,7 @@ final class BulkTest extends SpecTestsuiteBase
     public function testAction44(): void
     {
         $this->runActionCommand(
+            module: null,
             action: ['type' => 'invoke', 'field' => 'copy', 'args' => [['type' => 'i32', 'value' => '0'], ['type' => 'i32', 'value' => '65536'], ['type' => 'i32', 'value' => '0']]],
             line: 105,
         );
@@ -513,6 +525,7 @@ final class BulkTest extends SpecTestsuiteBase
     public function testAction48(): void
     {
         $this->runActionCommand(
+            module: null,
             action: ['type' => 'invoke', 'field' => 'init', 'args' => [['type' => 'i32', 'value' => '0'], ['type' => 'i32', 'value' => '1'], ['type' => 'i32', 'value' => '2']]],
             line: 129,
         );
@@ -555,6 +568,7 @@ final class BulkTest extends SpecTestsuiteBase
     public function testAction52(): void
     {
         $this->runActionCommand(
+            module: null,
             action: ['type' => 'invoke', 'field' => 'init', 'args' => [['type' => 'i32', 'value' => '65532'], ['type' => 'i32', 'value' => '0'], ['type' => 'i32', 'value' => '4']]],
             line: 135,
         );
@@ -597,6 +611,7 @@ final class BulkTest extends SpecTestsuiteBase
     public function testAction56(): void
     {
         $this->runActionCommand(
+            module: null,
             action: ['type' => 'invoke', 'field' => 'init', 'args' => [['type' => 'i32', 'value' => '65536'], ['type' => 'i32', 'value' => '0'], ['type' => 'i32', 'value' => '0']]],
             line: 144,
         );
@@ -606,6 +621,7 @@ final class BulkTest extends SpecTestsuiteBase
     public function testAction57(): void
     {
         $this->runActionCommand(
+            module: null,
             action: ['type' => 'invoke', 'field' => 'init', 'args' => [['type' => 'i32', 'value' => '0'], ['type' => 'i32', 'value' => '4'], ['type' => 'i32', 'value' => '0']]],
             line: 145,
         );
@@ -647,6 +663,7 @@ final class BulkTest extends SpecTestsuiteBase
     public function testAction61(): void
     {
         $this->runActionCommand(
+            module: null,
             action: ['type' => 'invoke', 'field' => 'init_passive', 'args' => [['type' => 'i32', 'value' => '1']]],
             line: 168,
         );
@@ -656,6 +673,7 @@ final class BulkTest extends SpecTestsuiteBase
     public function testAction62(): void
     {
         $this->runActionCommand(
+            module: null,
             action: ['type' => 'invoke', 'field' => 'drop_passive', 'args' => []],
             line: 169,
         );
@@ -665,6 +683,7 @@ final class BulkTest extends SpecTestsuiteBase
     public function testAction63(): void
     {
         $this->runActionCommand(
+            module: null,
             action: ['type' => 'invoke', 'field' => 'drop_passive', 'args' => []],
             line: 170,
         );
@@ -696,6 +715,7 @@ final class BulkTest extends SpecTestsuiteBase
     public function testAction66(): void
     {
         $this->runActionCommand(
+            module: null,
             action: ['type' => 'invoke', 'field' => 'init_passive', 'args' => [['type' => 'i32', 'value' => '0']]],
             line: 173,
         );
@@ -705,6 +725,7 @@ final class BulkTest extends SpecTestsuiteBase
     public function testAction67(): void
     {
         $this->runActionCommand(
+            module: null,
             action: ['type' => 'invoke', 'field' => 'drop_active', 'args' => []],
             line: 174,
         );
@@ -736,6 +757,7 @@ final class BulkTest extends SpecTestsuiteBase
     public function testAction70(): void
     {
         $this->runActionCommand(
+            module: null,
             action: ['type' => 'invoke', 'field' => 'init_active', 'args' => [['type' => 'i32', 'value' => '0']]],
             line: 177,
         );
@@ -797,6 +819,7 @@ final class BulkTest extends SpecTestsuiteBase
     public function testAction76(): void
     {
         $this->runActionCommand(
+            module: null,
             action: ['type' => 'invoke', 'field' => 'init', 'args' => [['type' => 'i32', 'value' => '0'], ['type' => 'i32', 'value' => '1'], ['type' => 'i32', 'value' => '2']]],
             line: 224,
         );
@@ -839,6 +862,7 @@ final class BulkTest extends SpecTestsuiteBase
     public function testAction80(): void
     {
         $this->runActionCommand(
+            module: null,
             action: ['type' => 'invoke', 'field' => 'init', 'args' => [['type' => 'i32', 'value' => '1'], ['type' => 'i32', 'value' => '2'], ['type' => 'i32', 'value' => '2']]],
             line: 230,
         );
@@ -848,6 +872,7 @@ final class BulkTest extends SpecTestsuiteBase
     public function testAction81(): void
     {
         $this->runActionCommand(
+            module: null,
             action: ['type' => 'invoke', 'field' => 'init', 'args' => [['type' => 'i32', 'value' => '3'], ['type' => 'i32', 'value' => '0'], ['type' => 'i32', 'value' => '0']]],
             line: 233,
         );
@@ -857,6 +882,7 @@ final class BulkTest extends SpecTestsuiteBase
     public function testAction82(): void
     {
         $this->runActionCommand(
+            module: null,
             action: ['type' => 'invoke', 'field' => 'init', 'args' => [['type' => 'i32', 'value' => '0'], ['type' => 'i32', 'value' => '4'], ['type' => 'i32', 'value' => '0']]],
             line: 234,
         );
@@ -898,6 +924,7 @@ final class BulkTest extends SpecTestsuiteBase
     public function testAction86(): void
     {
         $this->runActionCommand(
+            module: null,
             action: ['type' => 'invoke', 'field' => 'init_passive', 'args' => [['type' => 'i32', 'value' => '1']]],
             line: 261,
         );
@@ -907,6 +934,7 @@ final class BulkTest extends SpecTestsuiteBase
     public function testAction87(): void
     {
         $this->runActionCommand(
+            module: null,
             action: ['type' => 'invoke', 'field' => 'drop_passive', 'args' => []],
             line: 262,
         );
@@ -916,6 +944,7 @@ final class BulkTest extends SpecTestsuiteBase
     public function testAction88(): void
     {
         $this->runActionCommand(
+            module: null,
             action: ['type' => 'invoke', 'field' => 'drop_passive', 'args' => []],
             line: 263,
         );
@@ -947,6 +976,7 @@ final class BulkTest extends SpecTestsuiteBase
     public function testAction91(): void
     {
         $this->runActionCommand(
+            module: null,
             action: ['type' => 'invoke', 'field' => 'init_passive', 'args' => [['type' => 'i32', 'value' => '0']]],
             line: 266,
         );
@@ -956,6 +986,7 @@ final class BulkTest extends SpecTestsuiteBase
     public function testAction92(): void
     {
         $this->runActionCommand(
+            module: null,
             action: ['type' => 'invoke', 'field' => 'drop_active', 'args' => []],
             line: 267,
         );
@@ -987,6 +1018,7 @@ final class BulkTest extends SpecTestsuiteBase
     public function testAction95(): void
     {
         $this->runActionCommand(
+            module: null,
             action: ['type' => 'invoke', 'field' => 'init_active', 'args' => [['type' => 'i32', 'value' => '0']]],
             line: 270,
         );
@@ -1026,6 +1058,7 @@ final class BulkTest extends SpecTestsuiteBase
     public function testAction99(): void
     {
         $this->runActionCommand(
+            module: null,
             action: ['type' => 'invoke', 'field' => 'copy', 'args' => [['type' => 'i32', 'value' => '3'], ['type' => 'i32', 'value' => '0'], ['type' => 'i32', 'value' => '3']]],
             line: 319,
         );
@@ -1068,6 +1101,7 @@ final class BulkTest extends SpecTestsuiteBase
     public function testAction103(): void
     {
         $this->runActionCommand(
+            module: null,
             action: ['type' => 'invoke', 'field' => 'copy', 'args' => [['type' => 'i32', 'value' => '0'], ['type' => 'i32', 'value' => '1'], ['type' => 'i32', 'value' => '3']]],
             line: 326,
         );
@@ -1110,6 +1144,7 @@ final class BulkTest extends SpecTestsuiteBase
     public function testAction107(): void
     {
         $this->runActionCommand(
+            module: null,
             action: ['type' => 'invoke', 'field' => 'copy', 'args' => [['type' => 'i32', 'value' => '2'], ['type' => 'i32', 'value' => '0'], ['type' => 'i32', 'value' => '3']]],
             line: 333,
         );
@@ -1152,6 +1187,7 @@ final class BulkTest extends SpecTestsuiteBase
     public function testAction111(): void
     {
         $this->runActionCommand(
+            module: null,
             action: ['type' => 'invoke', 'field' => 'copy', 'args' => [['type' => 'i32', 'value' => '6'], ['type' => 'i32', 'value' => '8'], ['type' => 'i32', 'value' => '2']]],
             line: 340,
         );
@@ -1161,6 +1197,7 @@ final class BulkTest extends SpecTestsuiteBase
     public function testAction112(): void
     {
         $this->runActionCommand(
+            module: null,
             action: ['type' => 'invoke', 'field' => 'copy', 'args' => [['type' => 'i32', 'value' => '8'], ['type' => 'i32', 'value' => '6'], ['type' => 'i32', 'value' => '2']]],
             line: 341,
         );
@@ -1170,6 +1207,7 @@ final class BulkTest extends SpecTestsuiteBase
     public function testAction113(): void
     {
         $this->runActionCommand(
+            module: null,
             action: ['type' => 'invoke', 'field' => 'copy', 'args' => [['type' => 'i32', 'value' => '10'], ['type' => 'i32', 'value' => '0'], ['type' => 'i32', 'value' => '0']]],
             line: 344,
         );
@@ -1179,6 +1217,7 @@ final class BulkTest extends SpecTestsuiteBase
     public function testAction114(): void
     {
         $this->runActionCommand(
+            module: null,
             action: ['type' => 'invoke', 'field' => 'copy', 'args' => [['type' => 'i32', 'value' => '0'], ['type' => 'i32', 'value' => '10'], ['type' => 'i32', 'value' => '0']]],
             line: 345,
         );

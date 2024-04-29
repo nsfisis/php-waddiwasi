@@ -6,6 +6,7 @@ namespace Nsfisis\Waddiwasi\Tests\SpecTestsuites\Core;
 
 use Nsfisis\Waddiwasi\Tests\SpecTestsuites\SpecTestsuiteBase;
 use PHPUnit\Framework\Attributes\Depends;
+use PHPUnit\Framework\Attributes\DoesNotPerformAssertions;
 
 final class TableInitTest extends SpecTestsuiteBase
 {
@@ -42,6 +43,7 @@ final class TableInitTest extends SpecTestsuiteBase
     public function testAction3(): void
     {
         $this->runActionCommand(
+            module: null,
             action: ['type' => 'invoke', 'field' => 'test', 'args' => []],
             line: 41,
         );
@@ -391,6 +393,7 @@ final class TableInitTest extends SpecTestsuiteBase
     public function testAction35(): void
     {
         $this->runActionCommand(
+            module: null,
             action: ['type' => 'invoke', 'field' => 'test', 'args' => []],
             line: 99,
         );
@@ -740,6 +743,7 @@ final class TableInitTest extends SpecTestsuiteBase
     public function testAction67(): void
     {
         $this->runActionCommand(
+            module: null,
             action: ['type' => 'invoke', 'field' => 'test', 'args' => []],
             line: 165,
         );
@@ -1089,6 +1093,7 @@ final class TableInitTest extends SpecTestsuiteBase
     public function testAction99(): void
     {
         $this->runActionCommand(
+            module: null,
             action: ['type' => 'invoke', 'field' => 'test', 'args' => []],
             line: 223,
         );
@@ -1438,6 +1443,7 @@ final class TableInitTest extends SpecTestsuiteBase
     public function testAction131(): void
     {
         $this->runActionCommand(
+            module: null,
             action: ['type' => 'invoke', 'field' => 'test', 'args' => []],
             line: 281,
         );
@@ -1787,6 +1793,7 @@ final class TableInitTest extends SpecTestsuiteBase
     public function testAction163(): void
     {
         $this->runActionCommand(
+            module: null,
             action: ['type' => 'invoke', 'field' => 'test', 'args' => []],
             line: 347,
         );
@@ -2176,6 +2183,7 @@ final class TableInitTest extends SpecTestsuiteBase
     public function testAction199(): void
     {
         $this->runActionCommand(
+            module: null,
             action: ['type' => 'invoke', 'field' => 'test', 'args' => []],
             line: 429,
         );
@@ -2216,6 +2224,7 @@ final class TableInitTest extends SpecTestsuiteBase
     public function testAction203(): void
     {
         $this->runActionCommand(
+            module: null,
             action: ['type' => 'invoke', 'field' => 'test', 'args' => []],
             line: 477,
         );
@@ -2235,6 +2244,7 @@ final class TableInitTest extends SpecTestsuiteBase
     public function testAction205(): void
     {
         $this->runActionCommand(
+            module: null,
             action: ['type' => 'invoke', 'field' => 'test', 'args' => []],
             line: 501,
         );
@@ -2338,6 +2348,7 @@ final class TableInitTest extends SpecTestsuiteBase
     public function testAction215(): void
     {
         $this->runActionCommand(
+            module: null,
             action: ['type' => 'invoke', 'field' => 'test', 'args' => []],
             line: 621,
         );
@@ -2378,6 +2389,7 @@ final class TableInitTest extends SpecTestsuiteBase
     public function testAction219(): void
     {
         $this->runActionCommand(
+            module: null,
             action: ['type' => 'invoke', 'field' => 'test', 'args' => []],
             line: 669,
         );
@@ -2418,6 +2430,7 @@ final class TableInitTest extends SpecTestsuiteBase
     public function testAction223(): void
     {
         $this->runActionCommand(
+            module: null,
             action: ['type' => 'invoke', 'field' => 'test', 'args' => []],
             line: 717,
         );
@@ -2479,6 +2492,7 @@ final class TableInitTest extends SpecTestsuiteBase
     public function testAction229(): void
     {
         $this->runActionCommand(
+            module: null,
             action: ['type' => 'invoke', 'field' => 'test', 'args' => []],
             line: 789,
         );
@@ -2519,6 +2533,7 @@ final class TableInitTest extends SpecTestsuiteBase
     public function testAction233(): void
     {
         $this->runActionCommand(
+            module: null,
             action: ['type' => 'invoke', 'field' => 'test', 'args' => []],
             line: 837,
         );
@@ -2559,6 +2574,7 @@ final class TableInitTest extends SpecTestsuiteBase
     public function testAction237(): void
     {
         $this->runActionCommand(
+            module: null,
             action: ['type' => 'invoke', 'field' => 'test', 'args' => []],
             line: 885,
         );

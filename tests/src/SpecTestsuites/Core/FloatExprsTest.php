@@ -6,6 +6,7 @@ namespace Nsfisis\Waddiwasi\Tests\SpecTestsuites\Core;
 
 use Nsfisis\Waddiwasi\Tests\SpecTestsuites\SpecTestsuiteBase;
 use PHPUnit\Framework\Attributes\Depends;
+use PHPUnit\Framework\Attributes\DoesNotPerformAssertions;
 
 final class FloatExprsTest extends SpecTestsuiteBase
 {
@@ -3920,6 +3921,7 @@ final class FloatExprsTest extends SpecTestsuiteBase
     public function testAction359(): void
     {
         $this->runActionCommand(
+            module: null,
             action: ['type' => 'invoke', 'field' => 'init', 'args' => [['type' => 'i32', 'value' => '0'], ['type' => 'f32', 'value' => '1097963930']]],
             line: 784,
         );
@@ -3929,6 +3931,7 @@ final class FloatExprsTest extends SpecTestsuiteBase
     public function testAction360(): void
     {
         $this->runActionCommand(
+            module: null,
             action: ['type' => 'invoke', 'field' => 'init', 'args' => [['type' => 'i32', 'value' => '4'], ['type' => 'f32', 'value' => '1098068787']]],
             line: 785,
         );
@@ -3938,6 +3941,7 @@ final class FloatExprsTest extends SpecTestsuiteBase
     public function testAction361(): void
     {
         $this->runActionCommand(
+            module: null,
             action: ['type' => 'invoke', 'field' => 'init', 'args' => [['type' => 'i32', 'value' => '8'], ['type' => 'f32', 'value' => '1098173645']]],
             line: 786,
         );
@@ -3947,6 +3951,7 @@ final class FloatExprsTest extends SpecTestsuiteBase
     public function testAction362(): void
     {
         $this->runActionCommand(
+            module: null,
             action: ['type' => 'invoke', 'field' => 'init', 'args' => [['type' => 'i32', 'value' => '12'], ['type' => 'f32', 'value' => '1098278502']]],
             line: 787,
         );
@@ -4000,6 +4005,7 @@ final class FloatExprsTest extends SpecTestsuiteBase
     public function testAction367(): void
     {
         $this->runActionCommand(
+            module: null,
             action: ['type' => 'invoke', 'field' => 'run', 'args' => [['type' => 'i32', 'value' => '16'], ['type' => 'f32', 'value' => '1077936128']]],
             line: 792,
         );
@@ -4063,6 +4069,7 @@ final class FloatExprsTest extends SpecTestsuiteBase
     public function testAction373(): void
     {
         $this->runActionCommand(
+            module: null,
             action: ['type' => 'invoke', 'field' => 'init', 'args' => [['type' => 'i32', 'value' => '0'], ['type' => 'f64', 'value' => '4624690162351420211']]],
             line: 819,
         );
@@ -4072,6 +4079,7 @@ final class FloatExprsTest extends SpecTestsuiteBase
     public function testAction374(): void
     {
         $this->runActionCommand(
+            module: null,
             action: ['type' => 'invoke', 'field' => 'init', 'args' => [['type' => 'i32', 'value' => '8'], ['type' => 'f64', 'value' => '4624746457346762342']]],
             line: 820,
         );
@@ -4081,6 +4089,7 @@ final class FloatExprsTest extends SpecTestsuiteBase
     public function testAction375(): void
     {
         $this->runActionCommand(
+            module: null,
             action: ['type' => 'invoke', 'field' => 'init', 'args' => [['type' => 'i32', 'value' => '16'], ['type' => 'f64', 'value' => '4624802752342104474']]],
             line: 821,
         );
@@ -4090,6 +4099,7 @@ final class FloatExprsTest extends SpecTestsuiteBase
     public function testAction376(): void
     {
         $this->runActionCommand(
+            module: null,
             action: ['type' => 'invoke', 'field' => 'init', 'args' => [['type' => 'i32', 'value' => '24'], ['type' => 'f64', 'value' => '4624859047337446605']]],
             line: 822,
         );
@@ -4143,6 +4153,7 @@ final class FloatExprsTest extends SpecTestsuiteBase
     public function testAction381(): void
     {
         $this->runActionCommand(
+            module: null,
             action: ['type' => 'invoke', 'field' => 'run', 'args' => [['type' => 'i32', 'value' => '32'], ['type' => 'f64', 'value' => '4613937818241073152']]],
             line: 827,
         );

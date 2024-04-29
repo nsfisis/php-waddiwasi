@@ -6,6 +6,7 @@ namespace Nsfisis\Waddiwasi\Tests\SpecTestsuites\Core;
 
 use Nsfisis\Waddiwasi\Tests\SpecTestsuites\SpecTestsuiteBase;
 use PHPUnit\Framework\Attributes\Depends;
+use PHPUnit\Framework\Attributes\DoesNotPerformAssertions;
 
 final class MemoryCopyTest extends SpecTestsuiteBase
 {
@@ -22,6 +23,7 @@ final class MemoryCopyTest extends SpecTestsuiteBase
     public function testAction1(): void
     {
         $this->runActionCommand(
+            module: null,
             action: ['type' => 'invoke', 'field' => 'test', 'args' => []],
             line: 15,
         );
@@ -371,6 +373,7 @@ final class MemoryCopyTest extends SpecTestsuiteBase
     public function testAction33(): void
     {
         $this->runActionCommand(
+            module: null,
             action: ['type' => 'invoke', 'field' => 'test', 'args' => []],
             line: 57,
         );
@@ -720,6 +723,7 @@ final class MemoryCopyTest extends SpecTestsuiteBase
     public function testAction65(): void
     {
         $this->runActionCommand(
+            module: null,
             action: ['type' => 'invoke', 'field' => 'test', 'args' => []],
             line: 99,
         );
@@ -1069,6 +1073,7 @@ final class MemoryCopyTest extends SpecTestsuiteBase
     public function testAction97(): void
     {
         $this->runActionCommand(
+            module: null,
             action: ['type' => 'invoke', 'field' => 'test', 'args' => []],
             line: 141,
         );
@@ -1418,6 +1423,7 @@ final class MemoryCopyTest extends SpecTestsuiteBase
     public function testAction129(): void
     {
         $this->runActionCommand(
+            module: null,
             action: ['type' => 'invoke', 'field' => 'test', 'args' => []],
             line: 183,
         );
@@ -1767,6 +1773,7 @@ final class MemoryCopyTest extends SpecTestsuiteBase
     public function testAction161(): void
     {
         $this->runActionCommand(
+            module: null,
             action: ['type' => 'invoke', 'field' => 'test', 'args' => []],
             line: 225,
         );
@@ -2116,6 +2123,7 @@ final class MemoryCopyTest extends SpecTestsuiteBase
     public function testAction193(): void
     {
         $this->runActionCommand(
+            module: null,
             action: ['type' => 'invoke', 'field' => 'test', 'args' => []],
             line: 267,
         );
@@ -2465,6 +2473,7 @@ final class MemoryCopyTest extends SpecTestsuiteBase
     public function testAction225(): void
     {
         $this->runActionCommand(
+            module: null,
             action: ['type' => 'invoke', 'field' => 'test', 'args' => []],
             line: 309,
         );
@@ -45936,6 +45945,7 @@ final class MemoryCopyTest extends SpecTestsuiteBase
     public function testAction4184(): void
     {
         $this->runActionCommand(
+            module: null,
             action: ['type' => 'invoke', 'field' => 'test', 'args' => []],
             line: 4780,
         );
@@ -45988,6 +45998,7 @@ final class MemoryCopyTest extends SpecTestsuiteBase
     public function testAction4189(): void
     {
         $this->runActionCommand(
+            module: null,
             action: ['type' => 'invoke', 'field' => 'test', 'args' => []],
             line: 4806,
         );
@@ -46124,6 +46135,7 @@ final class MemoryCopyTest extends SpecTestsuiteBase
     public function testAction4202(): void
     {
         $this->runActionCommand(
+            module: null,
             action: ['type' => 'invoke', 'field' => 'test', 'args' => []],
             line: 4857,
         );
@@ -46165,6 +46177,7 @@ final class MemoryCopyTest extends SpecTestsuiteBase
     public function testAction4206(): void
     {
         $this->runActionCommand(
+            module: null,
             action: ['type' => 'invoke', 'field' => 'test', 'args' => []],
             line: 4867,
         );
@@ -46205,6 +46218,7 @@ final class MemoryCopyTest extends SpecTestsuiteBase
     public function testAction4210(): void
     {
         $this->runActionCommand(
+            module: null,
             action: ['type' => 'invoke', 'field' => 'test', 'args' => []],
             line: 4879,
         );
@@ -46245,6 +46259,7 @@ final class MemoryCopyTest extends SpecTestsuiteBase
     public function testAction4214(): void
     {
         $this->runActionCommand(
+            module: null,
             action: ['type' => 'invoke', 'field' => 'test', 'args' => []],
             line: 4891,
         );
@@ -46285,6 +46300,7 @@ final class MemoryCopyTest extends SpecTestsuiteBase
     public function testAction4218(): void
     {
         $this->runActionCommand(
+            module: null,
             action: ['type' => 'invoke', 'field' => 'test', 'args' => []],
             line: 5115,
         );

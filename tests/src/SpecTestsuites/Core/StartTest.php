@@ -64,6 +64,7 @@ final class StartTest extends SpecTestsuiteBase
     public function testAction5(): void
     {
         $this->runActionCommand(
+            module: null,
             action: ['type' => 'invoke', 'field' => 'inc', 'args' => []],
             line: 46,
         );
@@ -84,6 +85,7 @@ final class StartTest extends SpecTestsuiteBase
     public function testAction7(): void
     {
         $this->runActionCommand(
+            module: null,
             action: ['type' => 'invoke', 'field' => 'inc', 'args' => []],
             line: 48,
         );
@@ -125,6 +127,7 @@ final class StartTest extends SpecTestsuiteBase
     public function testAction11(): void
     {
         $this->runActionCommand(
+            module: null,
             action: ['type' => 'invoke', 'field' => 'inc', 'args' => []],
             line: 75,
         );
@@ -145,6 +148,7 @@ final class StartTest extends SpecTestsuiteBase
     public function testAction13(): void
     {
         $this->runActionCommand(
+            module: null,
             action: ['type' => 'invoke', 'field' => 'inc', 'args' => []],
             line: 77,
         );
