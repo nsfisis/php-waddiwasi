@@ -194,7 +194,21 @@ abstract class SpecTestsuiteBase extends TestCase
         for ($i = 0; $i < count($expectedResults); $i++) {
             $expectedResult = $expectedResults[$i];
             $actualResult = $actualResults[$i];
-            if ($expectedResult['type'] === 'f32') {
+            if ($expectedResult['type'] === 'i32') {
+                $expectedValue = unpack('l', pack('l', (int)$expectedResult['value']))[1];
+                $this->assertSame(
+                    $expectedValue,
+                    $actualResult,
+                    "result $i mismatch" . $message,
+                );
+            } elseif ($expectedResult['type'] === 'i64') {
+                $expectedValue = unpack('q', pack('q', (int)$expectedResult['value']))[1];
+                $this->assertSame(
+                    $expectedValue,
+                    $actualResult,
+                    "result $i mismatch" . $message,
+                );
+            } elseif ($expectedResult['type'] === 'f32') {
                 $expectedValue = unpack('g', pack('l', (int)$expectedResult['value']))[1];
                 if (is_nan($expectedValue)) {
                     // @todo check NaN bit pattern.
@@ -225,12 +239,7 @@ abstract class SpecTestsuiteBase extends TestCase
                     );
                 }
             } else {
-                $expectedValue = (int)$expectedResult['value'];
-                $this->assertSame(
-                    $expectedValue,
-                    $actualResult,
-                    "result $i mismatch" . $message,
-                );
+                $this->assertTrue(false, "unknown result type: {$expectedResult['type']}");
             }
         }
     }

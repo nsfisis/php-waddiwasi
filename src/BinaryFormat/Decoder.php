@@ -407,10 +407,7 @@ final class Decoder
 
     private function decodeMem(): Mem
     {
-        $type = $this->decodeMemType();
-        return new Mem(
-            $type,
-        );
+        return new Mem($this->decodeMemType());
     }
 
     private function decodeGlobal(): Global_
@@ -1041,46 +1038,49 @@ final class Decoder
     private function decodeUnsignedLeb128(int $maxBits): int
     {
         $result = 0;
-        $shiftBits = 0;
-        while (true) {
+        for ($shiftBits = 0; $shiftBits < $maxBits; $shiftBits += 7) {
             $b = $this->decodeByte();
+            $leftBitsCount = $maxBits - $shiftBits;
+            if ($leftBitsCount < 7) {
+                if ((($b & 0b01111111) >> $leftBitsCount) !== 0) {
+                    throw new InvalidBinaryFormatException("unsigned leb128 ($maxBits): too large");
+                }
+            }
             $result |= ($b & 0b01111111) << $shiftBits;
-            if ($b < 0b10000000) {
+            if (($b & 0b10000000) === 0) {
                 return $result;
             }
-            $shiftBits += 7;
-            if ($maxBits <= $shiftBits) {
-                throw new InvalidBinaryFormatException("unsigned leb128");
-            }
         }
+        throw new InvalidBinaryFormatException("unsigned leb128 ($maxBits): too large");
     }
 
-    private function decodeSignedLeb128(int $bits): int
+    private function decodeSignedLeb128(int $maxBits): int
     {
         $result = 0;
-        $shiftBits = 0;
-        while (true) {
+        for ($shiftBits = 0; $shiftBits < $maxBits; $shiftBits += 7) {
             $b = $this->decodeByte();
-            $result |= ($b & 0b01111111) << $shiftBits;
-            $shiftBits += 7;
-            if ($b < 0b10000000) {
-                if (($b & 0b01000000) !== 0) {
-                    if ($bits === 32) {
-                        $result |= (-1) ^ (1 << $shiftBits) - 1;
-                    } else {
-                        if ($shiftBits < $bits - 1) {
-                            $result |= -(1 << $shiftBits);
-                        } else {
-                            $result |= 1 << $shiftBits;
-                        }
+            $leftBitsCount = $maxBits - $shiftBits;
+            if ($leftBitsCount < 7) {
+                if (($b & (1 << ($leftBitsCount - 1))) === 0) {
+                    if ((($b & 0b01111111) >> $leftBitsCount) !== 0) {
+                        throw new InvalidBinaryFormatException("signed leb128 ($maxBits): too large");
+                    }
+                } else {
+                    if ((($b & 0b01111111) >> $leftBitsCount) + 1 !== (1 << (7 - $leftBitsCount))) {
+                        throw new InvalidBinaryFormatException("signed leb128 ($maxBits): too large");
                     }
                 }
-                return $result;
             }
-            if ($bits <= $shiftBits) {
-                throw new InvalidBinaryFormatException("signed leb128");
+            $result |= ($b & 0b01111111) << $shiftBits;
+            if (($b & 0b10000000) === 0) {
+                if (($b & 0b01000000) === 0) {
+                    return $result;
+                } else {
+                    return $result | (~0 << ($shiftBits + 7));
+                }
             }
         }
+        throw new InvalidBinaryFormatException("signed leb128 ($maxBits): too large");
     }
 
     /**
