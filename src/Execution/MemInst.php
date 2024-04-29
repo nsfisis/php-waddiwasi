@@ -98,15 +98,13 @@ final class MemInst
 
         $originalSize = $this->size();
         // @phpstan-ignore-next-line
-        $originalData = $this->ffi->new("uint8_t[$originalSize]");
+        $originalData = $this->ffi->new("uint8_t[$originalSize+8]");
         assert($originalData !== null);
+        FFI::memcpy($originalData, $this->dataU8, $originalSize);
 
         $this->initInternalMemory($len);
 
-        for ($i = 0; $i < $originalSize; $i++) {
-            // @phpstan-ignore-next-line
-            $this->dataU8[$i] = $originalData[$i];
-        }
+        FFI::memcpy($this->dataU8, $originalData, $originalSize);
 
         return $sz;
     }
