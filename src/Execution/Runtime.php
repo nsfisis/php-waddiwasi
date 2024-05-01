@@ -1756,7 +1756,7 @@ final class Runtime
         $s = $this->stack->popInt();
         $d = $this->stack->popInt();
         if (count($tabX->elem) < $d + $n || count($tabY->elem) < $s + $n) {
-            throw new TrapException("table.copy: out of bounds");
+            throw new TrapException("table.copy: out of bounds", trapKind: TrapKind::OutOfBoundsTableAccess);
         }
         if ($n === 0 || ($x === $y && $d === $s)) {
             return;
@@ -1779,7 +1779,7 @@ final class Runtime
         $val = $this->stack->popRef();
         $i = $this->stack->popInt();
         if (count($tab->elem) < $i + $n) {
-            throw new TrapException("table.fill: out of bounds");
+            throw new TrapException("table.fill: out of bounds", trapKind: TrapKind::OutOfBoundsTableAccess);
         }
         for ($k = 0; $k < $n; $k++) {
             // @phpstan-ignore-next-line
@@ -1795,7 +1795,7 @@ final class Runtime
         $tab = $this->store->tables[$a];
         $i = $this->stack->popInt();
         if (count($tab->elem) <= $i) {
-            throw new TrapException("table.get: out of bounds");
+            throw new TrapException("table.get: out of bounds", trapKind: TrapKind::OutOfBoundsTableAccess);
         }
         $val = $tab->elem[$i];
         $this->stack->pushValue($val);
@@ -1845,10 +1845,10 @@ final class Runtime
         $s = $this->stack->popInt();
         $d = $this->stack->popInt();
         if (count($elem->elem) < $s + $n) {
-            throw new TrapException("table.init: out of bounds");
+            throw new TrapException("table.init: out of bounds", trapKind: TrapKind::OutOfBoundsTableAccess);
         }
         if (count($tab->elem) < $d + $n) {
-            throw new TrapException("table.init: out of bounds");
+            throw new TrapException("table.init: out of bounds", trapKind: TrapKind::OutOfBoundsTableAccess);
         }
         for ($i = 0; $i < $n; $i++) {
             // @phpstan-ignore-next-line
@@ -1865,7 +1865,7 @@ final class Runtime
         $val = $this->stack->popRef();
         $i = $this->stack->popInt();
         if (count($tab->elem) <= $i) {
-            throw new TrapException("table.set: out of bounds");
+            throw new TrapException("table.set: out of bounds", trapKind: TrapKind::OutOfBoundsTableAccess);
         }
         // @phpstan-ignore-next-line
         $tab->elem[$i] = $val;

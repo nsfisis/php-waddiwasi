@@ -249,8 +249,9 @@ abstract class SpecTestsuiteBase extends TestCase
             $message = " ($message)";
         }
         $actualErrorMessage = match ($kind) {
-            TrapKind::OutOfBoundsMemoryAccess => 'out of bounds memory access',
             TrapKind::Unknown => 'unknown',
+            TrapKind::OutOfBoundsMemoryAccess => 'out of bounds memory access',
+            TrapKind::OutOfBoundsTableAccess => 'out of bounds table access',
         };
         $this->assertSame(
             $expectedErrorMessage,

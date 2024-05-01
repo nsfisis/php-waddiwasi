@@ -9,6 +9,7 @@ use function assert;
 use function count;
 use function is_float;
 use function is_int;
+use function is_null;
 
 final class Stack
 {
@@ -102,7 +103,7 @@ final class Stack
     public function popInt(): int
     {
         $v = $this->popValue();
-        assert(is_int($v));
+        assert(is_int($v), "Expected an int on top of the stack, but got " . self::getValueTypeName($v));
         return $v;
     }
 
@@ -112,14 +113,14 @@ final class Stack
     public function popFloat(): float
     {
         $v = $this->popValue();
-        assert(is_float($v));
+        assert(is_float($v), "Expected a float on top of the stack, but got " . self::getValueTypeName($v));
         return $v;
     }
 
     public function popRef(): Ref
     {
         $v = $this->popValue();
-        assert($v instanceof Ref);
+        assert($v instanceof Ref, "Expected a Ref on top of the stack, but got " . self::getValueTypeName($v));
         return $v;
     }
 
@@ -186,5 +187,17 @@ final class Stack
     private function pop(): int|float|Ref|Frame|Label|null
     {
         return array_pop($this->entries);
+    }
+
+    private static function getValueTypeName(int|float|Ref|Frame|Label|null $value): string
+    {
+        return match (true) {
+            is_null($value) => 'null',
+            is_int($value) => 'int',
+            is_float($value) => 'float',
+            $value instanceof Ref => 'Ref',
+            $value instanceof Frame => 'Frame',
+            $value instanceof Label => 'Label',
+        };
     }
 }
