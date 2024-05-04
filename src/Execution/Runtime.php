@@ -1765,7 +1765,7 @@ final class Runtime
             $s_ = ($d < $s) ? ($s + $i) : ($s + $n - 1 - $i);
             $d_ = ($d < $s) ? ($d + $i) : ($d + $n - 1 - $i);
             // @phpstan-ignore-next-line
-            $tabX->elem[$d] = $tabY->elem[$s];
+            $tabX->elem[$d_] = $tabY->elem[$s_];
         }
     }
 
