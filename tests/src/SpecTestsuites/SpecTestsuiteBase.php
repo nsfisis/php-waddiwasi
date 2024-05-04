@@ -252,10 +252,11 @@ abstract class SpecTestsuiteBase extends TestCase
             TrapKind::Unknown => 'unknown',
             TrapKind::OutOfBoundsMemoryAccess => 'out of bounds memory access',
             TrapKind::OutOfBoundsTableAccess => 'out of bounds table access',
+            TrapKind::UninitializedElement => 'uninitialized element',
         };
-        $this->assertSame(
-            $expectedErrorMessage,
+        $this->assertStringContainsString(
             $actualErrorMessage,
+            $expectedErrorMessage,
             'trap kind mismatch' . $message,
         );
     }

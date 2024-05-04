@@ -9,4 +9,5 @@ enum TrapKind
     case Unknown;
     case OutOfBoundsMemoryAccess;
     case OutOfBoundsTableAccess;
+    case UninitializedElement;
 }

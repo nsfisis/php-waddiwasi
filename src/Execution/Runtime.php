@@ -2357,7 +2357,7 @@ final class Runtime
         }
         $r = $tab->elem[$i];
         if ($r instanceof Refs\RefNull) {
-            throw new TrapException("call_indirect: ref.null");
+            throw new TrapException("call_indirect: ref.null", trapKind: TrapKind::UninitializedElement);
         }
         assert($r instanceof Refs\RefFunc);
         $a = $r->addr;
