@@ -6,6 +6,8 @@ namespace Nsfisis\Waddiwasi\Tests\SpecTestsuites;
 
 use Nsfisis\Waddiwasi\BinaryFormat\Decoder;
 use Nsfisis\Waddiwasi\BinaryFormat\InvalidBinaryFormatException;
+use Nsfisis\Waddiwasi\Execution\Ref;
+use Nsfisis\Waddiwasi\Execution\Refs\RefExtern;
 use Nsfisis\Waddiwasi\Execution\Runtime;
 use Nsfisis\Waddiwasi\Execution\Store;
 use Nsfisis\Waddiwasi\Execution\TrapException;
@@ -136,7 +138,7 @@ abstract class SpecTestsuiteBase extends TestCase
     /**
      * @param array{type: string, value: string} $arg
      */
-    private function toWasmArg(array $arg): int|float
+    private function toWasmArg(array $arg): int|float|Ref
     {
         $type = $arg['type'];
         $value = $arg['value'];
@@ -145,6 +147,7 @@ abstract class SpecTestsuiteBase extends TestCase
             'i64' => (int)$value,
             'f32' => unpack('g', pack('l', (int)$value))[1],
             'f64' => unpack('e', pack('q', (int)$value))[1],
+            'externref' => Ref::RefExtern((int)$value),
             default => $this->assertTrue(false, "unknown arg type: $type"),
         };
     }
@@ -234,6 +237,18 @@ abstract class SpecTestsuiteBase extends TestCase
                         "result $i mismatch" . $message,
                     );
                 }
+            } elseif ($expectedResult['type'] === 'externref') {
+                $expectedValue = (int)$expectedResult['value'];
+                $this->assertInstanceOf(
+                    RefExtern::class,
+                    $actualResult,
+                    "result $i is not an externref" . $message,
+                );
+                $this->assertSame(
+                    $expectedValue,
+                    $actualResult->addr,
+                    "result $i mismatch" . $message,
+                );
             } else {
                 $this->assertTrue(false, "unknown result type: {$expectedResult['type']}");
             }
