@@ -1068,6 +1068,7 @@ final class CallIndirectTest extends SpecTestsuiteBase
     public function testAssertExhaustion96(): void
     {
         $this->runAssertExhaustionCommand(
+            module: null,
             action: ['type' => 'invoke', 'field' => 'runaway', 'args' => []],
             text: 'call stack exhausted',
             line: 585,
@@ -1078,6 +1079,7 @@ final class CallIndirectTest extends SpecTestsuiteBase
     public function testAssertExhaustion97(): void
     {
         $this->runAssertExhaustionCommand(
+            module: null,
             action: ['type' => 'invoke', 'field' => 'mutual-runaway', 'args' => []],
             text: 'call stack exhausted',
             line: 586,

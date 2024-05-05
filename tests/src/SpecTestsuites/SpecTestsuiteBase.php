@@ -9,6 +9,7 @@ use Nsfisis\Waddiwasi\BinaryFormat\InvalidBinaryFormatException;
 use Nsfisis\Waddiwasi\Execution\Ref;
 use Nsfisis\Waddiwasi\Execution\Refs\RefExtern;
 use Nsfisis\Waddiwasi\Execution\Runtime;
+use Nsfisis\Waddiwasi\Execution\StackOverflowException;
 use Nsfisis\Waddiwasi\Execution\Store;
 use Nsfisis\Waddiwasi\Execution\TrapException;
 use Nsfisis\Waddiwasi\Execution\TrapKind;
@@ -95,11 +96,19 @@ abstract class SpecTestsuiteBase extends TestCase
     }
 
     protected function runAssertExhaustionCommand(
+        ?string $module,
         array $action,
         string $text,
         int $line,
     ): void {
-        $this->assertTrue(false, "assert_exhaustion");
+        $exception = null;
+        try {
+            $this->doAction($module, $action);
+        } catch (StackOverflowException $e) {
+            $exception = $e;
+        }
+        $this->assertNotNull($exception, "at $line");
+        // @todo Check $text?
     }
 
     protected function runAssertUninstantiableCommand(

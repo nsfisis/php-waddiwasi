@@ -89,6 +89,7 @@ final class FacTest extends SpecTestsuiteBase
     public function testAssertExhaustion7(): void
     {
         $this->runAssertExhaustionCommand(
+            module: null,
             action: ['type' => 'invoke', 'field' => 'fac-rec', 'args' => [['type' => 'i64', 'value' => '1073741824']]],
             text: 'call stack exhausted',
             line: 109,

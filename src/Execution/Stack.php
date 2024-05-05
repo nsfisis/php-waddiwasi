@@ -30,6 +30,9 @@ final class Stack
 
     public function pushFrame(Frame $frame): void
     {
+        if ($this->getCallStackLimit() <= count($this->frames)) {
+            throw new StackOverflowException();
+        }
         $this->push($frame);
         $this->frames[] = $frame;
         $this->currentFrame = $frame;
@@ -177,6 +180,11 @@ final class Stack
     {
         assert($this->currentFrame !== null);
         return $this->currentFrame;
+    }
+
+    public function getCallStackLimit(): int
+    {
+        return 1024;
     }
 
     private function push(int|float|Ref|Frame|Label $entry): void

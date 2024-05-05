@@ -174,6 +174,7 @@ function buildAssertExhaustionCommandTest(array $command): array
     return [
         'method' => 'runAssertExhaustionCommand',
         'args' => [
+            'module' => $command['module'] ?? null,
             'action' => $command['action'],
             'text' => $command['text'],
         ],
