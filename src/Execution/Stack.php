@@ -68,6 +68,13 @@ final class Stack
         $this->pushValue(Ref::RefExtern($addr));
     }
 
+    public function clear(): void
+    {
+        $this->frames = [];
+        $this->currentFrame = null;
+        $this->entries = [];
+    }
+
     public function popFrame(): Frame
     {
         $result = $this->pop();

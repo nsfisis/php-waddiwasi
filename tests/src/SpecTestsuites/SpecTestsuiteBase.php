@@ -277,6 +277,8 @@ abstract class SpecTestsuiteBase extends TestCase
             TrapKind::OutOfBoundsMemoryAccess => 'out of bounds memory access',
             TrapKind::OutOfBoundsTableAccess => 'out of bounds table access',
             TrapKind::UninitializedElement => 'uninitialized element',
+            TrapKind::IndirectCallTypeMismatch => 'indirect call type mismatch',
+            TrapKind::UndefinedElement => 'undefined element',
         };
         $this->assertStringContainsString(
             $actualErrorMessage,

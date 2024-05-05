@@ -10,4 +10,6 @@ enum TrapKind
     case OutOfBoundsMemoryAccess;
     case OutOfBoundsTableAccess;
     case UninitializedElement;
+    case IndirectCallTypeMismatch;
+    case UndefinedElement;
 }

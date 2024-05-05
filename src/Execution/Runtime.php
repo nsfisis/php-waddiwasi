@@ -180,26 +180,32 @@ final class Runtime
      */
     public function invoke(string $name, array $vals): array
     {
-        $export = $this->getExport($name);
-        assert($export instanceof ExternVals\Func);
-        $funcAddr = $export->addr;
+        try {
+            $export = $this->getExport($name);
+            assert($export instanceof ExternVals\Func);
+            $funcAddr = $export->addr;
 
-        $funcInst = $this->store->funcs[$funcAddr];
-        assert($funcInst instanceof FuncInsts\Wasm);
-        $paramTypes = $funcInst->type->params->types;
-        $resultTypes = $funcInst->type->results->types;
-        if (count($paramTypes) !== count($vals)) {
-            throw new RuntimeException("invoke($name) invalid function arity: expected " . count($paramTypes) . ", got " . count($vals));
+            $funcInst = $this->store->funcs[$funcAddr];
+            assert($funcInst instanceof FuncInsts\Wasm);
+            $paramTypes = $funcInst->type->params->types;
+            $resultTypes = $funcInst->type->results->types;
+            if (count($paramTypes) !== count($vals)) {
+                throw new RuntimeException("invoke($name) invalid function arity: expected " . count($paramTypes) . ", got " . count($vals));
+            }
+            $f = new Frame(0, [], new ModuleInst([], [], [], [], [], [], [], []), "export: $name");
+            $this->stack->pushFrame($f);
+            foreach ($vals as $val) {
+                $this->stack->pushValue($val);
+            }
+            $this->doInvokeFunc($funcAddr);
+            $results = $this->stack->popNValues(count($resultTypes));
+            $this->stack->popFrame();
+            return array_reverse($results);
+        } catch (RuntimeException $e) {
+            // @todo more reliable way to clear the stack
+            $this->stack->clear();
+            throw $e;
         }
-        $f = new Frame(0, [], new ModuleInst([], [], [], [], [], [], [], []), "export: $name");
-        $this->stack->pushFrame($f);
-        foreach ($vals as $val) {
-            $this->stack->pushValue($val);
-        }
-        $this->doInvokeFunc($funcAddr);
-        $results = $this->stack->popNValues(count($resultTypes));
-        $this->stack->popFrame();
-        return array_reverse($results);
     }
 
     public function invokeByFuncAddr(int $funcAddr): void
@@ -2361,7 +2367,7 @@ final class Runtime
         $ftExpect = $f->module->types[$y];
         $i = self::wasmI32ToPhpInt($this->stack->popInt());
         if (count($tab->elem) <= $i) {
-            throw new TrapException("call_indirect: out of bounds");
+            throw new TrapException("call_indirect: out of bounds", trapKind: TrapKind::UndefinedElement);
         }
         $r = $tab->elem[$i];
         if ($r instanceof Refs\RefNull) {
@@ -2373,7 +2379,7 @@ final class Runtime
         assert($fn instanceof FuncInsts\Wasm || $fn instanceof FuncInsts\Host);
         $ftActual = $fn->type;
         if (!$ftExpect->equals($ftActual)) {
-            throw new TrapException("call_indirect: type mismatch");
+            throw new TrapException("call_indirect: type mismatch", trapKind: TrapKind::IndirectCallTypeMismatch);
         }
         $this->doInvokeFunc($a);
     }
