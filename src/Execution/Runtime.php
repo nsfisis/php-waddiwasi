@@ -1455,11 +1455,19 @@ final class Runtime
     {
         $c2 = $this->stack->popInt();
         $c1 = $this->stack->popInt();
-        if ($c1 === (1 << 32) - 1 && $c2 === (1 << 32) + 1) {
-            $this->stack->pushValue(-1);
+        $result = bcmod(bcmul((string)$c1, (string)$c2), bcpow('2', '64'));
+        if ($result[0] === '-') {
+            // 2^63 <= -$result
+            if (bccomp(bcpow('2', '63'), bcsub('0', $result)) <= 0) {
+                $result = bcadd($result, bcpow('2', '64'));
+            }
         } else {
-            $this->stack->pushValue($c1 * $c2);
+            // 2^63-1 < $result
+            if (bccomp(bcsub(bcpow('2', '63'), '1'), $result) < 0) {
+                $result = bcsub($result, bcpow('2', '64'));
+            }
         }
+        $this->stack->pushValue((int)$result);
     }
 
     private function execInstrNumericI64Ne(Instrs\Numeric\I64Ne $instr): void
