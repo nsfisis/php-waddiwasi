@@ -210,7 +210,7 @@ abstract class SpecTestsuiteBase extends TestCase
                     "result $i mismatch" . $message,
                 );
             } elseif ($expectedResult['type'] === 'i64') {
-                $expectedValue = unpack('q', pack('q', (int)$expectedResult['value']))[1];
+                $expectedValue = unpack('q', self::convertInt64ToBinary($expectedResult['value']))[1];
                 $this->assertSame(
                     $expectedValue,
                     $actualResult,
@@ -232,7 +232,7 @@ abstract class SpecTestsuiteBase extends TestCase
                     );
                 }
             } elseif ($expectedResult['type'] === 'f64') {
-                $expectedValue = unpack('e', pack('q', (int)$expectedResult['value']))[1];
+                $expectedValue = unpack('e', self::convertInt64ToBinary($expectedResult['value']))[1];
                 if (is_nan($expectedValue)) {
                     // @todo check NaN bit pattern.
                     $this->assertTrue(
@@ -285,5 +285,14 @@ abstract class SpecTestsuiteBase extends TestCase
             $expectedErrorMessage,
             'trap kind mismatch' . $message,
         );
+    }
+
+    static private function convertInt64ToBinary(string $value): string
+    {
+        // 2^63-1 < $value
+        if (bccomp(bcsub(bcpow('2', '63'), '1'), $value) < 0) {
+            $value = bcsub($value, bcpow('2', '64'));
+        }
+        return pack('q', (int)$value);
     }
 }
