@@ -1249,7 +1249,7 @@ final class Runtime
     private function execInstrNumericI32WrapI64(Instrs\Numeric\I32WrapI64 $instr): void
     {
         $c1 = $this->stack->popInt();
-        $this->stack->pushValue($c1 & 0xFFFFFFFF);
+        $this->stack->pushValue(self::phpIntToWasmI32($c1 & 0xFFFFFFFF));
     }
 
     private function execInstrNumericI32Xor(Instrs\Numeric\I32Xor $instr): void
