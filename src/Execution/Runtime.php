@@ -1570,8 +1570,13 @@ final class Runtime
     {
         $c2 = $this->stack->popInt();
         $k = $c2 % 64;
+        if ($k === 0) {
+            return;
+        }
+        // Perform shr_u based on string manipulation because PHP does not
+        // support shr_u operation.
         $c1 = $this->stack->popInt();
-        $this->stack->pushValue($c1 >> $k);
+        $this->stack->pushValue(bindec(substr(decbin($c1), 0, -$k)));
     }
 
     private function execInstrNumericI64Sub(Instrs\Numeric\I64Sub $instr): void
