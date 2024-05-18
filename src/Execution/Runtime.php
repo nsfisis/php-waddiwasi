@@ -1955,7 +1955,7 @@ final class Runtime
         $f = $this->stack->currentFrame();
         $a = $f->module->memAddrs[0];
         $mem = $this->store->mems[$a];
-        $i = $this->stack->popInt();
+        $i = self::wasmI32ToPhpInt($this->stack->popInt());
         $ea = $i + $offset;
         $c = $mem->loadI32_s32($ea);
         if ($c === null) {
@@ -1970,7 +1970,7 @@ final class Runtime
         $f = $this->stack->currentFrame();
         $a = $f->module->memAddrs[0];
         $mem = $this->store->mems[$a];
-        $i = $this->stack->popInt();
+        $i = self::wasmI32ToPhpInt($this->stack->popInt());
         $ea = $i + $offset;
         $c = $mem->loadI32_s16($ea);
         if ($c === null) {
@@ -1985,7 +1985,7 @@ final class Runtime
         $f = $this->stack->currentFrame();
         $a = $f->module->memAddrs[0];
         $mem = $this->store->mems[$a];
-        $i = $this->stack->popInt();
+        $i = self::wasmI32ToPhpInt($this->stack->popInt());
         $ea = $i + $offset;
         $c = $mem->loadI32_u16($ea);
         if ($c === null) {
@@ -2000,7 +2000,7 @@ final class Runtime
         $f = $this->stack->currentFrame();
         $a = $f->module->memAddrs[0];
         $mem = $this->store->mems[$a];
-        $i = $this->stack->popInt();
+        $i = self::wasmI32ToPhpInt($this->stack->popInt());
         $ea = $i + $offset;
         $c = $mem->loadI32_s8($ea);
         if ($c === null) {
@@ -2015,7 +2015,7 @@ final class Runtime
         $f = $this->stack->currentFrame();
         $a = $f->module->memAddrs[0];
         $mem = $this->store->mems[$a];
-        $i = $this->stack->popInt();
+        $i = self::wasmI32ToPhpInt($this->stack->popInt());
         $ea = $i + $offset;
         $c = $mem->loadI32_u8($ea);
         if ($c === null) {
@@ -2031,7 +2031,7 @@ final class Runtime
         $a = $f->module->memAddrs[0];
         $mem = $this->store->mems[$a];
         $c = $this->stack->popInt();
-        $i = $this->stack->popInt();
+        $i = self::wasmI32ToPhpInt($this->stack->popInt());
         $ea = $i + $offset;
         $ok = $mem->storeI32_s32($ea, $c);
         if (!$ok) {
@@ -2046,7 +2046,7 @@ final class Runtime
         $a = $f->module->memAddrs[0];
         $mem = $this->store->mems[$a];
         $c = $this->stack->popInt();
-        $i = $this->stack->popInt();
+        $i = self::wasmI32ToPhpInt($this->stack->popInt());
         $ea = $i + $offset;
         $ok = $mem->storeI32_s16($ea, $c);
         if (!$ok) {
@@ -2061,7 +2061,7 @@ final class Runtime
         $a = $f->module->memAddrs[0];
         $mem = $this->store->mems[$a];
         $c = $this->stack->popInt();
-        $i = $this->stack->popInt();
+        $i = self::wasmI32ToPhpInt($this->stack->popInt());
         $ea = $i + $offset;
         $ok = $mem->storeI32_s8($ea, $c);
         if (!$ok) {
@@ -2075,7 +2075,7 @@ final class Runtime
         $f = $this->stack->currentFrame();
         $a = $f->module->memAddrs[0];
         $mem = $this->store->mems[$a];
-        $i = $this->stack->popInt();
+        $i = self::wasmI32ToPhpInt($this->stack->popInt());
         $ea = $i + $offset;
         $c = $mem->loadI64_s64($ea);
         if ($c === null) {
@@ -2090,7 +2090,7 @@ final class Runtime
         $f = $this->stack->currentFrame();
         $a = $f->module->memAddrs[0];
         $mem = $this->store->mems[$a];
-        $i = $this->stack->popInt();
+        $i = self::wasmI32ToPhpInt($this->stack->popInt());
         $ea = $i + $offset;
         $c = $mem->loadI64_s16($ea);
         if ($c === null) {
@@ -2105,7 +2105,7 @@ final class Runtime
         $f = $this->stack->currentFrame();
         $a = $f->module->memAddrs[0];
         $mem = $this->store->mems[$a];
-        $i = $this->stack->popInt();
+        $i = self::wasmI32ToPhpInt($this->stack->popInt());
         $ea = $i + $offset;
         $c = $mem->loadI64_u16($ea);
         if ($c === null) {
@@ -2120,7 +2120,7 @@ final class Runtime
         $f = $this->stack->currentFrame();
         $a = $f->module->memAddrs[0];
         $mem = $this->store->mems[$a];
-        $i = $this->stack->popInt();
+        $i = self::wasmI32ToPhpInt($this->stack->popInt());
         $ea = $i + $offset;
         $c = $mem->loadI64_s32($ea);
         if ($c === null) {
@@ -2135,7 +2135,7 @@ final class Runtime
         $f = $this->stack->currentFrame();
         $a = $f->module->memAddrs[0];
         $mem = $this->store->mems[$a];
-        $i = $this->stack->popInt();
+        $i = self::wasmI32ToPhpInt($this->stack->popInt());
         $ea = $i + $offset;
         $c = $mem->loadI64_u32($ea);
         if ($c === null) {
@@ -2150,7 +2150,7 @@ final class Runtime
         $f = $this->stack->currentFrame();
         $a = $f->module->memAddrs[0];
         $mem = $this->store->mems[$a];
-        $i = $this->stack->popInt();
+        $i = self::wasmI32ToPhpInt($this->stack->popInt());
         $ea = $i + $offset;
         $c = $mem->loadI64_s8($ea);
         if ($c === null) {
@@ -2165,7 +2165,7 @@ final class Runtime
         $f = $this->stack->currentFrame();
         $a = $f->module->memAddrs[0];
         $mem = $this->store->mems[$a];
-        $i = $this->stack->popInt();
+        $i = self::wasmI32ToPhpInt($this->stack->popInt());
         $ea = $i + $offset;
         $c = $mem->loadI64_u8($ea);
         if ($c === null) {
@@ -2181,7 +2181,7 @@ final class Runtime
         $a = $f->module->memAddrs[0];
         $mem = $this->store->mems[$a];
         $c = $this->stack->popInt();
-        $i = $this->stack->popInt();
+        $i = self::wasmI32ToPhpInt($this->stack->popInt());
         $ea = $i + $offset;
         $ok = $mem->storeI64_s64($ea, $c);
         if (!$ok) {
@@ -2196,7 +2196,7 @@ final class Runtime
         $a = $f->module->memAddrs[0];
         $mem = $this->store->mems[$a];
         $c = $this->stack->popInt();
-        $i = $this->stack->popInt();
+        $i = self::wasmI32ToPhpInt($this->stack->popInt());
         $ea = $i + $offset;
         $ok = $mem->storeI64_s16($ea, $c);
         if (!$ok) {
@@ -2211,7 +2211,7 @@ final class Runtime
         $a = $f->module->memAddrs[0];
         $mem = $this->store->mems[$a];
         $c = $this->stack->popInt();
-        $i = $this->stack->popInt();
+        $i = self::wasmI32ToPhpInt($this->stack->popInt());
         $ea = $i + $offset;
         $ok = $mem->storeI64_s32($ea, $c);
         if (!$ok) {
@@ -2226,7 +2226,7 @@ final class Runtime
         $a = $f->module->memAddrs[0];
         $mem = $this->store->mems[$a];
         $c = $this->stack->popInt();
-        $i = $this->stack->popInt();
+        $i = self::wasmI32ToPhpInt($this->stack->popInt());
         $ea = $i + $offset;
         $ok = $mem->storeI64_s8($ea, $c);
         if (!$ok) {
@@ -2457,7 +2457,7 @@ final class Runtime
         $f = $this->stack->currentFrame();
         $a = $f->module->memAddrs[0];
         $mem = $this->store->mems[$a];
-        $i = $this->stack->popInt();
+        $i = self::wasmI32ToPhpInt($this->stack->popInt());
         $ea = $i + $offset;
         $c = $mem->loadF32($ea);
         if ($c === null) {
@@ -2471,7 +2471,7 @@ final class Runtime
         $f = $this->stack->currentFrame();
         $a = $f->module->memAddrs[0];
         $mem = $this->store->mems[$a];
-        $i = $this->stack->popInt();
+        $i = self::wasmI32ToPhpInt($this->stack->popInt());
         $ea = $i + $offset;
         $c = $mem->loadF64($ea);
         if ($c === null) {

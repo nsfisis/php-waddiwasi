@@ -147,17 +147,17 @@ abstract class SpecTestsuiteBase extends TestCase
     /**
      * @param array{type: string, value: string} $arg
      */
-    private function toWasmArg(array $arg): int|float|Ref
+    private static function wastValueToInternalValue(array $arg): int|float|RefExtern
     {
         $type = $arg['type'];
         $value = $arg['value'];
         return match ($type) {
-            'i32' => (int)$value,
-            'i64' => (int)$value,
+            'i32' => unpack('l', pack('l', (int)$value))[1],
+            'i64' => unpack('q', self::convertInt64ToBinary($value))[1],
             'f32' => unpack('g', pack('l', (int)$value))[1],
-            'f64' => unpack('e', pack('q', (int)$value))[1],
+            'f64' => unpack('e', self::convertInt64ToBinary($value))[1],
             'externref' => Ref::RefExtern((int)$value),
-            default => $this->assertTrue(false, "unknown arg type: $type"),
+            default => throw new \RuntimeException("unknown type: $type"),
         };
     }
 
@@ -174,7 +174,7 @@ abstract class SpecTestsuiteBase extends TestCase
             $runtime = self::$runtimes[$targetModuleName];
             return $runtime->invoke(
                 $actionField,
-                array_map($this->toWasmArg(...), $actionArgs),
+                array_map(self::wastValueToInternalValue(...), $actionArgs),
             );
         } else {
             $this->assertTrue(false, "unknown action: $actionType");
@@ -201,65 +201,31 @@ abstract class SpecTestsuiteBase extends TestCase
 
         for ($i = 0; $i < count($expectedResults); $i++) {
             $expectedResult = $expectedResults[$i];
+            $expectedValue = self::wastValueToInternalValue($expectedResult);
             $actualResult = $actualResults[$i];
-            if ($expectedResult['type'] === 'i32') {
-                $expectedValue = unpack('l', pack('l', (int)$expectedResult['value']))[1];
-                $this->assertSame(
-                    $expectedValue,
-                    $actualResult,
-                    "result $i mismatch" . $message,
+            if (is_float($expectedValue) && is_nan($expectedValue)) {
+                // @todo check NaN bit pattern.
+                $this->assertTrue(
+                    is_nan($actualResult),
+                    "result $i is not NaN" . $message,
                 );
-            } elseif ($expectedResult['type'] === 'i64') {
-                $expectedValue = unpack('q', self::convertInt64ToBinary($expectedResult['value']))[1];
-                $this->assertSame(
-                    $expectedValue,
-                    $actualResult,
-                    "result $i mismatch" . $message,
-                );
-            } elseif ($expectedResult['type'] === 'f32') {
-                $expectedValue = unpack('g', pack('l', (int)$expectedResult['value']))[1];
-                if (is_nan($expectedValue)) {
-                    // @todo check NaN bit pattern.
-                    $this->assertTrue(
-                        is_nan($actualResult),
-                        "result $i is not NaN" . $message,
-                    );
-                } else {
-                    $this->assertSame(
-                        $expectedValue,
-                        $actualResult,
-                        "result $i mismatch" . $message,
-                    );
-                }
-            } elseif ($expectedResult['type'] === 'f64') {
-                $expectedValue = unpack('e', self::convertInt64ToBinary($expectedResult['value']))[1];
-                if (is_nan($expectedValue)) {
-                    // @todo check NaN bit pattern.
-                    $this->assertTrue(
-                        is_nan($actualResult),
-                        "result $i is not NaN" . $message,
-                    );
-                } else {
-                    $this->assertSame(
-                        $expectedValue,
-                        $actualResult,
-                        "result $i mismatch" . $message,
-                    );
-                }
-            } elseif ($expectedResult['type'] === 'externref') {
-                $expectedValue = (int)$expectedResult['value'];
+            } else if ($expectedValue instanceof RefExtern) {
                 $this->assertInstanceOf(
                     RefExtern::class,
                     $actualResult,
                     "result $i is not an externref" . $message,
                 );
                 $this->assertSame(
-                    $expectedValue,
+                    $expectedValue->addr,
                     $actualResult->addr,
                     "result $i mismatch" . $message,
                 );
             } else {
-                $this->assertTrue(false, "unknown result type: {$expectedResult['type']}");
+                $this->assertSame(
+                    $expectedValue,
+                    $actualResult,
+                    "result $i mismatch" . $message,
+                );
             }
         }
     }
