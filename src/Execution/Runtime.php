@@ -1093,13 +1093,19 @@ final class Runtime
     private function execInstrNumericI32ReinterpretF32(Instrs\Numeric\I32ReinterpretF32 $instr): void
     {
         $v = $this->stack->popFloat();
-        $this->stack->pushValue($v);
+        $result = unpack('l', pack('f', $v));
+        assert($result !== false);
+        $vAsI32 = $result[1];
+        $this->stack->pushValue($vAsI32);
     }
 
     private function execInstrNumericI32ReinterpretF64(Instrs\Numeric\I32ReinterpretF64 $instr): void
     {
         $v = $this->stack->popFloat();
-        $this->stack->pushValue($v);
+        $result = unpack('q', pack('d', $v));
+        assert($result !== false);
+        $vAsI64 = $result[1];
+        $this->stack->pushValue(self::phpIntToWasmI32($vAsI64 & 0xFFFFFFFF));
     }
 
     private function execInstrNumericI32RemS(Instrs\Numeric\I32RemS $instr): void
@@ -1505,13 +1511,19 @@ final class Runtime
     private function execInstrNumericI64ReinterpretF32(Instrs\Numeric\I64ReinterpretF32 $instr): void
     {
         $v = $this->stack->popFloat();
-        $this->stack->pushValue($v);
+        $result = unpack('q', pack('f', $v));
+        assert($result !== false);
+        $vAsI64 = $result[1];
+        $this->stack->pushValue($vAsI64);
     }
 
     private function execInstrNumericI64ReinterpretF64(Instrs\Numeric\I64ReinterpretF64 $instr): void
     {
         $v = $this->stack->popFloat();
-        $this->stack->pushValue($v);
+        $result = unpack('q', pack('d', $v));
+        assert($result !== false);
+        $vAsI64 = $result[1];
+        $this->stack->pushValue($vAsI64);
     }
 
     private function execInstrNumericI64RemS(Instrs\Numeric\I64RemS $instr): void
