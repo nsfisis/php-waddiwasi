@@ -18,6 +18,7 @@ use Nsfisis\Waddiwasi\Structure\Types\ResultType;
 use Nsfisis\Waddiwasi\Structure\Types\TableType;
 use Nsfisis\Waddiwasi\Structure\Types\ValType;
 use Nsfisis\Waddiwasi\Structure\Types\ValTypes;
+use Nsfisis\Waddiwasi\Utility\BinaryConversion;
 use RuntimeException;
 use function abs;
 use function array_map;
@@ -695,19 +696,13 @@ final class Runtime
     private function execInstrNumericF32ReinterpretI32(Instrs\Numeric\F32ReinterpretI32 $instr): void
     {
         $v = $this->stack->popInt();
-        $result = unpack('f', pack('l', $v));
-        assert($result !== false);
-        $vAsF32 = $result[1];
-        $this->stack->pushValue($vAsF32);
+        $this->stack->pushValue(BinaryConversion::reinterpretI32AsF32($v));
     }
 
     private function execInstrNumericF32ReinterpretI64(Instrs\Numeric\F32ReinterpretI64 $instr): void
     {
         $v = $this->stack->popInt();
-        $result = unpack('f', pack('q', $v));
-        assert($result !== false);
-        $vAsF32 = $result[1];
-        $this->stack->pushValue($vAsF32);
+        $this->stack->pushValue(BinaryConversion::reinterpretI64AsF32($v));
     }
 
     private function execInstrNumericF32Sqrt(Instrs\Numeric\F32Sqrt $instr): void
@@ -881,19 +876,13 @@ final class Runtime
     private function execInstrNumericF64ReinterpretI32(Instrs\Numeric\F64ReinterpretI32 $instr): void
     {
         $v = $this->stack->popInt();
-        $result = unpack('d', pack('l', $v));
-        assert($result !== false);
-        $vAsF64 = $result[1];
-        $this->stack->pushValue($vAsF64);
+        $this->stack->pushValue(BinaryConversion::reinterpretI32AsF64($v));
     }
 
     private function execInstrNumericF64ReinterpretI64(Instrs\Numeric\F64ReinterpretI64 $instr): void
     {
         $v = $this->stack->popInt();
-        $result = unpack('d', pack('q', $v));
-        assert($result !== false);
-        $vAsF64 = $result[1];
-        $this->stack->pushValue($vAsF64);
+        $this->stack->pushValue(BinaryConversion::reinterpretI64AsF64($v));
     }
 
     private function execInstrNumericF64Sqrt(Instrs\Numeric\F64Sqrt $instr): void
@@ -1105,19 +1094,13 @@ final class Runtime
     private function execInstrNumericI32ReinterpretF32(Instrs\Numeric\I32ReinterpretF32 $instr): void
     {
         $v = $this->stack->popFloat();
-        $result = unpack('l', pack('f', $v));
-        assert($result !== false);
-        $vAsI32 = $result[1];
-        $this->stack->pushValue($vAsI32);
+        $this->stack->pushValue(BinaryConversion::reinterpretF32AsI32($v));
     }
 
     private function execInstrNumericI32ReinterpretF64(Instrs\Numeric\I32ReinterpretF64 $instr): void
     {
         $v = $this->stack->popFloat();
-        $result = unpack('q', pack('d', $v));
-        assert($result !== false);
-        $vAsI64 = $result[1];
-        $this->stack->pushValue(self::phpIntToWasmI32($vAsI64 & 0xFFFFFFFF));
+        $this->stack->pushValue(BinaryConversion::reinterpretF64AsI32($v));
     }
 
     private function execInstrNumericI32RemS(Instrs\Numeric\I32RemS $instr): void
@@ -1523,19 +1506,13 @@ final class Runtime
     private function execInstrNumericI64ReinterpretF32(Instrs\Numeric\I64ReinterpretF32 $instr): void
     {
         $v = $this->stack->popFloat();
-        $result = unpack('q', pack('f', $v));
-        assert($result !== false);
-        $vAsI64 = $result[1];
-        $this->stack->pushValue($vAsI64);
+        $this->stack->pushValue(BinaryConversion::reinterpretF32AsI64($v));
     }
 
     private function execInstrNumericI64ReinterpretF64(Instrs\Numeric\I64ReinterpretF64 $instr): void
     {
         $v = $this->stack->popFloat();
-        $result = unpack('q', pack('d', $v));
-        assert($result !== false);
-        $vAsI64 = $result[1];
-        $this->stack->pushValue($vAsI64);
+        $this->stack->pushValue(BinaryConversion::reinterpretF64AsI64($v));
     }
 
     private function execInstrNumericI64RemS(Instrs\Numeric\I64RemS $instr): void
