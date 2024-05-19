@@ -695,13 +695,19 @@ final class Runtime
     private function execInstrNumericF32ReinterpretI32(Instrs\Numeric\F32ReinterpretI32 $instr): void
     {
         $v = $this->stack->popInt();
-        $this->stack->pushValue($v);
+        $result = unpack('f', pack('l', $v));
+        assert($result !== false);
+        $vAsF32 = $result[1];
+        $this->stack->pushValue($vAsF32);
     }
 
     private function execInstrNumericF32ReinterpretI64(Instrs\Numeric\F32ReinterpretI64 $instr): void
     {
         $v = $this->stack->popInt();
-        $this->stack->pushValue($v);
+        $result = unpack('f', pack('q', $v));
+        assert($result !== false);
+        $vAsF32 = $result[1];
+        $this->stack->pushValue($vAsF32);
     }
 
     private function execInstrNumericF32Sqrt(Instrs\Numeric\F32Sqrt $instr): void
@@ -875,13 +881,19 @@ final class Runtime
     private function execInstrNumericF64ReinterpretI32(Instrs\Numeric\F64ReinterpretI32 $instr): void
     {
         $v = $this->stack->popInt();
-        $this->stack->pushValue($v);
+        $result = unpack('d', pack('l', $v));
+        assert($result !== false);
+        $vAsF64 = $result[1];
+        $this->stack->pushValue($vAsF64);
     }
 
     private function execInstrNumericF64ReinterpretI64(Instrs\Numeric\F64ReinterpretI64 $instr): void
     {
         $v = $this->stack->popInt();
-        $this->stack->pushValue($v);
+        $result = unpack('d', pack('q', $v));
+        assert($result !== false);
+        $vAsF64 = $result[1];
+        $this->stack->pushValue($vAsF64);
     }
 
     private function execInstrNumericF64Sqrt(Instrs\Numeric\F64Sqrt $instr): void
