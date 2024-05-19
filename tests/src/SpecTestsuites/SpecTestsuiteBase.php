@@ -14,7 +14,9 @@ use Nsfisis\Waddiwasi\Execution\Store;
 use Nsfisis\Waddiwasi\Execution\TrapException;
 use Nsfisis\Waddiwasi\Execution\TrapKind;
 use PHPUnit\Framework\TestCase;
+use RuntimeException;
 use function count;
+use function is_float;
 
 abstract class SpecTestsuiteBase extends TestCase
 {
@@ -157,7 +159,7 @@ abstract class SpecTestsuiteBase extends TestCase
             'f32' => unpack('g', pack('l', (int)$value))[1],
             'f64' => unpack('e', self::convertInt64ToBinary($value))[1],
             'externref' => Ref::RefExtern((int)$value),
-            default => throw new \RuntimeException("unknown type: $type"),
+            default => throw new RuntimeException("unknown type: $type"),
         };
     }
 
@@ -209,7 +211,7 @@ abstract class SpecTestsuiteBase extends TestCase
                     is_nan($actualResult),
                     "result $i is not NaN" . $message,
                 );
-            } else if ($expectedValue instanceof RefExtern) {
+            } elseif ($expectedValue instanceof RefExtern) {
                 $this->assertInstanceOf(
                     RefExtern::class,
                     $actualResult,
@@ -240,6 +242,7 @@ abstract class SpecTestsuiteBase extends TestCase
         }
         $actualErrorMessage = match ($kind) {
             TrapKind::Unknown => 'unknown',
+            TrapKind::Unreachable => 'unreachable',
             TrapKind::OutOfBoundsMemoryAccess => 'out of bounds memory access',
             TrapKind::OutOfBoundsTableAccess => 'out of bounds table access',
             TrapKind::UninitializedElement => 'uninitialized element',
@@ -253,7 +256,7 @@ abstract class SpecTestsuiteBase extends TestCase
         );
     }
 
-    static private function convertInt64ToBinary(string $value): string
+    private static function convertInt64ToBinary(string $value): string
     {
         // 2^63-1 < $value
         if (bccomp(bcsub(bcpow('2', '63'), '1'), $value) < 0) {

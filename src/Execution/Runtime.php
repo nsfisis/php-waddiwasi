@@ -2449,7 +2449,7 @@ final class Runtime
 
     private function execInstrControlUnreachable(Instrs\Control\Unreachable $instr): void
     {
-        throw new TrapException("unreachable");
+        throw new TrapException("unreachable", trapKind: TrapKind::Unreachable);
     }
 
     private function doLoadF32(int $offset, string $instrOpName): void
