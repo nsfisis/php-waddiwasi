@@ -1772,9 +1772,9 @@ final class Runtime
         $tabX = $this->store->tables[$taX];
         $taY = $f->module->tableAddrs[$y];
         $tabY = $this->store->tables[$taY];
-        $n = $this->stack->popInt();
-        $s = $this->stack->popInt();
-        $d = $this->stack->popInt();
+        $n = self::wasmI32ToPhpInt($this->stack->popInt());
+        $s = self::wasmI32ToPhpInt($this->stack->popInt());
+        $d = self::wasmI32ToPhpInt($this->stack->popInt());
         if (count($tabX->elem) < $d + $n || count($tabY->elem) < $s + $n) {
             throw new TrapException("table.copy: out of bounds", trapKind: TrapKind::OutOfBoundsTableAccess);
         }
@@ -1795,9 +1795,9 @@ final class Runtime
         $f = $this->stack->currentFrame();
         $ta = $f->module->tableAddrs[$x];
         $tab = $this->store->tables[$ta];
-        $n = $this->stack->popInt();
+        $n = self::wasmI32ToPhpInt($this->stack->popInt());
         $val = $this->stack->popRef();
-        $i = $this->stack->popInt();
+        $i = self::wasmI32ToPhpInt($this->stack->popInt());
         if (count($tab->elem) < $i + $n) {
             throw new TrapException("table.fill: out of bounds", trapKind: TrapKind::OutOfBoundsTableAccess);
         }
@@ -1813,7 +1813,7 @@ final class Runtime
         $f = $this->stack->currentFrame();
         $a = $f->module->tableAddrs[$x];
         $tab = $this->store->tables[$a];
-        $i = $this->stack->popInt();
+        $i = self::wasmI32ToPhpInt($this->stack->popInt());
         if (count($tab->elem) <= $i) {
             throw new TrapException("table.get: out of bounds", trapKind: TrapKind::OutOfBoundsTableAccess);
         }
@@ -1828,7 +1828,7 @@ final class Runtime
         $a = $f->module->tableAddrs[$x];
         $tab = $this->store->tables[$a];
         $sz = count($tab->elem);
-        $n = $this->stack->popInt();
+        $n = self::wasmI32ToPhpInt($this->stack->popInt());
         $val = $this->stack->popRef();
 
         $len = $sz + $n;
@@ -1861,9 +1861,9 @@ final class Runtime
         $tab = $this->store->tables[$ta];
         $ea = $f->module->elemAddrs[$y];
         $elem = $this->store->elems[$ea];
-        $n = $this->stack->popInt();
-        $s = $this->stack->popInt();
-        $d = $this->stack->popInt();
+        $n = self::wasmI32ToPhpInt($this->stack->popInt());
+        $s = self::wasmI32ToPhpInt($this->stack->popInt());
+        $d = self::wasmI32ToPhpInt($this->stack->popInt());
         if (count($elem->elem) < $s + $n) {
             throw new TrapException("table.init: out of bounds", trapKind: TrapKind::OutOfBoundsTableAccess);
         }
@@ -1883,7 +1883,7 @@ final class Runtime
         $a = $f->module->tableAddrs[$x];
         $tab = $this->store->tables[$a];
         $val = $this->stack->popRef();
-        $i = $this->stack->popInt();
+        $i = self::wasmI32ToPhpInt($this->stack->popInt());
         if (count($tab->elem) <= $i) {
             throw new TrapException("table.set: out of bounds", trapKind: TrapKind::OutOfBoundsTableAccess);
         }
@@ -1922,7 +1922,7 @@ final class Runtime
         $a = $f->module->memAddrs[0];
         $mem = $this->store->mems[$a];
         $c = $this->stack->popFloat();
-        $i = $this->stack->popInt();
+        $i = self::wasmI32ToPhpInt($this->stack->popInt());
         $ea = $i + $offset;
         $ok = $mem->storeF32($ea, $c);
         if (!$ok) {
@@ -1942,7 +1942,7 @@ final class Runtime
         $a = $f->module->memAddrs[0];
         $mem = $this->store->mems[$a];
         $c = $this->stack->popFloat();
-        $i = $this->stack->popInt();
+        $i = self::wasmI32ToPhpInt($this->stack->popInt());
         $ea = $i + $offset;
         $ok = $mem->storeF64($ea, $c);
         if (!$ok) {
@@ -2240,9 +2240,9 @@ final class Runtime
         $f = $this->stack->currentFrame();
         $ma = $f->module->memAddrs[0];
         $mem = $this->store->mems[$ma];
-        $n = $this->stack->popInt();
-        $s = $this->stack->popInt();
-        $d = $this->stack->popInt();
+        $n = self::wasmI32ToPhpInt($this->stack->popInt());
+        $s = self::wasmI32ToPhpInt($this->stack->popInt());
+        $d = self::wasmI32ToPhpInt($this->stack->popInt());
         if ($mem->size() < $s + $n || $mem->size() < $d + $n) {
             throw new TrapException("memory.copy: out of bounds", trapKind: TrapKind::OutOfBoundsMemoryAccess);
         }
@@ -2254,9 +2254,9 @@ final class Runtime
         $f = $this->stack->currentFrame();
         $ma = $f->module->memAddrs[0];
         $mem = $this->store->mems[$ma];
-        $n = $this->stack->popInt();
+        $n = self::wasmI32ToPhpInt($this->stack->popInt());
         $val = $this->stack->popInt();
-        $d = $this->stack->popInt();
+        $d = self::wasmI32ToPhpInt($this->stack->popInt());
         if ($mem->size() < $d + $n) {
             throw new TrapException("memory.fill: out of bounds", trapKind: TrapKind::OutOfBoundsMemoryAccess);
         }
@@ -2268,7 +2268,7 @@ final class Runtime
         $f = $this->stack->currentFrame();
         $a = $f->module->memAddrs[0];
         $mem = $this->store->mems[$a];
-        $n = $this->stack->popInt();
+        $n = self::wasmI32ToPhpInt($this->stack->popInt());
         $result = $mem->grow($n);
         $this->stack->pushValue($result);
     }
@@ -2281,9 +2281,9 @@ final class Runtime
         $mem = $this->store->mems[$ma];
         $da = $f->module->dataAddrs[$x];
         $data = $this->store->datas[$da];
-        $n = $this->stack->popInt();
-        $s = $this->stack->popInt();
-        $d = $this->stack->popInt();
+        $n = self::wasmI32ToPhpInt($this->stack->popInt());
+        $s = self::wasmI32ToPhpInt($this->stack->popInt());
+        $d = self::wasmI32ToPhpInt($this->stack->popInt());
         if (count($data->data) < $s + $n) {
             throw new TrapException("memory.init: out of bounds", trapKind: TrapKind::OutOfBoundsMemoryAccess);
         }
