@@ -269,6 +269,7 @@ abstract class SpecTestsuiteBase extends TestCase
             TrapKind::UninitializedElement => 'uninitialized element',
             TrapKind::IndirectCallTypeMismatch => 'indirect call type mismatch',
             TrapKind::UndefinedElement => 'undefined element',
+            TrapKind::DivideByZero => 'integer divide by zero',
         };
         $this->assertStringContainsString(
             $actualErrorMessage,

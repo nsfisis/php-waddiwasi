@@ -955,8 +955,11 @@ final class Runtime
     {
         $c2 = $this->stack->popInt();
         $c1 = $this->stack->popInt();
-        if ($c2 === 0 || ($c1 === PHP_INT_MIN && $c2 === -1)) {
-            throw new TrapException("i32.div_s: divide by zero or overflow");
+        if ($c2 === 0) {
+            throw new TrapException("i32.div_s: divide by zero", trapKind: TrapKind::DivideByZero);
+        }
+        if ($c1 === PHP_INT_MIN && $c2 === -1) {
+            throw new TrapException("i32.div_s: overflow");
         }
         $this->stack->pushValue(intdiv($c1, $c2));
     }
@@ -966,7 +969,7 @@ final class Runtime
         $c2 = $this->stack->popInt();
         $c1 = $this->stack->popInt();
         if ($c2 === 0) {
-            throw new TrapException("i32.div_u: divide by zero");
+            throw new TrapException("i32.div_u: divide by zero", trapKind: TrapKind::DivideByZero);
         }
         $this->stack->pushValue(intdiv($c1, $c2));
     }
@@ -1107,8 +1110,11 @@ final class Runtime
     {
         $c2 = $this->stack->popInt();
         $c1 = $this->stack->popInt();
-        if ($c2 === 0 || ($c1 === PHP_INT_MIN && $c2 === -1)) {
-            throw new TrapException("i32.rem_s: divide by zero or overflow");
+        if ($c2 === 0) {
+            throw new TrapException("i32.rem_s: divide by zero or overflow", trapKind: TrapKind::DivideByZero);
+        }
+        if ($c1 === PHP_INT_MIN && $c2 === -1) {
+            throw new TrapException("i32.rem_s: divide by zero or overflow", trapKind: TrapKind::DivideByZero);
         }
         $this->stack->pushValue($c1 % $c2);
     }
@@ -1118,7 +1124,7 @@ final class Runtime
         $c2 = $this->stack->popInt();
         $c1 = $this->stack->popInt();
         if ($c2 === 0) {
-            throw new TrapException("i32.rem_u: divide by zero");
+            throw new TrapException("i32.rem_u: divide by zero", trapKind: TrapKind::DivideByZero);
         }
         $this->stack->pushValue($c1 % $c2);
     }
@@ -1327,7 +1333,7 @@ final class Runtime
         $c2 = $this->stack->popInt();
         $c1 = $this->stack->popInt();
         if ($c2 === 0) {
-            throw new TrapException("i64.div_s: divide by zero");
+            throw new TrapException("i64.div_s: divide by zero", trapKind: TrapKind::DivideByZero);
         }
         $this->stack->pushValue(intdiv($c1, $c2));
     }
@@ -1337,7 +1343,7 @@ final class Runtime
         $c2 = $this->stack->popInt();
         $c1 = $this->stack->popInt();
         if ($c2 === 0) {
-            throw new TrapException("i64.div_u: divide by zero");
+            throw new TrapException("i64.div_u: divide by zero", trapKind: TrapKind::DivideByZero);
         }
         $this->stack->pushValue(intdiv($c1, $c2));
     }
@@ -1510,7 +1516,7 @@ final class Runtime
         $c2 = $this->stack->popInt();
         $c1 = $this->stack->popInt();
         if ($c2 === 0) {
-            throw new TrapException("i64.rem_s: divide by zero");
+            throw new TrapException("i64.rem_s: divide by zero", trapKind: TrapKind::DivideByZero);
         }
         $this->stack->pushValue($c1 % $c2);
     }
@@ -1520,7 +1526,7 @@ final class Runtime
         $c2 = $this->stack->popInt();
         $c1 = $this->stack->popInt();
         if ($c2 === 0) {
-            throw new TrapException("i64.rem_u: divide by zero");
+            throw new TrapException("i64.rem_u: divide by zero", trapKind: TrapKind::DivideByZero);
         }
         $this->stack->pushValue($c1 % $c2);
     }
