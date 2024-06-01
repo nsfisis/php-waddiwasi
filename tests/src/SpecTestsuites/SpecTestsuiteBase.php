@@ -8,6 +8,8 @@ use Nsfisis\Waddiwasi\BinaryFormat\Decoder;
 use Nsfisis\Waddiwasi\BinaryFormat\InvalidBinaryFormatException;
 use Nsfisis\Waddiwasi\Execution\Ref;
 use Nsfisis\Waddiwasi\Execution\Refs\RefExtern;
+use Nsfisis\Waddiwasi\Execution\Refs\RefFunc;
+use Nsfisis\Waddiwasi\Execution\Refs\RefNull;
 use Nsfisis\Waddiwasi\Execution\Runtime;
 use Nsfisis\Waddiwasi\Execution\StackOverflowException;
 use Nsfisis\Waddiwasi\Execution\Store;
@@ -213,11 +215,28 @@ abstract class SpecTestsuiteBase extends TestCase
                     is_nan($actualResult),
                     "result $i is not NaN" . $message,
                 );
+            } elseif ($expectedValue instanceof RefNull) {
+                $this->assertInstanceOf(
+                    RefNull::class,
+                    $actualResult,
+                    "result $i is not a null" . $message,
+                );
             } elseif ($expectedValue instanceof RefExtern) {
                 $this->assertInstanceOf(
                     RefExtern::class,
                     $actualResult,
                     "result $i is not an externref" . $message,
+                );
+                $this->assertSame(
+                    $expectedValue->addr,
+                    $actualResult->addr,
+                    "result $i mismatch" . $message,
+                );
+            } elseif ($expectedValue instanceof RefFunc) {
+                $this->assertInstanceOf(
+                    RefFunc::class,
+                    $actualResult,
+                    "result $i is not an funcref" . $message,
                 );
                 $this->assertSame(
                     $expectedValue->addr,
