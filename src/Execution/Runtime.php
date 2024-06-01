@@ -1264,7 +1264,8 @@ final class Runtime
     {
         $c2 = $this->stack->popInt();
         $c1 = $this->stack->popInt();
-        $this->stack->pushValue($c1 + $c2);
+        $result = self::bigIntToPhpInt(bcadd((string)$c1, (string)$c2));
+        $this->stack->pushValue($result);
     }
 
     private function execInstrNumericI64And(Instrs\Numeric\I64And $instr): void
@@ -1462,19 +1463,8 @@ final class Runtime
     {
         $c2 = $this->stack->popInt();
         $c1 = $this->stack->popInt();
-        $result = bcmod(bcmul((string)$c1, (string)$c2), bcpow('2', '64'));
-        if ($result[0] === '-') {
-            // 2^63 <= -$result
-            if (bccomp(bcpow('2', '63'), bcsub('0', $result)) <= 0) {
-                $result = bcadd($result, bcpow('2', '64'));
-            }
-        } else {
-            // 2^63-1 < $result
-            if (bccomp(bcsub(bcpow('2', '63'), '1'), $result) < 0) {
-                $result = bcsub($result, bcpow('2', '64'));
-            }
-        }
-        $this->stack->pushValue((int)$result);
+        $result = self::bigIntToPhpInt(bcmul((string)$c1, (string)$c2));
+        $this->stack->pushValue($result);
     }
 
     private function execInstrNumericI64Ne(Instrs\Numeric\I64Ne $instr): void
@@ -1584,7 +1574,8 @@ final class Runtime
     {
         $c2 = $this->stack->popInt();
         $c1 = $this->stack->popInt();
-        $this->stack->pushValue($c1 - $c2);
+        $result = self::bigIntToPhpInt(bcsub((string)$c1, (string)$c2));
+        $this->stack->pushValue($result);
     }
 
     private function execInstrNumericI64TruncF32S(Instrs\Numeric\I64TruncF32S $instr): void
@@ -2536,5 +2527,22 @@ final class Runtime
         } else {
             return $x;
         }
+    }
+
+    private static function bigIntToPhpInt(string $s): int
+    {
+        $result = bcmod($s, bcpow('2', '64'));
+        if ($result[0] === '-') {
+            // 2^63 <= -$result
+            if (bccomp(bcpow('2', '63'), bcsub('0', $result)) <= 0) {
+                $result = bcadd($result, bcpow('2', '64'));
+            }
+        } else {
+            // 2^63-1 < $result
+            if (bccomp(bcsub(bcpow('2', '63'), '1'), $result) < 0) {
+                $result = bcsub($result, bcpow('2', '64'));
+            }
+        }
+        return (int)$result;
     }
 }
