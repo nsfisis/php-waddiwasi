@@ -13,6 +13,7 @@ use Nsfisis\Waddiwasi\Execution\StackOverflowException;
 use Nsfisis\Waddiwasi\Execution\Store;
 use Nsfisis\Waddiwasi\Execution\TrapException;
 use Nsfisis\Waddiwasi\Execution\TrapKind;
+use Nsfisis\Waddiwasi\Structure\Types\RefType;
 use PHPUnit\Framework\TestCase;
 use RuntimeException;
 use function count;
@@ -149,7 +150,7 @@ abstract class SpecTestsuiteBase extends TestCase
     /**
      * @param array{type: string, value: string} $arg
      */
-    private static function wastValueToInternalValue(array $arg): int|float|RefExtern
+    private static function wastValueToInternalValue(array $arg): int|float|Ref
     {
         $type = $arg['type'];
         $value = $arg['value'];
@@ -158,7 +159,8 @@ abstract class SpecTestsuiteBase extends TestCase
             'i64' => unpack('q', self::convertInt64ToBinary($value))[1],
             'f32' => unpack('g', pack('l', (int)$value))[1],
             'f64' => unpack('e', self::convertInt64ToBinary($value))[1],
-            'externref' => Ref::RefExtern((int)$value),
+            'externref' => $value === 'null' ? Ref::RefNull(RefType::ExternRef) : Ref::RefExtern((int)$value),
+            'funcref' => $value === 'null' ? Ref::RefNull(RefType::FuncRef) : Ref::RefFunc((int)$value),
             default => throw new RuntimeException("unknown type: $type"),
         };
     }
