@@ -908,19 +908,19 @@ final class Runtime
     {
         $c2 = $this->stack->popInt();
         $c1 = $this->stack->popInt();
-        $this->stack->pushValue(self::phpIntToWasmI32(($c1 + $c2) & 0xFFFFFFFF));
+        $this->stack->pushValue(self::convertU32ToS32(($c1 + $c2) & 0xFFFFFFFF));
     }
 
     private function execInstrNumericI32And(Instrs\Numeric\I32And $instr): void
     {
-        $c2 = self::wasmI32ToPhpInt($this->stack->popInt());
-        $c1 = self::wasmI32ToPhpInt($this->stack->popInt());
-        $this->stack->pushValue(self::phpIntToWasmI32(($c1 & $c2) & 0xFFFFFFFF));
+        $c2 = self::convertS32ToU32($this->stack->popInt());
+        $c1 = self::convertS32ToU32($this->stack->popInt());
+        $this->stack->pushValue(self::convertU32ToS32(($c1 & $c2) & 0xFFFFFFFF));
     }
 
     private function execInstrNumericI32Clz(Instrs\Numeric\I32Clz $instr): void
     {
-        $i = self::wasmI32ToPhpInt($this->stack->popInt());
+        $i = self::convertS32ToU32($this->stack->popInt());
         $leadingZeros = 0;
         for ($j = 31; 0 <= $j; $j--) {
             if (($i & (1 << $j)) === 0) {
@@ -939,7 +939,7 @@ final class Runtime
 
     private function execInstrNumericI32Ctz(Instrs\Numeric\I32Ctz $instr): void
     {
-        $i = self::wasmI32ToPhpInt($this->stack->popInt());
+        $i = self::convertS32ToU32($this->stack->popInt());
         $trailingZeros = 0;
         for ($j = 0; $j < 32; $j++) {
             if (($i & (1 << $j)) === 0) {
@@ -966,12 +966,12 @@ final class Runtime
 
     private function execInstrNumericI32DivU(Instrs\Numeric\I32DivU $instr): void
     {
-        $c2 = self::wasmI32ToPhpInt($this->stack->popInt());
-        $c1 = self::wasmI32ToPhpInt($this->stack->popInt());
+        $c2 = self::convertS32ToU32($this->stack->popInt());
+        $c1 = self::convertS32ToU32($this->stack->popInt());
         if ($c2 === 0) {
             throw new TrapException("i32.div_u: divide by zero", trapKind: TrapKind::DivideByZero);
         }
-        $this->stack->pushValue(self::phpIntToWasmI32(intdiv($c1, $c2)));
+        $this->stack->pushValue(self::convertU32ToS32(intdiv($c1, $c2)));
     }
 
     private function execInstrNumericI32Eq(Instrs\Numeric\I32Eq $instr): void
@@ -989,7 +989,7 @@ final class Runtime
 
     private function execInstrNumericI32Extend16S(Instrs\Numeric\I32Extend16S $instr): void
     {
-        $c1 = self::wasmI32ToPhpInt($this->stack->popInt());
+        $c1 = self::convertS32ToU32($this->stack->popInt());
         $c2 = $c1 & 0xFFFF;
         $result = unpack('s', pack('S', $c2));
         assert($result !== false);
@@ -998,7 +998,7 @@ final class Runtime
 
     private function execInstrNumericI32Extend8S(Instrs\Numeric\I32Extend8S $instr): void
     {
-        $c1 = self::wasmI32ToPhpInt($this->stack->popInt());
+        $c1 = self::convertS32ToU32($this->stack->popInt());
         $c2 = $c1 & 0xFF;
         $result = unpack('c', pack('C', $c2));
         assert($result !== false);
@@ -1014,8 +1014,8 @@ final class Runtime
 
     private function execInstrNumericI32GeU(Instrs\Numeric\I32GeU $instr): void
     {
-        $c2 = self::wasmI32ToPhpInt($this->stack->popInt());
-        $c1 = self::wasmI32ToPhpInt($this->stack->popInt());
+        $c2 = self::convertS32ToU32($this->stack->popInt());
+        $c1 = self::convertS32ToU32($this->stack->popInt());
         $this->stack->pushBool($c1 >= $c2);
     }
 
@@ -1028,8 +1028,8 @@ final class Runtime
 
     private function execInstrNumericI32GtU(Instrs\Numeric\I32GtU $instr): void
     {
-        $c2 = self::wasmI32ToPhpInt($this->stack->popInt());
-        $c1 = self::wasmI32ToPhpInt($this->stack->popInt());
+        $c2 = self::convertS32ToU32($this->stack->popInt());
+        $c1 = self::convertS32ToU32($this->stack->popInt());
         $this->stack->pushBool($c1 > $c2);
     }
 
@@ -1042,8 +1042,8 @@ final class Runtime
 
     private function execInstrNumericI32LeU(Instrs\Numeric\I32LeU $instr): void
     {
-        $c2 = self::wasmI32ToPhpInt($this->stack->popInt());
-        $c1 = self::wasmI32ToPhpInt($this->stack->popInt());
+        $c2 = self::convertS32ToU32($this->stack->popInt());
+        $c1 = self::convertS32ToU32($this->stack->popInt());
         $this->stack->pushBool($c1 <= $c2);
     }
 
@@ -1056,8 +1056,8 @@ final class Runtime
 
     private function execInstrNumericI32LtU(Instrs\Numeric\I32LtU $instr): void
     {
-        $c2 = self::wasmI32ToPhpInt($this->stack->popInt());
-        $c1 = self::wasmI32ToPhpInt($this->stack->popInt());
+        $c2 = self::convertS32ToU32($this->stack->popInt());
+        $c1 = self::convertS32ToU32($this->stack->popInt());
         $this->stack->pushBool($c1 < $c2);
     }
 
@@ -1065,7 +1065,7 @@ final class Runtime
     {
         $c2 = $this->stack->popInt();
         $c1 = $this->stack->popInt();
-        $this->stack->pushValue(self::phpIntToWasmI32(($c1 * $c2) & 0xFFFFFFFF));
+        $this->stack->pushValue(self::convertU32ToS32(($c1 * $c2) & 0xFFFFFFFF));
     }
 
     private function execInstrNumericI32Ne(Instrs\Numeric\I32Ne $instr): void
@@ -1077,14 +1077,14 @@ final class Runtime
 
     private function execInstrNumericI32Or(Instrs\Numeric\I32Or $instr): void
     {
-        $c2 = self::wasmI32ToPhpInt($this->stack->popInt());
-        $c1 = self::wasmI32ToPhpInt($this->stack->popInt());
-        $this->stack->pushValue(self::phpIntToWasmI32(($c1 | $c2) & 0xFFFFFFFF));
+        $c2 = self::convertS32ToU32($this->stack->popInt());
+        $c1 = self::convertS32ToU32($this->stack->popInt());
+        $this->stack->pushValue(self::convertU32ToS32(($c1 | $c2) & 0xFFFFFFFF));
     }
 
     private function execInstrNumericI32Popcnt(Instrs\Numeric\I32Popcnt $instr): void
     {
-        $i = self::wasmI32ToPhpInt($this->stack->popInt());
+        $i = self::convertS32ToU32($this->stack->popInt());
         $popcnt = 0;
         for ($j = 0; $j < 32; $j++) {
             if (($i & (1 << $j)) !== 0) {
@@ -1131,36 +1131,36 @@ final class Runtime
 
     private function execInstrNumericI32RotL(Instrs\Numeric\I32RotL $instr): void
     {
-        $i2 = self::wasmI32ToPhpInt($this->stack->popInt());
-        $i1 = self::wasmI32ToPhpInt($this->stack->popInt());
+        $i2 = self::convertS32ToU32($this->stack->popInt());
+        $i1 = self::convertS32ToU32($this->stack->popInt());
         $k = $i2 % 32;
-        $this->stack->pushValue(self::phpIntToWasmI32((($i1 << $k) | ($i1 >> (32 - $k))) & 0xFFFFFFFF));
+        $this->stack->pushValue(self::convertU32ToS32((($i1 << $k) | ($i1 >> (32 - $k))) & 0xFFFFFFFF));
     }
 
     private function execInstrNumericI32RotR(Instrs\Numeric\I32RotR $instr): void
     {
-        $i2 = self::wasmI32ToPhpInt($this->stack->popInt());
-        $i1 = self::wasmI32ToPhpInt($this->stack->popInt());
+        $i2 = self::convertS32ToU32($this->stack->popInt());
+        $i1 = self::convertS32ToU32($this->stack->popInt());
         $k = $i2 % 32;
-        $this->stack->pushValue(self::phpIntToWasmI32((($i1 >> $k) | ($i1 << (32 - $k))) & 0xFFFFFFFF));
+        $this->stack->pushValue(self::convertU32ToS32((($i1 >> $k) | ($i1 << (32 - $k))) & 0xFFFFFFFF));
     }
 
     private function execInstrNumericI32Shl(Instrs\Numeric\I32Shl $instr): void
     {
-        $c2 = self::wasmI32ToPhpInt($this->stack->popInt());
+        $c2 = self::convertS32ToU32($this->stack->popInt());
         $k = $c2 % 32;
         $c1 = $this->stack->popInt();
-        $this->stack->pushValue(self::phpIntToWasmI32(($c1 << $k) & 0xFFFFFFFF));
+        $this->stack->pushValue(self::convertU32ToS32(($c1 << $k) & 0xFFFFFFFF));
     }
 
     private function execInstrNumericI32ShrS(Instrs\Numeric\I32ShrS $instr): void
     {
-        $c2 = self::wasmI32ToPhpInt($this->stack->popInt());
+        $c2 = self::convertS32ToU32($this->stack->popInt());
         $k = $c2 % 32;
-        $c1 = self::wasmI32ToPhpInt($this->stack->popInt());
+        $c1 = self::convertS32ToU32($this->stack->popInt());
         $signed = $c1 & 0x80000000;
         if ($signed !== 0) {
-            $this->stack->pushValue(self::phpIntToWasmI32(($c1 >> $k) & 0x80000000));
+            $this->stack->pushValue(self::convertU32ToS32(($c1 >> $k) & 0x80000000));
         } else {
             $this->stack->pushValue($c1 >> $k);
         }
@@ -1168,18 +1168,18 @@ final class Runtime
 
     private function execInstrNumericI32ShrU(Instrs\Numeric\I32ShrU $instr): void
     {
-        $c2 = self::wasmI32ToPhpInt($this->stack->popInt());
+        $c2 = self::convertS32ToU32($this->stack->popInt());
         $k = $c2 % 32;
-        $c1 = self::wasmI32ToPhpInt($this->stack->popInt());
+        $c1 = self::convertS32ToU32($this->stack->popInt());
         $this->stack->pushValue($c1 >> $k);
     }
 
     private function execInstrNumericI32Sub(Instrs\Numeric\I32Sub $instr): void
     {
-        $c2 = self::wasmI32ToPhpInt($this->stack->popInt());
-        $c1 = self::wasmI32ToPhpInt($this->stack->popInt());
+        $c2 = self::convertS32ToU32($this->stack->popInt());
+        $c1 = self::convertS32ToU32($this->stack->popInt());
         $c2Neg = ((~$c2 & 0xFFFFFFFF) + 1) & 0xFFFFFFFF;
-        $this->stack->pushValue(self::phpIntToWasmI32(($c1 + $c2Neg) & 0xFFFFFFFF));
+        $this->stack->pushValue(self::convertU32ToS32(($c1 + $c2Neg) & 0xFFFFFFFF));
     }
 
     private function execInstrNumericI32TruncF32S(Instrs\Numeric\I32TruncF32S $instr): void
@@ -1257,14 +1257,14 @@ final class Runtime
     private function execInstrNumericI32WrapI64(Instrs\Numeric\I32WrapI64 $instr): void
     {
         $c1 = $this->stack->popInt();
-        $this->stack->pushValue(self::phpIntToWasmI32($c1 & 0xFFFFFFFF));
+        $this->stack->pushValue(self::convertU32ToS32($c1 & 0xFFFFFFFF));
     }
 
     private function execInstrNumericI32Xor(Instrs\Numeric\I32Xor $instr): void
     {
-        $c2 = self::wasmI32ToPhpInt($this->stack->popInt());
-        $c1 = self::wasmI32ToPhpInt($this->stack->popInt());
-        $this->stack->pushValue(self::phpIntToWasmI32(($c1 ^ $c2) & 0xFFFFFFFF));
+        $c2 = self::convertS32ToU32($this->stack->popInt());
+        $c1 = self::convertS32ToU32($this->stack->popInt());
+        $this->stack->pushValue(self::convertU32ToS32(($c1 ^ $c2) & 0xFFFFFFFF));
     }
 
     private function execInstrNumericI64Add(Instrs\Numeric\I64Add $instr): void
@@ -1397,7 +1397,7 @@ final class Runtime
 
     private function execInstrNumericI64ExtendI32U(Instrs\Numeric\I64ExtendI32U $instr): void
     {
-        $c1 = self::wasmI32ToPhpInt($this->stack->popInt());
+        $c1 = self::convertS32ToU32($this->stack->popInt());
         $c2 = $c1 & 0xFFFFFFFF;
         $this->stack->pushValue($c2);
     }
@@ -1770,9 +1770,9 @@ final class Runtime
         $tabX = $this->store->tables[$taX];
         $taY = $f->module->tableAddrs[$y];
         $tabY = $this->store->tables[$taY];
-        $n = self::wasmI32ToPhpInt($this->stack->popInt());
-        $s = self::wasmI32ToPhpInt($this->stack->popInt());
-        $d = self::wasmI32ToPhpInt($this->stack->popInt());
+        $n = self::convertS32ToU32($this->stack->popInt());
+        $s = self::convertS32ToU32($this->stack->popInt());
+        $d = self::convertS32ToU32($this->stack->popInt());
         if (count($tabX->elem) < $d + $n || count($tabY->elem) < $s + $n) {
             throw new TrapException("table.copy: out of bounds", trapKind: TrapKind::OutOfBoundsTableAccess);
         }
@@ -1793,9 +1793,9 @@ final class Runtime
         $f = $this->stack->currentFrame();
         $ta = $f->module->tableAddrs[$x];
         $tab = $this->store->tables[$ta];
-        $n = self::wasmI32ToPhpInt($this->stack->popInt());
+        $n = self::convertS32ToU32($this->stack->popInt());
         $val = $this->stack->popRef();
-        $i = self::wasmI32ToPhpInt($this->stack->popInt());
+        $i = self::convertS32ToU32($this->stack->popInt());
         if (count($tab->elem) < $i + $n) {
             throw new TrapException("table.fill: out of bounds", trapKind: TrapKind::OutOfBoundsTableAccess);
         }
@@ -1811,7 +1811,7 @@ final class Runtime
         $f = $this->stack->currentFrame();
         $a = $f->module->tableAddrs[$x];
         $tab = $this->store->tables[$a];
-        $i = self::wasmI32ToPhpInt($this->stack->popInt());
+        $i = self::convertS32ToU32($this->stack->popInt());
         if (count($tab->elem) <= $i) {
             throw new TrapException("table.get: out of bounds", trapKind: TrapKind::OutOfBoundsTableAccess);
         }
@@ -1826,7 +1826,7 @@ final class Runtime
         $a = $f->module->tableAddrs[$x];
         $tab = $this->store->tables[$a];
         $sz = count($tab->elem);
-        $n = self::wasmI32ToPhpInt($this->stack->popInt());
+        $n = self::convertS32ToU32($this->stack->popInt());
         $val = $this->stack->popRef();
 
         $len = $sz + $n;
@@ -1859,9 +1859,9 @@ final class Runtime
         $tab = $this->store->tables[$ta];
         $ea = $f->module->elemAddrs[$y];
         $elem = $this->store->elems[$ea];
-        $n = self::wasmI32ToPhpInt($this->stack->popInt());
-        $s = self::wasmI32ToPhpInt($this->stack->popInt());
-        $d = self::wasmI32ToPhpInt($this->stack->popInt());
+        $n = self::convertS32ToU32($this->stack->popInt());
+        $s = self::convertS32ToU32($this->stack->popInt());
+        $d = self::convertS32ToU32($this->stack->popInt());
         if (count($elem->elem) < $s + $n) {
             throw new TrapException("table.init: out of bounds", trapKind: TrapKind::OutOfBoundsTableAccess);
         }
@@ -1881,7 +1881,7 @@ final class Runtime
         $a = $f->module->tableAddrs[$x];
         $tab = $this->store->tables[$a];
         $val = $this->stack->popRef();
-        $i = self::wasmI32ToPhpInt($this->stack->popInt());
+        $i = self::convertS32ToU32($this->stack->popInt());
         if (count($tab->elem) <= $i) {
             throw new TrapException("table.set: out of bounds", trapKind: TrapKind::OutOfBoundsTableAccess);
         }
@@ -1920,7 +1920,7 @@ final class Runtime
         $a = $f->module->memAddrs[0];
         $mem = $this->store->mems[$a];
         $c = $this->stack->popFloat();
-        $i = self::wasmI32ToPhpInt($this->stack->popInt());
+        $i = self::convertS32ToU32($this->stack->popInt());
         $ea = $i + $offset;
         $ok = $mem->storeF32($ea, $c);
         if (!$ok) {
@@ -1940,7 +1940,7 @@ final class Runtime
         $a = $f->module->memAddrs[0];
         $mem = $this->store->mems[$a];
         $c = $this->stack->popFloat();
-        $i = self::wasmI32ToPhpInt($this->stack->popInt());
+        $i = self::convertS32ToU32($this->stack->popInt());
         $ea = $i + $offset;
         $ok = $mem->storeF64($ea, $c);
         if (!$ok) {
@@ -1954,7 +1954,7 @@ final class Runtime
         $f = $this->stack->currentFrame();
         $a = $f->module->memAddrs[0];
         $mem = $this->store->mems[$a];
-        $i = self::wasmI32ToPhpInt($this->stack->popInt());
+        $i = self::convertS32ToU32($this->stack->popInt());
         $ea = $i + $offset;
         $c = $mem->loadI32_s32($ea);
         if ($c === null) {
@@ -1969,7 +1969,7 @@ final class Runtime
         $f = $this->stack->currentFrame();
         $a = $f->module->memAddrs[0];
         $mem = $this->store->mems[$a];
-        $i = self::wasmI32ToPhpInt($this->stack->popInt());
+        $i = self::convertS32ToU32($this->stack->popInt());
         $ea = $i + $offset;
         $c = $mem->loadI32_s16($ea);
         if ($c === null) {
@@ -1984,7 +1984,7 @@ final class Runtime
         $f = $this->stack->currentFrame();
         $a = $f->module->memAddrs[0];
         $mem = $this->store->mems[$a];
-        $i = self::wasmI32ToPhpInt($this->stack->popInt());
+        $i = self::convertS32ToU32($this->stack->popInt());
         $ea = $i + $offset;
         $c = $mem->loadI32_u16($ea);
         if ($c === null) {
@@ -1999,7 +1999,7 @@ final class Runtime
         $f = $this->stack->currentFrame();
         $a = $f->module->memAddrs[0];
         $mem = $this->store->mems[$a];
-        $i = self::wasmI32ToPhpInt($this->stack->popInt());
+        $i = self::convertS32ToU32($this->stack->popInt());
         $ea = $i + $offset;
         $c = $mem->loadI32_s8($ea);
         if ($c === null) {
@@ -2014,7 +2014,7 @@ final class Runtime
         $f = $this->stack->currentFrame();
         $a = $f->module->memAddrs[0];
         $mem = $this->store->mems[$a];
-        $i = self::wasmI32ToPhpInt($this->stack->popInt());
+        $i = self::convertS32ToU32($this->stack->popInt());
         $ea = $i + $offset;
         $c = $mem->loadI32_u8($ea);
         if ($c === null) {
@@ -2030,7 +2030,7 @@ final class Runtime
         $a = $f->module->memAddrs[0];
         $mem = $this->store->mems[$a];
         $c = $this->stack->popInt();
-        $i = self::wasmI32ToPhpInt($this->stack->popInt());
+        $i = self::convertS32ToU32($this->stack->popInt());
         $ea = $i + $offset;
         $ok = $mem->storeI32_s32($ea, $c);
         if (!$ok) {
@@ -2045,7 +2045,7 @@ final class Runtime
         $a = $f->module->memAddrs[0];
         $mem = $this->store->mems[$a];
         $c = $this->stack->popInt();
-        $i = self::wasmI32ToPhpInt($this->stack->popInt());
+        $i = self::convertS32ToU32($this->stack->popInt());
         $ea = $i + $offset;
         $ok = $mem->storeI32_s16($ea, $c);
         if (!$ok) {
@@ -2060,7 +2060,7 @@ final class Runtime
         $a = $f->module->memAddrs[0];
         $mem = $this->store->mems[$a];
         $c = $this->stack->popInt();
-        $i = self::wasmI32ToPhpInt($this->stack->popInt());
+        $i = self::convertS32ToU32($this->stack->popInt());
         $ea = $i + $offset;
         $ok = $mem->storeI32_s8($ea, $c);
         if (!$ok) {
@@ -2074,7 +2074,7 @@ final class Runtime
         $f = $this->stack->currentFrame();
         $a = $f->module->memAddrs[0];
         $mem = $this->store->mems[$a];
-        $i = self::wasmI32ToPhpInt($this->stack->popInt());
+        $i = self::convertS32ToU32($this->stack->popInt());
         $ea = $i + $offset;
         $c = $mem->loadI64_s64($ea);
         if ($c === null) {
@@ -2089,7 +2089,7 @@ final class Runtime
         $f = $this->stack->currentFrame();
         $a = $f->module->memAddrs[0];
         $mem = $this->store->mems[$a];
-        $i = self::wasmI32ToPhpInt($this->stack->popInt());
+        $i = self::convertS32ToU32($this->stack->popInt());
         $ea = $i + $offset;
         $c = $mem->loadI64_s16($ea);
         if ($c === null) {
@@ -2104,7 +2104,7 @@ final class Runtime
         $f = $this->stack->currentFrame();
         $a = $f->module->memAddrs[0];
         $mem = $this->store->mems[$a];
-        $i = self::wasmI32ToPhpInt($this->stack->popInt());
+        $i = self::convertS32ToU32($this->stack->popInt());
         $ea = $i + $offset;
         $c = $mem->loadI64_u16($ea);
         if ($c === null) {
@@ -2119,7 +2119,7 @@ final class Runtime
         $f = $this->stack->currentFrame();
         $a = $f->module->memAddrs[0];
         $mem = $this->store->mems[$a];
-        $i = self::wasmI32ToPhpInt($this->stack->popInt());
+        $i = self::convertS32ToU32($this->stack->popInt());
         $ea = $i + $offset;
         $c = $mem->loadI64_s32($ea);
         if ($c === null) {
@@ -2134,7 +2134,7 @@ final class Runtime
         $f = $this->stack->currentFrame();
         $a = $f->module->memAddrs[0];
         $mem = $this->store->mems[$a];
-        $i = self::wasmI32ToPhpInt($this->stack->popInt());
+        $i = self::convertS32ToU32($this->stack->popInt());
         $ea = $i + $offset;
         $c = $mem->loadI64_u32($ea);
         if ($c === null) {
@@ -2149,7 +2149,7 @@ final class Runtime
         $f = $this->stack->currentFrame();
         $a = $f->module->memAddrs[0];
         $mem = $this->store->mems[$a];
-        $i = self::wasmI32ToPhpInt($this->stack->popInt());
+        $i = self::convertS32ToU32($this->stack->popInt());
         $ea = $i + $offset;
         $c = $mem->loadI64_s8($ea);
         if ($c === null) {
@@ -2164,7 +2164,7 @@ final class Runtime
         $f = $this->stack->currentFrame();
         $a = $f->module->memAddrs[0];
         $mem = $this->store->mems[$a];
-        $i = self::wasmI32ToPhpInt($this->stack->popInt());
+        $i = self::convertS32ToU32($this->stack->popInt());
         $ea = $i + $offset;
         $c = $mem->loadI64_u8($ea);
         if ($c === null) {
@@ -2180,7 +2180,7 @@ final class Runtime
         $a = $f->module->memAddrs[0];
         $mem = $this->store->mems[$a];
         $c = $this->stack->popInt();
-        $i = self::wasmI32ToPhpInt($this->stack->popInt());
+        $i = self::convertS32ToU32($this->stack->popInt());
         $ea = $i + $offset;
         $ok = $mem->storeI64_s64($ea, $c);
         if (!$ok) {
@@ -2195,7 +2195,7 @@ final class Runtime
         $a = $f->module->memAddrs[0];
         $mem = $this->store->mems[$a];
         $c = $this->stack->popInt();
-        $i = self::wasmI32ToPhpInt($this->stack->popInt());
+        $i = self::convertS32ToU32($this->stack->popInt());
         $ea = $i + $offset;
         $ok = $mem->storeI64_s16($ea, $c);
         if (!$ok) {
@@ -2210,7 +2210,7 @@ final class Runtime
         $a = $f->module->memAddrs[0];
         $mem = $this->store->mems[$a];
         $c = $this->stack->popInt();
-        $i = self::wasmI32ToPhpInt($this->stack->popInt());
+        $i = self::convertS32ToU32($this->stack->popInt());
         $ea = $i + $offset;
         $ok = $mem->storeI64_s32($ea, $c);
         if (!$ok) {
@@ -2225,7 +2225,7 @@ final class Runtime
         $a = $f->module->memAddrs[0];
         $mem = $this->store->mems[$a];
         $c = $this->stack->popInt();
-        $i = self::wasmI32ToPhpInt($this->stack->popInt());
+        $i = self::convertS32ToU32($this->stack->popInt());
         $ea = $i + $offset;
         $ok = $mem->storeI64_s8($ea, $c);
         if (!$ok) {
@@ -2238,9 +2238,9 @@ final class Runtime
         $f = $this->stack->currentFrame();
         $ma = $f->module->memAddrs[0];
         $mem = $this->store->mems[$ma];
-        $n = self::wasmI32ToPhpInt($this->stack->popInt());
-        $s = self::wasmI32ToPhpInt($this->stack->popInt());
-        $d = self::wasmI32ToPhpInt($this->stack->popInt());
+        $n = self::convertS32ToU32($this->stack->popInt());
+        $s = self::convertS32ToU32($this->stack->popInt());
+        $d = self::convertS32ToU32($this->stack->popInt());
         if ($mem->size() < $s + $n || $mem->size() < $d + $n) {
             throw new TrapException("memory.copy: out of bounds", trapKind: TrapKind::OutOfBoundsMemoryAccess);
         }
@@ -2252,9 +2252,9 @@ final class Runtime
         $f = $this->stack->currentFrame();
         $ma = $f->module->memAddrs[0];
         $mem = $this->store->mems[$ma];
-        $n = self::wasmI32ToPhpInt($this->stack->popInt());
+        $n = self::convertS32ToU32($this->stack->popInt());
         $val = $this->stack->popInt();
-        $d = self::wasmI32ToPhpInt($this->stack->popInt());
+        $d = self::convertS32ToU32($this->stack->popInt());
         if ($mem->size() < $d + $n) {
             throw new TrapException("memory.fill: out of bounds", trapKind: TrapKind::OutOfBoundsMemoryAccess);
         }
@@ -2266,7 +2266,7 @@ final class Runtime
         $f = $this->stack->currentFrame();
         $a = $f->module->memAddrs[0];
         $mem = $this->store->mems[$a];
-        $n = self::wasmI32ToPhpInt($this->stack->popInt());
+        $n = self::convertS32ToU32($this->stack->popInt());
         $result = $mem->grow($n);
         $this->stack->pushValue($result);
     }
@@ -2279,9 +2279,9 @@ final class Runtime
         $mem = $this->store->mems[$ma];
         $da = $f->module->dataAddrs[$x];
         $data = $this->store->datas[$da];
-        $n = self::wasmI32ToPhpInt($this->stack->popInt());
-        $s = self::wasmI32ToPhpInt($this->stack->popInt());
-        $d = self::wasmI32ToPhpInt($this->stack->popInt());
+        $n = self::convertS32ToU32($this->stack->popInt());
+        $s = self::convertS32ToU32($this->stack->popInt());
+        $d = self::convertS32ToU32($this->stack->popInt());
         if (count($data->data) < $s + $n) {
             throw new TrapException("memory.init: out of bounds", trapKind: TrapKind::OutOfBoundsMemoryAccess);
         }
@@ -2345,7 +2345,7 @@ final class Runtime
     {
         $ls = $instr->labelTable;
         $ln = $instr->defaultLabel;
-        $i = self::wasmI32ToPhpInt($this->stack->popInt());
+        $i = self::convertS32ToU32($this->stack->popInt());
         if ($i < count($ls)) {
             return $ls[$i];
         } else {
@@ -2369,7 +2369,7 @@ final class Runtime
         $ta = $f->module->tableAddrs[$x];
         $tab = $this->store->tables[$ta];
         $ftExpect = $f->module->types[$y];
-        $i = self::wasmI32ToPhpInt($this->stack->popInt());
+        $i = self::convertS32ToU32($this->stack->popInt());
         if (count($tab->elem) <= $i) {
             throw new TrapException("call_indirect: out of bounds", trapKind: TrapKind::UndefinedElement);
         }
@@ -2456,7 +2456,7 @@ final class Runtime
         $f = $this->stack->currentFrame();
         $a = $f->module->memAddrs[0];
         $mem = $this->store->mems[$a];
-        $i = self::wasmI32ToPhpInt($this->stack->popInt());
+        $i = self::convertS32ToU32($this->stack->popInt());
         $ea = $i + $offset;
         $c = $mem->loadF32($ea);
         if ($c === null) {
@@ -2470,7 +2470,7 @@ final class Runtime
         $f = $this->stack->currentFrame();
         $a = $f->module->memAddrs[0];
         $mem = $this->store->mems[$a];
-        $i = self::wasmI32ToPhpInt($this->stack->popInt());
+        $i = self::convertS32ToU32($this->stack->popInt());
         $ea = $i + $offset;
         $c = $mem->loadF64($ea);
         if ($c === null) {
@@ -2508,28 +2508,28 @@ final class Runtime
         }
     }
 
-    private static function wasmI32ToPhpInt(int $x): int
+    private static function convertS32ToU32(int $x): int
     {
-        // assert(-0x80000000 <= $x && $x <= 0x7FFFFFFF, "wasmI32ToPhpInt: out of range $x");
+        // assert(-0x80000000 <= $x && $x <= 0x7FFFFFFF, "convertS32ToU32: out of range $x");
         if ($x < 0) {
             $buf = pack('l', $x);
             $result = unpack('L', $buf);
             assert($result !== false);
-            assert(0x00000000 <= $result[1] && $result[1] <= 0xFFFFFFFF, "wasmI32ToPhpInt: out of range $result[1]");
+            assert(0x00000000 <= $result[1] && $result[1] <= 0xFFFFFFFF, "convertS32ToU32: out of range $result[1]");
             return $result[1];
         } else {
             return $x;
         }
     }
 
-    private static function phpIntToWasmI32(int $x): int
+    private static function convertU32ToS32(int $x): int
     {
         assert(0x00000000 <= $x && $x <= 0xFFFFFFFF);
         if (($x & 0x80000000) !== 0) {
             $buf = pack('L', $x);
             $result = unpack('l', $buf);
             assert($result !== false);
-            assert(-0x80000000 <= $result[1] && $result[1] <= 0x7FFFFFFF, "phpIntToWasmI32: out of range $result[1]");
+            assert(-0x80000000 <= $result[1] && $result[1] <= 0x7FFFFFFF, "convertU32ToS32: out of range $result[1]");
             return $result[1];
         } else {
             return $x;
