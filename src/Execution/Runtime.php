@@ -36,6 +36,7 @@ use function pack;
 use function round;
 use function sqrt;
 use function unpack;
+use const PHP_INT_MIN;
 
 final class Runtime
 {
@@ -1113,20 +1114,17 @@ final class Runtime
         if ($c2 === 0) {
             throw new TrapException("i32.rem_s: divide by zero or overflow", trapKind: TrapKind::DivideByZero);
         }
-        if ($c1 === PHP_INT_MIN && $c2 === -1) {
-            throw new TrapException("i32.rem_s: divide by zero or overflow", trapKind: TrapKind::DivideByZero);
-        }
         $this->stack->pushValue($c1 % $c2);
     }
 
     private function execInstrNumericI32RemU(Instrs\Numeric\I32RemU $instr): void
     {
-        $c2 = $this->stack->popInt();
-        $c1 = $this->stack->popInt();
+        $c2 = self::convertS32ToU32($this->stack->popInt());
+        $c1 = self::convertS32ToU32($this->stack->popInt());
         if ($c2 === 0) {
             throw new TrapException("i32.rem_u: divide by zero", trapKind: TrapKind::DivideByZero);
         }
-        $this->stack->pushValue($c1 % $c2);
+        $this->stack->pushValue(self::convertU32ToS32($c1 % $c2));
     }
 
     private function execInstrNumericI32RotL(Instrs\Numeric\I32RotL $instr): void
@@ -1160,7 +1158,11 @@ final class Runtime
         $c1 = self::convertS32ToU32($this->stack->popInt());
         $signed = $c1 & 0x80000000;
         if ($signed !== 0) {
-            $this->stack->pushValue(self::convertU32ToS32(($c1 >> $k) & 0x80000000));
+            $result = $c1;
+            for ($i = 0; $i < $k; $i++) {
+                $result = ($result >> 1) | 0x80000000;
+            }
+            $this->stack->pushValue(self::convertU32ToS32($result));
         } else {
             $this->stack->pushValue($c1 >> $k);
         }
@@ -1171,7 +1173,7 @@ final class Runtime
         $c2 = self::convertS32ToU32($this->stack->popInt());
         $k = $c2 % 32;
         $c1 = self::convertS32ToU32($this->stack->popInt());
-        $this->stack->pushValue($c1 >> $k);
+        $this->stack->pushValue(self::convertU32ToS32($c1 >> $k));
     }
 
     private function execInstrNumericI32Sub(Instrs\Numeric\I32Sub $instr): void
@@ -1335,6 +1337,9 @@ final class Runtime
         $c1 = $this->stack->popInt();
         if ($c2 === 0) {
             throw new TrapException("i64.div_s: divide by zero", trapKind: TrapKind::DivideByZero);
+        }
+        if ($c1 === PHP_INT_MIN && $c2 === -1) {
+            throw new TrapException("i64.div_s: overflow", trapKind: TrapKind::IntegerOverflow);
         }
         $this->stack->pushValue(intdiv($c1, $c2));
     }
