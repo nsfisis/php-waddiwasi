@@ -157,9 +157,9 @@ abstract class SpecTestsuiteBase extends TestCase
         $type = $arg['type'];
         $value = $arg['value'];
         return match ($type) {
-            'i32' => unpack('l', pack('l', (int)$value))[1],
+            'i32' => unpack('l', pack('V', (int)$value))[1],
             'i64' => unpack('q', self::convertInt64ToBinary($value))[1],
-            'f32' => unpack('g', pack('l', (int)$value))[1],
+            'f32' => unpack('g', pack('V', (int)$value))[1],
             'f64' => unpack('e', self::convertInt64ToBinary($value))[1],
             'externref' => $value === 'null' ? Ref::RefNull(RefType::ExternRef) : Ref::RefExtern((int)$value),
             'funcref' => $value === 'null' ? Ref::RefNull(RefType::FuncRef) : Ref::RefFunc((int)$value),
@@ -270,6 +270,7 @@ abstract class SpecTestsuiteBase extends TestCase
             TrapKind::IndirectCallTypeMismatch => 'indirect call type mismatch',
             TrapKind::UndefinedElement => 'undefined element',
             TrapKind::DivideByZero => 'integer divide by zero',
+            TrapKind::IntegerOverflow => 'integer overflow',
         };
         $this->assertStringContainsString(
             $actualErrorMessage,

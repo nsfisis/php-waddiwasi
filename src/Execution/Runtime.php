@@ -908,7 +908,7 @@ final class Runtime
     {
         $c2 = $this->stack->popInt();
         $c1 = $this->stack->popInt();
-        $this->stack->pushValue(($c1 + $c2) % 0x100000000);
+        $this->stack->pushValue(self::phpIntToWasmI32(($c1 + $c2) & 0xFFFFFFFF));
     }
 
     private function execInstrNumericI32And(Instrs\Numeric\I32And $instr): void
@@ -958,20 +958,20 @@ final class Runtime
         if ($c2 === 0) {
             throw new TrapException("i32.div_s: divide by zero", trapKind: TrapKind::DivideByZero);
         }
-        if ($c1 === PHP_INT_MIN && $c2 === -1) {
-            throw new TrapException("i32.div_s: overflow");
+        if ($c1 === -2147483648 && $c2 === -1) {
+            throw new TrapException("i32.div_s: overflow", trapKind: TrapKind::IntegerOverflow);
         }
         $this->stack->pushValue(intdiv($c1, $c2));
     }
 
     private function execInstrNumericI32DivU(Instrs\Numeric\I32DivU $instr): void
     {
-        $c2 = $this->stack->popInt();
-        $c1 = $this->stack->popInt();
+        $c2 = self::wasmI32ToPhpInt($this->stack->popInt());
+        $c1 = self::wasmI32ToPhpInt($this->stack->popInt());
         if ($c2 === 0) {
             throw new TrapException("i32.div_u: divide by zero", trapKind: TrapKind::DivideByZero);
         }
-        $this->stack->pushValue(intdiv($c1, $c2));
+        $this->stack->pushValue(self::phpIntToWasmI32(intdiv($c1, $c2)));
     }
 
     private function execInstrNumericI32Eq(Instrs\Numeric\I32Eq $instr): void
@@ -1176,9 +1176,10 @@ final class Runtime
 
     private function execInstrNumericI32Sub(Instrs\Numeric\I32Sub $instr): void
     {
-        $c2 = $this->stack->popInt();
-        $c1 = $this->stack->popInt();
-        $this->stack->pushValue(($c1 - $c2) % 0x100000000);
+        $c2 = self::wasmI32ToPhpInt($this->stack->popInt());
+        $c1 = self::wasmI32ToPhpInt($this->stack->popInt());
+        $c2Neg = ((~$c2 & 0xFFFFFFFF) + 1) & 0xFFFFFFFF;
+        $this->stack->pushValue(self::phpIntToWasmI32(($c1 + $c2Neg) & 0xFFFFFFFF));
     }
 
     private function execInstrNumericI32TruncF32S(Instrs\Numeric\I32TruncF32S $instr): void
