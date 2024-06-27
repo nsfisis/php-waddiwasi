@@ -2416,10 +2416,10 @@ final class Runtime
         $instrs = $instr->body;
         $f = $this->stack->currentFrame();
         $bt = self::expandBlockType($blockType, $f->module);
-        $params = array_reverse($this->stack->popNValues(count($bt->params->types)));
         $m = count($bt->params->types);
         $l = new Label($m);
         while (true) {
+            $params = array_reverse($this->stack->popNValues($m));
             $result = $this->execInstrs($instrs, $l, $params);
             if ($result === null) {
                 return null;
