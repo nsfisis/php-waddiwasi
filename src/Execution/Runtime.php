@@ -1539,22 +1539,28 @@ final class Runtime
 
     private function execInstrNumericI64RotL(Instrs\Numeric\I64RotL $instr): void
     {
-        $i2 = $this->stack->popInt();
+        $i2 = self::convertS64ToBigUInt($this->stack->popInt());
+        $k = (int)bcmod($i2, '64');
         $i1 = $this->stack->popInt();
-        $k = $i2 % 64;
         $left = $i1 << $k;
-        $right = ($i1 >> (64 - $k)) & 0x7FFFFFFFFFFFFFFF;
+        $right = $i1;
+        for ($i = 0; $i < 64 - $k; $i++) {
+            $right = ($right >> 1) & 0x7FFFFFFFFFFFFFFF;
+        }
         $this->stack->pushValue($left | $right);
     }
 
     private function execInstrNumericI64RotR(Instrs\Numeric\I64RotR $instr): void
     {
-        $i2 = $this->stack->popInt();
+        $i2 = self::convertS64ToBigUInt($this->stack->popInt());
+        $k = (int)bcmod($i2, '64');
         $i1 = $this->stack->popInt();
-        $k = $i2 % 64;
-        $left = ($i1 >> $k) & 0x7FFFFFFFFFFFFFFF;
+        $left = $i1;
+        for ($i = 0; $i < $k; $i++) {
+            $left = ($left >> 1) & 0x7FFFFFFFFFFFFFFF;
+        }
         $right = $i1 << (64 - $k);
-        $this->stack->pushValue(($i1 >> $k) | ($i1 << (64 - $k)));
+        $this->stack->pushValue($left | $right);
     }
 
     private function execInstrNumericI64Shl(Instrs\Numeric\I64Shl $instr): void
