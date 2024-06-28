@@ -1346,12 +1346,12 @@ final class Runtime
 
     private function execInstrNumericI64DivU(Instrs\Numeric\I64DivU $instr): void
     {
-        $c2 = $this->stack->popInt();
-        $c1 = $this->stack->popInt();
-        if ($c2 === 0) {
+        $c2 = self::convertS64ToBigUInt($this->stack->popInt());
+        $c1 = self::convertS64ToBigUInt($this->stack->popInt());
+        if ($c2 === '0') {
             throw new TrapException("i64.div_u: divide by zero", trapKind: TrapKind::DivideByZero);
         }
-        $this->stack->pushValue(intdiv($c1, $c2));
+        $this->stack->pushValue(self::bigIntToPhpInt(bcdiv($c1, $c2, 0)));
     }
 
     private function execInstrNumericI64Eq(Instrs\Numeric\I64Eq $instr): void
@@ -1529,12 +1529,12 @@ final class Runtime
 
     private function execInstrNumericI64RemU(Instrs\Numeric\I64RemU $instr): void
     {
-        $c2 = $this->stack->popInt();
-        $c1 = $this->stack->popInt();
-        if ($c2 === 0) {
+        $c2 = self::convertS64ToBigUInt($this->stack->popInt());
+        $c1 = self::convertS64ToBigUInt($this->stack->popInt());
+        if ($c2 === '0') {
             throw new TrapException("i64.rem_u: divide by zero", trapKind: TrapKind::DivideByZero);
         }
-        $this->stack->pushValue($c1 % $c2);
+        $this->stack->pushValue(self::bigIntToPhpInt(bcmod($c1, $c2, 0)));
     }
 
     private function execInstrNumericI64RotL(Instrs\Numeric\I64RotL $instr): void
@@ -1542,7 +1542,9 @@ final class Runtime
         $i2 = $this->stack->popInt();
         $i1 = $this->stack->popInt();
         $k = $i2 % 64;
-        $this->stack->pushValue(($i1 << $k) | ($i1 >> (64 - $k)));
+        $left = $i1 << $k;
+        $right = ($i1 >> (64 - $k)) & 0x7FFFFFFFFFFFFFFF;
+        $this->stack->pushValue($left | $right);
     }
 
     private function execInstrNumericI64RotR(Instrs\Numeric\I64RotR $instr): void
@@ -1550,29 +1552,31 @@ final class Runtime
         $i2 = $this->stack->popInt();
         $i1 = $this->stack->popInt();
         $k = $i2 % 64;
+        $left = ($i1 >> $k) & 0x7FFFFFFFFFFFFFFF;
+        $right = $i1 << (64 - $k);
         $this->stack->pushValue(($i1 >> $k) | ($i1 << (64 - $k)));
     }
 
     private function execInstrNumericI64Shl(Instrs\Numeric\I64Shl $instr): void
     {
-        $c2 = $this->stack->popInt();
-        $k = $c2 % 64;
+        $c2 = self::convertS64ToBigUInt($this->stack->popInt());
+        $k = (int)bcmod($c2, '64');
         $c1 = $this->stack->popInt();
         $this->stack->pushValue($c1 << $k);
     }
 
     private function execInstrNumericI64ShrS(Instrs\Numeric\I64ShrS $instr): void
     {
-        $c2 = $this->stack->popInt();
-        $k = $c2 % 64;
+        $c2 = self::convertS64ToBigUInt($this->stack->popInt());
+        $k = (int)bcmod($c2, '64');
         $c1 = $this->stack->popInt();
         $this->stack->pushValue($c1 >> $k);
     }
 
     private function execInstrNumericI64ShrU(Instrs\Numeric\I64ShrU $instr): void
     {
-        $c2 = $this->stack->popInt();
-        $k = $c2 % 64;
+        $c2 = self::convertS64ToBigUInt($this->stack->popInt());
+        $k = (int)bcmod($c2, '64');
         if ($k === 0) {
             return;
         }
@@ -2538,6 +2542,15 @@ final class Runtime
             return $result[1];
         } else {
             return $x;
+        }
+    }
+
+    private static function convertS64ToBigUInt(int $x): string
+    {
+        if ($x < 0) {
+            return bcadd((string)$x, '18446744073709551616');
+        } else {
+            return (string)$x;
         }
     }
 
