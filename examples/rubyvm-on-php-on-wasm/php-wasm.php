@@ -315,6 +315,52 @@ function fsLstat(string $path): object
     return fsStat($path, true);
 }
 
+function fsOpen(string $path, int $flags, int $mode): ?int
+{
+    global $fdTable;
+    if (!isset($fdTable)) {
+        $fdTable = [];
+    }
+    $fp = fopen($path, 'r');
+    if ($fp === false) {
+        return null;
+    }
+    $nextFd = count($fdTable) + 10;
+    $fdTable[$path] = [
+        $nextFd,
+        $fp,
+    ];
+    return $fdTable[$path][0];
+}
+
+function fsGetPathFromFd(int $fd): ?string
+{
+    global $fdTable;
+    if (!isset($fdTable)) {
+        return null;
+    }
+    foreach ($fdTable as $path => [$fd2, $fp]) {
+        if ($fd2 === $fd) {
+            return $path;
+        }
+    }
+    return null;
+}
+
+function fsGetFpFromFd(int $fd): mixed
+{
+    global $fdTable;
+    if (!isset($fdTable)) {
+        return null;
+    }
+    foreach ($fdTable as $path => [$fd2, $fp]) {
+        if ($fd2 === $fd) {
+            return $fp;
+        }
+    }
+    return null;
+}
+
 // Type: (i32, i32, i32) -> (i32)
 function hostFunc__env__invoke_iii(Runtime $runtime): void
 {
@@ -691,13 +737,63 @@ function hostFunc__env____syscall_ioctl(Runtime $runtime): void
 // Type: (i32) -> (i32)
 function hostFunc__wasi_snapshot_preview1__fd_close(Runtime $runtime): void
 {
-    throw new \RuntimeException('wasi_snapshot_preview1::fd_close: not implemented');
+    $fd = $runtime->stack->popInt();
+    $fp = fsGetFpFromFd($fd);
+    assert($fp !== null);
+    fclose($fp);
+    $runtime->stack->pushValue(0);
 }
 
 // Type: (i32, i32, i32, i32) -> (i32)
 function hostFunc__wasi_snapshot_preview1__fd_read(Runtime $runtime): void
 {
-    throw new \RuntimeException('wasi_snapshot_preview1::fd_read: not implemented');
+    // Output pointer to the number of bytes written.
+    $pnum = $runtime->stack->popInt();
+    // Length of the array of iov structs.
+    $iovcnt = $runtime->stack->popInt();
+    // Pointer to the array of iov structs.
+    $iov = $runtime->stack->popInt();
+    // File descripter.
+    $fd = $runtime->stack->popInt();
+
+    $fp = fsGetFpFromFd($fd);
+    assert($fp !== null);
+
+    // struct iov {
+    //   ptr: u32, pointer to the data
+    //   len: u32
+    // }
+    $mem = $runtime->getExportedMemory('memory');
+    \assert($mem !== null);
+
+    $nRead = 0;
+    for ($i = 0; $i < $iovcnt; $i++) {
+        $ptr = $mem->loadI32_s32($iov + $i * 8);
+        \assert($ptr !== null);
+        $len = $mem->loadI32_s32($iov + $i * 8 + 4);
+        \assert($len !== null);
+        $buf = fread($fp, $len);
+        if ($buf === false) {
+            $nRead = -1;
+            break;
+        }
+        $curr = strlen($buf);
+        if ($curr <= 0) {
+            $nRead = -1;
+            break;
+        }
+        for ($k = 0; $k < $curr; $k++) {
+            $mem->storeByte($ptr, ord($buf[$k]));
+        }
+        $nRead += $curr;
+        if ($curr < $len) {
+            break;
+        }
+    }
+
+    $mem->storeI32_s32($pnum, $nRead);
+
+    $runtime->stack->pushValue(0);
 }
 
 // Type: (i32, i32, i32, i32) -> (i32)
@@ -848,20 +944,34 @@ function hostFunc__env____syscall_openat(Runtime $runtime): void
         $mode = 0;
     }
 
-    // no such file
-    $runtime->stack->pushValue(-44);
+    $fd = fsOpen($path, $flags, $mode);
+    if ($fd !== null) {
+        $runtime->stack->pushValue($fd);
+    } else {
+        // no such file
+        $runtime->stack->pushValue(-44);
+    }
 }
 
 // Type: (i32, i32) -> (i32)
 function hostFunc__env____syscall_fstat64(Runtime $runtime): void
 {
-    throw new \RuntimeException('env::__syscall_fstat64: not implemented');
+    $buf = $runtime->stack->popInt();
+    $fd = $runtime->stack->popInt();
+    $path = fsGetPathFromFd($fd);
+    assert($path !== null);
+    syscallDoStat($runtime, fn ($path) => fsStat($path, false), $path, $buf);
+    $runtime->stack->pushValue(0);
 }
 
 // Type: (i32, i32) -> (i32)
 function hostFunc__env____syscall_stat64(Runtime $runtime): void
 {
-    throw new \RuntimeException('env::__syscall_stat64: not implemented');
+    $buf = $runtime->stack->popInt();
+    $path = $runtime->stack->popInt();
+    $path = syscallGetStr($runtime, $path);
+    syscallDoStat($runtime, fn ($path) => fsStat($path, false), $path, $buf);
+    $runtime->stack->pushValue(0);
 }
 
 // Type: (i32, i32, i32, i32) -> (i32)
