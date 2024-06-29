@@ -226,6 +226,52 @@ function syscallGetStr(Runtime $runtime, int $ptr): string
     return $str;
 }
 
+function heap32Write(Runtime $runtime, int $ptr, int $value): void
+{
+    $mem = $runtime->getExportedMemory('memory');
+    \assert($mem !== null);
+    $mem->storeI32_s32($ptr, $value);
+}
+
+function heapU32Write(Runtime $runtime, int $ptr, int $value): void
+{
+    $mem = $runtime->getExportedMemory('memory');
+    \assert($mem !== null);
+    $mem->storeI32_s32($ptr, $value);
+}
+
+function heap64Write(Runtime $runtime, int $ptr, int $value): void
+{
+    $mem = $runtime->getExportedMemory('memory');
+    \assert($mem !== null);
+    $mem->storeI64_s64($ptr, $value);
+}
+
+function syscallDoStat(Runtime $runtime, callable $func, string $path, int $buf): void
+{
+    $stat = $func($path);
+
+    heap32Write($runtime, $buf, $stat->dev);
+    heap32Write($runtime, $buf + 4, $stat->mode);
+    heapU32Write($runtime, $buf + 8, $stat->nlink);
+    heap32Write($runtime, $buf + 12, $stat->uid);
+    heap32Write($runtime, $buf + 16, $stat->gid);
+    heap32Write($runtime, $buf + 20, $stat->rdev);
+    heap64Write($runtime, $buf + 24, $stat->size);
+    heap32Write($runtime, $buf + 32, 4096);
+    heap32Write($runtime, $buf + 36, $stat->blocks);
+    $atime = $stat->atime;
+    heap64Write($runtime, $buf + 40, $atime);
+    heapU32Write($runtime, $buf + 48, ($atime % 1000) * 1000);
+    $mtime = $stat->mtime;
+    heap64Write($runtime, $buf + 56, $mtime);
+    heapU32Write($runtime, $buf + 64, ($mtime % 1000) * 1000);
+    $ctime = $stat->ctime;
+    heap64Write($runtime, $buf + 72, $ctime);
+    heapU32Write($runtime, $buf + 80, ($ctime % 1000) * 1000);
+    heap64Write($runtime, $buf + 88, $stat->ino);
+}
+
 function syscallCalculateAt(Runtime $runtime, int $dirfd, string $path): string
 {
     if ($path[0] === '/') {
@@ -242,6 +288,31 @@ function syscallCalculateAt(Runtime $runtime, int $dirfd, string $path): string
     } else {
         return $dir . '/' . $path;
     }
+}
+
+function fsStat(string $path, bool $dontFollow): object
+{
+    $phpStat = $dontFollow ? lstat($path) : stat($path);
+    assert($phpStat !== false);
+    return (object)[
+        'dev' => $phpStat['dev'],
+        'mode' => $phpStat['mode'],
+        'nlink' => $phpStat['nlink'],
+        'uid' => $phpStat['uid'],
+        'gid' => $phpStat['gid'],
+        'rdev' => $phpStat['rdev'],
+        'size' => $phpStat['size'],
+        'blocks' => $phpStat['blocks'],
+        'ino' => $phpStat['ino'],
+        'atime' => $phpStat['atime'] * 1000,
+        'mtime' => $phpStat['mtime'] * 1000,
+        'ctime' => $phpStat['ctime'] * 1000,
+    ];
+}
+
+function fsLstat(string $path): object
+{
+    return fsStat($path, true);
 }
 
 // Type: (i32, i32, i32) -> (i32)
@@ -805,9 +876,8 @@ function hostFunc__env____syscall_lstat64(Runtime $runtime): void
     $buf = $runtime->stack->popInt();
     $path = $runtime->stack->popInt();
     $path = syscallGetStr($runtime, $path);
-    // TODO
-    // syscallDoStat(FS.lstat, $runtime, $path, $buf);
-    $runtime->stack->pushValue(42);
+    syscallDoStat($runtime, fsLstat(...), $path, $buf);
+    $runtime->stack->pushValue(0);
 }
 
 // Type: (i32) -> (i32)
