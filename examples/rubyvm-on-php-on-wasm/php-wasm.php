@@ -321,7 +321,7 @@ function fsOpen(string $path, int $flags, int $mode): ?int
     if (!isset($fdTable)) {
         $fdTable = [];
     }
-    $fp = fopen($path, 'r');
+    $fp = @fopen($path, 'r');
     if ($fp === false) {
         return null;
     }
