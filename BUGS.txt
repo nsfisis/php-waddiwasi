@@ -1,0 +1,41 @@
+# Failed spec tests
+
+## Numeric
+
+* F64Test
+* F64BitwiseTest
+* F32Test
+* F32BitwiseTest
+* ConversionsTest
+* FloatExprsTest
+* FloatLiteralsTest
+* FloatMemoryTest
+* FloatMiscTest
+* LoopTest
+* TrapsTest
+
+## Spectest
+
+* DataTest
+* ElemTest
+* ExportsTest
+* FuncPtrsTest
+* GlobalTest
+* ImportsTest
+* LinkingTest
+* NamesTest
+* StartTest
+
+## Register
+
+* RefFuncTest
+* TableCopyTest
+* TableInitTest
+
+## Misc.
+
+* CustomTest
+* SkipStackGuardPageTest
+* Utf8CustomSectionIdTest
+* Utf8ImportFieldTest
+* Utf8ImportModuleTest
