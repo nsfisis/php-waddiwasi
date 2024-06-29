@@ -27,9 +27,11 @@ use function array_reverse;
 use function assert;
 use function ceil;
 use function count;
+use function fdiv;
 use function floor;
 use function intdiv;
 use function is_int;
+use function is_nan;
 use function max;
 use function min;
 use function pack;
@@ -658,6 +660,11 @@ final class Runtime
     {
         $c2 = $this->stack->popFloat();
         $c1 = $this->stack->popFloat();
+        if (is_nan($c1) || is_nan($c2)) {
+            // PHP's standard max() handles NaNs in diffrent way than WebAssembly spec does.
+            $this->stack->pushValue(NAN);
+            return;
+        }
         $this->stack->pushValue(max($c1, $c2));
     }
 
@@ -665,6 +672,11 @@ final class Runtime
     {
         $c2 = $this->stack->popFloat();
         $c1 = $this->stack->popFloat();
+        if (is_nan($c1) || is_nan($c2)) {
+            // PHP's standard min() handles NaNs in diffrent way than WebAssembly spec does.
+            $this->stack->pushValue(NAN);
+            return;
+        }
         $this->stack->pushValue(min($c1, $c2));
     }
 
@@ -784,7 +796,7 @@ final class Runtime
     {
         $c2 = $this->stack->popFloat();
         $c1 = $this->stack->popFloat();
-        $this->stack->pushValue($c1 / $c2);
+        $this->stack->pushValue(fdiv($c1, $c2));
     }
 
     private function execInstrNumericF64Eq(Instrs\Numeric\F64Eq $instr): void
@@ -832,6 +844,11 @@ final class Runtime
     {
         $c2 = $this->stack->popFloat();
         $c1 = $this->stack->popFloat();
+        if (is_nan($c1) || is_nan($c2)) {
+            // PHP's standard max() handles NaNs in diffrent way than WebAssembly spec does.
+            $this->stack->pushValue(NAN);
+            return;
+        }
         $this->stack->pushValue(max($c1, $c2));
     }
 
@@ -839,6 +856,11 @@ final class Runtime
     {
         $c2 = $this->stack->popFloat();
         $c1 = $this->stack->popFloat();
+        if (is_nan($c1) || is_nan($c2)) {
+            // PHP's standard min() handles NaNs in diffrent way than WebAssembly spec does.
+            $this->stack->pushValue(NAN);
+            return;
+        }
         $this->stack->pushValue(min($c1, $c2));
     }
 

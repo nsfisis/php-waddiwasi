@@ -159,8 +159,16 @@ abstract class SpecTestsuiteBase extends TestCase
         return match ($type) {
             'i32' => unpack('l', pack('V', (int)$value))[1],
             'i64' => unpack('q', self::convertInt64ToBinary($value))[1],
-            'f32' => unpack('g', pack('V', (int)$value))[1],
-            'f64' => unpack('e', self::convertInt64ToBinary($value))[1],
+            'f32' => match ($value) {
+                'nan:canonical' => NAN,
+                'nan:arithmetic' => NAN,
+                default => unpack('g', pack('V', (int)$value))[1],
+            },
+            'f64' => match ($value) {
+                'nan:canonical' => NAN,
+                'nan:arithmetic' => NAN,
+                default => unpack('e', self::convertInt64ToBinary($value))[1],
+            },
             'externref' => $value === 'null' ? Ref::RefNull(RefType::ExternRef) : Ref::RefExtern((int)$value),
             'funcref' => $value === 'null' ? Ref::RefNull(RefType::FuncRef) : Ref::RefFunc((int)$value),
             default => throw new RuntimeException("unknown type: $type"),
