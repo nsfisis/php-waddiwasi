@@ -141,6 +141,22 @@ $results = $runtime->invoke("php_wasm_run", [$codePtr]);
 $exitCode = $results[0];
 \assert(\is_int($exitCode));
 
+function dumpMemory($mem): void
+{
+    $buf = '';
+    $s = $mem->size();
+    for ($j = 0; $j < $s; $j++) {
+        $c = $mem->loadByte($j);
+        \assert($c !== null);
+        $buf .= \chr($c);
+        if ($j % 1024 === 1023) {
+            fputs(STDOUT, $buf);
+            $buf = "";
+        }
+    }
+    fputs(STDOUT, $buf);
+}
+
 function allocateStringOnWasmMemory(Runtime $runtime, string $str): int
 {
     // Plus 1 for the null terminator in C.
@@ -197,9 +213,9 @@ function makeHostFunc(string $typeDef, callable $fn, string $fnName): FuncInst
     $results = array_map($stringToType, $resultsDef === '' ? [] : explode(', ', $resultsDef));
     $type = new FuncType(new ResultType($params), new ResultType($results));
     return FuncInst::Host($type, function ($runtime) use ($fn, $fnName) {
-        echo "TRACE: $fnName BEGIN\n";
+        // echo "TRACE: $fnName BEGIN\n";
         $fn($runtime);
-        echo "TRACE: $fnName END\n";
+        // echo "TRACE: $fnName END\n";
     });
 }
 
@@ -215,6 +231,11 @@ function getWasmTableEntry(Runtime $runtime, int $funcPtr): int
     $func = $wasmTable->elem[$funcPtr] ?? null;
     \assert($func instanceof Refs\RefFunc, "Expected RefFunc, but got " . \get_class($func));
     return $func->addr;
+}
+
+function convertI32PairToI53Checked(int $lo, int $hi): ?int
+{
+    return $lo + hi * 4294967296;
 }
 
 function syscallGetStr(Runtime $runtime, int $ptr): string
@@ -333,6 +354,7 @@ function fsOpen(string $path, int $flags, int $mode): ?int
     $fdTable[$path] = [
         $nextFd,
         $fp,
+        $flags,
     ];
     return $fdTable[$path][0];
 }
@@ -343,7 +365,7 @@ function fsGetPathFromFd(int $fd): ?string
     if (!isset($fdTable)) {
         return null;
     }
-    foreach ($fdTable as $path => [$fd2, $fp]) {
+    foreach ($fdTable as $path => [$fd2, $fp, $flags]) {
         if ($fd2 === $fd) {
             return $path;
         }
@@ -357,12 +379,53 @@ function fsGetFpFromFd(int $fd): mixed
     if (!isset($fdTable)) {
         return null;
     }
-    foreach ($fdTable as $path => [$fd2, $fp]) {
+    foreach ($fdTable as $path => [$fd2, $fp, $flags]) {
         if ($fd2 === $fd) {
             return $fp;
         }
     }
     return null;
+}
+
+function fsGetFlagsFromFd(int $fd): ?int
+{
+    global $fdTable;
+    if (!isset($fdTable)) {
+        return null;
+    }
+    foreach ($fdTable as $path => [$fd2, $fp, $flags]) {
+        if ($fd2 === $fd) {
+            return $flags;
+        }
+    }
+    return null;
+}
+
+function fsMmap(mixed $fp, int $len, int $offset, int $prot, int $flags): array
+{
+    $contents = $fp->node->contents;
+
+    // Only make a new copy when MAP_PRIVATE is specified.
+    if (($flags & 2) !== 0 && $contents->buffer === HEAP8.buffer) {
+        // We can't emulate MAP_SHARED when the file is not backed by the
+        // buffer we're mapping to (e.g. the HEAP buffer).
+        $allocated = 0;
+        $ptr = $contents->byteOffset;
+    } else {
+        // Try to avoid unnecessary slices.
+        if ($offset > 0 || $offset + $len < contents.length) {
+            if ($contents.subarray) {
+                $contents = $contents.subarray($offset, $offset + $len);
+            } else {
+                $contents = Array.prototype.slice.call($contents, $offset, $offset + $len);
+            }
+        }
+        $allocated = 1;
+        $ptr = mmapAlloc($len);
+        HEAP8.set(contents, ptr);
+    }
+
+    return [$ptr, $allocated];
 }
 
 // Type: (i32, i32, i32) -> (i32)
@@ -729,7 +792,45 @@ function hostFunc__wasi_snapshot_preview1__environ_get(Runtime $runtime): void
 // Type: (i32, i32, i32) -> (i32)
 function hostFunc__env____syscall_fcntl64(Runtime $runtime): void
 {
-    throw new \RuntimeException('env::__syscall_fcntl64: not implemented');
+    $varargs = $runtime->stack->popInt();
+    $cmd = $runtime->stack->popInt();
+    $fd = $runtime->stack->popInt();
+
+    $fp = fsGetFpFromFd($fd);
+
+    switch ($cmd) {
+    case 0:
+        throw new \RuntimeException("env::__syscall_fcntl64: command $cmd not implemented");
+        return;
+    case 1:
+    case 2:
+        $runtime->stack->pushValue(0);
+        return;
+    case 3:
+        $runtime->stack->pushValue(fsGetFlagsFromFd($fd));
+        return;
+    case 4:
+        throw new \RuntimeException("env::__syscall_fcntl64: command $cmd not implemented");
+        return;
+    case 5:
+        throw new \RuntimeException("env::__syscall_fcntl64: command $cmd not implemented");
+        return;
+    case 6:
+    case 7:
+        $runtime->stack->pushValue(0);
+        return;
+    case 16:
+    case 8:
+        $runtime->stack->pushValue(-28);
+        return;
+    case 9:
+        // setErrno(28);
+        $runtime->stack->pushValue(-1);
+        return;
+    default:
+        $runtime->stack->pushValue(-28);
+        return;
+    }
 }
 
 // Type: (i32, i32, i32) -> (i32)
@@ -786,8 +887,10 @@ function hostFunc__wasi_snapshot_preview1__fd_read(Runtime $runtime): void
             $nRead = -1;
             break;
         }
+        // echo "fd_read(fd=$fd, iov=$iov, iovcnt=$iovcnt, pnum=$pnum) = { p=$ptr, l=$len }\n";
         for ($k = 0; $k < $curr; $k++) {
-            $mem->storeByte($ptr, ord($buf[$k]));
+            $mem->storeByte($ptr + $k, ord($buf[$k]));
+            // echo "  [$k] = ord($buf[$k])\n";
         }
         $nRead += $curr;
         if ($curr < $len) {
@@ -826,6 +929,7 @@ function hostFunc__wasi_snapshot_preview1__fd_write(Runtime $runtime): void
         $ptr = $mem->loadI32_s32($iov + $i * 8);
         \assert($ptr !== null);
         $len = $mem->loadI32_s32($iov + $i * 8 + 4);
+        // echo "fd_write($iovcnt, $iov) [$i] = { p=$ptr, l=$len };\n";
         \assert($len !== null);
         $buf = '';
         for ($j = 0; $j < $len; $j++) {
@@ -854,7 +958,16 @@ function hostFunc__wasi_snapshot_preview1__proc_exit(Runtime $runtime): void
 // Type: (i32, i32, i32, i32) -> (i32)
 function hostFunc__env____syscall_faccessat(Runtime $runtime): void
 {
-    throw new \RuntimeException('env::__syscall_faccessat: not implemented');
+    $flags = $runtime->stack->popInt();
+    $amode = $runtime->stack->popInt();
+    $path = $runtime->stack->popInt();
+    $dirfd = $runtime->stack->popInt();
+
+    $path = syscallGetStr($runtime, $path);
+    $path = syscallCalculateAt($runtime, $dirfd, $path);
+
+    // Always allow accesses.
+    $runtime->stack->pushValue(0);
 }
 
 // Type: (i32) -> (i32)
@@ -1212,7 +1325,19 @@ function hostFunc__env____syscall_ftruncate64(Runtime $runtime): void
 // Type: (i32, i32, i32, i32, i32) -> (i32)
 function hostFunc__wasi_snapshot_preview1__fd_seek(Runtime $runtime): void
 {
-    throw new \RuntimeException('wasi_snapshot_preview1::fd_seek: not implemented');
+    $newOffset = $runtime->stack->popInt();
+    $whence = $runtime->stack->popInt();
+    $offset_high = $runtime->stack->popInt();
+    $offset_low = $runtime->stack->popInt();
+    $fd = $runtime->stack->popInt();
+
+    $offset = $offset_low + $offset_high * 4294967296;
+    $fp = fsGetFpFromFd($fd);
+    fseek($fp, $offset, $whence);
+    $pos = ftell($fp);
+    heap64Write($runtime, $newOffset, $pos);
+
+    $runtime->stack->pushValue(0);
 }
 
 // Type: (i32) -> (i32)
@@ -1242,5 +1367,21 @@ function hostFunc__env___munmap_js(Runtime $runtime): void
 // Type: (i32, i32, i32, i32, i32, i32, i32, i32) -> (i32)
 function hostFunc__env___mmap_js(Runtime $runtime): void
 {
-    throw new \RuntimeException('env::_mmap_js: not implemented');
+    $addr = $runtime->stack->popInt();
+    $allocated = $runtime->stack->popInt();
+    $offset_high = $runtime->stack->popInt();
+    $offset_low = $runtime->stack->popInt();
+    $fd = $runtime->stack->popInt();
+    $flags = $runtime->stack->popInt();
+    $prot = $runtime->stack->popInt();
+    $len = $runtime->stack->popInt();
+
+    $offset = $offset_low + $offset_high * 4294967296;
+
+    $fp = fsGetFpFromFd($fd);
+    [$resultPtr, $resultAllocated] = fsMmap($fp, $len, $offset, $prot, $flags);
+    heap32Write($allocated, $resultAllocated);
+    heapU32Write($addr, $resultPtr);
+
+    $runtime->stack->pushValue(0);
 }
