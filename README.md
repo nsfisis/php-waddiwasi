@@ -16,6 +16,17 @@ The PHP runtime can be compiled to WebAssembly binary. This Wasm runtime can exe
 $ php -d zend.assertions=-1 -d memory_limit=512M -d opcache.enable_cli=on -d opcache.jit=on -d opcache.jit_buffer_size=1G examples/php-on-wasm/php-wasm.php
 ```
 
+### RubyVM on PHP on Wasm
+
+https://github.com/m3m0r7/rubyvm-on-php is a RubyVM written in pure PHP.
+
+It works on the PHP runtime on my Wasm runtime.
+
+```
+$ cd examples/rubyvm-on-php-on-wasm
+$ ./HelloWorld.sh
+```
+
 
 
 ## Talks
