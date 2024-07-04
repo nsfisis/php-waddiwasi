@@ -360,7 +360,7 @@ function fsStat(string $path, bool $dontFollow): object
             'mtime' => 0,
             'ctime' => 0,
         ];
-    } else if ($path === 'php://stdout') {
+    } elseif ($path === 'php://stdout') {
         return (object)[
             'dev' => 0,
             'mode' => 0,
@@ -375,7 +375,7 @@ function fsStat(string $path, bool $dontFollow): object
             'mtime' => 0,
             'ctime' => 0,
         ];
-    } else if ($path === 'php://stderr') {
+    } elseif ($path === 'php://stderr') {
         return (object)[
             'dev' => 0,
             'mode' => 0,
@@ -393,7 +393,7 @@ function fsStat(string $path, bool $dontFollow): object
     }
 
     $phpStat = $dontFollow ? lstat($path) : stat($path);
-    assert($phpStat !== false);
+    \assert($phpStat !== false);
     return (object)[
         'dev' => $phpStat['dev'],
         'mode' => $phpStat['mode'],
@@ -415,18 +415,20 @@ function fsLstat(string $path): object
     return fsStat($path, true);
 }
 
-final class VFile {
+final class VFile
+{
     public ?array $getdents = null;
 
+    /**
+     * @param resource $fp
+     */
     public function __construct(
         public readonly int $fd,
-        /**
-         * @param resource $fp
-         */
         public readonly mixed $fp,
         public readonly int $flags,
         public readonly string $path,
-    ) {}
+    ) {
+    }
 
     public function seek(int $offset, int $whence): int
     {
@@ -464,7 +466,7 @@ function fsOpen(string $path, int $flags, int $mode): ?int
     if ($fp === false) {
         return null;
     }
-    $nextFd = count($fdTable) + 10;
+    $nextFd = \count($fdTable) + 10;
     $fdTable[$nextFd] = new VFile(
         $nextFd,
         $fp,
@@ -480,7 +482,7 @@ function fsDup(int $fd): ?int
     if (!isset($fdTable)) {
         return null;
     }
-    $nextFd = count($fdTable) + 10;
+    $nextFd = \count($fdTable) + 10;
     if ($fd === 0) {
         $fp = fopen('php://stdin', 'r');
         $fdTable[$nextFd] = new VFile(
@@ -489,7 +491,7 @@ function fsDup(int $fd): ?int
             0,
             'php://stdin',
         );
-    } else if ($fd === 1) {
+    } elseif ($fd === 1) {
         $fp = fopen('php://stdout', 'w');
         $fdTable[$nextFd] = new VFile(
             $nextFd,
@@ -497,7 +499,7 @@ function fsDup(int $fd): ?int
             0,
             'php://stdout',
         );
-    } else if ($fd === 2) {
+    } elseif ($fd === 2) {
         $fp = fopen('php://stderr', 'w');
         $fdTable[$nextFd] = new VFile(
             $nextFd,
@@ -608,7 +610,7 @@ function fsMmap(Runtime $runtime, int $fd, int $len, int $offset, int $prot, int
     $mem = $runtime->getExportedMemory('memory');
     \assert($mem !== null);
     for ($i = 0; $i < $len; $i++) {
-        $mem->storeByte($ptr + $i, ord($buf[$i]));
+        $mem->storeByte($ptr + $i, \ord($buf[$i]));
     }
 
     return [$ptr, 1];
@@ -983,34 +985,34 @@ function hostFunc__env____syscall_fcntl64(Runtime $runtime): void
     $fd = $runtime->stack->popInt();
 
     switch ($cmd) {
-    case 0:
-        throw new \RuntimeException("env::__syscall_fcntl64: command $cmd not implemented");
-    case 1:
-    case 2:
-        $runtime->stack->pushValue(0);
-        return;
-    case 3:
-        $runtime->stack->pushValue(fsGetFlagsFromFd($fd));
-        return;
-    case 4:
-        throw new \RuntimeException("env::__syscall_fcntl64: command $cmd not implemented");
-    case 5:
-        throw new \RuntimeException("env::__syscall_fcntl64: command $cmd not implemented");
-    case 6:
-    case 7:
-        $runtime->stack->pushValue(0);
-        return;
-    case 16:
-    case 8:
-        $runtime->stack->pushValue(-28);
-        return;
-    case 9:
-        // setErrno(28);
-        $runtime->stack->pushValue(-1);
-        return;
-    default:
-        $runtime->stack->pushValue(-28);
-        return;
+        case 0:
+            throw new \RuntimeException("env::__syscall_fcntl64: command $cmd not implemented");
+        case 1:
+        case 2:
+            $runtime->stack->pushValue(0);
+            return;
+        case 3:
+            $runtime->stack->pushValue(fsGetFlagsFromFd($fd));
+            return;
+        case 4:
+            throw new \RuntimeException("env::__syscall_fcntl64: command $cmd not implemented");
+        case 5:
+            throw new \RuntimeException("env::__syscall_fcntl64: command $cmd not implemented");
+        case 6:
+        case 7:
+            $runtime->stack->pushValue(0);
+            return;
+        case 16:
+        case 8:
+            $runtime->stack->pushValue(-28);
+            return;
+        case 9:
+            // setErrno(28);
+            $runtime->stack->pushValue(-1);
+            return;
+        default:
+            $runtime->stack->pushValue(-28);
+            return;
     }
 }
 
@@ -1025,7 +1027,7 @@ function hostFunc__wasi_snapshot_preview1__fd_close(Runtime $runtime): void
 {
     $fd = $runtime->stack->popInt();
     $file = fsGetVFileFromFd($fd);
-    assert($file !== null);
+    \assert($file !== null);
     $file->close();
     $runtime->stack->pushValue(0);
 }
@@ -1043,7 +1045,7 @@ function hostFunc__wasi_snapshot_preview1__fd_read(Runtime $runtime): void
     $fd = $runtime->stack->popInt();
 
     $file = fsGetVFileFromFd($fd);
-    assert($file !== null);
+    \assert($file !== null);
 
     // struct iov {
     //   ptr: u32, pointer to the data
@@ -1063,14 +1065,14 @@ function hostFunc__wasi_snapshot_preview1__fd_read(Runtime $runtime): void
             $nRead = -1;
             break;
         }
-        $curr = strlen($buf);
+        $curr = \strlen($buf);
         if ($curr <= 0) {
             $nRead = -1;
             break;
         }
         // echo "fd_read(fd=$fd, iov=$iov, iovcnt=$iovcnt, pnum=$pnum) = { p=$ptr, l=$len }\n";
         for ($k = 0; $k < $curr; $k++) {
-            $mem->storeByte($ptr + $k, ord($buf[$k]));
+            $mem->storeByte($ptr + $k, \ord($buf[$k]));
             // echo "  [$k] = ord($buf[$k])\n";
         }
         $nRead += $curr;
@@ -1257,7 +1259,7 @@ function hostFunc__env____syscall_fstat64(Runtime $runtime): void
     $buf = $runtime->stack->popInt();
     $fd = $runtime->stack->popInt();
     $path = fsGetPathFromFd($fd);
-    assert($path !== null);
+    \assert($path !== null);
     syscallDoStat($runtime, fn ($path) => fsStat($path, false), $path, $buf);
     $runtime->stack->pushValue(0);
 }
@@ -1369,12 +1371,12 @@ function hostFunc__env____syscall_getdents64(Runtime $runtime): void
 
     $idx = (int)floor($off / $struct_size);
 
-    while ($idx < count($file->getdents) && $pos + $struct_size <= $count) {
+    while ($idx < \count($file->getdents) && $pos + $struct_size <= $count) {
         $name = $file->getdents[$idx];
         if ($name === '.') {
             $id = fsStat($file->path, true)->ino;
             $type = 4;
-        } else if ($name === '..') {
+        } elseif ($name === '..') {
             $lookup = fsLookupParentPath($file->path);
             $id = fsStat($lookup, true)->ino;
             $type = 4;
