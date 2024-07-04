@@ -27,6 +27,8 @@ $ cd examples/rubyvm-on-php-on-wasm
 $ ./HelloWorld.sh
 ```
 
+NOTE: there is a known bug where `munmap()`-related errors are reported.
+
 
 
 ## Talks
