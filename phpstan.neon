@@ -8,7 +8,7 @@ parameters:
     tipsOfTheDay: false
     paths:
         - src
-        - examples
+        - examples/php-on-wasm
     typeAliases:
         Byte: 'int'
         U32: 'int'
