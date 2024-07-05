@@ -2,10 +2,13 @@
 
 declare(strict_types=1);
 
-namespace Nsfisis\Waddiwasi\BinaryFormat;
+namespace Nsfisis\Waddiwasi\BinaryFormat\Internal;
 
 use Nsfisis\Waddiwasi\Structure\Types\ValType;
 
+/**
+ * @internal
+ */
 final readonly class Locals
 {
     /**

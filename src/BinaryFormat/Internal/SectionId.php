@@ -2,8 +2,11 @@
 
 declare(strict_types=1);
 
-namespace Nsfisis\Waddiwasi\BinaryFormat;
+namespace Nsfisis\Waddiwasi\BinaryFormat\Internal;
 
+/**
+ * @internal
+ */
 enum SectionId: int
 {
     case Custom = 0;

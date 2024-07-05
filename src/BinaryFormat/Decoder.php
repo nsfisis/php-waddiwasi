@@ -4,6 +4,9 @@ declare(strict_types=1);
 
 namespace Nsfisis\Waddiwasi\BinaryFormat;
 
+use Nsfisis\Waddiwasi\BinaryFormat\Internal\Code;
+use Nsfisis\Waddiwasi\BinaryFormat\Internal\Locals;
+use Nsfisis\Waddiwasi\BinaryFormat\Internal\SectionId;
 use Nsfisis\Waddiwasi\Structure\Instructions\Instr;
 use Nsfisis\Waddiwasi\Structure\Instructions\Instrs;
 use Nsfisis\Waddiwasi\Structure\Instructions\Instrs\Control\BlockType;
