@@ -1,4 +1,0 @@
-Benchmark 1: make run
-  Time (mean ± σ):     33.327 s ±  4.788 s    [User: 30.118 s, System: 1.372 s]
-  Range (min … max):   30.280 s … 45.555 s    10 runs
- 
