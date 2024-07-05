@@ -28,16 +28,28 @@ $wastJsonBaseDir = __DIR__ . '/../tests/fixtures/spec_testsuites/core';
 $phpUnitBaseDir = __DIR__ . '/../tests/src/SpecTestsuites/Core';
 
 $wastJsonFiles = glob("$wastJsonBaseDir/*.json", GLOB_ERR);
+if ($wastJsonFiles === false) {
+    exit("Failed to list wast json files (base dir: $wastJsonBaseDir).\n");
+}
 
 foreach ($wastJsonFiles as $wastJsonFile) {
     $wastJsonFileContent = file_get_contents($wastJsonFile);
+    if ($wastJsonFileContent === false) {
+        exit("Failed to read wast json file (path: $wastJsonFile).\n");
+    }
     $wastJson = json_decode($wastJsonFileContent, associative: true);
+    if (!is_array($wastJson)) {
+        exit("Failed to decode wast json file (path: $wastJsonFile).\n");
+    }
     $sourceFilename = $wastJson['source_filename'] ?? null;
     $commands = $wastJson['commands'] ?? null;
 
     $className = wastJsonFileToPascalCase($wastJsonFile) . 'Test';
 
     $fp = fopen("$phpUnitBaseDir/$className.php", 'w');
+    if ($fp === false) {
+        exit("Failed to open file to write (path: $phpUnitBaseDir/$className.php).\n");
+    }
 
     fwrite($fp, "<?php\n\n");
     fwrite($fp, "declare(strict_types=1);\n\n");
@@ -65,6 +77,7 @@ foreach ($wastJsonFiles as $wastJsonFile) {
             'assert_unlinkable' => buildAssertUnlinkableCommandTest($command),
             'action' => buildActionCommandTest($command),
             'register' => buildRegisterCommandTest($command),
+            default => exit("Unknown command type: $type\n"),
         };
         if ($commandTest === null) {
             fwrite($fp, "    #[DoesNotPerformAssertions]\n");
@@ -240,7 +253,7 @@ function toPhpLiteral(mixed $value): string
     if (is_null($value)) {
         return 'null';
     } elseif (is_int($value)) {
-        return $value;
+        return (string)$value;
     } elseif (is_string($value)) {
         $value = strtr($value, ["\\" => "\\\\", "'" => "\\'"]);
         return "'$value'";
