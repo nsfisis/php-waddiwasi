@@ -50,6 +50,11 @@ final readonly class BinaryConversion
         return self::deserializeI64FromBytes(self::serializeF64ToBytes($x));
     }
 
+    public static function truncateF64ToF32(float $x): float
+    {
+        return self::deserializeF32FromBytes(self::serializeF32ToBytes($x));
+    }
+
     public static function serializeI32ToBytes(int $x): string
     {
         return pack('l', $x);

@@ -4,7 +4,6 @@
 
 * F64Test
 * F64BitwiseTest
-* F32Test
 * F32BitwiseTest
 * ConversionsTest
 * FloatExprsTest

@@ -557,7 +557,7 @@ final class Runtime
     {
         $c2 = $this->stack->popFloat();
         $c1 = $this->stack->popFloat();
-        $this->stack->pushValue($c1 + $c2);
+        $this->stack->pushValue(BinaryConversion::truncateF64ToF32($c1 + $c2));
     }
 
     private function execInstrNumericF32Ceil(Instrs\Numeric\F32Ceil $instr): void
@@ -612,7 +612,7 @@ final class Runtime
     {
         $c2 = $this->stack->popFloat();
         $c1 = $this->stack->popFloat();
-        $this->stack->pushValue($c1 / $c2);
+        $this->stack->pushValue(BinaryConversion::truncateF64ToF32(fdiv($c1, $c2)));
     }
 
     private function execInstrNumericF32Eq(Instrs\Numeric\F32Eq $instr): void
@@ -684,7 +684,7 @@ final class Runtime
     {
         $c2 = $this->stack->popFloat();
         $c1 = $this->stack->popFloat();
-        $this->stack->pushValue($c1 * $c2);
+        $this->stack->pushValue(BinaryConversion::truncateF64ToF32($c1 * $c2));
     }
 
     private function execInstrNumericF32Ne(Instrs\Numeric\F32Ne $instr): void
@@ -697,7 +697,7 @@ final class Runtime
     private function execInstrNumericF32Nearest(Instrs\Numeric\F32Nearest $instr): void
     {
         $v = $this->stack->popFloat();
-        $this->stack->pushValue(round($v));
+        $this->stack->pushValue(round($v, mode: PHP_ROUND_HALF_EVEN));
     }
 
     private function execInstrNumericF32Neg(Instrs\Numeric\F32Neg $instr): void
@@ -721,20 +721,24 @@ final class Runtime
     private function execInstrNumericF32Sqrt(Instrs\Numeric\F32Sqrt $instr): void
     {
         $c1 = $this->stack->popFloat();
-        $this->stack->pushValue(sqrt($c1));
+        $this->stack->pushValue(BinaryConversion::truncateF64ToF32(sqrt($c1)));
     }
 
     private function execInstrNumericF32Sub(Instrs\Numeric\F32Sub $instr): void
     {
         $c2 = $this->stack->popFloat();
         $c1 = $this->stack->popFloat();
-        $this->stack->pushValue($c1 - $c2);
+        $this->stack->pushValue(BinaryConversion::truncateF64ToF32($c1 - $c2));
     }
 
     private function execInstrNumericF32Trunc(Instrs\Numeric\F32Trunc $instr): void
     {
         $v = $this->stack->popFloat();
-        $this->stack->pushValue((float) (int) $v);
+        if ($v < 0) {
+            $this->stack->pushValue(BinaryConversion::truncateF64ToF32(ceil($v)));
+        } else {
+            $this->stack->pushValue(BinaryConversion::truncateF64ToF32(floor($v)));
+        }
     }
 
     private function execInstrNumericF64Abs(Instrs\Numeric\F64Abs $instr): void
@@ -881,7 +885,7 @@ final class Runtime
     private function execInstrNumericF64Nearest(Instrs\Numeric\F64Nearest $instr): void
     {
         $v = $this->stack->popFloat();
-        $this->stack->pushValue(round($v));
+        $this->stack->pushValue(round($v, mode: PHP_ROUND_HALF_EVEN));
     }
 
     private function execInstrNumericF64Neg(Instrs\Numeric\F64Neg $instr): void
