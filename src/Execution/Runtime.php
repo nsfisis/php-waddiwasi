@@ -928,7 +928,11 @@ final class Runtime
     private function execInstrNumericF64Trunc(Instrs\Numeric\F64Trunc $instr): void
     {
         $v = $this->stack->popFloat();
-        $this->stack->pushValue((float) (int) $v);
+        if ($v < 0) {
+            $this->stack->pushValue(ceil($v));
+        } else {
+            $this->stack->pushValue(floor($v));
+        }
     }
 
     private function execInstrNumericI32Add(Instrs\Numeric\I32Add $instr): void

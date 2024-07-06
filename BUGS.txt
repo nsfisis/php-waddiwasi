@@ -2,7 +2,6 @@
 
 ## Numeric
 
-* F64Test
 * F64BitwiseTest
 * F32BitwiseTest
 * ConversionsTest
@@ -10,7 +9,6 @@
 * FloatLiteralsTest
 * FloatMemoryTest
 * FloatMiscTest
-* LoopTest
 * TrapsTest
 
 ## Spectest
