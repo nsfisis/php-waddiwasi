@@ -2,8 +2,6 @@
 
 ## Numeric
 
-* F64BitwiseTest
-* F32BitwiseTest
 * ConversionsTest
 * FloatExprsTest
 * FloatLiteralsTest

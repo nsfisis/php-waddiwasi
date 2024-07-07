@@ -599,7 +599,9 @@ final class Runtime
     {
         $c2 = $this->stack->popFloat();
         $c1 = $this->stack->popFloat();
-        $this->stack->pushValue($c1 * ($c2 < 0 ? -1 : 1));
+        $c1Sign = self::getFloatSign($c1);
+        $c2Sign = self::getFloatSign($c2);
+        $this->stack->pushValue($c1Sign === $c2Sign ? $c1 : -$c1);
     }
 
     private function execInstrNumericF32DemoteF64(Instrs\Numeric\F32DemoteF64 $instr): void
@@ -793,7 +795,9 @@ final class Runtime
     {
         $c2 = $this->stack->popFloat();
         $c1 = $this->stack->popFloat();
-        $this->stack->pushValue($c1 * ($c2 < 0 ? -1 : 1));
+        $c1Sign = self::getFloatSign($c1);
+        $c2Sign = self::getFloatSign($c2);
+        $this->stack->pushValue($c1Sign === $c2Sign ? $c1 : -$c1);
     }
 
     private function execInstrNumericF64Div(Instrs\Numeric\F64Div $instr): void
@@ -2605,5 +2609,19 @@ final class Runtime
             }
         }
         return (int)$result;
+    }
+
+    private static function getFloatSign(float $p): int
+    {
+        if (is_nan($p)) {
+            $n = BinaryConversion::reinterpretF64AsI64($p);
+            // The MSB is the sign bit.
+            return (($n >> 63) & 1) === 1 ? -1 : 1;
+        } elseif ($p !== 0.0) {
+            return $p < 0.0 ? -1 : 1;
+        } else {
+            // Comparison with 0 does not work for -0.0.
+            return fdiv(1, $p) < 0.0 ? -1 : 1;
+        }
     }
 }
