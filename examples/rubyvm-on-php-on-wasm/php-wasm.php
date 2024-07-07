@@ -20,7 +20,7 @@ use Nsfisis\Waddiwasi\Structure\Types\ValType;
 const PHP_EMPTY = '';
 
 const PHP_HELLO_WORLD = <<<'EOS'
-require_once __DIR__ . '/HelloWorld.php';
+require_once '%DIR%/HelloWorld.php';
 EOS;
 
 $wasmBinary = file_get_contents(__DIR__ . '/php-wasm.wasm');
@@ -135,7 +135,7 @@ foreach ($hostFuncs as $hostFunc) {
     $externVals[] = ExternVal::Func(\count($store->funcs) - 1);
 }
 $runtime = Runtime::instantiate($store, $module, $externVals);
-$codePtr = allocateStringOnWasmMemory($runtime, PHP_HELLO_WORLD);
+$codePtr = allocateStringOnWasmMemory($runtime, strtr(PHP_HELLO_WORLD, ['%DIR%' => __DIR__]));
 
 $results = $runtime->invoke("php_wasm_run", [$codePtr]);
 \assert(\count($results) === 1);
