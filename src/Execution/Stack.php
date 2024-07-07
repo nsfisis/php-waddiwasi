@@ -21,11 +21,12 @@ final class Stack
     private ?Frame $currentFrame = null;
 
     /**
-     * @param list<int|float|Ref|Frame|Label> $entries
+     * @var list<int|float|Ref|Frame|Label>
      */
-    public function __construct(
-        private array $entries,
-    ) {
+    private array $entries;
+
+    public function __construct()
+    {
     }
 
     public function pushFrame(Frame $frame): void
@@ -154,17 +155,10 @@ final class Stack
 
     public function popEntriesToCurrentFrame(): void
     {
-        while (!$this->isEmpty()) {
-            if ($this->pop() instanceof Frame) {
-                break;
-            }
+        while (!$this->isEmpty() && !$this->top() instanceof Frame) {
+            $this->pop();
         }
-        array_pop($this->frames);
-        if (count($this->frames) === 0) {
-            $this->currentFrame = null;
-        } else {
-            $this->currentFrame = end($this->frames);
-        }
+        $this->popFrame();
     }
 
     public function top(): int|float|Ref|Frame|Label|null

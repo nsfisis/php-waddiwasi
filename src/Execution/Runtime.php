@@ -66,7 +66,7 @@ final class Runtime
 
         $moduleInstInit = $allocator->allocPreInitModule($module, $externVals);
 
-        $stack = new Stack([]);
+        $stack = new Stack();
         $frameInit = new Frame(0, [], $moduleInstInit, 'preinit');
         $stack->pushFrame($frameInit);
 
