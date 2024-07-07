@@ -33,99 +33,99 @@ try {
 }
 
 $hostFuncs = [
-    makeHostFunc('(i32, i32, i32) -> (i32)', hostFunc__env__invoke_iii(...), 'env::invoke_iii'),
-    makeHostFunc('(i32, i32, i32, i32, i32) -> (i32)', hostFunc__env__invoke_iiiii(...), 'env::invoke_iiiii'),
-    makeHostFunc('(i32) -> ()', hostFunc__env__invoke_v(...), 'env::invoke_v'),
-    makeHostFunc('(i32, i32, i32, i32) -> (i32)', hostFunc__env__invoke_iiii(...), 'env::invoke_iiii'),
-    makeHostFunc('(i32, i32) -> (i32)', hostFunc__env__invoke_ii(...), 'env::invoke_ii'),
-    makeHostFunc('() -> ()', hostFunc__env__abort(...), 'env::abort'),
-    makeHostFunc('(i32) -> ()', hostFunc__env__exit(...), 'env::exit'),
-    makeHostFunc('(i32, i32, i32, i32) -> ()', hostFunc__env__invoke_viii(...), 'env::invoke_viii'),
-    makeHostFunc('(i32, i32, i32) -> ()', hostFunc__env__invoke_vii(...), 'env::invoke_vii'),
-    makeHostFunc('(i32, i32) -> ()', hostFunc__env__invoke_vi(...), 'env::invoke_vi'),
-    makeHostFunc('(i32) -> (i32)', hostFunc__env__invoke_i(...), 'env::invoke_i'),
-    makeHostFunc('(i32, i32, i32, i32, i32, i32, i32) -> (i32)', hostFunc__env__invoke_iiiiiii(...), 'env::invoke_iiiiiii'),
-    makeHostFunc('(i32, i32, i32, i32) -> ()', hostFunc__env____assert_fail(...), 'env::__assert_fail'),
-    makeHostFunc('(i32, i32, i32, i32, i32) -> ()', hostFunc__env__invoke_viiii(...), 'env::invoke_viiii'),
-    makeHostFunc('(i32, i32, i32, i32, i32, i32) -> ()', hostFunc__env__invoke_viiiii(...), 'env::invoke_viiiii'),
-    makeHostFunc('(i32, i32, i32, i32, i32, i32) -> (i32)', hostFunc__env__invoke_iiiiii(...), 'env::invoke_iiiiii'),
-    makeHostFunc('(i32, i32, i32, i32, i32, i32, i32, i32, i32, i32) -> (i32)', hostFunc__env__invoke_iiiiiiiiii(...), 'env::invoke_iiiiiiiiii'),
-    makeHostFunc('(i32, i32, i32, i32) -> (i32)', hostFunc__env__strftime(...), 'env::strftime'),
-    makeHostFunc('(i32, i32, i32, i32) -> (i32)', hostFunc__env__getaddrinfo(...), 'env::getaddrinfo'),
-    makeHostFunc('(i32, i32, i32, i32, i32, i32) -> (i32)', hostFunc__env__gethostbyname_r(...), 'env::gethostbyname_r'),
-    makeHostFunc('() -> (i32)', hostFunc__env__getdtablesize(...), 'env::getdtablesize'),
-    makeHostFunc('(i32) -> (i32)', hostFunc__env__getprotobyname(...), 'env::getprotobyname'),
-    makeHostFunc('(i32) -> (i32)', hostFunc__env__getprotobynumber(...), 'env::getprotobynumber'),
-    makeHostFunc('(i32, i32, i32) -> (i32)', hostFunc__env__strptime(...), 'env::strptime'),
-    makeHostFunc('(i32, i32, i32, i32, i32, i32, i32) -> (i32)', hostFunc__env__getnameinfo(...), 'env::getnameinfo'),
-    makeHostFunc('(i32, i32, i32, i32, i32, i32, i32) -> ()', hostFunc__env__invoke_viiiiii(...), 'env::invoke_viiiiii'),
-    makeHostFunc('(i32, i32, i32, f64, i32, i32) -> ()', hostFunc__env__invoke_viidii(...), 'env::invoke_viidii'),
-    makeHostFunc('(i32) -> (i32)', hostFunc__env__getcontext(...), 'env::getcontext'),
-    makeHostFunc('(i32, i32, i32, i32) -> ()', hostFunc__env__makecontext(...), 'env::makecontext'),
-    makeHostFunc('(i32, i32) -> (i32)', hostFunc__env__swapcontext(...), 'env::swapcontext'),
-    makeHostFunc('(i32, i32) -> (i32)', hostFunc__wasi_snapshot_preview1__environ_sizes_get(...), 'wasi_snapshot_preview1::environ_sizes_get'),
-    makeHostFunc('(i32, i32) -> (i32)', hostFunc__wasi_snapshot_preview1__environ_get(...), 'wasi_snapshot_preview1::environ_get'),
-    makeHostFunc('(i32, i32, i32) -> (i32)', hostFunc__env____syscall_fcntl64(...), 'env::__syscall_fcntl64'),
-    makeHostFunc('(i32, i32, i32) -> (i32)', hostFunc__env____syscall_ioctl(...), 'env::__syscall_ioctl'),
-    makeHostFunc('(i32) -> (i32)', hostFunc__wasi_snapshot_preview1__fd_close(...), 'wasi_snapshot_preview1::fd_close'),
-    makeHostFunc('(i32, i32, i32, i32) -> (i32)', hostFunc__wasi_snapshot_preview1__fd_read(...), 'wasi_snapshot_preview1::fd_read'),
-    makeHostFunc('(i32, i32, i32, i32) -> (i32)', hostFunc__wasi_snapshot_preview1__fd_write(...), 'wasi_snapshot_preview1::fd_write'),
-    makeHostFunc('(i32) -> ()', hostFunc__wasi_snapshot_preview1__proc_exit(...), 'wasi_snapshot_preview1::proc_exit'),
-    makeHostFunc('(i32, i32, i32, i32) -> (i32)', hostFunc__env____syscall_faccessat(...), 'env::__syscall_faccessat'),
-    makeHostFunc('(i32) -> (i32)', hostFunc__env____syscall_chdir(...), 'env::__syscall_chdir'),
-    makeHostFunc('(i32, i32) -> (i32)', hostFunc__env____syscall_chmod(...), 'env::__syscall_chmod'),
-    makeHostFunc('(i32, i32, i32, i32, i32) -> (i32)', hostFunc__env____syscall_fchownat(...), 'env::__syscall_fchownat'),
-    makeHostFunc('(i32) -> (i32)', hostFunc__env____syscall_dup(...), 'env::__syscall_dup'),
-    makeHostFunc('(i32, i32, i32) -> (i32)', hostFunc__env____syscall_dup3(...), 'env::__syscall_dup3'),
-    makeHostFunc('(i32, i32, i32) -> ()', hostFunc__env__emscripten_memcpy_js(...), 'env::emscripten_memcpy_js'),
-    makeHostFunc('() -> (f64)', hostFunc__env__emscripten_date_now(...), 'env::emscripten_date_now'),
-    makeHostFunc('() -> (i32)', hostFunc__env___emscripten_get_now_is_monotonic(...), 'env::_emscripten_get_now_is_monotonic'),
-    makeHostFunc('() -> (f64)', hostFunc__env__emscripten_get_now(...), 'env::emscripten_get_now'),
-    makeHostFunc('(i32) -> (i32)', hostFunc__env____syscall_fdatasync(...), 'env::__syscall_fdatasync'),
-    makeHostFunc('(i32, i32, i32, i32) -> (i32)', hostFunc__env____syscall_openat(...), 'env::__syscall_openat'),
-    makeHostFunc('(i32, i32) -> (i32)', hostFunc__env____syscall_fstat64(...), 'env::__syscall_fstat64'),
-    makeHostFunc('(i32, i32) -> (i32)', hostFunc__env____syscall_stat64(...), 'env::__syscall_stat64'),
-    makeHostFunc('(i32, i32, i32, i32) -> (i32)', hostFunc__env____syscall_newfstatat(...), 'env::__syscall_newfstatat'),
-    makeHostFunc('(i32, i32) -> (i32)', hostFunc__env____syscall_lstat64(...), 'env::__syscall_lstat64'),
-    makeHostFunc('(i32) -> (i32)', hostFunc__wasi_snapshot_preview1__fd_sync(...), 'wasi_snapshot_preview1::fd_sync'),
-    makeHostFunc('(i32, i32) -> (i32)', hostFunc__env____syscall_getcwd(...), 'env::__syscall_getcwd'),
-    makeHostFunc('(i32) -> ()', hostFunc__env__emscripten_err(...), 'env::emscripten_err'),
-    makeHostFunc('(i32, i32) -> (i32)', hostFunc__wasi_snapshot_preview1__fd_fdstat_get(...), 'wasi_snapshot_preview1::fd_fdstat_get'),
-    makeHostFunc('(i32, i32, i32) -> (i32)', hostFunc__env____syscall_mkdirat(...), 'env::__syscall_mkdirat'),
-    makeHostFunc('(i32) -> (i32)', hostFunc__env____syscall_pipe(...), 'env::__syscall_pipe'),
-    makeHostFunc('(i32, i32, i32) -> (i32)', hostFunc__env____syscall_poll(...), 'env::__syscall_poll'),
-    makeHostFunc('(i32, i32) -> ()', hostFunc__env____call_sighandler(...), 'env::__call_sighandler'),
-    makeHostFunc('(i32, i32, i32) -> (i32)', hostFunc__env____syscall_getdents64(...), 'env::__syscall_getdents64'),
-    makeHostFunc('(i32, i32, i32, i32) -> (i32)', hostFunc__env____syscall_readlinkat(...), 'env::__syscall_readlinkat'),
-    makeHostFunc('(i32, i32, i32, i32) -> (i32)', hostFunc__env____syscall_renameat(...), 'env::__syscall_renameat'),
-    makeHostFunc('(i32) -> (i32)', hostFunc__env____syscall_rmdir(...), 'env::__syscall_rmdir'),
-    makeHostFunc('(i32, i32, i32, i32, i32) -> (i32)', hostFunc__env____syscall__newselect(...), 'env::__syscall__newselect'),
-    makeHostFunc('(i32, f64) -> (i32)', hostFunc__env___setitimer_js(...), 'env::_setitimer_js'),
-    makeHostFunc('(i32, i32, i32) -> (i32)', hostFunc__env____syscall_statfs64(...), 'env::__syscall_statfs64'),
-    makeHostFunc('(i32, i32) -> (i32)', hostFunc__env____syscall_symlink(...), 'env::__syscall_symlink'),
-    makeHostFunc('() -> (i32)', hostFunc__env__emscripten_get_heap_max(...), 'env::emscripten_get_heap_max'),
-    makeHostFunc('(i32, i32, i32) -> ()', hostFunc__env___tzset_js(...), 'env::_tzset_js'),
-    makeHostFunc('(i32, i32, i32) -> (i32)', hostFunc__env____syscall_unlinkat(...), 'env::__syscall_unlinkat'),
-    makeHostFunc('(i32, i32, i32, i32) -> (i32)', hostFunc__env____syscall_utimensat(...), 'env::__syscall_utimensat'),
-    makeHostFunc('(i32) -> (i32)', hostFunc__env__emscripten_resize_heap(...), 'env::emscripten_resize_heap'),
-    makeHostFunc('() -> ()', hostFunc__env___emscripten_throw_longjmp(...), 'env::_emscripten_throw_longjmp'),
-    makeHostFunc('(i32, i32, i32, i32, i32, i32) -> (i32)', hostFunc__env____syscall_accept4(...), 'env::__syscall_accept4'),
-    makeHostFunc('(i32, i32, i32, i32, i32, i32) -> (i32)', hostFunc__env____syscall_bind(...), 'env::__syscall_bind'),
-    makeHostFunc('(i32, i32, i32, i32, i32, i32) -> (i32)', hostFunc__env____syscall_connect(...), 'env::__syscall_connect'),
-    makeHostFunc('(i32, i32, i32, i32, i32, i32) -> (i32)', hostFunc__env____syscall_getpeername(...), 'env::__syscall_getpeername'),
-    makeHostFunc('(i32, i32, i32, i32, i32, i32) -> (i32)', hostFunc__env____syscall_getsockname(...), 'env::__syscall_getsockname'),
-    makeHostFunc('(i32, i32, i32, i32, i32, i32) -> (i32)', hostFunc__env____syscall_getsockopt(...), 'env::__syscall_getsockopt'),
-    makeHostFunc('(i32, i32, i32, i32, i32, i32) -> (i32)', hostFunc__env____syscall_listen(...), 'env::__syscall_listen'),
-    makeHostFunc('(i32, i32, i32, i32, i32, i32) -> (i32)', hostFunc__env____syscall_recvfrom(...), 'env::__syscall_recvfrom'),
-    makeHostFunc('(i32, i32, i32, i32, i32, i32) -> (i32)', hostFunc__env____syscall_sendto(...), 'env::__syscall_sendto'),
-    makeHostFunc('(i32, i32, i32, i32, i32, i32) -> (i32)', hostFunc__env____syscall_socket(...), 'env::__syscall_socket'),
-    makeHostFunc('(i32, i32, i32) -> (i32)', hostFunc__env____syscall_ftruncate64(...), 'env::__syscall_ftruncate64'),
-    makeHostFunc('(i32, i32, i32, i32, i32) -> (i32)', hostFunc__wasi_snapshot_preview1__fd_seek(...), 'wasi_snapshot_preview1::fd_seek'),
-    makeHostFunc('(i32) -> (i32)', hostFunc__env___mktime_js(...), 'env::_mktime_js'),
-    makeHostFunc('(i32, i32, i32) -> ()', hostFunc__env___localtime_js(...), 'env::_localtime_js'),
-    makeHostFunc('(i32, i32, i32) -> ()', hostFunc__env___gmtime_js(...), 'env::_gmtime_js'),
-    makeHostFunc('(i32, i32, i32, i32, i32, i32, i32) -> (i32)', hostFunc__env___munmap_js(...), 'env::_munmap_js'),
-    makeHostFunc('(i32, i32, i32, i32, i32, i32, i32, i32) -> (i32)', hostFunc__env___mmap_js(...), 'env::_mmap_js'),
+    makeHostFunc('(i32, i32, i32) -> (i32)', hostFunc__env__invoke_iii(...)),
+    makeHostFunc('(i32, i32, i32, i32, i32) -> (i32)', hostFunc__env__invoke_iiiii(...)),
+    makeHostFunc('(i32) -> ()', hostFunc__env__invoke_v(...)),
+    makeHostFunc('(i32, i32, i32, i32) -> (i32)', hostFunc__env__invoke_iiii(...)),
+    makeHostFunc('(i32, i32) -> (i32)', hostFunc__env__invoke_ii(...)),
+    makeHostFunc('() -> ()', hostFunc__env__abort(...)),
+    makeHostFunc('(i32) -> ()', hostFunc__env__exit(...)),
+    makeHostFunc('(i32, i32, i32, i32) -> ()', hostFunc__env__invoke_viii(...)),
+    makeHostFunc('(i32, i32, i32) -> ()', hostFunc__env__invoke_vii(...)),
+    makeHostFunc('(i32, i32) -> ()', hostFunc__env__invoke_vi(...)),
+    makeHostFunc('(i32) -> (i32)', hostFunc__env__invoke_i(...)),
+    makeHostFunc('(i32, i32, i32, i32, i32, i32, i32) -> (i32)', hostFunc__env__invoke_iiiiiii(...)),
+    makeHostFunc('(i32, i32, i32, i32) -> ()', hostFunc__env____assert_fail(...)),
+    makeHostFunc('(i32, i32, i32, i32, i32) -> ()', hostFunc__env__invoke_viiii(...)),
+    makeHostFunc('(i32, i32, i32, i32, i32, i32) -> ()', hostFunc__env__invoke_viiiii(...)),
+    makeHostFunc('(i32, i32, i32, i32, i32, i32) -> (i32)', hostFunc__env__invoke_iiiiii(...)),
+    makeHostFunc('(i32, i32, i32, i32, i32, i32, i32, i32, i32, i32) -> (i32)', hostFunc__env__invoke_iiiiiiiiii(...)),
+    makeHostFunc('(i32, i32, i32, i32) -> (i32)', hostFunc__env__strftime(...)),
+    makeHostFunc('(i32, i32, i32, i32) -> (i32)', hostFunc__env__getaddrinfo(...)),
+    makeHostFunc('(i32, i32, i32, i32, i32, i32) -> (i32)', hostFunc__env__gethostbyname_r(...)),
+    makeHostFunc('() -> (i32)', hostFunc__env__getdtablesize(...)),
+    makeHostFunc('(i32) -> (i32)', hostFunc__env__getprotobyname(...)),
+    makeHostFunc('(i32) -> (i32)', hostFunc__env__getprotobynumber(...)),
+    makeHostFunc('(i32, i32, i32) -> (i32)', hostFunc__env__strptime(...)),
+    makeHostFunc('(i32, i32, i32, i32, i32, i32, i32) -> (i32)', hostFunc__env__getnameinfo(...)),
+    makeHostFunc('(i32, i32, i32, i32, i32, i32, i32) -> ()', hostFunc__env__invoke_viiiiii(...)),
+    makeHostFunc('(i32, i32, i32, f64, i32, i32) -> ()', hostFunc__env__invoke_viidii(...)),
+    makeHostFunc('(i32) -> (i32)', hostFunc__env__getcontext(...)),
+    makeHostFunc('(i32, i32, i32, i32) -> ()', hostFunc__env__makecontext(...)),
+    makeHostFunc('(i32, i32) -> (i32)', hostFunc__env__swapcontext(...)),
+    makeHostFunc('(i32, i32) -> (i32)', hostFunc__wasi_snapshot_preview1__environ_sizes_get(...)),
+    makeHostFunc('(i32, i32) -> (i32)', hostFunc__wasi_snapshot_preview1__environ_get(...)),
+    makeHostFunc('(i32, i32, i32) -> (i32)', hostFunc__env____syscall_fcntl64(...)),
+    makeHostFunc('(i32, i32, i32) -> (i32)', hostFunc__env____syscall_ioctl(...)),
+    makeHostFunc('(i32) -> (i32)', hostFunc__wasi_snapshot_preview1__fd_close(...)),
+    makeHostFunc('(i32, i32, i32, i32) -> (i32)', hostFunc__wasi_snapshot_preview1__fd_read(...)),
+    makeHostFunc('(i32, i32, i32, i32) -> (i32)', hostFunc__wasi_snapshot_preview1__fd_write(...)),
+    makeHostFunc('(i32) -> ()', hostFunc__wasi_snapshot_preview1__proc_exit(...)),
+    makeHostFunc('(i32, i32, i32, i32) -> (i32)', hostFunc__env____syscall_faccessat(...)),
+    makeHostFunc('(i32) -> (i32)', hostFunc__env____syscall_chdir(...)),
+    makeHostFunc('(i32, i32) -> (i32)', hostFunc__env____syscall_chmod(...)),
+    makeHostFunc('(i32, i32, i32, i32, i32) -> (i32)', hostFunc__env____syscall_fchownat(...)),
+    makeHostFunc('(i32) -> (i32)', hostFunc__env____syscall_dup(...)),
+    makeHostFunc('(i32, i32, i32) -> (i32)', hostFunc__env____syscall_dup3(...)),
+    makeHostFunc('(i32, i32, i32) -> ()', hostFunc__env__emscripten_memcpy_js(...)),
+    makeHostFunc('() -> (f64)', hostFunc__env__emscripten_date_now(...)),
+    makeHostFunc('() -> (i32)', hostFunc__env___emscripten_get_now_is_monotonic(...)),
+    makeHostFunc('() -> (f64)', hostFunc__env__emscripten_get_now(...)),
+    makeHostFunc('(i32) -> (i32)', hostFunc__env____syscall_fdatasync(...)),
+    makeHostFunc('(i32, i32, i32, i32) -> (i32)', hostFunc__env____syscall_openat(...)),
+    makeHostFunc('(i32, i32) -> (i32)', hostFunc__env____syscall_fstat64(...)),
+    makeHostFunc('(i32, i32) -> (i32)', hostFunc__env____syscall_stat64(...)),
+    makeHostFunc('(i32, i32, i32, i32) -> (i32)', hostFunc__env____syscall_newfstatat(...)),
+    makeHostFunc('(i32, i32) -> (i32)', hostFunc__env____syscall_lstat64(...)),
+    makeHostFunc('(i32) -> (i32)', hostFunc__wasi_snapshot_preview1__fd_sync(...)),
+    makeHostFunc('(i32, i32) -> (i32)', hostFunc__env____syscall_getcwd(...)),
+    makeHostFunc('(i32) -> ()', hostFunc__env__emscripten_err(...)),
+    makeHostFunc('(i32, i32) -> (i32)', hostFunc__wasi_snapshot_preview1__fd_fdstat_get(...)),
+    makeHostFunc('(i32, i32, i32) -> (i32)', hostFunc__env____syscall_mkdirat(...)),
+    makeHostFunc('(i32) -> (i32)', hostFunc__env____syscall_pipe(...)),
+    makeHostFunc('(i32, i32, i32) -> (i32)', hostFunc__env____syscall_poll(...)),
+    makeHostFunc('(i32, i32) -> ()', hostFunc__env____call_sighandler(...)),
+    makeHostFunc('(i32, i32, i32) -> (i32)', hostFunc__env____syscall_getdents64(...)),
+    makeHostFunc('(i32, i32, i32, i32) -> (i32)', hostFunc__env____syscall_readlinkat(...)),
+    makeHostFunc('(i32, i32, i32, i32) -> (i32)', hostFunc__env____syscall_renameat(...)),
+    makeHostFunc('(i32) -> (i32)', hostFunc__env____syscall_rmdir(...)),
+    makeHostFunc('(i32, i32, i32, i32, i32) -> (i32)', hostFunc__env____syscall__newselect(...)),
+    makeHostFunc('(i32, f64) -> (i32)', hostFunc__env___setitimer_js(...)),
+    makeHostFunc('(i32, i32, i32) -> (i32)', hostFunc__env____syscall_statfs64(...)),
+    makeHostFunc('(i32, i32) -> (i32)', hostFunc__env____syscall_symlink(...)),
+    makeHostFunc('() -> (i32)', hostFunc__env__emscripten_get_heap_max(...)),
+    makeHostFunc('(i32, i32, i32) -> ()', hostFunc__env___tzset_js(...)),
+    makeHostFunc('(i32, i32, i32) -> (i32)', hostFunc__env____syscall_unlinkat(...)),
+    makeHostFunc('(i32, i32, i32, i32) -> (i32)', hostFunc__env____syscall_utimensat(...)),
+    makeHostFunc('(i32) -> (i32)', hostFunc__env__emscripten_resize_heap(...)),
+    makeHostFunc('() -> ()', hostFunc__env___emscripten_throw_longjmp(...)),
+    makeHostFunc('(i32, i32, i32, i32, i32, i32) -> (i32)', hostFunc__env____syscall_accept4(...)),
+    makeHostFunc('(i32, i32, i32, i32, i32, i32) -> (i32)', hostFunc__env____syscall_bind(...)),
+    makeHostFunc('(i32, i32, i32, i32, i32, i32) -> (i32)', hostFunc__env____syscall_connect(...)),
+    makeHostFunc('(i32, i32, i32, i32, i32, i32) -> (i32)', hostFunc__env____syscall_getpeername(...)),
+    makeHostFunc('(i32, i32, i32, i32, i32, i32) -> (i32)', hostFunc__env____syscall_getsockname(...)),
+    makeHostFunc('(i32, i32, i32, i32, i32, i32) -> (i32)', hostFunc__env____syscall_getsockopt(...)),
+    makeHostFunc('(i32, i32, i32, i32, i32, i32) -> (i32)', hostFunc__env____syscall_listen(...)),
+    makeHostFunc('(i32, i32, i32, i32, i32, i32) -> (i32)', hostFunc__env____syscall_recvfrom(...)),
+    makeHostFunc('(i32, i32, i32, i32, i32, i32) -> (i32)', hostFunc__env____syscall_sendto(...)),
+    makeHostFunc('(i32, i32, i32, i32, i32, i32) -> (i32)', hostFunc__env____syscall_socket(...)),
+    makeHostFunc('(i32, i32, i32) -> (i32)', hostFunc__env____syscall_ftruncate64(...)),
+    makeHostFunc('(i32, i32, i32, i32, i32) -> (i32)', hostFunc__wasi_snapshot_preview1__fd_seek(...)),
+    makeHostFunc('(i32) -> (i32)', hostFunc__env___mktime_js(...)),
+    makeHostFunc('(i32, i32, i32) -> ()', hostFunc__env___localtime_js(...)),
+    makeHostFunc('(i32, i32, i32) -> ()', hostFunc__env___gmtime_js(...)),
+    makeHostFunc('(i32, i32, i32, i32, i32, i32, i32) -> (i32)', hostFunc__env___munmap_js(...)),
+    makeHostFunc('(i32, i32, i32, i32, i32, i32, i32, i32) -> (i32)', hostFunc__env___mmap_js(...)),
 ];
 $store = Store::empty();
 $externVals = [];
@@ -196,7 +196,7 @@ function copyStringToWasmMemory(Runtime $runtime, int $dst, string $src): void
     \assert($ok);
 }
 
-function makeHostFunc(string $typeDef, callable $fn, string $fnName): FuncInst
+function makeHostFunc(string $typeDef, callable $fn): FuncInst
 {
     $stringToType = fn (string $s) => match ($s) {
         'i32' => ValType::NumType(NumType::I32),
@@ -211,11 +211,7 @@ function makeHostFunc(string $typeDef, callable $fn, string $fnName): FuncInst
     $params = array_map($stringToType, $paramsDef === '' ? [] : explode(', ', $paramsDef));
     $results = array_map($stringToType, $resultsDef === '' ? [] : explode(', ', $resultsDef));
     $type = new FuncType(new ResultType($params), new ResultType($results));
-    return FuncInst::Host($type, function ($runtime) use ($fn, $fnName) {
-        // echo "TRACE: $fnName BEGIN\n";
-        $fn($runtime);
-        // echo "TRACE: $fnName END\n";
-    });
+    return FuncInst::Host($type, $fn);
 }
 
 function getWasmTableEntry(Runtime $runtime, int $funcPtr): int
@@ -230,11 +226,6 @@ function getWasmTableEntry(Runtime $runtime, int $funcPtr): int
     $func = $wasmTable->elem[$funcPtr] ?? null;
     \assert($func instanceof Refs\RefFunc, "Expected RefFunc, but got " . \get_class($func));
     return $func->addr;
-}
-
-function convertI32PairToI53Checked(int $lo, int $hi): ?int
-{
-    return $lo + hi * 4294967296;
 }
 
 function syscallGetStr(Runtime $runtime, int $ptr): string
@@ -615,26 +606,19 @@ function fsMmap(Runtime $runtime, int $fd, int $len, int $offset, int $prot, int
 }
 
 // Type: (i32, i32, i32) -> (i32)
-function hostFunc__env__invoke_iii(Runtime $runtime): void
+function hostFunc__env__invoke_iii(Runtime $runtime, int $index, int $a1, int $a2): int
 {
-    $a2 = $runtime->stack->popInt();
-    $a1 = $runtime->stack->popInt();
-    $index = $runtime->stack->popInt();
     $sp = wasm_stackSave($runtime);
     $func = getWasmTableEntry($runtime, $index);
     $runtime->stack->pushValue($a1);
     $runtime->stack->pushValue($a2);
     $runtime->invokeByFuncAddr($func);
+    return $runtime->stack->popInt();
 }
 
 // Type: (i32, i32, i32, i32, i32) -> (i32)
-function hostFunc__env__invoke_iiiii(Runtime $runtime): void
+function hostFunc__env__invoke_iiiii(Runtime $runtime, int $index, int $a1, int $a2, int $a3, int $a4): int
 {
-    $a4 = $runtime->stack->popInt();
-    $a3 = $runtime->stack->popInt();
-    $a2 = $runtime->stack->popInt();
-    $a1 = $runtime->stack->popInt();
-    $index = $runtime->stack->popInt();
     $sp = wasm_stackSave($runtime);
     $func = getWasmTableEntry($runtime, $index);
     $runtime->stack->pushValue($a1);
@@ -642,41 +626,37 @@ function hostFunc__env__invoke_iiiii(Runtime $runtime): void
     $runtime->stack->pushValue($a3);
     $runtime->stack->pushValue($a4);
     $runtime->invokeByFuncAddr($func);
+    return $runtime->stack->popInt();
 }
 
 // Type: (i32) -> ()
-function hostFunc__env__invoke_v(Runtime $runtime): void
+function hostFunc__env__invoke_v(Runtime $runtime, int $index): void
 {
-    $index = $runtime->stack->popInt();
     $sp = wasm_stackSave($runtime);
     $func = getWasmTableEntry($runtime, $index);
     $runtime->invokeByFuncAddr($func);
 }
 
 // Type: (i32, i32, i32, i32) -> (i32)
-function hostFunc__env__invoke_iiii(Runtime $runtime): void
+function hostFunc__env__invoke_iiii(Runtime $runtime, int $index, int $a1, int $a2, int $a3): int
 {
-    $a3 = $runtime->stack->popInt();
-    $a2 = $runtime->stack->popInt();
-    $a1 = $runtime->stack->popInt();
-    $index = $runtime->stack->popInt();
     $sp = wasm_stackSave($runtime);
     $func = getWasmTableEntry($runtime, $index);
     $runtime->stack->pushValue($a1);
     $runtime->stack->pushValue($a2);
     $runtime->stack->pushValue($a3);
     $runtime->invokeByFuncAddr($func);
+    return $runtime->stack->popInt();
 }
 
 // Type: (i32, i32) -> (i32)
-function hostFunc__env__invoke_ii(Runtime $runtime): void
+function hostFunc__env__invoke_ii(Runtime $runtime, int $index, int $a1): int
 {
-    $a1 = $runtime->stack->popInt();
-    $index = $runtime->stack->popInt();
     $sp = wasm_stackSave($runtime);
     $func = getWasmTableEntry($runtime, $index);
     $runtime->stack->pushValue($a1);
     $runtime->invokeByFuncAddr($func);
+    return $runtime->stack->popInt();
 }
 
 // Type: () -> ()
@@ -692,12 +672,8 @@ function hostFunc__env__exit(Runtime $runtime): void
 }
 
 // Type: (i32, i32, i32, i32) -> ()
-function hostFunc__env__invoke_viii(Runtime $runtime): void
+function hostFunc__env__invoke_viii(Runtime $runtime, int $index, int $a1, int $a2, int $a3): void
 {
-    $a3 = $runtime->stack->popInt();
-    $a2 = $runtime->stack->popInt();
-    $a1 = $runtime->stack->popInt();
-    $index = $runtime->stack->popInt();
     $sp = wasm_stackSave($runtime);
     $func = getWasmTableEntry($runtime, $index);
     $runtime->stack->pushValue($a1);
@@ -707,11 +683,8 @@ function hostFunc__env__invoke_viii(Runtime $runtime): void
 }
 
 // Type: (i32, i32, i32) -> ()
-function hostFunc__env__invoke_vii(Runtime $runtime): void
+function hostFunc__env__invoke_vii(Runtime $runtime, int $index, int $a1, int $a2): void
 {
-    $a2 = $runtime->stack->popInt();
-    $a1 = $runtime->stack->popInt();
-    $index = $runtime->stack->popInt();
     $sp = wasm_stackSave($runtime);
     $func = getWasmTableEntry($runtime, $index);
     $runtime->stack->pushValue($a1);
@@ -720,10 +693,8 @@ function hostFunc__env__invoke_vii(Runtime $runtime): void
 }
 
 // Type: (i32, i32) -> ()
-function hostFunc__env__invoke_vi(Runtime $runtime): void
+function hostFunc__env__invoke_vi(Runtime $runtime, int $index, int $a1): void
 {
-    $a1 = $runtime->stack->popInt();
-    $index = $runtime->stack->popInt();
     $sp = wasm_stackSave($runtime);
     $func = getWasmTableEntry($runtime, $index);
     $runtime->stack->pushValue($a1);
@@ -731,24 +702,17 @@ function hostFunc__env__invoke_vi(Runtime $runtime): void
 }
 
 // Type: (i32) -> (i32)
-function hostFunc__env__invoke_i(Runtime $runtime): void
+function hostFunc__env__invoke_i(Runtime $runtime, int $index): int
 {
-    $index = $runtime->stack->popInt();
     $sp = wasm_stackSave($runtime);
     $func = getWasmTableEntry($runtime, $index);
     $runtime->invokeByFuncAddr($func);
+    return $runtime->stack->popInt();
 }
 
 // Type: (i32, i32, i32, i32, i32, i32, i32) -> (i32)
-function hostFunc__env__invoke_iiiiiii(Runtime $runtime): void
+function hostFunc__env__invoke_iiiiiii(Runtime $runtime, int $index, int $a1, int $a2, int $a3, int $a4, int $a5, int $a6): int
 {
-    $a6 = $runtime->stack->popInt();
-    $a5 = $runtime->stack->popInt();
-    $a4 = $runtime->stack->popInt();
-    $a3 = $runtime->stack->popInt();
-    $a2 = $runtime->stack->popInt();
-    $a1 = $runtime->stack->popInt();
-    $index = $runtime->stack->popInt();
     $sp = wasm_stackSave($runtime);
     $func = getWasmTableEntry($runtime, $index);
     $runtime->stack->pushValue($a1);
@@ -758,15 +722,12 @@ function hostFunc__env__invoke_iiiiiii(Runtime $runtime): void
     $runtime->stack->pushValue($a5);
     $runtime->stack->pushValue($a6);
     $runtime->invokeByFuncAddr($func);
+    return $runtime->stack->popInt();
 }
 
 // Type: (i32, i32, i32, i32) -> ()
-function hostFunc__env____assert_fail(Runtime $runtime): void
+function hostFunc__env____assert_fail(Runtime $runtime, int $index, int $a1, int $a2, int $a3): void
 {
-    $a3 = $runtime->stack->popInt();
-    $a2 = $runtime->stack->popInt();
-    $a1 = $runtime->stack->popInt();
-    $index = $runtime->stack->popInt();
     $sp = wasm_stackSave($runtime);
     $func = getWasmTableEntry($runtime, $index);
     $runtime->stack->pushValue($a1);
@@ -776,13 +737,8 @@ function hostFunc__env____assert_fail(Runtime $runtime): void
 }
 
 // Type: (i32, i32, i32, i32, i32) -> ()
-function hostFunc__env__invoke_viiii(Runtime $runtime): void
+function hostFunc__env__invoke_viiii(Runtime $runtime, int $index, int $a1, int $a2, int $a3, int $a4): void
 {
-    $a4 = $runtime->stack->popInt();
-    $a3 = $runtime->stack->popInt();
-    $a2 = $runtime->stack->popInt();
-    $a1 = $runtime->stack->popInt();
-    $index = $runtime->stack->popInt();
     $sp = wasm_stackSave($runtime);
     $func = getWasmTableEntry($runtime, $index);
     $runtime->stack->pushValue($a1);
@@ -793,14 +749,8 @@ function hostFunc__env__invoke_viiii(Runtime $runtime): void
 }
 
 // Type: (i32, i32, i32, i32, i32, i32) -> ()
-function hostFunc__env__invoke_viiiii(Runtime $runtime): void
+function hostFunc__env__invoke_viiiii(Runtime $runtime, int $index, int $a1, int $a2, int $a3, int $a4, int $a5): void
 {
-    $a5 = $runtime->stack->popInt();
-    $a4 = $runtime->stack->popInt();
-    $a3 = $runtime->stack->popInt();
-    $a2 = $runtime->stack->popInt();
-    $a1 = $runtime->stack->popInt();
-    $index = $runtime->stack->popInt();
     $sp = wasm_stackSave($runtime);
     $func = getWasmTableEntry($runtime, $index);
     $runtime->stack->pushValue($a1);
@@ -812,14 +762,8 @@ function hostFunc__env__invoke_viiiii(Runtime $runtime): void
 }
 
 // Type: (i32, i32, i32, i32, i32, i32) -> (i32)
-function hostFunc__env__invoke_iiiiii(Runtime $runtime): void
+function hostFunc__env__invoke_iiiiii(Runtime $runtime, int $index, int $a1, int $a2, int $a3, int $a4, int $a5): int
 {
-    $a5 = $runtime->stack->popInt();
-    $a4 = $runtime->stack->popInt();
-    $a3 = $runtime->stack->popInt();
-    $a2 = $runtime->stack->popInt();
-    $a1 = $runtime->stack->popInt();
-    $index = $runtime->stack->popInt();
     $sp = wasm_stackSave($runtime);
     $func = getWasmTableEntry($runtime, $index);
     $runtime->stack->pushValue($a1);
@@ -828,21 +772,12 @@ function hostFunc__env__invoke_iiiiii(Runtime $runtime): void
     $runtime->stack->pushValue($a4);
     $runtime->stack->pushValue($a5);
     $runtime->invokeByFuncAddr($func);
+    return $runtime->stack->popInt();
 }
 
 // Type: (i32, i32, i32, i32, i32, i32, i32, i32, i32, i32) -> (i32)
-function hostFunc__env__invoke_iiiiiiiiii(Runtime $runtime): void
+function hostFunc__env__invoke_iiiiiiiiii(Runtime $runtime, int $index, int $a1, int $a2, int $a3, int $a4, int $a5, int $a6, int $a7, int $a8, int $a9): int
 {
-    $a9 = $runtime->stack->popInt();
-    $a8 = $runtime->stack->popInt();
-    $a7 = $runtime->stack->popInt();
-    $a6 = $runtime->stack->popInt();
-    $a5 = $runtime->stack->popInt();
-    $a4 = $runtime->stack->popInt();
-    $a3 = $runtime->stack->popInt();
-    $a2 = $runtime->stack->popInt();
-    $a1 = $runtime->stack->popInt();
-    $index = $runtime->stack->popInt();
     $sp = wasm_stackSave($runtime);
     $func = getWasmTableEntry($runtime, $index);
     $runtime->stack->pushValue($a1);
@@ -855,6 +790,7 @@ function hostFunc__env__invoke_iiiiiiiiii(Runtime $runtime): void
     $runtime->stack->pushValue($a8);
     $runtime->stack->pushValue($a9);
     $runtime->invokeByFuncAddr($func);
+    return $runtime->stack->popInt();
 }
 
 // Type: (i32, i32, i32, i32) -> (i32)
@@ -906,15 +842,8 @@ function hostFunc__env__getnameinfo(Runtime $runtime): void
 }
 
 // Type: (i32, i32, i32, i32, i32, i32, i32) -> ()
-function hostFunc__env__invoke_viiiiii(Runtime $runtime): void
+function hostFunc__env__invoke_viiiiii(Runtime $runtime, int $index, int $a1, int $a2, int $a3, int $a4, int $a5, int $a6): void
 {
-    $a6 = $runtime->stack->popInt();
-    $a5 = $runtime->stack->popInt();
-    $a4 = $runtime->stack->popInt();
-    $a3 = $runtime->stack->popInt();
-    $a2 = $runtime->stack->popInt();
-    $a1 = $runtime->stack->popInt();
-    $index = $runtime->stack->popInt();
     $sp = wasm_stackSave($runtime);
     $func = getWasmTableEntry($runtime, $index);
     $runtime->stack->pushValue($a1);
@@ -927,14 +856,8 @@ function hostFunc__env__invoke_viiiiii(Runtime $runtime): void
 }
 
 // Type: (i32, i32, i32, f64, i32, i32) -> ()
-function hostFunc__env__invoke_viidii(Runtime $runtime): void
+function hostFunc__env__invoke_viidii(Runtime $runtime, int $index, int $a1, int $a2, float $a3, int $a4, int $a5): void
 {
-    $a5 = $runtime->stack->popInt();
-    $a4 = $runtime->stack->popInt();
-    $a3 = $runtime->stack->popFloat();
-    $a2 = $runtime->stack->popInt();
-    $a1 = $runtime->stack->popInt();
-    $index = $runtime->stack->popInt();
     $sp = wasm_stackSave($runtime);
     $func = getWasmTableEntry($runtime, $index);
     $runtime->stack->pushValue($a1);
@@ -976,41 +899,31 @@ function hostFunc__wasi_snapshot_preview1__environ_get(Runtime $runtime): void
 }
 
 // Type: (i32, i32, i32) -> (i32)
-function hostFunc__env____syscall_fcntl64(Runtime $runtime): void
+function hostFunc__env____syscall_fcntl64(Runtime $runtime, int $fd, int $cmd, int $varargs): int
 {
-    $varargs = $runtime->stack->popInt();
-    $cmd = $runtime->stack->popInt();
-    $fd = $runtime->stack->popInt();
-
     switch ($cmd) {
         case 0:
             throw new \RuntimeException("env::__syscall_fcntl64: command $cmd not implemented");
         case 1:
         case 2:
-            $runtime->stack->pushValue(0);
-            return;
+            return 0;
         case 3:
-            $runtime->stack->pushValue(fsGetFlagsFromFd($fd));
-            return;
+            return fsGetFlagsFromFd($fd);
         case 4:
             throw new \RuntimeException("env::__syscall_fcntl64: command $cmd not implemented");
         case 5:
             throw new \RuntimeException("env::__syscall_fcntl64: command $cmd not implemented");
         case 6:
         case 7:
-            $runtime->stack->pushValue(0);
-            return;
+            return 0;
         case 16:
         case 8:
-            $runtime->stack->pushValue(-28);
-            return;
+            return -28;
         case 9:
             // setErrno(28);
-            $runtime->stack->pushValue(-1);
-            return;
+            return -1;
         default:
-            $runtime->stack->pushValue(-28);
-            return;
+            return -28;
     }
 }
 
@@ -1021,27 +934,17 @@ function hostFunc__env____syscall_ioctl(Runtime $runtime): void
 }
 
 // Type: (i32) -> (i32)
-function hostFunc__wasi_snapshot_preview1__fd_close(Runtime $runtime): void
+function hostFunc__wasi_snapshot_preview1__fd_close(Runtime $runtime, int $fd): int
 {
-    $fd = $runtime->stack->popInt();
     $file = fsGetVFileFromFd($fd);
     \assert($file !== null);
     $file->close();
-    $runtime->stack->pushValue(0);
+    return 0;
 }
 
 // Type: (i32, i32, i32, i32) -> (i32)
-function hostFunc__wasi_snapshot_preview1__fd_read(Runtime $runtime): void
+function hostFunc__wasi_snapshot_preview1__fd_read(Runtime $runtime, int $fd, int $iov, int $iovcnt, int $pnum): int
 {
-    // Output pointer to the number of bytes written.
-    $pnum = $runtime->stack->popInt();
-    // Length of the array of iov structs.
-    $iovcnt = $runtime->stack->popInt();
-    // Pointer to the array of iov structs.
-    $iov = $runtime->stack->popInt();
-    // File descripter.
-    $fd = $runtime->stack->popInt();
-
     $file = fsGetVFileFromFd($fd);
     \assert($file !== null);
 
@@ -1081,21 +984,12 @@ function hostFunc__wasi_snapshot_preview1__fd_read(Runtime $runtime): void
 
     $mem->storeI32_s32($pnum, $nRead);
 
-    $runtime->stack->pushValue(0);
+    return 0;
 }
 
 // Type: (i32, i32, i32, i32) -> (i32)
-function hostFunc__wasi_snapshot_preview1__fd_write(Runtime $runtime): void
+function hostFunc__wasi_snapshot_preview1__fd_write(Runtime $runtime, int $fd, int $iov, int $iovcnt, int $pnum): int
 {
-    // Output pointer to the number of bytes written.
-    $pnum = $runtime->stack->popInt();
-    // Length of the array of iov structs.
-    $iovcnt = $runtime->stack->popInt();
-    // Pointer to the array of iov structs.
-    $iov = $runtime->stack->popInt();
-    // File descripter.
-    $fd = $runtime->stack->popInt();
-
     $mem = $runtime->getExportedMemory('memory');
     \assert($mem !== null);
 
@@ -1125,7 +1019,7 @@ function hostFunc__wasi_snapshot_preview1__fd_write(Runtime $runtime): void
     }
     $mem->storeI32_s32($pnum, $nWritten);
 
-    $runtime->stack->pushValue(0);
+    return 0;
 }
 
 // Type: (i32) -> ()
@@ -1135,18 +1029,13 @@ function hostFunc__wasi_snapshot_preview1__proc_exit(Runtime $runtime): void
 }
 
 // Type: (i32, i32, i32, i32) -> (i32)
-function hostFunc__env____syscall_faccessat(Runtime $runtime): void
+function hostFunc__env____syscall_faccessat(Runtime $runtime, int $dirfd, int $path, int $amode, int $flags): int
 {
-    $flags = $runtime->stack->popInt();
-    $amode = $runtime->stack->popInt();
-    $path = $runtime->stack->popInt();
-    $dirfd = $runtime->stack->popInt();
-
     $path = syscallGetStr($runtime, $path);
     $path = syscallCalculateAt($runtime, $dirfd, $path);
 
     // Always allow accesses.
-    $runtime->stack->pushValue(0);
+    return 0;
 }
 
 // Type: (i32) -> (i32)
@@ -1168,11 +1057,9 @@ function hostFunc__env____syscall_fchownat(Runtime $runtime): void
 }
 
 // Type: (i32) -> (i32)
-function hostFunc__env____syscall_dup(Runtime $runtime): void
+function hostFunc__env____syscall_dup(Runtime $runtime, int $oldFd): int
 {
-    $oldFd = $runtime->stack->popInt();
-    $newFd = fsDup($oldFd);
-    $runtime->stack->pushValue($newFd);
+    return fsDup($oldFd);
 }
 
 // Type: (i32, i32, i32) -> (i32)
@@ -1182,11 +1069,8 @@ function hostFunc__env____syscall_dup3(Runtime $runtime): void
 }
 
 // Type: (i32, i32, i32) -> ()
-function hostFunc__env__emscripten_memcpy_js(Runtime $runtime): void
+function hostFunc__env__emscripten_memcpy_js(Runtime $runtime, int $dest, int $src, int $num): void
 {
-    $num = $runtime->stack->popInt();
-    $src = $runtime->stack->popInt();
-    $dest = $runtime->stack->popInt();
     $mem = $runtime->getExportedMemory('memory');
     \assert($mem !== null);
     for ($i = 0; $i < $num; $i++) {
@@ -1197,10 +1081,9 @@ function hostFunc__env__emscripten_memcpy_js(Runtime $runtime): void
 }
 
 // Type: () -> (f64)
-function hostFunc__env__emscripten_date_now(Runtime $runtime): void
+function hostFunc__env__emscripten_date_now(Runtime $runtime): float
 {
-    $t = round(microtime(true) * 1000);
-    $runtime->stack->pushValue($t);
+    return round(microtime(true) * 1000);
 }
 
 // Type: () -> (i32)
@@ -1222,13 +1105,8 @@ function hostFunc__env____syscall_fdatasync(Runtime $runtime): void
 }
 
 // Type: (i32, i32, i32, i32) -> (i32)
-function hostFunc__env____syscall_openat(Runtime $runtime): void
+function hostFunc__env____syscall_openat(Runtime $runtime, int $dirfd, int $path, int $flags, int $varargs): int
 {
-    $varargs = $runtime->stack->popInt();
-    $flags = $runtime->stack->popInt();
-    $path = $runtime->stack->popInt();
-    $dirfd = $runtime->stack->popInt();
-
     $path = syscallGetStr($runtime, $path);
     $path = syscallCalculateAt($runtime, $dirfd, $path);
 
@@ -1244,32 +1122,28 @@ function hostFunc__env____syscall_openat(Runtime $runtime): void
 
     $fd = fsOpen($path, $flags, $mode);
     if ($fd !== null) {
-        $runtime->stack->pushValue($fd);
+        return $fd;
     } else {
         // no such file
-        $runtime->stack->pushValue(-44);
+        return -44;
     }
 }
 
 // Type: (i32, i32) -> (i32)
-function hostFunc__env____syscall_fstat64(Runtime $runtime): void
+function hostFunc__env____syscall_fstat64(Runtime $runtime, int $fd, int $buf): int
 {
-    $buf = $runtime->stack->popInt();
-    $fd = $runtime->stack->popInt();
     $path = fsGetPathFromFd($fd);
     \assert($path !== null);
     syscallDoStat($runtime, fn ($path) => fsStat($path, false), $path, $buf);
-    $runtime->stack->pushValue(0);
+    return 0;
 }
 
 // Type: (i32, i32) -> (i32)
-function hostFunc__env____syscall_stat64(Runtime $runtime): void
+function hostFunc__env____syscall_stat64(Runtime $runtime, int $path, int $buf): int
 {
-    $buf = $runtime->stack->popInt();
-    $path = $runtime->stack->popInt();
     $path = syscallGetStr($runtime, $path);
     syscallDoStat($runtime, fn ($path) => fsStat($path, false), $path, $buf);
-    $runtime->stack->pushValue(0);
+    return 0;
 }
 
 // Type: (i32, i32, i32, i32) -> (i32)
@@ -1279,13 +1153,11 @@ function hostFunc__env____syscall_newfstatat(Runtime $runtime): void
 }
 
 // Type: (i32, i32) -> (i32)
-function hostFunc__env____syscall_lstat64(Runtime $runtime): void
+function hostFunc__env____syscall_lstat64(Runtime $runtime, int $path, int $buf): int
 {
-    $buf = $runtime->stack->popInt();
-    $path = $runtime->stack->popInt();
     $path = syscallGetStr($runtime, $path);
     syscallDoStat($runtime, fsLstat(...), $path, $buf);
-    $runtime->stack->pushValue(0);
+    return 0;
 }
 
 // Type: (i32) -> (i32)
@@ -1295,23 +1167,19 @@ function hostFunc__wasi_snapshot_preview1__fd_sync(Runtime $runtime): void
 }
 
 // Type: (i32, i32) -> (i32)
-function hostFunc__env____syscall_getcwd(Runtime $runtime): void
+function hostFunc__env____syscall_getcwd(Runtime $runtime, int $bufPtr, int $size): int
 {
-    $size = $runtime->stack->popInt();
-    $bufPtr = $runtime->stack->popInt();
     if ($size === 0) {
-        $runtime->stack->pushValue(-28);
-        return;
+        return -28;
     }
     $cwd = getcwd();
     \assert($cwd !== false);
     $cwdLen = \strlen($cwd) + 1;
     if ($size < $cwdLen) {
-        $runtime->stack->pushValue(-68);
-        return;
+        return -68;
     }
     copyStringToWasmMemory($runtime, $bufPtr, $cwd);
-    $runtime->stack->pushValue($cwdLen);
+    return $cwdLen;
 }
 
 // Type: (i32) -> ()
@@ -1351,12 +1219,8 @@ function hostFunc__env____call_sighandler(Runtime $runtime): void
 }
 
 // Type: (i32, i32, i32) -> (i32)
-function hostFunc__env____syscall_getdents64(Runtime $runtime): void
+function hostFunc__env____syscall_getdents64(Runtime $runtime, int $fd, int $dirp, int $count): int
 {
-    $count = $runtime->stack->popInt();
-    $dirp = $runtime->stack->popInt();
-    $fd = $runtime->stack->popInt();
-
     $file = fsGetVFileFromFd($fd);
 
     if ($file->getdents === null) {
@@ -1393,7 +1257,7 @@ function hostFunc__env____syscall_getdents64(Runtime $runtime): void
     }
     $file->seek($idx * $struct_size, 0);
 
-    $runtime->stack->pushValue($pos);
+    return $pos;
 }
 
 // Type: (i32, i32, i32, i32) -> (i32)
@@ -1447,9 +1311,6 @@ function hostFunc__env__emscripten_get_heap_max(Runtime $runtime): void
 // Type: (i32, i32, i32) -> ()
 function hostFunc__env___tzset_js(Runtime $runtime): void
 {
-    $tzname = $runtime->stack->popInt();
-    $daylight = $runtime->stack->popInt();
-    $timezone = $runtime->stack->popInt();
     // Do nothing ;)
 }
 
@@ -1544,20 +1405,14 @@ function hostFunc__env____syscall_ftruncate64(Runtime $runtime): void
 }
 
 // Type: (i32, i32, i32, i32, i32) -> (i32)
-function hostFunc__wasi_snapshot_preview1__fd_seek(Runtime $runtime): void
+function hostFunc__wasi_snapshot_preview1__fd_seek(Runtime $runtime, int $fd, int $offset_low, int $offset_high, int $whence, int $newOffset): int
 {
-    $newOffset = $runtime->stack->popInt();
-    $whence = $runtime->stack->popInt();
-    $offset_high = $runtime->stack->popInt();
-    $offset_low = $runtime->stack->popInt();
-    $fd = $runtime->stack->popInt();
-
     $offset = $offset_low + $offset_high * 4294967296;
     $file = fsGetVFileFromFd($fd);
     $pos = $file->seek($offset, $whence);
     heap64Write($runtime, $newOffset, $pos);
 
-    $runtime->stack->pushValue(0);
+    return 0;
 }
 
 // Type: (i32) -> (i32)
@@ -1579,37 +1434,20 @@ function hostFunc__env___gmtime_js(Runtime $runtime): void
 }
 
 // Type: (i32, i32, i32, i32, i32, i32, i32) -> (i32)
-function hostFunc__env___munmap_js(Runtime $runtime): void
+function hostFunc__env___munmap_js(Runtime $runtime): int
 {
     // Do nothing.
-    $_7 = $runtime->stack->popInt();
-    $_6 = $runtime->stack->popInt();
-    $_5 = $runtime->stack->popInt();
-    $_4 = $runtime->stack->popInt();
-    $_3 = $runtime->stack->popInt();
-    $_2 = $runtime->stack->popInt();
-    $_1 = $runtime->stack->popInt();
-
-    $runtime->stack->pushValue(0);
+    return 0;
 }
 
 // Type: (i32, i32, i32, i32, i32, i32, i32, i32) -> (i32)
-function hostFunc__env___mmap_js(Runtime $runtime): void
+function hostFunc__env___mmap_js(Runtime $runtime, int $len, int $prot, int $flags, int $fd, int $offset_low, int $offset_high, int $allocated, int $addr): int
 {
-    $addr = $runtime->stack->popInt();
-    $allocated = $runtime->stack->popInt();
-    $offset_high = $runtime->stack->popInt();
-    $offset_low = $runtime->stack->popInt();
-    $fd = $runtime->stack->popInt();
-    $flags = $runtime->stack->popInt();
-    $prot = $runtime->stack->popInt();
-    $len = $runtime->stack->popInt();
-
     $offset = $offset_low + $offset_high * 4294967296;
 
     [$resultPtr, $resultAllocated] = fsMmap($runtime, $fd, $len, $offset, $prot, $flags);
     heap32Write($runtime, $allocated, $resultAllocated);
     heapU32Write($runtime, $addr, $resultPtr);
 
-    $runtime->stack->pushValue(0);
+    return 0;
 }

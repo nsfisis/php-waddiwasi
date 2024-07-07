@@ -30,6 +30,7 @@ use function count;
 use function fdiv;
 use function floor;
 use function intdiv;
+use function is_array;
 use function is_int;
 use function is_nan;
 use function max;
@@ -284,9 +285,26 @@ final class Runtime
         }
     }
 
-    private function doInvokeHostFunc(FuncInsts\Host $f): void
+    private function doInvokeHostFunc(FuncInsts\Host $fn): void
     {
-        ($f->callback)($this);
+        $paramTypes = $fn->type->params->types;
+        $n = count($paramTypes);
+        $resultTypes = $fn->type->results->types;
+        $m = count($resultTypes);
+
+        $params = array_reverse($this->stack->popNValues($n));
+        $results = ($fn->callback)($this, ...$params);
+        if ($results === null) {
+            assert($m === 0);
+            return;
+        }
+        if (!is_array($results)) {
+            $results = [$results];
+        }
+        assert($m === count($results));
+        foreach ($results as $result) {
+            $this->stack->pushValue($result);
+        }
     }
 
     /**
