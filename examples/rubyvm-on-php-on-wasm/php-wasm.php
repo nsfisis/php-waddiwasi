@@ -6,7 +6,6 @@ require_once __DIR__ . '/vendor/autoload.php';
 
 use Nsfisis\Waddiwasi\BinaryFormat\Decoder;
 use Nsfisis\Waddiwasi\BinaryFormat\InvalidBinaryFormatException;
-use Nsfisis\Waddiwasi\Execution\ExternVal;
 use Nsfisis\Waddiwasi\Execution\FuncInst;
 use Nsfisis\Waddiwasi\Execution\MemInst;
 use Nsfisis\Waddiwasi\Execution\Refs;
@@ -131,8 +130,7 @@ $hostFuncs = [
 $store = Store::empty();
 $externVals = [];
 foreach ($hostFuncs as $hostFunc) {
-    $store->funcs[] = $hostFunc;
-    $externVals[] = ExternVal::Func(\count($store->funcs) - 1);
+    $externVals[] = $store->registerFunc($hostFunc);
 }
 $runtime = Runtime::instantiate($store, $module, $externVals);
 $codePtr = allocateStringOnWasmMemory($runtime, strtr(PHP_HELLO_WORLD, ['%DIR%' => __DIR__]));

@@ -4,6 +4,8 @@ declare(strict_types=1);
 
 namespace Nsfisis\Waddiwasi\Execution;
 
+use function count;
+
 final class Store
 {
     /**
@@ -27,5 +29,11 @@ final class Store
     public static function empty(): self
     {
         return new self([], [], [], [], [], []);
+    }
+
+    public function registerFunc(FuncInst $func): ExternVals\Func
+    {
+        $this->funcs[] = $func;
+        return ExternVal::Func(count($this->funcs) - 1);
     }
 }
