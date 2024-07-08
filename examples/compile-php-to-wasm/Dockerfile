@@ -11,6 +11,7 @@ RUN apt-get update && \
         && \
     :
 
+# Define ZEND_MM_ERROR=0 for suppressing munmap() errors.
 RUN cd php-src && \
     ./buildconf --force && \
     emconfigure ./configure \
@@ -28,7 +29,7 @@ RUN cd php-src && \
         --without-pdo-sqlite \
         --without-sqlite3 \
         && \
-    EMCC_CFLAGS='-s ERROR_ON_UNDEFINED_SYMBOLS=0' emmake make -j$(nproc) && \
+    EMCC_CFLAGS='-s ERROR_ON_UNDEFINED_SYMBOLS=0 -D ZEND_MM_ERROR=0' emmake make -j$(nproc) && \
     mv libs/libphp.a .. && \
     make clean && \
     git clean -fd && \

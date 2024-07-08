@@ -26,8 +26,6 @@ It works on the PHP runtime on my Wasm runtime.
 $ composer example:rubyvm-on-php-on-wasm
 ```
 
-NOTE: there is a known bug where `munmap()`-related errors are reported.
-
 
 
 ## Talks
