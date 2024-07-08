@@ -31,6 +31,7 @@ use function fdiv;
 use function floor;
 use function intdiv;
 use function is_array;
+use function is_infinite;
 use function is_int;
 use function is_nan;
 use function max;
@@ -1239,25 +1240,61 @@ final class Runtime
     private function execInstrNumericI32TruncF32S(Instrs\Numeric\I32TruncF32S $instr): void
     {
         $v = $this->stack->popFloat();
+        if (is_nan($v)) {
+            throw new TrapException($instr::opName() . ": invalid conversion", trapKind: TrapKind::InvalidConversionToInteger);
+        }
+        if (is_infinite($v)) {
+            throw new TrapException($instr::opName() . ": overflow", trapKind: TrapKind::IntegerOverflow);
+        }
+        if ($v <= -2147483649.0 || 2147483648.0 <= $v) {
+            throw new TrapException($instr::opName() . ": overflow", trapKind: TrapKind::IntegerOverflow);
+        }
         $this->stack->pushValue((int) $v);
     }
 
     private function execInstrNumericI32TruncF32U(Instrs\Numeric\I32TruncF32U $instr): void
     {
         $v = $this->stack->popFloat();
-        $this->stack->pushValue((int) $v);
+        if (is_nan($v)) {
+            throw new TrapException($instr::opName() . ": invalid conversion", trapKind: TrapKind::InvalidConversionToInteger);
+        }
+        if (is_infinite($v)) {
+            throw new TrapException($instr::opName() . ": overflow", trapKind: TrapKind::IntegerOverflow);
+        }
+        if ($v <= -1.0 || 4294967296.0 <= $v) {
+            throw new TrapException($instr::opName() . ": overflow", trapKind: TrapKind::IntegerOverflow);
+        }
+        $this->stack->pushValue(self::convertU32ToS32((int) $v));
     }
 
     private function execInstrNumericI32TruncF64S(Instrs\Numeric\I32TruncF64S $instr): void
     {
         $v = $this->stack->popFloat();
+        if (is_nan($v)) {
+            throw new TrapException($instr::opName() . ": invalid conversion", trapKind: TrapKind::InvalidConversionToInteger);
+        }
+        if (is_infinite($v)) {
+            throw new TrapException($instr::opName() . ": overflow", trapKind: TrapKind::IntegerOverflow);
+        }
+        if ($v <= -2147483649.0 || 2147483648.0 <= $v) {
+            throw new TrapException($instr::opName() . ": overflow", trapKind: TrapKind::IntegerOverflow);
+        }
         $this->stack->pushValue((int) $v);
     }
 
     private function execInstrNumericI32TruncF64U(Instrs\Numeric\I32TruncF64U $instr): void
     {
         $v = $this->stack->popFloat();
-        $this->stack->pushValue((int) $v);
+        if (is_nan($v)) {
+            throw new TrapException($instr::opName() . ": invalid conversion", trapKind: TrapKind::InvalidConversionToInteger);
+        }
+        if (is_infinite($v)) {
+            throw new TrapException($instr::opName() . ": overflow", trapKind: TrapKind::IntegerOverflow);
+        }
+        if ($v <= -1.0 || 4294967296.0 <= $v) {
+            throw new TrapException($instr::opName() . ": overflow", trapKind: TrapKind::IntegerOverflow);
+        }
+        $this->stack->pushValue(self::convertU32ToS32((int) $v));
     }
 
     private function execInstrNumericI32TruncSatF32S(Instrs\Numeric\I32TruncSatF32S $instr): void
@@ -1655,24 +1692,60 @@ final class Runtime
     private function execInstrNumericI64TruncF32S(Instrs\Numeric\I64TruncF32S $instr): void
     {
         $v = $this->stack->popFloat();
+        if (is_nan($v)) {
+            throw new TrapException($instr::opName() . ": invalid conversion ($v)", trapKind: TrapKind::InvalidConversionToInteger);
+        }
+        if (is_infinite($v)) {
+            throw new TrapException($instr::opName() . ": overflow ($v)", trapKind: TrapKind::IntegerOverflow);
+        }
+        if ($v <= -9223372036854775809.0 || 9223372036854775808.0 <= $v) {
+            throw new TrapException($instr::opName() . ": overflow ($v)", trapKind: TrapKind::IntegerOverflow);
+        }
         $this->stack->pushValue((int) $v);
     }
 
     private function execInstrNumericI64TruncF32U(Instrs\Numeric\I64TruncF32U $instr): void
     {
         $v = $this->stack->popFloat();
+        if (is_nan($v)) {
+            throw new TrapException($instr::opName() . ": invalid conversion", trapKind: TrapKind::InvalidConversionToInteger);
+        }
+        if (is_infinite($v)) {
+            throw new TrapException($instr::opName() . ": overflow", trapKind: TrapKind::IntegerOverflow);
+        }
+        if ($v <= -1.0 || 18446744073709551616.0 <= $v) {
+            throw new TrapException($instr::opName() . ": overflow", trapKind: TrapKind::IntegerOverflow);
+        }
         $this->stack->pushValue((int) $v);
     }
 
     private function execInstrNumericI64TruncF64S(Instrs\Numeric\I64TruncF64S $instr): void
     {
         $v = $this->stack->popFloat();
+        if (is_nan($v)) {
+            throw new TrapException($instr::opName() . ": invalid conversion", trapKind: TrapKind::InvalidConversionToInteger);
+        }
+        if (is_infinite($v)) {
+            throw new TrapException($instr::opName() . ": overflow", trapKind: TrapKind::IntegerOverflow);
+        }
+        if ($v <= -9223372036854775809.0 || 9223372036854775808.0 <= $v) {
+            throw new TrapException($instr::opName() . ": overflow", trapKind: TrapKind::IntegerOverflow);
+        }
         $this->stack->pushValue((int) $v);
     }
 
     private function execInstrNumericI64TruncF64U(Instrs\Numeric\I64TruncF64U $instr): void
     {
         $v = $this->stack->popFloat();
+        if (is_nan($v)) {
+            throw new TrapException($instr::opName() . ": invalid conversion", trapKind: TrapKind::InvalidConversionToInteger);
+        }
+        if (is_infinite($v)) {
+            throw new TrapException($instr::opName() . ": overflow", trapKind: TrapKind::IntegerOverflow);
+        }
+        if ($v <= -1.0 || 18446744073709551616.0 <= $v) {
+            throw new TrapException($instr::opName() . ": overflow", trapKind: TrapKind::IntegerOverflow);
+        }
         $this->stack->pushValue((int) $v);
     }
 

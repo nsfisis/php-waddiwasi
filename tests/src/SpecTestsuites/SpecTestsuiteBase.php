@@ -279,6 +279,7 @@ abstract class SpecTestsuiteBase extends TestCase
             TrapKind::UndefinedElement => 'undefined element',
             TrapKind::DivideByZero => 'integer divide by zero',
             TrapKind::IntegerOverflow => 'integer overflow',
+            TrapKind::InvalidConversionToInteger => 'invalid conversion to integer',
         };
         $this->assertStringContainsString(
             $actualErrorMessage,

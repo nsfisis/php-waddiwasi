@@ -15,4 +15,5 @@ enum TrapKind
     case UndefinedElement;
     case DivideByZero;
     case IntegerOverflow;
+    case InvalidConversionToInteger;
 }
