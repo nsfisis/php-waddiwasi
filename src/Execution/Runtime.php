@@ -18,7 +18,6 @@ use Nsfisis\Waddiwasi\Structure\Types\ResultType;
 use Nsfisis\Waddiwasi\Structure\Types\TableType;
 use Nsfisis\Waddiwasi\Structure\Types\ValType;
 use Nsfisis\Waddiwasi\Structure\Types\ValTypes;
-use Nsfisis\Waddiwasi\Utility\BinaryConversion;
 use RuntimeException;
 use function abs;
 use function array_map;
@@ -576,7 +575,7 @@ final class Runtime
     {
         $c2 = $this->stack->popFloat();
         $c1 = $this->stack->popFloat();
-        $this->stack->pushValue(BinaryConversion::truncateF64ToF32($c1 + $c2));
+        $this->stack->pushValue(NumericOps::truncateF64ToF32($c1 + $c2));
     }
 
     private function execInstrNumericF32Ceil(Instrs\Numeric\F32Ceil $instr): void
@@ -618,8 +617,8 @@ final class Runtime
     {
         $c2 = $this->stack->popFloat();
         $c1 = $this->stack->popFloat();
-        $c1Sign = self::getFloatSign($c1);
-        $c2Sign = self::getFloatSign($c2);
+        $c1Sign = NumericOps::getFloatSign($c1);
+        $c2Sign = NumericOps::getFloatSign($c2);
         $this->stack->pushValue($c1Sign === $c2Sign ? $c1 : -$c1);
     }
 
@@ -633,7 +632,7 @@ final class Runtime
     {
         $c2 = $this->stack->popFloat();
         $c1 = $this->stack->popFloat();
-        $this->stack->pushValue(BinaryConversion::truncateF64ToF32(fdiv($c1, $c2)));
+        $this->stack->pushValue(NumericOps::truncateF64ToF32(fdiv($c1, $c2)));
     }
 
     private function execInstrNumericF32Eq(Instrs\Numeric\F32Eq $instr): void
@@ -705,7 +704,7 @@ final class Runtime
     {
         $c2 = $this->stack->popFloat();
         $c1 = $this->stack->popFloat();
-        $this->stack->pushValue(BinaryConversion::truncateF64ToF32($c1 * $c2));
+        $this->stack->pushValue(NumericOps::truncateF64ToF32($c1 * $c2));
     }
 
     private function execInstrNumericF32Ne(Instrs\Numeric\F32Ne $instr): void
@@ -730,35 +729,35 @@ final class Runtime
     private function execInstrNumericF32ReinterpretI32(Instrs\Numeric\F32ReinterpretI32 $instr): void
     {
         $v = $this->stack->popInt();
-        $this->stack->pushValue(BinaryConversion::reinterpretI32AsF32($v));
+        $this->stack->pushValue(NumericOps::reinterpretI32AsF32($v));
     }
 
     private function execInstrNumericF32ReinterpretI64(Instrs\Numeric\F32ReinterpretI64 $instr): void
     {
         $v = $this->stack->popInt();
-        $this->stack->pushValue(BinaryConversion::reinterpretI64AsF32($v));
+        $this->stack->pushValue(NumericOps::reinterpretI64AsF32($v));
     }
 
     private function execInstrNumericF32Sqrt(Instrs\Numeric\F32Sqrt $instr): void
     {
         $c1 = $this->stack->popFloat();
-        $this->stack->pushValue(BinaryConversion::truncateF64ToF32(sqrt($c1)));
+        $this->stack->pushValue(NumericOps::truncateF64ToF32(sqrt($c1)));
     }
 
     private function execInstrNumericF32Sub(Instrs\Numeric\F32Sub $instr): void
     {
         $c2 = $this->stack->popFloat();
         $c1 = $this->stack->popFloat();
-        $this->stack->pushValue(BinaryConversion::truncateF64ToF32($c1 - $c2));
+        $this->stack->pushValue(NumericOps::truncateF64ToF32($c1 - $c2));
     }
 
     private function execInstrNumericF32Trunc(Instrs\Numeric\F32Trunc $instr): void
     {
         $v = $this->stack->popFloat();
         if ($v < 0) {
-            $this->stack->pushValue(BinaryConversion::truncateF64ToF32(ceil($v)));
+            $this->stack->pushValue(NumericOps::truncateF64ToF32(ceil($v)));
         } else {
-            $this->stack->pushValue(BinaryConversion::truncateF64ToF32(floor($v)));
+            $this->stack->pushValue(NumericOps::truncateF64ToF32(floor($v)));
         }
     }
 
@@ -814,8 +813,8 @@ final class Runtime
     {
         $c2 = $this->stack->popFloat();
         $c1 = $this->stack->popFloat();
-        $c1Sign = self::getFloatSign($c1);
-        $c2Sign = self::getFloatSign($c2);
+        $c1Sign = NumericOps::getFloatSign($c1);
+        $c2Sign = NumericOps::getFloatSign($c2);
         $this->stack->pushValue($c1Sign === $c2Sign ? $c1 : -$c1);
     }
 
@@ -926,13 +925,13 @@ final class Runtime
     private function execInstrNumericF64ReinterpretI32(Instrs\Numeric\F64ReinterpretI32 $instr): void
     {
         $v = $this->stack->popInt();
-        $this->stack->pushValue(BinaryConversion::reinterpretI32AsF64($v));
+        $this->stack->pushValue(NumericOps::reinterpretI32AsF64($v));
     }
 
     private function execInstrNumericF64ReinterpretI64(Instrs\Numeric\F64ReinterpretI64 $instr): void
     {
         $v = $this->stack->popInt();
-        $this->stack->pushValue(BinaryConversion::reinterpretI64AsF64($v));
+        $this->stack->pushValue(NumericOps::reinterpretI64AsF64($v));
     }
 
     private function execInstrNumericF64Sqrt(Instrs\Numeric\F64Sqrt $instr): void
@@ -962,19 +961,19 @@ final class Runtime
     {
         $c2 = $this->stack->popInt();
         $c1 = $this->stack->popInt();
-        $this->stack->pushValue(self::convertU32ToS32(($c1 + $c2) & 0xFFFFFFFF));
+        $this->stack->pushValue(NumericOps::convertU32ToS32(($c1 + $c2) & 0xFFFFFFFF));
     }
 
     private function execInstrNumericI32And(Instrs\Numeric\I32And $instr): void
     {
-        $c2 = self::convertS32ToU32($this->stack->popInt());
-        $c1 = self::convertS32ToU32($this->stack->popInt());
-        $this->stack->pushValue(self::convertU32ToS32(($c1 & $c2) & 0xFFFFFFFF));
+        $c2 = NumericOps::convertS32ToU32($this->stack->popInt());
+        $c1 = NumericOps::convertS32ToU32($this->stack->popInt());
+        $this->stack->pushValue(NumericOps::convertU32ToS32(($c1 & $c2) & 0xFFFFFFFF));
     }
 
     private function execInstrNumericI32Clz(Instrs\Numeric\I32Clz $instr): void
     {
-        $i = self::convertS32ToU32($this->stack->popInt());
+        $i = NumericOps::convertS32ToU32($this->stack->popInt());
         $leadingZeros = 0;
         for ($j = 31; 0 <= $j; $j--) {
             if (($i & (1 << $j)) === 0) {
@@ -993,7 +992,7 @@ final class Runtime
 
     private function execInstrNumericI32Ctz(Instrs\Numeric\I32Ctz $instr): void
     {
-        $i = self::convertS32ToU32($this->stack->popInt());
+        $i = NumericOps::convertS32ToU32($this->stack->popInt());
         $trailingZeros = 0;
         for ($j = 0; $j < 32; $j++) {
             if (($i & (1 << $j)) === 0) {
@@ -1020,12 +1019,12 @@ final class Runtime
 
     private function execInstrNumericI32DivU(Instrs\Numeric\I32DivU $instr): void
     {
-        $c2 = self::convertS32ToU32($this->stack->popInt());
-        $c1 = self::convertS32ToU32($this->stack->popInt());
+        $c2 = NumericOps::convertS32ToU32($this->stack->popInt());
+        $c1 = NumericOps::convertS32ToU32($this->stack->popInt());
         if ($c2 === 0) {
             throw new TrapException("i32.div_u: divide by zero", trapKind: TrapKind::DivideByZero);
         }
-        $this->stack->pushValue(self::convertU32ToS32(intdiv($c1, $c2)));
+        $this->stack->pushValue(NumericOps::convertU32ToS32(intdiv($c1, $c2)));
     }
 
     private function execInstrNumericI32Eq(Instrs\Numeric\I32Eq $instr): void
@@ -1043,7 +1042,7 @@ final class Runtime
 
     private function execInstrNumericI32Extend16S(Instrs\Numeric\I32Extend16S $instr): void
     {
-        $c1 = self::convertS32ToU32($this->stack->popInt());
+        $c1 = NumericOps::convertS32ToU32($this->stack->popInt());
         $c2 = $c1 & 0xFFFF;
         $result = unpack('s', pack('S', $c2));
         assert($result !== false);
@@ -1052,7 +1051,7 @@ final class Runtime
 
     private function execInstrNumericI32Extend8S(Instrs\Numeric\I32Extend8S $instr): void
     {
-        $c1 = self::convertS32ToU32($this->stack->popInt());
+        $c1 = NumericOps::convertS32ToU32($this->stack->popInt());
         $c2 = $c1 & 0xFF;
         $result = unpack('c', pack('C', $c2));
         assert($result !== false);
@@ -1068,8 +1067,8 @@ final class Runtime
 
     private function execInstrNumericI32GeU(Instrs\Numeric\I32GeU $instr): void
     {
-        $c2 = self::convertS32ToU32($this->stack->popInt());
-        $c1 = self::convertS32ToU32($this->stack->popInt());
+        $c2 = NumericOps::convertS32ToU32($this->stack->popInt());
+        $c1 = NumericOps::convertS32ToU32($this->stack->popInt());
         $this->stack->pushBool($c1 >= $c2);
     }
 
@@ -1082,8 +1081,8 @@ final class Runtime
 
     private function execInstrNumericI32GtU(Instrs\Numeric\I32GtU $instr): void
     {
-        $c2 = self::convertS32ToU32($this->stack->popInt());
-        $c1 = self::convertS32ToU32($this->stack->popInt());
+        $c2 = NumericOps::convertS32ToU32($this->stack->popInt());
+        $c1 = NumericOps::convertS32ToU32($this->stack->popInt());
         $this->stack->pushBool($c1 > $c2);
     }
 
@@ -1096,8 +1095,8 @@ final class Runtime
 
     private function execInstrNumericI32LeU(Instrs\Numeric\I32LeU $instr): void
     {
-        $c2 = self::convertS32ToU32($this->stack->popInt());
-        $c1 = self::convertS32ToU32($this->stack->popInt());
+        $c2 = NumericOps::convertS32ToU32($this->stack->popInt());
+        $c1 = NumericOps::convertS32ToU32($this->stack->popInt());
         $this->stack->pushBool($c1 <= $c2);
     }
 
@@ -1110,8 +1109,8 @@ final class Runtime
 
     private function execInstrNumericI32LtU(Instrs\Numeric\I32LtU $instr): void
     {
-        $c2 = self::convertS32ToU32($this->stack->popInt());
-        $c1 = self::convertS32ToU32($this->stack->popInt());
+        $c2 = NumericOps::convertS32ToU32($this->stack->popInt());
+        $c1 = NumericOps::convertS32ToU32($this->stack->popInt());
         $this->stack->pushBool($c1 < $c2);
     }
 
@@ -1119,7 +1118,7 @@ final class Runtime
     {
         $c2 = $this->stack->popInt();
         $c1 = $this->stack->popInt();
-        $this->stack->pushValue(self::convertU32ToS32(($c1 * $c2) & 0xFFFFFFFF));
+        $this->stack->pushValue(NumericOps::convertU32ToS32(($c1 * $c2) & 0xFFFFFFFF));
     }
 
     private function execInstrNumericI32Ne(Instrs\Numeric\I32Ne $instr): void
@@ -1131,14 +1130,14 @@ final class Runtime
 
     private function execInstrNumericI32Or(Instrs\Numeric\I32Or $instr): void
     {
-        $c2 = self::convertS32ToU32($this->stack->popInt());
-        $c1 = self::convertS32ToU32($this->stack->popInt());
-        $this->stack->pushValue(self::convertU32ToS32(($c1 | $c2) & 0xFFFFFFFF));
+        $c2 = NumericOps::convertS32ToU32($this->stack->popInt());
+        $c1 = NumericOps::convertS32ToU32($this->stack->popInt());
+        $this->stack->pushValue(NumericOps::convertU32ToS32(($c1 | $c2) & 0xFFFFFFFF));
     }
 
     private function execInstrNumericI32Popcnt(Instrs\Numeric\I32Popcnt $instr): void
     {
-        $i = self::convertS32ToU32($this->stack->popInt());
+        $i = NumericOps::convertS32ToU32($this->stack->popInt());
         $popcnt = 0;
         for ($j = 0; $j < 32; $j++) {
             if (($i & (1 << $j)) !== 0) {
@@ -1151,13 +1150,13 @@ final class Runtime
     private function execInstrNumericI32ReinterpretF32(Instrs\Numeric\I32ReinterpretF32 $instr): void
     {
         $v = $this->stack->popFloat();
-        $this->stack->pushValue(BinaryConversion::reinterpretF32AsI32($v));
+        $this->stack->pushValue(NumericOps::reinterpretF32AsI32($v));
     }
 
     private function execInstrNumericI32ReinterpretF64(Instrs\Numeric\I32ReinterpretF64 $instr): void
     {
         $v = $this->stack->popFloat();
-        $this->stack->pushValue(BinaryConversion::reinterpretF64AsI32($v));
+        $this->stack->pushValue(NumericOps::reinterpretF64AsI32($v));
     }
 
     private function execInstrNumericI32RemS(Instrs\Numeric\I32RemS $instr): void
@@ -1172,50 +1171,50 @@ final class Runtime
 
     private function execInstrNumericI32RemU(Instrs\Numeric\I32RemU $instr): void
     {
-        $c2 = self::convertS32ToU32($this->stack->popInt());
-        $c1 = self::convertS32ToU32($this->stack->popInt());
+        $c2 = NumericOps::convertS32ToU32($this->stack->popInt());
+        $c1 = NumericOps::convertS32ToU32($this->stack->popInt());
         if ($c2 === 0) {
             throw new TrapException("i32.rem_u: divide by zero", trapKind: TrapKind::DivideByZero);
         }
-        $this->stack->pushValue(self::convertU32ToS32($c1 % $c2));
+        $this->stack->pushValue(NumericOps::convertU32ToS32($c1 % $c2));
     }
 
     private function execInstrNumericI32RotL(Instrs\Numeric\I32RotL $instr): void
     {
-        $i2 = self::convertS32ToU32($this->stack->popInt());
-        $i1 = self::convertS32ToU32($this->stack->popInt());
+        $i2 = NumericOps::convertS32ToU32($this->stack->popInt());
+        $i1 = NumericOps::convertS32ToU32($this->stack->popInt());
         $k = $i2 % 32;
-        $this->stack->pushValue(self::convertU32ToS32((($i1 << $k) | ($i1 >> (32 - $k))) & 0xFFFFFFFF));
+        $this->stack->pushValue(NumericOps::convertU32ToS32((($i1 << $k) | ($i1 >> (32 - $k))) & 0xFFFFFFFF));
     }
 
     private function execInstrNumericI32RotR(Instrs\Numeric\I32RotR $instr): void
     {
-        $i2 = self::convertS32ToU32($this->stack->popInt());
-        $i1 = self::convertS32ToU32($this->stack->popInt());
+        $i2 = NumericOps::convertS32ToU32($this->stack->popInt());
+        $i1 = NumericOps::convertS32ToU32($this->stack->popInt());
         $k = $i2 % 32;
-        $this->stack->pushValue(self::convertU32ToS32((($i1 >> $k) | ($i1 << (32 - $k))) & 0xFFFFFFFF));
+        $this->stack->pushValue(NumericOps::convertU32ToS32((($i1 >> $k) | ($i1 << (32 - $k))) & 0xFFFFFFFF));
     }
 
     private function execInstrNumericI32Shl(Instrs\Numeric\I32Shl $instr): void
     {
-        $c2 = self::convertS32ToU32($this->stack->popInt());
+        $c2 = NumericOps::convertS32ToU32($this->stack->popInt());
         $k = $c2 % 32;
         $c1 = $this->stack->popInt();
-        $this->stack->pushValue(self::convertU32ToS32(($c1 << $k) & 0xFFFFFFFF));
+        $this->stack->pushValue(NumericOps::convertU32ToS32(($c1 << $k) & 0xFFFFFFFF));
     }
 
     private function execInstrNumericI32ShrS(Instrs\Numeric\I32ShrS $instr): void
     {
-        $c2 = self::convertS32ToU32($this->stack->popInt());
+        $c2 = NumericOps::convertS32ToU32($this->stack->popInt());
         $k = $c2 % 32;
-        $c1 = self::convertS32ToU32($this->stack->popInt());
+        $c1 = NumericOps::convertS32ToU32($this->stack->popInt());
         $signed = $c1 & 0x80000000;
         if ($signed !== 0) {
             $result = $c1;
             for ($i = 0; $i < $k; $i++) {
                 $result = ($result >> 1) | 0x80000000;
             }
-            $this->stack->pushValue(self::convertU32ToS32($result));
+            $this->stack->pushValue(NumericOps::convertU32ToS32($result));
         } else {
             $this->stack->pushValue($c1 >> $k);
         }
@@ -1223,18 +1222,18 @@ final class Runtime
 
     private function execInstrNumericI32ShrU(Instrs\Numeric\I32ShrU $instr): void
     {
-        $c2 = self::convertS32ToU32($this->stack->popInt());
+        $c2 = NumericOps::convertS32ToU32($this->stack->popInt());
         $k = $c2 % 32;
-        $c1 = self::convertS32ToU32($this->stack->popInt());
-        $this->stack->pushValue(self::convertU32ToS32($c1 >> $k));
+        $c1 = NumericOps::convertS32ToU32($this->stack->popInt());
+        $this->stack->pushValue(NumericOps::convertU32ToS32($c1 >> $k));
     }
 
     private function execInstrNumericI32Sub(Instrs\Numeric\I32Sub $instr): void
     {
-        $c2 = self::convertS32ToU32($this->stack->popInt());
-        $c1 = self::convertS32ToU32($this->stack->popInt());
+        $c2 = NumericOps::convertS32ToU32($this->stack->popInt());
+        $c1 = NumericOps::convertS32ToU32($this->stack->popInt());
         $c2Neg = ((~$c2 & 0xFFFFFFFF) + 1) & 0xFFFFFFFF;
-        $this->stack->pushValue(self::convertU32ToS32(($c1 + $c2Neg) & 0xFFFFFFFF));
+        $this->stack->pushValue(NumericOps::convertU32ToS32(($c1 + $c2Neg) & 0xFFFFFFFF));
     }
 
     private function execInstrNumericI32TruncF32S(Instrs\Numeric\I32TruncF32S $instr): void
@@ -1264,7 +1263,7 @@ final class Runtime
         if ($v <= -1.0 || 4294967296.0 <= $v) {
             throw new TrapException($instr::opName() . ": overflow", trapKind: TrapKind::IntegerOverflow);
         }
-        $this->stack->pushValue(self::convertU32ToS32((int) $v));
+        $this->stack->pushValue(NumericOps::convertU32ToS32((int) $v));
     }
 
     private function execInstrNumericI32TruncF64S(Instrs\Numeric\I32TruncF64S $instr): void
@@ -1294,7 +1293,7 @@ final class Runtime
         if ($v <= -1.0 || 4294967296.0 <= $v) {
             throw new TrapException($instr::opName() . ": overflow", trapKind: TrapKind::IntegerOverflow);
         }
-        $this->stack->pushValue(self::convertU32ToS32((int) $v));
+        $this->stack->pushValue(NumericOps::convertU32ToS32((int) $v));
     }
 
     private function execInstrNumericI32TruncSatF32S(Instrs\Numeric\I32TruncSatF32S $instr): void
@@ -1348,21 +1347,21 @@ final class Runtime
     private function execInstrNumericI32WrapI64(Instrs\Numeric\I32WrapI64 $instr): void
     {
         $c1 = $this->stack->popInt();
-        $this->stack->pushValue(self::convertU32ToS32($c1 & 0xFFFFFFFF));
+        $this->stack->pushValue(NumericOps::convertU32ToS32($c1 & 0xFFFFFFFF));
     }
 
     private function execInstrNumericI32Xor(Instrs\Numeric\I32Xor $instr): void
     {
-        $c2 = self::convertS32ToU32($this->stack->popInt());
-        $c1 = self::convertS32ToU32($this->stack->popInt());
-        $this->stack->pushValue(self::convertU32ToS32(($c1 ^ $c2) & 0xFFFFFFFF));
+        $c2 = NumericOps::convertS32ToU32($this->stack->popInt());
+        $c1 = NumericOps::convertS32ToU32($this->stack->popInt());
+        $this->stack->pushValue(NumericOps::convertU32ToS32(($c1 ^ $c2) & 0xFFFFFFFF));
     }
 
     private function execInstrNumericI64Add(Instrs\Numeric\I64Add $instr): void
     {
         $c2 = $this->stack->popInt();
         $c1 = $this->stack->popInt();
-        $result = self::bigIntToPhpInt(bcadd((string)$c1, (string)$c2));
+        $result = NumericOps::bigIntToPhpInt(bcadd((string)$c1, (string)$c2));
         $this->stack->pushValue($result);
     }
 
@@ -1435,12 +1434,12 @@ final class Runtime
 
     private function execInstrNumericI64DivU(Instrs\Numeric\I64DivU $instr): void
     {
-        $c2 = self::convertS64ToBigUInt($this->stack->popInt());
-        $c1 = self::convertS64ToBigUInt($this->stack->popInt());
+        $c2 = NumericOps::convertS64ToBigUInt($this->stack->popInt());
+        $c1 = NumericOps::convertS64ToBigUInt($this->stack->popInt());
         if ($c2 === '0') {
             throw new TrapException("i64.div_u: divide by zero", trapKind: TrapKind::DivideByZero);
         }
-        $this->stack->pushValue(self::bigIntToPhpInt(bcdiv($c1, $c2, 0)));
+        $this->stack->pushValue(NumericOps::bigIntToPhpInt(bcdiv($c1, $c2, 0)));
     }
 
     private function execInstrNumericI64Eq(Instrs\Numeric\I64Eq $instr): void
@@ -1491,7 +1490,7 @@ final class Runtime
 
     private function execInstrNumericI64ExtendI32U(Instrs\Numeric\I64ExtendI32U $instr): void
     {
-        $c1 = self::convertS32ToU32($this->stack->popInt());
+        $c1 = NumericOps::convertS32ToU32($this->stack->popInt());
         $c2 = $c1 & 0xFFFFFFFF;
         $this->stack->pushValue($c2);
     }
@@ -1564,7 +1563,7 @@ final class Runtime
     {
         $c2 = $this->stack->popInt();
         $c1 = $this->stack->popInt();
-        $result = self::bigIntToPhpInt(bcmul((string)$c1, (string)$c2));
+        $result = NumericOps::bigIntToPhpInt(bcmul((string)$c1, (string)$c2));
         $this->stack->pushValue($result);
     }
 
@@ -1597,13 +1596,13 @@ final class Runtime
     private function execInstrNumericI64ReinterpretF32(Instrs\Numeric\I64ReinterpretF32 $instr): void
     {
         $v = $this->stack->popFloat();
-        $this->stack->pushValue(BinaryConversion::reinterpretF32AsI64($v));
+        $this->stack->pushValue(NumericOps::reinterpretF32AsI64($v));
     }
 
     private function execInstrNumericI64ReinterpretF64(Instrs\Numeric\I64ReinterpretF64 $instr): void
     {
         $v = $this->stack->popFloat();
-        $this->stack->pushValue(BinaryConversion::reinterpretF64AsI64($v));
+        $this->stack->pushValue(NumericOps::reinterpretF64AsI64($v));
     }
 
     private function execInstrNumericI64RemS(Instrs\Numeric\I64RemS $instr): void
@@ -1618,17 +1617,17 @@ final class Runtime
 
     private function execInstrNumericI64RemU(Instrs\Numeric\I64RemU $instr): void
     {
-        $c2 = self::convertS64ToBigUInt($this->stack->popInt());
-        $c1 = self::convertS64ToBigUInt($this->stack->popInt());
+        $c2 = NumericOps::convertS64ToBigUInt($this->stack->popInt());
+        $c1 = NumericOps::convertS64ToBigUInt($this->stack->popInt());
         if ($c2 === '0') {
             throw new TrapException("i64.rem_u: divide by zero", trapKind: TrapKind::DivideByZero);
         }
-        $this->stack->pushValue(self::bigIntToPhpInt(bcmod($c1, $c2, 0)));
+        $this->stack->pushValue(NumericOps::bigIntToPhpInt(bcmod($c1, $c2, 0)));
     }
 
     private function execInstrNumericI64RotL(Instrs\Numeric\I64RotL $instr): void
     {
-        $i2 = self::convertS64ToBigUInt($this->stack->popInt());
+        $i2 = NumericOps::convertS64ToBigUInt($this->stack->popInt());
         $k = (int)bcmod($i2, '64');
         $i1 = $this->stack->popInt();
         $left = $i1 << $k;
@@ -1641,7 +1640,7 @@ final class Runtime
 
     private function execInstrNumericI64RotR(Instrs\Numeric\I64RotR $instr): void
     {
-        $i2 = self::convertS64ToBigUInt($this->stack->popInt());
+        $i2 = NumericOps::convertS64ToBigUInt($this->stack->popInt());
         $k = (int)bcmod($i2, '64');
         $i1 = $this->stack->popInt();
         $left = $i1;
@@ -1654,7 +1653,7 @@ final class Runtime
 
     private function execInstrNumericI64Shl(Instrs\Numeric\I64Shl $instr): void
     {
-        $c2 = self::convertS64ToBigUInt($this->stack->popInt());
+        $c2 = NumericOps::convertS64ToBigUInt($this->stack->popInt());
         $k = (int)bcmod($c2, '64');
         $c1 = $this->stack->popInt();
         $this->stack->pushValue($c1 << $k);
@@ -1662,7 +1661,7 @@ final class Runtime
 
     private function execInstrNumericI64ShrS(Instrs\Numeric\I64ShrS $instr): void
     {
-        $c2 = self::convertS64ToBigUInt($this->stack->popInt());
+        $c2 = NumericOps::convertS64ToBigUInt($this->stack->popInt());
         $k = (int)bcmod($c2, '64');
         $c1 = $this->stack->popInt();
         $this->stack->pushValue($c1 >> $k);
@@ -1670,7 +1669,7 @@ final class Runtime
 
     private function execInstrNumericI64ShrU(Instrs\Numeric\I64ShrU $instr): void
     {
-        $c2 = self::convertS64ToBigUInt($this->stack->popInt());
+        $c2 = NumericOps::convertS64ToBigUInt($this->stack->popInt());
         $k = (int)bcmod($c2, '64');
         if ($k === 0) {
             return;
@@ -1685,7 +1684,7 @@ final class Runtime
     {
         $c2 = $this->stack->popInt();
         $c1 = $this->stack->popInt();
-        $result = self::bigIntToPhpInt(bcsub((string)$c1, (string)$c2));
+        $result = NumericOps::bigIntToPhpInt(bcsub((string)$c1, (string)$c2));
         $this->stack->pushValue($result);
     }
 
@@ -1910,9 +1909,9 @@ final class Runtime
         $tabX = $this->store->tables[$taX];
         $taY = $f->module->tableAddrs[$y];
         $tabY = $this->store->tables[$taY];
-        $n = self::convertS32ToU32($this->stack->popInt());
-        $s = self::convertS32ToU32($this->stack->popInt());
-        $d = self::convertS32ToU32($this->stack->popInt());
+        $n = NumericOps::convertS32ToU32($this->stack->popInt());
+        $s = NumericOps::convertS32ToU32($this->stack->popInt());
+        $d = NumericOps::convertS32ToU32($this->stack->popInt());
         if (count($tabX->elem) < $d + $n || count($tabY->elem) < $s + $n) {
             throw new TrapException("table.copy: out of bounds", trapKind: TrapKind::OutOfBoundsTableAccess);
         }
@@ -1933,9 +1932,9 @@ final class Runtime
         $f = $this->stack->currentFrame();
         $ta = $f->module->tableAddrs[$x];
         $tab = $this->store->tables[$ta];
-        $n = self::convertS32ToU32($this->stack->popInt());
+        $n = NumericOps::convertS32ToU32($this->stack->popInt());
         $val = $this->stack->popRef();
-        $i = self::convertS32ToU32($this->stack->popInt());
+        $i = NumericOps::convertS32ToU32($this->stack->popInt());
         if (count($tab->elem) < $i + $n) {
             throw new TrapException("table.fill: out of bounds", trapKind: TrapKind::OutOfBoundsTableAccess);
         }
@@ -1951,7 +1950,7 @@ final class Runtime
         $f = $this->stack->currentFrame();
         $a = $f->module->tableAddrs[$x];
         $tab = $this->store->tables[$a];
-        $i = self::convertS32ToU32($this->stack->popInt());
+        $i = NumericOps::convertS32ToU32($this->stack->popInt());
         if (count($tab->elem) <= $i) {
             throw new TrapException("table.get: out of bounds", trapKind: TrapKind::OutOfBoundsTableAccess);
         }
@@ -1966,7 +1965,7 @@ final class Runtime
         $a = $f->module->tableAddrs[$x];
         $tab = $this->store->tables[$a];
         $sz = count($tab->elem);
-        $n = self::convertS32ToU32($this->stack->popInt());
+        $n = NumericOps::convertS32ToU32($this->stack->popInt());
         $val = $this->stack->popRef();
 
         $len = $sz + $n;
@@ -1999,9 +1998,9 @@ final class Runtime
         $tab = $this->store->tables[$ta];
         $ea = $f->module->elemAddrs[$y];
         $elem = $this->store->elems[$ea];
-        $n = self::convertS32ToU32($this->stack->popInt());
-        $s = self::convertS32ToU32($this->stack->popInt());
-        $d = self::convertS32ToU32($this->stack->popInt());
+        $n = NumericOps::convertS32ToU32($this->stack->popInt());
+        $s = NumericOps::convertS32ToU32($this->stack->popInt());
+        $d = NumericOps::convertS32ToU32($this->stack->popInt());
         if (count($elem->elem) < $s + $n) {
             throw new TrapException("table.init: out of bounds", trapKind: TrapKind::OutOfBoundsTableAccess);
         }
@@ -2021,7 +2020,7 @@ final class Runtime
         $a = $f->module->tableAddrs[$x];
         $tab = $this->store->tables[$a];
         $val = $this->stack->popRef();
-        $i = self::convertS32ToU32($this->stack->popInt());
+        $i = NumericOps::convertS32ToU32($this->stack->popInt());
         if (count($tab->elem) <= $i) {
             throw new TrapException("table.set: out of bounds", trapKind: TrapKind::OutOfBoundsTableAccess);
         }
@@ -2060,7 +2059,7 @@ final class Runtime
         $a = $f->module->memAddrs[0];
         $mem = $this->store->mems[$a];
         $c = $this->stack->popFloat();
-        $i = self::convertS32ToU32($this->stack->popInt());
+        $i = NumericOps::convertS32ToU32($this->stack->popInt());
         $ea = $i + $offset;
         $ok = $mem->storeF32($ea, $c);
         if (!$ok) {
@@ -2080,7 +2079,7 @@ final class Runtime
         $a = $f->module->memAddrs[0];
         $mem = $this->store->mems[$a];
         $c = $this->stack->popFloat();
-        $i = self::convertS32ToU32($this->stack->popInt());
+        $i = NumericOps::convertS32ToU32($this->stack->popInt());
         $ea = $i + $offset;
         $ok = $mem->storeF64($ea, $c);
         if (!$ok) {
@@ -2094,7 +2093,7 @@ final class Runtime
         $f = $this->stack->currentFrame();
         $a = $f->module->memAddrs[0];
         $mem = $this->store->mems[$a];
-        $i = self::convertS32ToU32($this->stack->popInt());
+        $i = NumericOps::convertS32ToU32($this->stack->popInt());
         $ea = $i + $offset;
         $c = $mem->loadI32_s32($ea);
         if ($c === null) {
@@ -2109,7 +2108,7 @@ final class Runtime
         $f = $this->stack->currentFrame();
         $a = $f->module->memAddrs[0];
         $mem = $this->store->mems[$a];
-        $i = self::convertS32ToU32($this->stack->popInt());
+        $i = NumericOps::convertS32ToU32($this->stack->popInt());
         $ea = $i + $offset;
         $c = $mem->loadI32_s16($ea);
         if ($c === null) {
@@ -2124,7 +2123,7 @@ final class Runtime
         $f = $this->stack->currentFrame();
         $a = $f->module->memAddrs[0];
         $mem = $this->store->mems[$a];
-        $i = self::convertS32ToU32($this->stack->popInt());
+        $i = NumericOps::convertS32ToU32($this->stack->popInt());
         $ea = $i + $offset;
         $c = $mem->loadI32_u16($ea);
         if ($c === null) {
@@ -2139,7 +2138,7 @@ final class Runtime
         $f = $this->stack->currentFrame();
         $a = $f->module->memAddrs[0];
         $mem = $this->store->mems[$a];
-        $i = self::convertS32ToU32($this->stack->popInt());
+        $i = NumericOps::convertS32ToU32($this->stack->popInt());
         $ea = $i + $offset;
         $c = $mem->loadI32_s8($ea);
         if ($c === null) {
@@ -2154,7 +2153,7 @@ final class Runtime
         $f = $this->stack->currentFrame();
         $a = $f->module->memAddrs[0];
         $mem = $this->store->mems[$a];
-        $i = self::convertS32ToU32($this->stack->popInt());
+        $i = NumericOps::convertS32ToU32($this->stack->popInt());
         $ea = $i + $offset;
         $c = $mem->loadI32_u8($ea);
         if ($c === null) {
@@ -2170,7 +2169,7 @@ final class Runtime
         $a = $f->module->memAddrs[0];
         $mem = $this->store->mems[$a];
         $c = $this->stack->popInt();
-        $i = self::convertS32ToU32($this->stack->popInt());
+        $i = NumericOps::convertS32ToU32($this->stack->popInt());
         $ea = $i + $offset;
         $ok = $mem->storeI32_s32($ea, $c);
         if (!$ok) {
@@ -2185,7 +2184,7 @@ final class Runtime
         $a = $f->module->memAddrs[0];
         $mem = $this->store->mems[$a];
         $c = $this->stack->popInt();
-        $i = self::convertS32ToU32($this->stack->popInt());
+        $i = NumericOps::convertS32ToU32($this->stack->popInt());
         $ea = $i + $offset;
         $ok = $mem->storeI32_s16($ea, $c);
         if (!$ok) {
@@ -2200,7 +2199,7 @@ final class Runtime
         $a = $f->module->memAddrs[0];
         $mem = $this->store->mems[$a];
         $c = $this->stack->popInt();
-        $i = self::convertS32ToU32($this->stack->popInt());
+        $i = NumericOps::convertS32ToU32($this->stack->popInt());
         $ea = $i + $offset;
         $ok = $mem->storeI32_s8($ea, $c);
         if (!$ok) {
@@ -2214,7 +2213,7 @@ final class Runtime
         $f = $this->stack->currentFrame();
         $a = $f->module->memAddrs[0];
         $mem = $this->store->mems[$a];
-        $i = self::convertS32ToU32($this->stack->popInt());
+        $i = NumericOps::convertS32ToU32($this->stack->popInt());
         $ea = $i + $offset;
         $c = $mem->loadI64_s64($ea);
         if ($c === null) {
@@ -2229,7 +2228,7 @@ final class Runtime
         $f = $this->stack->currentFrame();
         $a = $f->module->memAddrs[0];
         $mem = $this->store->mems[$a];
-        $i = self::convertS32ToU32($this->stack->popInt());
+        $i = NumericOps::convertS32ToU32($this->stack->popInt());
         $ea = $i + $offset;
         $c = $mem->loadI64_s16($ea);
         if ($c === null) {
@@ -2244,7 +2243,7 @@ final class Runtime
         $f = $this->stack->currentFrame();
         $a = $f->module->memAddrs[0];
         $mem = $this->store->mems[$a];
-        $i = self::convertS32ToU32($this->stack->popInt());
+        $i = NumericOps::convertS32ToU32($this->stack->popInt());
         $ea = $i + $offset;
         $c = $mem->loadI64_u16($ea);
         if ($c === null) {
@@ -2259,7 +2258,7 @@ final class Runtime
         $f = $this->stack->currentFrame();
         $a = $f->module->memAddrs[0];
         $mem = $this->store->mems[$a];
-        $i = self::convertS32ToU32($this->stack->popInt());
+        $i = NumericOps::convertS32ToU32($this->stack->popInt());
         $ea = $i + $offset;
         $c = $mem->loadI64_s32($ea);
         if ($c === null) {
@@ -2274,7 +2273,7 @@ final class Runtime
         $f = $this->stack->currentFrame();
         $a = $f->module->memAddrs[0];
         $mem = $this->store->mems[$a];
-        $i = self::convertS32ToU32($this->stack->popInt());
+        $i = NumericOps::convertS32ToU32($this->stack->popInt());
         $ea = $i + $offset;
         $c = $mem->loadI64_u32($ea);
         if ($c === null) {
@@ -2289,7 +2288,7 @@ final class Runtime
         $f = $this->stack->currentFrame();
         $a = $f->module->memAddrs[0];
         $mem = $this->store->mems[$a];
-        $i = self::convertS32ToU32($this->stack->popInt());
+        $i = NumericOps::convertS32ToU32($this->stack->popInt());
         $ea = $i + $offset;
         $c = $mem->loadI64_s8($ea);
         if ($c === null) {
@@ -2304,7 +2303,7 @@ final class Runtime
         $f = $this->stack->currentFrame();
         $a = $f->module->memAddrs[0];
         $mem = $this->store->mems[$a];
-        $i = self::convertS32ToU32($this->stack->popInt());
+        $i = NumericOps::convertS32ToU32($this->stack->popInt());
         $ea = $i + $offset;
         $c = $mem->loadI64_u8($ea);
         if ($c === null) {
@@ -2320,7 +2319,7 @@ final class Runtime
         $a = $f->module->memAddrs[0];
         $mem = $this->store->mems[$a];
         $c = $this->stack->popInt();
-        $i = self::convertS32ToU32($this->stack->popInt());
+        $i = NumericOps::convertS32ToU32($this->stack->popInt());
         $ea = $i + $offset;
         $ok = $mem->storeI64_s64($ea, $c);
         if (!$ok) {
@@ -2335,7 +2334,7 @@ final class Runtime
         $a = $f->module->memAddrs[0];
         $mem = $this->store->mems[$a];
         $c = $this->stack->popInt();
-        $i = self::convertS32ToU32($this->stack->popInt());
+        $i = NumericOps::convertS32ToU32($this->stack->popInt());
         $ea = $i + $offset;
         $ok = $mem->storeI64_s16($ea, $c);
         if (!$ok) {
@@ -2350,7 +2349,7 @@ final class Runtime
         $a = $f->module->memAddrs[0];
         $mem = $this->store->mems[$a];
         $c = $this->stack->popInt();
-        $i = self::convertS32ToU32($this->stack->popInt());
+        $i = NumericOps::convertS32ToU32($this->stack->popInt());
         $ea = $i + $offset;
         $ok = $mem->storeI64_s32($ea, $c);
         if (!$ok) {
@@ -2365,7 +2364,7 @@ final class Runtime
         $a = $f->module->memAddrs[0];
         $mem = $this->store->mems[$a];
         $c = $this->stack->popInt();
-        $i = self::convertS32ToU32($this->stack->popInt());
+        $i = NumericOps::convertS32ToU32($this->stack->popInt());
         $ea = $i + $offset;
         $ok = $mem->storeI64_s8($ea, $c);
         if (!$ok) {
@@ -2378,9 +2377,9 @@ final class Runtime
         $f = $this->stack->currentFrame();
         $ma = $f->module->memAddrs[0];
         $mem = $this->store->mems[$ma];
-        $n = self::convertS32ToU32($this->stack->popInt());
-        $s = self::convertS32ToU32($this->stack->popInt());
-        $d = self::convertS32ToU32($this->stack->popInt());
+        $n = NumericOps::convertS32ToU32($this->stack->popInt());
+        $s = NumericOps::convertS32ToU32($this->stack->popInt());
+        $d = NumericOps::convertS32ToU32($this->stack->popInt());
         if ($mem->size() < $s + $n || $mem->size() < $d + $n) {
             throw new TrapException("memory.copy: out of bounds", trapKind: TrapKind::OutOfBoundsMemoryAccess);
         }
@@ -2392,9 +2391,9 @@ final class Runtime
         $f = $this->stack->currentFrame();
         $ma = $f->module->memAddrs[0];
         $mem = $this->store->mems[$ma];
-        $n = self::convertS32ToU32($this->stack->popInt());
+        $n = NumericOps::convertS32ToU32($this->stack->popInt());
         $val = $this->stack->popInt();
-        $d = self::convertS32ToU32($this->stack->popInt());
+        $d = NumericOps::convertS32ToU32($this->stack->popInt());
         if ($mem->size() < $d + $n) {
             throw new TrapException("memory.fill: out of bounds", trapKind: TrapKind::OutOfBoundsMemoryAccess);
         }
@@ -2406,7 +2405,7 @@ final class Runtime
         $f = $this->stack->currentFrame();
         $a = $f->module->memAddrs[0];
         $mem = $this->store->mems[$a];
-        $n = self::convertS32ToU32($this->stack->popInt());
+        $n = NumericOps::convertS32ToU32($this->stack->popInt());
         $result = $mem->grow($n);
         $this->stack->pushValue($result);
     }
@@ -2419,9 +2418,9 @@ final class Runtime
         $mem = $this->store->mems[$ma];
         $da = $f->module->dataAddrs[$x];
         $data = $this->store->datas[$da];
-        $n = self::convertS32ToU32($this->stack->popInt());
-        $s = self::convertS32ToU32($this->stack->popInt());
-        $d = self::convertS32ToU32($this->stack->popInt());
+        $n = NumericOps::convertS32ToU32($this->stack->popInt());
+        $s = NumericOps::convertS32ToU32($this->stack->popInt());
+        $d = NumericOps::convertS32ToU32($this->stack->popInt());
         if (count($data->data) < $s + $n) {
             throw new TrapException("memory.init: out of bounds", trapKind: TrapKind::OutOfBoundsMemoryAccess);
         }
@@ -2485,7 +2484,7 @@ final class Runtime
     {
         $ls = $instr->labelTable;
         $ln = $instr->defaultLabel;
-        $i = self::convertS32ToU32($this->stack->popInt());
+        $i = NumericOps::convertS32ToU32($this->stack->popInt());
         if ($i < count($ls)) {
             return $ls[$i];
         } else {
@@ -2509,7 +2508,7 @@ final class Runtime
         $ta = $f->module->tableAddrs[$x];
         $tab = $this->store->tables[$ta];
         $ftExpect = $f->module->types[$y];
-        $i = self::convertS32ToU32($this->stack->popInt());
+        $i = NumericOps::convertS32ToU32($this->stack->popInt());
         if (count($tab->elem) <= $i) {
             throw new TrapException("call_indirect: out of bounds", trapKind: TrapKind::UndefinedElement);
         }
@@ -2596,7 +2595,7 @@ final class Runtime
         $f = $this->stack->currentFrame();
         $a = $f->module->memAddrs[0];
         $mem = $this->store->mems[$a];
-        $i = self::convertS32ToU32($this->stack->popInt());
+        $i = NumericOps::convertS32ToU32($this->stack->popInt());
         $ea = $i + $offset;
         $c = $mem->loadF32($ea);
         if ($c === null) {
@@ -2610,7 +2609,7 @@ final class Runtime
         $f = $this->stack->currentFrame();
         $a = $f->module->memAddrs[0];
         $mem = $this->store->mems[$a];
-        $i = self::convertS32ToU32($this->stack->popInt());
+        $i = NumericOps::convertS32ToU32($this->stack->popInt());
         $ea = $i + $offset;
         $c = $mem->loadF64($ea);
         if ($c === null) {
@@ -2645,74 +2644,6 @@ final class Runtime
             );
         } else {
             throw new RuntimeException("expand(): invalid blocktype");
-        }
-    }
-
-    private static function convertS32ToU32(int $x): int
-    {
-        // assert(-0x80000000 <= $x && $x <= 0x7FFFFFFF, "convertS32ToU32: out of range $x");
-        if ($x < 0) {
-            $buf = pack('l', $x);
-            $result = unpack('L', $buf);
-            assert($result !== false);
-            assert(0x00000000 <= $result[1] && $result[1] <= 0xFFFFFFFF, "convertS32ToU32: out of range $result[1]");
-            return $result[1];
-        } else {
-            return $x;
-        }
-    }
-
-    private static function convertU32ToS32(int $x): int
-    {
-        assert(0x00000000 <= $x && $x <= 0xFFFFFFFF);
-        if (($x & 0x80000000) !== 0) {
-            $buf = pack('L', $x);
-            $result = unpack('l', $buf);
-            assert($result !== false);
-            assert(-0x80000000 <= $result[1] && $result[1] <= 0x7FFFFFFF, "convertU32ToS32: out of range $result[1]");
-            return $result[1];
-        } else {
-            return $x;
-        }
-    }
-
-    private static function convertS64ToBigUInt(int $x): string
-    {
-        if ($x < 0) {
-            return bcadd((string)$x, '18446744073709551616');
-        } else {
-            return (string)$x;
-        }
-    }
-
-    private static function bigIntToPhpInt(string $s): int
-    {
-        $result = bcmod($s, bcpow('2', '64'));
-        if ($result[0] === '-') {
-            // 2^63 <= -$result
-            if (bccomp(bcpow('2', '63'), bcsub('0', $result)) <= 0) {
-                $result = bcadd($result, bcpow('2', '64'));
-            }
-        } else {
-            // 2^63-1 < $result
-            if (bccomp(bcsub(bcpow('2', '63'), '1'), $result) < 0) {
-                $result = bcsub($result, bcpow('2', '64'));
-            }
-        }
-        return (int)$result;
-    }
-
-    private static function getFloatSign(float $p): int
-    {
-        if (is_nan($p)) {
-            $n = BinaryConversion::reinterpretF64AsI64($p);
-            // The MSB is the sign bit.
-            return (($n >> 63) & 1) === 1 ? -1 : 1;
-        } elseif ($p !== 0.0) {
-            return $p < 0.0 ? -1 : 1;
-        } else {
-            // Comparison with 0 does not work for -0.0.
-            return fdiv(1, $p) < 0.0 ? -1 : 1;
         }
     }
 }
