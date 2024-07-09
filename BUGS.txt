@@ -7,7 +7,6 @@
 * FloatLiteralsTest
 * FloatMemoryTest
 * FloatMiscTest
-* TrapsTest
 
 ## Spectest
 
