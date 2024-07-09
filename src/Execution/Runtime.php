@@ -592,25 +592,25 @@ final class Runtime
     private function execInstrNumericF32ConvertI32S(Instrs\Numeric\F32ConvertI32S $instr): void
     {
         $v = $this->stack->popInt();
-        $this->stack->pushValue((float) $v);
+        $this->stack->pushValue(NumericOps::truncateF64ToF32((float) $v));
     }
 
     private function execInstrNumericF32ConvertI32U(Instrs\Numeric\F32ConvertI32U $instr): void
     {
-        $v = $this->stack->popInt();
-        $this->stack->pushValue((float) $v);
+        $v = NumericOps::convertS32ToU32($this->stack->popInt());
+        $this->stack->pushValue(NumericOps::truncateF64ToF32((float) $v));
     }
 
     private function execInstrNumericF32ConvertI64S(Instrs\Numeric\F32ConvertI64S $instr): void
     {
         $v = $this->stack->popInt();
-        $this->stack->pushValue((float) $v);
+        $this->stack->pushValue(NumericOps::truncateF64ToF32((float) $v));
     }
 
     private function execInstrNumericF32ConvertI64U(Instrs\Numeric\F32ConvertI64U $instr): void
     {
         $v = $this->stack->popInt();
-        $this->stack->pushValue((float) $v);
+        $this->stack->pushValue(NumericOps::truncateF64ToF32((float) $v));
     }
 
     private function execInstrNumericF32CopySign(Instrs\Numeric\F32CopySign $instr): void
