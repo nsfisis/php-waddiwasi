@@ -1,6 +1,6 @@
 * Support text format (.wat)
 * Implement validation
-* Fix known bugs (BUGS.txt)
+* Fix known bugs (BUGS)
 * Implement NaN propagation
 * Provide sane bindings to PHP
 * Write PHPDoc for public APIs

@@ -36,7 +36,7 @@ $ composer example:rubyvm-on-php-on-wasm
 
 ## Known Bugs
 
-See [BUGS.txt](./BUGS.txt).
+See [BUGS](./BUGS).
 
 
 
