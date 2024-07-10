@@ -4,11 +4,14 @@ declare(strict_types=1);
 
 namespace Nsfisis\Waddiwasi\WebAssembly\Execution;
 
-use Nsfisis\Waddiwasi\WebAssembly\Structure\Types\RefType;
+use Nsfisis\Waddiwasi\WebAssembly\Structure\Types\ValType;
 
 abstract readonly class Ref
 {
-    final public static function RefNull(RefType $type): Refs\RefNull
+    /**
+     * @param ValType::FuncRef|ValType::ExternRef $type
+     */
+    final public static function RefNull(ValType $type): Refs\RefNull
     {
         return new Refs\RefNull($type);
     }

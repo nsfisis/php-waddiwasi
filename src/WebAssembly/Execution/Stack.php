@@ -4,7 +4,7 @@ declare(strict_types=1);
 
 namespace Nsfisis\Waddiwasi\WebAssembly\Execution;
 
-use Nsfisis\Waddiwasi\WebAssembly\Structure\Types\RefType;
+use Nsfisis\Waddiwasi\WebAssembly\Structure\Types\ValType;
 use function assert;
 use function count;
 use function is_float;
@@ -54,7 +54,10 @@ final class Stack
         $this->pushValue((int)$value);
     }
 
-    public function pushRefNull(RefType $type): void
+    /**
+     * @param ValType::FuncRef|ValType::ExternRef $type
+     */
+    public function pushRefNull(ValType $type): void
     {
         $this->pushValue(Ref::RefNull($type));
     }

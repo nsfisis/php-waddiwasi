@@ -12,7 +12,6 @@ use Nsfisis\Waddiwasi\WebAssembly\Structure\Instructions\Instrs\Parametric;
 use Nsfisis\Waddiwasi\WebAssembly\Structure\Instructions\Instrs\Reference;
 use Nsfisis\Waddiwasi\WebAssembly\Structure\Instructions\Instrs\Table;
 use Nsfisis\Waddiwasi\WebAssembly\Structure\Instructions\Instrs\Variable;
-use Nsfisis\Waddiwasi\WebAssembly\Structure\Types\RefType;
 use Nsfisis\Waddiwasi\WebAssembly\Structure\Types\ValType;
 
 abstract readonly class Instr
@@ -616,7 +615,10 @@ abstract readonly class Instr
     {
         return new Reference\RefIsNull();
     }
-    final public static function RefNull(RefType $type): Reference\RefNull
+    /**
+     * @param ValType::FuncRef|ValType::ExternRef $type
+     */
+    final public static function RefNull(ValType $type): Reference\RefNull
     {
         return new Reference\RefNull($type);
     }

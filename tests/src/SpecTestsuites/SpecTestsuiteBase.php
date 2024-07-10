@@ -24,8 +24,6 @@ use Nsfisis\Waddiwasi\WebAssembly\Structure\Types\GlobalType;
 use Nsfisis\Waddiwasi\WebAssembly\Structure\Types\Limits;
 use Nsfisis\Waddiwasi\WebAssembly\Structure\Types\MemType;
 use Nsfisis\Waddiwasi\WebAssembly\Structure\Types\Mut;
-use Nsfisis\Waddiwasi\WebAssembly\Structure\Types\NumType;
-use Nsfisis\Waddiwasi\WebAssembly\Structure\Types\RefType;
 use Nsfisis\Waddiwasi\WebAssembly\Structure\Types\TableType;
 use Nsfisis\Waddiwasi\WebAssembly\Structure\Types\ValType;
 use PHPUnit\Framework\TestCase;
@@ -53,22 +51,22 @@ abstract class SpecTestsuiteBase extends TestCase
         $importObj = [
             'spectest' => [
                 'memory' => Extern::Mem(new MemInst(new MemType(new Limits(1, 2)))),
-                'table' => Extern::Table(new TableInst(new TableType(new Limits(10, 20), RefType::FuncRef), [
-                    Ref::RefNull(RefType::FuncRef),
-                    Ref::RefNull(RefType::FuncRef),
-                    Ref::RefNull(RefType::FuncRef),
-                    Ref::RefNull(RefType::FuncRef),
-                    Ref::RefNull(RefType::FuncRef),
-                    Ref::RefNull(RefType::FuncRef),
-                    Ref::RefNull(RefType::FuncRef),
-                    Ref::RefNull(RefType::FuncRef),
-                    Ref::RefNull(RefType::FuncRef),
-                    Ref::RefNull(RefType::FuncRef),
+                'table' => Extern::Table(new TableInst(new TableType(new Limits(10, 20), ValType::FuncRef), [
+                    Ref::RefNull(ValType::FuncRef),
+                    Ref::RefNull(ValType::FuncRef),
+                    Ref::RefNull(ValType::FuncRef),
+                    Ref::RefNull(ValType::FuncRef),
+                    Ref::RefNull(ValType::FuncRef),
+                    Ref::RefNull(ValType::FuncRef),
+                    Ref::RefNull(ValType::FuncRef),
+                    Ref::RefNull(ValType::FuncRef),
+                    Ref::RefNull(ValType::FuncRef),
+                    Ref::RefNull(ValType::FuncRef),
                 ])),
-                'global_i32' => Extern::Global_(new GlobalInst(new GlobalType(Mut::Const, ValType::NumType(NumType::I32)), 666)),
-                'global_i64' => Extern::Global_(new GlobalInst(new GlobalType(Mut::Const, ValType::NumType(NumType::I64)), 666)),
-                'global_f32' => Extern::Global_(new GlobalInst(new GlobalType(Mut::Const, ValType::NumType(NumType::F32)), 666.6)),
-                'global_f64' => Extern::Global_(new GlobalInst(new GlobalType(Mut::Const, ValType::NumType(NumType::F64)), 666.6)),
+                'global_i32' => Extern::Global_(new GlobalInst(new GlobalType(Mut::Const, ValType::I32), 666)),
+                'global_i64' => Extern::Global_(new GlobalInst(new GlobalType(Mut::Const, ValType::I64), 666)),
+                'global_f32' => Extern::Global_(new GlobalInst(new GlobalType(Mut::Const, ValType::F32), 666.6)),
+                'global_f64' => Extern::Global_(new GlobalInst(new GlobalType(Mut::Const, ValType::F64), 666.6)),
             ],
         ];
         foreach (self::$registeredModules as $registeredModuleName => $registeredModule) {
@@ -216,8 +214,8 @@ abstract class SpecTestsuiteBase extends TestCase
                 'nan:arithmetic' => NAN,
                 default => unpack('e', self::convertInt64ToBinary($value))[1],
             },
-            'externref' => $value === 'null' ? Ref::RefNull(RefType::ExternRef) : Ref::RefExtern((int)$value),
-            'funcref' => $value === 'null' ? Ref::RefNull(RefType::FuncRef) : Ref::RefFunc((int)$value),
+            'externref' => $value === 'null' ? Ref::RefNull(ValType::ExternRef) : Ref::RefExtern((int)$value),
+            'funcref' => $value === 'null' ? Ref::RefNull(ValType::FuncRef) : Ref::RefFunc((int)$value),
             default => throw new RuntimeException("unknown type: $type"),
         };
     }

@@ -11,12 +11,9 @@ use Nsfisis\Waddiwasi\WebAssembly\Structure\Types\GlobalType;
 use Nsfisis\Waddiwasi\WebAssembly\Structure\Types\Limits;
 use Nsfisis\Waddiwasi\WebAssembly\Structure\Types\MemType;
 use Nsfisis\Waddiwasi\WebAssembly\Structure\Types\Mut;
-use Nsfisis\Waddiwasi\WebAssembly\Structure\Types\NumType;
-use Nsfisis\Waddiwasi\WebAssembly\Structure\Types\RefType;
 use Nsfisis\Waddiwasi\WebAssembly\Structure\Types\ResultType;
 use Nsfisis\Waddiwasi\WebAssembly\Structure\Types\TableType;
 use Nsfisis\Waddiwasi\WebAssembly\Structure\Types\ValType;
-use Nsfisis\Waddiwasi\WebAssembly\Structure\Types\ValTypes;
 
 final readonly class Debug
 {
@@ -52,7 +49,7 @@ final readonly class Debug
 
     private static function tableTypeToString(TableType $type): string
     {
-        return self::valTypeToString(ValType::RefType($type->refType)) . ' ' . self::limitsToString($type->limits);
+        return self::valTypeToString($type->refType) . ' ' . self::limitsToString($type->limits);
     }
 
     private static function memTypeToString(MemType $type): string
@@ -74,19 +71,14 @@ final readonly class Debug
 
     private static function valTypeToString(ValType $type): string
     {
-        return match ($type::class) {
-            ValTypes\NumType::class => match ($type->inner) {
-                NumType::I32 => 'i32',
-                NumType::I64 => 'i64',
-                NumType::F32 => 'f32',
-                NumType::F64 => 'f64',
-            },
-            ValTypes\VecType::class => 'v128',
-            ValTypes\RefType::class => match ($type->inner) {
-                RefType::FuncRef => 'funcref',
-                RefType::ExternRef => 'externref',
-            },
-            default => 'unknown',
+        return match ($type) {
+            ValType::I32 => 'i32',
+            ValType::I64 => 'i64',
+            ValType::F32 => 'f32',
+            ValType::F64 => 'f64',
+            ValType::V128 => 'v128',
+            ValType::ExternRef => 'externref',
+            ValType::FuncRef => 'funcref',
         };
     }
 

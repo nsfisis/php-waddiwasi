@@ -31,12 +31,9 @@ use Nsfisis\Waddiwasi\WebAssembly\Structure\Types\GlobalType;
 use Nsfisis\Waddiwasi\WebAssembly\Structure\Types\Limits;
 use Nsfisis\Waddiwasi\WebAssembly\Structure\Types\MemType;
 use Nsfisis\Waddiwasi\WebAssembly\Structure\Types\Mut;
-use Nsfisis\Waddiwasi\WebAssembly\Structure\Types\NumType;
-use Nsfisis\Waddiwasi\WebAssembly\Structure\Types\RefType;
 use Nsfisis\Waddiwasi\WebAssembly\Structure\Types\ResultType;
 use Nsfisis\Waddiwasi\WebAssembly\Structure\Types\TableType;
 use Nsfisis\Waddiwasi\WebAssembly\Structure\Types\ValType;
-use Nsfisis\Waddiwasi\WebAssembly\Structure\Types\VecType;
 use function array_reduce;
 use function assert;
 use function count;
@@ -308,32 +305,27 @@ final class Decoder
 
     private function decodeValType(): ValType
     {
-        $b = $this->stream->peekByte();
-        if ($b === 0x7F) {
-            $this->stream->seek(1);
-            return ValType::NumType(NumType::I32);
-        } elseif ($b === 0x7E) {
-            $this->stream->seek(1);
-            return ValType::NumType(NumType::I64);
-        } elseif ($b === 0x7D) {
-            $this->stream->seek(1);
-            return ValType::NumType(NumType::F32);
-        } elseif ($b === 0x7C) {
-            $this->stream->seek(1);
-            return ValType::NumType(NumType::F64);
-        } elseif ($b === 0x7B) {
-            $this->stream->seek(1);
-            return ValType::VecType(VecType::V128);
-        } else {
-            return ValType::RefType($this->decodeRefType());
-        }
+        $b = $this->decodeByte();
+        return match ($b) {
+            0x7F => ValType::I32,
+            0x7E => ValType::I64,
+            0x7D => ValType::F32,
+            0x7C => ValType::F64,
+            0x7B => ValType::V128,
+            0x70 => ValType::FuncRef,
+            0x6F => ValType::ExternRef,
+            default => throw new InvalidBinaryFormatException("valtype $b"),
+        };
     }
 
-    private function decodeRefType(): RefType
+    /**
+     * @return ValType::FuncRef|ValType::ExternRef
+     */
+    private function decodeRefType(): ValType
     {
-        return match ($this->decodeByte()) {
-            0x70 => RefType::FuncRef,
-            0x6F => RefType::ExternRef,
+        $type = $this->decodeValType();
+        return match ($type) {
+            ValType::FuncRef, ValType::ExternRef => $type,
             default => throw new InvalidBinaryFormatException("reftype"),
         };
     }
@@ -436,7 +428,7 @@ final class Decoder
             $offset = $this->decodeExpr();
             $initFuncRefs = $this->decodeVec($this->decodeFuncIdx(...));
             return new Elem(
-                RefType::FuncRef,
+                ValType::FuncRef,
                 array_map(
                     fn ($funcRef) => [Instr::RefFunc($funcRef)],
                     $initFuncRefs,
@@ -482,7 +474,7 @@ final class Decoder
             $offset = $this->decodeExpr();
             $init = $this->decodeVec($this->decodeExpr(...));
             return new Elem(
-                RefType::FuncRef,
+                ValType::FuncRef,
                 $init,
                 ElemMode::Active(0, $offset),
             );
@@ -589,11 +581,14 @@ final class Decoder
         };
     }
 
-    private function decodeElemKind(): RefType
+    /**
+     * @return ValType::FuncRef
+     */
+    private function decodeElemKind(): ValType
     {
         $b = $this->decodeByte();
         if ($b === 0x00) {
-            return RefType::FuncRef;
+            return ValType::FuncRef;
         } else {
             throw new InvalidBinaryFormatException("elemkind");
         }

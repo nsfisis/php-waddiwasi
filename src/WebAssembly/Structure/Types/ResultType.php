@@ -22,7 +22,7 @@ final readonly class ResultType
             return false;
         }
         foreach ($this->types as $i => $type) {
-            if (!$type->equals($other->types[$i])) {
+            if ($type !== $other->types[$i]) {
                 return false;
             }
         }

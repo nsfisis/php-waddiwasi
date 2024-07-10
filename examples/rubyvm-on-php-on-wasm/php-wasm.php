@@ -13,7 +13,6 @@ use Nsfisis\Waddiwasi\WebAssembly\Execution\Refs;
 use Nsfisis\Waddiwasi\WebAssembly\Execution\Runtime;
 use Nsfisis\Waddiwasi\WebAssembly\Execution\Store;
 use Nsfisis\Waddiwasi\WebAssembly\Structure\Types\FuncType;
-use Nsfisis\Waddiwasi\WebAssembly\Structure\Types\NumType;
 use Nsfisis\Waddiwasi\WebAssembly\Structure\Types\ResultType;
 use Nsfisis\Waddiwasi\WebAssembly\Structure\Types\ValType;
 
@@ -176,10 +175,10 @@ function copyStringToWasmMemory(Runtime $runtime, int $dst, string $src): void
 function makeHostFunc(string $typeDef, callable $fn): Externs\Func
 {
     $stringToType = fn (string $s) => match ($s) {
-        'i32' => ValType::NumType(NumType::I32),
-        'i64' => ValType::NumType(NumType::I64),
-        'f32' => ValType::NumType(NumType::F32),
-        'f64' => ValType::NumType(NumType::F64),
+        'i32' => ValType::I32,
+        'i64' => ValType::I64,
+        'f32' => ValType::F32,
+        'f64' => ValType::F64,
         default => throw new \RuntimeException('Invalid type: ' . $s),
     };
     preg_match('/^\(([^)]*)\) -> \(([^)]*)\)$/', $typeDef, $matches);

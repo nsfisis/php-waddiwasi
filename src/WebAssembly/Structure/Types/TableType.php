@@ -6,9 +6,12 @@ namespace Nsfisis\Waddiwasi\WebAssembly\Structure\Types;
 
 final readonly class TableType
 {
+    /**
+     * @param ValType::FuncRef|ValType::ExternRef $refType
+     */
     public function __construct(
         public Limits $limits,
-        public RefType $refType,
+        public ValType $refType,
     ) {
     }
 }

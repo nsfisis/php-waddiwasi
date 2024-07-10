@@ -13,11 +13,9 @@ use Nsfisis\Waddiwasi\WebAssembly\Structure\Modules\ElemModes;
 use Nsfisis\Waddiwasi\WebAssembly\Structure\Modules\Module;
 use Nsfisis\Waddiwasi\WebAssembly\Structure\Types\FuncType;
 use Nsfisis\Waddiwasi\WebAssembly\Structure\Types\Limits;
-use Nsfisis\Waddiwasi\WebAssembly\Structure\Types\NumType;
 use Nsfisis\Waddiwasi\WebAssembly\Structure\Types\ResultType;
 use Nsfisis\Waddiwasi\WebAssembly\Structure\Types\TableType;
 use Nsfisis\Waddiwasi\WebAssembly\Structure\Types\ValType;
-use Nsfisis\Waddiwasi\WebAssembly\Structure\Types\ValTypes;
 use RuntimeException;
 use function abs;
 use function array_map;
@@ -2639,14 +2637,12 @@ final class Runtime
 
     private static function defaultValueFromValType(ValType $type): int|float|Ref
     {
-        return match ($type::class) {
-            ValTypes\NumType::class => match ($type->inner) {
-                NumType::I32 => 0,
-                NumType::I64 => 0,
-                NumType::F32 => 0.0,
-                NumType::F64 => 0.0,
-            },
-            ValTypes\RefType::class => Ref::RefNull($type->inner),
+        return match ($type) {
+            ValType::I32 => 0,
+            ValType::I64 => 0,
+            ValType::F32 => 0.0,
+            ValType::F64 => 0.0,
+            ValType::FuncRef, ValType::ExternRef => Ref::RefNull($type),
             default => throw new RuntimeException("unreachable"),
         };
     }

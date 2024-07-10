@@ -9,8 +9,8 @@ use Nsfisis\Waddiwasi\WebAssembly\Structure\Modules\Func;
 use Nsfisis\Waddiwasi\WebAssembly\Structure\Modules\Module;
 use Nsfisis\Waddiwasi\WebAssembly\Structure\Types\GlobalType;
 use Nsfisis\Waddiwasi\WebAssembly\Structure\Types\MemType;
-use Nsfisis\Waddiwasi\WebAssembly\Structure\Types\RefType;
 use Nsfisis\Waddiwasi\WebAssembly\Structure\Types\TableType;
+use Nsfisis\Waddiwasi\WebAssembly\Structure\Types\ValType;
 use RuntimeException;
 use function count;
 
@@ -144,9 +144,10 @@ final readonly class Allocator
     }
 
     /**
+     * @param ValType::FuncRef|ValType::ExternRef $refType
      * @param list<Ref> $elem
      */
-    private function allocElem(RefType $refType, array $elem): int
+    private function allocElem(ValType $refType, array $elem): int
     {
         $elemInst = new ElemInst($refType, $elem);
         $this->store->elems[] = $elemInst;
