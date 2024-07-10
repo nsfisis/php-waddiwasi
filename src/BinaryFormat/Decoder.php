@@ -7,6 +7,7 @@ namespace Nsfisis\Waddiwasi\BinaryFormat;
 use Nsfisis\Waddiwasi\BinaryFormat\Internal\Code;
 use Nsfisis\Waddiwasi\BinaryFormat\Internal\Locals;
 use Nsfisis\Waddiwasi\BinaryFormat\Internal\SectionId;
+use Nsfisis\Waddiwasi\Stream\StreamInterface;
 use Nsfisis\Waddiwasi\Structure\Instructions\Instr;
 use Nsfisis\Waddiwasi\Structure\Instructions\Instrs;
 use Nsfisis\Waddiwasi\Structure\Instructions\Instrs\Control\BlockType;
@@ -44,19 +45,12 @@ use function in_array;
 use function is_float;
 use function is_int;
 use function ord;
-use function strlen;
 
 final class Decoder
 {
-    private string $input;
-    private int $inputSize;
-    private int $pos;
-
-    public function __construct(string $wasmBinary)
-    {
-        $this->input = $wasmBinary;
-        $this->inputSize = strlen($wasmBinary);
-        $this->pos = 0;
+    public function __construct(
+        private readonly StreamInterface $stream,
+    ) {
     }
 
     public function decode(): Module
@@ -77,7 +71,7 @@ final class Decoder
         $codes = $this->decodeSection(SectionId::Code, $this->decodeCodeSecRest(...)) ?? [];
         $datas = $this->decodeSection(SectionId::Data, $this->decodeDataSecRest(...)) ?? [];
 
-        if (!$this->eof()) {
+        if (!$this->stream->eof()) {
             throw new InvalidBinaryFormatException("eof");
         }
         if ($dataCount === null) {
@@ -125,30 +119,26 @@ final class Decoder
 
     private function checkMagic(): void
     {
-        assert($this->pos === 0);
-        $this->ensureNBytesRemains(4);
-        $b1 = ord($this->input[0]);
-        $b2 = ord($this->input[1]);
-        $b3 = ord($this->input[2]);
-        $b4 = ord($this->input[3]);
+        $bs = $this->stream->read(4);
+        $b1 = ord($bs[0]);
+        $b2 = ord($bs[1]);
+        $b3 = ord($bs[2]);
+        $b4 = ord($bs[3]);
         if ([$b1, $b2, $b3, $b4] !== [0x00, 0x61, 0x73, 0x6D]) {
             throw new InvalidBinaryFormatException("magic");
         }
-        $this->pos += 4;
     }
 
     private function checkVersion(): void
     {
-        assert($this->pos === 4);
-        $this->ensureNBytesRemains(4);
-        $b1 = ord($this->input[4]);
-        $b2 = ord($this->input[5]);
-        $b3 = ord($this->input[6]);
-        $b4 = ord($this->input[7]);
+        $bs = $this->stream->read(4);
+        $b1 = ord($bs[0]);
+        $b2 = ord($bs[1]);
+        $b3 = ord($bs[2]);
+        $b4 = ord($bs[3]);
         if ([$b1, $b2, $b3, $b4] !== [0x01, 0x00, 0x00, 0x00]) {
             throw new InvalidBinaryFormatException(sprintf("version: [%x, %x, %x, %x]", $b1, $b2, $b3, $b4));
         }
-        $this->pos += 4;
     }
 
     /**
@@ -159,11 +149,11 @@ final class Decoder
     private function decodeSection(SectionId $sectionId, callable $decoder): mixed
     {
         $this->skipCustomSections();
-        if ($this->eof()) {
+        if ($this->stream->eof()) {
             return null;
         }
 
-        $idValue = $this->peekByte();
+        $idValue = $this->stream->peekByte();
         $id = SectionId::tryFrom($idValue);
         if ($id === null) {
             throw new InvalidBinaryFormatException("section id");
@@ -171,12 +161,12 @@ final class Decoder
         if ($id !== $sectionId) {
             return null;
         }
-        $this->skipNBytes(1);
+        $this->stream->seek(1);
 
         $size = $this->decodeU32();
-        $prevPos = $this->pos;
+        $prevPos = $this->stream->tell();
         $result = $decoder();
-        if ($this->pos - $prevPos !== $size) {
+        if ($this->stream->tell() - $prevPos !== $size) {
             throw new InvalidBinaryFormatException("type section size");
         }
         return $result;
@@ -184,17 +174,23 @@ final class Decoder
 
     private function skipCustomSections(): void
     {
-        while (!$this->eof()) {
-            $b = $this->peekByte();
+        while (!$this->stream->eof()) {
+            $b = $this->stream->peekByte();
             if ($b !== SectionId::Custom->value) {
                 break;
             }
-            $this->skipNBytes(1);
+            $this->stream->seek(1);
             $size = $this->decodeU32();
-            $prevPos = $this->pos;
+            $prevPos = $this->stream->tell();
             $this->decodeName();
-            $encodedSizeOfName = $this->pos - $prevPos;
-            $this->skipNBytes($size - $encodedSizeOfName);
+            $encodedSizeOfName = $this->stream->tell() - $prevPos;
+            $offset = $size - $encodedSizeOfName;
+            if ($offset < 0) {
+                throw new InvalidBinaryFormatException("custom section size");
+            }
+            if ($offset !== 0) {
+                $this->stream->seek($offset);
+            }
         }
     }
 
@@ -312,21 +308,21 @@ final class Decoder
 
     private function decodeValType(): ValType
     {
-        $b = $this->peekByte();
+        $b = $this->stream->peekByte();
         if ($b === 0x7F) {
-            $this->skipNBytes(1);
+            $this->stream->seek(1);
             return ValType::NumType(NumType::I32);
         } elseif ($b === 0x7E) {
-            $this->skipNBytes(1);
+            $this->stream->seek(1);
             return ValType::NumType(NumType::I64);
         } elseif ($b === 0x7D) {
-            $this->skipNBytes(1);
+            $this->stream->seek(1);
             return ValType::NumType(NumType::F32);
         } elseif ($b === 0x7C) {
-            $this->skipNBytes(1);
+            $this->stream->seek(1);
             return ValType::NumType(NumType::F64);
         } elseif ($b === 0x7B) {
-            $this->skipNBytes(1);
+            $this->stream->seek(1);
             return ValType::VecType(VecType::V128);
         } else {
             return ValType::RefType($this->decodeRefType());
@@ -524,10 +520,10 @@ final class Decoder
     private function decodeCode(): Code
     {
         $size = $this->decodeU32();
-        $prevPos = $this->pos;
+        $prevPos = $this->stream->tell();
         $compressedLocals = $this->decodeVec($this->decodeLocals(...));
         $body = $this->decodeExpr();
-        if ($this->pos - $prevPos !== $size) {
+        if ($this->stream->tell() - $prevPos !== $size) {
             throw new InvalidBinaryFormatException("code size");
         }
         return new Code(
@@ -672,7 +668,7 @@ final class Decoder
 
     private function decodeInstr(): Instr
     {
-        switch ($this->decodeByte()) {
+        switch ($op = $this->decodeByte()) {
             case 0x00: return Instr::Unreachable();
             case 0x01: return Instr::Nop();
             case 0x02:
@@ -739,14 +735,15 @@ final class Decoder
             case 0x3D: return Instr::I64Store16(...$this->decodeMemArg());
             case 0x3E: return Instr::I64Store32(...$this->decodeMemArg());
             case 0x3F:
-                if ($this->decodeByte() !== 0) {
-                    $this->seekBy(-1);
-                    throw new InvalidBinaryFormatException("Unexpected value while decoding an instruction `memory.size`, expected 0, but got " . $this->decodeByte());
+                $c = $this->decodeByte();
+                if ($c !== 0) {
+                    throw new InvalidBinaryFormatException("Unexpected value while decoding an instruction `memory.size`, expected 0, but got $c");
                 }
                 return Instr::MemorySize();
             case 0x40:
-                if ($this->decodeByte() !== 0) {
-                    throw new InvalidBinaryFormatException("memory grow");
+                $c = $this->decodeByte();
+                if ($c !== 0) {
+                    throw new InvalidBinaryFormatException("Unexpected value while decoding an instruction `memory.grow`, expected 0, but got $c");
                 }
                 return Instr::MemoryGrow();
             case 0x41: return Instr::I32Const($this->decodeS32());
@@ -931,8 +928,6 @@ final class Decoder
                 }
                 // no break
             default:
-                $this->seekBy(-1);
-                $op = $this->decodeByte();
                 throw new InvalidBinaryFormatException("Unexpected opcode $op while decoding an instruction");
         }
     }
@@ -949,9 +944,9 @@ final class Decoder
 
     private function decodeBlockType(): BlockType
     {
-        $b = $this->peekByte();
+        $b = $this->stream->peekByte();
         if ($b === 0x40) {
-            $this->skipNBytes(1);
+            $this->stream->seek(1);
             return BlockType::ValType(null);
         } elseif (in_array($b, [0x7F, 0x7E, 0x7D, 0x7C, 0x7B, 0x70, 0x6F], true)) {
             return BlockType::ValType($this->decodeValType());
@@ -995,42 +990,12 @@ final class Decoder
         return $result;
     }
 
-    private function eof(): bool
-    {
-        return strlen($this->input) <= $this->pos;
-    }
-
-    private function ensureNBytesRemains(int $n): void
-    {
-        if ($this->inputSize < $this->pos + $n) {
-            throw new InvalidBinaryFormatException("ensureNBytesRemains: $this->inputSize < $this->pos + $n");
-        }
-    }
-
-    private function skipNBytes(int $n): void
-    {
-        $this->ensureNBytesRemains($n);
-        $this->pos += $n;
-    }
-
-    private function peekByte(): int
-    {
-        $this->ensureNBytesRemains(1);
-        return ord($this->input[$this->pos]);
-    }
-
     /**
      * @phpstan-impure
      */
     private function decodeByte(): int
     {
-        $this->ensureNBytesRemains(1);
-        return ord($this->input[$this->pos++]);
-    }
-
-    private function seekBy(int $offset): void
-    {
-        $this->pos += $offset;
+        return $this->stream->readByte();
     }
 
     private function decodeU32(): int
@@ -1115,9 +1080,8 @@ final class Decoder
      */
     private function decodeF32(): float
     {
-        $this->ensureNBytesRemains(4);
-        $result = unpack('g', $this->input, $this->pos);
-        $this->pos += 4;
+        $buf = $this->stream->read(4);
+        $result = unpack('g', $buf);
         if ($result === false) {
             throw new InvalidBinaryFormatException("f32");
         }
@@ -1130,9 +1094,8 @@ final class Decoder
      */
     private function decodeF64(): float
     {
-        $this->ensureNBytesRemains(8);
-        $result = unpack('e', $this->input, $this->pos);
-        $this->pos += 8;
+        $buf = $this->stream->read(8);
+        $result = unpack('e', $buf);
         if ($result === false) {
             throw new InvalidBinaryFormatException("f64");
         }

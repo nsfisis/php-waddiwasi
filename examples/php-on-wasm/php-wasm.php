@@ -5,33 +5,24 @@ declare(strict_types=1);
 require_once __DIR__ . '/../../vendor/autoload.php';
 
 use Nsfisis\Waddiwasi\BinaryFormat\Decoder;
-use Nsfisis\Waddiwasi\BinaryFormat\InvalidBinaryFormatException;
 use Nsfisis\Waddiwasi\Execution\Extern;
 use Nsfisis\Waddiwasi\Execution\Externs;
 use Nsfisis\Waddiwasi\Execution\FuncInst;
 use Nsfisis\Waddiwasi\Execution\Refs;
 use Nsfisis\Waddiwasi\Execution\Runtime;
 use Nsfisis\Waddiwasi\Execution\Store;
+use Nsfisis\Waddiwasi\Stream\FileStream;
 use Nsfisis\Waddiwasi\Structure\Types\FuncType;
 use Nsfisis\Waddiwasi\Structure\Types\NumType;
 use Nsfisis\Waddiwasi\Structure\Types\ResultType;
 use Nsfisis\Waddiwasi\Structure\Types\ValType;
 
-const PHP_EMPTY = '';
-
 const PHP_HELLO_WORLD = <<<'EOS'
 echo "Hello, World!\n";
 EOS;
 
-$wasmBinary = file_get_contents(__DIR__ . '/php-wasm.wasm');
-\assert($wasmBinary !== false);
-
-try {
-    $module = (new Decoder($wasmBinary))->decode();
-} catch (InvalidBinaryFormatException $e) {
-    fprintf(STDERR, $e->getMessage() . "\n");
-    exit(1);
-}
+$wasmBinaryStream = new FileStream(__DIR__ . '/php-wasm.wasm');
+$module = (new Decoder($wasmBinaryStream))->decode();
 
 $imports = [
     'env' => [

@@ -5,34 +5,24 @@ declare(strict_types=1);
 require_once __DIR__ . '/vendor/autoload.php';
 
 use Nsfisis\Waddiwasi\BinaryFormat\Decoder;
-use Nsfisis\Waddiwasi\BinaryFormat\InvalidBinaryFormatException;
 use Nsfisis\Waddiwasi\Execution\Extern;
 use Nsfisis\Waddiwasi\Execution\Externs;
 use Nsfisis\Waddiwasi\Execution\FuncInst;
-use Nsfisis\Waddiwasi\Execution\MemInst;
 use Nsfisis\Waddiwasi\Execution\Refs;
 use Nsfisis\Waddiwasi\Execution\Runtime;
 use Nsfisis\Waddiwasi\Execution\Store;
+use Nsfisis\Waddiwasi\Stream\FileStream;
 use Nsfisis\Waddiwasi\Structure\Types\FuncType;
 use Nsfisis\Waddiwasi\Structure\Types\NumType;
 use Nsfisis\Waddiwasi\Structure\Types\ResultType;
 use Nsfisis\Waddiwasi\Structure\Types\ValType;
 
-const PHP_EMPTY = '';
-
 const PHP_HELLO_WORLD = <<<'EOS'
 require_once '%DIR%/HelloWorld.php';
 EOS;
 
-$wasmBinary = file_get_contents(__DIR__ . '/php-wasm.wasm');
-\assert($wasmBinary !== false);
-
-try {
-    $module = (new Decoder($wasmBinary))->decode();
-} catch (InvalidBinaryFormatException $e) {
-    fprintf(STDERR, $e->getMessage() . "\n");
-    exit(1);
-}
+$wasmBinaryStream = new FileStream(__DIR__ . '/php-wasm.wasm');
+$module = (new Decoder($wasmBinaryStream))->decode();
 
 $imports = [
     'env' => [
@@ -141,22 +131,6 @@ $results = $runtime->invoke("php_wasm_run", [$codePtr]);
 \assert(\count($results) === 1);
 $exitCode = $results[0];
 \assert(\is_int($exitCode));
-
-function dumpMemory(MemInst $mem): void
-{
-    $buf = '';
-    $s = $mem->size();
-    for ($j = 0; $j < $s; $j++) {
-        $c = $mem->loadByte($j);
-        \assert($c !== null);
-        $buf .= \chr($c);
-        if ($j % 1024 === 1023) {
-            fputs(STDOUT, $buf);
-            $buf = "";
-        }
-    }
-    fputs(STDOUT, $buf);
-}
 
 function allocateStringOnWasmMemory(Runtime $runtime, string $str): int
 {
