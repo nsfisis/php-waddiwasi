@@ -33,7 +33,7 @@
         ],
         "ecs": "ecs check",
         "ecsfix": "ecs --memory-limit=1G check --fix",
-        "example:php-on-wasm": "@php -d memory_limit=512M -d opcache.enable_cli=on -d opcache.jit=on -d opcache.jit_buffer_size=1G examples/php-on-wasm/php-wasm.php",
+        "example:php-on-wasm": "@php -d memory_limit=256M -d opcache.enable_cli=on -d opcache.jit=on -d opcache.jit_buffer_size=1G examples/php-on-wasm/php-wasm.php",
         "example:rubyvm-on-php-on-wasm": "@php -d memory_limit=-1 -d opcache.enable_cli=on -d opcache.jit=on -d opcache.jit_buffer_size=1G examples/rubyvm-on-php-on-wasm/php-wasm.php",
         "lint": [
             "@ecs",
