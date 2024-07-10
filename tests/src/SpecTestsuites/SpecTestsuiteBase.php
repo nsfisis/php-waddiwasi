@@ -7,6 +7,8 @@ namespace Nsfisis\Waddiwasi\Tests\SpecTestsuites;
 use Nsfisis\Waddiwasi\BinaryFormat\Decoder;
 use Nsfisis\Waddiwasi\BinaryFormat\InvalidBinaryFormatException;
 use Nsfisis\Waddiwasi\Execution\Extern;
+use Nsfisis\Waddiwasi\Execution\GlobalInst;
+use Nsfisis\Waddiwasi\Execution\MemInst;
 use Nsfisis\Waddiwasi\Execution\Ref;
 use Nsfisis\Waddiwasi\Execution\Refs\RefExtern;
 use Nsfisis\Waddiwasi\Execution\Refs\RefFunc;
@@ -14,9 +16,17 @@ use Nsfisis\Waddiwasi\Execution\Refs\RefNull;
 use Nsfisis\Waddiwasi\Execution\Runtime;
 use Nsfisis\Waddiwasi\Execution\StackOverflowException;
 use Nsfisis\Waddiwasi\Execution\Store;
+use Nsfisis\Waddiwasi\Execution\TableInst;
 use Nsfisis\Waddiwasi\Execution\TrapException;
 use Nsfisis\Waddiwasi\Execution\TrapKind;
+use Nsfisis\Waddiwasi\Structure\Types\GlobalType;
+use Nsfisis\Waddiwasi\Structure\Types\Limits;
+use Nsfisis\Waddiwasi\Structure\Types\MemType;
+use Nsfisis\Waddiwasi\Structure\Types\Mut;
+use Nsfisis\Waddiwasi\Structure\Types\NumType;
 use Nsfisis\Waddiwasi\Structure\Types\RefType;
+use Nsfisis\Waddiwasi\Structure\Types\TableType;
+use Nsfisis\Waddiwasi\Structure\Types\ValType;
 use PHPUnit\Framework\TestCase;
 use RuntimeException;
 use function count;
@@ -39,7 +49,27 @@ abstract class SpecTestsuiteBase extends TestCase
         $wasmBinary = file_get_contents($filePath);
         $module = (new Decoder($wasmBinary))->decode();
         self::$modules[$moduleName] = $module;
-        $importObj = [];
+        $importObj = [
+            'spectest' => [
+                'memory' => Extern::Mem(new MemInst(new MemType(new Limits(1, 2)))),
+                'table' => Extern::Table(new TableInst(new TableType(new Limits(10, 20), RefType::FuncRef), [
+                    Ref::RefNull(RefType::FuncRef),
+                    Ref::RefNull(RefType::FuncRef),
+                    Ref::RefNull(RefType::FuncRef),
+                    Ref::RefNull(RefType::FuncRef),
+                    Ref::RefNull(RefType::FuncRef),
+                    Ref::RefNull(RefType::FuncRef),
+                    Ref::RefNull(RefType::FuncRef),
+                    Ref::RefNull(RefType::FuncRef),
+                    Ref::RefNull(RefType::FuncRef),
+                    Ref::RefNull(RefType::FuncRef),
+                ])),
+                'global_i32' => Extern::Global_(new GlobalInst(new GlobalType(Mut::Const, ValType::NumType(NumType::I32)), 666)),
+                'global_i64' => Extern::Global_(new GlobalInst(new GlobalType(Mut::Const, ValType::NumType(NumType::I64)), 666)),
+                'global_f32' => Extern::Global_(new GlobalInst(new GlobalType(Mut::Const, ValType::NumType(NumType::F32)), 666.6)),
+                'global_f64' => Extern::Global_(new GlobalInst(new GlobalType(Mut::Const, ValType::NumType(NumType::F64)), 666.6)),
+            ],
+        ];
         foreach (self::$registeredModules as $registeredModuleName => $registeredModule) {
             $registeredRuntime = self::$registeredRuntimes[$registeredModuleName];
             foreach ($registeredModule->exports as $export) {
