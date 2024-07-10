@@ -1,4 +1,4 @@
-FROM emscripten/emsdk:3.1.46
+FROM emscripten/emsdk:3.1.62
 
 RUN git clone --depth=1 --branch=php-8.2.10 https://github.com/php/php-src
 

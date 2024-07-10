@@ -30,7 +30,7 @@ $imports = [
         'invoke_iiiii' => makeHostFunc('(i32, i32, i32, i32, i32) -> (i32)', hostFunc__env__invoke_iiiii(...)),
         'invoke_v' => makeHostFunc('(i32) -> ()', hostFunc__env__invoke_v(...)),
         'invoke_ii' => makeHostFunc('(i32, i32) -> (i32)', hostFunc__env__invoke_ii(...)),
-        'abort' => makeHostFunc('() -> ()', hostFunc__env__abort(...)),
+        '_abort_js' => makeHostFunc('() -> ()', hostFunc__env___abort_js(...)),
         'exit' => makeHostFunc('(i32) -> ()', hostFunc__env__exit(...)),
         'invoke_viii' => makeHostFunc('(i32, i32, i32, i32) -> ()', hostFunc__env__invoke_viii(...)),
         'invoke_vii' => makeHostFunc('(i32, i32, i32) -> ()', hostFunc__env__invoke_vii(...)),
@@ -45,7 +45,6 @@ $imports = [
         'invoke_iiiiiiiiii' => makeHostFunc('(i32, i32, i32, i32, i32, i32, i32, i32, i32, i32) -> (i32)', hostFunc__env__invoke_iiiiiiiiii(...)),
         'strftime' => makeHostFunc('(i32, i32, i32, i32) -> (i32)', hostFunc__env__strftime(...)),
         'getaddrinfo' => makeHostFunc('(i32, i32, i32, i32) -> (i32)', hostFunc__env__getaddrinfo(...)),
-        'gethostbyname_r' => makeHostFunc('(i32, i32, i32, i32, i32, i32) -> (i32)', hostFunc__env__gethostbyname_r(...)),
         'getdtablesize' => makeHostFunc('() -> (i32)', hostFunc__env__getdtablesize(...)),
         'getprotobyname' => makeHostFunc('(i32) -> (i32)', hostFunc__env__getprotobyname(...)),
         'getprotobynumber' => makeHostFunc('(i32) -> (i32)', hostFunc__env__getprotobynumber(...)),
@@ -64,7 +63,7 @@ $imports = [
         '__syscall_fchownat' => makeHostFunc('(i32, i32, i32, i32, i32) -> (i32)', hostFunc__env____syscall_fchownat(...)),
         '__syscall_dup' => makeHostFunc('(i32) -> (i32)', hostFunc__env____syscall_dup(...)),
         '__syscall_dup3' => makeHostFunc('(i32, i32, i32) -> (i32)', hostFunc__env____syscall_dup3(...)),
-        'emscripten_memcpy_js' => makeHostFunc('(i32, i32, i32) -> ()', hostFunc__env__emscripten_memcpy_js(...)),
+        '_emscripten_memcpy_js' => makeHostFunc('(i32, i32, i32) -> ()', hostFunc__env___emscripten_memcpy_js(...)),
         'emscripten_date_now' => makeHostFunc('() -> (f64)', hostFunc__env__emscripten_date_now(...)),
         '_emscripten_get_now_is_monotonic' => makeHostFunc('() -> (i32)', hostFunc__env___emscripten_get_now_is_monotonic(...)),
         'emscripten_get_now' => makeHostFunc('() -> (f64)', hostFunc__env__emscripten_get_now(...)),
@@ -79,6 +78,7 @@ $imports = [
         '__syscall_mkdirat' => makeHostFunc('(i32, i32, i32) -> (i32)', hostFunc__env____syscall_mkdirat(...)),
         '__syscall_pipe' => makeHostFunc('(i32) -> (i32)', hostFunc__env____syscall_pipe(...)),
         '__syscall_poll' => makeHostFunc('(i32, i32, i32) -> (i32)', hostFunc__env____syscall_poll(...)),
+        '_emscripten_runtime_keepalive_clear' => makeHostFunc('() -> ()', hostFunc__env___emscripten_runtime_keepalive_clear(...)),
         '__call_sighandler' => makeHostFunc('(i32, i32) -> ()', hostFunc__env____call_sighandler(...)),
         '__syscall_getdents64' => makeHostFunc('(i32, i32, i32) -> (i32)', hostFunc__env____syscall_getdents64(...)),
         '__syscall_readlinkat' => makeHostFunc('(i32, i32, i32, i32) -> (i32)', hostFunc__env____syscall_readlinkat(...)),
@@ -97,6 +97,7 @@ $imports = [
         '__syscall_accept4' => makeHostFunc('(i32, i32, i32, i32, i32, i32) -> (i32)', hostFunc__env____syscall_accept4(...)),
         '__syscall_bind' => makeHostFunc('(i32, i32, i32, i32, i32, i32) -> (i32)', hostFunc__env____syscall_bind(...)),
         '__syscall_connect' => makeHostFunc('(i32, i32, i32, i32, i32, i32) -> (i32)', hostFunc__env____syscall_connect(...)),
+        '_emscripten_lookup_name' => makeHostFunc('(i32) -> (i32)', hostFunc__env___emscripten_lookup_name(...)),
         '__syscall_getpeername' => makeHostFunc('(i32, i32, i32, i32, i32, i32) -> (i32)', hostFunc__env____syscall_getpeername(...)),
         '__syscall_getsockname' => makeHostFunc('(i32, i32, i32, i32, i32, i32) -> (i32)', hostFunc__env____syscall_getsockname(...)),
         '__syscall_getsockopt' => makeHostFunc('(i32, i32, i32, i32, i32, i32) -> (i32)', hostFunc__env____syscall_getsockopt(...)),
@@ -136,23 +137,23 @@ function allocateStringOnWasmMemory(Runtime $runtime, string $str): int
 {
     // Plus 1 for the null terminator in C.
     $size = \strlen($str) + 1;
-    $outPtr = wasm_stackAlloc($runtime, $size);
+    $outPtr = _emscripten_stack_alloc($runtime, $size);
     copyStringToWasmMemory($runtime, $outPtr, $str);
     return $outPtr;
 }
 
-function wasm_stackAlloc(Runtime $runtime, int $size): int
+function _emscripten_stack_alloc(Runtime $runtime, int $size): int
 {
-    $results = $runtime->invoke("stackAlloc", [$size]);
+    $results = $runtime->invoke("_emscripten_stack_alloc", [$size]);
     \assert(\count($results) === 1);
     $result = $results[0];
     \assert(\is_int($result));
     return $result;
 }
 
-function wasm_stackSave(Runtime $runtime): int
+function emscripten_stack_get_current(Runtime $runtime): int
 {
-    $results = $runtime->invoke("stackSave", []);
+    $results = $runtime->invoke("emscripten_stack_get_current", []);
     \assert(\count($results) === 1);
     $result = $results[0];
     \assert(\is_int($result));
@@ -238,7 +239,7 @@ function syscallCalculateAt(Runtime $runtime, int $dirfd, string $path): string
 // Type: (i32, i32, i32) -> (i32)
 function hostFunc__env__invoke_iii(Runtime $runtime, int $index, int $a1, int $a2): int
 {
-    $sp = wasm_stackSave($runtime);
+    $sp = emscripten_stack_get_current($runtime);
     $func = getWasmTableEntry($runtime, $index);
     $runtime->stack->pushValue($a1);
     $runtime->stack->pushValue($a2);
@@ -249,7 +250,7 @@ function hostFunc__env__invoke_iii(Runtime $runtime, int $index, int $a1, int $a
 // Type: (i32, i32, i32, i32, i32) -> (i32)
 function hostFunc__env__invoke_iiiii(Runtime $runtime, int $index, int $a1, int $a2, int $a3, int $a4): int
 {
-    $sp = wasm_stackSave($runtime);
+    $sp = emscripten_stack_get_current($runtime);
     $func = getWasmTableEntry($runtime, $index);
     $runtime->stack->pushValue($a1);
     $runtime->stack->pushValue($a2);
@@ -262,7 +263,7 @@ function hostFunc__env__invoke_iiiii(Runtime $runtime, int $index, int $a1, int 
 // Type: (i32) -> ()
 function hostFunc__env__invoke_v(Runtime $runtime, int $index): void
 {
-    $sp = wasm_stackSave($runtime);
+    $sp = emscripten_stack_get_current($runtime);
     $func = getWasmTableEntry($runtime, $index);
     $runtime->invokeByFuncAddr($func);
 }
@@ -270,7 +271,7 @@ function hostFunc__env__invoke_v(Runtime $runtime, int $index): void
 // Type: (i32, i32, i32, i32) -> (i32)
 function hostFunc__env__invoke_iiii(Runtime $runtime, int $index, int $a1, int $a2, int $a3): int
 {
-    $sp = wasm_stackSave($runtime);
+    $sp = emscripten_stack_get_current($runtime);
     $func = getWasmTableEntry($runtime, $index);
     $runtime->stack->pushValue($a1);
     $runtime->stack->pushValue($a2);
@@ -282,7 +283,7 @@ function hostFunc__env__invoke_iiii(Runtime $runtime, int $index, int $a1, int $
 // Type: (i32, i32) -> (i32)
 function hostFunc__env__invoke_ii(Runtime $runtime, int $index, int $a1): int
 {
-    $sp = wasm_stackSave($runtime);
+    $sp = emscripten_stack_get_current($runtime);
     $func = getWasmTableEntry($runtime, $index);
     $runtime->stack->pushValue($a1);
     $runtime->invokeByFuncAddr($func);
@@ -290,9 +291,9 @@ function hostFunc__env__invoke_ii(Runtime $runtime, int $index, int $a1): int
 }
 
 // Type: () -> ()
-function hostFunc__env__abort(Runtime $runtime): void
+function hostFunc__env___abort_js(Runtime $runtime): void
 {
-    throw new \RuntimeException('env::abort: not implemented');
+    throw new \RuntimeException('env::_abort_js: not implemented');
 }
 
 // Type: (i32) -> ()
@@ -304,7 +305,7 @@ function hostFunc__env__exit(Runtime $runtime): void
 // Type: (i32, i32, i32, i32) -> ()
 function hostFunc__env__invoke_viii(Runtime $runtime, int $index, int $a1, int $a2, int $a3): void
 {
-    $sp = wasm_stackSave($runtime);
+    $sp = emscripten_stack_get_current($runtime);
     $func = getWasmTableEntry($runtime, $index);
     $runtime->stack->pushValue($a1);
     $runtime->stack->pushValue($a2);
@@ -315,7 +316,7 @@ function hostFunc__env__invoke_viii(Runtime $runtime, int $index, int $a1, int $
 // Type: (i32, i32, i32) -> ()
 function hostFunc__env__invoke_vii(Runtime $runtime, int $index, int $a1, int $a2): void
 {
-    $sp = wasm_stackSave($runtime);
+    $sp = emscripten_stack_get_current($runtime);
     $func = getWasmTableEntry($runtime, $index);
     $runtime->stack->pushValue($a1);
     $runtime->stack->pushValue($a2);
@@ -325,7 +326,7 @@ function hostFunc__env__invoke_vii(Runtime $runtime, int $index, int $a1, int $a
 // Type: (i32, i32) -> ()
 function hostFunc__env__invoke_vi(Runtime $runtime, int $index, int $a1): void
 {
-    $sp = wasm_stackSave($runtime);
+    $sp = emscripten_stack_get_current($runtime);
     $func = getWasmTableEntry($runtime, $index);
     $runtime->stack->pushValue($a1);
     $runtime->invokeByFuncAddr($func);
@@ -334,7 +335,7 @@ function hostFunc__env__invoke_vi(Runtime $runtime, int $index, int $a1): void
 // Type: (i32) -> (i32)
 function hostFunc__env__invoke_i(Runtime $runtime, int $index): int
 {
-    $sp = wasm_stackSave($runtime);
+    $sp = emscripten_stack_get_current($runtime);
     $func = getWasmTableEntry($runtime, $index);
     $runtime->invokeByFuncAddr($func);
     return $runtime->stack->popInt();
@@ -343,7 +344,7 @@ function hostFunc__env__invoke_i(Runtime $runtime, int $index): int
 // Type: (i32, i32, i32, i32, i32, i32, i32) -> (i32)
 function hostFunc__env__invoke_iiiiiii(Runtime $runtime, int $index, int $a1, int $a2, int $a3, int $a4, int $a5, int $a6): int
 {
-    $sp = wasm_stackSave($runtime);
+    $sp = emscripten_stack_get_current($runtime);
     $func = getWasmTableEntry($runtime, $index);
     $runtime->stack->pushValue($a1);
     $runtime->stack->pushValue($a2);
@@ -358,7 +359,7 @@ function hostFunc__env__invoke_iiiiiii(Runtime $runtime, int $index, int $a1, in
 // Type: (i32, i32, i32, i32) -> ()
 function hostFunc__env____assert_fail(Runtime $runtime, int $index, int $a1, int $a2, int $a3): void
 {
-    $sp = wasm_stackSave($runtime);
+    $sp = emscripten_stack_get_current($runtime);
     $func = getWasmTableEntry($runtime, $index);
     $runtime->stack->pushValue($a1);
     $runtime->stack->pushValue($a2);
@@ -369,7 +370,7 @@ function hostFunc__env____assert_fail(Runtime $runtime, int $index, int $a1, int
 // Type: (i32, i32, i32, i32, i32) -> ()
 function hostFunc__env__invoke_viiii(Runtime $runtime, int $index, int $a1, int $a2, int $a3, int $a4): void
 {
-    $sp = wasm_stackSave($runtime);
+    $sp = emscripten_stack_get_current($runtime);
     $func = getWasmTableEntry($runtime, $index);
     $runtime->stack->pushValue($a1);
     $runtime->stack->pushValue($a2);
@@ -381,7 +382,7 @@ function hostFunc__env__invoke_viiii(Runtime $runtime, int $index, int $a1, int 
 // Type: (i32, i32, i32, i32, i32, i32) -> ()
 function hostFunc__env__invoke_viiiii(Runtime $runtime, int $index, int $a1, int $a2, int $a3, int $a4, int $a5): void
 {
-    $sp = wasm_stackSave($runtime);
+    $sp = emscripten_stack_get_current($runtime);
     $func = getWasmTableEntry($runtime, $index);
     $runtime->stack->pushValue($a1);
     $runtime->stack->pushValue($a2);
@@ -394,7 +395,7 @@ function hostFunc__env__invoke_viiiii(Runtime $runtime, int $index, int $a1, int
 // Type: (i32, i32, i32, i32, i32, i32) -> (i32)
 function hostFunc__env__invoke_iiiiii(Runtime $runtime, int $index, int $a1, int $a2, int $a3, int $a4, int $a5): int
 {
-    $sp = wasm_stackSave($runtime);
+    $sp = emscripten_stack_get_current($runtime);
     $func = getWasmTableEntry($runtime, $index);
     $runtime->stack->pushValue($a1);
     $runtime->stack->pushValue($a2);
@@ -408,7 +409,7 @@ function hostFunc__env__invoke_iiiiii(Runtime $runtime, int $index, int $a1, int
 // Type: (i32, i32, i32, i32, i32, i32, i32, i32, i32, i32) -> (i32)
 function hostFunc__env__invoke_iiiiiiiiii(Runtime $runtime, int $index, int $a1, int $a2, int $a3, int $a4, int $a5, int $a6, int $a7, int $a8, int $a9): int
 {
-    $sp = wasm_stackSave($runtime);
+    $sp = emscripten_stack_get_current($runtime);
     $func = getWasmTableEntry($runtime, $index);
     $runtime->stack->pushValue($a1);
     $runtime->stack->pushValue($a2);
@@ -433,12 +434,6 @@ function hostFunc__env__strftime(Runtime $runtime): void
 function hostFunc__env__getaddrinfo(Runtime $runtime): void
 {
     throw new \RuntimeException('env::getaddrinfo: not implemented');
-}
-
-// Type: (i32, i32, i32, i32, i32, i32) -> (i32)
-function hostFunc__env__gethostbyname_r(Runtime $runtime): void
-{
-    throw new \RuntimeException('env::gethostbyname_r: not implemented');
 }
 
 // Type: () -> (i32)
@@ -474,7 +469,7 @@ function hostFunc__env__getnameinfo(Runtime $runtime): void
 // Type: (i32, i32, i32, i32, i32, i32, i32) -> ()
 function hostFunc__env__invoke_viiiiii(Runtime $runtime, int $index, int $a1, int $a2, int $a3, int $a4, int $a5, int $a6): void
 {
-    $sp = wasm_stackSave($runtime);
+    $sp = emscripten_stack_get_current($runtime);
     $func = getWasmTableEntry($runtime, $index);
     $runtime->stack->pushValue($a1);
     $runtime->stack->pushValue($a2);
@@ -488,7 +483,7 @@ function hostFunc__env__invoke_viiiiii(Runtime $runtime, int $index, int $a1, in
 // Type: (i32, i32, i32, f64, i32, i32) -> ()
 function hostFunc__env__invoke_viidii(Runtime $runtime, int $index, int $a1, int $a2, float $a3, int $a4, int $a5): void
 {
-    $sp = wasm_stackSave($runtime);
+    $sp = emscripten_stack_get_current($runtime);
     $func = getWasmTableEntry($runtime, $index);
     $runtime->stack->pushValue($a1);
     $runtime->stack->pushValue($a2);
@@ -631,7 +626,7 @@ function hostFunc__env____syscall_dup3(Runtime $runtime): void
 }
 
 // Type: (i32, i32, i32) -> ()
-function hostFunc__env__emscripten_memcpy_js(Runtime $runtime, int $dest, int $src, int $num): void
+function hostFunc__env___emscripten_memcpy_js(Runtime $runtime, int $dest, int $src, int $num): void
 {
     $mem = $runtime->getExportedMemory('memory');
     \assert($mem !== null);
@@ -762,6 +757,12 @@ function hostFunc__env____syscall_poll(Runtime $runtime): void
     throw new \RuntimeException('env::__syscall_poll: not implemented');
 }
 
+// Type: () -> ()
+function hostFunc__env___emscripten_runtime_keepalive_clear(Runtime $runtime): void
+{
+    throw new \RuntimeException('env::_emscripten_runtime_keepalive_clear: not implemented');
+}
+
 // Type: (i32, i32) -> ()
 function hostFunc__env____call_sighandler(Runtime $runtime): void
 {
@@ -868,6 +869,12 @@ function hostFunc__env____syscall_bind(Runtime $runtime): void
 function hostFunc__env____syscall_connect(Runtime $runtime): void
 {
     throw new \RuntimeException('env::__syscall_connect: not implemented');
+}
+
+// Type: (i32) -> (i32)
+function hostFunc__env___emscripten_lookup_name(Runtime $runtime): void
+{
+    throw new \RuntimeException('env::_emscripten_lookup_name: not implemented');
 }
 
 // Type: (i32, i32, i32, i32, i32, i32) -> (i32)
