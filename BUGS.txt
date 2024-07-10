@@ -20,12 +20,6 @@
 * NamesTest
 * StartTest
 
-## Register
-
-* RefFuncTest
-* TableCopyTest
-* TableInitTest
-
 ## Misc.
 
 * CustomTest

@@ -6,6 +6,7 @@ namespace Nsfisis\Waddiwasi\Tests\SpecTestsuites;
 
 use Nsfisis\Waddiwasi\BinaryFormat\Decoder;
 use Nsfisis\Waddiwasi\BinaryFormat\InvalidBinaryFormatException;
+use Nsfisis\Waddiwasi\Execution\Extern;
 use Nsfisis\Waddiwasi\Execution\Ref;
 use Nsfisis\Waddiwasi\Execution\Refs\RefExtern;
 use Nsfisis\Waddiwasi\Execution\Refs\RefFunc;
@@ -25,6 +26,8 @@ abstract class SpecTestsuiteBase extends TestCase
 {
     private static $modules = [];
     private static $runtimes = [];
+    private static $registeredModules = [];
+    private static $registeredRuntimes = [];
 
     protected function runModuleCommand(
         string $filename,
@@ -36,7 +39,15 @@ abstract class SpecTestsuiteBase extends TestCase
         $wasmBinary = file_get_contents($filePath);
         $module = (new Decoder($wasmBinary))->decode();
         self::$modules[$moduleName] = $module;
-        $runtime = Runtime::instantiate(Store::empty(), $module, []);
+        $importObj = [];
+        foreach (self::$registeredModules as $registeredModuleName => $registeredModule) {
+            $registeredRuntime = self::$registeredRuntimes[$registeredModuleName];
+            foreach ($registeredModule->exports as $export) {
+                $fn = $registeredRuntime->store->funcs[$registeredRuntime->getExport($export->name)->addr];
+                $importObj[$registeredModuleName][$export->name] = Extern::Func($fn);
+            }
+        }
+        $runtime = Runtime::instantiate(Store::empty(), $module, $importObj);
         self::$runtimes[$moduleName] = $runtime;
         $this->assertTrue(true);
     }
@@ -146,7 +157,12 @@ abstract class SpecTestsuiteBase extends TestCase
         string $as,
         int $line,
     ): void {
-        $this->assertTrue(false, "register");
+        $targetModuleName = $name ?? '_';
+        $targetModule = self::$modules[$targetModuleName];
+        $runtime = self::$runtimes[$targetModuleName];
+        self::$registeredModules[$as] = $targetModule;
+        self::$registeredRuntimes[$as] = $runtime;
+        $this->assertTrue(true);
     }
 
     /**

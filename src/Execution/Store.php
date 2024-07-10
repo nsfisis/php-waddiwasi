@@ -4,6 +4,7 @@ declare(strict_types=1);
 
 namespace Nsfisis\Waddiwasi\Execution;
 
+use RuntimeException;
 use function count;
 
 final class Store
@@ -31,9 +32,21 @@ final class Store
         return new self([], [], [], [], [], []);
     }
 
-    public function registerFunc(FuncInst $func): ExternVals\Func
+    public function register(Extern $extern): ExternVal
     {
-        $this->funcs[] = $func;
-        return ExternVal::Func(count($this->funcs) - 1);
+        match ($extern::class) {
+            Externs\Func::class => $this->funcs[] = $extern->func,
+            Externs\Table::class => $this->tables[] = $extern->table,
+            Externs\Mem::class => $this->mems[] = $extern->mem,
+            Externs\Global_::class => $this->globals[] = $extern->global,
+            default => throw new RuntimeException("unreachable"),
+        };
+        return match ($extern::class) {
+            Externs\Func::class => ExternVal::Func(count($this->funcs) - 1),
+            Externs\Table::class => ExternVal::Table(count($this->tables) - 1),
+            Externs\Mem::class => ExternVal::Mem(count($this->mems) - 1),
+            Externs\Global_::class => ExternVal::Global_(count($this->globals) - 1),
+            default => throw new RuntimeException("unreachable"),
+        };
     }
 }
