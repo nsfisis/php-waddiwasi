@@ -19,6 +19,7 @@ use Nsfisis\Waddiwasi\Execution\Store;
 use Nsfisis\Waddiwasi\Execution\TableInst;
 use Nsfisis\Waddiwasi\Execution\TrapException;
 use Nsfisis\Waddiwasi\Execution\TrapKind;
+use Nsfisis\Waddiwasi\Stream\FileStream;
 use Nsfisis\Waddiwasi\Structure\Types\GlobalType;
 use Nsfisis\Waddiwasi\Structure\Types\Limits;
 use Nsfisis\Waddiwasi\Structure\Types\MemType;
@@ -46,8 +47,8 @@ abstract class SpecTestsuiteBase extends TestCase
     ): void {
         $moduleName = $name ?? '_';
         $filePath = __DIR__ . "/../../fixtures/spec_testsuites/core/$filename";
-        $wasmBinary = file_get_contents($filePath);
-        $module = (new Decoder($wasmBinary))->decode();
+        $wasmBinaryStream = new FileStream($filePath);
+        $module = (new Decoder($wasmBinaryStream))->decode();
         self::$modules[$moduleName] = $module;
         $importObj = [
             'spectest' => [
@@ -121,10 +122,10 @@ abstract class SpecTestsuiteBase extends TestCase
         int $line,
     ): void {
         $filePath = __DIR__ . "/../../fixtures/spec_testsuites/core/$filename";
-        $wasmBinary = file_get_contents($filePath);
+        $wasmBinaryStream = new FileStream($filePath);
         $exception = null;
         try {
-            (new Decoder($wasmBinary))->decode();
+            (new Decoder($wasmBinaryStream))->decode();
         } catch (InvalidBinaryFormatException $e) {
             $exception = $e;
         }
