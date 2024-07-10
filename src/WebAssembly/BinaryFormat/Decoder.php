@@ -31,7 +31,6 @@ use Nsfisis\Waddiwasi\WebAssembly\Structure\Types\GlobalType;
 use Nsfisis\Waddiwasi\WebAssembly\Structure\Types\Limits;
 use Nsfisis\Waddiwasi\WebAssembly\Structure\Types\MemType;
 use Nsfisis\Waddiwasi\WebAssembly\Structure\Types\Mut;
-use Nsfisis\Waddiwasi\WebAssembly\Structure\Types\ResultType;
 use Nsfisis\Waddiwasi\WebAssembly\Structure\Types\TableType;
 use Nsfisis\Waddiwasi\WebAssembly\Structure\Types\ValType;
 use function array_reduce;
@@ -284,9 +283,12 @@ final class Decoder
         return $this->decodeU32();
     }
 
-    private function decodeResultType(): ResultType
+    /**
+     * @return list<ValType>
+     */
+    private function decodeResultType(): array
     {
-        return new ResultType($this->decodeVec($this->decodeValType(...)));
+        return $this->decodeVec($this->decodeValType(...));
     }
 
     private function decodeFuncType(): FuncType

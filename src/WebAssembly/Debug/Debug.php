@@ -11,7 +11,6 @@ use Nsfisis\Waddiwasi\WebAssembly\Structure\Types\GlobalType;
 use Nsfisis\Waddiwasi\WebAssembly\Structure\Types\Limits;
 use Nsfisis\Waddiwasi\WebAssembly\Structure\Types\MemType;
 use Nsfisis\Waddiwasi\WebAssembly\Structure\Types\Mut;
-use Nsfisis\Waddiwasi\WebAssembly\Structure\Types\ResultType;
 use Nsfisis\Waddiwasi\WebAssembly\Structure\Types\TableType;
 use Nsfisis\Waddiwasi\WebAssembly\Structure\Types\ValType;
 
@@ -64,8 +63,8 @@ final readonly class Debug
 
     private static function funcTypeToString(FuncType $type): string
     {
-        $params = self::resultTypeToString($type->params);
-        $results = self::resultTypeToString($type->results);
+        $params = implode(', ', array_map(self::valTypeToString(...), $type->params));
+        $results = implode(', ', array_map(self::valTypeToString(...), $type->results));
         return "($params) -> ($results)";
     }
 
@@ -95,10 +94,5 @@ final readonly class Debug
             Mut::Const => 'const',
             Mut::Var => 'var',
         };
-    }
-
-    private static function resultTypeToString(ResultType $type): string
-    {
-        return implode(', ', array_map(self::valTypeToString(...), $type->types));
     }
 }

@@ -13,7 +13,6 @@ use Nsfisis\Waddiwasi\WebAssembly\Execution\Refs;
 use Nsfisis\Waddiwasi\WebAssembly\Execution\Runtime;
 use Nsfisis\Waddiwasi\WebAssembly\Execution\Store;
 use Nsfisis\Waddiwasi\WebAssembly\Structure\Types\FuncType;
-use Nsfisis\Waddiwasi\WebAssembly\Structure\Types\ResultType;
 use Nsfisis\Waddiwasi\WebAssembly\Structure\Types\ValType;
 
 const PHP_HELLO_WORLD = <<<'EOS'
@@ -186,7 +185,7 @@ function makeHostFunc(string $typeDef, callable $fn): Externs\Func
     $resultsDef = $matches[2];
     $params = array_map($stringToType, $paramsDef === '' ? [] : explode(', ', $paramsDef));
     $results = array_map($stringToType, $resultsDef === '' ? [] : explode(', ', $resultsDef));
-    $type = new FuncType(new ResultType($params), new ResultType($results));
+    $type = new FuncType($params, $results);
     return Extern::Func(FuncInst::Host($type, $fn));
 }
 

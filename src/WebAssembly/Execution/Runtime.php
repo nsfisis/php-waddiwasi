@@ -13,7 +13,6 @@ use Nsfisis\Waddiwasi\WebAssembly\Structure\Modules\ElemModes;
 use Nsfisis\Waddiwasi\WebAssembly\Structure\Modules\Module;
 use Nsfisis\Waddiwasi\WebAssembly\Structure\Types\FuncType;
 use Nsfisis\Waddiwasi\WebAssembly\Structure\Types\Limits;
-use Nsfisis\Waddiwasi\WebAssembly\Structure\Types\ResultType;
 use Nsfisis\Waddiwasi\WebAssembly\Structure\Types\TableType;
 use Nsfisis\Waddiwasi\WebAssembly\Structure\Types\ValType;
 use RuntimeException;
@@ -209,8 +208,8 @@ final class Runtime
 
             $funcInst = $this->store->funcs[$funcAddr];
             assert($funcInst instanceof FuncInsts\Wasm);
-            $paramTypes = $funcInst->type->params->types;
-            $resultTypes = $funcInst->type->results->types;
+            $paramTypes = $funcInst->type->params;
+            $resultTypes = $funcInst->type->results;
             if (count($paramTypes) !== count($vals)) {
                 throw new RuntimeException("invoke($name) invalid function arity: expected " . count($paramTypes) . ", got " . count($vals));
             }
@@ -249,9 +248,9 @@ final class Runtime
 
     private function doInvokeWasmFunc(FuncInsts\Wasm $fn, int $funcAddr): void
     {
-        $paramTypes = $fn->type->params->types;
+        $paramTypes = $fn->type->params;
         $n = count($paramTypes);
-        $resultTypes = $fn->type->results->types;
+        $resultTypes = $fn->type->results;
         $m = count($resultTypes);
         $ts = $fn->code->locals;
         $vals = $this->stack->popNValues($n);
@@ -304,9 +303,9 @@ final class Runtime
 
     private function doInvokeHostFunc(FuncInsts\Host $fn): void
     {
-        $paramTypes = $fn->type->params->types;
+        $paramTypes = $fn->type->params;
         $n = count($paramTypes);
-        $resultTypes = $fn->type->results->types;
+        $resultTypes = $fn->type->results;
         $m = count($resultTypes);
 
         $params = array_reverse($this->stack->popNValues($n));
@@ -2464,8 +2463,8 @@ final class Runtime
         $instrs = $instr->body;
         $f = $this->stack->currentFrame();
         $bt = self::expandBlockType($blockType, $f->module);
-        $params = array_reverse($this->stack->popNValues(count($bt->params->types)));
-        $n = count($bt->results->types);
+        $params = array_reverse($this->stack->popNValues(count($bt->params)));
+        $n = count($bt->results);
         $l = new Label($n);
         $result = $this->execInstrs($instrs, $l, $params);
         if ($result === null) {
@@ -2573,7 +2572,7 @@ final class Runtime
         $instrs = $instr->body;
         $f = $this->stack->currentFrame();
         $bt = self::expandBlockType($blockType, $f->module);
-        $m = count($bt->params->types);
+        $m = count($bt->params);
         $l = new Label($m);
         while (true) {
             $params = array_reverse($this->stack->popNValues($m));
@@ -2654,8 +2653,8 @@ final class Runtime
         } elseif ($bt instanceof BlockTypes\ValType) {
             $t = $bt->inner;
             return new FuncType(
-                new ResultType([]),
-                new ResultType($t === null ? [] : [$t]),
+                [],
+                $t === null ? [] : [$t],
             );
         } else {
             throw new RuntimeException("expand(): invalid blocktype");
