@@ -7,6 +7,7 @@ require_once __DIR__ . '/../../vendor/autoload.php';
 use Nsfisis\Waddiwasi\BinaryFormat\Decoder;
 use Nsfisis\Waddiwasi\BinaryFormat\InvalidBinaryFormatException;
 use Nsfisis\Waddiwasi\Execution\Extern;
+use Nsfisis\Waddiwasi\Execution\Externs;
 use Nsfisis\Waddiwasi\Execution\FuncInst;
 use Nsfisis\Waddiwasi\Execution\Refs;
 use Nsfisis\Waddiwasi\Execution\Runtime;
@@ -32,7 +33,7 @@ try {
     exit(1);
 }
 
-$importModules = [
+$imports = [
     'env' => [
         'invoke_iii' => makeHostFunc('(i32, i32, i32) -> (i32)', hostFunc__env__invoke_iii(...)),
         'invoke_iiiii' => makeHostFunc('(i32, i32, i32, i32, i32) -> (i32)', hostFunc__env__invoke_iiiii(...)),
@@ -132,14 +133,7 @@ $importModules = [
     ],
 ];
 
-$store = Store::empty();
-$importObj = [];
-foreach ($importModules as $importModuleName => $importModule) {
-    foreach ($importModule as $importName => $import) {
-        $importObj[$importModuleName][$importName] = Extern::Func($import);
-    }
-}
-$runtime = Runtime::instantiate($store, $module, $importObj);
+$runtime = Runtime::instantiate(Store::empty(), $module, $imports);
 $codePtr = allocateStringOnWasmMemory($runtime, PHP_HELLO_WORLD);
 
 $results = $runtime->invoke("php_wasm_run", [$codePtr]);
@@ -187,7 +181,7 @@ function copyStringToWasmMemory(Runtime $runtime, int $dst, string $src): void
     \assert($ok);
 }
 
-function makeHostFunc(string $typeDef, callable $fn): FuncInst
+function makeHostFunc(string $typeDef, callable $fn): Externs\Func
 {
     $stringToType = fn (string $s) => match ($s) {
         'i32' => ValType::NumType(NumType::I32),
@@ -202,7 +196,7 @@ function makeHostFunc(string $typeDef, callable $fn): FuncInst
     $params = array_map($stringToType, $paramsDef === '' ? [] : explode(', ', $paramsDef));
     $results = array_map($stringToType, $resultsDef === '' ? [] : explode(', ', $resultsDef));
     $type = new FuncType(new ResultType($params), new ResultType($results));
-    return FuncInst::Host($type, $fn);
+    return Extern::Func(FuncInst::Host($type, $fn));
 }
 
 function getWasmTableEntry(Runtime $runtime, int $funcPtr): int
