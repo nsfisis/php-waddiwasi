@@ -45,6 +45,7 @@ $imports = [
         'invoke_iiiiiiiiii' => makeHostFunc('(i32, i32, i32, i32, i32, i32, i32, i32, i32, i32) -> (i32)', hostFunc__env__invoke_iiiiiiiiii(...)),
         'strftime' => makeHostFunc('(i32, i32, i32, i32) -> (i32)', hostFunc__env__strftime(...)),
         'getaddrinfo' => makeHostFunc('(i32, i32, i32, i32) -> (i32)', hostFunc__env__getaddrinfo(...)),
+        'posix_spawnp' => makeHostFunc('(i32, i32, i32, i32, i32, i32) -> (i32)', hostFunc__env__posix_spawnp(...)),
         'getdtablesize' => makeHostFunc('() -> (i32)', hostFunc__env__getdtablesize(...)),
         'getprotobyname' => makeHostFunc('(i32) -> (i32)', hostFunc__env__getprotobyname(...)),
         'getprotobynumber' => makeHostFunc('(i32) -> (i32)', hostFunc__env__getprotobynumber(...)),
@@ -62,7 +63,6 @@ $imports = [
         '__syscall_chmod' => makeHostFunc('(i32, i32) -> (i32)', hostFunc__env____syscall_chmod(...)),
         '__syscall_fchownat' => makeHostFunc('(i32, i32, i32, i32, i32) -> (i32)', hostFunc__env____syscall_fchownat(...)),
         '__syscall_dup' => makeHostFunc('(i32) -> (i32)', hostFunc__env____syscall_dup(...)),
-        '__syscall_dup3' => makeHostFunc('(i32, i32, i32) -> (i32)', hostFunc__env____syscall_dup3(...)),
         '_emscripten_memcpy_js' => makeHostFunc('(i32, i32, i32) -> ()', hostFunc__env___emscripten_memcpy_js(...)),
         'emscripten_date_now' => makeHostFunc('() -> (f64)', hostFunc__env__emscripten_date_now(...)),
         '_emscripten_get_now_is_monotonic' => makeHostFunc('() -> (i32)', hostFunc__env___emscripten_get_now_is_monotonic(...)),
@@ -436,6 +436,12 @@ function hostFunc__env__getaddrinfo(Runtime $runtime): void
     throw new \RuntimeException('env::getaddrinfo: not implemented');
 }
 
+// Type: (i32, i32, i32, i32, i32, i32) -> (i32)
+function hostFunc__env__posix_spawnp(Runtime $runtime): void
+{
+    throw new \RuntimeException('env::posix_spawnp: not implemented');
+}
+
 // Type: () -> (i32)
 function hostFunc__env__getdtablesize(Runtime $runtime): void
 {
@@ -536,9 +542,9 @@ function hostFunc__env____syscall_ioctl(Runtime $runtime): void
 }
 
 // Type: (i32) -> (i32)
-function hostFunc__wasi_snapshot_preview1__fd_close(Runtime $runtime): void
+function hostFunc__wasi_snapshot_preview1__fd_close(Runtime $runtime, int $fd): int
 {
-    throw new \RuntimeException('wasi_snapshot_preview1::fd_close: not implemented');
+    return 0;
 }
 
 // Type: (i32, i32, i32, i32) -> (i32)
@@ -619,12 +625,6 @@ function hostFunc__env____syscall_dup(Runtime $runtime): void
     throw new \RuntimeException('env::__syscall_dup: not implemented');
 }
 
-// Type: (i32, i32, i32) -> (i32)
-function hostFunc__env____syscall_dup3(Runtime $runtime): void
-{
-    throw new \RuntimeException('env::__syscall_dup3: not implemented');
-}
-
 // Type: (i32, i32, i32) -> ()
 function hostFunc__env___emscripten_memcpy_js(Runtime $runtime, int $dest, int $src, int $num): void
 {
@@ -638,21 +638,21 @@ function hostFunc__env___emscripten_memcpy_js(Runtime $runtime, int $dest, int $
 }
 
 // Type: () -> (f64)
-function hostFunc__env__emscripten_date_now(Runtime $runtime): void
+function hostFunc__env__emscripten_date_now(Runtime $runtime): float
 {
-    throw new \RuntimeException('env::emscripten_date_now: not implemented');
+    return round(microtime(true) * 1000);
 }
 
 // Type: () -> (i32)
-function hostFunc__env___emscripten_get_now_is_monotonic(Runtime $runtime): void
+function hostFunc__env___emscripten_get_now_is_monotonic(Runtime $runtime): int
 {
-    throw new \RuntimeException('env::_emscripten_get_now_is_monotonic: not implemented');
+    return 1;
 }
 
 // Type: () -> (f64)
-function hostFunc__env__emscripten_get_now(Runtime $runtime): void
+function hostFunc__env__emscripten_get_now(Runtime $runtime): float
 {
-    throw new \RuntimeException('env::emscripten_get_now: not implemented');
+    return round(microtime(true) * 1000);
 }
 
 // Type: (i32) -> (i32)

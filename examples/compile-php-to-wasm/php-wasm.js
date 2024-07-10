@@ -4785,23 +4785,6 @@ function dbg(...args) {
   }
   }
 
-  function ___syscall_dup3(fd, newfd, flags) {
-  try {
-  
-      var old = SYSCALLS.getStreamFromFD(fd);
-      assert(!flags);
-      if (old.fd === newfd) return -28;
-      // Check newfd is within range of valid open file descriptors.
-      if (newfd < 0 || newfd >= FS.MAX_OPEN_FDS) return -8;
-      var existing = FS.getStream(newfd);
-      if (existing) FS.close(existing);
-      return FS.dupStream(old, newfd).fd;
-    } catch (e) {
-    if (typeof FS == 'undefined' || !(e.name === 'ErrnoError')) throw e;
-    return -e.errno;
-  }
-  }
-
   function ___syscall_faccessat(dirfd, path, amode, flags) {
   try {
   
@@ -6557,6 +6540,13 @@ function dbg(...args) {
   }
   _makecontext.stub = true;
 
+  /** @type {function(...*):?} */
+  function _posix_spawnp(
+  ) {
+  abort('missing function: posix_spawnp');
+  }
+  _posix_spawnp.stub = true;
+
 
   
   var arraySum = (array, index) => {
@@ -6976,8 +6966,6 @@ var wasmImports = {
   /** @export */
   __syscall_dup: ___syscall_dup,
   /** @export */
-  __syscall_dup3: ___syscall_dup3,
-  /** @export */
   __syscall_faccessat: ___syscall_faccessat,
   /** @export */
   __syscall_fchownat: ___syscall_fchownat,
@@ -7137,6 +7125,8 @@ var wasmImports = {
   invoke_viiiiii,
   /** @export */
   makecontext: _makecontext,
+  /** @export */
+  posix_spawnp: _posix_spawnp,
   /** @export */
   proc_exit: _proc_exit,
   /** @export */
@@ -7322,10 +7312,10 @@ function invoke_iiiiiiiiii(index,a1,a2,a3,a4,a5,a6,a7,a8,a9) {
   }
 }
 
-function invoke_viiiiii(index,a1,a2,a3,a4,a5,a6) {
+function invoke_viidii(index,a1,a2,a3,a4,a5) {
   var sp = stackSave();
   try {
-    getWasmTableEntry(index)(a1,a2,a3,a4,a5,a6);
+    getWasmTableEntry(index)(a1,a2,a3,a4,a5);
   } catch(e) {
     stackRestore(sp);
     if (e !== e+0) throw e;
@@ -7333,10 +7323,10 @@ function invoke_viiiiii(index,a1,a2,a3,a4,a5,a6) {
   }
 }
 
-function invoke_viidii(index,a1,a2,a3,a4,a5) {
+function invoke_viiiiii(index,a1,a2,a3,a4,a5,a6) {
   var sp = stackSave();
   try {
-    getWasmTableEntry(index)(a1,a2,a3,a4,a5);
+    getWasmTableEntry(index)(a1,a2,a3,a4,a5,a6);
   } catch(e) {
     stackRestore(sp);
     if (e !== e+0) throw e;
