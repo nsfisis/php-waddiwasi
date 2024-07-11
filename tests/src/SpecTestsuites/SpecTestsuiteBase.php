@@ -8,6 +8,8 @@ use Nsfisis\Waddiwasi\Stream\FileStream;
 use Nsfisis\Waddiwasi\WebAssembly\BinaryFormat\Decoder;
 use Nsfisis\Waddiwasi\WebAssembly\BinaryFormat\InvalidBinaryFormatException;
 use Nsfisis\Waddiwasi\WebAssembly\Execution\Extern;
+use Nsfisis\Waddiwasi\WebAssembly\Execution\ExternVals;
+use Nsfisis\Waddiwasi\WebAssembly\Execution\FuncInst;
 use Nsfisis\Waddiwasi\WebAssembly\Execution\GlobalInst;
 use Nsfisis\Waddiwasi\WebAssembly\Execution\MemInst;
 use Nsfisis\Waddiwasi\WebAssembly\Execution\Ref;
@@ -20,6 +22,7 @@ use Nsfisis\Waddiwasi\WebAssembly\Execution\Store;
 use Nsfisis\Waddiwasi\WebAssembly\Execution\TableInst;
 use Nsfisis\Waddiwasi\WebAssembly\Execution\TrapException;
 use Nsfisis\Waddiwasi\WebAssembly\Execution\TrapKind;
+use Nsfisis\Waddiwasi\WebAssembly\Structure\Types\FuncType;
 use Nsfisis\Waddiwasi\WebAssembly\Structure\Types\GlobalType;
 use Nsfisis\Waddiwasi\WebAssembly\Structure\Types\Limits;
 use Nsfisis\Waddiwasi\WebAssembly\Structure\Types\MemType;
@@ -37,6 +40,7 @@ abstract class SpecTestsuiteBase extends TestCase
     private static $runtimes = [];
     private static $registeredModules = [];
     private static $registeredRuntimes = [];
+    private static $store = null;
 
     protected function runModuleCommand(
         string $filename,
@@ -67,22 +71,47 @@ abstract class SpecTestsuiteBase extends TestCase
                 'global_i64' => Extern::Global_(new GlobalInst(new GlobalType(Mut::Const, ValType::I64), 666)),
                 'global_f32' => Extern::Global_(new GlobalInst(new GlobalType(Mut::Const, ValType::F32), 666.6)),
                 'global_f64' => Extern::Global_(new GlobalInst(new GlobalType(Mut::Const, ValType::F64), 666.6)),
+                'print' => Extern::Func(FuncInst::Host(new FuncType([], []), fn () => null)),
+                'print_i32' => Extern::Func(FuncInst::Host(new FuncType([ValType::I32], []), fn () => null)),
+                'print_i64' => Extern::Func(FuncInst::Host(new FuncType([ValType::I64], []), fn () => null)),
+                'print_f32' => Extern::Func(FuncInst::Host(new FuncType([ValType::F32], []), fn () => null)),
+                'print_f64' => Extern::Func(FuncInst::Host(new FuncType([ValType::F64], []), fn () => null)),
+                'print_i32_f32' => Extern::Func(FuncInst::Host(new FuncType([ValType::I32, ValType::F32], []), fn () => null)),
+                'print_f64_f64' => Extern::Func(FuncInst::Host(new FuncType([ValType::F64, ValType::F64], []), fn () => null)),
             ],
         ];
         foreach (self::$registeredModules as $registeredModuleName => $registeredModule) {
             $registeredRuntime = self::$registeredRuntimes[$registeredModuleName];
             foreach ($registeredModule->exports as $export) {
-                $fn = $registeredRuntime->store->funcs[$registeredRuntime->getExport($export->name)->addr];
-                $importObj[$registeredModuleName][$export->name] = Extern::Func($fn);
+                $externVal = $registeredRuntime->getExport($export->name);
+                if ($externVal instanceof ExternVals\Func) {
+                    $fn = $registeredRuntime->store->funcs[$registeredRuntime->getExport($export->name)->addr];
+                    $importObj[$registeredModuleName][$export->name] = Extern::Func($fn);
+                } elseif ($externVal instanceof ExternVals\Table) {
+                    $tab = $registeredRuntime->store->tables[$registeredRuntime->getExport($export->name)->addr];
+                    $importObj[$registeredModuleName][$export->name] = Extern::Table($tab);
+                } elseif ($externVal instanceof ExternVals\Mem) {
+                    $mem = $registeredRuntime->store->mems[$registeredRuntime->getExport($export->name)->addr];
+                    $importObj[$registeredModuleName][$export->name] = Extern::Mem($mem);
+                } elseif ($externVal instanceof ExternVals\Global_) {
+                    $gl = $registeredRuntime->store->globals[$registeredRuntime->getExport($export->name)->addr];
+                    $importObj[$registeredModuleName][$export->name] = Extern::Global_($gl);
+                }
             }
         }
-        $runtime = Runtime::instantiate(Store::empty(), $module, $importObj);
+        if (self::$store === null) {
+            self::$store = Store::empty();
+        }
+        $runtime = Runtime::instantiate(self::$store, $module, $importObj);
         self::$runtimes[$moduleName] = $runtime;
+        if ($moduleName !== '_') {
+            self::$modules['_'] = $module;
+            self::$runtimes['_'] = $runtime;
+        }
         $this->assertTrue(true);
     }
 
     protected function runAssertReturnCommand(
-        ?string $module,
         array $action,
         array $expected,
         int $line,
@@ -90,7 +119,7 @@ abstract class SpecTestsuiteBase extends TestCase
         try {
             $this->assertWasmInvokeResults(
                 $expected,
-                $this->doAction($module, $action),
+                $this->doAction($action),
                 "at $line",
             );
         } catch (TrapException $e) {
@@ -99,14 +128,13 @@ abstract class SpecTestsuiteBase extends TestCase
     }
 
     protected function runAssertTrapCommand(
-        ?string $module,
         array $action,
         string $text,
         int $line,
     ): void {
         $exception = null;
         try {
-            $this->doAction($module, $action);
+            $this->doAction($action);
         } catch (TrapException $e) {
             $exception = $e;
         }
@@ -141,14 +169,13 @@ abstract class SpecTestsuiteBase extends TestCase
     }
 
     protected function runAssertExhaustionCommand(
-        ?string $module,
         array $action,
         string $text,
         int $line,
     ): void {
         $exception = null;
         try {
-            $this->doAction($module, $action);
+            $this->doAction($action);
         } catch (StackOverflowException $e) {
             $exception = $e;
         }
@@ -161,7 +188,40 @@ abstract class SpecTestsuiteBase extends TestCase
         string $text,
         int $line,
     ): void {
-        $this->assertTrue(false, "assert_uninstantiable");
+        $filePath = __DIR__ . "/../../fixtures/spec_testsuites/core/$filename";
+        $wasmBinaryStream = new FileStream($filePath);
+        $module = (new Decoder($wasmBinaryStream))->decode();
+        $exception = null;
+        $importObj = [];
+        foreach (self::$registeredModules as $registeredModuleName => $registeredModule) {
+            $registeredRuntime = self::$registeredRuntimes[$registeredModuleName];
+            foreach ($registeredModule->exports as $export) {
+                $externVal = $registeredRuntime->getExport($export->name);
+                if ($externVal instanceof ExternVals\Func) {
+                    $fn = $registeredRuntime->store->funcs[$registeredRuntime->getExport($export->name)->addr];
+                    $importObj[$registeredModuleName][$export->name] = Extern::Func($fn);
+                } elseif ($externVal instanceof ExternVals\Table) {
+                    $tab = $registeredRuntime->store->tables[$registeredRuntime->getExport($export->name)->addr];
+                    $importObj[$registeredModuleName][$export->name] = Extern::Table($tab);
+                } elseif ($externVal instanceof ExternVals\Mem) {
+                    $mem = $registeredRuntime->store->mems[$registeredRuntime->getExport($export->name)->addr];
+                    $importObj[$registeredModuleName][$export->name] = Extern::Mem($mem);
+                } elseif ($externVal instanceof ExternVals\Global_) {
+                    $gl = $registeredRuntime->store->globals[$registeredRuntime->getExport($export->name)->addr];
+                    $importObj[$registeredModuleName][$export->name] = Extern::Global_($gl);
+                }
+            }
+        }
+        if (self::$store === null) {
+            self::$store = Store::empty();
+        }
+        try {
+            Runtime::instantiate(self::$store, $module, $importObj);
+        } catch (RuntimeException $e) {
+            $exception = $e;
+        }
+        // @todo Check error message.
+        $this->assertNotNull($exception, "instantiating $filename is expected to fail (at $line)");
     }
 
     protected function runAssertUnlinkableCommand(
@@ -169,15 +229,47 @@ abstract class SpecTestsuiteBase extends TestCase
         string $text,
         int $line,
     ): void {
-        $this->assertTrue(false, "assert_unlinkable");
+        $filePath = __DIR__ . "/../../fixtures/spec_testsuites/core/$filename";
+        $wasmBinaryStream = new FileStream($filePath);
+        $module = (new Decoder($wasmBinaryStream))->decode();
+        $exception = null;
+        $importObj = [];
+        foreach (self::$registeredModules as $registeredModuleName => $registeredModule) {
+            $registeredRuntime = self::$registeredRuntimes[$registeredModuleName];
+            foreach ($registeredModule->exports as $export) {
+                $externVal = $registeredRuntime->getExport($export->name);
+                if ($externVal instanceof ExternVals\Func) {
+                    $fn = $registeredRuntime->store->funcs[$registeredRuntime->getExport($export->name)->addr];
+                    $importObj[$registeredModuleName][$export->name] = Extern::Func($fn);
+                } elseif ($externVal instanceof ExternVals\Table) {
+                    $tab = $registeredRuntime->store->tables[$registeredRuntime->getExport($export->name)->addr];
+                    $importObj[$registeredModuleName][$export->name] = Extern::Table($tab);
+                } elseif ($externVal instanceof ExternVals\Mem) {
+                    $mem = $registeredRuntime->store->mems[$registeredRuntime->getExport($export->name)->addr];
+                    $importObj[$registeredModuleName][$export->name] = Extern::Mem($mem);
+                } elseif ($externVal instanceof ExternVals\Global_) {
+                    $gl = $registeredRuntime->store->globals[$registeredRuntime->getExport($export->name)->addr];
+                    $importObj[$registeredModuleName][$export->name] = Extern::Global_($gl);
+                }
+            }
+        }
+        if (self::$store === null) {
+            self::$store = Store::empty();
+        }
+        try {
+            Runtime::instantiate(self::$store, $module, $importObj);
+        } catch (RuntimeException $e) {
+            $exception = $e;
+        }
+        // @todo Check error message.
+        $this->assertNotNull($exception, "linking $filename is expected to fail (at $line)");
     }
 
     protected function runActionCommand(
-        ?string $module,
         array $action,
         int $line,
     ): void {
-        $this->doAction($module, $action);
+        $this->doAction($action);
         $this->assertTrue(true);
     }
 
@@ -191,6 +283,10 @@ abstract class SpecTestsuiteBase extends TestCase
         $runtime = self::$runtimes[$targetModuleName];
         self::$registeredModules[$as] = $targetModule;
         self::$registeredRuntimes[$as] = $runtime;
+        if ($name !== '_') {
+            self::$registeredModules[$name] = $targetModule;
+            self::$registeredRuntimes[$name] = $runtime;
+        }
         $this->assertTrue(true);
     }
 
@@ -221,10 +317,9 @@ abstract class SpecTestsuiteBase extends TestCase
     }
 
     private function doAction(
-        ?string $module,
         array $action,
     ): array {
-        $targetModuleName = $module ?? '_';
+        $targetModuleName = $action['module'] ?? '_';
         $targetModule = self::$modules[$targetModuleName];
         $actionType = $action['type'];
         $actionField = $action['field'];
@@ -235,6 +330,10 @@ abstract class SpecTestsuiteBase extends TestCase
                 $actionField,
                 array_map(self::wastValueToInternalValue(...), $actionArgs),
             );
+        } elseif ($actionType === 'get') {
+            $runtime = self::$runtimes[$targetModuleName];
+            $addr = $runtime->getExport($actionField)->addr;
+            return [$runtime->store->globals[$addr]->value];
         } else {
             $this->assertTrue(false, "unknown action: $actionType");
         }

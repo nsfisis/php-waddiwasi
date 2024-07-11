@@ -23,7 +23,6 @@ final class BrIfTest extends SpecTestsuiteBase
     public function testAssertReturn1(): void
     {
         $this->runAssertReturnCommand(
-            module: null,
             action: ['type' => 'invoke', 'field' => 'type-i32', 'args' => []],
             expected: [],
             line: 372,
@@ -34,7 +33,6 @@ final class BrIfTest extends SpecTestsuiteBase
     public function testAssertReturn2(): void
     {
         $this->runAssertReturnCommand(
-            module: null,
             action: ['type' => 'invoke', 'field' => 'type-i64', 'args' => []],
             expected: [],
             line: 373,
@@ -45,7 +43,6 @@ final class BrIfTest extends SpecTestsuiteBase
     public function testAssertReturn3(): void
     {
         $this->runAssertReturnCommand(
-            module: null,
             action: ['type' => 'invoke', 'field' => 'type-f32', 'args' => []],
             expected: [],
             line: 374,
@@ -56,7 +53,6 @@ final class BrIfTest extends SpecTestsuiteBase
     public function testAssertReturn4(): void
     {
         $this->runAssertReturnCommand(
-            module: null,
             action: ['type' => 'invoke', 'field' => 'type-f64', 'args' => []],
             expected: [],
             line: 375,
@@ -67,7 +63,6 @@ final class BrIfTest extends SpecTestsuiteBase
     public function testAssertReturn5(): void
     {
         $this->runAssertReturnCommand(
-            module: null,
             action: ['type' => 'invoke', 'field' => 'type-i32-value', 'args' => []],
             expected: [['type' => 'i32', 'value' => '1']],
             line: 377,
@@ -78,7 +73,6 @@ final class BrIfTest extends SpecTestsuiteBase
     public function testAssertReturn6(): void
     {
         $this->runAssertReturnCommand(
-            module: null,
             action: ['type' => 'invoke', 'field' => 'type-i64-value', 'args' => []],
             expected: [['type' => 'i64', 'value' => '2']],
             line: 378,
@@ -89,7 +83,6 @@ final class BrIfTest extends SpecTestsuiteBase
     public function testAssertReturn7(): void
     {
         $this->runAssertReturnCommand(
-            module: null,
             action: ['type' => 'invoke', 'field' => 'type-f32-value', 'args' => []],
             expected: [['type' => 'f32', 'value' => '1077936128']],
             line: 379,
@@ -100,7 +93,6 @@ final class BrIfTest extends SpecTestsuiteBase
     public function testAssertReturn8(): void
     {
         $this->runAssertReturnCommand(
-            module: null,
             action: ['type' => 'invoke', 'field' => 'type-f64-value', 'args' => []],
             expected: [['type' => 'f64', 'value' => '4616189618054758400']],
             line: 380,
@@ -111,7 +103,6 @@ final class BrIfTest extends SpecTestsuiteBase
     public function testAssertReturn9(): void
     {
         $this->runAssertReturnCommand(
-            module: null,
             action: ['type' => 'invoke', 'field' => 'as-block-first', 'args' => [['type' => 'i32', 'value' => '0']]],
             expected: [['type' => 'i32', 'value' => '2']],
             line: 382,
@@ -122,7 +113,6 @@ final class BrIfTest extends SpecTestsuiteBase
     public function testAssertReturn10(): void
     {
         $this->runAssertReturnCommand(
-            module: null,
             action: ['type' => 'invoke', 'field' => 'as-block-first', 'args' => [['type' => 'i32', 'value' => '1']]],
             expected: [['type' => 'i32', 'value' => '3']],
             line: 383,
@@ -133,7 +123,6 @@ final class BrIfTest extends SpecTestsuiteBase
     public function testAssertReturn11(): void
     {
         $this->runAssertReturnCommand(
-            module: null,
             action: ['type' => 'invoke', 'field' => 'as-block-mid', 'args' => [['type' => 'i32', 'value' => '0']]],
             expected: [['type' => 'i32', 'value' => '2']],
             line: 384,
@@ -144,7 +133,6 @@ final class BrIfTest extends SpecTestsuiteBase
     public function testAssertReturn12(): void
     {
         $this->runAssertReturnCommand(
-            module: null,
             action: ['type' => 'invoke', 'field' => 'as-block-mid', 'args' => [['type' => 'i32', 'value' => '1']]],
             expected: [['type' => 'i32', 'value' => '3']],
             line: 385,
@@ -155,7 +143,6 @@ final class BrIfTest extends SpecTestsuiteBase
     public function testAssertReturn13(): void
     {
         $this->runAssertReturnCommand(
-            module: null,
             action: ['type' => 'invoke', 'field' => 'as-block-last', 'args' => [['type' => 'i32', 'value' => '0']]],
             expected: [],
             line: 386,
@@ -166,7 +153,6 @@ final class BrIfTest extends SpecTestsuiteBase
     public function testAssertReturn14(): void
     {
         $this->runAssertReturnCommand(
-            module: null,
             action: ['type' => 'invoke', 'field' => 'as-block-last', 'args' => [['type' => 'i32', 'value' => '1']]],
             expected: [],
             line: 387,
@@ -177,7 +163,6 @@ final class BrIfTest extends SpecTestsuiteBase
     public function testAssertReturn15(): void
     {
         $this->runAssertReturnCommand(
-            module: null,
             action: ['type' => 'invoke', 'field' => 'as-block-first-value', 'args' => [['type' => 'i32', 'value' => '0']]],
             expected: [['type' => 'i32', 'value' => '11']],
             line: 389,
@@ -188,7 +173,6 @@ final class BrIfTest extends SpecTestsuiteBase
     public function testAssertReturn16(): void
     {
         $this->runAssertReturnCommand(
-            module: null,
             action: ['type' => 'invoke', 'field' => 'as-block-first-value', 'args' => [['type' => 'i32', 'value' => '1']]],
             expected: [['type' => 'i32', 'value' => '10']],
             line: 390,
@@ -199,7 +183,6 @@ final class BrIfTest extends SpecTestsuiteBase
     public function testAssertReturn17(): void
     {
         $this->runAssertReturnCommand(
-            module: null,
             action: ['type' => 'invoke', 'field' => 'as-block-mid-value', 'args' => [['type' => 'i32', 'value' => '0']]],
             expected: [['type' => 'i32', 'value' => '21']],
             line: 391,
@@ -210,7 +193,6 @@ final class BrIfTest extends SpecTestsuiteBase
     public function testAssertReturn18(): void
     {
         $this->runAssertReturnCommand(
-            module: null,
             action: ['type' => 'invoke', 'field' => 'as-block-mid-value', 'args' => [['type' => 'i32', 'value' => '1']]],
             expected: [['type' => 'i32', 'value' => '20']],
             line: 392,
@@ -221,7 +203,6 @@ final class BrIfTest extends SpecTestsuiteBase
     public function testAssertReturn19(): void
     {
         $this->runAssertReturnCommand(
-            module: null,
             action: ['type' => 'invoke', 'field' => 'as-block-last-value', 'args' => [['type' => 'i32', 'value' => '0']]],
             expected: [['type' => 'i32', 'value' => '11']],
             line: 393,
@@ -232,7 +213,6 @@ final class BrIfTest extends SpecTestsuiteBase
     public function testAssertReturn20(): void
     {
         $this->runAssertReturnCommand(
-            module: null,
             action: ['type' => 'invoke', 'field' => 'as-block-last-value', 'args' => [['type' => 'i32', 'value' => '1']]],
             expected: [['type' => 'i32', 'value' => '11']],
             line: 394,
@@ -243,7 +223,6 @@ final class BrIfTest extends SpecTestsuiteBase
     public function testAssertReturn21(): void
     {
         $this->runAssertReturnCommand(
-            module: null,
             action: ['type' => 'invoke', 'field' => 'as-loop-first', 'args' => [['type' => 'i32', 'value' => '0']]],
             expected: [['type' => 'i32', 'value' => '2']],
             line: 396,
@@ -254,7 +233,6 @@ final class BrIfTest extends SpecTestsuiteBase
     public function testAssertReturn22(): void
     {
         $this->runAssertReturnCommand(
-            module: null,
             action: ['type' => 'invoke', 'field' => 'as-loop-first', 'args' => [['type' => 'i32', 'value' => '1']]],
             expected: [['type' => 'i32', 'value' => '3']],
             line: 397,
@@ -265,7 +243,6 @@ final class BrIfTest extends SpecTestsuiteBase
     public function testAssertReturn23(): void
     {
         $this->runAssertReturnCommand(
-            module: null,
             action: ['type' => 'invoke', 'field' => 'as-loop-mid', 'args' => [['type' => 'i32', 'value' => '0']]],
             expected: [['type' => 'i32', 'value' => '2']],
             line: 398,
@@ -276,7 +253,6 @@ final class BrIfTest extends SpecTestsuiteBase
     public function testAssertReturn24(): void
     {
         $this->runAssertReturnCommand(
-            module: null,
             action: ['type' => 'invoke', 'field' => 'as-loop-mid', 'args' => [['type' => 'i32', 'value' => '1']]],
             expected: [['type' => 'i32', 'value' => '4']],
             line: 399,
@@ -287,7 +263,6 @@ final class BrIfTest extends SpecTestsuiteBase
     public function testAssertReturn25(): void
     {
         $this->runAssertReturnCommand(
-            module: null,
             action: ['type' => 'invoke', 'field' => 'as-loop-last', 'args' => [['type' => 'i32', 'value' => '0']]],
             expected: [],
             line: 400,
@@ -298,7 +273,6 @@ final class BrIfTest extends SpecTestsuiteBase
     public function testAssertReturn26(): void
     {
         $this->runAssertReturnCommand(
-            module: null,
             action: ['type' => 'invoke', 'field' => 'as-loop-last', 'args' => [['type' => 'i32', 'value' => '1']]],
             expected: [],
             line: 401,
@@ -309,7 +283,6 @@ final class BrIfTest extends SpecTestsuiteBase
     public function testAssertReturn27(): void
     {
         $this->runAssertReturnCommand(
-            module: null,
             action: ['type' => 'invoke', 'field' => 'as-br-value', 'args' => []],
             expected: [['type' => 'i32', 'value' => '1']],
             line: 403,
@@ -320,7 +293,6 @@ final class BrIfTest extends SpecTestsuiteBase
     public function testAssertReturn28(): void
     {
         $this->runAssertReturnCommand(
-            module: null,
             action: ['type' => 'invoke', 'field' => 'as-br_if-cond', 'args' => []],
             expected: [],
             line: 405,
@@ -331,7 +303,6 @@ final class BrIfTest extends SpecTestsuiteBase
     public function testAssertReturn29(): void
     {
         $this->runAssertReturnCommand(
-            module: null,
             action: ['type' => 'invoke', 'field' => 'as-br_if-value', 'args' => []],
             expected: [['type' => 'i32', 'value' => '1']],
             line: 406,
@@ -342,7 +313,6 @@ final class BrIfTest extends SpecTestsuiteBase
     public function testAssertReturn30(): void
     {
         $this->runAssertReturnCommand(
-            module: null,
             action: ['type' => 'invoke', 'field' => 'as-br_if-value-cond', 'args' => [['type' => 'i32', 'value' => '0']]],
             expected: [['type' => 'i32', 'value' => '2']],
             line: 407,
@@ -353,7 +323,6 @@ final class BrIfTest extends SpecTestsuiteBase
     public function testAssertReturn31(): void
     {
         $this->runAssertReturnCommand(
-            module: null,
             action: ['type' => 'invoke', 'field' => 'as-br_if-value-cond', 'args' => [['type' => 'i32', 'value' => '1']]],
             expected: [['type' => 'i32', 'value' => '1']],
             line: 408,
@@ -364,7 +333,6 @@ final class BrIfTest extends SpecTestsuiteBase
     public function testAssertReturn32(): void
     {
         $this->runAssertReturnCommand(
-            module: null,
             action: ['type' => 'invoke', 'field' => 'as-br_table-index', 'args' => []],
             expected: [],
             line: 410,
@@ -375,7 +343,6 @@ final class BrIfTest extends SpecTestsuiteBase
     public function testAssertReturn33(): void
     {
         $this->runAssertReturnCommand(
-            module: null,
             action: ['type' => 'invoke', 'field' => 'as-br_table-value', 'args' => []],
             expected: [['type' => 'i32', 'value' => '1']],
             line: 411,
@@ -386,7 +353,6 @@ final class BrIfTest extends SpecTestsuiteBase
     public function testAssertReturn34(): void
     {
         $this->runAssertReturnCommand(
-            module: null,
             action: ['type' => 'invoke', 'field' => 'as-br_table-value-index', 'args' => []],
             expected: [['type' => 'i32', 'value' => '1']],
             line: 412,
@@ -397,7 +363,6 @@ final class BrIfTest extends SpecTestsuiteBase
     public function testAssertReturn35(): void
     {
         $this->runAssertReturnCommand(
-            module: null,
             action: ['type' => 'invoke', 'field' => 'as-return-value', 'args' => []],
             expected: [['type' => 'i64', 'value' => '1']],
             line: 414,
@@ -408,7 +373,6 @@ final class BrIfTest extends SpecTestsuiteBase
     public function testAssertReturn36(): void
     {
         $this->runAssertReturnCommand(
-            module: null,
             action: ['type' => 'invoke', 'field' => 'as-if-cond', 'args' => [['type' => 'i32', 'value' => '0']]],
             expected: [['type' => 'i32', 'value' => '2']],
             line: 416,
@@ -419,7 +383,6 @@ final class BrIfTest extends SpecTestsuiteBase
     public function testAssertReturn37(): void
     {
         $this->runAssertReturnCommand(
-            module: null,
             action: ['type' => 'invoke', 'field' => 'as-if-cond', 'args' => [['type' => 'i32', 'value' => '1']]],
             expected: [['type' => 'i32', 'value' => '1']],
             line: 417,
@@ -430,7 +393,6 @@ final class BrIfTest extends SpecTestsuiteBase
     public function testAssertReturn38(): void
     {
         $this->runAssertReturnCommand(
-            module: null,
             action: ['type' => 'invoke', 'field' => 'as-if-then', 'args' => [['type' => 'i32', 'value' => '0'], ['type' => 'i32', 'value' => '0']]],
             expected: [],
             line: 418,
@@ -441,7 +403,6 @@ final class BrIfTest extends SpecTestsuiteBase
     public function testAssertReturn39(): void
     {
         $this->runAssertReturnCommand(
-            module: null,
             action: ['type' => 'invoke', 'field' => 'as-if-then', 'args' => [['type' => 'i32', 'value' => '4'], ['type' => 'i32', 'value' => '0']]],
             expected: [],
             line: 419,
@@ -452,7 +413,6 @@ final class BrIfTest extends SpecTestsuiteBase
     public function testAssertReturn40(): void
     {
         $this->runAssertReturnCommand(
-            module: null,
             action: ['type' => 'invoke', 'field' => 'as-if-then', 'args' => [['type' => 'i32', 'value' => '0'], ['type' => 'i32', 'value' => '1']]],
             expected: [],
             line: 420,
@@ -463,7 +423,6 @@ final class BrIfTest extends SpecTestsuiteBase
     public function testAssertReturn41(): void
     {
         $this->runAssertReturnCommand(
-            module: null,
             action: ['type' => 'invoke', 'field' => 'as-if-then', 'args' => [['type' => 'i32', 'value' => '4'], ['type' => 'i32', 'value' => '1']]],
             expected: [],
             line: 421,
@@ -474,7 +433,6 @@ final class BrIfTest extends SpecTestsuiteBase
     public function testAssertReturn42(): void
     {
         $this->runAssertReturnCommand(
-            module: null,
             action: ['type' => 'invoke', 'field' => 'as-if-else', 'args' => [['type' => 'i32', 'value' => '0'], ['type' => 'i32', 'value' => '0']]],
             expected: [],
             line: 422,
@@ -485,7 +443,6 @@ final class BrIfTest extends SpecTestsuiteBase
     public function testAssertReturn43(): void
     {
         $this->runAssertReturnCommand(
-            module: null,
             action: ['type' => 'invoke', 'field' => 'as-if-else', 'args' => [['type' => 'i32', 'value' => '3'], ['type' => 'i32', 'value' => '0']]],
             expected: [],
             line: 423,
@@ -496,7 +453,6 @@ final class BrIfTest extends SpecTestsuiteBase
     public function testAssertReturn44(): void
     {
         $this->runAssertReturnCommand(
-            module: null,
             action: ['type' => 'invoke', 'field' => 'as-if-else', 'args' => [['type' => 'i32', 'value' => '0'], ['type' => 'i32', 'value' => '1']]],
             expected: [],
             line: 424,
@@ -507,7 +463,6 @@ final class BrIfTest extends SpecTestsuiteBase
     public function testAssertReturn45(): void
     {
         $this->runAssertReturnCommand(
-            module: null,
             action: ['type' => 'invoke', 'field' => 'as-if-else', 'args' => [['type' => 'i32', 'value' => '3'], ['type' => 'i32', 'value' => '1']]],
             expected: [],
             line: 425,
@@ -518,7 +473,6 @@ final class BrIfTest extends SpecTestsuiteBase
     public function testAssertReturn46(): void
     {
         $this->runAssertReturnCommand(
-            module: null,
             action: ['type' => 'invoke', 'field' => 'as-select-first', 'args' => [['type' => 'i32', 'value' => '0']]],
             expected: [['type' => 'i32', 'value' => '3']],
             line: 427,
@@ -529,7 +483,6 @@ final class BrIfTest extends SpecTestsuiteBase
     public function testAssertReturn47(): void
     {
         $this->runAssertReturnCommand(
-            module: null,
             action: ['type' => 'invoke', 'field' => 'as-select-first', 'args' => [['type' => 'i32', 'value' => '1']]],
             expected: [['type' => 'i32', 'value' => '3']],
             line: 428,
@@ -540,7 +493,6 @@ final class BrIfTest extends SpecTestsuiteBase
     public function testAssertReturn48(): void
     {
         $this->runAssertReturnCommand(
-            module: null,
             action: ['type' => 'invoke', 'field' => 'as-select-second', 'args' => [['type' => 'i32', 'value' => '0']]],
             expected: [['type' => 'i32', 'value' => '3']],
             line: 429,
@@ -551,7 +503,6 @@ final class BrIfTest extends SpecTestsuiteBase
     public function testAssertReturn49(): void
     {
         $this->runAssertReturnCommand(
-            module: null,
             action: ['type' => 'invoke', 'field' => 'as-select-second', 'args' => [['type' => 'i32', 'value' => '1']]],
             expected: [['type' => 'i32', 'value' => '3']],
             line: 430,
@@ -562,7 +513,6 @@ final class BrIfTest extends SpecTestsuiteBase
     public function testAssertReturn50(): void
     {
         $this->runAssertReturnCommand(
-            module: null,
             action: ['type' => 'invoke', 'field' => 'as-select-cond', 'args' => []],
             expected: [['type' => 'i32', 'value' => '3']],
             line: 431,
@@ -573,7 +523,6 @@ final class BrIfTest extends SpecTestsuiteBase
     public function testAssertReturn51(): void
     {
         $this->runAssertReturnCommand(
-            module: null,
             action: ['type' => 'invoke', 'field' => 'as-call-first', 'args' => []],
             expected: [['type' => 'i32', 'value' => '12']],
             line: 433,
@@ -584,7 +533,6 @@ final class BrIfTest extends SpecTestsuiteBase
     public function testAssertReturn52(): void
     {
         $this->runAssertReturnCommand(
-            module: null,
             action: ['type' => 'invoke', 'field' => 'as-call-mid', 'args' => []],
             expected: [['type' => 'i32', 'value' => '13']],
             line: 434,
@@ -595,7 +543,6 @@ final class BrIfTest extends SpecTestsuiteBase
     public function testAssertReturn53(): void
     {
         $this->runAssertReturnCommand(
-            module: null,
             action: ['type' => 'invoke', 'field' => 'as-call-last', 'args' => []],
             expected: [['type' => 'i32', 'value' => '14']],
             line: 435,
@@ -606,7 +553,6 @@ final class BrIfTest extends SpecTestsuiteBase
     public function testAssertReturn54(): void
     {
         $this->runAssertReturnCommand(
-            module: null,
             action: ['type' => 'invoke', 'field' => 'as-call_indirect-func', 'args' => []],
             expected: [['type' => 'i32', 'value' => '4']],
             line: 437,
@@ -617,7 +563,6 @@ final class BrIfTest extends SpecTestsuiteBase
     public function testAssertReturn55(): void
     {
         $this->runAssertReturnCommand(
-            module: null,
             action: ['type' => 'invoke', 'field' => 'as-call_indirect-first', 'args' => []],
             expected: [['type' => 'i32', 'value' => '4']],
             line: 438,
@@ -628,7 +573,6 @@ final class BrIfTest extends SpecTestsuiteBase
     public function testAssertReturn56(): void
     {
         $this->runAssertReturnCommand(
-            module: null,
             action: ['type' => 'invoke', 'field' => 'as-call_indirect-mid', 'args' => []],
             expected: [['type' => 'i32', 'value' => '4']],
             line: 439,
@@ -639,7 +583,6 @@ final class BrIfTest extends SpecTestsuiteBase
     public function testAssertReturn57(): void
     {
         $this->runAssertReturnCommand(
-            module: null,
             action: ['type' => 'invoke', 'field' => 'as-call_indirect-last', 'args' => []],
             expected: [['type' => 'i32', 'value' => '4']],
             line: 440,
@@ -650,7 +593,6 @@ final class BrIfTest extends SpecTestsuiteBase
     public function testAssertReturn58(): void
     {
         $this->runAssertReturnCommand(
-            module: null,
             action: ['type' => 'invoke', 'field' => 'as-local.set-value', 'args' => [['type' => 'i32', 'value' => '0']]],
             expected: [['type' => 'i32', 'value' => '4294967295']],
             line: 442,
@@ -661,7 +603,6 @@ final class BrIfTest extends SpecTestsuiteBase
     public function testAssertReturn59(): void
     {
         $this->runAssertReturnCommand(
-            module: null,
             action: ['type' => 'invoke', 'field' => 'as-local.set-value', 'args' => [['type' => 'i32', 'value' => '1']]],
             expected: [['type' => 'i32', 'value' => '17']],
             line: 443,
@@ -672,7 +613,6 @@ final class BrIfTest extends SpecTestsuiteBase
     public function testAssertReturn60(): void
     {
         $this->runAssertReturnCommand(
-            module: null,
             action: ['type' => 'invoke', 'field' => 'as-local.tee-value', 'args' => [['type' => 'i32', 'value' => '0']]],
             expected: [['type' => 'i32', 'value' => '4294967295']],
             line: 445,
@@ -683,7 +623,6 @@ final class BrIfTest extends SpecTestsuiteBase
     public function testAssertReturn61(): void
     {
         $this->runAssertReturnCommand(
-            module: null,
             action: ['type' => 'invoke', 'field' => 'as-local.tee-value', 'args' => [['type' => 'i32', 'value' => '1']]],
             expected: [['type' => 'i32', 'value' => '1']],
             line: 446,
@@ -694,7 +633,6 @@ final class BrIfTest extends SpecTestsuiteBase
     public function testAssertReturn62(): void
     {
         $this->runAssertReturnCommand(
-            module: null,
             action: ['type' => 'invoke', 'field' => 'as-global.set-value', 'args' => [['type' => 'i32', 'value' => '0']]],
             expected: [['type' => 'i32', 'value' => '4294967295']],
             line: 448,
@@ -705,7 +643,6 @@ final class BrIfTest extends SpecTestsuiteBase
     public function testAssertReturn63(): void
     {
         $this->runAssertReturnCommand(
-            module: null,
             action: ['type' => 'invoke', 'field' => 'as-global.set-value', 'args' => [['type' => 'i32', 'value' => '1']]],
             expected: [['type' => 'i32', 'value' => '1']],
             line: 449,
@@ -716,7 +653,6 @@ final class BrIfTest extends SpecTestsuiteBase
     public function testAssertReturn64(): void
     {
         $this->runAssertReturnCommand(
-            module: null,
             action: ['type' => 'invoke', 'field' => 'as-load-address', 'args' => []],
             expected: [['type' => 'i32', 'value' => '1']],
             line: 451,
@@ -727,7 +663,6 @@ final class BrIfTest extends SpecTestsuiteBase
     public function testAssertReturn65(): void
     {
         $this->runAssertReturnCommand(
-            module: null,
             action: ['type' => 'invoke', 'field' => 'as-loadN-address', 'args' => []],
             expected: [['type' => 'i32', 'value' => '30']],
             line: 452,
@@ -738,7 +673,6 @@ final class BrIfTest extends SpecTestsuiteBase
     public function testAssertReturn66(): void
     {
         $this->runAssertReturnCommand(
-            module: null,
             action: ['type' => 'invoke', 'field' => 'as-store-address', 'args' => []],
             expected: [['type' => 'i32', 'value' => '30']],
             line: 454,
@@ -749,7 +683,6 @@ final class BrIfTest extends SpecTestsuiteBase
     public function testAssertReturn67(): void
     {
         $this->runAssertReturnCommand(
-            module: null,
             action: ['type' => 'invoke', 'field' => 'as-store-value', 'args' => []],
             expected: [['type' => 'i32', 'value' => '31']],
             line: 455,
@@ -760,7 +693,6 @@ final class BrIfTest extends SpecTestsuiteBase
     public function testAssertReturn68(): void
     {
         $this->runAssertReturnCommand(
-            module: null,
             action: ['type' => 'invoke', 'field' => 'as-storeN-address', 'args' => []],
             expected: [['type' => 'i32', 'value' => '32']],
             line: 456,
@@ -771,7 +703,6 @@ final class BrIfTest extends SpecTestsuiteBase
     public function testAssertReturn69(): void
     {
         $this->runAssertReturnCommand(
-            module: null,
             action: ['type' => 'invoke', 'field' => 'as-storeN-value', 'args' => []],
             expected: [['type' => 'i32', 'value' => '33']],
             line: 457,
@@ -782,7 +713,6 @@ final class BrIfTest extends SpecTestsuiteBase
     public function testAssertReturn70(): void
     {
         $this->runAssertReturnCommand(
-            module: null,
             action: ['type' => 'invoke', 'field' => 'as-unary-operand', 'args' => []],
             expected: [['type' => 'f64', 'value' => '4607182418800017408']],
             line: 459,
@@ -793,7 +723,6 @@ final class BrIfTest extends SpecTestsuiteBase
     public function testAssertReturn71(): void
     {
         $this->runAssertReturnCommand(
-            module: null,
             action: ['type' => 'invoke', 'field' => 'as-binary-left', 'args' => []],
             expected: [['type' => 'i32', 'value' => '1']],
             line: 460,
@@ -804,7 +733,6 @@ final class BrIfTest extends SpecTestsuiteBase
     public function testAssertReturn72(): void
     {
         $this->runAssertReturnCommand(
-            module: null,
             action: ['type' => 'invoke', 'field' => 'as-binary-right', 'args' => []],
             expected: [['type' => 'i32', 'value' => '1']],
             line: 461,
@@ -815,7 +743,6 @@ final class BrIfTest extends SpecTestsuiteBase
     public function testAssertReturn73(): void
     {
         $this->runAssertReturnCommand(
-            module: null,
             action: ['type' => 'invoke', 'field' => 'as-test-operand', 'args' => []],
             expected: [['type' => 'i32', 'value' => '0']],
             line: 462,
@@ -826,7 +753,6 @@ final class BrIfTest extends SpecTestsuiteBase
     public function testAssertReturn74(): void
     {
         $this->runAssertReturnCommand(
-            module: null,
             action: ['type' => 'invoke', 'field' => 'as-compare-left', 'args' => []],
             expected: [['type' => 'i32', 'value' => '1']],
             line: 463,
@@ -837,7 +763,6 @@ final class BrIfTest extends SpecTestsuiteBase
     public function testAssertReturn75(): void
     {
         $this->runAssertReturnCommand(
-            module: null,
             action: ['type' => 'invoke', 'field' => 'as-compare-right', 'args' => []],
             expected: [['type' => 'i32', 'value' => '1']],
             line: 464,
@@ -848,7 +773,6 @@ final class BrIfTest extends SpecTestsuiteBase
     public function testAssertReturn76(): void
     {
         $this->runAssertReturnCommand(
-            module: null,
             action: ['type' => 'invoke', 'field' => 'as-memory.grow-size', 'args' => []],
             expected: [['type' => 'i32', 'value' => '1']],
             line: 465,
@@ -859,7 +783,6 @@ final class BrIfTest extends SpecTestsuiteBase
     public function testAssertReturn77(): void
     {
         $this->runAssertReturnCommand(
-            module: null,
             action: ['type' => 'invoke', 'field' => 'nested-block-value', 'args' => [['type' => 'i32', 'value' => '0']]],
             expected: [['type' => 'i32', 'value' => '21']],
             line: 467,
@@ -870,7 +793,6 @@ final class BrIfTest extends SpecTestsuiteBase
     public function testAssertReturn78(): void
     {
         $this->runAssertReturnCommand(
-            module: null,
             action: ['type' => 'invoke', 'field' => 'nested-block-value', 'args' => [['type' => 'i32', 'value' => '1']]],
             expected: [['type' => 'i32', 'value' => '9']],
             line: 468,
@@ -881,7 +803,6 @@ final class BrIfTest extends SpecTestsuiteBase
     public function testAssertReturn79(): void
     {
         $this->runAssertReturnCommand(
-            module: null,
             action: ['type' => 'invoke', 'field' => 'nested-br-value', 'args' => [['type' => 'i32', 'value' => '0']]],
             expected: [['type' => 'i32', 'value' => '5']],
             line: 469,
@@ -892,7 +813,6 @@ final class BrIfTest extends SpecTestsuiteBase
     public function testAssertReturn80(): void
     {
         $this->runAssertReturnCommand(
-            module: null,
             action: ['type' => 'invoke', 'field' => 'nested-br-value', 'args' => [['type' => 'i32', 'value' => '1']]],
             expected: [['type' => 'i32', 'value' => '9']],
             line: 470,
@@ -903,7 +823,6 @@ final class BrIfTest extends SpecTestsuiteBase
     public function testAssertReturn81(): void
     {
         $this->runAssertReturnCommand(
-            module: null,
             action: ['type' => 'invoke', 'field' => 'nested-br_if-value', 'args' => [['type' => 'i32', 'value' => '0']]],
             expected: [['type' => 'i32', 'value' => '5']],
             line: 471,
@@ -914,7 +833,6 @@ final class BrIfTest extends SpecTestsuiteBase
     public function testAssertReturn82(): void
     {
         $this->runAssertReturnCommand(
-            module: null,
             action: ['type' => 'invoke', 'field' => 'nested-br_if-value', 'args' => [['type' => 'i32', 'value' => '1']]],
             expected: [['type' => 'i32', 'value' => '9']],
             line: 472,
@@ -925,7 +843,6 @@ final class BrIfTest extends SpecTestsuiteBase
     public function testAssertReturn83(): void
     {
         $this->runAssertReturnCommand(
-            module: null,
             action: ['type' => 'invoke', 'field' => 'nested-br_if-value-cond', 'args' => [['type' => 'i32', 'value' => '0']]],
             expected: [['type' => 'i32', 'value' => '5']],
             line: 473,
@@ -936,7 +853,6 @@ final class BrIfTest extends SpecTestsuiteBase
     public function testAssertReturn84(): void
     {
         $this->runAssertReturnCommand(
-            module: null,
             action: ['type' => 'invoke', 'field' => 'nested-br_if-value-cond', 'args' => [['type' => 'i32', 'value' => '1']]],
             expected: [['type' => 'i32', 'value' => '9']],
             line: 474,
@@ -947,7 +863,6 @@ final class BrIfTest extends SpecTestsuiteBase
     public function testAssertReturn85(): void
     {
         $this->runAssertReturnCommand(
-            module: null,
             action: ['type' => 'invoke', 'field' => 'nested-br_table-value', 'args' => [['type' => 'i32', 'value' => '0']]],
             expected: [['type' => 'i32', 'value' => '5']],
             line: 475,
@@ -958,7 +873,6 @@ final class BrIfTest extends SpecTestsuiteBase
     public function testAssertReturn86(): void
     {
         $this->runAssertReturnCommand(
-            module: null,
             action: ['type' => 'invoke', 'field' => 'nested-br_table-value', 'args' => [['type' => 'i32', 'value' => '1']]],
             expected: [['type' => 'i32', 'value' => '9']],
             line: 476,
@@ -969,7 +883,6 @@ final class BrIfTest extends SpecTestsuiteBase
     public function testAssertReturn87(): void
     {
         $this->runAssertReturnCommand(
-            module: null,
             action: ['type' => 'invoke', 'field' => 'nested-br_table-value-index', 'args' => [['type' => 'i32', 'value' => '0']]],
             expected: [['type' => 'i32', 'value' => '5']],
             line: 477,
@@ -980,7 +893,6 @@ final class BrIfTest extends SpecTestsuiteBase
     public function testAssertReturn88(): void
     {
         $this->runAssertReturnCommand(
-            module: null,
             action: ['type' => 'invoke', 'field' => 'nested-br_table-value-index', 'args' => [['type' => 'i32', 'value' => '1']]],
             expected: [['type' => 'i32', 'value' => '9']],
             line: 478,

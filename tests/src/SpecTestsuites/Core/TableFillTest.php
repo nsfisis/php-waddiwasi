@@ -23,7 +23,6 @@ final class TableFillTest extends SpecTestsuiteBase
     public function testAssertReturn1(): void
     {
         $this->runAssertReturnCommand(
-            module: null,
             action: ['type' => 'invoke', 'field' => 'get', 'args' => [['type' => 'i32', 'value' => '1']]],
             expected: [['type' => 'externref', 'value' => 'null']],
             line: 17,
@@ -34,7 +33,6 @@ final class TableFillTest extends SpecTestsuiteBase
     public function testAssertReturn2(): void
     {
         $this->runAssertReturnCommand(
-            module: null,
             action: ['type' => 'invoke', 'field' => 'get', 'args' => [['type' => 'i32', 'value' => '2']]],
             expected: [['type' => 'externref', 'value' => 'null']],
             line: 18,
@@ -45,7 +43,6 @@ final class TableFillTest extends SpecTestsuiteBase
     public function testAssertReturn3(): void
     {
         $this->runAssertReturnCommand(
-            module: null,
             action: ['type' => 'invoke', 'field' => 'get', 'args' => [['type' => 'i32', 'value' => '3']]],
             expected: [['type' => 'externref', 'value' => 'null']],
             line: 19,
@@ -56,7 +53,6 @@ final class TableFillTest extends SpecTestsuiteBase
     public function testAssertReturn4(): void
     {
         $this->runAssertReturnCommand(
-            module: null,
             action: ['type' => 'invoke', 'field' => 'get', 'args' => [['type' => 'i32', 'value' => '4']]],
             expected: [['type' => 'externref', 'value' => 'null']],
             line: 20,
@@ -67,7 +63,6 @@ final class TableFillTest extends SpecTestsuiteBase
     public function testAssertReturn5(): void
     {
         $this->runAssertReturnCommand(
-            module: null,
             action: ['type' => 'invoke', 'field' => 'get', 'args' => [['type' => 'i32', 'value' => '5']]],
             expected: [['type' => 'externref', 'value' => 'null']],
             line: 21,
@@ -78,7 +73,6 @@ final class TableFillTest extends SpecTestsuiteBase
     public function testAssertReturn6(): void
     {
         $this->runAssertReturnCommand(
-            module: null,
             action: ['type' => 'invoke', 'field' => 'fill', 'args' => [['type' => 'i32', 'value' => '2'], ['type' => 'externref', 'value' => '1'], ['type' => 'i32', 'value' => '3']]],
             expected: [],
             line: 23,
@@ -89,7 +83,6 @@ final class TableFillTest extends SpecTestsuiteBase
     public function testAssertReturn7(): void
     {
         $this->runAssertReturnCommand(
-            module: null,
             action: ['type' => 'invoke', 'field' => 'get', 'args' => [['type' => 'i32', 'value' => '1']]],
             expected: [['type' => 'externref', 'value' => 'null']],
             line: 24,
@@ -100,7 +93,6 @@ final class TableFillTest extends SpecTestsuiteBase
     public function testAssertReturn8(): void
     {
         $this->runAssertReturnCommand(
-            module: null,
             action: ['type' => 'invoke', 'field' => 'get', 'args' => [['type' => 'i32', 'value' => '2']]],
             expected: [['type' => 'externref', 'value' => '1']],
             line: 25,
@@ -111,7 +103,6 @@ final class TableFillTest extends SpecTestsuiteBase
     public function testAssertReturn9(): void
     {
         $this->runAssertReturnCommand(
-            module: null,
             action: ['type' => 'invoke', 'field' => 'get', 'args' => [['type' => 'i32', 'value' => '3']]],
             expected: [['type' => 'externref', 'value' => '1']],
             line: 26,
@@ -122,7 +113,6 @@ final class TableFillTest extends SpecTestsuiteBase
     public function testAssertReturn10(): void
     {
         $this->runAssertReturnCommand(
-            module: null,
             action: ['type' => 'invoke', 'field' => 'get', 'args' => [['type' => 'i32', 'value' => '4']]],
             expected: [['type' => 'externref', 'value' => '1']],
             line: 27,
@@ -133,7 +123,6 @@ final class TableFillTest extends SpecTestsuiteBase
     public function testAssertReturn11(): void
     {
         $this->runAssertReturnCommand(
-            module: null,
             action: ['type' => 'invoke', 'field' => 'get', 'args' => [['type' => 'i32', 'value' => '5']]],
             expected: [['type' => 'externref', 'value' => 'null']],
             line: 28,
@@ -144,7 +133,6 @@ final class TableFillTest extends SpecTestsuiteBase
     public function testAssertReturn12(): void
     {
         $this->runAssertReturnCommand(
-            module: null,
             action: ['type' => 'invoke', 'field' => 'fill', 'args' => [['type' => 'i32', 'value' => '4'], ['type' => 'externref', 'value' => '2'], ['type' => 'i32', 'value' => '2']]],
             expected: [],
             line: 30,
@@ -155,7 +143,6 @@ final class TableFillTest extends SpecTestsuiteBase
     public function testAssertReturn13(): void
     {
         $this->runAssertReturnCommand(
-            module: null,
             action: ['type' => 'invoke', 'field' => 'get', 'args' => [['type' => 'i32', 'value' => '3']]],
             expected: [['type' => 'externref', 'value' => '1']],
             line: 31,
@@ -166,7 +153,6 @@ final class TableFillTest extends SpecTestsuiteBase
     public function testAssertReturn14(): void
     {
         $this->runAssertReturnCommand(
-            module: null,
             action: ['type' => 'invoke', 'field' => 'get', 'args' => [['type' => 'i32', 'value' => '4']]],
             expected: [['type' => 'externref', 'value' => '2']],
             line: 32,
@@ -177,7 +163,6 @@ final class TableFillTest extends SpecTestsuiteBase
     public function testAssertReturn15(): void
     {
         $this->runAssertReturnCommand(
-            module: null,
             action: ['type' => 'invoke', 'field' => 'get', 'args' => [['type' => 'i32', 'value' => '5']]],
             expected: [['type' => 'externref', 'value' => '2']],
             line: 33,
@@ -188,7 +173,6 @@ final class TableFillTest extends SpecTestsuiteBase
     public function testAssertReturn16(): void
     {
         $this->runAssertReturnCommand(
-            module: null,
             action: ['type' => 'invoke', 'field' => 'get', 'args' => [['type' => 'i32', 'value' => '6']]],
             expected: [['type' => 'externref', 'value' => 'null']],
             line: 34,
@@ -199,7 +183,6 @@ final class TableFillTest extends SpecTestsuiteBase
     public function testAssertReturn17(): void
     {
         $this->runAssertReturnCommand(
-            module: null,
             action: ['type' => 'invoke', 'field' => 'fill', 'args' => [['type' => 'i32', 'value' => '4'], ['type' => 'externref', 'value' => '3'], ['type' => 'i32', 'value' => '0']]],
             expected: [],
             line: 36,
@@ -210,7 +193,6 @@ final class TableFillTest extends SpecTestsuiteBase
     public function testAssertReturn18(): void
     {
         $this->runAssertReturnCommand(
-            module: null,
             action: ['type' => 'invoke', 'field' => 'get', 'args' => [['type' => 'i32', 'value' => '3']]],
             expected: [['type' => 'externref', 'value' => '1']],
             line: 37,
@@ -221,7 +203,6 @@ final class TableFillTest extends SpecTestsuiteBase
     public function testAssertReturn19(): void
     {
         $this->runAssertReturnCommand(
-            module: null,
             action: ['type' => 'invoke', 'field' => 'get', 'args' => [['type' => 'i32', 'value' => '4']]],
             expected: [['type' => 'externref', 'value' => '2']],
             line: 38,
@@ -232,7 +213,6 @@ final class TableFillTest extends SpecTestsuiteBase
     public function testAssertReturn20(): void
     {
         $this->runAssertReturnCommand(
-            module: null,
             action: ['type' => 'invoke', 'field' => 'get', 'args' => [['type' => 'i32', 'value' => '5']]],
             expected: [['type' => 'externref', 'value' => '2']],
             line: 39,
@@ -243,7 +223,6 @@ final class TableFillTest extends SpecTestsuiteBase
     public function testAssertReturn21(): void
     {
         $this->runAssertReturnCommand(
-            module: null,
             action: ['type' => 'invoke', 'field' => 'fill', 'args' => [['type' => 'i32', 'value' => '8'], ['type' => 'externref', 'value' => '4'], ['type' => 'i32', 'value' => '2']]],
             expected: [],
             line: 41,
@@ -254,7 +233,6 @@ final class TableFillTest extends SpecTestsuiteBase
     public function testAssertReturn22(): void
     {
         $this->runAssertReturnCommand(
-            module: null,
             action: ['type' => 'invoke', 'field' => 'get', 'args' => [['type' => 'i32', 'value' => '7']]],
             expected: [['type' => 'externref', 'value' => 'null']],
             line: 42,
@@ -265,7 +243,6 @@ final class TableFillTest extends SpecTestsuiteBase
     public function testAssertReturn23(): void
     {
         $this->runAssertReturnCommand(
-            module: null,
             action: ['type' => 'invoke', 'field' => 'get', 'args' => [['type' => 'i32', 'value' => '8']]],
             expected: [['type' => 'externref', 'value' => '4']],
             line: 43,
@@ -276,7 +253,6 @@ final class TableFillTest extends SpecTestsuiteBase
     public function testAssertReturn24(): void
     {
         $this->runAssertReturnCommand(
-            module: null,
             action: ['type' => 'invoke', 'field' => 'get', 'args' => [['type' => 'i32', 'value' => '9']]],
             expected: [['type' => 'externref', 'value' => '4']],
             line: 44,
@@ -287,7 +263,6 @@ final class TableFillTest extends SpecTestsuiteBase
     public function testAssertReturn25(): void
     {
         $this->runAssertReturnCommand(
-            module: null,
             action: ['type' => 'invoke', 'field' => 'fill-abbrev', 'args' => [['type' => 'i32', 'value' => '9'], ['type' => 'externref', 'value' => 'null'], ['type' => 'i32', 'value' => '1']]],
             expected: [],
             line: 46,
@@ -298,7 +273,6 @@ final class TableFillTest extends SpecTestsuiteBase
     public function testAssertReturn26(): void
     {
         $this->runAssertReturnCommand(
-            module: null,
             action: ['type' => 'invoke', 'field' => 'get', 'args' => [['type' => 'i32', 'value' => '8']]],
             expected: [['type' => 'externref', 'value' => '4']],
             line: 47,
@@ -309,7 +283,6 @@ final class TableFillTest extends SpecTestsuiteBase
     public function testAssertReturn27(): void
     {
         $this->runAssertReturnCommand(
-            module: null,
             action: ['type' => 'invoke', 'field' => 'get', 'args' => [['type' => 'i32', 'value' => '9']]],
             expected: [['type' => 'externref', 'value' => 'null']],
             line: 48,
@@ -320,7 +293,6 @@ final class TableFillTest extends SpecTestsuiteBase
     public function testAssertReturn28(): void
     {
         $this->runAssertReturnCommand(
-            module: null,
             action: ['type' => 'invoke', 'field' => 'fill', 'args' => [['type' => 'i32', 'value' => '10'], ['type' => 'externref', 'value' => '5'], ['type' => 'i32', 'value' => '0']]],
             expected: [],
             line: 50,
@@ -331,7 +303,6 @@ final class TableFillTest extends SpecTestsuiteBase
     public function testAssertReturn29(): void
     {
         $this->runAssertReturnCommand(
-            module: null,
             action: ['type' => 'invoke', 'field' => 'get', 'args' => [['type' => 'i32', 'value' => '9']]],
             expected: [['type' => 'externref', 'value' => 'null']],
             line: 51,
@@ -342,7 +313,6 @@ final class TableFillTest extends SpecTestsuiteBase
     public function testAssertTrap30(): void
     {
         $this->runAssertTrapCommand(
-            module: null,
             action: ['type' => 'invoke', 'field' => 'fill', 'args' => [['type' => 'i32', 'value' => '8'], ['type' => 'externref', 'value' => '6'], ['type' => 'i32', 'value' => '3']]],
             text: 'out of bounds table access',
             line: 54,
@@ -353,7 +323,6 @@ final class TableFillTest extends SpecTestsuiteBase
     public function testAssertReturn31(): void
     {
         $this->runAssertReturnCommand(
-            module: null,
             action: ['type' => 'invoke', 'field' => 'get', 'args' => [['type' => 'i32', 'value' => '7']]],
             expected: [['type' => 'externref', 'value' => 'null']],
             line: 57,
@@ -364,7 +333,6 @@ final class TableFillTest extends SpecTestsuiteBase
     public function testAssertReturn32(): void
     {
         $this->runAssertReturnCommand(
-            module: null,
             action: ['type' => 'invoke', 'field' => 'get', 'args' => [['type' => 'i32', 'value' => '8']]],
             expected: [['type' => 'externref', 'value' => '4']],
             line: 58,
@@ -375,7 +343,6 @@ final class TableFillTest extends SpecTestsuiteBase
     public function testAssertReturn33(): void
     {
         $this->runAssertReturnCommand(
-            module: null,
             action: ['type' => 'invoke', 'field' => 'get', 'args' => [['type' => 'i32', 'value' => '9']]],
             expected: [['type' => 'externref', 'value' => 'null']],
             line: 59,
@@ -386,7 +353,6 @@ final class TableFillTest extends SpecTestsuiteBase
     public function testAssertTrap34(): void
     {
         $this->runAssertTrapCommand(
-            module: null,
             action: ['type' => 'invoke', 'field' => 'fill', 'args' => [['type' => 'i32', 'value' => '11'], ['type' => 'externref', 'value' => 'null'], ['type' => 'i32', 'value' => '0']]],
             text: 'out of bounds table access',
             line: 62,
@@ -397,7 +363,6 @@ final class TableFillTest extends SpecTestsuiteBase
     public function testAssertTrap35(): void
     {
         $this->runAssertTrapCommand(
-            module: null,
             action: ['type' => 'invoke', 'field' => 'fill', 'args' => [['type' => 'i32', 'value' => '11'], ['type' => 'externref', 'value' => 'null'], ['type' => 'i32', 'value' => '10']]],
             text: 'out of bounds table access',
             line: 67,

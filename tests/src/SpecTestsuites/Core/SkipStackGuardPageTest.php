@@ -23,7 +23,6 @@ final class SkipStackGuardPageTest extends SpecTestsuiteBase
     public function testAssertExhaustion1(): void
     {
         $this->runAssertExhaustionCommand(
-            module: null,
             action: ['type' => 'invoke', 'field' => 'test-guard-page-skip', 'args' => [['type' => 'i32', 'value' => '0']]],
             text: 'call stack exhausted',
             line: 2275,
@@ -34,7 +33,6 @@ final class SkipStackGuardPageTest extends SpecTestsuiteBase
     public function testAssertExhaustion2(): void
     {
         $this->runAssertExhaustionCommand(
-            module: null,
             action: ['type' => 'invoke', 'field' => 'test-guard-page-skip', 'args' => [['type' => 'i32', 'value' => '100']]],
             text: 'call stack exhausted',
             line: 2276,
@@ -45,7 +43,6 @@ final class SkipStackGuardPageTest extends SpecTestsuiteBase
     public function testAssertExhaustion3(): void
     {
         $this->runAssertExhaustionCommand(
-            module: null,
             action: ['type' => 'invoke', 'field' => 'test-guard-page-skip', 'args' => [['type' => 'i32', 'value' => '200']]],
             text: 'call stack exhausted',
             line: 2277,
@@ -56,7 +53,6 @@ final class SkipStackGuardPageTest extends SpecTestsuiteBase
     public function testAssertExhaustion4(): void
     {
         $this->runAssertExhaustionCommand(
-            module: null,
             action: ['type' => 'invoke', 'field' => 'test-guard-page-skip', 'args' => [['type' => 'i32', 'value' => '300']]],
             text: 'call stack exhausted',
             line: 2278,
@@ -67,7 +63,6 @@ final class SkipStackGuardPageTest extends SpecTestsuiteBase
     public function testAssertExhaustion5(): void
     {
         $this->runAssertExhaustionCommand(
-            module: null,
             action: ['type' => 'invoke', 'field' => 'test-guard-page-skip', 'args' => [['type' => 'i32', 'value' => '400']]],
             text: 'call stack exhausted',
             line: 2279,
@@ -78,7 +73,6 @@ final class SkipStackGuardPageTest extends SpecTestsuiteBase
     public function testAssertExhaustion6(): void
     {
         $this->runAssertExhaustionCommand(
-            module: null,
             action: ['type' => 'invoke', 'field' => 'test-guard-page-skip', 'args' => [['type' => 'i32', 'value' => '500']]],
             text: 'call stack exhausted',
             line: 2280,
@@ -89,7 +83,6 @@ final class SkipStackGuardPageTest extends SpecTestsuiteBase
     public function testAssertExhaustion7(): void
     {
         $this->runAssertExhaustionCommand(
-            module: null,
             action: ['type' => 'invoke', 'field' => 'test-guard-page-skip', 'args' => [['type' => 'i32', 'value' => '600']]],
             text: 'call stack exhausted',
             line: 2281,
@@ -100,7 +93,6 @@ final class SkipStackGuardPageTest extends SpecTestsuiteBase
     public function testAssertExhaustion8(): void
     {
         $this->runAssertExhaustionCommand(
-            module: null,
             action: ['type' => 'invoke', 'field' => 'test-guard-page-skip', 'args' => [['type' => 'i32', 'value' => '700']]],
             text: 'call stack exhausted',
             line: 2282,
@@ -111,7 +103,6 @@ final class SkipStackGuardPageTest extends SpecTestsuiteBase
     public function testAssertExhaustion9(): void
     {
         $this->runAssertExhaustionCommand(
-            module: null,
             action: ['type' => 'invoke', 'field' => 'test-guard-page-skip', 'args' => [['type' => 'i32', 'value' => '800']]],
             text: 'call stack exhausted',
             line: 2283,
@@ -122,7 +113,6 @@ final class SkipStackGuardPageTest extends SpecTestsuiteBase
     public function testAssertExhaustion10(): void
     {
         $this->runAssertExhaustionCommand(
-            module: null,
             action: ['type' => 'invoke', 'field' => 'test-guard-page-skip', 'args' => [['type' => 'i32', 'value' => '900']]],
             text: 'call stack exhausted',
             line: 2284,

@@ -23,7 +23,6 @@ final class TableGrowTest extends SpecTestsuiteBase
     public function testAssertReturn1(): void
     {
         $this->runAssertReturnCommand(
-            module: null,
             action: ['type' => 'invoke', 'field' => 'size', 'args' => []],
             expected: [['type' => 'i32', 'value' => '0']],
             line: 16,
@@ -34,7 +33,6 @@ final class TableGrowTest extends SpecTestsuiteBase
     public function testAssertTrap2(): void
     {
         $this->runAssertTrapCommand(
-            module: null,
             action: ['type' => 'invoke', 'field' => 'set', 'args' => [['type' => 'i32', 'value' => '0'], ['type' => 'externref', 'value' => '2']]],
             text: 'out of bounds table access',
             line: 17,
@@ -45,7 +43,6 @@ final class TableGrowTest extends SpecTestsuiteBase
     public function testAssertTrap3(): void
     {
         $this->runAssertTrapCommand(
-            module: null,
             action: ['type' => 'invoke', 'field' => 'get', 'args' => [['type' => 'i32', 'value' => '0']]],
             text: 'out of bounds table access',
             line: 18,
@@ -56,7 +53,6 @@ final class TableGrowTest extends SpecTestsuiteBase
     public function testAssertReturn4(): void
     {
         $this->runAssertReturnCommand(
-            module: null,
             action: ['type' => 'invoke', 'field' => 'grow', 'args' => [['type' => 'i32', 'value' => '1'], ['type' => 'externref', 'value' => 'null']]],
             expected: [['type' => 'i32', 'value' => '0']],
             line: 20,
@@ -67,7 +63,6 @@ final class TableGrowTest extends SpecTestsuiteBase
     public function testAssertReturn5(): void
     {
         $this->runAssertReturnCommand(
-            module: null,
             action: ['type' => 'invoke', 'field' => 'size', 'args' => []],
             expected: [['type' => 'i32', 'value' => '1']],
             line: 21,
@@ -78,7 +73,6 @@ final class TableGrowTest extends SpecTestsuiteBase
     public function testAssertReturn6(): void
     {
         $this->runAssertReturnCommand(
-            module: null,
             action: ['type' => 'invoke', 'field' => 'get', 'args' => [['type' => 'i32', 'value' => '0']]],
             expected: [['type' => 'externref', 'value' => 'null']],
             line: 22,
@@ -89,7 +83,6 @@ final class TableGrowTest extends SpecTestsuiteBase
     public function testAssertReturn7(): void
     {
         $this->runAssertReturnCommand(
-            module: null,
             action: ['type' => 'invoke', 'field' => 'set', 'args' => [['type' => 'i32', 'value' => '0'], ['type' => 'externref', 'value' => '2']]],
             expected: [],
             line: 23,
@@ -100,7 +93,6 @@ final class TableGrowTest extends SpecTestsuiteBase
     public function testAssertReturn8(): void
     {
         $this->runAssertReturnCommand(
-            module: null,
             action: ['type' => 'invoke', 'field' => 'get', 'args' => [['type' => 'i32', 'value' => '0']]],
             expected: [['type' => 'externref', 'value' => '2']],
             line: 24,
@@ -111,7 +103,6 @@ final class TableGrowTest extends SpecTestsuiteBase
     public function testAssertTrap9(): void
     {
         $this->runAssertTrapCommand(
-            module: null,
             action: ['type' => 'invoke', 'field' => 'set', 'args' => [['type' => 'i32', 'value' => '1'], ['type' => 'externref', 'value' => '2']]],
             text: 'out of bounds table access',
             line: 25,
@@ -122,7 +113,6 @@ final class TableGrowTest extends SpecTestsuiteBase
     public function testAssertTrap10(): void
     {
         $this->runAssertTrapCommand(
-            module: null,
             action: ['type' => 'invoke', 'field' => 'get', 'args' => [['type' => 'i32', 'value' => '1']]],
             text: 'out of bounds table access',
             line: 26,
@@ -133,7 +123,6 @@ final class TableGrowTest extends SpecTestsuiteBase
     public function testAssertReturn11(): void
     {
         $this->runAssertReturnCommand(
-            module: null,
             action: ['type' => 'invoke', 'field' => 'grow-abbrev', 'args' => [['type' => 'i32', 'value' => '4'], ['type' => 'externref', 'value' => '3']]],
             expected: [['type' => 'i32', 'value' => '1']],
             line: 28,
@@ -144,7 +133,6 @@ final class TableGrowTest extends SpecTestsuiteBase
     public function testAssertReturn12(): void
     {
         $this->runAssertReturnCommand(
-            module: null,
             action: ['type' => 'invoke', 'field' => 'size', 'args' => []],
             expected: [['type' => 'i32', 'value' => '5']],
             line: 29,
@@ -155,7 +143,6 @@ final class TableGrowTest extends SpecTestsuiteBase
     public function testAssertReturn13(): void
     {
         $this->runAssertReturnCommand(
-            module: null,
             action: ['type' => 'invoke', 'field' => 'get', 'args' => [['type' => 'i32', 'value' => '0']]],
             expected: [['type' => 'externref', 'value' => '2']],
             line: 30,
@@ -166,7 +153,6 @@ final class TableGrowTest extends SpecTestsuiteBase
     public function testAssertReturn14(): void
     {
         $this->runAssertReturnCommand(
-            module: null,
             action: ['type' => 'invoke', 'field' => 'set', 'args' => [['type' => 'i32', 'value' => '0'], ['type' => 'externref', 'value' => '2']]],
             expected: [],
             line: 31,
@@ -177,7 +163,6 @@ final class TableGrowTest extends SpecTestsuiteBase
     public function testAssertReturn15(): void
     {
         $this->runAssertReturnCommand(
-            module: null,
             action: ['type' => 'invoke', 'field' => 'get', 'args' => [['type' => 'i32', 'value' => '0']]],
             expected: [['type' => 'externref', 'value' => '2']],
             line: 32,
@@ -188,7 +173,6 @@ final class TableGrowTest extends SpecTestsuiteBase
     public function testAssertReturn16(): void
     {
         $this->runAssertReturnCommand(
-            module: null,
             action: ['type' => 'invoke', 'field' => 'get', 'args' => [['type' => 'i32', 'value' => '1']]],
             expected: [['type' => 'externref', 'value' => '3']],
             line: 33,
@@ -199,7 +183,6 @@ final class TableGrowTest extends SpecTestsuiteBase
     public function testAssertReturn17(): void
     {
         $this->runAssertReturnCommand(
-            module: null,
             action: ['type' => 'invoke', 'field' => 'get', 'args' => [['type' => 'i32', 'value' => '4']]],
             expected: [['type' => 'externref', 'value' => '3']],
             line: 34,
@@ -210,7 +193,6 @@ final class TableGrowTest extends SpecTestsuiteBase
     public function testAssertReturn18(): void
     {
         $this->runAssertReturnCommand(
-            module: null,
             action: ['type' => 'invoke', 'field' => 'set', 'args' => [['type' => 'i32', 'value' => '4'], ['type' => 'externref', 'value' => '4']]],
             expected: [],
             line: 35,
@@ -221,7 +203,6 @@ final class TableGrowTest extends SpecTestsuiteBase
     public function testAssertReturn19(): void
     {
         $this->runAssertReturnCommand(
-            module: null,
             action: ['type' => 'invoke', 'field' => 'get', 'args' => [['type' => 'i32', 'value' => '4']]],
             expected: [['type' => 'externref', 'value' => '4']],
             line: 36,
@@ -232,7 +213,6 @@ final class TableGrowTest extends SpecTestsuiteBase
     public function testAssertTrap20(): void
     {
         $this->runAssertTrapCommand(
-            module: null,
             action: ['type' => 'invoke', 'field' => 'set', 'args' => [['type' => 'i32', 'value' => '5'], ['type' => 'externref', 'value' => '2']]],
             text: 'out of bounds table access',
             line: 37,
@@ -243,7 +223,6 @@ final class TableGrowTest extends SpecTestsuiteBase
     public function testAssertTrap21(): void
     {
         $this->runAssertTrapCommand(
-            module: null,
             action: ['type' => 'invoke', 'field' => 'get', 'args' => [['type' => 'i32', 'value' => '5']]],
             text: 'out of bounds table access',
             line: 38,
@@ -264,7 +243,6 @@ final class TableGrowTest extends SpecTestsuiteBase
     public function testAssertReturn23(): void
     {
         $this->runAssertReturnCommand(
-            module: null,
             action: ['type' => 'invoke', 'field' => 'grow', 'args' => []],
             expected: [['type' => 'i32', 'value' => '4294967295']],
             line: 50,
@@ -285,7 +263,6 @@ final class TableGrowTest extends SpecTestsuiteBase
     public function testAssertReturn25(): void
     {
         $this->runAssertReturnCommand(
-            module: null,
             action: ['type' => 'invoke', 'field' => 'grow', 'args' => [['type' => 'i32', 'value' => '0']]],
             expected: [['type' => 'i32', 'value' => '0']],
             line: 60,
@@ -296,7 +273,6 @@ final class TableGrowTest extends SpecTestsuiteBase
     public function testAssertReturn26(): void
     {
         $this->runAssertReturnCommand(
-            module: null,
             action: ['type' => 'invoke', 'field' => 'grow', 'args' => [['type' => 'i32', 'value' => '1']]],
             expected: [['type' => 'i32', 'value' => '0']],
             line: 61,
@@ -307,7 +283,6 @@ final class TableGrowTest extends SpecTestsuiteBase
     public function testAssertReturn27(): void
     {
         $this->runAssertReturnCommand(
-            module: null,
             action: ['type' => 'invoke', 'field' => 'grow', 'args' => [['type' => 'i32', 'value' => '0']]],
             expected: [['type' => 'i32', 'value' => '1']],
             line: 62,
@@ -318,7 +293,6 @@ final class TableGrowTest extends SpecTestsuiteBase
     public function testAssertReturn28(): void
     {
         $this->runAssertReturnCommand(
-            module: null,
             action: ['type' => 'invoke', 'field' => 'grow', 'args' => [['type' => 'i32', 'value' => '2']]],
             expected: [['type' => 'i32', 'value' => '1']],
             line: 63,
@@ -329,7 +303,6 @@ final class TableGrowTest extends SpecTestsuiteBase
     public function testAssertReturn29(): void
     {
         $this->runAssertReturnCommand(
-            module: null,
             action: ['type' => 'invoke', 'field' => 'grow', 'args' => [['type' => 'i32', 'value' => '800']]],
             expected: [['type' => 'i32', 'value' => '3']],
             line: 64,
@@ -350,7 +323,6 @@ final class TableGrowTest extends SpecTestsuiteBase
     public function testAssertReturn31(): void
     {
         $this->runAssertReturnCommand(
-            module: null,
             action: ['type' => 'invoke', 'field' => 'grow', 'args' => [['type' => 'i32', 'value' => '0']]],
             expected: [['type' => 'i32', 'value' => '0']],
             line: 74,
@@ -361,7 +333,6 @@ final class TableGrowTest extends SpecTestsuiteBase
     public function testAssertReturn32(): void
     {
         $this->runAssertReturnCommand(
-            module: null,
             action: ['type' => 'invoke', 'field' => 'grow', 'args' => [['type' => 'i32', 'value' => '1']]],
             expected: [['type' => 'i32', 'value' => '0']],
             line: 75,
@@ -372,7 +343,6 @@ final class TableGrowTest extends SpecTestsuiteBase
     public function testAssertReturn33(): void
     {
         $this->runAssertReturnCommand(
-            module: null,
             action: ['type' => 'invoke', 'field' => 'grow', 'args' => [['type' => 'i32', 'value' => '1']]],
             expected: [['type' => 'i32', 'value' => '1']],
             line: 76,
@@ -383,7 +353,6 @@ final class TableGrowTest extends SpecTestsuiteBase
     public function testAssertReturn34(): void
     {
         $this->runAssertReturnCommand(
-            module: null,
             action: ['type' => 'invoke', 'field' => 'grow', 'args' => [['type' => 'i32', 'value' => '2']]],
             expected: [['type' => 'i32', 'value' => '2']],
             line: 77,
@@ -394,7 +363,6 @@ final class TableGrowTest extends SpecTestsuiteBase
     public function testAssertReturn35(): void
     {
         $this->runAssertReturnCommand(
-            module: null,
             action: ['type' => 'invoke', 'field' => 'grow', 'args' => [['type' => 'i32', 'value' => '6']]],
             expected: [['type' => 'i32', 'value' => '4']],
             line: 78,
@@ -405,7 +373,6 @@ final class TableGrowTest extends SpecTestsuiteBase
     public function testAssertReturn36(): void
     {
         $this->runAssertReturnCommand(
-            module: null,
             action: ['type' => 'invoke', 'field' => 'grow', 'args' => [['type' => 'i32', 'value' => '0']]],
             expected: [['type' => 'i32', 'value' => '10']],
             line: 79,
@@ -416,7 +383,6 @@ final class TableGrowTest extends SpecTestsuiteBase
     public function testAssertReturn37(): void
     {
         $this->runAssertReturnCommand(
-            module: null,
             action: ['type' => 'invoke', 'field' => 'grow', 'args' => [['type' => 'i32', 'value' => '1']]],
             expected: [['type' => 'i32', 'value' => '4294967295']],
             line: 80,
@@ -427,7 +393,6 @@ final class TableGrowTest extends SpecTestsuiteBase
     public function testAssertReturn38(): void
     {
         $this->runAssertReturnCommand(
-            module: null,
             action: ['type' => 'invoke', 'field' => 'grow', 'args' => [['type' => 'i32', 'value' => '65536']]],
             expected: [['type' => 'i32', 'value' => '4294967295']],
             line: 81,
@@ -448,7 +413,6 @@ final class TableGrowTest extends SpecTestsuiteBase
     public function testAssertReturn40(): void
     {
         $this->runAssertReturnCommand(
-            module: null,
             action: ['type' => 'invoke', 'field' => 'check-table-null', 'args' => [['type' => 'i32', 'value' => '0'], ['type' => 'i32', 'value' => '9']]],
             expected: [['type' => 'funcref', 'value' => 'null']],
             line: 106,
@@ -459,7 +423,6 @@ final class TableGrowTest extends SpecTestsuiteBase
     public function testAssertReturn41(): void
     {
         $this->runAssertReturnCommand(
-            module: null,
             action: ['type' => 'invoke', 'field' => 'grow', 'args' => [['type' => 'i32', 'value' => '10']]],
             expected: [['type' => 'i32', 'value' => '10']],
             line: 107,
@@ -470,7 +433,6 @@ final class TableGrowTest extends SpecTestsuiteBase
     public function testAssertReturn42(): void
     {
         $this->runAssertReturnCommand(
-            module: null,
             action: ['type' => 'invoke', 'field' => 'check-table-null', 'args' => [['type' => 'i32', 'value' => '0'], ['type' => 'i32', 'value' => '19']]],
             expected: [['type' => 'funcref', 'value' => 'null']],
             line: 108,

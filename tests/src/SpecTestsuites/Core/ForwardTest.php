@@ -23,7 +23,6 @@ final class ForwardTest extends SpecTestsuiteBase
     public function testAssertReturn1(): void
     {
         $this->runAssertReturnCommand(
-            module: null,
             action: ['type' => 'invoke', 'field' => 'even', 'args' => [['type' => 'i32', 'value' => '13']]],
             expected: [['type' => 'i32', 'value' => '0']],
             line: 17,
@@ -34,7 +33,6 @@ final class ForwardTest extends SpecTestsuiteBase
     public function testAssertReturn2(): void
     {
         $this->runAssertReturnCommand(
-            module: null,
             action: ['type' => 'invoke', 'field' => 'even', 'args' => [['type' => 'i32', 'value' => '20']]],
             expected: [['type' => 'i32', 'value' => '1']],
             line: 18,
@@ -45,7 +43,6 @@ final class ForwardTest extends SpecTestsuiteBase
     public function testAssertReturn3(): void
     {
         $this->runAssertReturnCommand(
-            module: null,
             action: ['type' => 'invoke', 'field' => 'odd', 'args' => [['type' => 'i32', 'value' => '13']]],
             expected: [['type' => 'i32', 'value' => '1']],
             line: 19,
@@ -56,7 +53,6 @@ final class ForwardTest extends SpecTestsuiteBase
     public function testAssertReturn4(): void
     {
         $this->runAssertReturnCommand(
-            module: null,
             action: ['type' => 'invoke', 'field' => 'odd', 'args' => [['type' => 'i32', 'value' => '20']]],
             expected: [['type' => 'i32', 'value' => '0']],
             line: 20,

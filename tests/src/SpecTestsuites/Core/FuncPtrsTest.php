@@ -23,7 +23,6 @@ final class FuncPtrsTest extends SpecTestsuiteBase
     public function testAssertReturn1(): void
     {
         $this->runAssertReturnCommand(
-            module: null,
             action: ['type' => 'invoke', 'field' => 'one', 'args' => []],
             expected: [['type' => 'i32', 'value' => '13']],
             line: 27,
@@ -34,7 +33,6 @@ final class FuncPtrsTest extends SpecTestsuiteBase
     public function testAssertReturn2(): void
     {
         $this->runAssertReturnCommand(
-            module: null,
             action: ['type' => 'invoke', 'field' => 'two', 'args' => [['type' => 'i32', 'value' => '13']]],
             expected: [['type' => 'i32', 'value' => '14']],
             line: 28,
@@ -45,7 +43,6 @@ final class FuncPtrsTest extends SpecTestsuiteBase
     public function testAssertReturn3(): void
     {
         $this->runAssertReturnCommand(
-            module: null,
             action: ['type' => 'invoke', 'field' => 'three', 'args' => [['type' => 'i32', 'value' => '13']]],
             expected: [['type' => 'i32', 'value' => '11']],
             line: 29,
@@ -56,7 +53,6 @@ final class FuncPtrsTest extends SpecTestsuiteBase
     public function testAction4(): void
     {
         $this->runActionCommand(
-            module: null,
             action: ['type' => 'invoke', 'field' => 'four', 'args' => [['type' => 'i32', 'value' => '83']]],
             line: 30,
         );
@@ -146,7 +142,6 @@ final class FuncPtrsTest extends SpecTestsuiteBase
     public function testAssertReturn13(): void
     {
         $this->runAssertReturnCommand(
-            module: null,
             action: ['type' => 'invoke', 'field' => 'callt', 'args' => [['type' => 'i32', 'value' => '0']]],
             expected: [['type' => 'i32', 'value' => '1']],
             line: 71,
@@ -157,7 +152,6 @@ final class FuncPtrsTest extends SpecTestsuiteBase
     public function testAssertReturn14(): void
     {
         $this->runAssertReturnCommand(
-            module: null,
             action: ['type' => 'invoke', 'field' => 'callt', 'args' => [['type' => 'i32', 'value' => '1']]],
             expected: [['type' => 'i32', 'value' => '2']],
             line: 72,
@@ -168,7 +162,6 @@ final class FuncPtrsTest extends SpecTestsuiteBase
     public function testAssertReturn15(): void
     {
         $this->runAssertReturnCommand(
-            module: null,
             action: ['type' => 'invoke', 'field' => 'callt', 'args' => [['type' => 'i32', 'value' => '2']]],
             expected: [['type' => 'i32', 'value' => '3']],
             line: 73,
@@ -179,7 +172,6 @@ final class FuncPtrsTest extends SpecTestsuiteBase
     public function testAssertReturn16(): void
     {
         $this->runAssertReturnCommand(
-            module: null,
             action: ['type' => 'invoke', 'field' => 'callt', 'args' => [['type' => 'i32', 'value' => '3']]],
             expected: [['type' => 'i32', 'value' => '4']],
             line: 74,
@@ -190,7 +182,6 @@ final class FuncPtrsTest extends SpecTestsuiteBase
     public function testAssertReturn17(): void
     {
         $this->runAssertReturnCommand(
-            module: null,
             action: ['type' => 'invoke', 'field' => 'callt', 'args' => [['type' => 'i32', 'value' => '4']]],
             expected: [['type' => 'i32', 'value' => '5']],
             line: 75,
@@ -201,7 +192,6 @@ final class FuncPtrsTest extends SpecTestsuiteBase
     public function testAssertReturn18(): void
     {
         $this->runAssertReturnCommand(
-            module: null,
             action: ['type' => 'invoke', 'field' => 'callt', 'args' => [['type' => 'i32', 'value' => '5']]],
             expected: [['type' => 'i32', 'value' => '1']],
             line: 76,
@@ -212,7 +202,6 @@ final class FuncPtrsTest extends SpecTestsuiteBase
     public function testAssertReturn19(): void
     {
         $this->runAssertReturnCommand(
-            module: null,
             action: ['type' => 'invoke', 'field' => 'callt', 'args' => [['type' => 'i32', 'value' => '6']]],
             expected: [['type' => 'i32', 'value' => '3']],
             line: 77,
@@ -223,7 +212,6 @@ final class FuncPtrsTest extends SpecTestsuiteBase
     public function testAssertTrap20(): void
     {
         $this->runAssertTrapCommand(
-            module: null,
             action: ['type' => 'invoke', 'field' => 'callt', 'args' => [['type' => 'i32', 'value' => '7']]],
             text: 'undefined element',
             line: 78,
@@ -234,7 +222,6 @@ final class FuncPtrsTest extends SpecTestsuiteBase
     public function testAssertTrap21(): void
     {
         $this->runAssertTrapCommand(
-            module: null,
             action: ['type' => 'invoke', 'field' => 'callt', 'args' => [['type' => 'i32', 'value' => '100']]],
             text: 'undefined element',
             line: 79,
@@ -245,7 +232,6 @@ final class FuncPtrsTest extends SpecTestsuiteBase
     public function testAssertTrap22(): void
     {
         $this->runAssertTrapCommand(
-            module: null,
             action: ['type' => 'invoke', 'field' => 'callt', 'args' => [['type' => 'i32', 'value' => '4294967295']]],
             text: 'undefined element',
             line: 80,
@@ -256,7 +242,6 @@ final class FuncPtrsTest extends SpecTestsuiteBase
     public function testAssertReturn23(): void
     {
         $this->runAssertReturnCommand(
-            module: null,
             action: ['type' => 'invoke', 'field' => 'callu', 'args' => [['type' => 'i32', 'value' => '0']]],
             expected: [['type' => 'i32', 'value' => '1']],
             line: 82,
@@ -267,7 +252,6 @@ final class FuncPtrsTest extends SpecTestsuiteBase
     public function testAssertReturn24(): void
     {
         $this->runAssertReturnCommand(
-            module: null,
             action: ['type' => 'invoke', 'field' => 'callu', 'args' => [['type' => 'i32', 'value' => '1']]],
             expected: [['type' => 'i32', 'value' => '2']],
             line: 83,
@@ -278,7 +262,6 @@ final class FuncPtrsTest extends SpecTestsuiteBase
     public function testAssertReturn25(): void
     {
         $this->runAssertReturnCommand(
-            module: null,
             action: ['type' => 'invoke', 'field' => 'callu', 'args' => [['type' => 'i32', 'value' => '2']]],
             expected: [['type' => 'i32', 'value' => '3']],
             line: 84,
@@ -289,7 +272,6 @@ final class FuncPtrsTest extends SpecTestsuiteBase
     public function testAssertReturn26(): void
     {
         $this->runAssertReturnCommand(
-            module: null,
             action: ['type' => 'invoke', 'field' => 'callu', 'args' => [['type' => 'i32', 'value' => '3']]],
             expected: [['type' => 'i32', 'value' => '4']],
             line: 85,
@@ -300,7 +282,6 @@ final class FuncPtrsTest extends SpecTestsuiteBase
     public function testAssertReturn27(): void
     {
         $this->runAssertReturnCommand(
-            module: null,
             action: ['type' => 'invoke', 'field' => 'callu', 'args' => [['type' => 'i32', 'value' => '4']]],
             expected: [['type' => 'i32', 'value' => '5']],
             line: 86,
@@ -311,7 +292,6 @@ final class FuncPtrsTest extends SpecTestsuiteBase
     public function testAssertReturn28(): void
     {
         $this->runAssertReturnCommand(
-            module: null,
             action: ['type' => 'invoke', 'field' => 'callu', 'args' => [['type' => 'i32', 'value' => '5']]],
             expected: [['type' => 'i32', 'value' => '1']],
             line: 87,
@@ -322,7 +302,6 @@ final class FuncPtrsTest extends SpecTestsuiteBase
     public function testAssertReturn29(): void
     {
         $this->runAssertReturnCommand(
-            module: null,
             action: ['type' => 'invoke', 'field' => 'callu', 'args' => [['type' => 'i32', 'value' => '6']]],
             expected: [['type' => 'i32', 'value' => '3']],
             line: 88,
@@ -333,7 +312,6 @@ final class FuncPtrsTest extends SpecTestsuiteBase
     public function testAssertTrap30(): void
     {
         $this->runAssertTrapCommand(
-            module: null,
             action: ['type' => 'invoke', 'field' => 'callu', 'args' => [['type' => 'i32', 'value' => '7']]],
             text: 'undefined element',
             line: 89,
@@ -344,7 +322,6 @@ final class FuncPtrsTest extends SpecTestsuiteBase
     public function testAssertTrap31(): void
     {
         $this->runAssertTrapCommand(
-            module: null,
             action: ['type' => 'invoke', 'field' => 'callu', 'args' => [['type' => 'i32', 'value' => '100']]],
             text: 'undefined element',
             line: 90,
@@ -355,7 +332,6 @@ final class FuncPtrsTest extends SpecTestsuiteBase
     public function testAssertTrap32(): void
     {
         $this->runAssertTrapCommand(
-            module: null,
             action: ['type' => 'invoke', 'field' => 'callu', 'args' => [['type' => 'i32', 'value' => '4294967295']]],
             text: 'undefined element',
             line: 91,
@@ -376,7 +352,6 @@ final class FuncPtrsTest extends SpecTestsuiteBase
     public function testAssertReturn34(): void
     {
         $this->runAssertReturnCommand(
-            module: null,
             action: ['type' => 'invoke', 'field' => 'callt', 'args' => [['type' => 'i32', 'value' => '0']]],
             expected: [['type' => 'i32', 'value' => '1']],
             line: 105,
@@ -387,7 +362,6 @@ final class FuncPtrsTest extends SpecTestsuiteBase
     public function testAssertReturn35(): void
     {
         $this->runAssertReturnCommand(
-            module: null,
             action: ['type' => 'invoke', 'field' => 'callt', 'args' => [['type' => 'i32', 'value' => '1']]],
             expected: [['type' => 'i32', 'value' => '2']],
             line: 106,

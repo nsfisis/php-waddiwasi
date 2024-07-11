@@ -23,7 +23,6 @@ final class IntLiteralsTest extends SpecTestsuiteBase
     public function testAssertReturn1(): void
     {
         $this->runAssertReturnCommand(
-            module: null,
             action: ['type' => 'invoke', 'field' => 'i32.test', 'args' => []],
             expected: [['type' => 'i32', 'value' => '195940365']],
             line: 37,
@@ -34,7 +33,6 @@ final class IntLiteralsTest extends SpecTestsuiteBase
     public function testAssertReturn2(): void
     {
         $this->runAssertReturnCommand(
-            module: null,
             action: ['type' => 'invoke', 'field' => 'i32.umax', 'args' => []],
             expected: [['type' => 'i32', 'value' => '4294967295']],
             line: 38,
@@ -45,7 +43,6 @@ final class IntLiteralsTest extends SpecTestsuiteBase
     public function testAssertReturn3(): void
     {
         $this->runAssertReturnCommand(
-            module: null,
             action: ['type' => 'invoke', 'field' => 'i32.smax', 'args' => []],
             expected: [['type' => 'i32', 'value' => '2147483647']],
             line: 39,
@@ -56,7 +53,6 @@ final class IntLiteralsTest extends SpecTestsuiteBase
     public function testAssertReturn4(): void
     {
         $this->runAssertReturnCommand(
-            module: null,
             action: ['type' => 'invoke', 'field' => 'i32.neg_smax', 'args' => []],
             expected: [['type' => 'i32', 'value' => '2147483649']],
             line: 40,
@@ -67,7 +63,6 @@ final class IntLiteralsTest extends SpecTestsuiteBase
     public function testAssertReturn5(): void
     {
         $this->runAssertReturnCommand(
-            module: null,
             action: ['type' => 'invoke', 'field' => 'i32.smin', 'args' => []],
             expected: [['type' => 'i32', 'value' => '2147483648']],
             line: 41,
@@ -78,7 +73,6 @@ final class IntLiteralsTest extends SpecTestsuiteBase
     public function testAssertReturn6(): void
     {
         $this->runAssertReturnCommand(
-            module: null,
             action: ['type' => 'invoke', 'field' => 'i32.alt_smin', 'args' => []],
             expected: [['type' => 'i32', 'value' => '2147483648']],
             line: 42,
@@ -89,7 +83,6 @@ final class IntLiteralsTest extends SpecTestsuiteBase
     public function testAssertReturn7(): void
     {
         $this->runAssertReturnCommand(
-            module: null,
             action: ['type' => 'invoke', 'field' => 'i32.inc_smin', 'args' => []],
             expected: [['type' => 'i32', 'value' => '2147483649']],
             line: 43,
@@ -100,7 +93,6 @@ final class IntLiteralsTest extends SpecTestsuiteBase
     public function testAssertReturn8(): void
     {
         $this->runAssertReturnCommand(
-            module: null,
             action: ['type' => 'invoke', 'field' => 'i32.neg_zero', 'args' => []],
             expected: [['type' => 'i32', 'value' => '0']],
             line: 44,
@@ -111,7 +103,6 @@ final class IntLiteralsTest extends SpecTestsuiteBase
     public function testAssertReturn9(): void
     {
         $this->runAssertReturnCommand(
-            module: null,
             action: ['type' => 'invoke', 'field' => 'i32.not_octal', 'args' => []],
             expected: [['type' => 'i32', 'value' => '10']],
             line: 45,
@@ -122,7 +113,6 @@ final class IntLiteralsTest extends SpecTestsuiteBase
     public function testAssertReturn10(): void
     {
         $this->runAssertReturnCommand(
-            module: null,
             action: ['type' => 'invoke', 'field' => 'i32.unsigned_decimal', 'args' => []],
             expected: [['type' => 'i32', 'value' => '4294967295']],
             line: 46,
@@ -133,7 +123,6 @@ final class IntLiteralsTest extends SpecTestsuiteBase
     public function testAssertReturn11(): void
     {
         $this->runAssertReturnCommand(
-            module: null,
             action: ['type' => 'invoke', 'field' => 'i32.plus_sign', 'args' => []],
             expected: [['type' => 'i32', 'value' => '42']],
             line: 47,
@@ -144,7 +133,6 @@ final class IntLiteralsTest extends SpecTestsuiteBase
     public function testAssertReturn12(): void
     {
         $this->runAssertReturnCommand(
-            module: null,
             action: ['type' => 'invoke', 'field' => 'i64.test', 'args' => []],
             expected: [['type' => 'i64', 'value' => '913028331277281902']],
             line: 49,
@@ -155,7 +143,6 @@ final class IntLiteralsTest extends SpecTestsuiteBase
     public function testAssertReturn13(): void
     {
         $this->runAssertReturnCommand(
-            module: null,
             action: ['type' => 'invoke', 'field' => 'i64.umax', 'args' => []],
             expected: [['type' => 'i64', 'value' => '18446744073709551615']],
             line: 50,
@@ -166,7 +153,6 @@ final class IntLiteralsTest extends SpecTestsuiteBase
     public function testAssertReturn14(): void
     {
         $this->runAssertReturnCommand(
-            module: null,
             action: ['type' => 'invoke', 'field' => 'i64.smax', 'args' => []],
             expected: [['type' => 'i64', 'value' => '9223372036854775807']],
             line: 51,
@@ -177,7 +163,6 @@ final class IntLiteralsTest extends SpecTestsuiteBase
     public function testAssertReturn15(): void
     {
         $this->runAssertReturnCommand(
-            module: null,
             action: ['type' => 'invoke', 'field' => 'i64.neg_smax', 'args' => []],
             expected: [['type' => 'i64', 'value' => '9223372036854775809']],
             line: 52,
@@ -188,7 +173,6 @@ final class IntLiteralsTest extends SpecTestsuiteBase
     public function testAssertReturn16(): void
     {
         $this->runAssertReturnCommand(
-            module: null,
             action: ['type' => 'invoke', 'field' => 'i64.smin', 'args' => []],
             expected: [['type' => 'i64', 'value' => '9223372036854775808']],
             line: 53,
@@ -199,7 +183,6 @@ final class IntLiteralsTest extends SpecTestsuiteBase
     public function testAssertReturn17(): void
     {
         $this->runAssertReturnCommand(
-            module: null,
             action: ['type' => 'invoke', 'field' => 'i64.alt_smin', 'args' => []],
             expected: [['type' => 'i64', 'value' => '9223372036854775808']],
             line: 54,
@@ -210,7 +193,6 @@ final class IntLiteralsTest extends SpecTestsuiteBase
     public function testAssertReturn18(): void
     {
         $this->runAssertReturnCommand(
-            module: null,
             action: ['type' => 'invoke', 'field' => 'i64.inc_smin', 'args' => []],
             expected: [['type' => 'i64', 'value' => '9223372036854775809']],
             line: 55,
@@ -221,7 +203,6 @@ final class IntLiteralsTest extends SpecTestsuiteBase
     public function testAssertReturn19(): void
     {
         $this->runAssertReturnCommand(
-            module: null,
             action: ['type' => 'invoke', 'field' => 'i64.neg_zero', 'args' => []],
             expected: [['type' => 'i64', 'value' => '0']],
             line: 56,
@@ -232,7 +213,6 @@ final class IntLiteralsTest extends SpecTestsuiteBase
     public function testAssertReturn20(): void
     {
         $this->runAssertReturnCommand(
-            module: null,
             action: ['type' => 'invoke', 'field' => 'i64.not_octal', 'args' => []],
             expected: [['type' => 'i64', 'value' => '10']],
             line: 57,
@@ -243,7 +223,6 @@ final class IntLiteralsTest extends SpecTestsuiteBase
     public function testAssertReturn21(): void
     {
         $this->runAssertReturnCommand(
-            module: null,
             action: ['type' => 'invoke', 'field' => 'i64.unsigned_decimal', 'args' => []],
             expected: [['type' => 'i64', 'value' => '18446744073709551615']],
             line: 58,
@@ -254,7 +233,6 @@ final class IntLiteralsTest extends SpecTestsuiteBase
     public function testAssertReturn22(): void
     {
         $this->runAssertReturnCommand(
-            module: null,
             action: ['type' => 'invoke', 'field' => 'i64.plus_sign', 'args' => []],
             expected: [['type' => 'i64', 'value' => '42']],
             line: 59,
@@ -265,7 +243,6 @@ final class IntLiteralsTest extends SpecTestsuiteBase
     public function testAssertReturn23(): void
     {
         $this->runAssertReturnCommand(
-            module: null,
             action: ['type' => 'invoke', 'field' => 'i32-dec-sep1', 'args' => []],
             expected: [['type' => 'i32', 'value' => '1000000']],
             line: 61,
@@ -276,7 +253,6 @@ final class IntLiteralsTest extends SpecTestsuiteBase
     public function testAssertReturn24(): void
     {
         $this->runAssertReturnCommand(
-            module: null,
             action: ['type' => 'invoke', 'field' => 'i32-dec-sep2', 'args' => []],
             expected: [['type' => 'i32', 'value' => '1000']],
             line: 62,
@@ -287,7 +263,6 @@ final class IntLiteralsTest extends SpecTestsuiteBase
     public function testAssertReturn25(): void
     {
         $this->runAssertReturnCommand(
-            module: null,
             action: ['type' => 'invoke', 'field' => 'i32-hex-sep1', 'args' => []],
             expected: [['type' => 'i32', 'value' => '168755353']],
             line: 63,
@@ -298,7 +273,6 @@ final class IntLiteralsTest extends SpecTestsuiteBase
     public function testAssertReturn26(): void
     {
         $this->runAssertReturnCommand(
-            module: null,
             action: ['type' => 'invoke', 'field' => 'i32-hex-sep2', 'args' => []],
             expected: [['type' => 'i32', 'value' => '109071']],
             line: 64,
@@ -309,7 +283,6 @@ final class IntLiteralsTest extends SpecTestsuiteBase
     public function testAssertReturn27(): void
     {
         $this->runAssertReturnCommand(
-            module: null,
             action: ['type' => 'invoke', 'field' => 'i64-dec-sep1', 'args' => []],
             expected: [['type' => 'i64', 'value' => '1000000']],
             line: 66,
@@ -320,7 +293,6 @@ final class IntLiteralsTest extends SpecTestsuiteBase
     public function testAssertReturn28(): void
     {
         $this->runAssertReturnCommand(
-            module: null,
             action: ['type' => 'invoke', 'field' => 'i64-dec-sep2', 'args' => []],
             expected: [['type' => 'i64', 'value' => '1000']],
             line: 67,
@@ -331,7 +303,6 @@ final class IntLiteralsTest extends SpecTestsuiteBase
     public function testAssertReturn29(): void
     {
         $this->runAssertReturnCommand(
-            module: null,
             action: ['type' => 'invoke', 'field' => 'i64-hex-sep1', 'args' => []],
             expected: [['type' => 'i64', 'value' => '3078696982321561']],
             line: 68,
@@ -342,7 +313,6 @@ final class IntLiteralsTest extends SpecTestsuiteBase
     public function testAssertReturn30(): void
     {
         $this->runAssertReturnCommand(
-            module: null,
             action: ['type' => 'invoke', 'field' => 'i64-hex-sep2', 'args' => []],
             expected: [['type' => 'i64', 'value' => '109071']],
             line: 69,

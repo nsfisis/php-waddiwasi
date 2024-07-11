@@ -5,6 +5,7 @@ declare(strict_types=1);
 namespace Nsfisis\Waddiwasi\WebAssembly\BinaryFormat;
 
 use Nsfisis\Waddiwasi\Stream\StreamInterface;
+use Nsfisis\Waddiwasi\Stream\UnexpectedEofException;
 use Nsfisis\Waddiwasi\WebAssembly\BinaryFormat\Internal\Code;
 use Nsfisis\Waddiwasi\WebAssembly\BinaryFormat\Internal\Locals;
 use Nsfisis\Waddiwasi\WebAssembly\BinaryFormat\Internal\SectionId;
@@ -50,6 +51,15 @@ final class Decoder
     }
 
     public function decode(): Module
+    {
+        try {
+            return $this->doDecode();
+        } catch (UnexpectedEofException $e) {
+            throw new InvalidBinaryFormatException('eof', previous: $e);
+        }
+    }
+
+    private function doDecode(): Module
     {
         $this->checkMagic();
         $this->checkVersion();

@@ -23,7 +23,6 @@ final class StoreTest extends SpecTestsuiteBase
     public function testAssertReturn1(): void
     {
         $this->runAssertReturnCommand(
-            module: null,
             action: ['type' => 'invoke', 'field' => 'as-block-value', 'args' => []],
             expected: [],
             line: 44,
@@ -34,7 +33,6 @@ final class StoreTest extends SpecTestsuiteBase
     public function testAssertReturn2(): void
     {
         $this->runAssertReturnCommand(
-            module: null,
             action: ['type' => 'invoke', 'field' => 'as-loop-value', 'args' => []],
             expected: [],
             line: 45,
@@ -45,7 +43,6 @@ final class StoreTest extends SpecTestsuiteBase
     public function testAssertReturn3(): void
     {
         $this->runAssertReturnCommand(
-            module: null,
             action: ['type' => 'invoke', 'field' => 'as-br-value', 'args' => []],
             expected: [],
             line: 47,
@@ -56,7 +53,6 @@ final class StoreTest extends SpecTestsuiteBase
     public function testAssertReturn4(): void
     {
         $this->runAssertReturnCommand(
-            module: null,
             action: ['type' => 'invoke', 'field' => 'as-br_if-value', 'args' => []],
             expected: [],
             line: 48,
@@ -67,7 +63,6 @@ final class StoreTest extends SpecTestsuiteBase
     public function testAssertReturn5(): void
     {
         $this->runAssertReturnCommand(
-            module: null,
             action: ['type' => 'invoke', 'field' => 'as-br_if-value-cond', 'args' => []],
             expected: [],
             line: 49,
@@ -78,7 +73,6 @@ final class StoreTest extends SpecTestsuiteBase
     public function testAssertReturn6(): void
     {
         $this->runAssertReturnCommand(
-            module: null,
             action: ['type' => 'invoke', 'field' => 'as-br_table-value', 'args' => []],
             expected: [],
             line: 50,
@@ -89,7 +83,6 @@ final class StoreTest extends SpecTestsuiteBase
     public function testAssertReturn7(): void
     {
         $this->runAssertReturnCommand(
-            module: null,
             action: ['type' => 'invoke', 'field' => 'as-return-value', 'args' => []],
             expected: [],
             line: 52,
@@ -100,7 +93,6 @@ final class StoreTest extends SpecTestsuiteBase
     public function testAssertReturn8(): void
     {
         $this->runAssertReturnCommand(
-            module: null,
             action: ['type' => 'invoke', 'field' => 'as-if-then', 'args' => []],
             expected: [],
             line: 54,
@@ -111,7 +103,6 @@ final class StoreTest extends SpecTestsuiteBase
     public function testAssertReturn9(): void
     {
         $this->runAssertReturnCommand(
-            module: null,
             action: ['type' => 'invoke', 'field' => 'as-if-else', 'args' => []],
             expected: [],
             line: 55,

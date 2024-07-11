@@ -34,19 +34,41 @@ final class Store
 
     public function register(Extern $extern): ExternVal
     {
-        match ($extern::class) {
-            Externs\Func::class => $this->funcs[] = $extern->func,
-            Externs\Table::class => $this->tables[] = $extern->table,
-            Externs\Mem::class => $this->mems[] = $extern->mem,
-            Externs\Global_::class => $this->globals[] = $extern->global,
-            default => throw new RuntimeException("unreachable"),
-        };
-        return match ($extern::class) {
-            Externs\Func::class => ExternVal::Func(count($this->funcs) - 1),
-            Externs\Table::class => ExternVal::Table(count($this->tables) - 1),
-            Externs\Mem::class => ExternVal::Mem(count($this->mems) - 1),
-            Externs\Global_::class => ExternVal::Global_(count($this->globals) - 1),
-            default => throw new RuntimeException("unreachable"),
-        };
+        switch ($extern::class) {
+            case Externs\Func::class:
+                foreach ($this->funcs as $i => $f) {
+                    if ($f === $extern->func) {
+                        return ExternVal::Func($i);
+                    }
+                }
+                $this->funcs[] = $extern->func;
+                return ExternVal::Func(count($this->funcs) - 1);
+            case Externs\Table::class:
+                foreach ($this->tables as $i => $t) {
+                    if ($t === $extern->table) {
+                        return ExternVal::Table($i);
+                    }
+                }
+                $this->tables[] = $extern->table;
+                return ExternVal::Table(count($this->tables) - 1);
+            case Externs\Mem::class:
+                foreach ($this->mems as $i => $m) {
+                    if ($m === $extern->mem) {
+                        return ExternVal::Mem($i);
+                    }
+                }
+                $this->mems[] = $extern->mem;
+                return ExternVal::Mem(count($this->mems) - 1);
+            case Externs\Global_::class:
+                foreach ($this->globals as $i => $g) {
+                    if ($g === $extern->global) {
+                        return ExternVal::Global_($i);
+                    }
+                }
+                $this->globals[] = $extern->global;
+                return ExternVal::Global_(count($this->globals) - 1);
+            default:
+                throw new RuntimeException("unreachable");
+        }
     }
 }

@@ -131,7 +131,6 @@ function buildAssertReturnCommandTest(array $command): array
     return [
         'method' => 'runAssertReturnCommand',
         'args' => [
-            'module' => $command['module'] ?? null,
             'action' => $command['action'],
             'expected' => $command['expected'],
         ],
@@ -143,7 +142,6 @@ function buildAssertTrapCommandTest(array $command): array
     return [
         'method' => 'runAssertTrapCommand',
         'args' => [
-            'module' => $command['module'] ?? null,
             'action' => $command['action'],
             'text' => $command['text'],
         ],
@@ -187,7 +185,6 @@ function buildAssertExhaustionCommandTest(array $command): array
     return [
         'method' => 'runAssertExhaustionCommand',
         'args' => [
-            'module' => $command['module'] ?? null,
             'action' => $command['action'],
             'text' => $command['text'],
         ],
@@ -231,7 +228,6 @@ function buildActionCommandTest(array $command): array
     return [
         'method' => 'runActionCommand',
         'args' => [
-            'module' => $command['module'] ?? null,
             'action' => $command['action'],
         ],
     ];

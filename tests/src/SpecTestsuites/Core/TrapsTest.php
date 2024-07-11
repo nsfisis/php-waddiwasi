@@ -23,7 +23,6 @@ final class TrapsTest extends SpecTestsuiteBase
     public function testAssertTrap1(): void
     {
         $this->runAssertTrapCommand(
-            module: null,
             action: ['type' => 'invoke', 'field' => 'no_dce.i32.div_s', 'args' => [['type' => 'i32', 'value' => '1'], ['type' => 'i32', 'value' => '0']]],
             text: 'integer divide by zero',
             line: 16,
@@ -34,7 +33,6 @@ final class TrapsTest extends SpecTestsuiteBase
     public function testAssertTrap2(): void
     {
         $this->runAssertTrapCommand(
-            module: null,
             action: ['type' => 'invoke', 'field' => 'no_dce.i32.div_u', 'args' => [['type' => 'i32', 'value' => '1'], ['type' => 'i32', 'value' => '0']]],
             text: 'integer divide by zero',
             line: 17,
@@ -45,7 +43,6 @@ final class TrapsTest extends SpecTestsuiteBase
     public function testAssertTrap3(): void
     {
         $this->runAssertTrapCommand(
-            module: null,
             action: ['type' => 'invoke', 'field' => 'no_dce.i64.div_s', 'args' => [['type' => 'i64', 'value' => '1'], ['type' => 'i64', 'value' => '0']]],
             text: 'integer divide by zero',
             line: 18,
@@ -56,7 +53,6 @@ final class TrapsTest extends SpecTestsuiteBase
     public function testAssertTrap4(): void
     {
         $this->runAssertTrapCommand(
-            module: null,
             action: ['type' => 'invoke', 'field' => 'no_dce.i64.div_u', 'args' => [['type' => 'i64', 'value' => '1'], ['type' => 'i64', 'value' => '0']]],
             text: 'integer divide by zero',
             line: 19,
@@ -67,7 +63,6 @@ final class TrapsTest extends SpecTestsuiteBase
     public function testAssertTrap5(): void
     {
         $this->runAssertTrapCommand(
-            module: null,
             action: ['type' => 'invoke', 'field' => 'no_dce.i32.div_s', 'args' => [['type' => 'i32', 'value' => '2147483648'], ['type' => 'i32', 'value' => '4294967295']]],
             text: 'integer overflow',
             line: 20,
@@ -78,7 +73,6 @@ final class TrapsTest extends SpecTestsuiteBase
     public function testAssertTrap6(): void
     {
         $this->runAssertTrapCommand(
-            module: null,
             action: ['type' => 'invoke', 'field' => 'no_dce.i64.div_s', 'args' => [['type' => 'i64', 'value' => '9223372036854775808'], ['type' => 'i64', 'value' => '18446744073709551615']]],
             text: 'integer overflow',
             line: 21,
@@ -99,7 +93,6 @@ final class TrapsTest extends SpecTestsuiteBase
     public function testAssertTrap8(): void
     {
         $this->runAssertTrapCommand(
-            module: null,
             action: ['type' => 'invoke', 'field' => 'no_dce.i32.rem_s', 'args' => [['type' => 'i32', 'value' => '1'], ['type' => 'i32', 'value' => '0']]],
             text: 'integer divide by zero',
             line: 34,
@@ -110,7 +103,6 @@ final class TrapsTest extends SpecTestsuiteBase
     public function testAssertTrap9(): void
     {
         $this->runAssertTrapCommand(
-            module: null,
             action: ['type' => 'invoke', 'field' => 'no_dce.i32.rem_u', 'args' => [['type' => 'i32', 'value' => '1'], ['type' => 'i32', 'value' => '0']]],
             text: 'integer divide by zero',
             line: 35,
@@ -121,7 +113,6 @@ final class TrapsTest extends SpecTestsuiteBase
     public function testAssertTrap10(): void
     {
         $this->runAssertTrapCommand(
-            module: null,
             action: ['type' => 'invoke', 'field' => 'no_dce.i64.rem_s', 'args' => [['type' => 'i64', 'value' => '1'], ['type' => 'i64', 'value' => '0']]],
             text: 'integer divide by zero',
             line: 36,
@@ -132,7 +123,6 @@ final class TrapsTest extends SpecTestsuiteBase
     public function testAssertTrap11(): void
     {
         $this->runAssertTrapCommand(
-            module: null,
             action: ['type' => 'invoke', 'field' => 'no_dce.i64.rem_u', 'args' => [['type' => 'i64', 'value' => '1'], ['type' => 'i64', 'value' => '0']]],
             text: 'integer divide by zero',
             line: 37,
@@ -153,7 +143,6 @@ final class TrapsTest extends SpecTestsuiteBase
     public function testAssertTrap13(): void
     {
         $this->runAssertTrapCommand(
-            module: null,
             action: ['type' => 'invoke', 'field' => 'no_dce.i32.trunc_f32_s', 'args' => [['type' => 'f32', 'value' => '2143289344']]],
             text: 'invalid conversion to integer',
             line: 50,
@@ -164,7 +153,6 @@ final class TrapsTest extends SpecTestsuiteBase
     public function testAssertTrap14(): void
     {
         $this->runAssertTrapCommand(
-            module: null,
             action: ['type' => 'invoke', 'field' => 'no_dce.i32.trunc_f32_u', 'args' => [['type' => 'f32', 'value' => '2143289344']]],
             text: 'invalid conversion to integer',
             line: 51,
@@ -175,7 +163,6 @@ final class TrapsTest extends SpecTestsuiteBase
     public function testAssertTrap15(): void
     {
         $this->runAssertTrapCommand(
-            module: null,
             action: ['type' => 'invoke', 'field' => 'no_dce.i32.trunc_f64_s', 'args' => [['type' => 'f64', 'value' => '9221120237041090560']]],
             text: 'invalid conversion to integer',
             line: 52,
@@ -186,7 +173,6 @@ final class TrapsTest extends SpecTestsuiteBase
     public function testAssertTrap16(): void
     {
         $this->runAssertTrapCommand(
-            module: null,
             action: ['type' => 'invoke', 'field' => 'no_dce.i32.trunc_f64_u', 'args' => [['type' => 'f64', 'value' => '9221120237041090560']]],
             text: 'invalid conversion to integer',
             line: 53,
@@ -197,7 +183,6 @@ final class TrapsTest extends SpecTestsuiteBase
     public function testAssertTrap17(): void
     {
         $this->runAssertTrapCommand(
-            module: null,
             action: ['type' => 'invoke', 'field' => 'no_dce.i64.trunc_f32_s', 'args' => [['type' => 'f32', 'value' => '2143289344']]],
             text: 'invalid conversion to integer',
             line: 54,
@@ -208,7 +193,6 @@ final class TrapsTest extends SpecTestsuiteBase
     public function testAssertTrap18(): void
     {
         $this->runAssertTrapCommand(
-            module: null,
             action: ['type' => 'invoke', 'field' => 'no_dce.i64.trunc_f32_u', 'args' => [['type' => 'f32', 'value' => '2143289344']]],
             text: 'invalid conversion to integer',
             line: 55,
@@ -219,7 +203,6 @@ final class TrapsTest extends SpecTestsuiteBase
     public function testAssertTrap19(): void
     {
         $this->runAssertTrapCommand(
-            module: null,
             action: ['type' => 'invoke', 'field' => 'no_dce.i64.trunc_f64_s', 'args' => [['type' => 'f64', 'value' => '9221120237041090560']]],
             text: 'invalid conversion to integer',
             line: 56,
@@ -230,7 +213,6 @@ final class TrapsTest extends SpecTestsuiteBase
     public function testAssertTrap20(): void
     {
         $this->runAssertTrapCommand(
-            module: null,
             action: ['type' => 'invoke', 'field' => 'no_dce.i64.trunc_f64_u', 'args' => [['type' => 'f64', 'value' => '9221120237041090560']]],
             text: 'invalid conversion to integer',
             line: 57,
@@ -251,7 +233,6 @@ final class TrapsTest extends SpecTestsuiteBase
     public function testAssertTrap22(): void
     {
         $this->runAssertTrapCommand(
-            module: null,
             action: ['type' => 'invoke', 'field' => 'no_dce.i32.load', 'args' => [['type' => 'i32', 'value' => '65536']]],
             text: 'out of bounds memory access',
             line: 78,
@@ -262,7 +243,6 @@ final class TrapsTest extends SpecTestsuiteBase
     public function testAssertTrap23(): void
     {
         $this->runAssertTrapCommand(
-            module: null,
             action: ['type' => 'invoke', 'field' => 'no_dce.i32.load16_s', 'args' => [['type' => 'i32', 'value' => '65536']]],
             text: 'out of bounds memory access',
             line: 79,
@@ -273,7 +253,6 @@ final class TrapsTest extends SpecTestsuiteBase
     public function testAssertTrap24(): void
     {
         $this->runAssertTrapCommand(
-            module: null,
             action: ['type' => 'invoke', 'field' => 'no_dce.i32.load16_u', 'args' => [['type' => 'i32', 'value' => '65536']]],
             text: 'out of bounds memory access',
             line: 80,
@@ -284,7 +263,6 @@ final class TrapsTest extends SpecTestsuiteBase
     public function testAssertTrap25(): void
     {
         $this->runAssertTrapCommand(
-            module: null,
             action: ['type' => 'invoke', 'field' => 'no_dce.i32.load8_s', 'args' => [['type' => 'i32', 'value' => '65536']]],
             text: 'out of bounds memory access',
             line: 81,
@@ -295,7 +273,6 @@ final class TrapsTest extends SpecTestsuiteBase
     public function testAssertTrap26(): void
     {
         $this->runAssertTrapCommand(
-            module: null,
             action: ['type' => 'invoke', 'field' => 'no_dce.i32.load8_u', 'args' => [['type' => 'i32', 'value' => '65536']]],
             text: 'out of bounds memory access',
             line: 82,
@@ -306,7 +283,6 @@ final class TrapsTest extends SpecTestsuiteBase
     public function testAssertTrap27(): void
     {
         $this->runAssertTrapCommand(
-            module: null,
             action: ['type' => 'invoke', 'field' => 'no_dce.i64.load', 'args' => [['type' => 'i32', 'value' => '65536']]],
             text: 'out of bounds memory access',
             line: 83,
@@ -317,7 +293,6 @@ final class TrapsTest extends SpecTestsuiteBase
     public function testAssertTrap28(): void
     {
         $this->runAssertTrapCommand(
-            module: null,
             action: ['type' => 'invoke', 'field' => 'no_dce.i64.load32_s', 'args' => [['type' => 'i32', 'value' => '65536']]],
             text: 'out of bounds memory access',
             line: 84,
@@ -328,7 +303,6 @@ final class TrapsTest extends SpecTestsuiteBase
     public function testAssertTrap29(): void
     {
         $this->runAssertTrapCommand(
-            module: null,
             action: ['type' => 'invoke', 'field' => 'no_dce.i64.load32_u', 'args' => [['type' => 'i32', 'value' => '65536']]],
             text: 'out of bounds memory access',
             line: 85,
@@ -339,7 +313,6 @@ final class TrapsTest extends SpecTestsuiteBase
     public function testAssertTrap30(): void
     {
         $this->runAssertTrapCommand(
-            module: null,
             action: ['type' => 'invoke', 'field' => 'no_dce.i64.load16_s', 'args' => [['type' => 'i32', 'value' => '65536']]],
             text: 'out of bounds memory access',
             line: 86,
@@ -350,7 +323,6 @@ final class TrapsTest extends SpecTestsuiteBase
     public function testAssertTrap31(): void
     {
         $this->runAssertTrapCommand(
-            module: null,
             action: ['type' => 'invoke', 'field' => 'no_dce.i64.load16_u', 'args' => [['type' => 'i32', 'value' => '65536']]],
             text: 'out of bounds memory access',
             line: 87,
@@ -361,7 +333,6 @@ final class TrapsTest extends SpecTestsuiteBase
     public function testAssertTrap32(): void
     {
         $this->runAssertTrapCommand(
-            module: null,
             action: ['type' => 'invoke', 'field' => 'no_dce.i64.load8_s', 'args' => [['type' => 'i32', 'value' => '65536']]],
             text: 'out of bounds memory access',
             line: 88,
@@ -372,7 +343,6 @@ final class TrapsTest extends SpecTestsuiteBase
     public function testAssertTrap33(): void
     {
         $this->runAssertTrapCommand(
-            module: null,
             action: ['type' => 'invoke', 'field' => 'no_dce.i64.load8_u', 'args' => [['type' => 'i32', 'value' => '65536']]],
             text: 'out of bounds memory access',
             line: 89,
@@ -383,7 +353,6 @@ final class TrapsTest extends SpecTestsuiteBase
     public function testAssertTrap34(): void
     {
         $this->runAssertTrapCommand(
-            module: null,
             action: ['type' => 'invoke', 'field' => 'no_dce.f32.load', 'args' => [['type' => 'i32', 'value' => '65536']]],
             text: 'out of bounds memory access',
             line: 90,
@@ -394,7 +363,6 @@ final class TrapsTest extends SpecTestsuiteBase
     public function testAssertTrap35(): void
     {
         $this->runAssertTrapCommand(
-            module: null,
             action: ['type' => 'invoke', 'field' => 'no_dce.f64.load', 'args' => [['type' => 'i32', 'value' => '65536']]],
             text: 'out of bounds memory access',
             line: 91,

@@ -20,6 +20,7 @@ use function abs;
 use function array_map;
 use function array_merge;
 use function array_reverse;
+use function array_slice;
 use function assert;
 use function ceil;
 use function count;
@@ -114,7 +115,7 @@ final class Runtime
             $externVals,
             $vals,
             $refsList,
-            $moduleInstInit->funcAddrs,
+            array_slice($moduleInstInit->funcAddrs, count(array_filter($externVals, fn ($e) => $e instanceof ExternVals\Func))),
         );
 
         $runtime = new self($store, $stack, $moduleInst);
@@ -203,6 +204,9 @@ final class Runtime
     {
         try {
             $export = $this->getExport($name);
+            if ($export === null) {
+                throw new TrapException("invoke($name) not found", trapKind: TrapKind::UninitializedElement);
+            }
             assert($export instanceof ExternVals\Func);
             $funcAddr = $export->addr;
 

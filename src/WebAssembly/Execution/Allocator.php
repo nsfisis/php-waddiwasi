@@ -12,6 +12,7 @@ use Nsfisis\Waddiwasi\WebAssembly\Structure\Types\MemType;
 use Nsfisis\Waddiwasi\WebAssembly\Structure\Types\TableType;
 use Nsfisis\Waddiwasi\WebAssembly\Structure\Types\ValType;
 use RuntimeException;
+use function assert;
 use function count;
 
 final readonly class Allocator
@@ -61,7 +62,7 @@ final readonly class Allocator
 
         foreach ($externVals as $externVal) {
             match ($externVal::class) {
-                ExternVals\Func::class => null, // handled below.
+                ExternVals\Func::class => $m->funcAddrs[] = $externVal->addr,
                 ExternVals\Table::class => $m->tableAddrs[] = $externVal->addr,
                 ExternVals\Mem::class => $m->memAddrs[] = $externVal->addr,
                 ExternVals\Global_::class => $m->globalAddrs[] = $externVal->addr,
@@ -72,14 +73,13 @@ final readonly class Allocator
         foreach ($preAllocatedFuncs as $funcAddr) {
             $m->funcAddrs[] = $funcAddr;
             $funcInst = $this->store->funcs[$funcAddr];
-            if ($funcInst instanceof FuncInsts\Wasm) {
-                // @phpstan-ignore-next-line
-                $this->store->funcs[$funcAddr] = FuncInst::Wasm(
-                    $funcInst->type,
-                    $m,
-                    $funcInst->code,
-                );
-            }
+            assert($funcInst instanceof FuncInsts\Wasm);
+            // @phpstan-ignore-next-line
+            $this->store->funcs[$funcAddr] = FuncInst::Wasm(
+                $funcInst->type,
+                $m,
+                $funcInst->code,
+            );
         }
         foreach ($module->tables as $table) {
             $m->tableAddrs[] = $this->allocTable($table->type, Ref::RefNull($table->type->refType));

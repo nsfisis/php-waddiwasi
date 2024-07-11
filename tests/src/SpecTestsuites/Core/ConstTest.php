@@ -1499,7 +1499,6 @@ final class ConstTest extends SpecTestsuiteBase
     public function testAssertReturn179(): void
     {
         $this->runAssertReturnCommand(
-            module: null,
             action: ['type' => 'invoke', 'field' => 'f', 'args' => []],
             expected: [['type' => 'f32', 'value' => '645922816']],
             line: 441,
@@ -1520,7 +1519,6 @@ final class ConstTest extends SpecTestsuiteBase
     public function testAssertReturn181(): void
     {
         $this->runAssertReturnCommand(
-            module: null,
             action: ['type' => 'invoke', 'field' => 'f', 'args' => []],
             expected: [['type' => 'f32', 'value' => '2793406464']],
             line: 443,
@@ -1541,7 +1539,6 @@ final class ConstTest extends SpecTestsuiteBase
     public function testAssertReturn183(): void
     {
         $this->runAssertReturnCommand(
-            module: null,
             action: ['type' => 'invoke', 'field' => 'f', 'args' => []],
             expected: [['type' => 'f32', 'value' => '645922817']],
             line: 445,
@@ -1562,7 +1559,6 @@ final class ConstTest extends SpecTestsuiteBase
     public function testAssertReturn185(): void
     {
         $this->runAssertReturnCommand(
-            module: null,
             action: ['type' => 'invoke', 'field' => 'f', 'args' => []],
             expected: [['type' => 'f32', 'value' => '2793406465']],
             line: 447,
@@ -1583,7 +1579,6 @@ final class ConstTest extends SpecTestsuiteBase
     public function testAssertReturn187(): void
     {
         $this->runAssertReturnCommand(
-            module: null,
             action: ['type' => 'invoke', 'field' => 'f', 'args' => []],
             expected: [['type' => 'f32', 'value' => '645922817']],
             line: 449,
@@ -1604,7 +1599,6 @@ final class ConstTest extends SpecTestsuiteBase
     public function testAssertReturn189(): void
     {
         $this->runAssertReturnCommand(
-            module: null,
             action: ['type' => 'invoke', 'field' => 'f', 'args' => []],
             expected: [['type' => 'f32', 'value' => '2793406465']],
             line: 451,
@@ -1625,7 +1619,6 @@ final class ConstTest extends SpecTestsuiteBase
     public function testAssertReturn191(): void
     {
         $this->runAssertReturnCommand(
-            module: null,
             action: ['type' => 'invoke', 'field' => 'f', 'args' => []],
             expected: [['type' => 'f32', 'value' => '645922817']],
             line: 453,
@@ -1646,7 +1639,6 @@ final class ConstTest extends SpecTestsuiteBase
     public function testAssertReturn193(): void
     {
         $this->runAssertReturnCommand(
-            module: null,
             action: ['type' => 'invoke', 'field' => 'f', 'args' => []],
             expected: [['type' => 'f32', 'value' => '2793406465']],
             line: 455,
@@ -1667,7 +1659,6 @@ final class ConstTest extends SpecTestsuiteBase
     public function testAssertReturn195(): void
     {
         $this->runAssertReturnCommand(
-            module: null,
             action: ['type' => 'invoke', 'field' => 'f', 'args' => []],
             expected: [['type' => 'f32', 'value' => '645922817']],
             line: 457,
@@ -1688,7 +1679,6 @@ final class ConstTest extends SpecTestsuiteBase
     public function testAssertReturn197(): void
     {
         $this->runAssertReturnCommand(
-            module: null,
             action: ['type' => 'invoke', 'field' => 'f', 'args' => []],
             expected: [['type' => 'f32', 'value' => '2793406465']],
             line: 459,
@@ -1709,7 +1699,6 @@ final class ConstTest extends SpecTestsuiteBase
     public function testAssertReturn199(): void
     {
         $this->runAssertReturnCommand(
-            module: null,
             action: ['type' => 'invoke', 'field' => 'f', 'args' => []],
             expected: [['type' => 'f32', 'value' => '645922817']],
             line: 461,
@@ -1730,7 +1719,6 @@ final class ConstTest extends SpecTestsuiteBase
     public function testAssertReturn201(): void
     {
         $this->runAssertReturnCommand(
-            module: null,
             action: ['type' => 'invoke', 'field' => 'f', 'args' => []],
             expected: [['type' => 'f32', 'value' => '2793406465']],
             line: 463,
@@ -1751,7 +1739,6 @@ final class ConstTest extends SpecTestsuiteBase
     public function testAssertReturn203(): void
     {
         $this->runAssertReturnCommand(
-            module: null,
             action: ['type' => 'invoke', 'field' => 'f', 'args' => []],
             expected: [['type' => 'f32', 'value' => '645922818']],
             line: 465,
@@ -1772,7 +1759,6 @@ final class ConstTest extends SpecTestsuiteBase
     public function testAssertReturn205(): void
     {
         $this->runAssertReturnCommand(
-            module: null,
             action: ['type' => 'invoke', 'field' => 'f', 'args' => []],
             expected: [['type' => 'f32', 'value' => '2793406466']],
             line: 467,
@@ -1793,7 +1779,6 @@ final class ConstTest extends SpecTestsuiteBase
     public function testAssertReturn207(): void
     {
         $this->runAssertReturnCommand(
-            module: null,
             action: ['type' => 'invoke', 'field' => 'f', 'args' => []],
             expected: [['type' => 'f32', 'value' => '645922818']],
             line: 469,
@@ -1814,7 +1799,6 @@ final class ConstTest extends SpecTestsuiteBase
     public function testAssertReturn209(): void
     {
         $this->runAssertReturnCommand(
-            module: null,
             action: ['type' => 'invoke', 'field' => 'f', 'args' => []],
             expected: [['type' => 'f32', 'value' => '2793406466']],
             line: 471,
@@ -1835,7 +1819,6 @@ final class ConstTest extends SpecTestsuiteBase
     public function testAssertReturn211(): void
     {
         $this->runAssertReturnCommand(
-            module: null,
             action: ['type' => 'invoke', 'field' => 'f', 'args' => []],
             expected: [['type' => 'f32', 'value' => '645922818']],
             line: 473,
@@ -1856,7 +1839,6 @@ final class ConstTest extends SpecTestsuiteBase
     public function testAssertReturn213(): void
     {
         $this->runAssertReturnCommand(
-            module: null,
             action: ['type' => 'invoke', 'field' => 'f', 'args' => []],
             expected: [['type' => 'f32', 'value' => '2793406466']],
             line: 475,
@@ -1877,7 +1859,6 @@ final class ConstTest extends SpecTestsuiteBase
     public function testAssertReturn215(): void
     {
         $this->runAssertReturnCommand(
-            module: null,
             action: ['type' => 'invoke', 'field' => 'f', 'args' => []],
             expected: [['type' => 'f32', 'value' => '645922818']],
             line: 477,
@@ -1898,7 +1879,6 @@ final class ConstTest extends SpecTestsuiteBase
     public function testAssertReturn217(): void
     {
         $this->runAssertReturnCommand(
-            module: null,
             action: ['type' => 'invoke', 'field' => 'f', 'args' => []],
             expected: [['type' => 'f32', 'value' => '2793406466']],
             line: 479,
@@ -1919,7 +1899,6 @@ final class ConstTest extends SpecTestsuiteBase
     public function testAssertReturn219(): void
     {
         $this->runAssertReturnCommand(
-            module: null,
             action: ['type' => 'invoke', 'field' => 'f', 'args' => []],
             expected: [['type' => 'f32', 'value' => '645922818']],
             line: 481,
@@ -1940,7 +1919,6 @@ final class ConstTest extends SpecTestsuiteBase
     public function testAssertReturn221(): void
     {
         $this->runAssertReturnCommand(
-            module: null,
             action: ['type' => 'invoke', 'field' => 'f', 'args' => []],
             expected: [['type' => 'f32', 'value' => '2793406466']],
             line: 483,
@@ -1961,7 +1939,6 @@ final class ConstTest extends SpecTestsuiteBase
     public function testAssertReturn223(): void
     {
         $this->runAssertReturnCommand(
-            module: null,
             action: ['type' => 'invoke', 'field' => 'f', 'args' => []],
             expected: [['type' => 'f32', 'value' => '645922818']],
             line: 485,
@@ -1982,7 +1959,6 @@ final class ConstTest extends SpecTestsuiteBase
     public function testAssertReturn225(): void
     {
         $this->runAssertReturnCommand(
-            module: null,
             action: ['type' => 'invoke', 'field' => 'f', 'args' => []],
             expected: [['type' => 'f32', 'value' => '2793406466']],
             line: 487,
@@ -2003,7 +1979,6 @@ final class ConstTest extends SpecTestsuiteBase
     public function testAssertReturn227(): void
     {
         $this->runAssertReturnCommand(
-            module: null,
             action: ['type' => 'invoke', 'field' => 'f', 'args' => []],
             expected: [['type' => 'f32', 'value' => '645922818']],
             line: 489,
@@ -2024,7 +1999,6 @@ final class ConstTest extends SpecTestsuiteBase
     public function testAssertReturn229(): void
     {
         $this->runAssertReturnCommand(
-            module: null,
             action: ['type' => 'invoke', 'field' => 'f', 'args' => []],
             expected: [['type' => 'f32', 'value' => '2793406466']],
             line: 491,
@@ -2045,7 +2019,6 @@ final class ConstTest extends SpecTestsuiteBase
     public function testAssertReturn231(): void
     {
         $this->runAssertReturnCommand(
-            module: null,
             action: ['type' => 'invoke', 'field' => 'f', 'args' => []],
             expected: [['type' => 'f32', 'value' => '645922819']],
             line: 493,
@@ -2066,7 +2039,6 @@ final class ConstTest extends SpecTestsuiteBase
     public function testAssertReturn233(): void
     {
         $this->runAssertReturnCommand(
-            module: null,
             action: ['type' => 'invoke', 'field' => 'f', 'args' => []],
             expected: [['type' => 'f32', 'value' => '2793406467']],
             line: 495,
@@ -2087,7 +2059,6 @@ final class ConstTest extends SpecTestsuiteBase
     public function testAssertReturn235(): void
     {
         $this->runAssertReturnCommand(
-            module: null,
             action: ['type' => 'invoke', 'field' => 'f', 'args' => []],
             expected: [['type' => 'f32', 'value' => '645922816']],
             line: 498,
@@ -2108,7 +2079,6 @@ final class ConstTest extends SpecTestsuiteBase
     public function testAssertReturn237(): void
     {
         $this->runAssertReturnCommand(
-            module: null,
             action: ['type' => 'invoke', 'field' => 'f', 'args' => []],
             expected: [['type' => 'f32', 'value' => '2793406464']],
             line: 500,
@@ -2129,7 +2099,6 @@ final class ConstTest extends SpecTestsuiteBase
     public function testAssertReturn239(): void
     {
         $this->runAssertReturnCommand(
-            module: null,
             action: ['type' => 'invoke', 'field' => 'f', 'args' => []],
             expected: [['type' => 'f32', 'value' => '645922817']],
             line: 502,
@@ -2150,7 +2119,6 @@ final class ConstTest extends SpecTestsuiteBase
     public function testAssertReturn241(): void
     {
         $this->runAssertReturnCommand(
-            module: null,
             action: ['type' => 'invoke', 'field' => 'f', 'args' => []],
             expected: [['type' => 'f32', 'value' => '2793406465']],
             line: 504,
@@ -2171,7 +2139,6 @@ final class ConstTest extends SpecTestsuiteBase
     public function testAssertReturn243(): void
     {
         $this->runAssertReturnCommand(
-            module: null,
             action: ['type' => 'invoke', 'field' => 'f', 'args' => []],
             expected: [['type' => 'f32', 'value' => '645922817']],
             line: 506,
@@ -2192,7 +2159,6 @@ final class ConstTest extends SpecTestsuiteBase
     public function testAssertReturn245(): void
     {
         $this->runAssertReturnCommand(
-            module: null,
             action: ['type' => 'invoke', 'field' => 'f', 'args' => []],
             expected: [['type' => 'f32', 'value' => '2793406465']],
             line: 508,
@@ -2213,7 +2179,6 @@ final class ConstTest extends SpecTestsuiteBase
     public function testAssertReturn247(): void
     {
         $this->runAssertReturnCommand(
-            module: null,
             action: ['type' => 'invoke', 'field' => 'f', 'args' => []],
             expected: [['type' => 'f32', 'value' => '645922817']],
             line: 510,
@@ -2234,7 +2199,6 @@ final class ConstTest extends SpecTestsuiteBase
     public function testAssertReturn249(): void
     {
         $this->runAssertReturnCommand(
-            module: null,
             action: ['type' => 'invoke', 'field' => 'f', 'args' => []],
             expected: [['type' => 'f32', 'value' => '2793406465']],
             line: 512,
@@ -2255,7 +2219,6 @@ final class ConstTest extends SpecTestsuiteBase
     public function testAssertReturn251(): void
     {
         $this->runAssertReturnCommand(
-            module: null,
             action: ['type' => 'invoke', 'field' => 'f', 'args' => []],
             expected: [['type' => 'f32', 'value' => '645922817']],
             line: 514,
@@ -2276,7 +2239,6 @@ final class ConstTest extends SpecTestsuiteBase
     public function testAssertReturn253(): void
     {
         $this->runAssertReturnCommand(
-            module: null,
             action: ['type' => 'invoke', 'field' => 'f', 'args' => []],
             expected: [['type' => 'f32', 'value' => '2793406465']],
             line: 516,
@@ -2297,7 +2259,6 @@ final class ConstTest extends SpecTestsuiteBase
     public function testAssertReturn255(): void
     {
         $this->runAssertReturnCommand(
-            module: null,
             action: ['type' => 'invoke', 'field' => 'f', 'args' => []],
             expected: [['type' => 'f32', 'value' => '645922817']],
             line: 518,
@@ -2318,7 +2279,6 @@ final class ConstTest extends SpecTestsuiteBase
     public function testAssertReturn257(): void
     {
         $this->runAssertReturnCommand(
-            module: null,
             action: ['type' => 'invoke', 'field' => 'f', 'args' => []],
             expected: [['type' => 'f32', 'value' => '2793406465']],
             line: 520,
@@ -2339,7 +2299,6 @@ final class ConstTest extends SpecTestsuiteBase
     public function testAssertReturn259(): void
     {
         $this->runAssertReturnCommand(
-            module: null,
             action: ['type' => 'invoke', 'field' => 'f', 'args' => []],
             expected: [['type' => 'f32', 'value' => '645922818']],
             line: 522,
@@ -2360,7 +2319,6 @@ final class ConstTest extends SpecTestsuiteBase
     public function testAssertReturn261(): void
     {
         $this->runAssertReturnCommand(
-            module: null,
             action: ['type' => 'invoke', 'field' => 'f', 'args' => []],
             expected: [['type' => 'f32', 'value' => '2793406466']],
             line: 524,
@@ -2381,7 +2339,6 @@ final class ConstTest extends SpecTestsuiteBase
     public function testAssertReturn263(): void
     {
         $this->runAssertReturnCommand(
-            module: null,
             action: ['type' => 'invoke', 'field' => 'f', 'args' => []],
             expected: [['type' => 'f32', 'value' => '645922818']],
             line: 526,
@@ -2402,7 +2359,6 @@ final class ConstTest extends SpecTestsuiteBase
     public function testAssertReturn265(): void
     {
         $this->runAssertReturnCommand(
-            module: null,
             action: ['type' => 'invoke', 'field' => 'f', 'args' => []],
             expected: [['type' => 'f32', 'value' => '2793406466']],
             line: 528,
@@ -2423,7 +2379,6 @@ final class ConstTest extends SpecTestsuiteBase
     public function testAssertReturn267(): void
     {
         $this->runAssertReturnCommand(
-            module: null,
             action: ['type' => 'invoke', 'field' => 'f', 'args' => []],
             expected: [['type' => 'f32', 'value' => '645922818']],
             line: 530,
@@ -2444,7 +2399,6 @@ final class ConstTest extends SpecTestsuiteBase
     public function testAssertReturn269(): void
     {
         $this->runAssertReturnCommand(
-            module: null,
             action: ['type' => 'invoke', 'field' => 'f', 'args' => []],
             expected: [['type' => 'f32', 'value' => '2793406466']],
             line: 532,
@@ -2465,7 +2419,6 @@ final class ConstTest extends SpecTestsuiteBase
     public function testAssertReturn271(): void
     {
         $this->runAssertReturnCommand(
-            module: null,
             action: ['type' => 'invoke', 'field' => 'f', 'args' => []],
             expected: [['type' => 'f32', 'value' => '645922818']],
             line: 534,
@@ -2486,7 +2439,6 @@ final class ConstTest extends SpecTestsuiteBase
     public function testAssertReturn273(): void
     {
         $this->runAssertReturnCommand(
-            module: null,
             action: ['type' => 'invoke', 'field' => 'f', 'args' => []],
             expected: [['type' => 'f32', 'value' => '2793406466']],
             line: 536,
@@ -2507,7 +2459,6 @@ final class ConstTest extends SpecTestsuiteBase
     public function testAssertReturn275(): void
     {
         $this->runAssertReturnCommand(
-            module: null,
             action: ['type' => 'invoke', 'field' => 'f', 'args' => []],
             expected: [['type' => 'f32', 'value' => '645922818']],
             line: 538,
@@ -2528,7 +2479,6 @@ final class ConstTest extends SpecTestsuiteBase
     public function testAssertReturn277(): void
     {
         $this->runAssertReturnCommand(
-            module: null,
             action: ['type' => 'invoke', 'field' => 'f', 'args' => []],
             expected: [['type' => 'f32', 'value' => '2793406466']],
             line: 540,
@@ -2549,7 +2499,6 @@ final class ConstTest extends SpecTestsuiteBase
     public function testAssertReturn279(): void
     {
         $this->runAssertReturnCommand(
-            module: null,
             action: ['type' => 'invoke', 'field' => 'f', 'args' => []],
             expected: [['type' => 'f32', 'value' => '645922819']],
             line: 542,
@@ -2570,7 +2519,6 @@ final class ConstTest extends SpecTestsuiteBase
     public function testAssertReturn281(): void
     {
         $this->runAssertReturnCommand(
-            module: null,
             action: ['type' => 'invoke', 'field' => 'f', 'args' => []],
             expected: [['type' => 'f32', 'value' => '2793406467']],
             line: 544,
@@ -2591,7 +2539,6 @@ final class ConstTest extends SpecTestsuiteBase
     public function testAssertReturn283(): void
     {
         $this->runAssertReturnCommand(
-            module: null,
             action: ['type' => 'invoke', 'field' => 'f', 'args' => []],
             expected: [['type' => 'f32', 'value' => '645922816']],
             line: 547,
@@ -2612,7 +2559,6 @@ final class ConstTest extends SpecTestsuiteBase
     public function testAssertReturn285(): void
     {
         $this->runAssertReturnCommand(
-            module: null,
             action: ['type' => 'invoke', 'field' => 'f', 'args' => []],
             expected: [['type' => 'f32', 'value' => '2793406464']],
             line: 549,
@@ -2633,7 +2579,6 @@ final class ConstTest extends SpecTestsuiteBase
     public function testAssertReturn287(): void
     {
         $this->runAssertReturnCommand(
-            module: null,
             action: ['type' => 'invoke', 'field' => 'f', 'args' => []],
             expected: [['type' => 'f32', 'value' => '645922817']],
             line: 551,
@@ -2654,7 +2599,6 @@ final class ConstTest extends SpecTestsuiteBase
     public function testAssertReturn289(): void
     {
         $this->runAssertReturnCommand(
-            module: null,
             action: ['type' => 'invoke', 'field' => 'f', 'args' => []],
             expected: [['type' => 'f32', 'value' => '2793406465']],
             line: 553,
@@ -2675,7 +2619,6 @@ final class ConstTest extends SpecTestsuiteBase
     public function testAssertReturn291(): void
     {
         $this->runAssertReturnCommand(
-            module: null,
             action: ['type' => 'invoke', 'field' => 'f', 'args' => []],
             expected: [['type' => 'f32', 'value' => '645922817']],
             line: 555,
@@ -2696,7 +2639,6 @@ final class ConstTest extends SpecTestsuiteBase
     public function testAssertReturn293(): void
     {
         $this->runAssertReturnCommand(
-            module: null,
             action: ['type' => 'invoke', 'field' => 'f', 'args' => []],
             expected: [['type' => 'f32', 'value' => '2793406465']],
             line: 557,
@@ -2717,7 +2659,6 @@ final class ConstTest extends SpecTestsuiteBase
     public function testAssertReturn295(): void
     {
         $this->runAssertReturnCommand(
-            module: null,
             action: ['type' => 'invoke', 'field' => 'f', 'args' => []],
             expected: [['type' => 'f32', 'value' => '645922818']],
             line: 559,
@@ -2738,7 +2679,6 @@ final class ConstTest extends SpecTestsuiteBase
     public function testAssertReturn297(): void
     {
         $this->runAssertReturnCommand(
-            module: null,
             action: ['type' => 'invoke', 'field' => 'f', 'args' => []],
             expected: [['type' => 'f32', 'value' => '2793406466']],
             line: 561,
@@ -2759,7 +2699,6 @@ final class ConstTest extends SpecTestsuiteBase
     public function testAssertReturn299(): void
     {
         $this->runAssertReturnCommand(
-            module: null,
             action: ['type' => 'invoke', 'field' => 'f', 'args' => []],
             expected: [['type' => 'f32', 'value' => '1484783616']],
             line: 565,
@@ -2780,7 +2719,6 @@ final class ConstTest extends SpecTestsuiteBase
     public function testAssertReturn301(): void
     {
         $this->runAssertReturnCommand(
-            module: null,
             action: ['type' => 'invoke', 'field' => 'f', 'args' => []],
             expected: [['type' => 'f32', 'value' => '3632267264']],
             line: 567,
@@ -2801,7 +2739,6 @@ final class ConstTest extends SpecTestsuiteBase
     public function testAssertReturn303(): void
     {
         $this->runAssertReturnCommand(
-            module: null,
             action: ['type' => 'invoke', 'field' => 'f', 'args' => []],
             expected: [['type' => 'f32', 'value' => '1484783617']],
             line: 569,
@@ -2822,7 +2759,6 @@ final class ConstTest extends SpecTestsuiteBase
     public function testAssertReturn305(): void
     {
         $this->runAssertReturnCommand(
-            module: null,
             action: ['type' => 'invoke', 'field' => 'f', 'args' => []],
             expected: [['type' => 'f32', 'value' => '3632267265']],
             line: 571,
@@ -2843,7 +2779,6 @@ final class ConstTest extends SpecTestsuiteBase
     public function testAssertReturn307(): void
     {
         $this->runAssertReturnCommand(
-            module: null,
             action: ['type' => 'invoke', 'field' => 'f', 'args' => []],
             expected: [['type' => 'f32', 'value' => '1484783617']],
             line: 573,
@@ -2864,7 +2799,6 @@ final class ConstTest extends SpecTestsuiteBase
     public function testAssertReturn309(): void
     {
         $this->runAssertReturnCommand(
-            module: null,
             action: ['type' => 'invoke', 'field' => 'f', 'args' => []],
             expected: [['type' => 'f32', 'value' => '3632267265']],
             line: 575,
@@ -2885,7 +2819,6 @@ final class ConstTest extends SpecTestsuiteBase
     public function testAssertReturn311(): void
     {
         $this->runAssertReturnCommand(
-            module: null,
             action: ['type' => 'invoke', 'field' => 'f', 'args' => []],
             expected: [['type' => 'f32', 'value' => '1484783617']],
             line: 577,
@@ -2906,7 +2839,6 @@ final class ConstTest extends SpecTestsuiteBase
     public function testAssertReturn313(): void
     {
         $this->runAssertReturnCommand(
-            module: null,
             action: ['type' => 'invoke', 'field' => 'f', 'args' => []],
             expected: [['type' => 'f32', 'value' => '3632267265']],
             line: 579,
@@ -2927,7 +2859,6 @@ final class ConstTest extends SpecTestsuiteBase
     public function testAssertReturn315(): void
     {
         $this->runAssertReturnCommand(
-            module: null,
             action: ['type' => 'invoke', 'field' => 'f', 'args' => []],
             expected: [['type' => 'f32', 'value' => '1484783617']],
             line: 581,
@@ -2948,7 +2879,6 @@ final class ConstTest extends SpecTestsuiteBase
     public function testAssertReturn317(): void
     {
         $this->runAssertReturnCommand(
-            module: null,
             action: ['type' => 'invoke', 'field' => 'f', 'args' => []],
             expected: [['type' => 'f32', 'value' => '3632267265']],
             line: 583,
@@ -2969,7 +2899,6 @@ final class ConstTest extends SpecTestsuiteBase
     public function testAssertReturn319(): void
     {
         $this->runAssertReturnCommand(
-            module: null,
             action: ['type' => 'invoke', 'field' => 'f', 'args' => []],
             expected: [['type' => 'f32', 'value' => '1484783617']],
             line: 585,
@@ -2990,7 +2919,6 @@ final class ConstTest extends SpecTestsuiteBase
     public function testAssertReturn321(): void
     {
         $this->runAssertReturnCommand(
-            module: null,
             action: ['type' => 'invoke', 'field' => 'f', 'args' => []],
             expected: [['type' => 'f32', 'value' => '3632267265']],
             line: 587,
@@ -3011,7 +2939,6 @@ final class ConstTest extends SpecTestsuiteBase
     public function testAssertReturn323(): void
     {
         $this->runAssertReturnCommand(
-            module: null,
             action: ['type' => 'invoke', 'field' => 'f', 'args' => []],
             expected: [['type' => 'f32', 'value' => '1484783618']],
             line: 589,
@@ -3032,7 +2959,6 @@ final class ConstTest extends SpecTestsuiteBase
     public function testAssertReturn325(): void
     {
         $this->runAssertReturnCommand(
-            module: null,
             action: ['type' => 'invoke', 'field' => 'f', 'args' => []],
             expected: [['type' => 'f32', 'value' => '3632267266']],
             line: 591,
@@ -3053,7 +2979,6 @@ final class ConstTest extends SpecTestsuiteBase
     public function testAssertReturn327(): void
     {
         $this->runAssertReturnCommand(
-            module: null,
             action: ['type' => 'invoke', 'field' => 'f', 'args' => []],
             expected: [['type' => 'f32', 'value' => '1484783618']],
             line: 593,
@@ -3074,7 +2999,6 @@ final class ConstTest extends SpecTestsuiteBase
     public function testAssertReturn329(): void
     {
         $this->runAssertReturnCommand(
-            module: null,
             action: ['type' => 'invoke', 'field' => 'f', 'args' => []],
             expected: [['type' => 'f32', 'value' => '3632267266']],
             line: 595,
@@ -3095,7 +3019,6 @@ final class ConstTest extends SpecTestsuiteBase
     public function testAssertReturn331(): void
     {
         $this->runAssertReturnCommand(
-            module: null,
             action: ['type' => 'invoke', 'field' => 'f', 'args' => []],
             expected: [['type' => 'f32', 'value' => '1484783618']],
             line: 597,
@@ -3116,7 +3039,6 @@ final class ConstTest extends SpecTestsuiteBase
     public function testAssertReturn333(): void
     {
         $this->runAssertReturnCommand(
-            module: null,
             action: ['type' => 'invoke', 'field' => 'f', 'args' => []],
             expected: [['type' => 'f32', 'value' => '3632267266']],
             line: 599,
@@ -3137,7 +3059,6 @@ final class ConstTest extends SpecTestsuiteBase
     public function testAssertReturn335(): void
     {
         $this->runAssertReturnCommand(
-            module: null,
             action: ['type' => 'invoke', 'field' => 'f', 'args' => []],
             expected: [['type' => 'f32', 'value' => '1484783618']],
             line: 601,
@@ -3158,7 +3079,6 @@ final class ConstTest extends SpecTestsuiteBase
     public function testAssertReturn337(): void
     {
         $this->runAssertReturnCommand(
-            module: null,
             action: ['type' => 'invoke', 'field' => 'f', 'args' => []],
             expected: [['type' => 'f32', 'value' => '3632267266']],
             line: 603,
@@ -3179,7 +3099,6 @@ final class ConstTest extends SpecTestsuiteBase
     public function testAssertReturn339(): void
     {
         $this->runAssertReturnCommand(
-            module: null,
             action: ['type' => 'invoke', 'field' => 'f', 'args' => []],
             expected: [['type' => 'f32', 'value' => '1484783618']],
             line: 605,
@@ -3200,7 +3119,6 @@ final class ConstTest extends SpecTestsuiteBase
     public function testAssertReturn341(): void
     {
         $this->runAssertReturnCommand(
-            module: null,
             action: ['type' => 'invoke', 'field' => 'f', 'args' => []],
             expected: [['type' => 'f32', 'value' => '3632267266']],
             line: 607,
@@ -3221,7 +3139,6 @@ final class ConstTest extends SpecTestsuiteBase
     public function testAssertReturn343(): void
     {
         $this->runAssertReturnCommand(
-            module: null,
             action: ['type' => 'invoke', 'field' => 'f', 'args' => []],
             expected: [['type' => 'f32', 'value' => '1484783618']],
             line: 609,
@@ -3242,7 +3159,6 @@ final class ConstTest extends SpecTestsuiteBase
     public function testAssertReturn345(): void
     {
         $this->runAssertReturnCommand(
-            module: null,
             action: ['type' => 'invoke', 'field' => 'f', 'args' => []],
             expected: [['type' => 'f32', 'value' => '3632267266']],
             line: 611,
@@ -3263,7 +3179,6 @@ final class ConstTest extends SpecTestsuiteBase
     public function testAssertReturn347(): void
     {
         $this->runAssertReturnCommand(
-            module: null,
             action: ['type' => 'invoke', 'field' => 'f', 'args' => []],
             expected: [['type' => 'f32', 'value' => '1484783618']],
             line: 613,
@@ -3284,7 +3199,6 @@ final class ConstTest extends SpecTestsuiteBase
     public function testAssertReturn349(): void
     {
         $this->runAssertReturnCommand(
-            module: null,
             action: ['type' => 'invoke', 'field' => 'f', 'args' => []],
             expected: [['type' => 'f32', 'value' => '3632267266']],
             line: 615,
@@ -3305,7 +3219,6 @@ final class ConstTest extends SpecTestsuiteBase
     public function testAssertReturn351(): void
     {
         $this->runAssertReturnCommand(
-            module: null,
             action: ['type' => 'invoke', 'field' => 'f', 'args' => []],
             expected: [['type' => 'f32', 'value' => '1484783619']],
             line: 617,
@@ -3326,7 +3239,6 @@ final class ConstTest extends SpecTestsuiteBase
     public function testAssertReturn353(): void
     {
         $this->runAssertReturnCommand(
-            module: null,
             action: ['type' => 'invoke', 'field' => 'f', 'args' => []],
             expected: [['type' => 'f32', 'value' => '3632267267']],
             line: 619,
@@ -3347,7 +3259,6 @@ final class ConstTest extends SpecTestsuiteBase
     public function testAssertReturn355(): void
     {
         $this->runAssertReturnCommand(
-            module: null,
             action: ['type' => 'invoke', 'field' => 'f', 'args' => []],
             expected: [['type' => 'f32', 'value' => '1484783616']],
             line: 622,
@@ -3368,7 +3279,6 @@ final class ConstTest extends SpecTestsuiteBase
     public function testAssertReturn357(): void
     {
         $this->runAssertReturnCommand(
-            module: null,
             action: ['type' => 'invoke', 'field' => 'f', 'args' => []],
             expected: [['type' => 'f32', 'value' => '3632267264']],
             line: 624,
@@ -3389,7 +3299,6 @@ final class ConstTest extends SpecTestsuiteBase
     public function testAssertReturn359(): void
     {
         $this->runAssertReturnCommand(
-            module: null,
             action: ['type' => 'invoke', 'field' => 'f', 'args' => []],
             expected: [['type' => 'f32', 'value' => '1484783617']],
             line: 626,
@@ -3410,7 +3319,6 @@ final class ConstTest extends SpecTestsuiteBase
     public function testAssertReturn361(): void
     {
         $this->runAssertReturnCommand(
-            module: null,
             action: ['type' => 'invoke', 'field' => 'f', 'args' => []],
             expected: [['type' => 'f32', 'value' => '3632267265']],
             line: 628,
@@ -3431,7 +3339,6 @@ final class ConstTest extends SpecTestsuiteBase
     public function testAssertReturn363(): void
     {
         $this->runAssertReturnCommand(
-            module: null,
             action: ['type' => 'invoke', 'field' => 'f', 'args' => []],
             expected: [['type' => 'f32', 'value' => '1484783617']],
             line: 630,
@@ -3452,7 +3359,6 @@ final class ConstTest extends SpecTestsuiteBase
     public function testAssertReturn365(): void
     {
         $this->runAssertReturnCommand(
-            module: null,
             action: ['type' => 'invoke', 'field' => 'f', 'args' => []],
             expected: [['type' => 'f32', 'value' => '3632267265']],
             line: 632,
@@ -3473,7 +3379,6 @@ final class ConstTest extends SpecTestsuiteBase
     public function testAssertReturn367(): void
     {
         $this->runAssertReturnCommand(
-            module: null,
             action: ['type' => 'invoke', 'field' => 'f', 'args' => []],
             expected: [['type' => 'f32', 'value' => '1484783617']],
             line: 634,
@@ -3494,7 +3399,6 @@ final class ConstTest extends SpecTestsuiteBase
     public function testAssertReturn369(): void
     {
         $this->runAssertReturnCommand(
-            module: null,
             action: ['type' => 'invoke', 'field' => 'f', 'args' => []],
             expected: [['type' => 'f32', 'value' => '3632267265']],
             line: 636,
@@ -3515,7 +3419,6 @@ final class ConstTest extends SpecTestsuiteBase
     public function testAssertReturn371(): void
     {
         $this->runAssertReturnCommand(
-            module: null,
             action: ['type' => 'invoke', 'field' => 'f', 'args' => []],
             expected: [['type' => 'f32', 'value' => '1484783617']],
             line: 638,
@@ -3536,7 +3439,6 @@ final class ConstTest extends SpecTestsuiteBase
     public function testAssertReturn373(): void
     {
         $this->runAssertReturnCommand(
-            module: null,
             action: ['type' => 'invoke', 'field' => 'f', 'args' => []],
             expected: [['type' => 'f32', 'value' => '3632267265']],
             line: 640,
@@ -3557,7 +3459,6 @@ final class ConstTest extends SpecTestsuiteBase
     public function testAssertReturn375(): void
     {
         $this->runAssertReturnCommand(
-            module: null,
             action: ['type' => 'invoke', 'field' => 'f', 'args' => []],
             expected: [['type' => 'f32', 'value' => '1484783617']],
             line: 642,
@@ -3578,7 +3479,6 @@ final class ConstTest extends SpecTestsuiteBase
     public function testAssertReturn377(): void
     {
         $this->runAssertReturnCommand(
-            module: null,
             action: ['type' => 'invoke', 'field' => 'f', 'args' => []],
             expected: [['type' => 'f32', 'value' => '3632267265']],
             line: 644,
@@ -3599,7 +3499,6 @@ final class ConstTest extends SpecTestsuiteBase
     public function testAssertReturn379(): void
     {
         $this->runAssertReturnCommand(
-            module: null,
             action: ['type' => 'invoke', 'field' => 'f', 'args' => []],
             expected: [['type' => 'f32', 'value' => '1484783618']],
             line: 646,
@@ -3620,7 +3519,6 @@ final class ConstTest extends SpecTestsuiteBase
     public function testAssertReturn381(): void
     {
         $this->runAssertReturnCommand(
-            module: null,
             action: ['type' => 'invoke', 'field' => 'f', 'args' => []],
             expected: [['type' => 'f32', 'value' => '3632267266']],
             line: 648,
@@ -3641,7 +3539,6 @@ final class ConstTest extends SpecTestsuiteBase
     public function testAssertReturn383(): void
     {
         $this->runAssertReturnCommand(
-            module: null,
             action: ['type' => 'invoke', 'field' => 'f', 'args' => []],
             expected: [['type' => 'f32', 'value' => '1484783616']],
             line: 651,
@@ -3662,7 +3559,6 @@ final class ConstTest extends SpecTestsuiteBase
     public function testAssertReturn385(): void
     {
         $this->runAssertReturnCommand(
-            module: null,
             action: ['type' => 'invoke', 'field' => 'f', 'args' => []],
             expected: [['type' => 'f32', 'value' => '3632267264']],
             line: 653,
@@ -3683,7 +3579,6 @@ final class ConstTest extends SpecTestsuiteBase
     public function testAssertReturn387(): void
     {
         $this->runAssertReturnCommand(
-            module: null,
             action: ['type' => 'invoke', 'field' => 'f', 'args' => []],
             expected: [['type' => 'f32', 'value' => '1484783617']],
             line: 655,
@@ -3704,7 +3599,6 @@ final class ConstTest extends SpecTestsuiteBase
     public function testAssertReturn389(): void
     {
         $this->runAssertReturnCommand(
-            module: null,
             action: ['type' => 'invoke', 'field' => 'f', 'args' => []],
             expected: [['type' => 'f32', 'value' => '3632267265']],
             line: 657,
@@ -3725,7 +3619,6 @@ final class ConstTest extends SpecTestsuiteBase
     public function testAssertReturn391(): void
     {
         $this->runAssertReturnCommand(
-            module: null,
             action: ['type' => 'invoke', 'field' => 'f', 'args' => []],
             expected: [['type' => 'f32', 'value' => '1484783617']],
             line: 659,
@@ -3746,7 +3639,6 @@ final class ConstTest extends SpecTestsuiteBase
     public function testAssertReturn393(): void
     {
         $this->runAssertReturnCommand(
-            module: null,
             action: ['type' => 'invoke', 'field' => 'f', 'args' => []],
             expected: [['type' => 'f32', 'value' => '3632267265']],
             line: 661,
@@ -3767,7 +3659,6 @@ final class ConstTest extends SpecTestsuiteBase
     public function testAssertReturn395(): void
     {
         $this->runAssertReturnCommand(
-            module: null,
             action: ['type' => 'invoke', 'field' => 'f', 'args' => []],
             expected: [['type' => 'f32', 'value' => '1484783618']],
             line: 663,
@@ -3788,7 +3679,6 @@ final class ConstTest extends SpecTestsuiteBase
     public function testAssertReturn397(): void
     {
         $this->runAssertReturnCommand(
-            module: null,
             action: ['type' => 'invoke', 'field' => 'f', 'args' => []],
             expected: [['type' => 'f32', 'value' => '3632267266']],
             line: 665,
@@ -3809,7 +3699,6 @@ final class ConstTest extends SpecTestsuiteBase
     public function testAssertReturn399(): void
     {
         $this->runAssertReturnCommand(
-            module: null,
             action: ['type' => 'invoke', 'field' => 'f', 'args' => []],
             expected: [['type' => 'f32', 'value' => '0']],
             line: 669,
@@ -3830,7 +3719,6 @@ final class ConstTest extends SpecTestsuiteBase
     public function testAssertReturn401(): void
     {
         $this->runAssertReturnCommand(
-            module: null,
             action: ['type' => 'invoke', 'field' => 'f', 'args' => []],
             expected: [['type' => 'f32', 'value' => '2147483648']],
             line: 671,
@@ -3851,7 +3739,6 @@ final class ConstTest extends SpecTestsuiteBase
     public function testAssertReturn403(): void
     {
         $this->runAssertReturnCommand(
-            module: null,
             action: ['type' => 'invoke', 'field' => 'f', 'args' => []],
             expected: [['type' => 'f32', 'value' => '1']],
             line: 673,
@@ -3872,7 +3759,6 @@ final class ConstTest extends SpecTestsuiteBase
     public function testAssertReturn405(): void
     {
         $this->runAssertReturnCommand(
-            module: null,
             action: ['type' => 'invoke', 'field' => 'f', 'args' => []],
             expected: [['type' => 'f32', 'value' => '2147483649']],
             line: 675,
@@ -3893,7 +3779,6 @@ final class ConstTest extends SpecTestsuiteBase
     public function testAssertReturn407(): void
     {
         $this->runAssertReturnCommand(
-            module: null,
             action: ['type' => 'invoke', 'field' => 'f', 'args' => []],
             expected: [['type' => 'f32', 'value' => '1']],
             line: 677,
@@ -3914,7 +3799,6 @@ final class ConstTest extends SpecTestsuiteBase
     public function testAssertReturn409(): void
     {
         $this->runAssertReturnCommand(
-            module: null,
             action: ['type' => 'invoke', 'field' => 'f', 'args' => []],
             expected: [['type' => 'f32', 'value' => '2147483649']],
             line: 679,
@@ -3935,7 +3819,6 @@ final class ConstTest extends SpecTestsuiteBase
     public function testAssertReturn411(): void
     {
         $this->runAssertReturnCommand(
-            module: null,
             action: ['type' => 'invoke', 'field' => 'f', 'args' => []],
             expected: [['type' => 'f32', 'value' => '1']],
             line: 681,
@@ -3956,7 +3839,6 @@ final class ConstTest extends SpecTestsuiteBase
     public function testAssertReturn413(): void
     {
         $this->runAssertReturnCommand(
-            module: null,
             action: ['type' => 'invoke', 'field' => 'f', 'args' => []],
             expected: [['type' => 'f32', 'value' => '2147483649']],
             line: 683,
@@ -3977,7 +3859,6 @@ final class ConstTest extends SpecTestsuiteBase
     public function testAssertReturn415(): void
     {
         $this->runAssertReturnCommand(
-            module: null,
             action: ['type' => 'invoke', 'field' => 'f', 'args' => []],
             expected: [['type' => 'f32', 'value' => '1']],
             line: 685,
@@ -3998,7 +3879,6 @@ final class ConstTest extends SpecTestsuiteBase
     public function testAssertReturn417(): void
     {
         $this->runAssertReturnCommand(
-            module: null,
             action: ['type' => 'invoke', 'field' => 'f', 'args' => []],
             expected: [['type' => 'f32', 'value' => '2147483649']],
             line: 687,
@@ -4019,7 +3899,6 @@ final class ConstTest extends SpecTestsuiteBase
     public function testAssertReturn419(): void
     {
         $this->runAssertReturnCommand(
-            module: null,
             action: ['type' => 'invoke', 'field' => 'f', 'args' => []],
             expected: [['type' => 'f32', 'value' => '1']],
             line: 689,
@@ -4040,7 +3919,6 @@ final class ConstTest extends SpecTestsuiteBase
     public function testAssertReturn421(): void
     {
         $this->runAssertReturnCommand(
-            module: null,
             action: ['type' => 'invoke', 'field' => 'f', 'args' => []],
             expected: [['type' => 'f32', 'value' => '2147483649']],
             line: 691,
@@ -4061,7 +3939,6 @@ final class ConstTest extends SpecTestsuiteBase
     public function testAssertReturn423(): void
     {
         $this->runAssertReturnCommand(
-            module: null,
             action: ['type' => 'invoke', 'field' => 'f', 'args' => []],
             expected: [['type' => 'f32', 'value' => '2']],
             line: 693,
@@ -4082,7 +3959,6 @@ final class ConstTest extends SpecTestsuiteBase
     public function testAssertReturn425(): void
     {
         $this->runAssertReturnCommand(
-            module: null,
             action: ['type' => 'invoke', 'field' => 'f', 'args' => []],
             expected: [['type' => 'f32', 'value' => '2147483650']],
             line: 695,
@@ -4103,7 +3979,6 @@ final class ConstTest extends SpecTestsuiteBase
     public function testAssertReturn427(): void
     {
         $this->runAssertReturnCommand(
-            module: null,
             action: ['type' => 'invoke', 'field' => 'f', 'args' => []],
             expected: [['type' => 'f32', 'value' => '2']],
             line: 697,
@@ -4124,7 +3999,6 @@ final class ConstTest extends SpecTestsuiteBase
     public function testAssertReturn429(): void
     {
         $this->runAssertReturnCommand(
-            module: null,
             action: ['type' => 'invoke', 'field' => 'f', 'args' => []],
             expected: [['type' => 'f32', 'value' => '2147483650']],
             line: 699,
@@ -4145,7 +4019,6 @@ final class ConstTest extends SpecTestsuiteBase
     public function testAssertReturn431(): void
     {
         $this->runAssertReturnCommand(
-            module: null,
             action: ['type' => 'invoke', 'field' => 'f', 'args' => []],
             expected: [['type' => 'f32', 'value' => '2']],
             line: 701,
@@ -4166,7 +4039,6 @@ final class ConstTest extends SpecTestsuiteBase
     public function testAssertReturn433(): void
     {
         $this->runAssertReturnCommand(
-            module: null,
             action: ['type' => 'invoke', 'field' => 'f', 'args' => []],
             expected: [['type' => 'f32', 'value' => '2147483650']],
             line: 703,
@@ -4187,7 +4059,6 @@ final class ConstTest extends SpecTestsuiteBase
     public function testAssertReturn435(): void
     {
         $this->runAssertReturnCommand(
-            module: null,
             action: ['type' => 'invoke', 'field' => 'f', 'args' => []],
             expected: [['type' => 'f32', 'value' => '2']],
             line: 705,
@@ -4208,7 +4079,6 @@ final class ConstTest extends SpecTestsuiteBase
     public function testAssertReturn437(): void
     {
         $this->runAssertReturnCommand(
-            module: null,
             action: ['type' => 'invoke', 'field' => 'f', 'args' => []],
             expected: [['type' => 'f32', 'value' => '2147483650']],
             line: 707,
@@ -4229,7 +4099,6 @@ final class ConstTest extends SpecTestsuiteBase
     public function testAssertReturn439(): void
     {
         $this->runAssertReturnCommand(
-            module: null,
             action: ['type' => 'invoke', 'field' => 'f', 'args' => []],
             expected: [['type' => 'f32', 'value' => '2']],
             line: 709,
@@ -4250,7 +4119,6 @@ final class ConstTest extends SpecTestsuiteBase
     public function testAssertReturn441(): void
     {
         $this->runAssertReturnCommand(
-            module: null,
             action: ['type' => 'invoke', 'field' => 'f', 'args' => []],
             expected: [['type' => 'f32', 'value' => '2147483650']],
             line: 711,
@@ -4271,7 +4139,6 @@ final class ConstTest extends SpecTestsuiteBase
     public function testAssertReturn443(): void
     {
         $this->runAssertReturnCommand(
-            module: null,
             action: ['type' => 'invoke', 'field' => 'f', 'args' => []],
             expected: [['type' => 'f32', 'value' => '2']],
             line: 713,
@@ -4292,7 +4159,6 @@ final class ConstTest extends SpecTestsuiteBase
     public function testAssertReturn445(): void
     {
         $this->runAssertReturnCommand(
-            module: null,
             action: ['type' => 'invoke', 'field' => 'f', 'args' => []],
             expected: [['type' => 'f32', 'value' => '2147483650']],
             line: 715,
@@ -4313,7 +4179,6 @@ final class ConstTest extends SpecTestsuiteBase
     public function testAssertReturn447(): void
     {
         $this->runAssertReturnCommand(
-            module: null,
             action: ['type' => 'invoke', 'field' => 'f', 'args' => []],
             expected: [['type' => 'f32', 'value' => '2']],
             line: 717,
@@ -4334,7 +4199,6 @@ final class ConstTest extends SpecTestsuiteBase
     public function testAssertReturn449(): void
     {
         $this->runAssertReturnCommand(
-            module: null,
             action: ['type' => 'invoke', 'field' => 'f', 'args' => []],
             expected: [['type' => 'f32', 'value' => '2147483650']],
             line: 719,
@@ -4355,7 +4219,6 @@ final class ConstTest extends SpecTestsuiteBase
     public function testAssertReturn451(): void
     {
         $this->runAssertReturnCommand(
-            module: null,
             action: ['type' => 'invoke', 'field' => 'f', 'args' => []],
             expected: [['type' => 'f32', 'value' => '3']],
             line: 721,
@@ -4376,7 +4239,6 @@ final class ConstTest extends SpecTestsuiteBase
     public function testAssertReturn453(): void
     {
         $this->runAssertReturnCommand(
-            module: null,
             action: ['type' => 'invoke', 'field' => 'f', 'args' => []],
             expected: [['type' => 'f32', 'value' => '2147483651']],
             line: 723,
@@ -4397,7 +4259,6 @@ final class ConstTest extends SpecTestsuiteBase
     public function testAssertReturn455(): void
     {
         $this->runAssertReturnCommand(
-            module: null,
             action: ['type' => 'invoke', 'field' => 'f', 'args' => []],
             expected: [['type' => 'f32', 'value' => '2139095039']],
             line: 727,
@@ -4418,7 +4279,6 @@ final class ConstTest extends SpecTestsuiteBase
     public function testAssertReturn457(): void
     {
         $this->runAssertReturnCommand(
-            module: null,
             action: ['type' => 'invoke', 'field' => 'f', 'args' => []],
             expected: [['type' => 'f32', 'value' => '4286578687']],
             line: 729,
@@ -4439,7 +4299,6 @@ final class ConstTest extends SpecTestsuiteBase
     public function testAssertReturn459(): void
     {
         $this->runAssertReturnCommand(
-            module: null,
             action: ['type' => 'invoke', 'field' => 'f', 'args' => []],
             expected: [['type' => 'f32', 'value' => '2139095039']],
             line: 731,
@@ -4460,7 +4319,6 @@ final class ConstTest extends SpecTestsuiteBase
     public function testAssertReturn461(): void
     {
         $this->runAssertReturnCommand(
-            module: null,
             action: ['type' => 'invoke', 'field' => 'f', 'args' => []],
             expected: [['type' => 'f32', 'value' => '4286578687']],
             line: 733,
@@ -4481,7 +4339,6 @@ final class ConstTest extends SpecTestsuiteBase
     public function testAssertReturn463(): void
     {
         $this->runAssertReturnCommand(
-            module: null,
             action: ['type' => 'invoke', 'field' => 'f', 'args' => []],
             expected: [['type' => 'f32', 'value' => '2139095039']],
             line: 735,
@@ -4502,7 +4359,6 @@ final class ConstTest extends SpecTestsuiteBase
     public function testAssertReturn465(): void
     {
         $this->runAssertReturnCommand(
-            module: null,
             action: ['type' => 'invoke', 'field' => 'f', 'args' => []],
             expected: [['type' => 'f32', 'value' => '4286578687']],
             line: 737,
@@ -4523,7 +4379,6 @@ final class ConstTest extends SpecTestsuiteBase
     public function testAssertReturn467(): void
     {
         $this->runAssertReturnCommand(
-            module: null,
             action: ['type' => 'invoke', 'field' => 'f', 'args' => []],
             expected: [['type' => 'f64', 'value' => '1905022642377719808']],
             line: 741,
@@ -4544,7 +4399,6 @@ final class ConstTest extends SpecTestsuiteBase
     public function testAssertReturn469(): void
     {
         $this->runAssertReturnCommand(
-            module: null,
             action: ['type' => 'invoke', 'field' => 'f', 'args' => []],
             expected: [['type' => 'f64', 'value' => '11128394679232495616']],
             line: 743,
@@ -4565,7 +4419,6 @@ final class ConstTest extends SpecTestsuiteBase
     public function testAssertReturn471(): void
     {
         $this->runAssertReturnCommand(
-            module: null,
             action: ['type' => 'invoke', 'field' => 'f', 'args' => []],
             expected: [['type' => 'f64', 'value' => '1905022642377719809']],
             line: 745,
@@ -4586,7 +4439,6 @@ final class ConstTest extends SpecTestsuiteBase
     public function testAssertReturn473(): void
     {
         $this->runAssertReturnCommand(
-            module: null,
             action: ['type' => 'invoke', 'field' => 'f', 'args' => []],
             expected: [['type' => 'f64', 'value' => '11128394679232495617']],
             line: 747,
@@ -4607,7 +4459,6 @@ final class ConstTest extends SpecTestsuiteBase
     public function testAssertReturn475(): void
     {
         $this->runAssertReturnCommand(
-            module: null,
             action: ['type' => 'invoke', 'field' => 'f', 'args' => []],
             expected: [['type' => 'f64', 'value' => '1905022642377719809']],
             line: 749,
@@ -4628,7 +4479,6 @@ final class ConstTest extends SpecTestsuiteBase
     public function testAssertReturn477(): void
     {
         $this->runAssertReturnCommand(
-            module: null,
             action: ['type' => 'invoke', 'field' => 'f', 'args' => []],
             expected: [['type' => 'f64', 'value' => '11128394679232495617']],
             line: 751,
@@ -4649,7 +4499,6 @@ final class ConstTest extends SpecTestsuiteBase
     public function testAssertReturn479(): void
     {
         $this->runAssertReturnCommand(
-            module: null,
             action: ['type' => 'invoke', 'field' => 'f', 'args' => []],
             expected: [['type' => 'f64', 'value' => '1905022642377719809']],
             line: 753,
@@ -4670,7 +4519,6 @@ final class ConstTest extends SpecTestsuiteBase
     public function testAssertReturn481(): void
     {
         $this->runAssertReturnCommand(
-            module: null,
             action: ['type' => 'invoke', 'field' => 'f', 'args' => []],
             expected: [['type' => 'f64', 'value' => '11128394679232495617']],
             line: 755,
@@ -4691,7 +4539,6 @@ final class ConstTest extends SpecTestsuiteBase
     public function testAssertReturn483(): void
     {
         $this->runAssertReturnCommand(
-            module: null,
             action: ['type' => 'invoke', 'field' => 'f', 'args' => []],
             expected: [['type' => 'f64', 'value' => '1905022642377719809']],
             line: 757,
@@ -4712,7 +4559,6 @@ final class ConstTest extends SpecTestsuiteBase
     public function testAssertReturn485(): void
     {
         $this->runAssertReturnCommand(
-            module: null,
             action: ['type' => 'invoke', 'field' => 'f', 'args' => []],
             expected: [['type' => 'f64', 'value' => '11128394679232495617']],
             line: 759,
@@ -4733,7 +4579,6 @@ final class ConstTest extends SpecTestsuiteBase
     public function testAssertReturn487(): void
     {
         $this->runAssertReturnCommand(
-            module: null,
             action: ['type' => 'invoke', 'field' => 'f', 'args' => []],
             expected: [['type' => 'f64', 'value' => '1905022642377719809']],
             line: 761,
@@ -4754,7 +4599,6 @@ final class ConstTest extends SpecTestsuiteBase
     public function testAssertReturn489(): void
     {
         $this->runAssertReturnCommand(
-            module: null,
             action: ['type' => 'invoke', 'field' => 'f', 'args' => []],
             expected: [['type' => 'f64', 'value' => '11128394679232495617']],
             line: 763,
@@ -4775,7 +4619,6 @@ final class ConstTest extends SpecTestsuiteBase
     public function testAssertReturn491(): void
     {
         $this->runAssertReturnCommand(
-            module: null,
             action: ['type' => 'invoke', 'field' => 'f', 'args' => []],
             expected: [['type' => 'f64', 'value' => '1905022642377719810']],
             line: 765,
@@ -4796,7 +4639,6 @@ final class ConstTest extends SpecTestsuiteBase
     public function testAssertReturn493(): void
     {
         $this->runAssertReturnCommand(
-            module: null,
             action: ['type' => 'invoke', 'field' => 'f', 'args' => []],
             expected: [['type' => 'f64', 'value' => '11128394679232495618']],
             line: 767,
@@ -4817,7 +4659,6 @@ final class ConstTest extends SpecTestsuiteBase
     public function testAssertReturn495(): void
     {
         $this->runAssertReturnCommand(
-            module: null,
             action: ['type' => 'invoke', 'field' => 'f', 'args' => []],
             expected: [['type' => 'f64', 'value' => '1905022642377719810']],
             line: 769,
@@ -4838,7 +4679,6 @@ final class ConstTest extends SpecTestsuiteBase
     public function testAssertReturn497(): void
     {
         $this->runAssertReturnCommand(
-            module: null,
             action: ['type' => 'invoke', 'field' => 'f', 'args' => []],
             expected: [['type' => 'f64', 'value' => '11128394679232495618']],
             line: 771,
@@ -4859,7 +4699,6 @@ final class ConstTest extends SpecTestsuiteBase
     public function testAssertReturn499(): void
     {
         $this->runAssertReturnCommand(
-            module: null,
             action: ['type' => 'invoke', 'field' => 'f', 'args' => []],
             expected: [['type' => 'f64', 'value' => '1905022642377719810']],
             line: 773,
@@ -4880,7 +4719,6 @@ final class ConstTest extends SpecTestsuiteBase
     public function testAssertReturn501(): void
     {
         $this->runAssertReturnCommand(
-            module: null,
             action: ['type' => 'invoke', 'field' => 'f', 'args' => []],
             expected: [['type' => 'f64', 'value' => '11128394679232495618']],
             line: 775,
@@ -4901,7 +4739,6 @@ final class ConstTest extends SpecTestsuiteBase
     public function testAssertReturn503(): void
     {
         $this->runAssertReturnCommand(
-            module: null,
             action: ['type' => 'invoke', 'field' => 'f', 'args' => []],
             expected: [['type' => 'f64', 'value' => '1905022642377719810']],
             line: 777,
@@ -4922,7 +4759,6 @@ final class ConstTest extends SpecTestsuiteBase
     public function testAssertReturn505(): void
     {
         $this->runAssertReturnCommand(
-            module: null,
             action: ['type' => 'invoke', 'field' => 'f', 'args' => []],
             expected: [['type' => 'f64', 'value' => '11128394679232495618']],
             line: 779,
@@ -4943,7 +4779,6 @@ final class ConstTest extends SpecTestsuiteBase
     public function testAssertReturn507(): void
     {
         $this->runAssertReturnCommand(
-            module: null,
             action: ['type' => 'invoke', 'field' => 'f', 'args' => []],
             expected: [['type' => 'f64', 'value' => '1905022642377719810']],
             line: 781,
@@ -4964,7 +4799,6 @@ final class ConstTest extends SpecTestsuiteBase
     public function testAssertReturn509(): void
     {
         $this->runAssertReturnCommand(
-            module: null,
             action: ['type' => 'invoke', 'field' => 'f', 'args' => []],
             expected: [['type' => 'f64', 'value' => '11128394679232495618']],
             line: 783,
@@ -4985,7 +4819,6 @@ final class ConstTest extends SpecTestsuiteBase
     public function testAssertReturn511(): void
     {
         $this->runAssertReturnCommand(
-            module: null,
             action: ['type' => 'invoke', 'field' => 'f', 'args' => []],
             expected: [['type' => 'f64', 'value' => '1905022642377719810']],
             line: 785,
@@ -5006,7 +4839,6 @@ final class ConstTest extends SpecTestsuiteBase
     public function testAssertReturn513(): void
     {
         $this->runAssertReturnCommand(
-            module: null,
             action: ['type' => 'invoke', 'field' => 'f', 'args' => []],
             expected: [['type' => 'f64', 'value' => '11128394679232495618']],
             line: 787,
@@ -5027,7 +4859,6 @@ final class ConstTest extends SpecTestsuiteBase
     public function testAssertReturn515(): void
     {
         $this->runAssertReturnCommand(
-            module: null,
             action: ['type' => 'invoke', 'field' => 'f', 'args' => []],
             expected: [['type' => 'f64', 'value' => '1905022642377719811']],
             line: 789,
@@ -5048,7 +4879,6 @@ final class ConstTest extends SpecTestsuiteBase
     public function testAssertReturn517(): void
     {
         $this->runAssertReturnCommand(
-            module: null,
             action: ['type' => 'invoke', 'field' => 'f', 'args' => []],
             expected: [['type' => 'f64', 'value' => '11128394679232495619']],
             line: 791,
@@ -5069,7 +4899,6 @@ final class ConstTest extends SpecTestsuiteBase
     public function testAssertReturn519(): void
     {
         $this->runAssertReturnCommand(
-            module: null,
             action: ['type' => 'invoke', 'field' => 'f', 'args' => []],
             expected: [['type' => 'f64', 'value' => '1905022642377719808']],
             line: 794,
@@ -5090,7 +4919,6 @@ final class ConstTest extends SpecTestsuiteBase
     public function testAssertReturn521(): void
     {
         $this->runAssertReturnCommand(
-            module: null,
             action: ['type' => 'invoke', 'field' => 'f', 'args' => []],
             expected: [['type' => 'f64', 'value' => '11128394679232495616']],
             line: 796,
@@ -5111,7 +4939,6 @@ final class ConstTest extends SpecTestsuiteBase
     public function testAssertReturn523(): void
     {
         $this->runAssertReturnCommand(
-            module: null,
             action: ['type' => 'invoke', 'field' => 'f', 'args' => []],
             expected: [['type' => 'f64', 'value' => '1905022642377719809']],
             line: 798,
@@ -5132,7 +4959,6 @@ final class ConstTest extends SpecTestsuiteBase
     public function testAssertReturn525(): void
     {
         $this->runAssertReturnCommand(
-            module: null,
             action: ['type' => 'invoke', 'field' => 'f', 'args' => []],
             expected: [['type' => 'f64', 'value' => '11128394679232495617']],
             line: 800,
@@ -5153,7 +4979,6 @@ final class ConstTest extends SpecTestsuiteBase
     public function testAssertReturn527(): void
     {
         $this->runAssertReturnCommand(
-            module: null,
             action: ['type' => 'invoke', 'field' => 'f', 'args' => []],
             expected: [['type' => 'f64', 'value' => '1905022642377719809']],
             line: 802,
@@ -5174,7 +4999,6 @@ final class ConstTest extends SpecTestsuiteBase
     public function testAssertReturn529(): void
     {
         $this->runAssertReturnCommand(
-            module: null,
             action: ['type' => 'invoke', 'field' => 'f', 'args' => []],
             expected: [['type' => 'f64', 'value' => '11128394679232495617']],
             line: 804,
@@ -5195,7 +5019,6 @@ final class ConstTest extends SpecTestsuiteBase
     public function testAssertReturn531(): void
     {
         $this->runAssertReturnCommand(
-            module: null,
             action: ['type' => 'invoke', 'field' => 'f', 'args' => []],
             expected: [['type' => 'f64', 'value' => '1905022642377719809']],
             line: 806,
@@ -5216,7 +5039,6 @@ final class ConstTest extends SpecTestsuiteBase
     public function testAssertReturn533(): void
     {
         $this->runAssertReturnCommand(
-            module: null,
             action: ['type' => 'invoke', 'field' => 'f', 'args' => []],
             expected: [['type' => 'f64', 'value' => '11128394679232495617']],
             line: 808,
@@ -5237,7 +5059,6 @@ final class ConstTest extends SpecTestsuiteBase
     public function testAssertReturn535(): void
     {
         $this->runAssertReturnCommand(
-            module: null,
             action: ['type' => 'invoke', 'field' => 'f', 'args' => []],
             expected: [['type' => 'f64', 'value' => '1905022642377719809']],
             line: 810,
@@ -5258,7 +5079,6 @@ final class ConstTest extends SpecTestsuiteBase
     public function testAssertReturn537(): void
     {
         $this->runAssertReturnCommand(
-            module: null,
             action: ['type' => 'invoke', 'field' => 'f', 'args' => []],
             expected: [['type' => 'f64', 'value' => '11128394679232495617']],
             line: 812,
@@ -5279,7 +5099,6 @@ final class ConstTest extends SpecTestsuiteBase
     public function testAssertReturn539(): void
     {
         $this->runAssertReturnCommand(
-            module: null,
             action: ['type' => 'invoke', 'field' => 'f', 'args' => []],
             expected: [['type' => 'f64', 'value' => '1905022642377719809']],
             line: 814,
@@ -5300,7 +5119,6 @@ final class ConstTest extends SpecTestsuiteBase
     public function testAssertReturn541(): void
     {
         $this->runAssertReturnCommand(
-            module: null,
             action: ['type' => 'invoke', 'field' => 'f', 'args' => []],
             expected: [['type' => 'f64', 'value' => '11128394679232495617']],
             line: 816,
@@ -5321,7 +5139,6 @@ final class ConstTest extends SpecTestsuiteBase
     public function testAssertReturn543(): void
     {
         $this->runAssertReturnCommand(
-            module: null,
             action: ['type' => 'invoke', 'field' => 'f', 'args' => []],
             expected: [['type' => 'f64', 'value' => '1905022642377719810']],
             line: 818,
@@ -5342,7 +5159,6 @@ final class ConstTest extends SpecTestsuiteBase
     public function testAssertReturn545(): void
     {
         $this->runAssertReturnCommand(
-            module: null,
             action: ['type' => 'invoke', 'field' => 'f', 'args' => []],
             expected: [['type' => 'f64', 'value' => '11128394679232495618']],
             line: 820,
@@ -5363,7 +5179,6 @@ final class ConstTest extends SpecTestsuiteBase
     public function testAssertReturn547(): void
     {
         $this->runAssertReturnCommand(
-            module: null,
             action: ['type' => 'invoke', 'field' => 'f', 'args' => []],
             expected: [['type' => 'f64', 'value' => '1905022642377719810']],
             line: 822,
@@ -5384,7 +5199,6 @@ final class ConstTest extends SpecTestsuiteBase
     public function testAssertReturn549(): void
     {
         $this->runAssertReturnCommand(
-            module: null,
             action: ['type' => 'invoke', 'field' => 'f', 'args' => []],
             expected: [['type' => 'f64', 'value' => '11128394679232495618']],
             line: 824,
@@ -5405,7 +5219,6 @@ final class ConstTest extends SpecTestsuiteBase
     public function testAssertReturn551(): void
     {
         $this->runAssertReturnCommand(
-            module: null,
             action: ['type' => 'invoke', 'field' => 'f', 'args' => []],
             expected: [['type' => 'f64', 'value' => '1905022642377719810']],
             line: 826,
@@ -5426,7 +5239,6 @@ final class ConstTest extends SpecTestsuiteBase
     public function testAssertReturn553(): void
     {
         $this->runAssertReturnCommand(
-            module: null,
             action: ['type' => 'invoke', 'field' => 'f', 'args' => []],
             expected: [['type' => 'f64', 'value' => '11128394679232495618']],
             line: 828,
@@ -5447,7 +5259,6 @@ final class ConstTest extends SpecTestsuiteBase
     public function testAssertReturn555(): void
     {
         $this->runAssertReturnCommand(
-            module: null,
             action: ['type' => 'invoke', 'field' => 'f', 'args' => []],
             expected: [['type' => 'f64', 'value' => '1905022642377719810']],
             line: 830,
@@ -5468,7 +5279,6 @@ final class ConstTest extends SpecTestsuiteBase
     public function testAssertReturn557(): void
     {
         $this->runAssertReturnCommand(
-            module: null,
             action: ['type' => 'invoke', 'field' => 'f', 'args' => []],
             expected: [['type' => 'f64', 'value' => '11128394679232495618']],
             line: 832,
@@ -5489,7 +5299,6 @@ final class ConstTest extends SpecTestsuiteBase
     public function testAssertReturn559(): void
     {
         $this->runAssertReturnCommand(
-            module: null,
             action: ['type' => 'invoke', 'field' => 'f', 'args' => []],
             expected: [['type' => 'f64', 'value' => '1905022642377719810']],
             line: 834,
@@ -5510,7 +5319,6 @@ final class ConstTest extends SpecTestsuiteBase
     public function testAssertReturn561(): void
     {
         $this->runAssertReturnCommand(
-            module: null,
             action: ['type' => 'invoke', 'field' => 'f', 'args' => []],
             expected: [['type' => 'f64', 'value' => '11128394679232495618']],
             line: 836,
@@ -5531,7 +5339,6 @@ final class ConstTest extends SpecTestsuiteBase
     public function testAssertReturn563(): void
     {
         $this->runAssertReturnCommand(
-            module: null,
             action: ['type' => 'invoke', 'field' => 'f', 'args' => []],
             expected: [['type' => 'f64', 'value' => '1905022642377719810']],
             line: 838,
@@ -5552,7 +5359,6 @@ final class ConstTest extends SpecTestsuiteBase
     public function testAssertReturn565(): void
     {
         $this->runAssertReturnCommand(
-            module: null,
             action: ['type' => 'invoke', 'field' => 'f', 'args' => []],
             expected: [['type' => 'f64', 'value' => '11128394679232495618']],
             line: 840,
@@ -5573,7 +5379,6 @@ final class ConstTest extends SpecTestsuiteBase
     public function testAssertReturn567(): void
     {
         $this->runAssertReturnCommand(
-            module: null,
             action: ['type' => 'invoke', 'field' => 'f', 'args' => []],
             expected: [['type' => 'f64', 'value' => '1905022642377719811']],
             line: 842,
@@ -5594,7 +5399,6 @@ final class ConstTest extends SpecTestsuiteBase
     public function testAssertReturn569(): void
     {
         $this->runAssertReturnCommand(
-            module: null,
             action: ['type' => 'invoke', 'field' => 'f', 'args' => []],
             expected: [['type' => 'f64', 'value' => '11128394679232495619']],
             line: 844,
@@ -5615,7 +5419,6 @@ final class ConstTest extends SpecTestsuiteBase
     public function testAssertReturn571(): void
     {
         $this->runAssertReturnCommand(
-            module: null,
             action: ['type' => 'invoke', 'field' => 'f', 'args' => []],
             expected: [['type' => 'f64', 'value' => '9106278446543142912']],
             line: 847,
@@ -5636,7 +5439,6 @@ final class ConstTest extends SpecTestsuiteBase
     public function testAssertReturn573(): void
     {
         $this->runAssertReturnCommand(
-            module: null,
             action: ['type' => 'invoke', 'field' => 'f', 'args' => []],
             expected: [['type' => 'f64', 'value' => '18329650483397918720']],
             line: 849,
@@ -5657,7 +5459,6 @@ final class ConstTest extends SpecTestsuiteBase
     public function testAssertReturn575(): void
     {
         $this->runAssertReturnCommand(
-            module: null,
             action: ['type' => 'invoke', 'field' => 'f', 'args' => []],
             expected: [['type' => 'f64', 'value' => '9106278446543142913']],
             line: 851,
@@ -5678,7 +5479,6 @@ final class ConstTest extends SpecTestsuiteBase
     public function testAssertReturn577(): void
     {
         $this->runAssertReturnCommand(
-            module: null,
             action: ['type' => 'invoke', 'field' => 'f', 'args' => []],
             expected: [['type' => 'f64', 'value' => '18329650483397918721']],
             line: 853,
@@ -5699,7 +5499,6 @@ final class ConstTest extends SpecTestsuiteBase
     public function testAssertReturn579(): void
     {
         $this->runAssertReturnCommand(
-            module: null,
             action: ['type' => 'invoke', 'field' => 'f', 'args' => []],
             expected: [['type' => 'f64', 'value' => '9106278446543142913']],
             line: 855,
@@ -5720,7 +5519,6 @@ final class ConstTest extends SpecTestsuiteBase
     public function testAssertReturn581(): void
     {
         $this->runAssertReturnCommand(
-            module: null,
             action: ['type' => 'invoke', 'field' => 'f', 'args' => []],
             expected: [['type' => 'f64', 'value' => '18329650483397918721']],
             line: 857,
@@ -5741,7 +5539,6 @@ final class ConstTest extends SpecTestsuiteBase
     public function testAssertReturn583(): void
     {
         $this->runAssertReturnCommand(
-            module: null,
             action: ['type' => 'invoke', 'field' => 'f', 'args' => []],
             expected: [['type' => 'f64', 'value' => '9106278446543142914']],
             line: 859,
@@ -5762,7 +5559,6 @@ final class ConstTest extends SpecTestsuiteBase
     public function testAssertReturn585(): void
     {
         $this->runAssertReturnCommand(
-            module: null,
             action: ['type' => 'invoke', 'field' => 'f', 'args' => []],
             expected: [['type' => 'f64', 'value' => '18329650483397918722']],
             line: 861,
@@ -5783,7 +5579,6 @@ final class ConstTest extends SpecTestsuiteBase
     public function testAssertReturn587(): void
     {
         $this->runAssertReturnCommand(
-            module: null,
             action: ['type' => 'invoke', 'field' => 'f', 'args' => []],
             expected: [['type' => 'f64', 'value' => '7309342195222315008']],
             line: 865,
@@ -5804,7 +5599,6 @@ final class ConstTest extends SpecTestsuiteBase
     public function testAssertReturn589(): void
     {
         $this->runAssertReturnCommand(
-            module: null,
             action: ['type' => 'invoke', 'field' => 'f', 'args' => []],
             expected: [['type' => 'f64', 'value' => '16532714232077090816']],
             line: 867,
@@ -5825,7 +5619,6 @@ final class ConstTest extends SpecTestsuiteBase
     public function testAssertReturn591(): void
     {
         $this->runAssertReturnCommand(
-            module: null,
             action: ['type' => 'invoke', 'field' => 'f', 'args' => []],
             expected: [['type' => 'f64', 'value' => '7309342195222315009']],
             line: 869,
@@ -5846,7 +5639,6 @@ final class ConstTest extends SpecTestsuiteBase
     public function testAssertReturn593(): void
     {
         $this->runAssertReturnCommand(
-            module: null,
             action: ['type' => 'invoke', 'field' => 'f', 'args' => []],
             expected: [['type' => 'f64', 'value' => '16532714232077090817']],
             line: 871,
@@ -5867,7 +5659,6 @@ final class ConstTest extends SpecTestsuiteBase
     public function testAssertReturn595(): void
     {
         $this->runAssertReturnCommand(
-            module: null,
             action: ['type' => 'invoke', 'field' => 'f', 'args' => []],
             expected: [['type' => 'f64', 'value' => '7309342195222315009']],
             line: 873,
@@ -5888,7 +5679,6 @@ final class ConstTest extends SpecTestsuiteBase
     public function testAssertReturn597(): void
     {
         $this->runAssertReturnCommand(
-            module: null,
             action: ['type' => 'invoke', 'field' => 'f', 'args' => []],
             expected: [['type' => 'f64', 'value' => '16532714232077090817']],
             line: 875,
@@ -5909,7 +5699,6 @@ final class ConstTest extends SpecTestsuiteBase
     public function testAssertReturn599(): void
     {
         $this->runAssertReturnCommand(
-            module: null,
             action: ['type' => 'invoke', 'field' => 'f', 'args' => []],
             expected: [['type' => 'f64', 'value' => '7309342195222315009']],
             line: 877,
@@ -5930,7 +5719,6 @@ final class ConstTest extends SpecTestsuiteBase
     public function testAssertReturn601(): void
     {
         $this->runAssertReturnCommand(
-            module: null,
             action: ['type' => 'invoke', 'field' => 'f', 'args' => []],
             expected: [['type' => 'f64', 'value' => '16532714232077090817']],
             line: 879,
@@ -5951,7 +5739,6 @@ final class ConstTest extends SpecTestsuiteBase
     public function testAssertReturn603(): void
     {
         $this->runAssertReturnCommand(
-            module: null,
             action: ['type' => 'invoke', 'field' => 'f', 'args' => []],
             expected: [['type' => 'f64', 'value' => '7309342195222315009']],
             line: 881,
@@ -5972,7 +5759,6 @@ final class ConstTest extends SpecTestsuiteBase
     public function testAssertReturn605(): void
     {
         $this->runAssertReturnCommand(
-            module: null,
             action: ['type' => 'invoke', 'field' => 'f', 'args' => []],
             expected: [['type' => 'f64', 'value' => '16532714232077090817']],
             line: 883,
@@ -5993,7 +5779,6 @@ final class ConstTest extends SpecTestsuiteBase
     public function testAssertReturn607(): void
     {
         $this->runAssertReturnCommand(
-            module: null,
             action: ['type' => 'invoke', 'field' => 'f', 'args' => []],
             expected: [['type' => 'f64', 'value' => '7309342195222315009']],
             line: 885,
@@ -6014,7 +5799,6 @@ final class ConstTest extends SpecTestsuiteBase
     public function testAssertReturn609(): void
     {
         $this->runAssertReturnCommand(
-            module: null,
             action: ['type' => 'invoke', 'field' => 'f', 'args' => []],
             expected: [['type' => 'f64', 'value' => '16532714232077090817']],
             line: 887,
@@ -6035,7 +5819,6 @@ final class ConstTest extends SpecTestsuiteBase
     public function testAssertReturn611(): void
     {
         $this->runAssertReturnCommand(
-            module: null,
             action: ['type' => 'invoke', 'field' => 'f', 'args' => []],
             expected: [['type' => 'f64', 'value' => '7309342195222315010']],
             line: 889,
@@ -6056,7 +5839,6 @@ final class ConstTest extends SpecTestsuiteBase
     public function testAssertReturn613(): void
     {
         $this->runAssertReturnCommand(
-            module: null,
             action: ['type' => 'invoke', 'field' => 'f', 'args' => []],
             expected: [['type' => 'f64', 'value' => '16532714232077090818']],
             line: 891,
@@ -6077,7 +5859,6 @@ final class ConstTest extends SpecTestsuiteBase
     public function testAssertReturn615(): void
     {
         $this->runAssertReturnCommand(
-            module: null,
             action: ['type' => 'invoke', 'field' => 'f', 'args' => []],
             expected: [['type' => 'f64', 'value' => '7309342195222315010']],
             line: 893,
@@ -6098,7 +5879,6 @@ final class ConstTest extends SpecTestsuiteBase
     public function testAssertReturn617(): void
     {
         $this->runAssertReturnCommand(
-            module: null,
             action: ['type' => 'invoke', 'field' => 'f', 'args' => []],
             expected: [['type' => 'f64', 'value' => '16532714232077090818']],
             line: 895,
@@ -6119,7 +5899,6 @@ final class ConstTest extends SpecTestsuiteBase
     public function testAssertReturn619(): void
     {
         $this->runAssertReturnCommand(
-            module: null,
             action: ['type' => 'invoke', 'field' => 'f', 'args' => []],
             expected: [['type' => 'f64', 'value' => '7309342195222315010']],
             line: 897,
@@ -6140,7 +5919,6 @@ final class ConstTest extends SpecTestsuiteBase
     public function testAssertReturn621(): void
     {
         $this->runAssertReturnCommand(
-            module: null,
             action: ['type' => 'invoke', 'field' => 'f', 'args' => []],
             expected: [['type' => 'f64', 'value' => '16532714232077090818']],
             line: 899,
@@ -6161,7 +5939,6 @@ final class ConstTest extends SpecTestsuiteBase
     public function testAssertReturn623(): void
     {
         $this->runAssertReturnCommand(
-            module: null,
             action: ['type' => 'invoke', 'field' => 'f', 'args' => []],
             expected: [['type' => 'f64', 'value' => '7309342195222315010']],
             line: 901,
@@ -6182,7 +5959,6 @@ final class ConstTest extends SpecTestsuiteBase
     public function testAssertReturn625(): void
     {
         $this->runAssertReturnCommand(
-            module: null,
             action: ['type' => 'invoke', 'field' => 'f', 'args' => []],
             expected: [['type' => 'f64', 'value' => '16532714232077090818']],
             line: 903,
@@ -6203,7 +5979,6 @@ final class ConstTest extends SpecTestsuiteBase
     public function testAssertReturn627(): void
     {
         $this->runAssertReturnCommand(
-            module: null,
             action: ['type' => 'invoke', 'field' => 'f', 'args' => []],
             expected: [['type' => 'f64', 'value' => '7309342195222315010']],
             line: 905,
@@ -6224,7 +5999,6 @@ final class ConstTest extends SpecTestsuiteBase
     public function testAssertReturn629(): void
     {
         $this->runAssertReturnCommand(
-            module: null,
             action: ['type' => 'invoke', 'field' => 'f', 'args' => []],
             expected: [['type' => 'f64', 'value' => '16532714232077090818']],
             line: 907,
@@ -6245,7 +6019,6 @@ final class ConstTest extends SpecTestsuiteBase
     public function testAssertReturn631(): void
     {
         $this->runAssertReturnCommand(
-            module: null,
             action: ['type' => 'invoke', 'field' => 'f', 'args' => []],
             expected: [['type' => 'f64', 'value' => '7309342195222315010']],
             line: 909,
@@ -6266,7 +6039,6 @@ final class ConstTest extends SpecTestsuiteBase
     public function testAssertReturn633(): void
     {
         $this->runAssertReturnCommand(
-            module: null,
             action: ['type' => 'invoke', 'field' => 'f', 'args' => []],
             expected: [['type' => 'f64', 'value' => '16532714232077090818']],
             line: 911,
@@ -6287,7 +6059,6 @@ final class ConstTest extends SpecTestsuiteBase
     public function testAssertReturn635(): void
     {
         $this->runAssertReturnCommand(
-            module: null,
             action: ['type' => 'invoke', 'field' => 'f', 'args' => []],
             expected: [['type' => 'f64', 'value' => '7309342195222315010']],
             line: 913,
@@ -6308,7 +6079,6 @@ final class ConstTest extends SpecTestsuiteBase
     public function testAssertReturn637(): void
     {
         $this->runAssertReturnCommand(
-            module: null,
             action: ['type' => 'invoke', 'field' => 'f', 'args' => []],
             expected: [['type' => 'f64', 'value' => '16532714232077090818']],
             line: 915,
@@ -6329,7 +6099,6 @@ final class ConstTest extends SpecTestsuiteBase
     public function testAssertReturn639(): void
     {
         $this->runAssertReturnCommand(
-            module: null,
             action: ['type' => 'invoke', 'field' => 'f', 'args' => []],
             expected: [['type' => 'f64', 'value' => '7309342195222315011']],
             line: 917,
@@ -6350,7 +6119,6 @@ final class ConstTest extends SpecTestsuiteBase
     public function testAssertReturn641(): void
     {
         $this->runAssertReturnCommand(
-            module: null,
             action: ['type' => 'invoke', 'field' => 'f', 'args' => []],
             expected: [['type' => 'f64', 'value' => '16532714232077090819']],
             line: 919,
@@ -6371,7 +6139,6 @@ final class ConstTest extends SpecTestsuiteBase
     public function testAssertReturn643(): void
     {
         $this->runAssertReturnCommand(
-            module: null,
             action: ['type' => 'invoke', 'field' => 'f', 'args' => []],
             expected: [['type' => 'f64', 'value' => '5044031582654955520']],
             line: 922,
@@ -6392,7 +6159,6 @@ final class ConstTest extends SpecTestsuiteBase
     public function testAssertReturn645(): void
     {
         $this->runAssertReturnCommand(
-            module: null,
             action: ['type' => 'invoke', 'field' => 'f', 'args' => []],
             expected: [['type' => 'f64', 'value' => '14267403619509731328']],
             line: 924,
@@ -6413,7 +6179,6 @@ final class ConstTest extends SpecTestsuiteBase
     public function testAssertReturn647(): void
     {
         $this->runAssertReturnCommand(
-            module: null,
             action: ['type' => 'invoke', 'field' => 'f', 'args' => []],
             expected: [['type' => 'f64', 'value' => '5044031582654955521']],
             line: 926,
@@ -6434,7 +6199,6 @@ final class ConstTest extends SpecTestsuiteBase
     public function testAssertReturn649(): void
     {
         $this->runAssertReturnCommand(
-            module: null,
             action: ['type' => 'invoke', 'field' => 'f', 'args' => []],
             expected: [['type' => 'f64', 'value' => '14267403619509731329']],
             line: 928,
@@ -6455,7 +6219,6 @@ final class ConstTest extends SpecTestsuiteBase
     public function testAssertReturn651(): void
     {
         $this->runAssertReturnCommand(
-            module: null,
             action: ['type' => 'invoke', 'field' => 'f', 'args' => []],
             expected: [['type' => 'f64', 'value' => '5044031582654955521']],
             line: 930,
@@ -6476,7 +6239,6 @@ final class ConstTest extends SpecTestsuiteBase
     public function testAssertReturn653(): void
     {
         $this->runAssertReturnCommand(
-            module: null,
             action: ['type' => 'invoke', 'field' => 'f', 'args' => []],
             expected: [['type' => 'f64', 'value' => '14267403619509731329']],
             line: 932,
@@ -6497,7 +6259,6 @@ final class ConstTest extends SpecTestsuiteBase
     public function testAssertReturn655(): void
     {
         $this->runAssertReturnCommand(
-            module: null,
             action: ['type' => 'invoke', 'field' => 'f', 'args' => []],
             expected: [['type' => 'f64', 'value' => '5044031582654955521']],
             line: 934,
@@ -6518,7 +6279,6 @@ final class ConstTest extends SpecTestsuiteBase
     public function testAssertReturn657(): void
     {
         $this->runAssertReturnCommand(
-            module: null,
             action: ['type' => 'invoke', 'field' => 'f', 'args' => []],
             expected: [['type' => 'f64', 'value' => '14267403619509731329']],
             line: 936,
@@ -6539,7 +6299,6 @@ final class ConstTest extends SpecTestsuiteBase
     public function testAssertReturn659(): void
     {
         $this->runAssertReturnCommand(
-            module: null,
             action: ['type' => 'invoke', 'field' => 'f', 'args' => []],
             expected: [['type' => 'f64', 'value' => '5044031582654955521']],
             line: 938,
@@ -6560,7 +6319,6 @@ final class ConstTest extends SpecTestsuiteBase
     public function testAssertReturn661(): void
     {
         $this->runAssertReturnCommand(
-            module: null,
             action: ['type' => 'invoke', 'field' => 'f', 'args' => []],
             expected: [['type' => 'f64', 'value' => '14267403619509731329']],
             line: 940,
@@ -6581,7 +6339,6 @@ final class ConstTest extends SpecTestsuiteBase
     public function testAssertReturn663(): void
     {
         $this->runAssertReturnCommand(
-            module: null,
             action: ['type' => 'invoke', 'field' => 'f', 'args' => []],
             expected: [['type' => 'f64', 'value' => '5044031582654955521']],
             line: 942,
@@ -6602,7 +6359,6 @@ final class ConstTest extends SpecTestsuiteBase
     public function testAssertReturn665(): void
     {
         $this->runAssertReturnCommand(
-            module: null,
             action: ['type' => 'invoke', 'field' => 'f', 'args' => []],
             expected: [['type' => 'f64', 'value' => '14267403619509731329']],
             line: 944,
@@ -6623,7 +6379,6 @@ final class ConstTest extends SpecTestsuiteBase
     public function testAssertReturn667(): void
     {
         $this->runAssertReturnCommand(
-            module: null,
             action: ['type' => 'invoke', 'field' => 'f', 'args' => []],
             expected: [['type' => 'f64', 'value' => '5044031582654955522']],
             line: 946,
@@ -6644,7 +6399,6 @@ final class ConstTest extends SpecTestsuiteBase
     public function testAssertReturn669(): void
     {
         $this->runAssertReturnCommand(
-            module: null,
             action: ['type' => 'invoke', 'field' => 'f', 'args' => []],
             expected: [['type' => 'f64', 'value' => '14267403619509731330']],
             line: 948,
@@ -6665,7 +6419,6 @@ final class ConstTest extends SpecTestsuiteBase
     public function testAssertReturn671(): void
     {
         $this->runAssertReturnCommand(
-            module: null,
             action: ['type' => 'invoke', 'field' => 'f', 'args' => []],
             expected: [['type' => 'f64', 'value' => '5044031582654955522']],
             line: 950,
@@ -6686,7 +6439,6 @@ final class ConstTest extends SpecTestsuiteBase
     public function testAssertReturn673(): void
     {
         $this->runAssertReturnCommand(
-            module: null,
             action: ['type' => 'invoke', 'field' => 'f', 'args' => []],
             expected: [['type' => 'f64', 'value' => '14267403619509731330']],
             line: 952,
@@ -6707,7 +6459,6 @@ final class ConstTest extends SpecTestsuiteBase
     public function testAssertReturn675(): void
     {
         $this->runAssertReturnCommand(
-            module: null,
             action: ['type' => 'invoke', 'field' => 'f', 'args' => []],
             expected: [['type' => 'f64', 'value' => '5044031582654955522']],
             line: 954,
@@ -6728,7 +6479,6 @@ final class ConstTest extends SpecTestsuiteBase
     public function testAssertReturn677(): void
     {
         $this->runAssertReturnCommand(
-            module: null,
             action: ['type' => 'invoke', 'field' => 'f', 'args' => []],
             expected: [['type' => 'f64', 'value' => '14267403619509731330']],
             line: 956,
@@ -6749,7 +6499,6 @@ final class ConstTest extends SpecTestsuiteBase
     public function testAssertReturn679(): void
     {
         $this->runAssertReturnCommand(
-            module: null,
             action: ['type' => 'invoke', 'field' => 'f', 'args' => []],
             expected: [['type' => 'f64', 'value' => '5044031582654955522']],
             line: 958,
@@ -6770,7 +6519,6 @@ final class ConstTest extends SpecTestsuiteBase
     public function testAssertReturn681(): void
     {
         $this->runAssertReturnCommand(
-            module: null,
             action: ['type' => 'invoke', 'field' => 'f', 'args' => []],
             expected: [['type' => 'f64', 'value' => '14267403619509731330']],
             line: 960,
@@ -6791,7 +6539,6 @@ final class ConstTest extends SpecTestsuiteBase
     public function testAssertReturn683(): void
     {
         $this->runAssertReturnCommand(
-            module: null,
             action: ['type' => 'invoke', 'field' => 'f', 'args' => []],
             expected: [['type' => 'f64', 'value' => '5044031582654955522']],
             line: 962,
@@ -6812,7 +6559,6 @@ final class ConstTest extends SpecTestsuiteBase
     public function testAssertReturn685(): void
     {
         $this->runAssertReturnCommand(
-            module: null,
             action: ['type' => 'invoke', 'field' => 'f', 'args' => []],
             expected: [['type' => 'f64', 'value' => '14267403619509731330']],
             line: 964,
@@ -6833,7 +6579,6 @@ final class ConstTest extends SpecTestsuiteBase
     public function testAssertReturn687(): void
     {
         $this->runAssertReturnCommand(
-            module: null,
             action: ['type' => 'invoke', 'field' => 'f', 'args' => []],
             expected: [['type' => 'f64', 'value' => '5044031582654955522']],
             line: 966,
@@ -6854,7 +6599,6 @@ final class ConstTest extends SpecTestsuiteBase
     public function testAssertReturn689(): void
     {
         $this->runAssertReturnCommand(
-            module: null,
             action: ['type' => 'invoke', 'field' => 'f', 'args' => []],
             expected: [['type' => 'f64', 'value' => '14267403619509731330']],
             line: 968,
@@ -6875,7 +6619,6 @@ final class ConstTest extends SpecTestsuiteBase
     public function testAssertReturn691(): void
     {
         $this->runAssertReturnCommand(
-            module: null,
             action: ['type' => 'invoke', 'field' => 'f', 'args' => []],
             expected: [['type' => 'f64', 'value' => '5044031582654955522']],
             line: 970,
@@ -6896,7 +6639,6 @@ final class ConstTest extends SpecTestsuiteBase
     public function testAssertReturn693(): void
     {
         $this->runAssertReturnCommand(
-            module: null,
             action: ['type' => 'invoke', 'field' => 'f', 'args' => []],
             expected: [['type' => 'f64', 'value' => '14267403619509731330']],
             line: 972,
@@ -6917,7 +6659,6 @@ final class ConstTest extends SpecTestsuiteBase
     public function testAssertReturn695(): void
     {
         $this->runAssertReturnCommand(
-            module: null,
             action: ['type' => 'invoke', 'field' => 'f', 'args' => []],
             expected: [['type' => 'f64', 'value' => '5044031582654955523']],
             line: 974,
@@ -6938,7 +6679,6 @@ final class ConstTest extends SpecTestsuiteBase
     public function testAssertReturn697(): void
     {
         $this->runAssertReturnCommand(
-            module: null,
             action: ['type' => 'invoke', 'field' => 'f', 'args' => []],
             expected: [['type' => 'f64', 'value' => '14267403619509731331']],
             line: 976,
@@ -6959,7 +6699,6 @@ final class ConstTest extends SpecTestsuiteBase
     public function testAssertReturn699(): void
     {
         $this->runAssertReturnCommand(
-            module: null,
             action: ['type' => 'invoke', 'field' => 'f', 'args' => []],
             expected: [['type' => 'f64', 'value' => '4877398396442247168']],
             line: 979,
@@ -6980,7 +6719,6 @@ final class ConstTest extends SpecTestsuiteBase
     public function testAssertReturn701(): void
     {
         $this->runAssertReturnCommand(
-            module: null,
             action: ['type' => 'invoke', 'field' => 'f', 'args' => []],
             expected: [['type' => 'f64', 'value' => '14100770433297022976']],
             line: 981,
@@ -7001,7 +6739,6 @@ final class ConstTest extends SpecTestsuiteBase
     public function testAssertReturn703(): void
     {
         $this->runAssertReturnCommand(
-            module: null,
             action: ['type' => 'invoke', 'field' => 'f', 'args' => []],
             expected: [['type' => 'f64', 'value' => '4877398396442247169']],
             line: 983,
@@ -7022,7 +6759,6 @@ final class ConstTest extends SpecTestsuiteBase
     public function testAssertReturn705(): void
     {
         $this->runAssertReturnCommand(
-            module: null,
             action: ['type' => 'invoke', 'field' => 'f', 'args' => []],
             expected: [['type' => 'f64', 'value' => '14100770433297022977']],
             line: 985,
@@ -7043,7 +6779,6 @@ final class ConstTest extends SpecTestsuiteBase
     public function testAssertReturn707(): void
     {
         $this->runAssertReturnCommand(
-            module: null,
             action: ['type' => 'invoke', 'field' => 'f', 'args' => []],
             expected: [['type' => 'f64', 'value' => '4877398396442247169']],
             line: 987,
@@ -7064,7 +6799,6 @@ final class ConstTest extends SpecTestsuiteBase
     public function testAssertReturn709(): void
     {
         $this->runAssertReturnCommand(
-            module: null,
             action: ['type' => 'invoke', 'field' => 'f', 'args' => []],
             expected: [['type' => 'f64', 'value' => '14100770433297022977']],
             line: 989,
@@ -7085,7 +6819,6 @@ final class ConstTest extends SpecTestsuiteBase
     public function testAssertReturn711(): void
     {
         $this->runAssertReturnCommand(
-            module: null,
             action: ['type' => 'invoke', 'field' => 'f', 'args' => []],
             expected: [['type' => 'f64', 'value' => '4877398396442247170']],
             line: 991,
@@ -7106,7 +6839,6 @@ final class ConstTest extends SpecTestsuiteBase
     public function testAssertReturn713(): void
     {
         $this->runAssertReturnCommand(
-            module: null,
             action: ['type' => 'invoke', 'field' => 'f', 'args' => []],
             expected: [['type' => 'f64', 'value' => '14100770433297022978']],
             line: 993,
@@ -7127,7 +6859,6 @@ final class ConstTest extends SpecTestsuiteBase
     public function testAssertReturn715(): void
     {
         $this->runAssertReturnCommand(
-            module: null,
             action: ['type' => 'invoke', 'field' => 'f', 'args' => []],
             expected: [['type' => 'f64', 'value' => '0']],
             line: 997,
@@ -7148,7 +6879,6 @@ final class ConstTest extends SpecTestsuiteBase
     public function testAssertReturn717(): void
     {
         $this->runAssertReturnCommand(
-            module: null,
             action: ['type' => 'invoke', 'field' => 'f', 'args' => []],
             expected: [['type' => 'f64', 'value' => '9223372036854775808']],
             line: 999,
@@ -7169,7 +6899,6 @@ final class ConstTest extends SpecTestsuiteBase
     public function testAssertReturn719(): void
     {
         $this->runAssertReturnCommand(
-            module: null,
             action: ['type' => 'invoke', 'field' => 'f', 'args' => []],
             expected: [['type' => 'f64', 'value' => '1']],
             line: 1001,
@@ -7190,7 +6919,6 @@ final class ConstTest extends SpecTestsuiteBase
     public function testAssertReturn721(): void
     {
         $this->runAssertReturnCommand(
-            module: null,
             action: ['type' => 'invoke', 'field' => 'f', 'args' => []],
             expected: [['type' => 'f64', 'value' => '9223372036854775809']],
             line: 1003,
@@ -7211,7 +6939,6 @@ final class ConstTest extends SpecTestsuiteBase
     public function testAssertReturn723(): void
     {
         $this->runAssertReturnCommand(
-            module: null,
             action: ['type' => 'invoke', 'field' => 'f', 'args' => []],
             expected: [['type' => 'f64', 'value' => '1']],
             line: 1005,
@@ -7232,7 +6959,6 @@ final class ConstTest extends SpecTestsuiteBase
     public function testAssertReturn725(): void
     {
         $this->runAssertReturnCommand(
-            module: null,
             action: ['type' => 'invoke', 'field' => 'f', 'args' => []],
             expected: [['type' => 'f64', 'value' => '9223372036854775809']],
             line: 1007,
@@ -7253,7 +6979,6 @@ final class ConstTest extends SpecTestsuiteBase
     public function testAssertReturn727(): void
     {
         $this->runAssertReturnCommand(
-            module: null,
             action: ['type' => 'invoke', 'field' => 'f', 'args' => []],
             expected: [['type' => 'f64', 'value' => '1']],
             line: 1009,
@@ -7274,7 +6999,6 @@ final class ConstTest extends SpecTestsuiteBase
     public function testAssertReturn729(): void
     {
         $this->runAssertReturnCommand(
-            module: null,
             action: ['type' => 'invoke', 'field' => 'f', 'args' => []],
             expected: [['type' => 'f64', 'value' => '9223372036854775809']],
             line: 1011,
@@ -7295,7 +7019,6 @@ final class ConstTest extends SpecTestsuiteBase
     public function testAssertReturn731(): void
     {
         $this->runAssertReturnCommand(
-            module: null,
             action: ['type' => 'invoke', 'field' => 'f', 'args' => []],
             expected: [['type' => 'f64', 'value' => '1']],
             line: 1013,
@@ -7316,7 +7039,6 @@ final class ConstTest extends SpecTestsuiteBase
     public function testAssertReturn733(): void
     {
         $this->runAssertReturnCommand(
-            module: null,
             action: ['type' => 'invoke', 'field' => 'f', 'args' => []],
             expected: [['type' => 'f64', 'value' => '9223372036854775809']],
             line: 1015,
@@ -7337,7 +7059,6 @@ final class ConstTest extends SpecTestsuiteBase
     public function testAssertReturn735(): void
     {
         $this->runAssertReturnCommand(
-            module: null,
             action: ['type' => 'invoke', 'field' => 'f', 'args' => []],
             expected: [['type' => 'f64', 'value' => '1']],
             line: 1017,
@@ -7358,7 +7079,6 @@ final class ConstTest extends SpecTestsuiteBase
     public function testAssertReturn737(): void
     {
         $this->runAssertReturnCommand(
-            module: null,
             action: ['type' => 'invoke', 'field' => 'f', 'args' => []],
             expected: [['type' => 'f64', 'value' => '9223372036854775809']],
             line: 1019,
@@ -7379,7 +7099,6 @@ final class ConstTest extends SpecTestsuiteBase
     public function testAssertReturn739(): void
     {
         $this->runAssertReturnCommand(
-            module: null,
             action: ['type' => 'invoke', 'field' => 'f', 'args' => []],
             expected: [['type' => 'f64', 'value' => '2']],
             line: 1021,
@@ -7400,7 +7119,6 @@ final class ConstTest extends SpecTestsuiteBase
     public function testAssertReturn741(): void
     {
         $this->runAssertReturnCommand(
-            module: null,
             action: ['type' => 'invoke', 'field' => 'f', 'args' => []],
             expected: [['type' => 'f64', 'value' => '9223372036854775810']],
             line: 1023,
@@ -7421,7 +7139,6 @@ final class ConstTest extends SpecTestsuiteBase
     public function testAssertReturn743(): void
     {
         $this->runAssertReturnCommand(
-            module: null,
             action: ['type' => 'invoke', 'field' => 'f', 'args' => []],
             expected: [['type' => 'f64', 'value' => '2']],
             line: 1025,
@@ -7442,7 +7159,6 @@ final class ConstTest extends SpecTestsuiteBase
     public function testAssertReturn745(): void
     {
         $this->runAssertReturnCommand(
-            module: null,
             action: ['type' => 'invoke', 'field' => 'f', 'args' => []],
             expected: [['type' => 'f64', 'value' => '9223372036854775810']],
             line: 1027,
@@ -7463,7 +7179,6 @@ final class ConstTest extends SpecTestsuiteBase
     public function testAssertReturn747(): void
     {
         $this->runAssertReturnCommand(
-            module: null,
             action: ['type' => 'invoke', 'field' => 'f', 'args' => []],
             expected: [['type' => 'f64', 'value' => '2']],
             line: 1029,
@@ -7484,7 +7199,6 @@ final class ConstTest extends SpecTestsuiteBase
     public function testAssertReturn749(): void
     {
         $this->runAssertReturnCommand(
-            module: null,
             action: ['type' => 'invoke', 'field' => 'f', 'args' => []],
             expected: [['type' => 'f64', 'value' => '9223372036854775810']],
             line: 1031,
@@ -7505,7 +7219,6 @@ final class ConstTest extends SpecTestsuiteBase
     public function testAssertReturn751(): void
     {
         $this->runAssertReturnCommand(
-            module: null,
             action: ['type' => 'invoke', 'field' => 'f', 'args' => []],
             expected: [['type' => 'f64', 'value' => '2']],
             line: 1033,
@@ -7526,7 +7239,6 @@ final class ConstTest extends SpecTestsuiteBase
     public function testAssertReturn753(): void
     {
         $this->runAssertReturnCommand(
-            module: null,
             action: ['type' => 'invoke', 'field' => 'f', 'args' => []],
             expected: [['type' => 'f64', 'value' => '9223372036854775810']],
             line: 1035,
@@ -7547,7 +7259,6 @@ final class ConstTest extends SpecTestsuiteBase
     public function testAssertReturn755(): void
     {
         $this->runAssertReturnCommand(
-            module: null,
             action: ['type' => 'invoke', 'field' => 'f', 'args' => []],
             expected: [['type' => 'f64', 'value' => '2']],
             line: 1037,
@@ -7568,7 +7279,6 @@ final class ConstTest extends SpecTestsuiteBase
     public function testAssertReturn757(): void
     {
         $this->runAssertReturnCommand(
-            module: null,
             action: ['type' => 'invoke', 'field' => 'f', 'args' => []],
             expected: [['type' => 'f64', 'value' => '9223372036854775810']],
             line: 1039,
@@ -7589,7 +7299,6 @@ final class ConstTest extends SpecTestsuiteBase
     public function testAssertReturn759(): void
     {
         $this->runAssertReturnCommand(
-            module: null,
             action: ['type' => 'invoke', 'field' => 'f', 'args' => []],
             expected: [['type' => 'f64', 'value' => '2']],
             line: 1041,
@@ -7610,7 +7319,6 @@ final class ConstTest extends SpecTestsuiteBase
     public function testAssertReturn761(): void
     {
         $this->runAssertReturnCommand(
-            module: null,
             action: ['type' => 'invoke', 'field' => 'f', 'args' => []],
             expected: [['type' => 'f64', 'value' => '9223372036854775810']],
             line: 1043,
@@ -7631,7 +7339,6 @@ final class ConstTest extends SpecTestsuiteBase
     public function testAssertReturn763(): void
     {
         $this->runAssertReturnCommand(
-            module: null,
             action: ['type' => 'invoke', 'field' => 'f', 'args' => []],
             expected: [['type' => 'f64', 'value' => '2']],
             line: 1045,
@@ -7652,7 +7359,6 @@ final class ConstTest extends SpecTestsuiteBase
     public function testAssertReturn765(): void
     {
         $this->runAssertReturnCommand(
-            module: null,
             action: ['type' => 'invoke', 'field' => 'f', 'args' => []],
             expected: [['type' => 'f64', 'value' => '9223372036854775810']],
             line: 1047,
@@ -7673,7 +7379,6 @@ final class ConstTest extends SpecTestsuiteBase
     public function testAssertReturn767(): void
     {
         $this->runAssertReturnCommand(
-            module: null,
             action: ['type' => 'invoke', 'field' => 'f', 'args' => []],
             expected: [['type' => 'f64', 'value' => '4503599627370499']],
             line: 1049,
@@ -7694,7 +7399,6 @@ final class ConstTest extends SpecTestsuiteBase
     public function testAssertReturn769(): void
     {
         $this->runAssertReturnCommand(
-            module: null,
             action: ['type' => 'invoke', 'field' => 'f', 'args' => []],
             expected: [['type' => 'f64', 'value' => '9227875636482146307']],
             line: 1051,
@@ -7715,7 +7419,6 @@ final class ConstTest extends SpecTestsuiteBase
     public function testAssertReturn771(): void
     {
         $this->runAssertReturnCommand(
-            module: null,
             action: ['type' => 'invoke', 'field' => 'f', 'args' => []],
             expected: [['type' => 'f64', 'value' => '9218868437227405311']],
             line: 1055,
@@ -7736,7 +7439,6 @@ final class ConstTest extends SpecTestsuiteBase
     public function testAssertReturn773(): void
     {
         $this->runAssertReturnCommand(
-            module: null,
             action: ['type' => 'invoke', 'field' => 'f', 'args' => []],
             expected: [['type' => 'f64', 'value' => '18442240474082181119']],
             line: 1057,
@@ -7757,7 +7459,6 @@ final class ConstTest extends SpecTestsuiteBase
     public function testAssertReturn775(): void
     {
         $this->runAssertReturnCommand(
-            module: null,
             action: ['type' => 'invoke', 'field' => 'f', 'args' => []],
             expected: [['type' => 'f64', 'value' => '9218868437227405311']],
             line: 1059,
@@ -7778,7 +7479,6 @@ final class ConstTest extends SpecTestsuiteBase
     public function testAssertReturn777(): void
     {
         $this->runAssertReturnCommand(
-            module: null,
             action: ['type' => 'invoke', 'field' => 'f', 'args' => []],
             expected: [['type' => 'f64', 'value' => '18442240474082181119']],
             line: 1061,

@@ -23,7 +23,6 @@ final class RefIsNullTest extends SpecTestsuiteBase
     public function testAssertReturn1(): void
     {
         $this->runAssertReturnCommand(
-            module: null,
             action: ['type' => 'invoke', 'field' => 'funcref', 'args' => [['type' => 'funcref', 'value' => 'null']]],
             expected: [['type' => 'i32', 'value' => '1']],
             line: 30,
@@ -34,7 +33,6 @@ final class RefIsNullTest extends SpecTestsuiteBase
     public function testAssertReturn2(): void
     {
         $this->runAssertReturnCommand(
-            module: null,
             action: ['type' => 'invoke', 'field' => 'externref', 'args' => [['type' => 'externref', 'value' => 'null']]],
             expected: [['type' => 'i32', 'value' => '1']],
             line: 31,
@@ -45,7 +43,6 @@ final class RefIsNullTest extends SpecTestsuiteBase
     public function testAssertReturn3(): void
     {
         $this->runAssertReturnCommand(
-            module: null,
             action: ['type' => 'invoke', 'field' => 'externref', 'args' => [['type' => 'externref', 'value' => '1']]],
             expected: [['type' => 'i32', 'value' => '0']],
             line: 33,
@@ -56,7 +53,6 @@ final class RefIsNullTest extends SpecTestsuiteBase
     public function testAction4(): void
     {
         $this->runActionCommand(
-            module: null,
             action: ['type' => 'invoke', 'field' => 'init', 'args' => [['type' => 'externref', 'value' => '0']]],
             line: 35,
         );
@@ -66,7 +62,6 @@ final class RefIsNullTest extends SpecTestsuiteBase
     public function testAssertReturn5(): void
     {
         $this->runAssertReturnCommand(
-            module: null,
             action: ['type' => 'invoke', 'field' => 'funcref-elem', 'args' => [['type' => 'i32', 'value' => '0']]],
             expected: [['type' => 'i32', 'value' => '1']],
             line: 37,
@@ -77,7 +72,6 @@ final class RefIsNullTest extends SpecTestsuiteBase
     public function testAssertReturn6(): void
     {
         $this->runAssertReturnCommand(
-            module: null,
             action: ['type' => 'invoke', 'field' => 'externref-elem', 'args' => [['type' => 'i32', 'value' => '0']]],
             expected: [['type' => 'i32', 'value' => '1']],
             line: 38,
@@ -88,7 +82,6 @@ final class RefIsNullTest extends SpecTestsuiteBase
     public function testAssertReturn7(): void
     {
         $this->runAssertReturnCommand(
-            module: null,
             action: ['type' => 'invoke', 'field' => 'funcref-elem', 'args' => [['type' => 'i32', 'value' => '1']]],
             expected: [['type' => 'i32', 'value' => '0']],
             line: 40,
@@ -99,7 +92,6 @@ final class RefIsNullTest extends SpecTestsuiteBase
     public function testAssertReturn8(): void
     {
         $this->runAssertReturnCommand(
-            module: null,
             action: ['type' => 'invoke', 'field' => 'externref-elem', 'args' => [['type' => 'i32', 'value' => '1']]],
             expected: [['type' => 'i32', 'value' => '0']],
             line: 41,
@@ -110,7 +102,6 @@ final class RefIsNullTest extends SpecTestsuiteBase
     public function testAction9(): void
     {
         $this->runActionCommand(
-            module: null,
             action: ['type' => 'invoke', 'field' => 'deinit', 'args' => []],
             line: 43,
         );
@@ -120,7 +111,6 @@ final class RefIsNullTest extends SpecTestsuiteBase
     public function testAssertReturn10(): void
     {
         $this->runAssertReturnCommand(
-            module: null,
             action: ['type' => 'invoke', 'field' => 'funcref-elem', 'args' => [['type' => 'i32', 'value' => '0']]],
             expected: [['type' => 'i32', 'value' => '1']],
             line: 45,
@@ -131,7 +121,6 @@ final class RefIsNullTest extends SpecTestsuiteBase
     public function testAssertReturn11(): void
     {
         $this->runAssertReturnCommand(
-            module: null,
             action: ['type' => 'invoke', 'field' => 'externref-elem', 'args' => [['type' => 'i32', 'value' => '0']]],
             expected: [['type' => 'i32', 'value' => '1']],
             line: 46,
@@ -142,7 +131,6 @@ final class RefIsNullTest extends SpecTestsuiteBase
     public function testAssertReturn12(): void
     {
         $this->runAssertReturnCommand(
-            module: null,
             action: ['type' => 'invoke', 'field' => 'funcref-elem', 'args' => [['type' => 'i32', 'value' => '1']]],
             expected: [['type' => 'i32', 'value' => '1']],
             line: 48,
@@ -153,7 +141,6 @@ final class RefIsNullTest extends SpecTestsuiteBase
     public function testAssertReturn13(): void
     {
         $this->runAssertReturnCommand(
-            module: null,
             action: ['type' => 'invoke', 'field' => 'externref-elem', 'args' => [['type' => 'i32', 'value' => '1']]],
             expected: [['type' => 'i32', 'value' => '1']],
             line: 49,

@@ -8,20 +8,14 @@
 * FloatMemoryTest
 * FloatMiscTest
 
-## Spectest
+## Validation
 
-* DataTest
-* ElemTest
-* ExportsTest
-* FuncPtrsTest
-* GlobalTest
 * ImportsTest
 * LinkingTest
-* NamesTest
-* StartTest
 
 ## Misc.
 
+* AlignTest
 * CustomTest
 * SkipStackGuardPageTest
 * Utf8CustomSectionIdTest

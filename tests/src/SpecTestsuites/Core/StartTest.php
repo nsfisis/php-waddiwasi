@@ -53,7 +53,6 @@ final class StartTest extends SpecTestsuiteBase
     public function testAssertReturn4(): void
     {
         $this->runAssertReturnCommand(
-            module: null,
             action: ['type' => 'invoke', 'field' => 'get', 'args' => []],
             expected: [['type' => 'i32', 'value' => '68']],
             line: 45,
@@ -64,7 +63,6 @@ final class StartTest extends SpecTestsuiteBase
     public function testAction5(): void
     {
         $this->runActionCommand(
-            module: null,
             action: ['type' => 'invoke', 'field' => 'inc', 'args' => []],
             line: 46,
         );
@@ -74,7 +72,6 @@ final class StartTest extends SpecTestsuiteBase
     public function testAssertReturn6(): void
     {
         $this->runAssertReturnCommand(
-            module: null,
             action: ['type' => 'invoke', 'field' => 'get', 'args' => []],
             expected: [['type' => 'i32', 'value' => '69']],
             line: 47,
@@ -85,7 +82,6 @@ final class StartTest extends SpecTestsuiteBase
     public function testAction7(): void
     {
         $this->runActionCommand(
-            module: null,
             action: ['type' => 'invoke', 'field' => 'inc', 'args' => []],
             line: 48,
         );
@@ -95,7 +91,6 @@ final class StartTest extends SpecTestsuiteBase
     public function testAssertReturn8(): void
     {
         $this->runAssertReturnCommand(
-            module: null,
             action: ['type' => 'invoke', 'field' => 'get', 'args' => []],
             expected: [['type' => 'i32', 'value' => '70']],
             line: 49,
@@ -116,7 +111,6 @@ final class StartTest extends SpecTestsuiteBase
     public function testAssertReturn10(): void
     {
         $this->runAssertReturnCommand(
-            module: null,
             action: ['type' => 'invoke', 'field' => 'get', 'args' => []],
             expected: [['type' => 'i32', 'value' => '68']],
             line: 74,
@@ -127,7 +121,6 @@ final class StartTest extends SpecTestsuiteBase
     public function testAction11(): void
     {
         $this->runActionCommand(
-            module: null,
             action: ['type' => 'invoke', 'field' => 'inc', 'args' => []],
             line: 75,
         );
@@ -137,7 +130,6 @@ final class StartTest extends SpecTestsuiteBase
     public function testAssertReturn12(): void
     {
         $this->runAssertReturnCommand(
-            module: null,
             action: ['type' => 'invoke', 'field' => 'get', 'args' => []],
             expected: [['type' => 'i32', 'value' => '69']],
             line: 76,
@@ -148,7 +140,6 @@ final class StartTest extends SpecTestsuiteBase
     public function testAction13(): void
     {
         $this->runActionCommand(
-            module: null,
             action: ['type' => 'invoke', 'field' => 'inc', 'args' => []],
             line: 77,
         );
@@ -158,7 +149,6 @@ final class StartTest extends SpecTestsuiteBase
     public function testAssertReturn14(): void
     {
         $this->runAssertReturnCommand(
-            module: null,
             action: ['type' => 'invoke', 'field' => 'get', 'args' => []],
             expected: [['type' => 'i32', 'value' => '70']],
             line: 78,

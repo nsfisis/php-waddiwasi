@@ -23,7 +23,6 @@ final class ConversionsTest extends SpecTestsuiteBase
     public function testAssertReturn1(): void
     {
         $this->runAssertReturnCommand(
-            module: null,
             action: ['type' => 'invoke', 'field' => 'i64.extend_i32_s', 'args' => [['type' => 'i32', 'value' => '0']]],
             expected: [['type' => 'i64', 'value' => '0']],
             line: 37,
@@ -34,7 +33,6 @@ final class ConversionsTest extends SpecTestsuiteBase
     public function testAssertReturn2(): void
     {
         $this->runAssertReturnCommand(
-            module: null,
             action: ['type' => 'invoke', 'field' => 'i64.extend_i32_s', 'args' => [['type' => 'i32', 'value' => '10000']]],
             expected: [['type' => 'i64', 'value' => '10000']],
             line: 38,
@@ -45,7 +43,6 @@ final class ConversionsTest extends SpecTestsuiteBase
     public function testAssertReturn3(): void
     {
         $this->runAssertReturnCommand(
-            module: null,
             action: ['type' => 'invoke', 'field' => 'i64.extend_i32_s', 'args' => [['type' => 'i32', 'value' => '4294957296']]],
             expected: [['type' => 'i64', 'value' => '18446744073709541616']],
             line: 39,
@@ -56,7 +53,6 @@ final class ConversionsTest extends SpecTestsuiteBase
     public function testAssertReturn4(): void
     {
         $this->runAssertReturnCommand(
-            module: null,
             action: ['type' => 'invoke', 'field' => 'i64.extend_i32_s', 'args' => [['type' => 'i32', 'value' => '4294967295']]],
             expected: [['type' => 'i64', 'value' => '18446744073709551615']],
             line: 40,
@@ -67,7 +63,6 @@ final class ConversionsTest extends SpecTestsuiteBase
     public function testAssertReturn5(): void
     {
         $this->runAssertReturnCommand(
-            module: null,
             action: ['type' => 'invoke', 'field' => 'i64.extend_i32_s', 'args' => [['type' => 'i32', 'value' => '2147483647']]],
             expected: [['type' => 'i64', 'value' => '2147483647']],
             line: 41,
@@ -78,7 +73,6 @@ final class ConversionsTest extends SpecTestsuiteBase
     public function testAssertReturn6(): void
     {
         $this->runAssertReturnCommand(
-            module: null,
             action: ['type' => 'invoke', 'field' => 'i64.extend_i32_s', 'args' => [['type' => 'i32', 'value' => '2147483648']]],
             expected: [['type' => 'i64', 'value' => '18446744071562067968']],
             line: 42,
@@ -89,7 +83,6 @@ final class ConversionsTest extends SpecTestsuiteBase
     public function testAssertReturn7(): void
     {
         $this->runAssertReturnCommand(
-            module: null,
             action: ['type' => 'invoke', 'field' => 'i64.extend_i32_u', 'args' => [['type' => 'i32', 'value' => '0']]],
             expected: [['type' => 'i64', 'value' => '0']],
             line: 44,
@@ -100,7 +93,6 @@ final class ConversionsTest extends SpecTestsuiteBase
     public function testAssertReturn8(): void
     {
         $this->runAssertReturnCommand(
-            module: null,
             action: ['type' => 'invoke', 'field' => 'i64.extend_i32_u', 'args' => [['type' => 'i32', 'value' => '10000']]],
             expected: [['type' => 'i64', 'value' => '10000']],
             line: 45,
@@ -111,7 +103,6 @@ final class ConversionsTest extends SpecTestsuiteBase
     public function testAssertReturn9(): void
     {
         $this->runAssertReturnCommand(
-            module: null,
             action: ['type' => 'invoke', 'field' => 'i64.extend_i32_u', 'args' => [['type' => 'i32', 'value' => '4294957296']]],
             expected: [['type' => 'i64', 'value' => '4294957296']],
             line: 46,
@@ -122,7 +113,6 @@ final class ConversionsTest extends SpecTestsuiteBase
     public function testAssertReturn10(): void
     {
         $this->runAssertReturnCommand(
-            module: null,
             action: ['type' => 'invoke', 'field' => 'i64.extend_i32_u', 'args' => [['type' => 'i32', 'value' => '4294967295']]],
             expected: [['type' => 'i64', 'value' => '4294967295']],
             line: 47,
@@ -133,7 +123,6 @@ final class ConversionsTest extends SpecTestsuiteBase
     public function testAssertReturn11(): void
     {
         $this->runAssertReturnCommand(
-            module: null,
             action: ['type' => 'invoke', 'field' => 'i64.extend_i32_u', 'args' => [['type' => 'i32', 'value' => '2147483647']]],
             expected: [['type' => 'i64', 'value' => '2147483647']],
             line: 48,
@@ -144,7 +133,6 @@ final class ConversionsTest extends SpecTestsuiteBase
     public function testAssertReturn12(): void
     {
         $this->runAssertReturnCommand(
-            module: null,
             action: ['type' => 'invoke', 'field' => 'i64.extend_i32_u', 'args' => [['type' => 'i32', 'value' => '2147483648']]],
             expected: [['type' => 'i64', 'value' => '2147483648']],
             line: 49,
@@ -155,7 +143,6 @@ final class ConversionsTest extends SpecTestsuiteBase
     public function testAssertReturn13(): void
     {
         $this->runAssertReturnCommand(
-            module: null,
             action: ['type' => 'invoke', 'field' => 'i32.wrap_i64', 'args' => [['type' => 'i64', 'value' => '18446744073709551615']]],
             expected: [['type' => 'i32', 'value' => '4294967295']],
             line: 51,
@@ -166,7 +153,6 @@ final class ConversionsTest extends SpecTestsuiteBase
     public function testAssertReturn14(): void
     {
         $this->runAssertReturnCommand(
-            module: null,
             action: ['type' => 'invoke', 'field' => 'i32.wrap_i64', 'args' => [['type' => 'i64', 'value' => '18446744073709451616']]],
             expected: [['type' => 'i32', 'value' => '4294867296']],
             line: 52,
@@ -177,7 +163,6 @@ final class ConversionsTest extends SpecTestsuiteBase
     public function testAssertReturn15(): void
     {
         $this->runAssertReturnCommand(
-            module: null,
             action: ['type' => 'invoke', 'field' => 'i32.wrap_i64', 'args' => [['type' => 'i64', 'value' => '2147483648']]],
             expected: [['type' => 'i32', 'value' => '2147483648']],
             line: 53,
@@ -188,7 +173,6 @@ final class ConversionsTest extends SpecTestsuiteBase
     public function testAssertReturn16(): void
     {
         $this->runAssertReturnCommand(
-            module: null,
             action: ['type' => 'invoke', 'field' => 'i32.wrap_i64', 'args' => [['type' => 'i64', 'value' => '18446744071562067967']]],
             expected: [['type' => 'i32', 'value' => '2147483647']],
             line: 54,
@@ -199,7 +183,6 @@ final class ConversionsTest extends SpecTestsuiteBase
     public function testAssertReturn17(): void
     {
         $this->runAssertReturnCommand(
-            module: null,
             action: ['type' => 'invoke', 'field' => 'i32.wrap_i64', 'args' => [['type' => 'i64', 'value' => '18446744069414584320']]],
             expected: [['type' => 'i32', 'value' => '0']],
             line: 55,
@@ -210,7 +193,6 @@ final class ConversionsTest extends SpecTestsuiteBase
     public function testAssertReturn18(): void
     {
         $this->runAssertReturnCommand(
-            module: null,
             action: ['type' => 'invoke', 'field' => 'i32.wrap_i64', 'args' => [['type' => 'i64', 'value' => '18446744069414584319']]],
             expected: [['type' => 'i32', 'value' => '4294967295']],
             line: 56,
@@ -221,7 +203,6 @@ final class ConversionsTest extends SpecTestsuiteBase
     public function testAssertReturn19(): void
     {
         $this->runAssertReturnCommand(
-            module: null,
             action: ['type' => 'invoke', 'field' => 'i32.wrap_i64', 'args' => [['type' => 'i64', 'value' => '18446744069414584321']]],
             expected: [['type' => 'i32', 'value' => '1']],
             line: 57,
@@ -232,7 +213,6 @@ final class ConversionsTest extends SpecTestsuiteBase
     public function testAssertReturn20(): void
     {
         $this->runAssertReturnCommand(
-            module: null,
             action: ['type' => 'invoke', 'field' => 'i32.wrap_i64', 'args' => [['type' => 'i64', 'value' => '0']]],
             expected: [['type' => 'i32', 'value' => '0']],
             line: 58,
@@ -243,7 +223,6 @@ final class ConversionsTest extends SpecTestsuiteBase
     public function testAssertReturn21(): void
     {
         $this->runAssertReturnCommand(
-            module: null,
             action: ['type' => 'invoke', 'field' => 'i32.wrap_i64', 'args' => [['type' => 'i64', 'value' => '1311768467463790320']]],
             expected: [['type' => 'i32', 'value' => '2596069104']],
             line: 59,
@@ -254,7 +233,6 @@ final class ConversionsTest extends SpecTestsuiteBase
     public function testAssertReturn22(): void
     {
         $this->runAssertReturnCommand(
-            module: null,
             action: ['type' => 'invoke', 'field' => 'i32.wrap_i64', 'args' => [['type' => 'i64', 'value' => '4294967295']]],
             expected: [['type' => 'i32', 'value' => '4294967295']],
             line: 60,
@@ -265,7 +243,6 @@ final class ConversionsTest extends SpecTestsuiteBase
     public function testAssertReturn23(): void
     {
         $this->runAssertReturnCommand(
-            module: null,
             action: ['type' => 'invoke', 'field' => 'i32.wrap_i64', 'args' => [['type' => 'i64', 'value' => '4294967296']]],
             expected: [['type' => 'i32', 'value' => '0']],
             line: 61,
@@ -276,7 +253,6 @@ final class ConversionsTest extends SpecTestsuiteBase
     public function testAssertReturn24(): void
     {
         $this->runAssertReturnCommand(
-            module: null,
             action: ['type' => 'invoke', 'field' => 'i32.wrap_i64', 'args' => [['type' => 'i64', 'value' => '4294967297']]],
             expected: [['type' => 'i32', 'value' => '1']],
             line: 62,
@@ -287,7 +263,6 @@ final class ConversionsTest extends SpecTestsuiteBase
     public function testAssertReturn25(): void
     {
         $this->runAssertReturnCommand(
-            module: null,
             action: ['type' => 'invoke', 'field' => 'i32.trunc_f32_s', 'args' => [['type' => 'f32', 'value' => '0']]],
             expected: [['type' => 'i32', 'value' => '0']],
             line: 64,
@@ -298,7 +273,6 @@ final class ConversionsTest extends SpecTestsuiteBase
     public function testAssertReturn26(): void
     {
         $this->runAssertReturnCommand(
-            module: null,
             action: ['type' => 'invoke', 'field' => 'i32.trunc_f32_s', 'args' => [['type' => 'f32', 'value' => '2147483648']]],
             expected: [['type' => 'i32', 'value' => '0']],
             line: 65,
@@ -309,7 +283,6 @@ final class ConversionsTest extends SpecTestsuiteBase
     public function testAssertReturn27(): void
     {
         $this->runAssertReturnCommand(
-            module: null,
             action: ['type' => 'invoke', 'field' => 'i32.trunc_f32_s', 'args' => [['type' => 'f32', 'value' => '1']]],
             expected: [['type' => 'i32', 'value' => '0']],
             line: 66,
@@ -320,7 +293,6 @@ final class ConversionsTest extends SpecTestsuiteBase
     public function testAssertReturn28(): void
     {
         $this->runAssertReturnCommand(
-            module: null,
             action: ['type' => 'invoke', 'field' => 'i32.trunc_f32_s', 'args' => [['type' => 'f32', 'value' => '2147483649']]],
             expected: [['type' => 'i32', 'value' => '0']],
             line: 67,
@@ -331,7 +303,6 @@ final class ConversionsTest extends SpecTestsuiteBase
     public function testAssertReturn29(): void
     {
         $this->runAssertReturnCommand(
-            module: null,
             action: ['type' => 'invoke', 'field' => 'i32.trunc_f32_s', 'args' => [['type' => 'f32', 'value' => '1065353216']]],
             expected: [['type' => 'i32', 'value' => '1']],
             line: 68,
@@ -342,7 +313,6 @@ final class ConversionsTest extends SpecTestsuiteBase
     public function testAssertReturn30(): void
     {
         $this->runAssertReturnCommand(
-            module: null,
             action: ['type' => 'invoke', 'field' => 'i32.trunc_f32_s', 'args' => [['type' => 'f32', 'value' => '1066192077']]],
             expected: [['type' => 'i32', 'value' => '1']],
             line: 69,
@@ -353,7 +323,6 @@ final class ConversionsTest extends SpecTestsuiteBase
     public function testAssertReturn31(): void
     {
         $this->runAssertReturnCommand(
-            module: null,
             action: ['type' => 'invoke', 'field' => 'i32.trunc_f32_s', 'args' => [['type' => 'f32', 'value' => '1069547520']]],
             expected: [['type' => 'i32', 'value' => '1']],
             line: 70,
@@ -364,7 +333,6 @@ final class ConversionsTest extends SpecTestsuiteBase
     public function testAssertReturn32(): void
     {
         $this->runAssertReturnCommand(
-            module: null,
             action: ['type' => 'invoke', 'field' => 'i32.trunc_f32_s', 'args' => [['type' => 'f32', 'value' => '3212836864']]],
             expected: [['type' => 'i32', 'value' => '4294967295']],
             line: 71,
@@ -375,7 +343,6 @@ final class ConversionsTest extends SpecTestsuiteBase
     public function testAssertReturn33(): void
     {
         $this->runAssertReturnCommand(
-            module: null,
             action: ['type' => 'invoke', 'field' => 'i32.trunc_f32_s', 'args' => [['type' => 'f32', 'value' => '3213675725']]],
             expected: [['type' => 'i32', 'value' => '4294967295']],
             line: 72,
@@ -386,7 +353,6 @@ final class ConversionsTest extends SpecTestsuiteBase
     public function testAssertReturn34(): void
     {
         $this->runAssertReturnCommand(
-            module: null,
             action: ['type' => 'invoke', 'field' => 'i32.trunc_f32_s', 'args' => [['type' => 'f32', 'value' => '3217031168']]],
             expected: [['type' => 'i32', 'value' => '4294967295']],
             line: 73,
@@ -397,7 +363,6 @@ final class ConversionsTest extends SpecTestsuiteBase
     public function testAssertReturn35(): void
     {
         $this->runAssertReturnCommand(
-            module: null,
             action: ['type' => 'invoke', 'field' => 'i32.trunc_f32_s', 'args' => [['type' => 'f32', 'value' => '3220386611']]],
             expected: [['type' => 'i32', 'value' => '4294967295']],
             line: 74,
@@ -408,7 +373,6 @@ final class ConversionsTest extends SpecTestsuiteBase
     public function testAssertReturn36(): void
     {
         $this->runAssertReturnCommand(
-            module: null,
             action: ['type' => 'invoke', 'field' => 'i32.trunc_f32_s', 'args' => [['type' => 'f32', 'value' => '3221225472']]],
             expected: [['type' => 'i32', 'value' => '4294967294']],
             line: 75,
@@ -419,7 +383,6 @@ final class ConversionsTest extends SpecTestsuiteBase
     public function testAssertReturn37(): void
     {
         $this->runAssertReturnCommand(
-            module: null,
             action: ['type' => 'invoke', 'field' => 'i32.trunc_f32_s', 'args' => [['type' => 'f32', 'value' => '1325400063']]],
             expected: [['type' => 'i32', 'value' => '2147483520']],
             line: 76,
@@ -430,7 +393,6 @@ final class ConversionsTest extends SpecTestsuiteBase
     public function testAssertReturn38(): void
     {
         $this->runAssertReturnCommand(
-            module: null,
             action: ['type' => 'invoke', 'field' => 'i32.trunc_f32_s', 'args' => [['type' => 'f32', 'value' => '3472883712']]],
             expected: [['type' => 'i32', 'value' => '2147483648']],
             line: 77,
@@ -441,7 +403,6 @@ final class ConversionsTest extends SpecTestsuiteBase
     public function testAssertTrap39(): void
     {
         $this->runAssertTrapCommand(
-            module: null,
             action: ['type' => 'invoke', 'field' => 'i32.trunc_f32_s', 'args' => [['type' => 'f32', 'value' => '1325400064']]],
             text: 'integer overflow',
             line: 78,
@@ -452,7 +413,6 @@ final class ConversionsTest extends SpecTestsuiteBase
     public function testAssertTrap40(): void
     {
         $this->runAssertTrapCommand(
-            module: null,
             action: ['type' => 'invoke', 'field' => 'i32.trunc_f32_s', 'args' => [['type' => 'f32', 'value' => '3472883713']]],
             text: 'integer overflow',
             line: 79,
@@ -463,7 +423,6 @@ final class ConversionsTest extends SpecTestsuiteBase
     public function testAssertTrap41(): void
     {
         $this->runAssertTrapCommand(
-            module: null,
             action: ['type' => 'invoke', 'field' => 'i32.trunc_f32_s', 'args' => [['type' => 'f32', 'value' => '2139095040']]],
             text: 'integer overflow',
             line: 80,
@@ -474,7 +433,6 @@ final class ConversionsTest extends SpecTestsuiteBase
     public function testAssertTrap42(): void
     {
         $this->runAssertTrapCommand(
-            module: null,
             action: ['type' => 'invoke', 'field' => 'i32.trunc_f32_s', 'args' => [['type' => 'f32', 'value' => '4286578688']]],
             text: 'integer overflow',
             line: 81,
@@ -485,7 +443,6 @@ final class ConversionsTest extends SpecTestsuiteBase
     public function testAssertTrap43(): void
     {
         $this->runAssertTrapCommand(
-            module: null,
             action: ['type' => 'invoke', 'field' => 'i32.trunc_f32_s', 'args' => [['type' => 'f32', 'value' => '2143289344']]],
             text: 'invalid conversion to integer',
             line: 82,
@@ -496,7 +453,6 @@ final class ConversionsTest extends SpecTestsuiteBase
     public function testAssertTrap44(): void
     {
         $this->runAssertTrapCommand(
-            module: null,
             action: ['type' => 'invoke', 'field' => 'i32.trunc_f32_s', 'args' => [['type' => 'f32', 'value' => '2141192192']]],
             text: 'invalid conversion to integer',
             line: 83,
@@ -507,7 +463,6 @@ final class ConversionsTest extends SpecTestsuiteBase
     public function testAssertTrap45(): void
     {
         $this->runAssertTrapCommand(
-            module: null,
             action: ['type' => 'invoke', 'field' => 'i32.trunc_f32_s', 'args' => [['type' => 'f32', 'value' => '4290772992']]],
             text: 'invalid conversion to integer',
             line: 84,
@@ -518,7 +473,6 @@ final class ConversionsTest extends SpecTestsuiteBase
     public function testAssertTrap46(): void
     {
         $this->runAssertTrapCommand(
-            module: null,
             action: ['type' => 'invoke', 'field' => 'i32.trunc_f32_s', 'args' => [['type' => 'f32', 'value' => '4288675840']]],
             text: 'invalid conversion to integer',
             line: 85,
@@ -529,7 +483,6 @@ final class ConversionsTest extends SpecTestsuiteBase
     public function testAssertReturn47(): void
     {
         $this->runAssertReturnCommand(
-            module: null,
             action: ['type' => 'invoke', 'field' => 'i32.trunc_f32_u', 'args' => [['type' => 'f32', 'value' => '0']]],
             expected: [['type' => 'i32', 'value' => '0']],
             line: 87,
@@ -540,7 +493,6 @@ final class ConversionsTest extends SpecTestsuiteBase
     public function testAssertReturn48(): void
     {
         $this->runAssertReturnCommand(
-            module: null,
             action: ['type' => 'invoke', 'field' => 'i32.trunc_f32_u', 'args' => [['type' => 'f32', 'value' => '2147483648']]],
             expected: [['type' => 'i32', 'value' => '0']],
             line: 88,
@@ -551,7 +503,6 @@ final class ConversionsTest extends SpecTestsuiteBase
     public function testAssertReturn49(): void
     {
         $this->runAssertReturnCommand(
-            module: null,
             action: ['type' => 'invoke', 'field' => 'i32.trunc_f32_u', 'args' => [['type' => 'f32', 'value' => '1']]],
             expected: [['type' => 'i32', 'value' => '0']],
             line: 89,
@@ -562,7 +513,6 @@ final class ConversionsTest extends SpecTestsuiteBase
     public function testAssertReturn50(): void
     {
         $this->runAssertReturnCommand(
-            module: null,
             action: ['type' => 'invoke', 'field' => 'i32.trunc_f32_u', 'args' => [['type' => 'f32', 'value' => '2147483649']]],
             expected: [['type' => 'i32', 'value' => '0']],
             line: 90,
@@ -573,7 +523,6 @@ final class ConversionsTest extends SpecTestsuiteBase
     public function testAssertReturn51(): void
     {
         $this->runAssertReturnCommand(
-            module: null,
             action: ['type' => 'invoke', 'field' => 'i32.trunc_f32_u', 'args' => [['type' => 'f32', 'value' => '1065353216']]],
             expected: [['type' => 'i32', 'value' => '1']],
             line: 91,
@@ -584,7 +533,6 @@ final class ConversionsTest extends SpecTestsuiteBase
     public function testAssertReturn52(): void
     {
         $this->runAssertReturnCommand(
-            module: null,
             action: ['type' => 'invoke', 'field' => 'i32.trunc_f32_u', 'args' => [['type' => 'f32', 'value' => '1066192077']]],
             expected: [['type' => 'i32', 'value' => '1']],
             line: 92,
@@ -595,7 +543,6 @@ final class ConversionsTest extends SpecTestsuiteBase
     public function testAssertReturn53(): void
     {
         $this->runAssertReturnCommand(
-            module: null,
             action: ['type' => 'invoke', 'field' => 'i32.trunc_f32_u', 'args' => [['type' => 'f32', 'value' => '1069547520']]],
             expected: [['type' => 'i32', 'value' => '1']],
             line: 93,
@@ -606,7 +553,6 @@ final class ConversionsTest extends SpecTestsuiteBase
     public function testAssertReturn54(): void
     {
         $this->runAssertReturnCommand(
-            module: null,
             action: ['type' => 'invoke', 'field' => 'i32.trunc_f32_u', 'args' => [['type' => 'f32', 'value' => '1072902963']]],
             expected: [['type' => 'i32', 'value' => '1']],
             line: 94,
@@ -617,7 +563,6 @@ final class ConversionsTest extends SpecTestsuiteBase
     public function testAssertReturn55(): void
     {
         $this->runAssertReturnCommand(
-            module: null,
             action: ['type' => 'invoke', 'field' => 'i32.trunc_f32_u', 'args' => [['type' => 'f32', 'value' => '1073741824']]],
             expected: [['type' => 'i32', 'value' => '2']],
             line: 95,
@@ -628,7 +573,6 @@ final class ConversionsTest extends SpecTestsuiteBase
     public function testAssertReturn56(): void
     {
         $this->runAssertReturnCommand(
-            module: null,
             action: ['type' => 'invoke', 'field' => 'i32.trunc_f32_u', 'args' => [['type' => 'f32', 'value' => '1325400064']]],
             expected: [['type' => 'i32', 'value' => '2147483648']],
             line: 96,
@@ -639,7 +583,6 @@ final class ConversionsTest extends SpecTestsuiteBase
     public function testAssertReturn57(): void
     {
         $this->runAssertReturnCommand(
-            module: null,
             action: ['type' => 'invoke', 'field' => 'i32.trunc_f32_u', 'args' => [['type' => 'f32', 'value' => '1333788671']]],
             expected: [['type' => 'i32', 'value' => '4294967040']],
             line: 97,
@@ -650,7 +593,6 @@ final class ConversionsTest extends SpecTestsuiteBase
     public function testAssertReturn58(): void
     {
         $this->runAssertReturnCommand(
-            module: null,
             action: ['type' => 'invoke', 'field' => 'i32.trunc_f32_u', 'args' => [['type' => 'f32', 'value' => '3211159142']]],
             expected: [['type' => 'i32', 'value' => '0']],
             line: 98,
@@ -661,7 +603,6 @@ final class ConversionsTest extends SpecTestsuiteBase
     public function testAssertReturn59(): void
     {
         $this->runAssertReturnCommand(
-            module: null,
             action: ['type' => 'invoke', 'field' => 'i32.trunc_f32_u', 'args' => [['type' => 'f32', 'value' => '3212836863']]],
             expected: [['type' => 'i32', 'value' => '0']],
             line: 99,
@@ -672,7 +613,6 @@ final class ConversionsTest extends SpecTestsuiteBase
     public function testAssertTrap60(): void
     {
         $this->runAssertTrapCommand(
-            module: null,
             action: ['type' => 'invoke', 'field' => 'i32.trunc_f32_u', 'args' => [['type' => 'f32', 'value' => '1333788672']]],
             text: 'integer overflow',
             line: 100,
@@ -683,7 +623,6 @@ final class ConversionsTest extends SpecTestsuiteBase
     public function testAssertTrap61(): void
     {
         $this->runAssertTrapCommand(
-            module: null,
             action: ['type' => 'invoke', 'field' => 'i32.trunc_f32_u', 'args' => [['type' => 'f32', 'value' => '3212836864']]],
             text: 'integer overflow',
             line: 101,
@@ -694,7 +633,6 @@ final class ConversionsTest extends SpecTestsuiteBase
     public function testAssertTrap62(): void
     {
         $this->runAssertTrapCommand(
-            module: null,
             action: ['type' => 'invoke', 'field' => 'i32.trunc_f32_u', 'args' => [['type' => 'f32', 'value' => '2139095040']]],
             text: 'integer overflow',
             line: 102,
@@ -705,7 +643,6 @@ final class ConversionsTest extends SpecTestsuiteBase
     public function testAssertTrap63(): void
     {
         $this->runAssertTrapCommand(
-            module: null,
             action: ['type' => 'invoke', 'field' => 'i32.trunc_f32_u', 'args' => [['type' => 'f32', 'value' => '4286578688']]],
             text: 'integer overflow',
             line: 103,
@@ -716,7 +653,6 @@ final class ConversionsTest extends SpecTestsuiteBase
     public function testAssertTrap64(): void
     {
         $this->runAssertTrapCommand(
-            module: null,
             action: ['type' => 'invoke', 'field' => 'i32.trunc_f32_u', 'args' => [['type' => 'f32', 'value' => '2143289344']]],
             text: 'invalid conversion to integer',
             line: 104,
@@ -727,7 +663,6 @@ final class ConversionsTest extends SpecTestsuiteBase
     public function testAssertTrap65(): void
     {
         $this->runAssertTrapCommand(
-            module: null,
             action: ['type' => 'invoke', 'field' => 'i32.trunc_f32_u', 'args' => [['type' => 'f32', 'value' => '2141192192']]],
             text: 'invalid conversion to integer',
             line: 105,
@@ -738,7 +673,6 @@ final class ConversionsTest extends SpecTestsuiteBase
     public function testAssertTrap66(): void
     {
         $this->runAssertTrapCommand(
-            module: null,
             action: ['type' => 'invoke', 'field' => 'i32.trunc_f32_u', 'args' => [['type' => 'f32', 'value' => '4290772992']]],
             text: 'invalid conversion to integer',
             line: 106,
@@ -749,7 +683,6 @@ final class ConversionsTest extends SpecTestsuiteBase
     public function testAssertTrap67(): void
     {
         $this->runAssertTrapCommand(
-            module: null,
             action: ['type' => 'invoke', 'field' => 'i32.trunc_f32_u', 'args' => [['type' => 'f32', 'value' => '4288675840']]],
             text: 'invalid conversion to integer',
             line: 107,
@@ -760,7 +693,6 @@ final class ConversionsTest extends SpecTestsuiteBase
     public function testAssertReturn68(): void
     {
         $this->runAssertReturnCommand(
-            module: null,
             action: ['type' => 'invoke', 'field' => 'i32.trunc_f64_s', 'args' => [['type' => 'f64', 'value' => '0']]],
             expected: [['type' => 'i32', 'value' => '0']],
             line: 109,
@@ -771,7 +703,6 @@ final class ConversionsTest extends SpecTestsuiteBase
     public function testAssertReturn69(): void
     {
         $this->runAssertReturnCommand(
-            module: null,
             action: ['type' => 'invoke', 'field' => 'i32.trunc_f64_s', 'args' => [['type' => 'f64', 'value' => '9223372036854775808']]],
             expected: [['type' => 'i32', 'value' => '0']],
             line: 110,
@@ -782,7 +713,6 @@ final class ConversionsTest extends SpecTestsuiteBase
     public function testAssertReturn70(): void
     {
         $this->runAssertReturnCommand(
-            module: null,
             action: ['type' => 'invoke', 'field' => 'i32.trunc_f64_s', 'args' => [['type' => 'f64', 'value' => '1']]],
             expected: [['type' => 'i32', 'value' => '0']],
             line: 111,
@@ -793,7 +723,6 @@ final class ConversionsTest extends SpecTestsuiteBase
     public function testAssertReturn71(): void
     {
         $this->runAssertReturnCommand(
-            module: null,
             action: ['type' => 'invoke', 'field' => 'i32.trunc_f64_s', 'args' => [['type' => 'f64', 'value' => '9223372036854775809']]],
             expected: [['type' => 'i32', 'value' => '0']],
             line: 112,
@@ -804,7 +733,6 @@ final class ConversionsTest extends SpecTestsuiteBase
     public function testAssertReturn72(): void
     {
         $this->runAssertReturnCommand(
-            module: null,
             action: ['type' => 'invoke', 'field' => 'i32.trunc_f64_s', 'args' => [['type' => 'f64', 'value' => '4607182418800017408']]],
             expected: [['type' => 'i32', 'value' => '1']],
             line: 113,
@@ -815,7 +743,6 @@ final class ConversionsTest extends SpecTestsuiteBase
     public function testAssertReturn73(): void
     {
         $this->runAssertReturnCommand(
-            module: null,
             action: ['type' => 'invoke', 'field' => 'i32.trunc_f64_s', 'args' => [['type' => 'f64', 'value' => '4607632778762754458']]],
             expected: [['type' => 'i32', 'value' => '1']],
             line: 114,
@@ -826,7 +753,6 @@ final class ConversionsTest extends SpecTestsuiteBase
     public function testAssertReturn74(): void
     {
         $this->runAssertReturnCommand(
-            module: null,
             action: ['type' => 'invoke', 'field' => 'i32.trunc_f64_s', 'args' => [['type' => 'f64', 'value' => '4609434218613702656']]],
             expected: [['type' => 'i32', 'value' => '1']],
             line: 115,
@@ -837,7 +763,6 @@ final class ConversionsTest extends SpecTestsuiteBase
     public function testAssertReturn75(): void
     {
         $this->runAssertReturnCommand(
-            module: null,
             action: ['type' => 'invoke', 'field' => 'i32.trunc_f64_s', 'args' => [['type' => 'f64', 'value' => '13830554455654793216']]],
             expected: [['type' => 'i32', 'value' => '4294967295']],
             line: 116,
@@ -848,7 +773,6 @@ final class ConversionsTest extends SpecTestsuiteBase
     public function testAssertReturn76(): void
     {
         $this->runAssertReturnCommand(
-            module: null,
             action: ['type' => 'invoke', 'field' => 'i32.trunc_f64_s', 'args' => [['type' => 'f64', 'value' => '13831004815617530266']]],
             expected: [['type' => 'i32', 'value' => '4294967295']],
             line: 117,
@@ -859,7 +783,6 @@ final class ConversionsTest extends SpecTestsuiteBase
     public function testAssertReturn77(): void
     {
         $this->runAssertReturnCommand(
-            module: null,
             action: ['type' => 'invoke', 'field' => 'i32.trunc_f64_s', 'args' => [['type' => 'f64', 'value' => '13832806255468478464']]],
             expected: [['type' => 'i32', 'value' => '4294967295']],
             line: 118,
@@ -870,7 +793,6 @@ final class ConversionsTest extends SpecTestsuiteBase
     public function testAssertReturn78(): void
     {
         $this->runAssertReturnCommand(
-            module: null,
             action: ['type' => 'invoke', 'field' => 'i32.trunc_f64_s', 'args' => [['type' => 'f64', 'value' => '13834607695319426662']]],
             expected: [['type' => 'i32', 'value' => '4294967295']],
             line: 119,
@@ -881,7 +803,6 @@ final class ConversionsTest extends SpecTestsuiteBase
     public function testAssertReturn79(): void
     {
         $this->runAssertReturnCommand(
-            module: null,
             action: ['type' => 'invoke', 'field' => 'i32.trunc_f64_s', 'args' => [['type' => 'f64', 'value' => '13835058055282163712']]],
             expected: [['type' => 'i32', 'value' => '4294967294']],
             line: 120,
@@ -892,7 +813,6 @@ final class ConversionsTest extends SpecTestsuiteBase
     public function testAssertReturn80(): void
     {
         $this->runAssertReturnCommand(
-            module: null,
             action: ['type' => 'invoke', 'field' => 'i32.trunc_f64_s', 'args' => [['type' => 'f64', 'value' => '4746794007244308480']]],
             expected: [['type' => 'i32', 'value' => '2147483647']],
             line: 121,
@@ -903,7 +823,6 @@ final class ConversionsTest extends SpecTestsuiteBase
     public function testAssertReturn81(): void
     {
         $this->runAssertReturnCommand(
-            module: null,
             action: ['type' => 'invoke', 'field' => 'i32.trunc_f64_s', 'args' => [['type' => 'f64', 'value' => '13970166044103278592']]],
             expected: [['type' => 'i32', 'value' => '2147483648']],
             line: 122,
@@ -914,7 +833,6 @@ final class ConversionsTest extends SpecTestsuiteBase
     public function testAssertReturn82(): void
     {
         $this->runAssertReturnCommand(
-            module: null,
             action: ['type' => 'invoke', 'field' => 'i32.trunc_f64_s', 'args' => [['type' => 'f64', 'value' => '13970166044105166029']]],
             expected: [['type' => 'i32', 'value' => '2147483648']],
             line: 123,
@@ -925,7 +843,6 @@ final class ConversionsTest extends SpecTestsuiteBase
     public function testAssertReturn83(): void
     {
         $this->runAssertReturnCommand(
-            module: null,
             action: ['type' => 'invoke', 'field' => 'i32.trunc_f64_s', 'args' => [['type' => 'f64', 'value' => '4746794007248083354']]],
             expected: [['type' => 'i32', 'value' => '2147483647']],
             line: 124,
@@ -936,7 +853,6 @@ final class ConversionsTest extends SpecTestsuiteBase
     public function testAssertTrap84(): void
     {
         $this->runAssertTrapCommand(
-            module: null,
             action: ['type' => 'invoke', 'field' => 'i32.trunc_f64_s', 'args' => [['type' => 'f64', 'value' => '4746794007248502784']]],
             text: 'integer overflow',
             line: 125,
@@ -947,7 +863,6 @@ final class ConversionsTest extends SpecTestsuiteBase
     public function testAssertTrap85(): void
     {
         $this->runAssertTrapCommand(
-            module: null,
             action: ['type' => 'invoke', 'field' => 'i32.trunc_f64_s', 'args' => [['type' => 'f64', 'value' => '13970166044105375744']]],
             text: 'integer overflow',
             line: 126,
@@ -958,7 +873,6 @@ final class ConversionsTest extends SpecTestsuiteBase
     public function testAssertTrap86(): void
     {
         $this->runAssertTrapCommand(
-            module: null,
             action: ['type' => 'invoke', 'field' => 'i32.trunc_f64_s', 'args' => [['type' => 'f64', 'value' => '9218868437227405312']]],
             text: 'integer overflow',
             line: 127,
@@ -969,7 +883,6 @@ final class ConversionsTest extends SpecTestsuiteBase
     public function testAssertTrap87(): void
     {
         $this->runAssertTrapCommand(
-            module: null,
             action: ['type' => 'invoke', 'field' => 'i32.trunc_f64_s', 'args' => [['type' => 'f64', 'value' => '18442240474082181120']]],
             text: 'integer overflow',
             line: 128,
@@ -980,7 +893,6 @@ final class ConversionsTest extends SpecTestsuiteBase
     public function testAssertTrap88(): void
     {
         $this->runAssertTrapCommand(
-            module: null,
             action: ['type' => 'invoke', 'field' => 'i32.trunc_f64_s', 'args' => [['type' => 'f64', 'value' => '9221120237041090560']]],
             text: 'invalid conversion to integer',
             line: 129,
@@ -991,7 +903,6 @@ final class ConversionsTest extends SpecTestsuiteBase
     public function testAssertTrap89(): void
     {
         $this->runAssertTrapCommand(
-            module: null,
             action: ['type' => 'invoke', 'field' => 'i32.trunc_f64_s', 'args' => [['type' => 'f64', 'value' => '9219994337134247936']]],
             text: 'invalid conversion to integer',
             line: 130,
@@ -1002,7 +913,6 @@ final class ConversionsTest extends SpecTestsuiteBase
     public function testAssertTrap90(): void
     {
         $this->runAssertTrapCommand(
-            module: null,
             action: ['type' => 'invoke', 'field' => 'i32.trunc_f64_s', 'args' => [['type' => 'f64', 'value' => '18444492273895866368']]],
             text: 'invalid conversion to integer',
             line: 131,
@@ -1013,7 +923,6 @@ final class ConversionsTest extends SpecTestsuiteBase
     public function testAssertTrap91(): void
     {
         $this->runAssertTrapCommand(
-            module: null,
             action: ['type' => 'invoke', 'field' => 'i32.trunc_f64_s', 'args' => [['type' => 'f64', 'value' => '18443366373989023744']]],
             text: 'invalid conversion to integer',
             line: 132,
@@ -1024,7 +933,6 @@ final class ConversionsTest extends SpecTestsuiteBase
     public function testAssertReturn92(): void
     {
         $this->runAssertReturnCommand(
-            module: null,
             action: ['type' => 'invoke', 'field' => 'i32.trunc_f64_u', 'args' => [['type' => 'f64', 'value' => '0']]],
             expected: [['type' => 'i32', 'value' => '0']],
             line: 134,
@@ -1035,7 +943,6 @@ final class ConversionsTest extends SpecTestsuiteBase
     public function testAssertReturn93(): void
     {
         $this->runAssertReturnCommand(
-            module: null,
             action: ['type' => 'invoke', 'field' => 'i32.trunc_f64_u', 'args' => [['type' => 'f64', 'value' => '9223372036854775808']]],
             expected: [['type' => 'i32', 'value' => '0']],
             line: 135,
@@ -1046,7 +953,6 @@ final class ConversionsTest extends SpecTestsuiteBase
     public function testAssertReturn94(): void
     {
         $this->runAssertReturnCommand(
-            module: null,
             action: ['type' => 'invoke', 'field' => 'i32.trunc_f64_u', 'args' => [['type' => 'f64', 'value' => '1']]],
             expected: [['type' => 'i32', 'value' => '0']],
             line: 136,
@@ -1057,7 +963,6 @@ final class ConversionsTest extends SpecTestsuiteBase
     public function testAssertReturn95(): void
     {
         $this->runAssertReturnCommand(
-            module: null,
             action: ['type' => 'invoke', 'field' => 'i32.trunc_f64_u', 'args' => [['type' => 'f64', 'value' => '9223372036854775809']]],
             expected: [['type' => 'i32', 'value' => '0']],
             line: 137,
@@ -1068,7 +973,6 @@ final class ConversionsTest extends SpecTestsuiteBase
     public function testAssertReturn96(): void
     {
         $this->runAssertReturnCommand(
-            module: null,
             action: ['type' => 'invoke', 'field' => 'i32.trunc_f64_u', 'args' => [['type' => 'f64', 'value' => '4607182418800017408']]],
             expected: [['type' => 'i32', 'value' => '1']],
             line: 138,
@@ -1079,7 +983,6 @@ final class ConversionsTest extends SpecTestsuiteBase
     public function testAssertReturn97(): void
     {
         $this->runAssertReturnCommand(
-            module: null,
             action: ['type' => 'invoke', 'field' => 'i32.trunc_f64_u', 'args' => [['type' => 'f64', 'value' => '4607632778762754458']]],
             expected: [['type' => 'i32', 'value' => '1']],
             line: 139,
@@ -1090,7 +993,6 @@ final class ConversionsTest extends SpecTestsuiteBase
     public function testAssertReturn98(): void
     {
         $this->runAssertReturnCommand(
-            module: null,
             action: ['type' => 'invoke', 'field' => 'i32.trunc_f64_u', 'args' => [['type' => 'f64', 'value' => '4609434218613702656']]],
             expected: [['type' => 'i32', 'value' => '1']],
             line: 140,
@@ -1101,7 +1003,6 @@ final class ConversionsTest extends SpecTestsuiteBase
     public function testAssertReturn99(): void
     {
         $this->runAssertReturnCommand(
-            module: null,
             action: ['type' => 'invoke', 'field' => 'i32.trunc_f64_u', 'args' => [['type' => 'f64', 'value' => '4611235658464650854']]],
             expected: [['type' => 'i32', 'value' => '1']],
             line: 141,
@@ -1112,7 +1013,6 @@ final class ConversionsTest extends SpecTestsuiteBase
     public function testAssertReturn100(): void
     {
         $this->runAssertReturnCommand(
-            module: null,
             action: ['type' => 'invoke', 'field' => 'i32.trunc_f64_u', 'args' => [['type' => 'f64', 'value' => '4611686018427387904']]],
             expected: [['type' => 'i32', 'value' => '2']],
             line: 142,
@@ -1123,7 +1023,6 @@ final class ConversionsTest extends SpecTestsuiteBase
     public function testAssertReturn101(): void
     {
         $this->runAssertReturnCommand(
-            module: null,
             action: ['type' => 'invoke', 'field' => 'i32.trunc_f64_u', 'args' => [['type' => 'f64', 'value' => '4746794007248502784']]],
             expected: [['type' => 'i32', 'value' => '2147483648']],
             line: 143,
@@ -1134,7 +1033,6 @@ final class ConversionsTest extends SpecTestsuiteBase
     public function testAssertReturn102(): void
     {
         $this->runAssertReturnCommand(
-            module: null,
             action: ['type' => 'invoke', 'field' => 'i32.trunc_f64_u', 'args' => [['type' => 'f64', 'value' => '4751297606873776128']]],
             expected: [['type' => 'i32', 'value' => '4294967295']],
             line: 144,
@@ -1145,7 +1043,6 @@ final class ConversionsTest extends SpecTestsuiteBase
     public function testAssertReturn103(): void
     {
         $this->runAssertReturnCommand(
-            module: null,
             action: ['type' => 'invoke', 'field' => 'i32.trunc_f64_u', 'args' => [['type' => 'f64', 'value' => '13829653735729319117']]],
             expected: [['type' => 'i32', 'value' => '0']],
             line: 145,
@@ -1156,7 +1053,6 @@ final class ConversionsTest extends SpecTestsuiteBase
     public function testAssertReturn104(): void
     {
         $this->runAssertReturnCommand(
-            module: null,
             action: ['type' => 'invoke', 'field' => 'i32.trunc_f64_u', 'args' => [['type' => 'f64', 'value' => '13830554455654793215']]],
             expected: [['type' => 'i32', 'value' => '0']],
             line: 146,
@@ -1167,7 +1063,6 @@ final class ConversionsTest extends SpecTestsuiteBase
     public function testAssertReturn105(): void
     {
         $this->runAssertReturnCommand(
-            module: null,
             action: ['type' => 'invoke', 'field' => 'i32.trunc_f64_u', 'args' => [['type' => 'f64', 'value' => '4726483295884279808']]],
             expected: [['type' => 'i32', 'value' => '100000000']],
             line: 147,
@@ -1178,7 +1073,6 @@ final class ConversionsTest extends SpecTestsuiteBase
     public function testAssertReturn106(): void
     {
         $this->runAssertReturnCommand(
-            module: null,
             action: ['type' => 'invoke', 'field' => 'i32.trunc_f64_u', 'args' => [['type' => 'f64', 'value' => '13829653735729319117']]],
             expected: [['type' => 'i32', 'value' => '0']],
             line: 148,
@@ -1189,7 +1083,6 @@ final class ConversionsTest extends SpecTestsuiteBase
     public function testAssertReturn107(): void
     {
         $this->runAssertReturnCommand(
-            module: null,
             action: ['type' => 'invoke', 'field' => 'i32.trunc_f64_u', 'args' => [['type' => 'f64', 'value' => '4751297606875663565']]],
             expected: [['type' => 'i32', 'value' => '4294967295']],
             line: 149,
@@ -1200,7 +1093,6 @@ final class ConversionsTest extends SpecTestsuiteBase
     public function testAssertTrap108(): void
     {
         $this->runAssertTrapCommand(
-            module: null,
             action: ['type' => 'invoke', 'field' => 'i32.trunc_f64_u', 'args' => [['type' => 'f64', 'value' => '4751297606875873280']]],
             text: 'integer overflow',
             line: 150,
@@ -1211,7 +1103,6 @@ final class ConversionsTest extends SpecTestsuiteBase
     public function testAssertTrap109(): void
     {
         $this->runAssertTrapCommand(
-            module: null,
             action: ['type' => 'invoke', 'field' => 'i32.trunc_f64_u', 'args' => [['type' => 'f64', 'value' => '13830554455654793216']]],
             text: 'integer overflow',
             line: 151,
@@ -1222,7 +1113,6 @@ final class ConversionsTest extends SpecTestsuiteBase
     public function testAssertTrap110(): void
     {
         $this->runAssertTrapCommand(
-            module: null,
             action: ['type' => 'invoke', 'field' => 'i32.trunc_f64_u', 'args' => [['type' => 'f64', 'value' => '4846369599423283200']]],
             text: 'integer overflow',
             line: 152,
@@ -1233,7 +1123,6 @@ final class ConversionsTest extends SpecTestsuiteBase
     public function testAssertTrap111(): void
     {
         $this->runAssertTrapCommand(
-            module: null,
             action: ['type' => 'invoke', 'field' => 'i32.trunc_f64_u', 'args' => [['type' => 'f64', 'value' => '5055640609639927018']]],
             text: 'integer overflow',
             line: 153,
@@ -1244,7 +1133,6 @@ final class ConversionsTest extends SpecTestsuiteBase
     public function testAssertTrap112(): void
     {
         $this->runAssertTrapCommand(
-            module: null,
             action: ['type' => 'invoke', 'field' => 'i32.trunc_f64_u', 'args' => [['type' => 'f64', 'value' => '4890909195324358656']]],
             text: 'integer overflow',
             line: 154,
@@ -1255,7 +1143,6 @@ final class ConversionsTest extends SpecTestsuiteBase
     public function testAssertTrap113(): void
     {
         $this->runAssertTrapCommand(
-            module: null,
             action: ['type' => 'invoke', 'field' => 'i32.trunc_f64_u', 'args' => [['type' => 'f64', 'value' => '9218868437227405312']]],
             text: 'integer overflow',
             line: 155,
@@ -1266,7 +1153,6 @@ final class ConversionsTest extends SpecTestsuiteBase
     public function testAssertTrap114(): void
     {
         $this->runAssertTrapCommand(
-            module: null,
             action: ['type' => 'invoke', 'field' => 'i32.trunc_f64_u', 'args' => [['type' => 'f64', 'value' => '18442240474082181120']]],
             text: 'integer overflow',
             line: 156,
@@ -1277,7 +1163,6 @@ final class ConversionsTest extends SpecTestsuiteBase
     public function testAssertTrap115(): void
     {
         $this->runAssertTrapCommand(
-            module: null,
             action: ['type' => 'invoke', 'field' => 'i32.trunc_f64_u', 'args' => [['type' => 'f64', 'value' => '9221120237041090560']]],
             text: 'invalid conversion to integer',
             line: 157,
@@ -1288,7 +1173,6 @@ final class ConversionsTest extends SpecTestsuiteBase
     public function testAssertTrap116(): void
     {
         $this->runAssertTrapCommand(
-            module: null,
             action: ['type' => 'invoke', 'field' => 'i32.trunc_f64_u', 'args' => [['type' => 'f64', 'value' => '9219994337134247936']]],
             text: 'invalid conversion to integer',
             line: 158,
@@ -1299,7 +1183,6 @@ final class ConversionsTest extends SpecTestsuiteBase
     public function testAssertTrap117(): void
     {
         $this->runAssertTrapCommand(
-            module: null,
             action: ['type' => 'invoke', 'field' => 'i32.trunc_f64_u', 'args' => [['type' => 'f64', 'value' => '18444492273895866368']]],
             text: 'invalid conversion to integer',
             line: 159,
@@ -1310,7 +1193,6 @@ final class ConversionsTest extends SpecTestsuiteBase
     public function testAssertTrap118(): void
     {
         $this->runAssertTrapCommand(
-            module: null,
             action: ['type' => 'invoke', 'field' => 'i32.trunc_f64_u', 'args' => [['type' => 'f64', 'value' => '18443366373989023744']]],
             text: 'invalid conversion to integer',
             line: 160,
@@ -1321,7 +1203,6 @@ final class ConversionsTest extends SpecTestsuiteBase
     public function testAssertReturn119(): void
     {
         $this->runAssertReturnCommand(
-            module: null,
             action: ['type' => 'invoke', 'field' => 'i64.trunc_f32_s', 'args' => [['type' => 'f32', 'value' => '0']]],
             expected: [['type' => 'i64', 'value' => '0']],
             line: 162,
@@ -1332,7 +1213,6 @@ final class ConversionsTest extends SpecTestsuiteBase
     public function testAssertReturn120(): void
     {
         $this->runAssertReturnCommand(
-            module: null,
             action: ['type' => 'invoke', 'field' => 'i64.trunc_f32_s', 'args' => [['type' => 'f32', 'value' => '2147483648']]],
             expected: [['type' => 'i64', 'value' => '0']],
             line: 163,
@@ -1343,7 +1223,6 @@ final class ConversionsTest extends SpecTestsuiteBase
     public function testAssertReturn121(): void
     {
         $this->runAssertReturnCommand(
-            module: null,
             action: ['type' => 'invoke', 'field' => 'i64.trunc_f32_s', 'args' => [['type' => 'f32', 'value' => '1']]],
             expected: [['type' => 'i64', 'value' => '0']],
             line: 164,
@@ -1354,7 +1233,6 @@ final class ConversionsTest extends SpecTestsuiteBase
     public function testAssertReturn122(): void
     {
         $this->runAssertReturnCommand(
-            module: null,
             action: ['type' => 'invoke', 'field' => 'i64.trunc_f32_s', 'args' => [['type' => 'f32', 'value' => '2147483649']]],
             expected: [['type' => 'i64', 'value' => '0']],
             line: 165,
@@ -1365,7 +1243,6 @@ final class ConversionsTest extends SpecTestsuiteBase
     public function testAssertReturn123(): void
     {
         $this->runAssertReturnCommand(
-            module: null,
             action: ['type' => 'invoke', 'field' => 'i64.trunc_f32_s', 'args' => [['type' => 'f32', 'value' => '1065353216']]],
             expected: [['type' => 'i64', 'value' => '1']],
             line: 166,
@@ -1376,7 +1253,6 @@ final class ConversionsTest extends SpecTestsuiteBase
     public function testAssertReturn124(): void
     {
         $this->runAssertReturnCommand(
-            module: null,
             action: ['type' => 'invoke', 'field' => 'i64.trunc_f32_s', 'args' => [['type' => 'f32', 'value' => '1066192077']]],
             expected: [['type' => 'i64', 'value' => '1']],
             line: 167,
@@ -1387,7 +1263,6 @@ final class ConversionsTest extends SpecTestsuiteBase
     public function testAssertReturn125(): void
     {
         $this->runAssertReturnCommand(
-            module: null,
             action: ['type' => 'invoke', 'field' => 'i64.trunc_f32_s', 'args' => [['type' => 'f32', 'value' => '1069547520']]],
             expected: [['type' => 'i64', 'value' => '1']],
             line: 168,
@@ -1398,7 +1273,6 @@ final class ConversionsTest extends SpecTestsuiteBase
     public function testAssertReturn126(): void
     {
         $this->runAssertReturnCommand(
-            module: null,
             action: ['type' => 'invoke', 'field' => 'i64.trunc_f32_s', 'args' => [['type' => 'f32', 'value' => '3212836864']]],
             expected: [['type' => 'i64', 'value' => '18446744073709551615']],
             line: 169,
@@ -1409,7 +1283,6 @@ final class ConversionsTest extends SpecTestsuiteBase
     public function testAssertReturn127(): void
     {
         $this->runAssertReturnCommand(
-            module: null,
             action: ['type' => 'invoke', 'field' => 'i64.trunc_f32_s', 'args' => [['type' => 'f32', 'value' => '3213675725']]],
             expected: [['type' => 'i64', 'value' => '18446744073709551615']],
             line: 170,
@@ -1420,7 +1293,6 @@ final class ConversionsTest extends SpecTestsuiteBase
     public function testAssertReturn128(): void
     {
         $this->runAssertReturnCommand(
-            module: null,
             action: ['type' => 'invoke', 'field' => 'i64.trunc_f32_s', 'args' => [['type' => 'f32', 'value' => '3217031168']]],
             expected: [['type' => 'i64', 'value' => '18446744073709551615']],
             line: 171,
@@ -1431,7 +1303,6 @@ final class ConversionsTest extends SpecTestsuiteBase
     public function testAssertReturn129(): void
     {
         $this->runAssertReturnCommand(
-            module: null,
             action: ['type' => 'invoke', 'field' => 'i64.trunc_f32_s', 'args' => [['type' => 'f32', 'value' => '3220386611']]],
             expected: [['type' => 'i64', 'value' => '18446744073709551615']],
             line: 172,
@@ -1442,7 +1313,6 @@ final class ConversionsTest extends SpecTestsuiteBase
     public function testAssertReturn130(): void
     {
         $this->runAssertReturnCommand(
-            module: null,
             action: ['type' => 'invoke', 'field' => 'i64.trunc_f32_s', 'args' => [['type' => 'f32', 'value' => '3221225472']]],
             expected: [['type' => 'i64', 'value' => '18446744073709551614']],
             line: 173,
@@ -1453,7 +1323,6 @@ final class ConversionsTest extends SpecTestsuiteBase
     public function testAssertReturn131(): void
     {
         $this->runAssertReturnCommand(
-            module: null,
             action: ['type' => 'invoke', 'field' => 'i64.trunc_f32_s', 'args' => [['type' => 'f32', 'value' => '1333788672']]],
             expected: [['type' => 'i64', 'value' => '4294967296']],
             line: 174,
@@ -1464,7 +1333,6 @@ final class ConversionsTest extends SpecTestsuiteBase
     public function testAssertReturn132(): void
     {
         $this->runAssertReturnCommand(
-            module: null,
             action: ['type' => 'invoke', 'field' => 'i64.trunc_f32_s', 'args' => [['type' => 'f32', 'value' => '3481272320']]],
             expected: [['type' => 'i64', 'value' => '18446744069414584320']],
             line: 175,
@@ -1475,7 +1343,6 @@ final class ConversionsTest extends SpecTestsuiteBase
     public function testAssertReturn133(): void
     {
         $this->runAssertReturnCommand(
-            module: null,
             action: ['type' => 'invoke', 'field' => 'i64.trunc_f32_s', 'args' => [['type' => 'f32', 'value' => '1593835519']]],
             expected: [['type' => 'i64', 'value' => '9223371487098961920']],
             line: 176,
@@ -1486,7 +1353,6 @@ final class ConversionsTest extends SpecTestsuiteBase
     public function testAssertReturn134(): void
     {
         $this->runAssertReturnCommand(
-            module: null,
             action: ['type' => 'invoke', 'field' => 'i64.trunc_f32_s', 'args' => [['type' => 'f32', 'value' => '3741319168']]],
             expected: [['type' => 'i64', 'value' => '9223372036854775808']],
             line: 177,
@@ -1497,7 +1363,6 @@ final class ConversionsTest extends SpecTestsuiteBase
     public function testAssertTrap135(): void
     {
         $this->runAssertTrapCommand(
-            module: null,
             action: ['type' => 'invoke', 'field' => 'i64.trunc_f32_s', 'args' => [['type' => 'f32', 'value' => '1593835520']]],
             text: 'integer overflow',
             line: 178,
@@ -1508,7 +1373,6 @@ final class ConversionsTest extends SpecTestsuiteBase
     public function testAssertTrap136(): void
     {
         $this->runAssertTrapCommand(
-            module: null,
             action: ['type' => 'invoke', 'field' => 'i64.trunc_f32_s', 'args' => [['type' => 'f32', 'value' => '3741319169']]],
             text: 'integer overflow',
             line: 179,
@@ -1519,7 +1383,6 @@ final class ConversionsTest extends SpecTestsuiteBase
     public function testAssertTrap137(): void
     {
         $this->runAssertTrapCommand(
-            module: null,
             action: ['type' => 'invoke', 'field' => 'i64.trunc_f32_s', 'args' => [['type' => 'f32', 'value' => '2139095040']]],
             text: 'integer overflow',
             line: 180,
@@ -1530,7 +1393,6 @@ final class ConversionsTest extends SpecTestsuiteBase
     public function testAssertTrap138(): void
     {
         $this->runAssertTrapCommand(
-            module: null,
             action: ['type' => 'invoke', 'field' => 'i64.trunc_f32_s', 'args' => [['type' => 'f32', 'value' => '4286578688']]],
             text: 'integer overflow',
             line: 181,
@@ -1541,7 +1403,6 @@ final class ConversionsTest extends SpecTestsuiteBase
     public function testAssertTrap139(): void
     {
         $this->runAssertTrapCommand(
-            module: null,
             action: ['type' => 'invoke', 'field' => 'i64.trunc_f32_s', 'args' => [['type' => 'f32', 'value' => '2143289344']]],
             text: 'invalid conversion to integer',
             line: 182,
@@ -1552,7 +1413,6 @@ final class ConversionsTest extends SpecTestsuiteBase
     public function testAssertTrap140(): void
     {
         $this->runAssertTrapCommand(
-            module: null,
             action: ['type' => 'invoke', 'field' => 'i64.trunc_f32_s', 'args' => [['type' => 'f32', 'value' => '2141192192']]],
             text: 'invalid conversion to integer',
             line: 183,
@@ -1563,7 +1423,6 @@ final class ConversionsTest extends SpecTestsuiteBase
     public function testAssertTrap141(): void
     {
         $this->runAssertTrapCommand(
-            module: null,
             action: ['type' => 'invoke', 'field' => 'i64.trunc_f32_s', 'args' => [['type' => 'f32', 'value' => '4290772992']]],
             text: 'invalid conversion to integer',
             line: 184,
@@ -1574,7 +1433,6 @@ final class ConversionsTest extends SpecTestsuiteBase
     public function testAssertTrap142(): void
     {
         $this->runAssertTrapCommand(
-            module: null,
             action: ['type' => 'invoke', 'field' => 'i64.trunc_f32_s', 'args' => [['type' => 'f32', 'value' => '4288675840']]],
             text: 'invalid conversion to integer',
             line: 185,
@@ -1585,7 +1443,6 @@ final class ConversionsTest extends SpecTestsuiteBase
     public function testAssertReturn143(): void
     {
         $this->runAssertReturnCommand(
-            module: null,
             action: ['type' => 'invoke', 'field' => 'i64.trunc_f32_u', 'args' => [['type' => 'f32', 'value' => '0']]],
             expected: [['type' => 'i64', 'value' => '0']],
             line: 187,
@@ -1596,7 +1453,6 @@ final class ConversionsTest extends SpecTestsuiteBase
     public function testAssertReturn144(): void
     {
         $this->runAssertReturnCommand(
-            module: null,
             action: ['type' => 'invoke', 'field' => 'i64.trunc_f32_u', 'args' => [['type' => 'f32', 'value' => '2147483648']]],
             expected: [['type' => 'i64', 'value' => '0']],
             line: 188,
@@ -1607,7 +1463,6 @@ final class ConversionsTest extends SpecTestsuiteBase
     public function testAssertReturn145(): void
     {
         $this->runAssertReturnCommand(
-            module: null,
             action: ['type' => 'invoke', 'field' => 'i64.trunc_f32_u', 'args' => [['type' => 'f32', 'value' => '1']]],
             expected: [['type' => 'i64', 'value' => '0']],
             line: 189,
@@ -1618,7 +1473,6 @@ final class ConversionsTest extends SpecTestsuiteBase
     public function testAssertReturn146(): void
     {
         $this->runAssertReturnCommand(
-            module: null,
             action: ['type' => 'invoke', 'field' => 'i64.trunc_f32_u', 'args' => [['type' => 'f32', 'value' => '2147483649']]],
             expected: [['type' => 'i64', 'value' => '0']],
             line: 190,
@@ -1629,7 +1483,6 @@ final class ConversionsTest extends SpecTestsuiteBase
     public function testAssertReturn147(): void
     {
         $this->runAssertReturnCommand(
-            module: null,
             action: ['type' => 'invoke', 'field' => 'i64.trunc_f32_u', 'args' => [['type' => 'f32', 'value' => '1065353216']]],
             expected: [['type' => 'i64', 'value' => '1']],
             line: 191,
@@ -1640,7 +1493,6 @@ final class ConversionsTest extends SpecTestsuiteBase
     public function testAssertReturn148(): void
     {
         $this->runAssertReturnCommand(
-            module: null,
             action: ['type' => 'invoke', 'field' => 'i64.trunc_f32_u', 'args' => [['type' => 'f32', 'value' => '1066192077']]],
             expected: [['type' => 'i64', 'value' => '1']],
             line: 192,
@@ -1651,7 +1503,6 @@ final class ConversionsTest extends SpecTestsuiteBase
     public function testAssertReturn149(): void
     {
         $this->runAssertReturnCommand(
-            module: null,
             action: ['type' => 'invoke', 'field' => 'i64.trunc_f32_u', 'args' => [['type' => 'f32', 'value' => '1069547520']]],
             expected: [['type' => 'i64', 'value' => '1']],
             line: 193,
@@ -1662,7 +1513,6 @@ final class ConversionsTest extends SpecTestsuiteBase
     public function testAssertReturn150(): void
     {
         $this->runAssertReturnCommand(
-            module: null,
             action: ['type' => 'invoke', 'field' => 'i64.trunc_f32_u', 'args' => [['type' => 'f32', 'value' => '1333788672']]],
             expected: [['type' => 'i64', 'value' => '4294967296']],
             line: 194,
@@ -1673,7 +1523,6 @@ final class ConversionsTest extends SpecTestsuiteBase
     public function testAssertReturn151(): void
     {
         $this->runAssertReturnCommand(
-            module: null,
             action: ['type' => 'invoke', 'field' => 'i64.trunc_f32_u', 'args' => [['type' => 'f32', 'value' => '1602224127']]],
             expected: [['type' => 'i64', 'value' => '18446742974197923840']],
             line: 195,
@@ -1684,7 +1533,6 @@ final class ConversionsTest extends SpecTestsuiteBase
     public function testAssertReturn152(): void
     {
         $this->runAssertReturnCommand(
-            module: null,
             action: ['type' => 'invoke', 'field' => 'i64.trunc_f32_u', 'args' => [['type' => 'f32', 'value' => '3211159142']]],
             expected: [['type' => 'i64', 'value' => '0']],
             line: 196,
@@ -1695,7 +1543,6 @@ final class ConversionsTest extends SpecTestsuiteBase
     public function testAssertReturn153(): void
     {
         $this->runAssertReturnCommand(
-            module: null,
             action: ['type' => 'invoke', 'field' => 'i64.trunc_f32_u', 'args' => [['type' => 'f32', 'value' => '3212836863']]],
             expected: [['type' => 'i64', 'value' => '0']],
             line: 197,
@@ -1706,7 +1553,6 @@ final class ConversionsTest extends SpecTestsuiteBase
     public function testAssertTrap154(): void
     {
         $this->runAssertTrapCommand(
-            module: null,
             action: ['type' => 'invoke', 'field' => 'i64.trunc_f32_u', 'args' => [['type' => 'f32', 'value' => '1602224128']]],
             text: 'integer overflow',
             line: 198,
@@ -1717,7 +1563,6 @@ final class ConversionsTest extends SpecTestsuiteBase
     public function testAssertTrap155(): void
     {
         $this->runAssertTrapCommand(
-            module: null,
             action: ['type' => 'invoke', 'field' => 'i64.trunc_f32_u', 'args' => [['type' => 'f32', 'value' => '3212836864']]],
             text: 'integer overflow',
             line: 199,
@@ -1728,7 +1573,6 @@ final class ConversionsTest extends SpecTestsuiteBase
     public function testAssertTrap156(): void
     {
         $this->runAssertTrapCommand(
-            module: null,
             action: ['type' => 'invoke', 'field' => 'i64.trunc_f32_u', 'args' => [['type' => 'f32', 'value' => '2139095040']]],
             text: 'integer overflow',
             line: 200,
@@ -1739,7 +1583,6 @@ final class ConversionsTest extends SpecTestsuiteBase
     public function testAssertTrap157(): void
     {
         $this->runAssertTrapCommand(
-            module: null,
             action: ['type' => 'invoke', 'field' => 'i64.trunc_f32_u', 'args' => [['type' => 'f32', 'value' => '4286578688']]],
             text: 'integer overflow',
             line: 201,
@@ -1750,7 +1593,6 @@ final class ConversionsTest extends SpecTestsuiteBase
     public function testAssertTrap158(): void
     {
         $this->runAssertTrapCommand(
-            module: null,
             action: ['type' => 'invoke', 'field' => 'i64.trunc_f32_u', 'args' => [['type' => 'f32', 'value' => '2143289344']]],
             text: 'invalid conversion to integer',
             line: 202,
@@ -1761,7 +1603,6 @@ final class ConversionsTest extends SpecTestsuiteBase
     public function testAssertTrap159(): void
     {
         $this->runAssertTrapCommand(
-            module: null,
             action: ['type' => 'invoke', 'field' => 'i64.trunc_f32_u', 'args' => [['type' => 'f32', 'value' => '2141192192']]],
             text: 'invalid conversion to integer',
             line: 203,
@@ -1772,7 +1613,6 @@ final class ConversionsTest extends SpecTestsuiteBase
     public function testAssertTrap160(): void
     {
         $this->runAssertTrapCommand(
-            module: null,
             action: ['type' => 'invoke', 'field' => 'i64.trunc_f32_u', 'args' => [['type' => 'f32', 'value' => '4290772992']]],
             text: 'invalid conversion to integer',
             line: 204,
@@ -1783,7 +1623,6 @@ final class ConversionsTest extends SpecTestsuiteBase
     public function testAssertTrap161(): void
     {
         $this->runAssertTrapCommand(
-            module: null,
             action: ['type' => 'invoke', 'field' => 'i64.trunc_f32_u', 'args' => [['type' => 'f32', 'value' => '4288675840']]],
             text: 'invalid conversion to integer',
             line: 205,
@@ -1794,7 +1633,6 @@ final class ConversionsTest extends SpecTestsuiteBase
     public function testAssertReturn162(): void
     {
         $this->runAssertReturnCommand(
-            module: null,
             action: ['type' => 'invoke', 'field' => 'i64.trunc_f64_s', 'args' => [['type' => 'f64', 'value' => '0']]],
             expected: [['type' => 'i64', 'value' => '0']],
             line: 207,
@@ -1805,7 +1643,6 @@ final class ConversionsTest extends SpecTestsuiteBase
     public function testAssertReturn163(): void
     {
         $this->runAssertReturnCommand(
-            module: null,
             action: ['type' => 'invoke', 'field' => 'i64.trunc_f64_s', 'args' => [['type' => 'f64', 'value' => '9223372036854775808']]],
             expected: [['type' => 'i64', 'value' => '0']],
             line: 208,
@@ -1816,7 +1653,6 @@ final class ConversionsTest extends SpecTestsuiteBase
     public function testAssertReturn164(): void
     {
         $this->runAssertReturnCommand(
-            module: null,
             action: ['type' => 'invoke', 'field' => 'i64.trunc_f64_s', 'args' => [['type' => 'f64', 'value' => '1']]],
             expected: [['type' => 'i64', 'value' => '0']],
             line: 209,
@@ -1827,7 +1663,6 @@ final class ConversionsTest extends SpecTestsuiteBase
     public function testAssertReturn165(): void
     {
         $this->runAssertReturnCommand(
-            module: null,
             action: ['type' => 'invoke', 'field' => 'i64.trunc_f64_s', 'args' => [['type' => 'f64', 'value' => '9223372036854775809']]],
             expected: [['type' => 'i64', 'value' => '0']],
             line: 210,
@@ -1838,7 +1673,6 @@ final class ConversionsTest extends SpecTestsuiteBase
     public function testAssertReturn166(): void
     {
         $this->runAssertReturnCommand(
-            module: null,
             action: ['type' => 'invoke', 'field' => 'i64.trunc_f64_s', 'args' => [['type' => 'f64', 'value' => '4607182418800017408']]],
             expected: [['type' => 'i64', 'value' => '1']],
             line: 211,
@@ -1849,7 +1683,6 @@ final class ConversionsTest extends SpecTestsuiteBase
     public function testAssertReturn167(): void
     {
         $this->runAssertReturnCommand(
-            module: null,
             action: ['type' => 'invoke', 'field' => 'i64.trunc_f64_s', 'args' => [['type' => 'f64', 'value' => '4607632778762754458']]],
             expected: [['type' => 'i64', 'value' => '1']],
             line: 212,
@@ -1860,7 +1693,6 @@ final class ConversionsTest extends SpecTestsuiteBase
     public function testAssertReturn168(): void
     {
         $this->runAssertReturnCommand(
-            module: null,
             action: ['type' => 'invoke', 'field' => 'i64.trunc_f64_s', 'args' => [['type' => 'f64', 'value' => '4609434218613702656']]],
             expected: [['type' => 'i64', 'value' => '1']],
             line: 213,
@@ -1871,7 +1703,6 @@ final class ConversionsTest extends SpecTestsuiteBase
     public function testAssertReturn169(): void
     {
         $this->runAssertReturnCommand(
-            module: null,
             action: ['type' => 'invoke', 'field' => 'i64.trunc_f64_s', 'args' => [['type' => 'f64', 'value' => '13830554455654793216']]],
             expected: [['type' => 'i64', 'value' => '18446744073709551615']],
             line: 214,
@@ -1882,7 +1713,6 @@ final class ConversionsTest extends SpecTestsuiteBase
     public function testAssertReturn170(): void
     {
         $this->runAssertReturnCommand(
-            module: null,
             action: ['type' => 'invoke', 'field' => 'i64.trunc_f64_s', 'args' => [['type' => 'f64', 'value' => '13831004815617530266']]],
             expected: [['type' => 'i64', 'value' => '18446744073709551615']],
             line: 215,
@@ -1893,7 +1723,6 @@ final class ConversionsTest extends SpecTestsuiteBase
     public function testAssertReturn171(): void
     {
         $this->runAssertReturnCommand(
-            module: null,
             action: ['type' => 'invoke', 'field' => 'i64.trunc_f64_s', 'args' => [['type' => 'f64', 'value' => '13832806255468478464']]],
             expected: [['type' => 'i64', 'value' => '18446744073709551615']],
             line: 216,
@@ -1904,7 +1733,6 @@ final class ConversionsTest extends SpecTestsuiteBase
     public function testAssertReturn172(): void
     {
         $this->runAssertReturnCommand(
-            module: null,
             action: ['type' => 'invoke', 'field' => 'i64.trunc_f64_s', 'args' => [['type' => 'f64', 'value' => '13834607695319426662']]],
             expected: [['type' => 'i64', 'value' => '18446744073709551615']],
             line: 217,
@@ -1915,7 +1743,6 @@ final class ConversionsTest extends SpecTestsuiteBase
     public function testAssertReturn173(): void
     {
         $this->runAssertReturnCommand(
-            module: null,
             action: ['type' => 'invoke', 'field' => 'i64.trunc_f64_s', 'args' => [['type' => 'f64', 'value' => '13835058055282163712']]],
             expected: [['type' => 'i64', 'value' => '18446744073709551614']],
             line: 218,
@@ -1926,7 +1753,6 @@ final class ConversionsTest extends SpecTestsuiteBase
     public function testAssertReturn174(): void
     {
         $this->runAssertReturnCommand(
-            module: null,
             action: ['type' => 'invoke', 'field' => 'i64.trunc_f64_s', 'args' => [['type' => 'f64', 'value' => '4751297606875873280']]],
             expected: [['type' => 'i64', 'value' => '4294967296']],
             line: 219,
@@ -1937,7 +1763,6 @@ final class ConversionsTest extends SpecTestsuiteBase
     public function testAssertReturn175(): void
     {
         $this->runAssertReturnCommand(
-            module: null,
             action: ['type' => 'invoke', 'field' => 'i64.trunc_f64_s', 'args' => [['type' => 'f64', 'value' => '13974669643730649088']]],
             expected: [['type' => 'i64', 'value' => '18446744069414584320']],
             line: 220,
@@ -1948,7 +1773,6 @@ final class ConversionsTest extends SpecTestsuiteBase
     public function testAssertReturn176(): void
     {
         $this->runAssertReturnCommand(
-            module: null,
             action: ['type' => 'invoke', 'field' => 'i64.trunc_f64_s', 'args' => [['type' => 'f64', 'value' => '4890909195324358655']]],
             expected: [['type' => 'i64', 'value' => '9223372036854774784']],
             line: 221,
@@ -1959,7 +1783,6 @@ final class ConversionsTest extends SpecTestsuiteBase
     public function testAssertReturn177(): void
     {
         $this->runAssertReturnCommand(
-            module: null,
             action: ['type' => 'invoke', 'field' => 'i64.trunc_f64_s', 'args' => [['type' => 'f64', 'value' => '14114281232179134464']]],
             expected: [['type' => 'i64', 'value' => '9223372036854775808']],
             line: 222,
@@ -1970,7 +1793,6 @@ final class ConversionsTest extends SpecTestsuiteBase
     public function testAssertTrap178(): void
     {
         $this->runAssertTrapCommand(
-            module: null,
             action: ['type' => 'invoke', 'field' => 'i64.trunc_f64_s', 'args' => [['type' => 'f64', 'value' => '4890909195324358656']]],
             text: 'integer overflow',
             line: 223,
@@ -1981,7 +1803,6 @@ final class ConversionsTest extends SpecTestsuiteBase
     public function testAssertTrap179(): void
     {
         $this->runAssertTrapCommand(
-            module: null,
             action: ['type' => 'invoke', 'field' => 'i64.trunc_f64_s', 'args' => [['type' => 'f64', 'value' => '14114281232179134465']]],
             text: 'integer overflow',
             line: 224,
@@ -1992,7 +1813,6 @@ final class ConversionsTest extends SpecTestsuiteBase
     public function testAssertTrap180(): void
     {
         $this->runAssertTrapCommand(
-            module: null,
             action: ['type' => 'invoke', 'field' => 'i64.trunc_f64_s', 'args' => [['type' => 'f64', 'value' => '9218868437227405312']]],
             text: 'integer overflow',
             line: 225,
@@ -2003,7 +1823,6 @@ final class ConversionsTest extends SpecTestsuiteBase
     public function testAssertTrap181(): void
     {
         $this->runAssertTrapCommand(
-            module: null,
             action: ['type' => 'invoke', 'field' => 'i64.trunc_f64_s', 'args' => [['type' => 'f64', 'value' => '18442240474082181120']]],
             text: 'integer overflow',
             line: 226,
@@ -2014,7 +1833,6 @@ final class ConversionsTest extends SpecTestsuiteBase
     public function testAssertTrap182(): void
     {
         $this->runAssertTrapCommand(
-            module: null,
             action: ['type' => 'invoke', 'field' => 'i64.trunc_f64_s', 'args' => [['type' => 'f64', 'value' => '9221120237041090560']]],
             text: 'invalid conversion to integer',
             line: 227,
@@ -2025,7 +1843,6 @@ final class ConversionsTest extends SpecTestsuiteBase
     public function testAssertTrap183(): void
     {
         $this->runAssertTrapCommand(
-            module: null,
             action: ['type' => 'invoke', 'field' => 'i64.trunc_f64_s', 'args' => [['type' => 'f64', 'value' => '9219994337134247936']]],
             text: 'invalid conversion to integer',
             line: 228,
@@ -2036,7 +1853,6 @@ final class ConversionsTest extends SpecTestsuiteBase
     public function testAssertTrap184(): void
     {
         $this->runAssertTrapCommand(
-            module: null,
             action: ['type' => 'invoke', 'field' => 'i64.trunc_f64_s', 'args' => [['type' => 'f64', 'value' => '18444492273895866368']]],
             text: 'invalid conversion to integer',
             line: 229,
@@ -2047,7 +1863,6 @@ final class ConversionsTest extends SpecTestsuiteBase
     public function testAssertTrap185(): void
     {
         $this->runAssertTrapCommand(
-            module: null,
             action: ['type' => 'invoke', 'field' => 'i64.trunc_f64_s', 'args' => [['type' => 'f64', 'value' => '18443366373989023744']]],
             text: 'invalid conversion to integer',
             line: 230,
@@ -2058,7 +1873,6 @@ final class ConversionsTest extends SpecTestsuiteBase
     public function testAssertReturn186(): void
     {
         $this->runAssertReturnCommand(
-            module: null,
             action: ['type' => 'invoke', 'field' => 'i64.trunc_f64_u', 'args' => [['type' => 'f64', 'value' => '0']]],
             expected: [['type' => 'i64', 'value' => '0']],
             line: 232,
@@ -2069,7 +1883,6 @@ final class ConversionsTest extends SpecTestsuiteBase
     public function testAssertReturn187(): void
     {
         $this->runAssertReturnCommand(
-            module: null,
             action: ['type' => 'invoke', 'field' => 'i64.trunc_f64_u', 'args' => [['type' => 'f64', 'value' => '9223372036854775808']]],
             expected: [['type' => 'i64', 'value' => '0']],
             line: 233,
@@ -2080,7 +1893,6 @@ final class ConversionsTest extends SpecTestsuiteBase
     public function testAssertReturn188(): void
     {
         $this->runAssertReturnCommand(
-            module: null,
             action: ['type' => 'invoke', 'field' => 'i64.trunc_f64_u', 'args' => [['type' => 'f64', 'value' => '1']]],
             expected: [['type' => 'i64', 'value' => '0']],
             line: 234,
@@ -2091,7 +1903,6 @@ final class ConversionsTest extends SpecTestsuiteBase
     public function testAssertReturn189(): void
     {
         $this->runAssertReturnCommand(
-            module: null,
             action: ['type' => 'invoke', 'field' => 'i64.trunc_f64_u', 'args' => [['type' => 'f64', 'value' => '9223372036854775809']]],
             expected: [['type' => 'i64', 'value' => '0']],
             line: 235,
@@ -2102,7 +1913,6 @@ final class ConversionsTest extends SpecTestsuiteBase
     public function testAssertReturn190(): void
     {
         $this->runAssertReturnCommand(
-            module: null,
             action: ['type' => 'invoke', 'field' => 'i64.trunc_f64_u', 'args' => [['type' => 'f64', 'value' => '4607182418800017408']]],
             expected: [['type' => 'i64', 'value' => '1']],
             line: 236,
@@ -2113,7 +1923,6 @@ final class ConversionsTest extends SpecTestsuiteBase
     public function testAssertReturn191(): void
     {
         $this->runAssertReturnCommand(
-            module: null,
             action: ['type' => 'invoke', 'field' => 'i64.trunc_f64_u', 'args' => [['type' => 'f64', 'value' => '4607632778762754458']]],
             expected: [['type' => 'i64', 'value' => '1']],
             line: 237,
@@ -2124,7 +1933,6 @@ final class ConversionsTest extends SpecTestsuiteBase
     public function testAssertReturn192(): void
     {
         $this->runAssertReturnCommand(
-            module: null,
             action: ['type' => 'invoke', 'field' => 'i64.trunc_f64_u', 'args' => [['type' => 'f64', 'value' => '4609434218613702656']]],
             expected: [['type' => 'i64', 'value' => '1']],
             line: 238,
@@ -2135,7 +1943,6 @@ final class ConversionsTest extends SpecTestsuiteBase
     public function testAssertReturn193(): void
     {
         $this->runAssertReturnCommand(
-            module: null,
             action: ['type' => 'invoke', 'field' => 'i64.trunc_f64_u', 'args' => [['type' => 'f64', 'value' => '4751297606873776128']]],
             expected: [['type' => 'i64', 'value' => '4294967295']],
             line: 239,
@@ -2146,7 +1953,6 @@ final class ConversionsTest extends SpecTestsuiteBase
     public function testAssertReturn194(): void
     {
         $this->runAssertReturnCommand(
-            module: null,
             action: ['type' => 'invoke', 'field' => 'i64.trunc_f64_u', 'args' => [['type' => 'f64', 'value' => '4751297606875873280']]],
             expected: [['type' => 'i64', 'value' => '4294967296']],
             line: 240,
@@ -2157,7 +1963,6 @@ final class ConversionsTest extends SpecTestsuiteBase
     public function testAssertReturn195(): void
     {
         $this->runAssertReturnCommand(
-            module: null,
             action: ['type' => 'invoke', 'field' => 'i64.trunc_f64_u', 'args' => [['type' => 'f64', 'value' => '4895412794951729151']]],
             expected: [['type' => 'i64', 'value' => '18446744073709549568']],
             line: 241,
@@ -2168,7 +1973,6 @@ final class ConversionsTest extends SpecTestsuiteBase
     public function testAssertReturn196(): void
     {
         $this->runAssertReturnCommand(
-            module: null,
             action: ['type' => 'invoke', 'field' => 'i64.trunc_f64_u', 'args' => [['type' => 'f64', 'value' => '13829653735729319117']]],
             expected: [['type' => 'i64', 'value' => '0']],
             line: 242,
@@ -2179,7 +1983,6 @@ final class ConversionsTest extends SpecTestsuiteBase
     public function testAssertReturn197(): void
     {
         $this->runAssertReturnCommand(
-            module: null,
             action: ['type' => 'invoke', 'field' => 'i64.trunc_f64_u', 'args' => [['type' => 'f64', 'value' => '13830554455654793215']]],
             expected: [['type' => 'i64', 'value' => '0']],
             line: 243,
@@ -2190,7 +1993,6 @@ final class ConversionsTest extends SpecTestsuiteBase
     public function testAssertReturn198(): void
     {
         $this->runAssertReturnCommand(
-            module: null,
             action: ['type' => 'invoke', 'field' => 'i64.trunc_f64_u', 'args' => [['type' => 'f64', 'value' => '4726483295884279808']]],
             expected: [['type' => 'i64', 'value' => '100000000']],
             line: 244,
@@ -2201,7 +2003,6 @@ final class ConversionsTest extends SpecTestsuiteBase
     public function testAssertReturn199(): void
     {
         $this->runAssertReturnCommand(
-            module: null,
             action: ['type' => 'invoke', 'field' => 'i64.trunc_f64_u', 'args' => [['type' => 'f64', 'value' => '4846369599423283200']]],
             expected: [['type' => 'i64', 'value' => '10000000000000000']],
             line: 245,
@@ -2212,7 +2013,6 @@ final class ConversionsTest extends SpecTestsuiteBase
     public function testAssertReturn200(): void
     {
         $this->runAssertReturnCommand(
-            module: null,
             action: ['type' => 'invoke', 'field' => 'i64.trunc_f64_u', 'args' => [['type' => 'f64', 'value' => '4890909195324358656']]],
             expected: [['type' => 'i64', 'value' => '9223372036854775808']],
             line: 246,
@@ -2223,7 +2023,6 @@ final class ConversionsTest extends SpecTestsuiteBase
     public function testAssertTrap201(): void
     {
         $this->runAssertTrapCommand(
-            module: null,
             action: ['type' => 'invoke', 'field' => 'i64.trunc_f64_u', 'args' => [['type' => 'f64', 'value' => '4895412794951729152']]],
             text: 'integer overflow',
             line: 247,
@@ -2234,7 +2033,6 @@ final class ConversionsTest extends SpecTestsuiteBase
     public function testAssertTrap202(): void
     {
         $this->runAssertTrapCommand(
-            module: null,
             action: ['type' => 'invoke', 'field' => 'i64.trunc_f64_u', 'args' => [['type' => 'f64', 'value' => '13830554455654793216']]],
             text: 'integer overflow',
             line: 248,
@@ -2245,7 +2043,6 @@ final class ConversionsTest extends SpecTestsuiteBase
     public function testAssertTrap203(): void
     {
         $this->runAssertTrapCommand(
-            module: null,
             action: ['type' => 'invoke', 'field' => 'i64.trunc_f64_u', 'args' => [['type' => 'f64', 'value' => '9218868437227405312']]],
             text: 'integer overflow',
             line: 249,
@@ -2256,7 +2053,6 @@ final class ConversionsTest extends SpecTestsuiteBase
     public function testAssertTrap204(): void
     {
         $this->runAssertTrapCommand(
-            module: null,
             action: ['type' => 'invoke', 'field' => 'i64.trunc_f64_u', 'args' => [['type' => 'f64', 'value' => '18442240474082181120']]],
             text: 'integer overflow',
             line: 250,
@@ -2267,7 +2063,6 @@ final class ConversionsTest extends SpecTestsuiteBase
     public function testAssertTrap205(): void
     {
         $this->runAssertTrapCommand(
-            module: null,
             action: ['type' => 'invoke', 'field' => 'i64.trunc_f64_u', 'args' => [['type' => 'f64', 'value' => '9221120237041090560']]],
             text: 'invalid conversion to integer',
             line: 251,
@@ -2278,7 +2073,6 @@ final class ConversionsTest extends SpecTestsuiteBase
     public function testAssertTrap206(): void
     {
         $this->runAssertTrapCommand(
-            module: null,
             action: ['type' => 'invoke', 'field' => 'i64.trunc_f64_u', 'args' => [['type' => 'f64', 'value' => '9219994337134247936']]],
             text: 'invalid conversion to integer',
             line: 252,
@@ -2289,7 +2083,6 @@ final class ConversionsTest extends SpecTestsuiteBase
     public function testAssertTrap207(): void
     {
         $this->runAssertTrapCommand(
-            module: null,
             action: ['type' => 'invoke', 'field' => 'i64.trunc_f64_u', 'args' => [['type' => 'f64', 'value' => '18444492273895866368']]],
             text: 'invalid conversion to integer',
             line: 253,
@@ -2300,7 +2093,6 @@ final class ConversionsTest extends SpecTestsuiteBase
     public function testAssertTrap208(): void
     {
         $this->runAssertTrapCommand(
-            module: null,
             action: ['type' => 'invoke', 'field' => 'i64.trunc_f64_u', 'args' => [['type' => 'f64', 'value' => '18443366373989023744']]],
             text: 'invalid conversion to integer',
             line: 254,
@@ -2311,7 +2103,6 @@ final class ConversionsTest extends SpecTestsuiteBase
     public function testAssertReturn209(): void
     {
         $this->runAssertReturnCommand(
-            module: null,
             action: ['type' => 'invoke', 'field' => 'f32.convert_i32_s', 'args' => [['type' => 'i32', 'value' => '1']]],
             expected: [['type' => 'f32', 'value' => '1065353216']],
             line: 256,
@@ -2322,7 +2113,6 @@ final class ConversionsTest extends SpecTestsuiteBase
     public function testAssertReturn210(): void
     {
         $this->runAssertReturnCommand(
-            module: null,
             action: ['type' => 'invoke', 'field' => 'f32.convert_i32_s', 'args' => [['type' => 'i32', 'value' => '4294967295']]],
             expected: [['type' => 'f32', 'value' => '3212836864']],
             line: 257,
@@ -2333,7 +2123,6 @@ final class ConversionsTest extends SpecTestsuiteBase
     public function testAssertReturn211(): void
     {
         $this->runAssertReturnCommand(
-            module: null,
             action: ['type' => 'invoke', 'field' => 'f32.convert_i32_s', 'args' => [['type' => 'i32', 'value' => '0']]],
             expected: [['type' => 'f32', 'value' => '0']],
             line: 258,
@@ -2344,7 +2133,6 @@ final class ConversionsTest extends SpecTestsuiteBase
     public function testAssertReturn212(): void
     {
         $this->runAssertReturnCommand(
-            module: null,
             action: ['type' => 'invoke', 'field' => 'f32.convert_i32_s', 'args' => [['type' => 'i32', 'value' => '2147483647']]],
             expected: [['type' => 'f32', 'value' => '1325400064']],
             line: 259,
@@ -2355,7 +2143,6 @@ final class ConversionsTest extends SpecTestsuiteBase
     public function testAssertReturn213(): void
     {
         $this->runAssertReturnCommand(
-            module: null,
             action: ['type' => 'invoke', 'field' => 'f32.convert_i32_s', 'args' => [['type' => 'i32', 'value' => '2147483648']]],
             expected: [['type' => 'f32', 'value' => '3472883712']],
             line: 260,
@@ -2366,7 +2153,6 @@ final class ConversionsTest extends SpecTestsuiteBase
     public function testAssertReturn214(): void
     {
         $this->runAssertReturnCommand(
-            module: null,
             action: ['type' => 'invoke', 'field' => 'f32.convert_i32_s', 'args' => [['type' => 'i32', 'value' => '1234567890']]],
             expected: [['type' => 'f32', 'value' => '1318267910']],
             line: 261,
@@ -2377,7 +2163,6 @@ final class ConversionsTest extends SpecTestsuiteBase
     public function testAssertReturn215(): void
     {
         $this->runAssertReturnCommand(
-            module: null,
             action: ['type' => 'invoke', 'field' => 'i32.trunc_sat_f32_s', 'args' => [['type' => 'f32', 'value' => '0']]],
             expected: [['type' => 'i32', 'value' => '0']],
             line: 265,
@@ -2388,7 +2173,6 @@ final class ConversionsTest extends SpecTestsuiteBase
     public function testAssertReturn216(): void
     {
         $this->runAssertReturnCommand(
-            module: null,
             action: ['type' => 'invoke', 'field' => 'i32.trunc_sat_f32_s', 'args' => [['type' => 'f32', 'value' => '2147483648']]],
             expected: [['type' => 'i32', 'value' => '0']],
             line: 266,
@@ -2399,7 +2183,6 @@ final class ConversionsTest extends SpecTestsuiteBase
     public function testAssertReturn217(): void
     {
         $this->runAssertReturnCommand(
-            module: null,
             action: ['type' => 'invoke', 'field' => 'i32.trunc_sat_f32_s', 'args' => [['type' => 'f32', 'value' => '1']]],
             expected: [['type' => 'i32', 'value' => '0']],
             line: 267,
@@ -2410,7 +2193,6 @@ final class ConversionsTest extends SpecTestsuiteBase
     public function testAssertReturn218(): void
     {
         $this->runAssertReturnCommand(
-            module: null,
             action: ['type' => 'invoke', 'field' => 'i32.trunc_sat_f32_s', 'args' => [['type' => 'f32', 'value' => '2147483649']]],
             expected: [['type' => 'i32', 'value' => '0']],
             line: 268,
@@ -2421,7 +2203,6 @@ final class ConversionsTest extends SpecTestsuiteBase
     public function testAssertReturn219(): void
     {
         $this->runAssertReturnCommand(
-            module: null,
             action: ['type' => 'invoke', 'field' => 'i32.trunc_sat_f32_s', 'args' => [['type' => 'f32', 'value' => '1065353216']]],
             expected: [['type' => 'i32', 'value' => '1']],
             line: 269,
@@ -2432,7 +2213,6 @@ final class ConversionsTest extends SpecTestsuiteBase
     public function testAssertReturn220(): void
     {
         $this->runAssertReturnCommand(
-            module: null,
             action: ['type' => 'invoke', 'field' => 'i32.trunc_sat_f32_s', 'args' => [['type' => 'f32', 'value' => '1066192077']]],
             expected: [['type' => 'i32', 'value' => '1']],
             line: 270,
@@ -2443,7 +2223,6 @@ final class ConversionsTest extends SpecTestsuiteBase
     public function testAssertReturn221(): void
     {
         $this->runAssertReturnCommand(
-            module: null,
             action: ['type' => 'invoke', 'field' => 'i32.trunc_sat_f32_s', 'args' => [['type' => 'f32', 'value' => '1069547520']]],
             expected: [['type' => 'i32', 'value' => '1']],
             line: 271,
@@ -2454,7 +2233,6 @@ final class ConversionsTest extends SpecTestsuiteBase
     public function testAssertReturn222(): void
     {
         $this->runAssertReturnCommand(
-            module: null,
             action: ['type' => 'invoke', 'field' => 'i32.trunc_sat_f32_s', 'args' => [['type' => 'f32', 'value' => '3212836864']]],
             expected: [['type' => 'i32', 'value' => '4294967295']],
             line: 272,
@@ -2465,7 +2243,6 @@ final class ConversionsTest extends SpecTestsuiteBase
     public function testAssertReturn223(): void
     {
         $this->runAssertReturnCommand(
-            module: null,
             action: ['type' => 'invoke', 'field' => 'i32.trunc_sat_f32_s', 'args' => [['type' => 'f32', 'value' => '3213675725']]],
             expected: [['type' => 'i32', 'value' => '4294967295']],
             line: 273,
@@ -2476,7 +2253,6 @@ final class ConversionsTest extends SpecTestsuiteBase
     public function testAssertReturn224(): void
     {
         $this->runAssertReturnCommand(
-            module: null,
             action: ['type' => 'invoke', 'field' => 'i32.trunc_sat_f32_s', 'args' => [['type' => 'f32', 'value' => '3217031168']]],
             expected: [['type' => 'i32', 'value' => '4294967295']],
             line: 274,
@@ -2487,7 +2263,6 @@ final class ConversionsTest extends SpecTestsuiteBase
     public function testAssertReturn225(): void
     {
         $this->runAssertReturnCommand(
-            module: null,
             action: ['type' => 'invoke', 'field' => 'i32.trunc_sat_f32_s', 'args' => [['type' => 'f32', 'value' => '3220386611']]],
             expected: [['type' => 'i32', 'value' => '4294967295']],
             line: 275,
@@ -2498,7 +2273,6 @@ final class ConversionsTest extends SpecTestsuiteBase
     public function testAssertReturn226(): void
     {
         $this->runAssertReturnCommand(
-            module: null,
             action: ['type' => 'invoke', 'field' => 'i32.trunc_sat_f32_s', 'args' => [['type' => 'f32', 'value' => '3221225472']]],
             expected: [['type' => 'i32', 'value' => '4294967294']],
             line: 276,
@@ -2509,7 +2283,6 @@ final class ConversionsTest extends SpecTestsuiteBase
     public function testAssertReturn227(): void
     {
         $this->runAssertReturnCommand(
-            module: null,
             action: ['type' => 'invoke', 'field' => 'i32.trunc_sat_f32_s', 'args' => [['type' => 'f32', 'value' => '1325400063']]],
             expected: [['type' => 'i32', 'value' => '2147483520']],
             line: 277,
@@ -2520,7 +2293,6 @@ final class ConversionsTest extends SpecTestsuiteBase
     public function testAssertReturn228(): void
     {
         $this->runAssertReturnCommand(
-            module: null,
             action: ['type' => 'invoke', 'field' => 'i32.trunc_sat_f32_s', 'args' => [['type' => 'f32', 'value' => '3472883712']]],
             expected: [['type' => 'i32', 'value' => '2147483648']],
             line: 278,
@@ -2531,7 +2303,6 @@ final class ConversionsTest extends SpecTestsuiteBase
     public function testAssertReturn229(): void
     {
         $this->runAssertReturnCommand(
-            module: null,
             action: ['type' => 'invoke', 'field' => 'i32.trunc_sat_f32_s', 'args' => [['type' => 'f32', 'value' => '1325400064']]],
             expected: [['type' => 'i32', 'value' => '2147483647']],
             line: 279,
@@ -2542,7 +2313,6 @@ final class ConversionsTest extends SpecTestsuiteBase
     public function testAssertReturn230(): void
     {
         $this->runAssertReturnCommand(
-            module: null,
             action: ['type' => 'invoke', 'field' => 'i32.trunc_sat_f32_s', 'args' => [['type' => 'f32', 'value' => '3472883713']]],
             expected: [['type' => 'i32', 'value' => '2147483648']],
             line: 280,
@@ -2553,7 +2323,6 @@ final class ConversionsTest extends SpecTestsuiteBase
     public function testAssertReturn231(): void
     {
         $this->runAssertReturnCommand(
-            module: null,
             action: ['type' => 'invoke', 'field' => 'i32.trunc_sat_f32_s', 'args' => [['type' => 'f32', 'value' => '2139095040']]],
             expected: [['type' => 'i32', 'value' => '2147483647']],
             line: 281,
@@ -2564,7 +2333,6 @@ final class ConversionsTest extends SpecTestsuiteBase
     public function testAssertReturn232(): void
     {
         $this->runAssertReturnCommand(
-            module: null,
             action: ['type' => 'invoke', 'field' => 'i32.trunc_sat_f32_s', 'args' => [['type' => 'f32', 'value' => '4286578688']]],
             expected: [['type' => 'i32', 'value' => '2147483648']],
             line: 282,
@@ -2575,7 +2343,6 @@ final class ConversionsTest extends SpecTestsuiteBase
     public function testAssertReturn233(): void
     {
         $this->runAssertReturnCommand(
-            module: null,
             action: ['type' => 'invoke', 'field' => 'i32.trunc_sat_f32_s', 'args' => [['type' => 'f32', 'value' => '2143289344']]],
             expected: [['type' => 'i32', 'value' => '0']],
             line: 283,
@@ -2586,7 +2353,6 @@ final class ConversionsTest extends SpecTestsuiteBase
     public function testAssertReturn234(): void
     {
         $this->runAssertReturnCommand(
-            module: null,
             action: ['type' => 'invoke', 'field' => 'i32.trunc_sat_f32_s', 'args' => [['type' => 'f32', 'value' => '2141192192']]],
             expected: [['type' => 'i32', 'value' => '0']],
             line: 284,
@@ -2597,7 +2363,6 @@ final class ConversionsTest extends SpecTestsuiteBase
     public function testAssertReturn235(): void
     {
         $this->runAssertReturnCommand(
-            module: null,
             action: ['type' => 'invoke', 'field' => 'i32.trunc_sat_f32_s', 'args' => [['type' => 'f32', 'value' => '4290772992']]],
             expected: [['type' => 'i32', 'value' => '0']],
             line: 285,
@@ -2608,7 +2373,6 @@ final class ConversionsTest extends SpecTestsuiteBase
     public function testAssertReturn236(): void
     {
         $this->runAssertReturnCommand(
-            module: null,
             action: ['type' => 'invoke', 'field' => 'i32.trunc_sat_f32_s', 'args' => [['type' => 'f32', 'value' => '4288675840']]],
             expected: [['type' => 'i32', 'value' => '0']],
             line: 286,
@@ -2619,7 +2383,6 @@ final class ConversionsTest extends SpecTestsuiteBase
     public function testAssertReturn237(): void
     {
         $this->runAssertReturnCommand(
-            module: null,
             action: ['type' => 'invoke', 'field' => 'i32.trunc_sat_f32_u', 'args' => [['type' => 'f32', 'value' => '0']]],
             expected: [['type' => 'i32', 'value' => '0']],
             line: 288,
@@ -2630,7 +2393,6 @@ final class ConversionsTest extends SpecTestsuiteBase
     public function testAssertReturn238(): void
     {
         $this->runAssertReturnCommand(
-            module: null,
             action: ['type' => 'invoke', 'field' => 'i32.trunc_sat_f32_u', 'args' => [['type' => 'f32', 'value' => '2147483648']]],
             expected: [['type' => 'i32', 'value' => '0']],
             line: 289,
@@ -2641,7 +2403,6 @@ final class ConversionsTest extends SpecTestsuiteBase
     public function testAssertReturn239(): void
     {
         $this->runAssertReturnCommand(
-            module: null,
             action: ['type' => 'invoke', 'field' => 'i32.trunc_sat_f32_u', 'args' => [['type' => 'f32', 'value' => '1']]],
             expected: [['type' => 'i32', 'value' => '0']],
             line: 290,
@@ -2652,7 +2413,6 @@ final class ConversionsTest extends SpecTestsuiteBase
     public function testAssertReturn240(): void
     {
         $this->runAssertReturnCommand(
-            module: null,
             action: ['type' => 'invoke', 'field' => 'i32.trunc_sat_f32_u', 'args' => [['type' => 'f32', 'value' => '2147483649']]],
             expected: [['type' => 'i32', 'value' => '0']],
             line: 291,
@@ -2663,7 +2423,6 @@ final class ConversionsTest extends SpecTestsuiteBase
     public function testAssertReturn241(): void
     {
         $this->runAssertReturnCommand(
-            module: null,
             action: ['type' => 'invoke', 'field' => 'i32.trunc_sat_f32_u', 'args' => [['type' => 'f32', 'value' => '1065353216']]],
             expected: [['type' => 'i32', 'value' => '1']],
             line: 292,
@@ -2674,7 +2433,6 @@ final class ConversionsTest extends SpecTestsuiteBase
     public function testAssertReturn242(): void
     {
         $this->runAssertReturnCommand(
-            module: null,
             action: ['type' => 'invoke', 'field' => 'i32.trunc_sat_f32_u', 'args' => [['type' => 'f32', 'value' => '1066192077']]],
             expected: [['type' => 'i32', 'value' => '1']],
             line: 293,
@@ -2685,7 +2443,6 @@ final class ConversionsTest extends SpecTestsuiteBase
     public function testAssertReturn243(): void
     {
         $this->runAssertReturnCommand(
-            module: null,
             action: ['type' => 'invoke', 'field' => 'i32.trunc_sat_f32_u', 'args' => [['type' => 'f32', 'value' => '1069547520']]],
             expected: [['type' => 'i32', 'value' => '1']],
             line: 294,
@@ -2696,7 +2453,6 @@ final class ConversionsTest extends SpecTestsuiteBase
     public function testAssertReturn244(): void
     {
         $this->runAssertReturnCommand(
-            module: null,
             action: ['type' => 'invoke', 'field' => 'i32.trunc_sat_f32_u', 'args' => [['type' => 'f32', 'value' => '1072902963']]],
             expected: [['type' => 'i32', 'value' => '1']],
             line: 295,
@@ -2707,7 +2463,6 @@ final class ConversionsTest extends SpecTestsuiteBase
     public function testAssertReturn245(): void
     {
         $this->runAssertReturnCommand(
-            module: null,
             action: ['type' => 'invoke', 'field' => 'i32.trunc_sat_f32_u', 'args' => [['type' => 'f32', 'value' => '1073741824']]],
             expected: [['type' => 'i32', 'value' => '2']],
             line: 296,
@@ -2718,7 +2473,6 @@ final class ConversionsTest extends SpecTestsuiteBase
     public function testAssertReturn246(): void
     {
         $this->runAssertReturnCommand(
-            module: null,
             action: ['type' => 'invoke', 'field' => 'i32.trunc_sat_f32_u', 'args' => [['type' => 'f32', 'value' => '1325400064']]],
             expected: [['type' => 'i32', 'value' => '2147483648']],
             line: 297,
@@ -2729,7 +2483,6 @@ final class ConversionsTest extends SpecTestsuiteBase
     public function testAssertReturn247(): void
     {
         $this->runAssertReturnCommand(
-            module: null,
             action: ['type' => 'invoke', 'field' => 'i32.trunc_sat_f32_u', 'args' => [['type' => 'f32', 'value' => '1333788671']]],
             expected: [['type' => 'i32', 'value' => '4294967040']],
             line: 298,
@@ -2740,7 +2493,6 @@ final class ConversionsTest extends SpecTestsuiteBase
     public function testAssertReturn248(): void
     {
         $this->runAssertReturnCommand(
-            module: null,
             action: ['type' => 'invoke', 'field' => 'i32.trunc_sat_f32_u', 'args' => [['type' => 'f32', 'value' => '3211159142']]],
             expected: [['type' => 'i32', 'value' => '0']],
             line: 299,
@@ -2751,7 +2503,6 @@ final class ConversionsTest extends SpecTestsuiteBase
     public function testAssertReturn249(): void
     {
         $this->runAssertReturnCommand(
-            module: null,
             action: ['type' => 'invoke', 'field' => 'i32.trunc_sat_f32_u', 'args' => [['type' => 'f32', 'value' => '3212836863']]],
             expected: [['type' => 'i32', 'value' => '0']],
             line: 300,
@@ -2762,7 +2513,6 @@ final class ConversionsTest extends SpecTestsuiteBase
     public function testAssertReturn250(): void
     {
         $this->runAssertReturnCommand(
-            module: null,
             action: ['type' => 'invoke', 'field' => 'i32.trunc_sat_f32_u', 'args' => [['type' => 'f32', 'value' => '1333788672']]],
             expected: [['type' => 'i32', 'value' => '4294967295']],
             line: 301,
@@ -2773,7 +2523,6 @@ final class ConversionsTest extends SpecTestsuiteBase
     public function testAssertReturn251(): void
     {
         $this->runAssertReturnCommand(
-            module: null,
             action: ['type' => 'invoke', 'field' => 'i32.trunc_sat_f32_u', 'args' => [['type' => 'f32', 'value' => '3212836864']]],
             expected: [['type' => 'i32', 'value' => '0']],
             line: 302,
@@ -2784,7 +2533,6 @@ final class ConversionsTest extends SpecTestsuiteBase
     public function testAssertReturn252(): void
     {
         $this->runAssertReturnCommand(
-            module: null,
             action: ['type' => 'invoke', 'field' => 'i32.trunc_sat_f32_u', 'args' => [['type' => 'f32', 'value' => '2139095040']]],
             expected: [['type' => 'i32', 'value' => '4294967295']],
             line: 303,
@@ -2795,7 +2543,6 @@ final class ConversionsTest extends SpecTestsuiteBase
     public function testAssertReturn253(): void
     {
         $this->runAssertReturnCommand(
-            module: null,
             action: ['type' => 'invoke', 'field' => 'i32.trunc_sat_f32_u', 'args' => [['type' => 'f32', 'value' => '4286578688']]],
             expected: [['type' => 'i32', 'value' => '0']],
             line: 304,
@@ -2806,7 +2553,6 @@ final class ConversionsTest extends SpecTestsuiteBase
     public function testAssertReturn254(): void
     {
         $this->runAssertReturnCommand(
-            module: null,
             action: ['type' => 'invoke', 'field' => 'i32.trunc_sat_f32_u', 'args' => [['type' => 'f32', 'value' => '2143289344']]],
             expected: [['type' => 'i32', 'value' => '0']],
             line: 305,
@@ -2817,7 +2563,6 @@ final class ConversionsTest extends SpecTestsuiteBase
     public function testAssertReturn255(): void
     {
         $this->runAssertReturnCommand(
-            module: null,
             action: ['type' => 'invoke', 'field' => 'i32.trunc_sat_f32_u', 'args' => [['type' => 'f32', 'value' => '2141192192']]],
             expected: [['type' => 'i32', 'value' => '0']],
             line: 306,
@@ -2828,7 +2573,6 @@ final class ConversionsTest extends SpecTestsuiteBase
     public function testAssertReturn256(): void
     {
         $this->runAssertReturnCommand(
-            module: null,
             action: ['type' => 'invoke', 'field' => 'i32.trunc_sat_f32_u', 'args' => [['type' => 'f32', 'value' => '4290772992']]],
             expected: [['type' => 'i32', 'value' => '0']],
             line: 307,
@@ -2839,7 +2583,6 @@ final class ConversionsTest extends SpecTestsuiteBase
     public function testAssertReturn257(): void
     {
         $this->runAssertReturnCommand(
-            module: null,
             action: ['type' => 'invoke', 'field' => 'i32.trunc_sat_f32_u', 'args' => [['type' => 'f32', 'value' => '4288675840']]],
             expected: [['type' => 'i32', 'value' => '0']],
             line: 308,
@@ -2850,7 +2593,6 @@ final class ConversionsTest extends SpecTestsuiteBase
     public function testAssertReturn258(): void
     {
         $this->runAssertReturnCommand(
-            module: null,
             action: ['type' => 'invoke', 'field' => 'i32.trunc_sat_f64_s', 'args' => [['type' => 'f64', 'value' => '0']]],
             expected: [['type' => 'i32', 'value' => '0']],
             line: 310,
@@ -2861,7 +2603,6 @@ final class ConversionsTest extends SpecTestsuiteBase
     public function testAssertReturn259(): void
     {
         $this->runAssertReturnCommand(
-            module: null,
             action: ['type' => 'invoke', 'field' => 'i32.trunc_sat_f64_s', 'args' => [['type' => 'f64', 'value' => '9223372036854775808']]],
             expected: [['type' => 'i32', 'value' => '0']],
             line: 311,
@@ -2872,7 +2613,6 @@ final class ConversionsTest extends SpecTestsuiteBase
     public function testAssertReturn260(): void
     {
         $this->runAssertReturnCommand(
-            module: null,
             action: ['type' => 'invoke', 'field' => 'i32.trunc_sat_f64_s', 'args' => [['type' => 'f64', 'value' => '1']]],
             expected: [['type' => 'i32', 'value' => '0']],
             line: 312,
@@ -2883,7 +2623,6 @@ final class ConversionsTest extends SpecTestsuiteBase
     public function testAssertReturn261(): void
     {
         $this->runAssertReturnCommand(
-            module: null,
             action: ['type' => 'invoke', 'field' => 'i32.trunc_sat_f64_s', 'args' => [['type' => 'f64', 'value' => '9223372036854775809']]],
             expected: [['type' => 'i32', 'value' => '0']],
             line: 313,
@@ -2894,7 +2633,6 @@ final class ConversionsTest extends SpecTestsuiteBase
     public function testAssertReturn262(): void
     {
         $this->runAssertReturnCommand(
-            module: null,
             action: ['type' => 'invoke', 'field' => 'i32.trunc_sat_f64_s', 'args' => [['type' => 'f64', 'value' => '4607182418800017408']]],
             expected: [['type' => 'i32', 'value' => '1']],
             line: 314,
@@ -2905,7 +2643,6 @@ final class ConversionsTest extends SpecTestsuiteBase
     public function testAssertReturn263(): void
     {
         $this->runAssertReturnCommand(
-            module: null,
             action: ['type' => 'invoke', 'field' => 'i32.trunc_sat_f64_s', 'args' => [['type' => 'f64', 'value' => '4607632778762754458']]],
             expected: [['type' => 'i32', 'value' => '1']],
             line: 315,
@@ -2916,7 +2653,6 @@ final class ConversionsTest extends SpecTestsuiteBase
     public function testAssertReturn264(): void
     {
         $this->runAssertReturnCommand(
-            module: null,
             action: ['type' => 'invoke', 'field' => 'i32.trunc_sat_f64_s', 'args' => [['type' => 'f64', 'value' => '4609434218613702656']]],
             expected: [['type' => 'i32', 'value' => '1']],
             line: 316,
@@ -2927,7 +2663,6 @@ final class ConversionsTest extends SpecTestsuiteBase
     public function testAssertReturn265(): void
     {
         $this->runAssertReturnCommand(
-            module: null,
             action: ['type' => 'invoke', 'field' => 'i32.trunc_sat_f64_s', 'args' => [['type' => 'f64', 'value' => '13830554455654793216']]],
             expected: [['type' => 'i32', 'value' => '4294967295']],
             line: 317,
@@ -2938,7 +2673,6 @@ final class ConversionsTest extends SpecTestsuiteBase
     public function testAssertReturn266(): void
     {
         $this->runAssertReturnCommand(
-            module: null,
             action: ['type' => 'invoke', 'field' => 'i32.trunc_sat_f64_s', 'args' => [['type' => 'f64', 'value' => '13831004815617530266']]],
             expected: [['type' => 'i32', 'value' => '4294967295']],
             line: 318,
@@ -2949,7 +2683,6 @@ final class ConversionsTest extends SpecTestsuiteBase
     public function testAssertReturn267(): void
     {
         $this->runAssertReturnCommand(
-            module: null,
             action: ['type' => 'invoke', 'field' => 'i32.trunc_sat_f64_s', 'args' => [['type' => 'f64', 'value' => '13832806255468478464']]],
             expected: [['type' => 'i32', 'value' => '4294967295']],
             line: 319,
@@ -2960,7 +2693,6 @@ final class ConversionsTest extends SpecTestsuiteBase
     public function testAssertReturn268(): void
     {
         $this->runAssertReturnCommand(
-            module: null,
             action: ['type' => 'invoke', 'field' => 'i32.trunc_sat_f64_s', 'args' => [['type' => 'f64', 'value' => '13834607695319426662']]],
             expected: [['type' => 'i32', 'value' => '4294967295']],
             line: 320,
@@ -2971,7 +2703,6 @@ final class ConversionsTest extends SpecTestsuiteBase
     public function testAssertReturn269(): void
     {
         $this->runAssertReturnCommand(
-            module: null,
             action: ['type' => 'invoke', 'field' => 'i32.trunc_sat_f64_s', 'args' => [['type' => 'f64', 'value' => '13835058055282163712']]],
             expected: [['type' => 'i32', 'value' => '4294967294']],
             line: 321,
@@ -2982,7 +2713,6 @@ final class ConversionsTest extends SpecTestsuiteBase
     public function testAssertReturn270(): void
     {
         $this->runAssertReturnCommand(
-            module: null,
             action: ['type' => 'invoke', 'field' => 'i32.trunc_sat_f64_s', 'args' => [['type' => 'f64', 'value' => '4746794007244308480']]],
             expected: [['type' => 'i32', 'value' => '2147483647']],
             line: 322,
@@ -2993,7 +2723,6 @@ final class ConversionsTest extends SpecTestsuiteBase
     public function testAssertReturn271(): void
     {
         $this->runAssertReturnCommand(
-            module: null,
             action: ['type' => 'invoke', 'field' => 'i32.trunc_sat_f64_s', 'args' => [['type' => 'f64', 'value' => '13970166044103278592']]],
             expected: [['type' => 'i32', 'value' => '2147483648']],
             line: 323,
@@ -3004,7 +2733,6 @@ final class ConversionsTest extends SpecTestsuiteBase
     public function testAssertReturn272(): void
     {
         $this->runAssertReturnCommand(
-            module: null,
             action: ['type' => 'invoke', 'field' => 'i32.trunc_sat_f64_s', 'args' => [['type' => 'f64', 'value' => '4746794007248502784']]],
             expected: [['type' => 'i32', 'value' => '2147483647']],
             line: 324,
@@ -3015,7 +2743,6 @@ final class ConversionsTest extends SpecTestsuiteBase
     public function testAssertReturn273(): void
     {
         $this->runAssertReturnCommand(
-            module: null,
             action: ['type' => 'invoke', 'field' => 'i32.trunc_sat_f64_s', 'args' => [['type' => 'f64', 'value' => '13970166044105375744']]],
             expected: [['type' => 'i32', 'value' => '2147483648']],
             line: 325,
@@ -3026,7 +2753,6 @@ final class ConversionsTest extends SpecTestsuiteBase
     public function testAssertReturn274(): void
     {
         $this->runAssertReturnCommand(
-            module: null,
             action: ['type' => 'invoke', 'field' => 'i32.trunc_sat_f64_s', 'args' => [['type' => 'f64', 'value' => '9218868437227405312']]],
             expected: [['type' => 'i32', 'value' => '2147483647']],
             line: 326,
@@ -3037,7 +2763,6 @@ final class ConversionsTest extends SpecTestsuiteBase
     public function testAssertReturn275(): void
     {
         $this->runAssertReturnCommand(
-            module: null,
             action: ['type' => 'invoke', 'field' => 'i32.trunc_sat_f64_s', 'args' => [['type' => 'f64', 'value' => '18442240474082181120']]],
             expected: [['type' => 'i32', 'value' => '2147483648']],
             line: 327,
@@ -3048,7 +2773,6 @@ final class ConversionsTest extends SpecTestsuiteBase
     public function testAssertReturn276(): void
     {
         $this->runAssertReturnCommand(
-            module: null,
             action: ['type' => 'invoke', 'field' => 'i32.trunc_sat_f64_s', 'args' => [['type' => 'f64', 'value' => '9221120237041090560']]],
             expected: [['type' => 'i32', 'value' => '0']],
             line: 328,
@@ -3059,7 +2783,6 @@ final class ConversionsTest extends SpecTestsuiteBase
     public function testAssertReturn277(): void
     {
         $this->runAssertReturnCommand(
-            module: null,
             action: ['type' => 'invoke', 'field' => 'i32.trunc_sat_f64_s', 'args' => [['type' => 'f64', 'value' => '9219994337134247936']]],
             expected: [['type' => 'i32', 'value' => '0']],
             line: 329,
@@ -3070,7 +2793,6 @@ final class ConversionsTest extends SpecTestsuiteBase
     public function testAssertReturn278(): void
     {
         $this->runAssertReturnCommand(
-            module: null,
             action: ['type' => 'invoke', 'field' => 'i32.trunc_sat_f64_s', 'args' => [['type' => 'f64', 'value' => '18444492273895866368']]],
             expected: [['type' => 'i32', 'value' => '0']],
             line: 330,
@@ -3081,7 +2803,6 @@ final class ConversionsTest extends SpecTestsuiteBase
     public function testAssertReturn279(): void
     {
         $this->runAssertReturnCommand(
-            module: null,
             action: ['type' => 'invoke', 'field' => 'i32.trunc_sat_f64_s', 'args' => [['type' => 'f64', 'value' => '18443366373989023744']]],
             expected: [['type' => 'i32', 'value' => '0']],
             line: 331,
@@ -3092,7 +2813,6 @@ final class ConversionsTest extends SpecTestsuiteBase
     public function testAssertReturn280(): void
     {
         $this->runAssertReturnCommand(
-            module: null,
             action: ['type' => 'invoke', 'field' => 'i32.trunc_sat_f64_u', 'args' => [['type' => 'f64', 'value' => '0']]],
             expected: [['type' => 'i32', 'value' => '0']],
             line: 333,
@@ -3103,7 +2823,6 @@ final class ConversionsTest extends SpecTestsuiteBase
     public function testAssertReturn281(): void
     {
         $this->runAssertReturnCommand(
-            module: null,
             action: ['type' => 'invoke', 'field' => 'i32.trunc_sat_f64_u', 'args' => [['type' => 'f64', 'value' => '9223372036854775808']]],
             expected: [['type' => 'i32', 'value' => '0']],
             line: 334,
@@ -3114,7 +2833,6 @@ final class ConversionsTest extends SpecTestsuiteBase
     public function testAssertReturn282(): void
     {
         $this->runAssertReturnCommand(
-            module: null,
             action: ['type' => 'invoke', 'field' => 'i32.trunc_sat_f64_u', 'args' => [['type' => 'f64', 'value' => '1']]],
             expected: [['type' => 'i32', 'value' => '0']],
             line: 335,
@@ -3125,7 +2843,6 @@ final class ConversionsTest extends SpecTestsuiteBase
     public function testAssertReturn283(): void
     {
         $this->runAssertReturnCommand(
-            module: null,
             action: ['type' => 'invoke', 'field' => 'i32.trunc_sat_f64_u', 'args' => [['type' => 'f64', 'value' => '9223372036854775809']]],
             expected: [['type' => 'i32', 'value' => '0']],
             line: 336,
@@ -3136,7 +2853,6 @@ final class ConversionsTest extends SpecTestsuiteBase
     public function testAssertReturn284(): void
     {
         $this->runAssertReturnCommand(
-            module: null,
             action: ['type' => 'invoke', 'field' => 'i32.trunc_sat_f64_u', 'args' => [['type' => 'f64', 'value' => '4607182418800017408']]],
             expected: [['type' => 'i32', 'value' => '1']],
             line: 337,
@@ -3147,7 +2863,6 @@ final class ConversionsTest extends SpecTestsuiteBase
     public function testAssertReturn285(): void
     {
         $this->runAssertReturnCommand(
-            module: null,
             action: ['type' => 'invoke', 'field' => 'i32.trunc_sat_f64_u', 'args' => [['type' => 'f64', 'value' => '4607632778762754458']]],
             expected: [['type' => 'i32', 'value' => '1']],
             line: 338,
@@ -3158,7 +2873,6 @@ final class ConversionsTest extends SpecTestsuiteBase
     public function testAssertReturn286(): void
     {
         $this->runAssertReturnCommand(
-            module: null,
             action: ['type' => 'invoke', 'field' => 'i32.trunc_sat_f64_u', 'args' => [['type' => 'f64', 'value' => '4609434218613702656']]],
             expected: [['type' => 'i32', 'value' => '1']],
             line: 339,
@@ -3169,7 +2883,6 @@ final class ConversionsTest extends SpecTestsuiteBase
     public function testAssertReturn287(): void
     {
         $this->runAssertReturnCommand(
-            module: null,
             action: ['type' => 'invoke', 'field' => 'i32.trunc_sat_f64_u', 'args' => [['type' => 'f64', 'value' => '4611235658464650854']]],
             expected: [['type' => 'i32', 'value' => '1']],
             line: 340,
@@ -3180,7 +2893,6 @@ final class ConversionsTest extends SpecTestsuiteBase
     public function testAssertReturn288(): void
     {
         $this->runAssertReturnCommand(
-            module: null,
             action: ['type' => 'invoke', 'field' => 'i32.trunc_sat_f64_u', 'args' => [['type' => 'f64', 'value' => '4611686018427387904']]],
             expected: [['type' => 'i32', 'value' => '2']],
             line: 341,
@@ -3191,7 +2903,6 @@ final class ConversionsTest extends SpecTestsuiteBase
     public function testAssertReturn289(): void
     {
         $this->runAssertReturnCommand(
-            module: null,
             action: ['type' => 'invoke', 'field' => 'i32.trunc_sat_f64_u', 'args' => [['type' => 'f64', 'value' => '4746794007248502784']]],
             expected: [['type' => 'i32', 'value' => '2147483648']],
             line: 342,
@@ -3202,7 +2913,6 @@ final class ConversionsTest extends SpecTestsuiteBase
     public function testAssertReturn290(): void
     {
         $this->runAssertReturnCommand(
-            module: null,
             action: ['type' => 'invoke', 'field' => 'i32.trunc_sat_f64_u', 'args' => [['type' => 'f64', 'value' => '4751297606873776128']]],
             expected: [['type' => 'i32', 'value' => '4294967295']],
             line: 343,
@@ -3213,7 +2923,6 @@ final class ConversionsTest extends SpecTestsuiteBase
     public function testAssertReturn291(): void
     {
         $this->runAssertReturnCommand(
-            module: null,
             action: ['type' => 'invoke', 'field' => 'i32.trunc_sat_f64_u', 'args' => [['type' => 'f64', 'value' => '13829653735729319117']]],
             expected: [['type' => 'i32', 'value' => '0']],
             line: 344,
@@ -3224,7 +2933,6 @@ final class ConversionsTest extends SpecTestsuiteBase
     public function testAssertReturn292(): void
     {
         $this->runAssertReturnCommand(
-            module: null,
             action: ['type' => 'invoke', 'field' => 'i32.trunc_sat_f64_u', 'args' => [['type' => 'f64', 'value' => '13830554455654793215']]],
             expected: [['type' => 'i32', 'value' => '0']],
             line: 345,
@@ -3235,7 +2943,6 @@ final class ConversionsTest extends SpecTestsuiteBase
     public function testAssertReturn293(): void
     {
         $this->runAssertReturnCommand(
-            module: null,
             action: ['type' => 'invoke', 'field' => 'i32.trunc_sat_f64_u', 'args' => [['type' => 'f64', 'value' => '4726483295884279808']]],
             expected: [['type' => 'i32', 'value' => '100000000']],
             line: 346,
@@ -3246,7 +2953,6 @@ final class ConversionsTest extends SpecTestsuiteBase
     public function testAssertReturn294(): void
     {
         $this->runAssertReturnCommand(
-            module: null,
             action: ['type' => 'invoke', 'field' => 'i32.trunc_sat_f64_u', 'args' => [['type' => 'f64', 'value' => '4751297606875873280']]],
             expected: [['type' => 'i32', 'value' => '4294967295']],
             line: 347,
@@ -3257,7 +2963,6 @@ final class ConversionsTest extends SpecTestsuiteBase
     public function testAssertReturn295(): void
     {
         $this->runAssertReturnCommand(
-            module: null,
             action: ['type' => 'invoke', 'field' => 'i32.trunc_sat_f64_u', 'args' => [['type' => 'f64', 'value' => '13830554455654793216']]],
             expected: [['type' => 'i32', 'value' => '0']],
             line: 348,
@@ -3268,7 +2973,6 @@ final class ConversionsTest extends SpecTestsuiteBase
     public function testAssertReturn296(): void
     {
         $this->runAssertReturnCommand(
-            module: null,
             action: ['type' => 'invoke', 'field' => 'i32.trunc_sat_f64_u', 'args' => [['type' => 'f64', 'value' => '4846369599423283200']]],
             expected: [['type' => 'i32', 'value' => '4294967295']],
             line: 349,
@@ -3279,7 +2983,6 @@ final class ConversionsTest extends SpecTestsuiteBase
     public function testAssertReturn297(): void
     {
         $this->runAssertReturnCommand(
-            module: null,
             action: ['type' => 'invoke', 'field' => 'i32.trunc_sat_f64_u', 'args' => [['type' => 'f64', 'value' => '5055640609639927018']]],
             expected: [['type' => 'i32', 'value' => '4294967295']],
             line: 350,
@@ -3290,7 +2993,6 @@ final class ConversionsTest extends SpecTestsuiteBase
     public function testAssertReturn298(): void
     {
         $this->runAssertReturnCommand(
-            module: null,
             action: ['type' => 'invoke', 'field' => 'i32.trunc_sat_f64_u', 'args' => [['type' => 'f64', 'value' => '4890909195324358656']]],
             expected: [['type' => 'i32', 'value' => '4294967295']],
             line: 351,
@@ -3301,7 +3003,6 @@ final class ConversionsTest extends SpecTestsuiteBase
     public function testAssertReturn299(): void
     {
         $this->runAssertReturnCommand(
-            module: null,
             action: ['type' => 'invoke', 'field' => 'i32.trunc_sat_f64_u', 'args' => [['type' => 'f64', 'value' => '9218868437227405312']]],
             expected: [['type' => 'i32', 'value' => '4294967295']],
             line: 352,
@@ -3312,7 +3013,6 @@ final class ConversionsTest extends SpecTestsuiteBase
     public function testAssertReturn300(): void
     {
         $this->runAssertReturnCommand(
-            module: null,
             action: ['type' => 'invoke', 'field' => 'i32.trunc_sat_f64_u', 'args' => [['type' => 'f64', 'value' => '18442240474082181120']]],
             expected: [['type' => 'i32', 'value' => '0']],
             line: 353,
@@ -3323,7 +3023,6 @@ final class ConversionsTest extends SpecTestsuiteBase
     public function testAssertReturn301(): void
     {
         $this->runAssertReturnCommand(
-            module: null,
             action: ['type' => 'invoke', 'field' => 'i32.trunc_sat_f64_u', 'args' => [['type' => 'f64', 'value' => '9221120237041090560']]],
             expected: [['type' => 'i32', 'value' => '0']],
             line: 354,
@@ -3334,7 +3033,6 @@ final class ConversionsTest extends SpecTestsuiteBase
     public function testAssertReturn302(): void
     {
         $this->runAssertReturnCommand(
-            module: null,
             action: ['type' => 'invoke', 'field' => 'i32.trunc_sat_f64_u', 'args' => [['type' => 'f64', 'value' => '9219994337134247936']]],
             expected: [['type' => 'i32', 'value' => '0']],
             line: 355,
@@ -3345,7 +3043,6 @@ final class ConversionsTest extends SpecTestsuiteBase
     public function testAssertReturn303(): void
     {
         $this->runAssertReturnCommand(
-            module: null,
             action: ['type' => 'invoke', 'field' => 'i32.trunc_sat_f64_u', 'args' => [['type' => 'f64', 'value' => '18444492273895866368']]],
             expected: [['type' => 'i32', 'value' => '0']],
             line: 356,
@@ -3356,7 +3053,6 @@ final class ConversionsTest extends SpecTestsuiteBase
     public function testAssertReturn304(): void
     {
         $this->runAssertReturnCommand(
-            module: null,
             action: ['type' => 'invoke', 'field' => 'i32.trunc_sat_f64_u', 'args' => [['type' => 'f64', 'value' => '18443366373989023744']]],
             expected: [['type' => 'i32', 'value' => '0']],
             line: 357,
@@ -3367,7 +3063,6 @@ final class ConversionsTest extends SpecTestsuiteBase
     public function testAssertReturn305(): void
     {
         $this->runAssertReturnCommand(
-            module: null,
             action: ['type' => 'invoke', 'field' => 'i64.trunc_sat_f32_s', 'args' => [['type' => 'f32', 'value' => '0']]],
             expected: [['type' => 'i64', 'value' => '0']],
             line: 359,
@@ -3378,7 +3073,6 @@ final class ConversionsTest extends SpecTestsuiteBase
     public function testAssertReturn306(): void
     {
         $this->runAssertReturnCommand(
-            module: null,
             action: ['type' => 'invoke', 'field' => 'i64.trunc_sat_f32_s', 'args' => [['type' => 'f32', 'value' => '2147483648']]],
             expected: [['type' => 'i64', 'value' => '0']],
             line: 360,
@@ -3389,7 +3083,6 @@ final class ConversionsTest extends SpecTestsuiteBase
     public function testAssertReturn307(): void
     {
         $this->runAssertReturnCommand(
-            module: null,
             action: ['type' => 'invoke', 'field' => 'i64.trunc_sat_f32_s', 'args' => [['type' => 'f32', 'value' => '1']]],
             expected: [['type' => 'i64', 'value' => '0']],
             line: 361,
@@ -3400,7 +3093,6 @@ final class ConversionsTest extends SpecTestsuiteBase
     public function testAssertReturn308(): void
     {
         $this->runAssertReturnCommand(
-            module: null,
             action: ['type' => 'invoke', 'field' => 'i64.trunc_sat_f32_s', 'args' => [['type' => 'f32', 'value' => '2147483649']]],
             expected: [['type' => 'i64', 'value' => '0']],
             line: 362,
@@ -3411,7 +3103,6 @@ final class ConversionsTest extends SpecTestsuiteBase
     public function testAssertReturn309(): void
     {
         $this->runAssertReturnCommand(
-            module: null,
             action: ['type' => 'invoke', 'field' => 'i64.trunc_sat_f32_s', 'args' => [['type' => 'f32', 'value' => '1065353216']]],
             expected: [['type' => 'i64', 'value' => '1']],
             line: 363,
@@ -3422,7 +3113,6 @@ final class ConversionsTest extends SpecTestsuiteBase
     public function testAssertReturn310(): void
     {
         $this->runAssertReturnCommand(
-            module: null,
             action: ['type' => 'invoke', 'field' => 'i64.trunc_sat_f32_s', 'args' => [['type' => 'f32', 'value' => '1066192077']]],
             expected: [['type' => 'i64', 'value' => '1']],
             line: 364,
@@ -3433,7 +3123,6 @@ final class ConversionsTest extends SpecTestsuiteBase
     public function testAssertReturn311(): void
     {
         $this->runAssertReturnCommand(
-            module: null,
             action: ['type' => 'invoke', 'field' => 'i64.trunc_sat_f32_s', 'args' => [['type' => 'f32', 'value' => '1069547520']]],
             expected: [['type' => 'i64', 'value' => '1']],
             line: 365,
@@ -3444,7 +3133,6 @@ final class ConversionsTest extends SpecTestsuiteBase
     public function testAssertReturn312(): void
     {
         $this->runAssertReturnCommand(
-            module: null,
             action: ['type' => 'invoke', 'field' => 'i64.trunc_sat_f32_s', 'args' => [['type' => 'f32', 'value' => '3212836864']]],
             expected: [['type' => 'i64', 'value' => '18446744073709551615']],
             line: 366,
@@ -3455,7 +3143,6 @@ final class ConversionsTest extends SpecTestsuiteBase
     public function testAssertReturn313(): void
     {
         $this->runAssertReturnCommand(
-            module: null,
             action: ['type' => 'invoke', 'field' => 'i64.trunc_sat_f32_s', 'args' => [['type' => 'f32', 'value' => '3213675725']]],
             expected: [['type' => 'i64', 'value' => '18446744073709551615']],
             line: 367,
@@ -3466,7 +3153,6 @@ final class ConversionsTest extends SpecTestsuiteBase
     public function testAssertReturn314(): void
     {
         $this->runAssertReturnCommand(
-            module: null,
             action: ['type' => 'invoke', 'field' => 'i64.trunc_sat_f32_s', 'args' => [['type' => 'f32', 'value' => '3217031168']]],
             expected: [['type' => 'i64', 'value' => '18446744073709551615']],
             line: 368,
@@ -3477,7 +3163,6 @@ final class ConversionsTest extends SpecTestsuiteBase
     public function testAssertReturn315(): void
     {
         $this->runAssertReturnCommand(
-            module: null,
             action: ['type' => 'invoke', 'field' => 'i64.trunc_sat_f32_s', 'args' => [['type' => 'f32', 'value' => '3220386611']]],
             expected: [['type' => 'i64', 'value' => '18446744073709551615']],
             line: 369,
@@ -3488,7 +3173,6 @@ final class ConversionsTest extends SpecTestsuiteBase
     public function testAssertReturn316(): void
     {
         $this->runAssertReturnCommand(
-            module: null,
             action: ['type' => 'invoke', 'field' => 'i64.trunc_sat_f32_s', 'args' => [['type' => 'f32', 'value' => '3221225472']]],
             expected: [['type' => 'i64', 'value' => '18446744073709551614']],
             line: 370,
@@ -3499,7 +3183,6 @@ final class ConversionsTest extends SpecTestsuiteBase
     public function testAssertReturn317(): void
     {
         $this->runAssertReturnCommand(
-            module: null,
             action: ['type' => 'invoke', 'field' => 'i64.trunc_sat_f32_s', 'args' => [['type' => 'f32', 'value' => '1333788672']]],
             expected: [['type' => 'i64', 'value' => '4294967296']],
             line: 371,
@@ -3510,7 +3193,6 @@ final class ConversionsTest extends SpecTestsuiteBase
     public function testAssertReturn318(): void
     {
         $this->runAssertReturnCommand(
-            module: null,
             action: ['type' => 'invoke', 'field' => 'i64.trunc_sat_f32_s', 'args' => [['type' => 'f32', 'value' => '3481272320']]],
             expected: [['type' => 'i64', 'value' => '18446744069414584320']],
             line: 372,
@@ -3521,7 +3203,6 @@ final class ConversionsTest extends SpecTestsuiteBase
     public function testAssertReturn319(): void
     {
         $this->runAssertReturnCommand(
-            module: null,
             action: ['type' => 'invoke', 'field' => 'i64.trunc_sat_f32_s', 'args' => [['type' => 'f32', 'value' => '1593835519']]],
             expected: [['type' => 'i64', 'value' => '9223371487098961920']],
             line: 373,
@@ -3532,7 +3213,6 @@ final class ConversionsTest extends SpecTestsuiteBase
     public function testAssertReturn320(): void
     {
         $this->runAssertReturnCommand(
-            module: null,
             action: ['type' => 'invoke', 'field' => 'i64.trunc_sat_f32_s', 'args' => [['type' => 'f32', 'value' => '3741319168']]],
             expected: [['type' => 'i64', 'value' => '9223372036854775808']],
             line: 374,
@@ -3543,7 +3223,6 @@ final class ConversionsTest extends SpecTestsuiteBase
     public function testAssertReturn321(): void
     {
         $this->runAssertReturnCommand(
-            module: null,
             action: ['type' => 'invoke', 'field' => 'i64.trunc_sat_f32_s', 'args' => [['type' => 'f32', 'value' => '1593835520']]],
             expected: [['type' => 'i64', 'value' => '9223372036854775807']],
             line: 375,
@@ -3554,7 +3233,6 @@ final class ConversionsTest extends SpecTestsuiteBase
     public function testAssertReturn322(): void
     {
         $this->runAssertReturnCommand(
-            module: null,
             action: ['type' => 'invoke', 'field' => 'i64.trunc_sat_f32_s', 'args' => [['type' => 'f32', 'value' => '3741319169']]],
             expected: [['type' => 'i64', 'value' => '9223372036854775808']],
             line: 376,
@@ -3565,7 +3243,6 @@ final class ConversionsTest extends SpecTestsuiteBase
     public function testAssertReturn323(): void
     {
         $this->runAssertReturnCommand(
-            module: null,
             action: ['type' => 'invoke', 'field' => 'i64.trunc_sat_f32_s', 'args' => [['type' => 'f32', 'value' => '2139095040']]],
             expected: [['type' => 'i64', 'value' => '9223372036854775807']],
             line: 377,
@@ -3576,7 +3253,6 @@ final class ConversionsTest extends SpecTestsuiteBase
     public function testAssertReturn324(): void
     {
         $this->runAssertReturnCommand(
-            module: null,
             action: ['type' => 'invoke', 'field' => 'i64.trunc_sat_f32_s', 'args' => [['type' => 'f32', 'value' => '4286578688']]],
             expected: [['type' => 'i64', 'value' => '9223372036854775808']],
             line: 378,
@@ -3587,7 +3263,6 @@ final class ConversionsTest extends SpecTestsuiteBase
     public function testAssertReturn325(): void
     {
         $this->runAssertReturnCommand(
-            module: null,
             action: ['type' => 'invoke', 'field' => 'i64.trunc_sat_f32_s', 'args' => [['type' => 'f32', 'value' => '2143289344']]],
             expected: [['type' => 'i64', 'value' => '0']],
             line: 379,
@@ -3598,7 +3273,6 @@ final class ConversionsTest extends SpecTestsuiteBase
     public function testAssertReturn326(): void
     {
         $this->runAssertReturnCommand(
-            module: null,
             action: ['type' => 'invoke', 'field' => 'i64.trunc_sat_f32_s', 'args' => [['type' => 'f32', 'value' => '2141192192']]],
             expected: [['type' => 'i64', 'value' => '0']],
             line: 380,
@@ -3609,7 +3283,6 @@ final class ConversionsTest extends SpecTestsuiteBase
     public function testAssertReturn327(): void
     {
         $this->runAssertReturnCommand(
-            module: null,
             action: ['type' => 'invoke', 'field' => 'i64.trunc_sat_f32_s', 'args' => [['type' => 'f32', 'value' => '4290772992']]],
             expected: [['type' => 'i64', 'value' => '0']],
             line: 381,
@@ -3620,7 +3293,6 @@ final class ConversionsTest extends SpecTestsuiteBase
     public function testAssertReturn328(): void
     {
         $this->runAssertReturnCommand(
-            module: null,
             action: ['type' => 'invoke', 'field' => 'i64.trunc_sat_f32_s', 'args' => [['type' => 'f32', 'value' => '4288675840']]],
             expected: [['type' => 'i64', 'value' => '0']],
             line: 382,
@@ -3631,7 +3303,6 @@ final class ConversionsTest extends SpecTestsuiteBase
     public function testAssertReturn329(): void
     {
         $this->runAssertReturnCommand(
-            module: null,
             action: ['type' => 'invoke', 'field' => 'i64.trunc_sat_f32_u', 'args' => [['type' => 'f32', 'value' => '0']]],
             expected: [['type' => 'i64', 'value' => '0']],
             line: 384,
@@ -3642,7 +3313,6 @@ final class ConversionsTest extends SpecTestsuiteBase
     public function testAssertReturn330(): void
     {
         $this->runAssertReturnCommand(
-            module: null,
             action: ['type' => 'invoke', 'field' => 'i64.trunc_sat_f32_u', 'args' => [['type' => 'f32', 'value' => '2147483648']]],
             expected: [['type' => 'i64', 'value' => '0']],
             line: 385,
@@ -3653,7 +3323,6 @@ final class ConversionsTest extends SpecTestsuiteBase
     public function testAssertReturn331(): void
     {
         $this->runAssertReturnCommand(
-            module: null,
             action: ['type' => 'invoke', 'field' => 'i64.trunc_sat_f32_u', 'args' => [['type' => 'f32', 'value' => '1']]],
             expected: [['type' => 'i64', 'value' => '0']],
             line: 386,
@@ -3664,7 +3333,6 @@ final class ConversionsTest extends SpecTestsuiteBase
     public function testAssertReturn332(): void
     {
         $this->runAssertReturnCommand(
-            module: null,
             action: ['type' => 'invoke', 'field' => 'i64.trunc_sat_f32_u', 'args' => [['type' => 'f32', 'value' => '2147483649']]],
             expected: [['type' => 'i64', 'value' => '0']],
             line: 387,
@@ -3675,7 +3343,6 @@ final class ConversionsTest extends SpecTestsuiteBase
     public function testAssertReturn333(): void
     {
         $this->runAssertReturnCommand(
-            module: null,
             action: ['type' => 'invoke', 'field' => 'i64.trunc_sat_f32_u', 'args' => [['type' => 'f32', 'value' => '1065353216']]],
             expected: [['type' => 'i64', 'value' => '1']],
             line: 388,
@@ -3686,7 +3353,6 @@ final class ConversionsTest extends SpecTestsuiteBase
     public function testAssertReturn334(): void
     {
         $this->runAssertReturnCommand(
-            module: null,
             action: ['type' => 'invoke', 'field' => 'i64.trunc_sat_f32_u', 'args' => [['type' => 'f32', 'value' => '1066192077']]],
             expected: [['type' => 'i64', 'value' => '1']],
             line: 389,
@@ -3697,7 +3363,6 @@ final class ConversionsTest extends SpecTestsuiteBase
     public function testAssertReturn335(): void
     {
         $this->runAssertReturnCommand(
-            module: null,
             action: ['type' => 'invoke', 'field' => 'i64.trunc_sat_f32_u', 'args' => [['type' => 'f32', 'value' => '1069547520']]],
             expected: [['type' => 'i64', 'value' => '1']],
             line: 390,
@@ -3708,7 +3373,6 @@ final class ConversionsTest extends SpecTestsuiteBase
     public function testAssertReturn336(): void
     {
         $this->runAssertReturnCommand(
-            module: null,
             action: ['type' => 'invoke', 'field' => 'i64.trunc_sat_f32_u', 'args' => [['type' => 'f32', 'value' => '1333788672']]],
             expected: [['type' => 'i64', 'value' => '4294967296']],
             line: 391,
@@ -3719,7 +3383,6 @@ final class ConversionsTest extends SpecTestsuiteBase
     public function testAssertReturn337(): void
     {
         $this->runAssertReturnCommand(
-            module: null,
             action: ['type' => 'invoke', 'field' => 'i64.trunc_sat_f32_u', 'args' => [['type' => 'f32', 'value' => '1602224127']]],
             expected: [['type' => 'i64', 'value' => '18446742974197923840']],
             line: 392,
@@ -3730,7 +3393,6 @@ final class ConversionsTest extends SpecTestsuiteBase
     public function testAssertReturn338(): void
     {
         $this->runAssertReturnCommand(
-            module: null,
             action: ['type' => 'invoke', 'field' => 'i64.trunc_sat_f32_u', 'args' => [['type' => 'f32', 'value' => '3211159142']]],
             expected: [['type' => 'i64', 'value' => '0']],
             line: 393,
@@ -3741,7 +3403,6 @@ final class ConversionsTest extends SpecTestsuiteBase
     public function testAssertReturn339(): void
     {
         $this->runAssertReturnCommand(
-            module: null,
             action: ['type' => 'invoke', 'field' => 'i64.trunc_sat_f32_u', 'args' => [['type' => 'f32', 'value' => '3212836863']]],
             expected: [['type' => 'i64', 'value' => '0']],
             line: 394,
@@ -3752,7 +3413,6 @@ final class ConversionsTest extends SpecTestsuiteBase
     public function testAssertReturn340(): void
     {
         $this->runAssertReturnCommand(
-            module: null,
             action: ['type' => 'invoke', 'field' => 'i64.trunc_sat_f32_u', 'args' => [['type' => 'f32', 'value' => '1602224128']]],
             expected: [['type' => 'i64', 'value' => '18446744073709551615']],
             line: 395,
@@ -3763,7 +3423,6 @@ final class ConversionsTest extends SpecTestsuiteBase
     public function testAssertReturn341(): void
     {
         $this->runAssertReturnCommand(
-            module: null,
             action: ['type' => 'invoke', 'field' => 'i64.trunc_sat_f32_u', 'args' => [['type' => 'f32', 'value' => '3212836864']]],
             expected: [['type' => 'i64', 'value' => '0']],
             line: 396,
@@ -3774,7 +3433,6 @@ final class ConversionsTest extends SpecTestsuiteBase
     public function testAssertReturn342(): void
     {
         $this->runAssertReturnCommand(
-            module: null,
             action: ['type' => 'invoke', 'field' => 'i64.trunc_sat_f32_u', 'args' => [['type' => 'f32', 'value' => '2139095040']]],
             expected: [['type' => 'i64', 'value' => '18446744073709551615']],
             line: 397,
@@ -3785,7 +3443,6 @@ final class ConversionsTest extends SpecTestsuiteBase
     public function testAssertReturn343(): void
     {
         $this->runAssertReturnCommand(
-            module: null,
             action: ['type' => 'invoke', 'field' => 'i64.trunc_sat_f32_u', 'args' => [['type' => 'f32', 'value' => '4286578688']]],
             expected: [['type' => 'i64', 'value' => '0']],
             line: 398,
@@ -3796,7 +3453,6 @@ final class ConversionsTest extends SpecTestsuiteBase
     public function testAssertReturn344(): void
     {
         $this->runAssertReturnCommand(
-            module: null,
             action: ['type' => 'invoke', 'field' => 'i64.trunc_sat_f32_u', 'args' => [['type' => 'f32', 'value' => '2143289344']]],
             expected: [['type' => 'i64', 'value' => '0']],
             line: 399,
@@ -3807,7 +3463,6 @@ final class ConversionsTest extends SpecTestsuiteBase
     public function testAssertReturn345(): void
     {
         $this->runAssertReturnCommand(
-            module: null,
             action: ['type' => 'invoke', 'field' => 'i64.trunc_sat_f32_u', 'args' => [['type' => 'f32', 'value' => '2141192192']]],
             expected: [['type' => 'i64', 'value' => '0']],
             line: 400,
@@ -3818,7 +3473,6 @@ final class ConversionsTest extends SpecTestsuiteBase
     public function testAssertReturn346(): void
     {
         $this->runAssertReturnCommand(
-            module: null,
             action: ['type' => 'invoke', 'field' => 'i64.trunc_sat_f32_u', 'args' => [['type' => 'f32', 'value' => '4290772992']]],
             expected: [['type' => 'i64', 'value' => '0']],
             line: 401,
@@ -3829,7 +3483,6 @@ final class ConversionsTest extends SpecTestsuiteBase
     public function testAssertReturn347(): void
     {
         $this->runAssertReturnCommand(
-            module: null,
             action: ['type' => 'invoke', 'field' => 'i64.trunc_sat_f32_u', 'args' => [['type' => 'f32', 'value' => '4288675840']]],
             expected: [['type' => 'i64', 'value' => '0']],
             line: 402,
@@ -3840,7 +3493,6 @@ final class ConversionsTest extends SpecTestsuiteBase
     public function testAssertReturn348(): void
     {
         $this->runAssertReturnCommand(
-            module: null,
             action: ['type' => 'invoke', 'field' => 'i64.trunc_sat_f64_s', 'args' => [['type' => 'f64', 'value' => '0']]],
             expected: [['type' => 'i64', 'value' => '0']],
             line: 404,
@@ -3851,7 +3503,6 @@ final class ConversionsTest extends SpecTestsuiteBase
     public function testAssertReturn349(): void
     {
         $this->runAssertReturnCommand(
-            module: null,
             action: ['type' => 'invoke', 'field' => 'i64.trunc_sat_f64_s', 'args' => [['type' => 'f64', 'value' => '9223372036854775808']]],
             expected: [['type' => 'i64', 'value' => '0']],
             line: 405,
@@ -3862,7 +3513,6 @@ final class ConversionsTest extends SpecTestsuiteBase
     public function testAssertReturn350(): void
     {
         $this->runAssertReturnCommand(
-            module: null,
             action: ['type' => 'invoke', 'field' => 'i64.trunc_sat_f64_s', 'args' => [['type' => 'f64', 'value' => '1']]],
             expected: [['type' => 'i64', 'value' => '0']],
             line: 406,
@@ -3873,7 +3523,6 @@ final class ConversionsTest extends SpecTestsuiteBase
     public function testAssertReturn351(): void
     {
         $this->runAssertReturnCommand(
-            module: null,
             action: ['type' => 'invoke', 'field' => 'i64.trunc_sat_f64_s', 'args' => [['type' => 'f64', 'value' => '9223372036854775809']]],
             expected: [['type' => 'i64', 'value' => '0']],
             line: 407,
@@ -3884,7 +3533,6 @@ final class ConversionsTest extends SpecTestsuiteBase
     public function testAssertReturn352(): void
     {
         $this->runAssertReturnCommand(
-            module: null,
             action: ['type' => 'invoke', 'field' => 'i64.trunc_sat_f64_s', 'args' => [['type' => 'f64', 'value' => '4607182418800017408']]],
             expected: [['type' => 'i64', 'value' => '1']],
             line: 408,
@@ -3895,7 +3543,6 @@ final class ConversionsTest extends SpecTestsuiteBase
     public function testAssertReturn353(): void
     {
         $this->runAssertReturnCommand(
-            module: null,
             action: ['type' => 'invoke', 'field' => 'i64.trunc_sat_f64_s', 'args' => [['type' => 'f64', 'value' => '4607632778762754458']]],
             expected: [['type' => 'i64', 'value' => '1']],
             line: 409,
@@ -3906,7 +3553,6 @@ final class ConversionsTest extends SpecTestsuiteBase
     public function testAssertReturn354(): void
     {
         $this->runAssertReturnCommand(
-            module: null,
             action: ['type' => 'invoke', 'field' => 'i64.trunc_sat_f64_s', 'args' => [['type' => 'f64', 'value' => '4609434218613702656']]],
             expected: [['type' => 'i64', 'value' => '1']],
             line: 410,
@@ -3917,7 +3563,6 @@ final class ConversionsTest extends SpecTestsuiteBase
     public function testAssertReturn355(): void
     {
         $this->runAssertReturnCommand(
-            module: null,
             action: ['type' => 'invoke', 'field' => 'i64.trunc_sat_f64_s', 'args' => [['type' => 'f64', 'value' => '13830554455654793216']]],
             expected: [['type' => 'i64', 'value' => '18446744073709551615']],
             line: 411,
@@ -3928,7 +3573,6 @@ final class ConversionsTest extends SpecTestsuiteBase
     public function testAssertReturn356(): void
     {
         $this->runAssertReturnCommand(
-            module: null,
             action: ['type' => 'invoke', 'field' => 'i64.trunc_sat_f64_s', 'args' => [['type' => 'f64', 'value' => '13831004815617530266']]],
             expected: [['type' => 'i64', 'value' => '18446744073709551615']],
             line: 412,
@@ -3939,7 +3583,6 @@ final class ConversionsTest extends SpecTestsuiteBase
     public function testAssertReturn357(): void
     {
         $this->runAssertReturnCommand(
-            module: null,
             action: ['type' => 'invoke', 'field' => 'i64.trunc_sat_f64_s', 'args' => [['type' => 'f64', 'value' => '13832806255468478464']]],
             expected: [['type' => 'i64', 'value' => '18446744073709551615']],
             line: 413,
@@ -3950,7 +3593,6 @@ final class ConversionsTest extends SpecTestsuiteBase
     public function testAssertReturn358(): void
     {
         $this->runAssertReturnCommand(
-            module: null,
             action: ['type' => 'invoke', 'field' => 'i64.trunc_sat_f64_s', 'args' => [['type' => 'f64', 'value' => '13834607695319426662']]],
             expected: [['type' => 'i64', 'value' => '18446744073709551615']],
             line: 414,
@@ -3961,7 +3603,6 @@ final class ConversionsTest extends SpecTestsuiteBase
     public function testAssertReturn359(): void
     {
         $this->runAssertReturnCommand(
-            module: null,
             action: ['type' => 'invoke', 'field' => 'i64.trunc_sat_f64_s', 'args' => [['type' => 'f64', 'value' => '13835058055282163712']]],
             expected: [['type' => 'i64', 'value' => '18446744073709551614']],
             line: 415,
@@ -3972,7 +3613,6 @@ final class ConversionsTest extends SpecTestsuiteBase
     public function testAssertReturn360(): void
     {
         $this->runAssertReturnCommand(
-            module: null,
             action: ['type' => 'invoke', 'field' => 'i64.trunc_sat_f64_s', 'args' => [['type' => 'f64', 'value' => '4751297606875873280']]],
             expected: [['type' => 'i64', 'value' => '4294967296']],
             line: 416,
@@ -3983,7 +3623,6 @@ final class ConversionsTest extends SpecTestsuiteBase
     public function testAssertReturn361(): void
     {
         $this->runAssertReturnCommand(
-            module: null,
             action: ['type' => 'invoke', 'field' => 'i64.trunc_sat_f64_s', 'args' => [['type' => 'f64', 'value' => '13974669643730649088']]],
             expected: [['type' => 'i64', 'value' => '18446744069414584320']],
             line: 417,
@@ -3994,7 +3633,6 @@ final class ConversionsTest extends SpecTestsuiteBase
     public function testAssertReturn362(): void
     {
         $this->runAssertReturnCommand(
-            module: null,
             action: ['type' => 'invoke', 'field' => 'i64.trunc_sat_f64_s', 'args' => [['type' => 'f64', 'value' => '4890909195324358655']]],
             expected: [['type' => 'i64', 'value' => '9223372036854774784']],
             line: 418,
@@ -4005,7 +3643,6 @@ final class ConversionsTest extends SpecTestsuiteBase
     public function testAssertReturn363(): void
     {
         $this->runAssertReturnCommand(
-            module: null,
             action: ['type' => 'invoke', 'field' => 'i64.trunc_sat_f64_s', 'args' => [['type' => 'f64', 'value' => '14114281232179134464']]],
             expected: [['type' => 'i64', 'value' => '9223372036854775808']],
             line: 419,
@@ -4016,7 +3653,6 @@ final class ConversionsTest extends SpecTestsuiteBase
     public function testAssertReturn364(): void
     {
         $this->runAssertReturnCommand(
-            module: null,
             action: ['type' => 'invoke', 'field' => 'i64.trunc_sat_f64_s', 'args' => [['type' => 'f64', 'value' => '4890909195324358656']]],
             expected: [['type' => 'i64', 'value' => '9223372036854775807']],
             line: 420,
@@ -4027,7 +3663,6 @@ final class ConversionsTest extends SpecTestsuiteBase
     public function testAssertReturn365(): void
     {
         $this->runAssertReturnCommand(
-            module: null,
             action: ['type' => 'invoke', 'field' => 'i64.trunc_sat_f64_s', 'args' => [['type' => 'f64', 'value' => '14114281232179134465']]],
             expected: [['type' => 'i64', 'value' => '9223372036854775808']],
             line: 421,
@@ -4038,7 +3673,6 @@ final class ConversionsTest extends SpecTestsuiteBase
     public function testAssertReturn366(): void
     {
         $this->runAssertReturnCommand(
-            module: null,
             action: ['type' => 'invoke', 'field' => 'i64.trunc_sat_f64_s', 'args' => [['type' => 'f64', 'value' => '9218868437227405312']]],
             expected: [['type' => 'i64', 'value' => '9223372036854775807']],
             line: 422,
@@ -4049,7 +3683,6 @@ final class ConversionsTest extends SpecTestsuiteBase
     public function testAssertReturn367(): void
     {
         $this->runAssertReturnCommand(
-            module: null,
             action: ['type' => 'invoke', 'field' => 'i64.trunc_sat_f64_s', 'args' => [['type' => 'f64', 'value' => '18442240474082181120']]],
             expected: [['type' => 'i64', 'value' => '9223372036854775808']],
             line: 423,
@@ -4060,7 +3693,6 @@ final class ConversionsTest extends SpecTestsuiteBase
     public function testAssertReturn368(): void
     {
         $this->runAssertReturnCommand(
-            module: null,
             action: ['type' => 'invoke', 'field' => 'i64.trunc_sat_f64_s', 'args' => [['type' => 'f64', 'value' => '9221120237041090560']]],
             expected: [['type' => 'i64', 'value' => '0']],
             line: 424,
@@ -4071,7 +3703,6 @@ final class ConversionsTest extends SpecTestsuiteBase
     public function testAssertReturn369(): void
     {
         $this->runAssertReturnCommand(
-            module: null,
             action: ['type' => 'invoke', 'field' => 'i64.trunc_sat_f64_s', 'args' => [['type' => 'f64', 'value' => '9219994337134247936']]],
             expected: [['type' => 'i64', 'value' => '0']],
             line: 425,
@@ -4082,7 +3713,6 @@ final class ConversionsTest extends SpecTestsuiteBase
     public function testAssertReturn370(): void
     {
         $this->runAssertReturnCommand(
-            module: null,
             action: ['type' => 'invoke', 'field' => 'i64.trunc_sat_f64_s', 'args' => [['type' => 'f64', 'value' => '18444492273895866368']]],
             expected: [['type' => 'i64', 'value' => '0']],
             line: 426,
@@ -4093,7 +3723,6 @@ final class ConversionsTest extends SpecTestsuiteBase
     public function testAssertReturn371(): void
     {
         $this->runAssertReturnCommand(
-            module: null,
             action: ['type' => 'invoke', 'field' => 'i64.trunc_sat_f64_s', 'args' => [['type' => 'f64', 'value' => '18443366373989023744']]],
             expected: [['type' => 'i64', 'value' => '0']],
             line: 427,
@@ -4104,7 +3733,6 @@ final class ConversionsTest extends SpecTestsuiteBase
     public function testAssertReturn372(): void
     {
         $this->runAssertReturnCommand(
-            module: null,
             action: ['type' => 'invoke', 'field' => 'i64.trunc_sat_f64_u', 'args' => [['type' => 'f64', 'value' => '0']]],
             expected: [['type' => 'i64', 'value' => '0']],
             line: 429,
@@ -4115,7 +3743,6 @@ final class ConversionsTest extends SpecTestsuiteBase
     public function testAssertReturn373(): void
     {
         $this->runAssertReturnCommand(
-            module: null,
             action: ['type' => 'invoke', 'field' => 'i64.trunc_sat_f64_u', 'args' => [['type' => 'f64', 'value' => '9223372036854775808']]],
             expected: [['type' => 'i64', 'value' => '0']],
             line: 430,
@@ -4126,7 +3753,6 @@ final class ConversionsTest extends SpecTestsuiteBase
     public function testAssertReturn374(): void
     {
         $this->runAssertReturnCommand(
-            module: null,
             action: ['type' => 'invoke', 'field' => 'i64.trunc_sat_f64_u', 'args' => [['type' => 'f64', 'value' => '1']]],
             expected: [['type' => 'i64', 'value' => '0']],
             line: 431,
@@ -4137,7 +3763,6 @@ final class ConversionsTest extends SpecTestsuiteBase
     public function testAssertReturn375(): void
     {
         $this->runAssertReturnCommand(
-            module: null,
             action: ['type' => 'invoke', 'field' => 'i64.trunc_sat_f64_u', 'args' => [['type' => 'f64', 'value' => '9223372036854775809']]],
             expected: [['type' => 'i64', 'value' => '0']],
             line: 432,
@@ -4148,7 +3773,6 @@ final class ConversionsTest extends SpecTestsuiteBase
     public function testAssertReturn376(): void
     {
         $this->runAssertReturnCommand(
-            module: null,
             action: ['type' => 'invoke', 'field' => 'i64.trunc_sat_f64_u', 'args' => [['type' => 'f64', 'value' => '4607182418800017408']]],
             expected: [['type' => 'i64', 'value' => '1']],
             line: 433,
@@ -4159,7 +3783,6 @@ final class ConversionsTest extends SpecTestsuiteBase
     public function testAssertReturn377(): void
     {
         $this->runAssertReturnCommand(
-            module: null,
             action: ['type' => 'invoke', 'field' => 'i64.trunc_sat_f64_u', 'args' => [['type' => 'f64', 'value' => '4607632778762754458']]],
             expected: [['type' => 'i64', 'value' => '1']],
             line: 434,
@@ -4170,7 +3793,6 @@ final class ConversionsTest extends SpecTestsuiteBase
     public function testAssertReturn378(): void
     {
         $this->runAssertReturnCommand(
-            module: null,
             action: ['type' => 'invoke', 'field' => 'i64.trunc_sat_f64_u', 'args' => [['type' => 'f64', 'value' => '4609434218613702656']]],
             expected: [['type' => 'i64', 'value' => '1']],
             line: 435,
@@ -4181,7 +3803,6 @@ final class ConversionsTest extends SpecTestsuiteBase
     public function testAssertReturn379(): void
     {
         $this->runAssertReturnCommand(
-            module: null,
             action: ['type' => 'invoke', 'field' => 'i64.trunc_sat_f64_u', 'args' => [['type' => 'f64', 'value' => '4751297606873776128']]],
             expected: [['type' => 'i64', 'value' => '4294967295']],
             line: 436,
@@ -4192,7 +3813,6 @@ final class ConversionsTest extends SpecTestsuiteBase
     public function testAssertReturn380(): void
     {
         $this->runAssertReturnCommand(
-            module: null,
             action: ['type' => 'invoke', 'field' => 'i64.trunc_sat_f64_u', 'args' => [['type' => 'f64', 'value' => '4751297606875873280']]],
             expected: [['type' => 'i64', 'value' => '4294967296']],
             line: 437,
@@ -4203,7 +3823,6 @@ final class ConversionsTest extends SpecTestsuiteBase
     public function testAssertReturn381(): void
     {
         $this->runAssertReturnCommand(
-            module: null,
             action: ['type' => 'invoke', 'field' => 'i64.trunc_sat_f64_u', 'args' => [['type' => 'f64', 'value' => '4895412794951729151']]],
             expected: [['type' => 'i64', 'value' => '18446744073709549568']],
             line: 438,
@@ -4214,7 +3833,6 @@ final class ConversionsTest extends SpecTestsuiteBase
     public function testAssertReturn382(): void
     {
         $this->runAssertReturnCommand(
-            module: null,
             action: ['type' => 'invoke', 'field' => 'i64.trunc_sat_f64_u', 'args' => [['type' => 'f64', 'value' => '13829653735729319117']]],
             expected: [['type' => 'i64', 'value' => '0']],
             line: 439,
@@ -4225,7 +3843,6 @@ final class ConversionsTest extends SpecTestsuiteBase
     public function testAssertReturn383(): void
     {
         $this->runAssertReturnCommand(
-            module: null,
             action: ['type' => 'invoke', 'field' => 'i64.trunc_sat_f64_u', 'args' => [['type' => 'f64', 'value' => '13830554455654793215']]],
             expected: [['type' => 'i64', 'value' => '0']],
             line: 440,
@@ -4236,7 +3853,6 @@ final class ConversionsTest extends SpecTestsuiteBase
     public function testAssertReturn384(): void
     {
         $this->runAssertReturnCommand(
-            module: null,
             action: ['type' => 'invoke', 'field' => 'i64.trunc_sat_f64_u', 'args' => [['type' => 'f64', 'value' => '4726483295884279808']]],
             expected: [['type' => 'i64', 'value' => '100000000']],
             line: 441,
@@ -4247,7 +3863,6 @@ final class ConversionsTest extends SpecTestsuiteBase
     public function testAssertReturn385(): void
     {
         $this->runAssertReturnCommand(
-            module: null,
             action: ['type' => 'invoke', 'field' => 'i64.trunc_sat_f64_u', 'args' => [['type' => 'f64', 'value' => '4846369599423283200']]],
             expected: [['type' => 'i64', 'value' => '10000000000000000']],
             line: 442,
@@ -4258,7 +3873,6 @@ final class ConversionsTest extends SpecTestsuiteBase
     public function testAssertReturn386(): void
     {
         $this->runAssertReturnCommand(
-            module: null,
             action: ['type' => 'invoke', 'field' => 'i64.trunc_sat_f64_u', 'args' => [['type' => 'f64', 'value' => '4890909195324358656']]],
             expected: [['type' => 'i64', 'value' => '9223372036854775808']],
             line: 443,
@@ -4269,7 +3883,6 @@ final class ConversionsTest extends SpecTestsuiteBase
     public function testAssertReturn387(): void
     {
         $this->runAssertReturnCommand(
-            module: null,
             action: ['type' => 'invoke', 'field' => 'i64.trunc_sat_f64_u', 'args' => [['type' => 'f64', 'value' => '4895412794951729152']]],
             expected: [['type' => 'i64', 'value' => '18446744073709551615']],
             line: 444,
@@ -4280,7 +3893,6 @@ final class ConversionsTest extends SpecTestsuiteBase
     public function testAssertReturn388(): void
     {
         $this->runAssertReturnCommand(
-            module: null,
             action: ['type' => 'invoke', 'field' => 'i64.trunc_sat_f64_u', 'args' => [['type' => 'f64', 'value' => '13830554455654793216']]],
             expected: [['type' => 'i64', 'value' => '0']],
             line: 445,
@@ -4291,7 +3903,6 @@ final class ConversionsTest extends SpecTestsuiteBase
     public function testAssertReturn389(): void
     {
         $this->runAssertReturnCommand(
-            module: null,
             action: ['type' => 'invoke', 'field' => 'i64.trunc_sat_f64_u', 'args' => [['type' => 'f64', 'value' => '9218868437227405312']]],
             expected: [['type' => 'i64', 'value' => '18446744073709551615']],
             line: 446,
@@ -4302,7 +3913,6 @@ final class ConversionsTest extends SpecTestsuiteBase
     public function testAssertReturn390(): void
     {
         $this->runAssertReturnCommand(
-            module: null,
             action: ['type' => 'invoke', 'field' => 'i64.trunc_sat_f64_u', 'args' => [['type' => 'f64', 'value' => '18442240474082181120']]],
             expected: [['type' => 'i64', 'value' => '0']],
             line: 447,
@@ -4313,7 +3923,6 @@ final class ConversionsTest extends SpecTestsuiteBase
     public function testAssertReturn391(): void
     {
         $this->runAssertReturnCommand(
-            module: null,
             action: ['type' => 'invoke', 'field' => 'i64.trunc_sat_f64_u', 'args' => [['type' => 'f64', 'value' => '9221120237041090560']]],
             expected: [['type' => 'i64', 'value' => '0']],
             line: 448,
@@ -4324,7 +3933,6 @@ final class ConversionsTest extends SpecTestsuiteBase
     public function testAssertReturn392(): void
     {
         $this->runAssertReturnCommand(
-            module: null,
             action: ['type' => 'invoke', 'field' => 'i64.trunc_sat_f64_u', 'args' => [['type' => 'f64', 'value' => '9219994337134247936']]],
             expected: [['type' => 'i64', 'value' => '0']],
             line: 449,
@@ -4335,7 +3943,6 @@ final class ConversionsTest extends SpecTestsuiteBase
     public function testAssertReturn393(): void
     {
         $this->runAssertReturnCommand(
-            module: null,
             action: ['type' => 'invoke', 'field' => 'i64.trunc_sat_f64_u', 'args' => [['type' => 'f64', 'value' => '18444492273895866368']]],
             expected: [['type' => 'i64', 'value' => '0']],
             line: 450,
@@ -4346,7 +3953,6 @@ final class ConversionsTest extends SpecTestsuiteBase
     public function testAssertReturn394(): void
     {
         $this->runAssertReturnCommand(
-            module: null,
             action: ['type' => 'invoke', 'field' => 'i64.trunc_sat_f64_u', 'args' => [['type' => 'f64', 'value' => '18443366373989023744']]],
             expected: [['type' => 'i64', 'value' => '0']],
             line: 451,
@@ -4357,7 +3963,6 @@ final class ConversionsTest extends SpecTestsuiteBase
     public function testAssertReturn395(): void
     {
         $this->runAssertReturnCommand(
-            module: null,
             action: ['type' => 'invoke', 'field' => 'f32.convert_i32_s', 'args' => [['type' => 'i32', 'value' => '16777217']]],
             expected: [['type' => 'f32', 'value' => '1266679808']],
             line: 454,
@@ -4368,7 +3973,6 @@ final class ConversionsTest extends SpecTestsuiteBase
     public function testAssertReturn396(): void
     {
         $this->runAssertReturnCommand(
-            module: null,
             action: ['type' => 'invoke', 'field' => 'f32.convert_i32_s', 'args' => [['type' => 'i32', 'value' => '4278190079']]],
             expected: [['type' => 'f32', 'value' => '3414163456']],
             line: 455,
@@ -4379,7 +3983,6 @@ final class ConversionsTest extends SpecTestsuiteBase
     public function testAssertReturn397(): void
     {
         $this->runAssertReturnCommand(
-            module: null,
             action: ['type' => 'invoke', 'field' => 'f32.convert_i32_s', 'args' => [['type' => 'i32', 'value' => '16777219']]],
             expected: [['type' => 'f32', 'value' => '1266679810']],
             line: 456,
@@ -4390,7 +3993,6 @@ final class ConversionsTest extends SpecTestsuiteBase
     public function testAssertReturn398(): void
     {
         $this->runAssertReturnCommand(
-            module: null,
             action: ['type' => 'invoke', 'field' => 'f32.convert_i32_s', 'args' => [['type' => 'i32', 'value' => '4278190077']]],
             expected: [['type' => 'f32', 'value' => '3414163458']],
             line: 457,
@@ -4401,7 +4003,6 @@ final class ConversionsTest extends SpecTestsuiteBase
     public function testAssertReturn399(): void
     {
         $this->runAssertReturnCommand(
-            module: null,
             action: ['type' => 'invoke', 'field' => 'f32.convert_i64_s', 'args' => [['type' => 'i64', 'value' => '1']]],
             expected: [['type' => 'f32', 'value' => '1065353216']],
             line: 459,
@@ -4412,7 +4013,6 @@ final class ConversionsTest extends SpecTestsuiteBase
     public function testAssertReturn400(): void
     {
         $this->runAssertReturnCommand(
-            module: null,
             action: ['type' => 'invoke', 'field' => 'f32.convert_i64_s', 'args' => [['type' => 'i64', 'value' => '18446744073709551615']]],
             expected: [['type' => 'f32', 'value' => '3212836864']],
             line: 460,
@@ -4423,7 +4023,6 @@ final class ConversionsTest extends SpecTestsuiteBase
     public function testAssertReturn401(): void
     {
         $this->runAssertReturnCommand(
-            module: null,
             action: ['type' => 'invoke', 'field' => 'f32.convert_i64_s', 'args' => [['type' => 'i64', 'value' => '0']]],
             expected: [['type' => 'f32', 'value' => '0']],
             line: 461,
@@ -4434,7 +4033,6 @@ final class ConversionsTest extends SpecTestsuiteBase
     public function testAssertReturn402(): void
     {
         $this->runAssertReturnCommand(
-            module: null,
             action: ['type' => 'invoke', 'field' => 'f32.convert_i64_s', 'args' => [['type' => 'i64', 'value' => '9223372036854775807']]],
             expected: [['type' => 'f32', 'value' => '1593835520']],
             line: 462,
@@ -4445,7 +4043,6 @@ final class ConversionsTest extends SpecTestsuiteBase
     public function testAssertReturn403(): void
     {
         $this->runAssertReturnCommand(
-            module: null,
             action: ['type' => 'invoke', 'field' => 'f32.convert_i64_s', 'args' => [['type' => 'i64', 'value' => '9223372036854775808']]],
             expected: [['type' => 'f32', 'value' => '3741319168']],
             line: 463,
@@ -4456,7 +4053,6 @@ final class ConversionsTest extends SpecTestsuiteBase
     public function testAssertReturn404(): void
     {
         $this->runAssertReturnCommand(
-            module: null,
             action: ['type' => 'invoke', 'field' => 'f32.convert_i64_s', 'args' => [['type' => 'i64', 'value' => '314159265358979']]],
             expected: [['type' => 'f32', 'value' => '1468980468']],
             line: 464,
@@ -4467,7 +4063,6 @@ final class ConversionsTest extends SpecTestsuiteBase
     public function testAssertReturn405(): void
     {
         $this->runAssertReturnCommand(
-            module: null,
             action: ['type' => 'invoke', 'field' => 'f32.convert_i64_s', 'args' => [['type' => 'i64', 'value' => '16777217']]],
             expected: [['type' => 'f32', 'value' => '1266679808']],
             line: 466,
@@ -4478,7 +4073,6 @@ final class ConversionsTest extends SpecTestsuiteBase
     public function testAssertReturn406(): void
     {
         $this->runAssertReturnCommand(
-            module: null,
             action: ['type' => 'invoke', 'field' => 'f32.convert_i64_s', 'args' => [['type' => 'i64', 'value' => '18446744073692774399']]],
             expected: [['type' => 'f32', 'value' => '3414163456']],
             line: 467,
@@ -4489,7 +4083,6 @@ final class ConversionsTest extends SpecTestsuiteBase
     public function testAssertReturn407(): void
     {
         $this->runAssertReturnCommand(
-            module: null,
             action: ['type' => 'invoke', 'field' => 'f32.convert_i64_s', 'args' => [['type' => 'i64', 'value' => '16777219']]],
             expected: [['type' => 'f32', 'value' => '1266679810']],
             line: 468,
@@ -4500,7 +4093,6 @@ final class ConversionsTest extends SpecTestsuiteBase
     public function testAssertReturn408(): void
     {
         $this->runAssertReturnCommand(
-            module: null,
             action: ['type' => 'invoke', 'field' => 'f32.convert_i64_s', 'args' => [['type' => 'i64', 'value' => '18446744073692774397']]],
             expected: [['type' => 'f32', 'value' => '3414163458']],
             line: 469,
@@ -4511,7 +4103,6 @@ final class ConversionsTest extends SpecTestsuiteBase
     public function testAssertReturn409(): void
     {
         $this->runAssertReturnCommand(
-            module: null,
             action: ['type' => 'invoke', 'field' => 'f32.convert_i64_s', 'args' => [['type' => 'i64', 'value' => '9223371212221054977']]],
             expected: [['type' => 'f32', 'value' => '1593835519']],
             line: 471,
@@ -4522,7 +4113,6 @@ final class ConversionsTest extends SpecTestsuiteBase
     public function testAssertReturn410(): void
     {
         $this->runAssertReturnCommand(
-            module: null,
             action: ['type' => 'invoke', 'field' => 'f32.convert_i64_s', 'args' => [['type' => 'i64', 'value' => '9223372311732682753']]],
             expected: [['type' => 'f32', 'value' => '3741319167']],
             line: 472,
@@ -4533,7 +4123,6 @@ final class ConversionsTest extends SpecTestsuiteBase
     public function testAssertReturn411(): void
     {
         $this->runAssertReturnCommand(
-            module: null,
             action: ['type' => 'invoke', 'field' => 'f32.convert_i64_s', 'args' => [['type' => 'i64', 'value' => '9007199791611905']]],
             expected: [['type' => 'f32', 'value' => '1509949441']],
             line: 473,
@@ -4544,7 +4133,6 @@ final class ConversionsTest extends SpecTestsuiteBase
     public function testAssertReturn412(): void
     {
         $this->runAssertReturnCommand(
-            module: null,
             action: ['type' => 'invoke', 'field' => 'f32.convert_i64_s', 'args' => [['type' => 'i64', 'value' => '18437736873917939711']]],
             expected: [['type' => 'f32', 'value' => '3657433089']],
             line: 474,
@@ -4555,7 +4143,6 @@ final class ConversionsTest extends SpecTestsuiteBase
     public function testAssertReturn413(): void
     {
         $this->runAssertReturnCommand(
-            module: null,
             action: ['type' => 'invoke', 'field' => 'f64.convert_i32_s', 'args' => [['type' => 'i32', 'value' => '1']]],
             expected: [['type' => 'f64', 'value' => '4607182418800017408']],
             line: 476,
@@ -4566,7 +4153,6 @@ final class ConversionsTest extends SpecTestsuiteBase
     public function testAssertReturn414(): void
     {
         $this->runAssertReturnCommand(
-            module: null,
             action: ['type' => 'invoke', 'field' => 'f64.convert_i32_s', 'args' => [['type' => 'i32', 'value' => '4294967295']]],
             expected: [['type' => 'f64', 'value' => '13830554455654793216']],
             line: 477,
@@ -4577,7 +4163,6 @@ final class ConversionsTest extends SpecTestsuiteBase
     public function testAssertReturn415(): void
     {
         $this->runAssertReturnCommand(
-            module: null,
             action: ['type' => 'invoke', 'field' => 'f64.convert_i32_s', 'args' => [['type' => 'i32', 'value' => '0']]],
             expected: [['type' => 'f64', 'value' => '0']],
             line: 478,
@@ -4588,7 +4173,6 @@ final class ConversionsTest extends SpecTestsuiteBase
     public function testAssertReturn416(): void
     {
         $this->runAssertReturnCommand(
-            module: null,
             action: ['type' => 'invoke', 'field' => 'f64.convert_i32_s', 'args' => [['type' => 'i32', 'value' => '2147483647']]],
             expected: [['type' => 'f64', 'value' => '4746794007244308480']],
             line: 479,
@@ -4599,7 +4183,6 @@ final class ConversionsTest extends SpecTestsuiteBase
     public function testAssertReturn417(): void
     {
         $this->runAssertReturnCommand(
-            module: null,
             action: ['type' => 'invoke', 'field' => 'f64.convert_i32_s', 'args' => [['type' => 'i32', 'value' => '2147483648']]],
             expected: [['type' => 'f64', 'value' => '13970166044103278592']],
             line: 480,
@@ -4610,7 +4193,6 @@ final class ConversionsTest extends SpecTestsuiteBase
     public function testAssertReturn418(): void
     {
         $this->runAssertReturnCommand(
-            module: null,
             action: ['type' => 'invoke', 'field' => 'f64.convert_i32_s', 'args' => [['type' => 'i32', 'value' => '987654321']]],
             expected: [['type' => 'f64', 'value' => '4741568253304766464']],
             line: 481,
@@ -4621,7 +4203,6 @@ final class ConversionsTest extends SpecTestsuiteBase
     public function testAssertReturn419(): void
     {
         $this->runAssertReturnCommand(
-            module: null,
             action: ['type' => 'invoke', 'field' => 'f64.convert_i64_s', 'args' => [['type' => 'i64', 'value' => '1']]],
             expected: [['type' => 'f64', 'value' => '4607182418800017408']],
             line: 483,
@@ -4632,7 +4213,6 @@ final class ConversionsTest extends SpecTestsuiteBase
     public function testAssertReturn420(): void
     {
         $this->runAssertReturnCommand(
-            module: null,
             action: ['type' => 'invoke', 'field' => 'f64.convert_i64_s', 'args' => [['type' => 'i64', 'value' => '18446744073709551615']]],
             expected: [['type' => 'f64', 'value' => '13830554455654793216']],
             line: 484,
@@ -4643,7 +4223,6 @@ final class ConversionsTest extends SpecTestsuiteBase
     public function testAssertReturn421(): void
     {
         $this->runAssertReturnCommand(
-            module: null,
             action: ['type' => 'invoke', 'field' => 'f64.convert_i64_s', 'args' => [['type' => 'i64', 'value' => '0']]],
             expected: [['type' => 'f64', 'value' => '0']],
             line: 485,
@@ -4654,7 +4233,6 @@ final class ConversionsTest extends SpecTestsuiteBase
     public function testAssertReturn422(): void
     {
         $this->runAssertReturnCommand(
-            module: null,
             action: ['type' => 'invoke', 'field' => 'f64.convert_i64_s', 'args' => [['type' => 'i64', 'value' => '9223372036854775807']]],
             expected: [['type' => 'f64', 'value' => '4890909195324358656']],
             line: 486,
@@ -4665,7 +4243,6 @@ final class ConversionsTest extends SpecTestsuiteBase
     public function testAssertReturn423(): void
     {
         $this->runAssertReturnCommand(
-            module: null,
             action: ['type' => 'invoke', 'field' => 'f64.convert_i64_s', 'args' => [['type' => 'i64', 'value' => '9223372036854775808']]],
             expected: [['type' => 'f64', 'value' => '14114281232179134464']],
             line: 487,
@@ -4676,7 +4253,6 @@ final class ConversionsTest extends SpecTestsuiteBase
     public function testAssertReturn424(): void
     {
         $this->runAssertReturnCommand(
-            module: null,
             action: ['type' => 'invoke', 'field' => 'f64.convert_i64_s', 'args' => [['type' => 'i64', 'value' => '4669201609102990']]],
             expected: [['type' => 'f64', 'value' => '4841535201405015694']],
             line: 488,
@@ -4687,7 +4263,6 @@ final class ConversionsTest extends SpecTestsuiteBase
     public function testAssertReturn425(): void
     {
         $this->runAssertReturnCommand(
-            module: null,
             action: ['type' => 'invoke', 'field' => 'f64.convert_i64_s', 'args' => [['type' => 'i64', 'value' => '9007199254740993']]],
             expected: [['type' => 'f64', 'value' => '4845873199050653696']],
             line: 490,
@@ -4698,7 +4273,6 @@ final class ConversionsTest extends SpecTestsuiteBase
     public function testAssertReturn426(): void
     {
         $this->runAssertReturnCommand(
-            module: null,
             action: ['type' => 'invoke', 'field' => 'f64.convert_i64_s', 'args' => [['type' => 'i64', 'value' => '18437736874454810623']]],
             expected: [['type' => 'f64', 'value' => '14069245235905429504']],
             line: 491,
@@ -4709,7 +4283,6 @@ final class ConversionsTest extends SpecTestsuiteBase
     public function testAssertReturn427(): void
     {
         $this->runAssertReturnCommand(
-            module: null,
             action: ['type' => 'invoke', 'field' => 'f64.convert_i64_s', 'args' => [['type' => 'i64', 'value' => '9007199254740995']]],
             expected: [['type' => 'f64', 'value' => '4845873199050653698']],
             line: 492,
@@ -4720,7 +4293,6 @@ final class ConversionsTest extends SpecTestsuiteBase
     public function testAssertReturn428(): void
     {
         $this->runAssertReturnCommand(
-            module: null,
             action: ['type' => 'invoke', 'field' => 'f64.convert_i64_s', 'args' => [['type' => 'i64', 'value' => '18437736874454810621']]],
             expected: [['type' => 'f64', 'value' => '14069245235905429506']],
             line: 493,
@@ -4731,7 +4303,6 @@ final class ConversionsTest extends SpecTestsuiteBase
     public function testAssertReturn429(): void
     {
         $this->runAssertReturnCommand(
-            module: null,
             action: ['type' => 'invoke', 'field' => 'f32.convert_i32_u', 'args' => [['type' => 'i32', 'value' => '1']]],
             expected: [['type' => 'f32', 'value' => '1065353216']],
             line: 495,
@@ -4742,7 +4313,6 @@ final class ConversionsTest extends SpecTestsuiteBase
     public function testAssertReturn430(): void
     {
         $this->runAssertReturnCommand(
-            module: null,
             action: ['type' => 'invoke', 'field' => 'f32.convert_i32_u', 'args' => [['type' => 'i32', 'value' => '0']]],
             expected: [['type' => 'f32', 'value' => '0']],
             line: 496,
@@ -4753,7 +4323,6 @@ final class ConversionsTest extends SpecTestsuiteBase
     public function testAssertReturn431(): void
     {
         $this->runAssertReturnCommand(
-            module: null,
             action: ['type' => 'invoke', 'field' => 'f32.convert_i32_u', 'args' => [['type' => 'i32', 'value' => '2147483647']]],
             expected: [['type' => 'f32', 'value' => '1325400064']],
             line: 497,
@@ -4764,7 +4333,6 @@ final class ConversionsTest extends SpecTestsuiteBase
     public function testAssertReturn432(): void
     {
         $this->runAssertReturnCommand(
-            module: null,
             action: ['type' => 'invoke', 'field' => 'f32.convert_i32_u', 'args' => [['type' => 'i32', 'value' => '2147483648']]],
             expected: [['type' => 'f32', 'value' => '1325400064']],
             line: 498,
@@ -4775,7 +4343,6 @@ final class ConversionsTest extends SpecTestsuiteBase
     public function testAssertReturn433(): void
     {
         $this->runAssertReturnCommand(
-            module: null,
             action: ['type' => 'invoke', 'field' => 'f32.convert_i32_u', 'args' => [['type' => 'i32', 'value' => '305419896']]],
             expected: [['type' => 'f32', 'value' => '1301390004']],
             line: 499,
@@ -4786,7 +4353,6 @@ final class ConversionsTest extends SpecTestsuiteBase
     public function testAssertReturn434(): void
     {
         $this->runAssertReturnCommand(
-            module: null,
             action: ['type' => 'invoke', 'field' => 'f32.convert_i32_u', 'args' => [['type' => 'i32', 'value' => '4294967295']]],
             expected: [['type' => 'f32', 'value' => '1333788672']],
             line: 500,
@@ -4797,7 +4363,6 @@ final class ConversionsTest extends SpecTestsuiteBase
     public function testAssertReturn435(): void
     {
         $this->runAssertReturnCommand(
-            module: null,
             action: ['type' => 'invoke', 'field' => 'f32.convert_i32_u', 'args' => [['type' => 'i32', 'value' => '2147483776']]],
             expected: [['type' => 'f32', 'value' => '1325400064']],
             line: 501,
@@ -4808,7 +4373,6 @@ final class ConversionsTest extends SpecTestsuiteBase
     public function testAssertReturn436(): void
     {
         $this->runAssertReturnCommand(
-            module: null,
             action: ['type' => 'invoke', 'field' => 'f32.convert_i32_u', 'args' => [['type' => 'i32', 'value' => '2147483777']]],
             expected: [['type' => 'f32', 'value' => '1325400065']],
             line: 502,
@@ -4819,7 +4383,6 @@ final class ConversionsTest extends SpecTestsuiteBase
     public function testAssertReturn437(): void
     {
         $this->runAssertReturnCommand(
-            module: null,
             action: ['type' => 'invoke', 'field' => 'f32.convert_i32_u', 'args' => [['type' => 'i32', 'value' => '2147483778']]],
             expected: [['type' => 'f32', 'value' => '1325400065']],
             line: 503,
@@ -4830,7 +4393,6 @@ final class ConversionsTest extends SpecTestsuiteBase
     public function testAssertReturn438(): void
     {
         $this->runAssertReturnCommand(
-            module: null,
             action: ['type' => 'invoke', 'field' => 'f32.convert_i32_u', 'args' => [['type' => 'i32', 'value' => '4294966912']]],
             expected: [['type' => 'f32', 'value' => '1333788670']],
             line: 504,
@@ -4841,7 +4403,6 @@ final class ConversionsTest extends SpecTestsuiteBase
     public function testAssertReturn439(): void
     {
         $this->runAssertReturnCommand(
-            module: null,
             action: ['type' => 'invoke', 'field' => 'f32.convert_i32_u', 'args' => [['type' => 'i32', 'value' => '4294966913']]],
             expected: [['type' => 'f32', 'value' => '1333788671']],
             line: 505,
@@ -4852,7 +4413,6 @@ final class ConversionsTest extends SpecTestsuiteBase
     public function testAssertReturn440(): void
     {
         $this->runAssertReturnCommand(
-            module: null,
             action: ['type' => 'invoke', 'field' => 'f32.convert_i32_u', 'args' => [['type' => 'i32', 'value' => '4294966914']]],
             expected: [['type' => 'f32', 'value' => '1333788671']],
             line: 506,
@@ -4863,7 +4423,6 @@ final class ConversionsTest extends SpecTestsuiteBase
     public function testAssertReturn441(): void
     {
         $this->runAssertReturnCommand(
-            module: null,
             action: ['type' => 'invoke', 'field' => 'f32.convert_i32_u', 'args' => [['type' => 'i32', 'value' => '16777217']]],
             expected: [['type' => 'f32', 'value' => '1266679808']],
             line: 508,
@@ -4874,7 +4433,6 @@ final class ConversionsTest extends SpecTestsuiteBase
     public function testAssertReturn442(): void
     {
         $this->runAssertReturnCommand(
-            module: null,
             action: ['type' => 'invoke', 'field' => 'f32.convert_i32_u', 'args' => [['type' => 'i32', 'value' => '16777219']]],
             expected: [['type' => 'f32', 'value' => '1266679810']],
             line: 509,
@@ -4885,7 +4443,6 @@ final class ConversionsTest extends SpecTestsuiteBase
     public function testAssertReturn443(): void
     {
         $this->runAssertReturnCommand(
-            module: null,
             action: ['type' => 'invoke', 'field' => 'f32.convert_i64_u', 'args' => [['type' => 'i64', 'value' => '1']]],
             expected: [['type' => 'f32', 'value' => '1065353216']],
             line: 511,
@@ -4896,7 +4453,6 @@ final class ConversionsTest extends SpecTestsuiteBase
     public function testAssertReturn444(): void
     {
         $this->runAssertReturnCommand(
-            module: null,
             action: ['type' => 'invoke', 'field' => 'f32.convert_i64_u', 'args' => [['type' => 'i64', 'value' => '0']]],
             expected: [['type' => 'f32', 'value' => '0']],
             line: 512,
@@ -4907,7 +4463,6 @@ final class ConversionsTest extends SpecTestsuiteBase
     public function testAssertReturn445(): void
     {
         $this->runAssertReturnCommand(
-            module: null,
             action: ['type' => 'invoke', 'field' => 'f32.convert_i64_u', 'args' => [['type' => 'i64', 'value' => '9223372036854775807']]],
             expected: [['type' => 'f32', 'value' => '1593835520']],
             line: 513,
@@ -4918,7 +4473,6 @@ final class ConversionsTest extends SpecTestsuiteBase
     public function testAssertReturn446(): void
     {
         $this->runAssertReturnCommand(
-            module: null,
             action: ['type' => 'invoke', 'field' => 'f32.convert_i64_u', 'args' => [['type' => 'i64', 'value' => '9223372036854775808']]],
             expected: [['type' => 'f32', 'value' => '1593835520']],
             line: 514,
@@ -4929,7 +4483,6 @@ final class ConversionsTest extends SpecTestsuiteBase
     public function testAssertReturn447(): void
     {
         $this->runAssertReturnCommand(
-            module: null,
             action: ['type' => 'invoke', 'field' => 'f32.convert_i64_u', 'args' => [['type' => 'i64', 'value' => '18446744073709551615']]],
             expected: [['type' => 'f32', 'value' => '1602224128']],
             line: 515,
@@ -4940,7 +4493,6 @@ final class ConversionsTest extends SpecTestsuiteBase
     public function testAssertReturn448(): void
     {
         $this->runAssertReturnCommand(
-            module: null,
             action: ['type' => 'invoke', 'field' => 'f32.convert_i64_u', 'args' => [['type' => 'i64', 'value' => '16777217']]],
             expected: [['type' => 'f32', 'value' => '1266679808']],
             line: 517,
@@ -4951,7 +4503,6 @@ final class ConversionsTest extends SpecTestsuiteBase
     public function testAssertReturn449(): void
     {
         $this->runAssertReturnCommand(
-            module: null,
             action: ['type' => 'invoke', 'field' => 'f32.convert_i64_u', 'args' => [['type' => 'i64', 'value' => '16777219']]],
             expected: [['type' => 'f32', 'value' => '1266679810']],
             line: 518,
@@ -4962,7 +4513,6 @@ final class ConversionsTest extends SpecTestsuiteBase
     public function testAssertReturn450(): void
     {
         $this->runAssertReturnCommand(
-            module: null,
             action: ['type' => 'invoke', 'field' => 'f32.convert_i64_u', 'args' => [['type' => 'i64', 'value' => '9007199791611905']]],
             expected: [['type' => 'f32', 'value' => '1509949441']],
             line: 520,
@@ -4973,7 +4523,6 @@ final class ConversionsTest extends SpecTestsuiteBase
     public function testAssertReturn451(): void
     {
         $this->runAssertReturnCommand(
-            module: null,
             action: ['type' => 'invoke', 'field' => 'f32.convert_i64_u', 'args' => [['type' => 'i64', 'value' => '9223371761976868863']]],
             expected: [['type' => 'f32', 'value' => '1593835519']],
             line: 521,
@@ -4984,7 +4533,6 @@ final class ConversionsTest extends SpecTestsuiteBase
     public function testAssertReturn452(): void
     {
         $this->runAssertReturnCommand(
-            module: null,
             action: ['type' => 'invoke', 'field' => 'f32.convert_i64_u', 'args' => [['type' => 'i64', 'value' => '9223372586610589697']]],
             expected: [['type' => 'f32', 'value' => '1593835521']],
             line: 522,
@@ -4995,7 +4543,6 @@ final class ConversionsTest extends SpecTestsuiteBase
     public function testAssertReturn453(): void
     {
         $this->runAssertReturnCommand(
-            module: null,
             action: ['type' => 'invoke', 'field' => 'f32.convert_i64_u', 'args' => [['type' => 'i64', 'value' => '18446742424442109953']]],
             expected: [['type' => 'f32', 'value' => '1602224127']],
             line: 523,
@@ -5006,7 +4553,6 @@ final class ConversionsTest extends SpecTestsuiteBase
     public function testAssertReturn454(): void
     {
         $this->runAssertReturnCommand(
-            module: null,
             action: ['type' => 'invoke', 'field' => 'f64.convert_i32_u', 'args' => [['type' => 'i32', 'value' => '1']]],
             expected: [['type' => 'f64', 'value' => '4607182418800017408']],
             line: 525,
@@ -5017,7 +4563,6 @@ final class ConversionsTest extends SpecTestsuiteBase
     public function testAssertReturn455(): void
     {
         $this->runAssertReturnCommand(
-            module: null,
             action: ['type' => 'invoke', 'field' => 'f64.convert_i32_u', 'args' => [['type' => 'i32', 'value' => '0']]],
             expected: [['type' => 'f64', 'value' => '0']],
             line: 526,
@@ -5028,7 +4573,6 @@ final class ConversionsTest extends SpecTestsuiteBase
     public function testAssertReturn456(): void
     {
         $this->runAssertReturnCommand(
-            module: null,
             action: ['type' => 'invoke', 'field' => 'f64.convert_i32_u', 'args' => [['type' => 'i32', 'value' => '2147483647']]],
             expected: [['type' => 'f64', 'value' => '4746794007244308480']],
             line: 527,
@@ -5039,7 +4583,6 @@ final class ConversionsTest extends SpecTestsuiteBase
     public function testAssertReturn457(): void
     {
         $this->runAssertReturnCommand(
-            module: null,
             action: ['type' => 'invoke', 'field' => 'f64.convert_i32_u', 'args' => [['type' => 'i32', 'value' => '2147483648']]],
             expected: [['type' => 'f64', 'value' => '4746794007248502784']],
             line: 528,
@@ -5050,7 +4593,6 @@ final class ConversionsTest extends SpecTestsuiteBase
     public function testAssertReturn458(): void
     {
         $this->runAssertReturnCommand(
-            module: null,
             action: ['type' => 'invoke', 'field' => 'f64.convert_i32_u', 'args' => [['type' => 'i32', 'value' => '4294967295']]],
             expected: [['type' => 'f64', 'value' => '4751297606873776128']],
             line: 529,
@@ -5061,7 +4603,6 @@ final class ConversionsTest extends SpecTestsuiteBase
     public function testAssertReturn459(): void
     {
         $this->runAssertReturnCommand(
-            module: null,
             action: ['type' => 'invoke', 'field' => 'f64.convert_i64_u', 'args' => [['type' => 'i64', 'value' => '1']]],
             expected: [['type' => 'f64', 'value' => '4607182418800017408']],
             line: 531,
@@ -5072,7 +4613,6 @@ final class ConversionsTest extends SpecTestsuiteBase
     public function testAssertReturn460(): void
     {
         $this->runAssertReturnCommand(
-            module: null,
             action: ['type' => 'invoke', 'field' => 'f64.convert_i64_u', 'args' => [['type' => 'i64', 'value' => '0']]],
             expected: [['type' => 'f64', 'value' => '0']],
             line: 532,
@@ -5083,7 +4623,6 @@ final class ConversionsTest extends SpecTestsuiteBase
     public function testAssertReturn461(): void
     {
         $this->runAssertReturnCommand(
-            module: null,
             action: ['type' => 'invoke', 'field' => 'f64.convert_i64_u', 'args' => [['type' => 'i64', 'value' => '9223372036854775807']]],
             expected: [['type' => 'f64', 'value' => '4890909195324358656']],
             line: 533,
@@ -5094,7 +4633,6 @@ final class ConversionsTest extends SpecTestsuiteBase
     public function testAssertReturn462(): void
     {
         $this->runAssertReturnCommand(
-            module: null,
             action: ['type' => 'invoke', 'field' => 'f64.convert_i64_u', 'args' => [['type' => 'i64', 'value' => '9223372036854775808']]],
             expected: [['type' => 'f64', 'value' => '4890909195324358656']],
             line: 534,
@@ -5105,7 +4643,6 @@ final class ConversionsTest extends SpecTestsuiteBase
     public function testAssertReturn463(): void
     {
         $this->runAssertReturnCommand(
-            module: null,
             action: ['type' => 'invoke', 'field' => 'f64.convert_i64_u', 'args' => [['type' => 'i64', 'value' => '18446744073709551615']]],
             expected: [['type' => 'f64', 'value' => '4895412794951729152']],
             line: 535,
@@ -5116,7 +4653,6 @@ final class ConversionsTest extends SpecTestsuiteBase
     public function testAssertReturn464(): void
     {
         $this->runAssertReturnCommand(
-            module: null,
             action: ['type' => 'invoke', 'field' => 'f64.convert_i64_u', 'args' => [['type' => 'i64', 'value' => '9223372036854776832']]],
             expected: [['type' => 'f64', 'value' => '4890909195324358656']],
             line: 536,
@@ -5127,7 +4663,6 @@ final class ConversionsTest extends SpecTestsuiteBase
     public function testAssertReturn465(): void
     {
         $this->runAssertReturnCommand(
-            module: null,
             action: ['type' => 'invoke', 'field' => 'f64.convert_i64_u', 'args' => [['type' => 'i64', 'value' => '9223372036854776833']]],
             expected: [['type' => 'f64', 'value' => '4890909195324358657']],
             line: 537,
@@ -5138,7 +4673,6 @@ final class ConversionsTest extends SpecTestsuiteBase
     public function testAssertReturn466(): void
     {
         $this->runAssertReturnCommand(
-            module: null,
             action: ['type' => 'invoke', 'field' => 'f64.convert_i64_u', 'args' => [['type' => 'i64', 'value' => '9223372036854776834']]],
             expected: [['type' => 'f64', 'value' => '4890909195324358657']],
             line: 538,
@@ -5149,7 +4683,6 @@ final class ConversionsTest extends SpecTestsuiteBase
     public function testAssertReturn467(): void
     {
         $this->runAssertReturnCommand(
-            module: null,
             action: ['type' => 'invoke', 'field' => 'f64.convert_i64_u', 'args' => [['type' => 'i64', 'value' => '18446744073709548544']]],
             expected: [['type' => 'f64', 'value' => '4895412794951729150']],
             line: 539,
@@ -5160,7 +4693,6 @@ final class ConversionsTest extends SpecTestsuiteBase
     public function testAssertReturn468(): void
     {
         $this->runAssertReturnCommand(
-            module: null,
             action: ['type' => 'invoke', 'field' => 'f64.convert_i64_u', 'args' => [['type' => 'i64', 'value' => '18446744073709548545']]],
             expected: [['type' => 'f64', 'value' => '4895412794951729151']],
             line: 540,
@@ -5171,7 +4703,6 @@ final class ConversionsTest extends SpecTestsuiteBase
     public function testAssertReturn469(): void
     {
         $this->runAssertReturnCommand(
-            module: null,
             action: ['type' => 'invoke', 'field' => 'f64.convert_i64_u', 'args' => [['type' => 'i64', 'value' => '18446744073709548546']]],
             expected: [['type' => 'f64', 'value' => '4895412794951729151']],
             line: 541,
@@ -5182,7 +4713,6 @@ final class ConversionsTest extends SpecTestsuiteBase
     public function testAssertReturn470(): void
     {
         $this->runAssertReturnCommand(
-            module: null,
             action: ['type' => 'invoke', 'field' => 'f64.convert_i64_u', 'args' => [['type' => 'i64', 'value' => '9007199254740993']]],
             expected: [['type' => 'f64', 'value' => '4845873199050653696']],
             line: 543,
@@ -5193,7 +4723,6 @@ final class ConversionsTest extends SpecTestsuiteBase
     public function testAssertReturn471(): void
     {
         $this->runAssertReturnCommand(
-            module: null,
             action: ['type' => 'invoke', 'field' => 'f64.convert_i64_u', 'args' => [['type' => 'i64', 'value' => '9007199254740995']]],
             expected: [['type' => 'f64', 'value' => '4845873199050653698']],
             line: 544,
@@ -5204,7 +4733,6 @@ final class ConversionsTest extends SpecTestsuiteBase
     public function testAssertReturn472(): void
     {
         $this->runAssertReturnCommand(
-            module: null,
             action: ['type' => 'invoke', 'field' => 'f64.promote_f32', 'args' => [['type' => 'f32', 'value' => '0']]],
             expected: [['type' => 'f64', 'value' => '0']],
             line: 546,
@@ -5215,7 +4743,6 @@ final class ConversionsTest extends SpecTestsuiteBase
     public function testAssertReturn473(): void
     {
         $this->runAssertReturnCommand(
-            module: null,
             action: ['type' => 'invoke', 'field' => 'f64.promote_f32', 'args' => [['type' => 'f32', 'value' => '2147483648']]],
             expected: [['type' => 'f64', 'value' => '9223372036854775808']],
             line: 547,
@@ -5226,7 +4753,6 @@ final class ConversionsTest extends SpecTestsuiteBase
     public function testAssertReturn474(): void
     {
         $this->runAssertReturnCommand(
-            module: null,
             action: ['type' => 'invoke', 'field' => 'f64.promote_f32', 'args' => [['type' => 'f32', 'value' => '1']]],
             expected: [['type' => 'f64', 'value' => '3936146074321813504']],
             line: 548,
@@ -5237,7 +4763,6 @@ final class ConversionsTest extends SpecTestsuiteBase
     public function testAssertReturn475(): void
     {
         $this->runAssertReturnCommand(
-            module: null,
             action: ['type' => 'invoke', 'field' => 'f64.promote_f32', 'args' => [['type' => 'f32', 'value' => '2147483649']]],
             expected: [['type' => 'f64', 'value' => '13159518111176589312']],
             line: 549,
@@ -5248,7 +4773,6 @@ final class ConversionsTest extends SpecTestsuiteBase
     public function testAssertReturn476(): void
     {
         $this->runAssertReturnCommand(
-            module: null,
             action: ['type' => 'invoke', 'field' => 'f64.promote_f32', 'args' => [['type' => 'f32', 'value' => '1065353216']]],
             expected: [['type' => 'f64', 'value' => '4607182418800017408']],
             line: 550,
@@ -5259,7 +4783,6 @@ final class ConversionsTest extends SpecTestsuiteBase
     public function testAssertReturn477(): void
     {
         $this->runAssertReturnCommand(
-            module: null,
             action: ['type' => 'invoke', 'field' => 'f64.promote_f32', 'args' => [['type' => 'f32', 'value' => '3212836864']]],
             expected: [['type' => 'f64', 'value' => '13830554455654793216']],
             line: 551,
@@ -5270,7 +4793,6 @@ final class ConversionsTest extends SpecTestsuiteBase
     public function testAssertReturn478(): void
     {
         $this->runAssertReturnCommand(
-            module: null,
             action: ['type' => 'invoke', 'field' => 'f64.promote_f32', 'args' => [['type' => 'f32', 'value' => '4286578687']]],
             expected: [['type' => 'f64', 'value' => '14407015207421345792']],
             line: 552,
@@ -5281,7 +4803,6 @@ final class ConversionsTest extends SpecTestsuiteBase
     public function testAssertReturn479(): void
     {
         $this->runAssertReturnCommand(
-            module: null,
             action: ['type' => 'invoke', 'field' => 'f64.promote_f32', 'args' => [['type' => 'f32', 'value' => '2139095039']]],
             expected: [['type' => 'f64', 'value' => '5183643170566569984']],
             line: 553,
@@ -5292,7 +4813,6 @@ final class ConversionsTest extends SpecTestsuiteBase
     public function testAssertReturn480(): void
     {
         $this->runAssertReturnCommand(
-            module: null,
             action: ['type' => 'invoke', 'field' => 'f64.promote_f32', 'args' => [['type' => 'f32', 'value' => '67108864']]],
             expected: [['type' => 'f64', 'value' => '4071254063142928384']],
             line: 555,
@@ -5303,7 +4823,6 @@ final class ConversionsTest extends SpecTestsuiteBase
     public function testAssertReturn481(): void
     {
         $this->runAssertReturnCommand(
-            module: null,
             action: ['type' => 'invoke', 'field' => 'f64.promote_f32', 'args' => [['type' => 'f32', 'value' => '2118632255']]],
             expected: [['type' => 'f64', 'value' => '5172657297058430976']],
             line: 557,
@@ -5314,7 +4833,6 @@ final class ConversionsTest extends SpecTestsuiteBase
     public function testAssertReturn482(): void
     {
         $this->runAssertReturnCommand(
-            module: null,
             action: ['type' => 'invoke', 'field' => 'f64.promote_f32', 'args' => [['type' => 'f32', 'value' => '2139095040']]],
             expected: [['type' => 'f64', 'value' => '9218868437227405312']],
             line: 558,
@@ -5325,7 +4843,6 @@ final class ConversionsTest extends SpecTestsuiteBase
     public function testAssertReturn483(): void
     {
         $this->runAssertReturnCommand(
-            module: null,
             action: ['type' => 'invoke', 'field' => 'f64.promote_f32', 'args' => [['type' => 'f32', 'value' => '4286578688']]],
             expected: [['type' => 'f64', 'value' => '18442240474082181120']],
             line: 559,
@@ -5336,7 +4853,6 @@ final class ConversionsTest extends SpecTestsuiteBase
     public function testAssertReturn484(): void
     {
         $this->runAssertReturnCommand(
-            module: null,
             action: ['type' => 'invoke', 'field' => 'f64.promote_f32', 'args' => [['type' => 'f32', 'value' => '2143289344']]],
             expected: [['type' => 'f64', 'value' => 'nan:canonical']],
             line: 560,
@@ -5347,7 +4863,6 @@ final class ConversionsTest extends SpecTestsuiteBase
     public function testAssertReturn485(): void
     {
         $this->runAssertReturnCommand(
-            module: null,
             action: ['type' => 'invoke', 'field' => 'f64.promote_f32', 'args' => [['type' => 'f32', 'value' => '2141192192']]],
             expected: [['type' => 'f64', 'value' => 'nan:arithmetic']],
             line: 561,
@@ -5358,7 +4873,6 @@ final class ConversionsTest extends SpecTestsuiteBase
     public function testAssertReturn486(): void
     {
         $this->runAssertReturnCommand(
-            module: null,
             action: ['type' => 'invoke', 'field' => 'f64.promote_f32', 'args' => [['type' => 'f32', 'value' => '4290772992']]],
             expected: [['type' => 'f64', 'value' => 'nan:canonical']],
             line: 562,
@@ -5369,7 +4883,6 @@ final class ConversionsTest extends SpecTestsuiteBase
     public function testAssertReturn487(): void
     {
         $this->runAssertReturnCommand(
-            module: null,
             action: ['type' => 'invoke', 'field' => 'f64.promote_f32', 'args' => [['type' => 'f32', 'value' => '4288675840']]],
             expected: [['type' => 'f64', 'value' => 'nan:arithmetic']],
             line: 563,
@@ -5380,7 +4893,6 @@ final class ConversionsTest extends SpecTestsuiteBase
     public function testAssertReturn488(): void
     {
         $this->runAssertReturnCommand(
-            module: null,
             action: ['type' => 'invoke', 'field' => 'f32.demote_f64', 'args' => [['type' => 'f64', 'value' => '0']]],
             expected: [['type' => 'f32', 'value' => '0']],
             line: 565,
@@ -5391,7 +4903,6 @@ final class ConversionsTest extends SpecTestsuiteBase
     public function testAssertReturn489(): void
     {
         $this->runAssertReturnCommand(
-            module: null,
             action: ['type' => 'invoke', 'field' => 'f32.demote_f64', 'args' => [['type' => 'f64', 'value' => '9223372036854775808']]],
             expected: [['type' => 'f32', 'value' => '2147483648']],
             line: 566,
@@ -5402,7 +4913,6 @@ final class ConversionsTest extends SpecTestsuiteBase
     public function testAssertReturn490(): void
     {
         $this->runAssertReturnCommand(
-            module: null,
             action: ['type' => 'invoke', 'field' => 'f32.demote_f64', 'args' => [['type' => 'f64', 'value' => '1']]],
             expected: [['type' => 'f32', 'value' => '0']],
             line: 567,
@@ -5413,7 +4923,6 @@ final class ConversionsTest extends SpecTestsuiteBase
     public function testAssertReturn491(): void
     {
         $this->runAssertReturnCommand(
-            module: null,
             action: ['type' => 'invoke', 'field' => 'f32.demote_f64', 'args' => [['type' => 'f64', 'value' => '9223372036854775809']]],
             expected: [['type' => 'f32', 'value' => '2147483648']],
             line: 568,
@@ -5424,7 +4933,6 @@ final class ConversionsTest extends SpecTestsuiteBase
     public function testAssertReturn492(): void
     {
         $this->runAssertReturnCommand(
-            module: null,
             action: ['type' => 'invoke', 'field' => 'f32.demote_f64', 'args' => [['type' => 'f64', 'value' => '4607182418800017408']]],
             expected: [['type' => 'f32', 'value' => '1065353216']],
             line: 569,
@@ -5435,7 +4943,6 @@ final class ConversionsTest extends SpecTestsuiteBase
     public function testAssertReturn493(): void
     {
         $this->runAssertReturnCommand(
-            module: null,
             action: ['type' => 'invoke', 'field' => 'f32.demote_f64', 'args' => [['type' => 'f64', 'value' => '13830554455654793216']]],
             expected: [['type' => 'f32', 'value' => '3212836864']],
             line: 570,
@@ -5446,7 +4953,6 @@ final class ConversionsTest extends SpecTestsuiteBase
     public function testAssertReturn494(): void
     {
         $this->runAssertReturnCommand(
-            module: null,
             action: ['type' => 'invoke', 'field' => 'f32.demote_f64', 'args' => [['type' => 'f64', 'value' => '4039728865214464000']]],
             expected: [['type' => 'f32', 'value' => '8388608']],
             line: 571,
@@ -5457,7 +4963,6 @@ final class ConversionsTest extends SpecTestsuiteBase
     public function testAssertReturn495(): void
     {
         $this->runAssertReturnCommand(
-            module: null,
             action: ['type' => 'invoke', 'field' => 'f32.demote_f64', 'args' => [['type' => 'f64', 'value' => '13263100902069239808']]],
             expected: [['type' => 'f32', 'value' => '2155872256']],
             line: 572,
@@ -5468,7 +4973,6 @@ final class ConversionsTest extends SpecTestsuiteBase
     public function testAssertReturn496(): void
     {
         $this->runAssertReturnCommand(
-            module: null,
             action: ['type' => 'invoke', 'field' => 'f32.demote_f64', 'args' => [['type' => 'f64', 'value' => '4039728865214463999']]],
             expected: [['type' => 'f32', 'value' => '8388607']],
             line: 573,
@@ -5479,7 +4983,6 @@ final class ConversionsTest extends SpecTestsuiteBase
     public function testAssertReturn497(): void
     {
         $this->runAssertReturnCommand(
-            module: null,
             action: ['type' => 'invoke', 'field' => 'f32.demote_f64', 'args' => [['type' => 'f64', 'value' => '13263100902069239807']]],
             expected: [['type' => 'f32', 'value' => '2155872255']],
             line: 574,
@@ -5490,7 +4993,6 @@ final class ConversionsTest extends SpecTestsuiteBase
     public function testAssertReturn498(): void
     {
         $this->runAssertReturnCommand(
-            module: null,
             action: ['type' => 'invoke', 'field' => 'f32.demote_f64', 'args' => [['type' => 'f64', 'value' => '3936146074321813504']]],
             expected: [['type' => 'f32', 'value' => '1']],
             line: 575,
@@ -5501,7 +5003,6 @@ final class ConversionsTest extends SpecTestsuiteBase
     public function testAssertReturn499(): void
     {
         $this->runAssertReturnCommand(
-            module: null,
             action: ['type' => 'invoke', 'field' => 'f32.demote_f64', 'args' => [['type' => 'f64', 'value' => '13159518111176589312']]],
             expected: [['type' => 'f32', 'value' => '2147483649']],
             line: 576,
@@ -5512,7 +5013,6 @@ final class ConversionsTest extends SpecTestsuiteBase
     public function testAssertReturn500(): void
     {
         $this->runAssertReturnCommand(
-            module: null,
             action: ['type' => 'invoke', 'field' => 'f32.demote_f64', 'args' => [['type' => 'f64', 'value' => '5183643170298134528']]],
             expected: [['type' => 'f32', 'value' => '2139095038']],
             line: 577,
@@ -5523,7 +5023,6 @@ final class ConversionsTest extends SpecTestsuiteBase
     public function testAssertReturn501(): void
     {
         $this->runAssertReturnCommand(
-            module: null,
             action: ['type' => 'invoke', 'field' => 'f32.demote_f64', 'args' => [['type' => 'f64', 'value' => '14407015207152910336']]],
             expected: [['type' => 'f32', 'value' => '4286578686']],
             line: 578,
@@ -5534,7 +5033,6 @@ final class ConversionsTest extends SpecTestsuiteBase
     public function testAssertReturn502(): void
     {
         $this->runAssertReturnCommand(
-            module: null,
             action: ['type' => 'invoke', 'field' => 'f32.demote_f64', 'args' => [['type' => 'f64', 'value' => '5183643170298134529']]],
             expected: [['type' => 'f32', 'value' => '2139095039']],
             line: 579,
@@ -5545,7 +5043,6 @@ final class ConversionsTest extends SpecTestsuiteBase
     public function testAssertReturn503(): void
     {
         $this->runAssertReturnCommand(
-            module: null,
             action: ['type' => 'invoke', 'field' => 'f32.demote_f64', 'args' => [['type' => 'f64', 'value' => '14407015207152910337']]],
             expected: [['type' => 'f32', 'value' => '4286578687']],
             line: 580,
@@ -5556,7 +5053,6 @@ final class ConversionsTest extends SpecTestsuiteBase
     public function testAssertReturn504(): void
     {
         $this->runAssertReturnCommand(
-            module: null,
             action: ['type' => 'invoke', 'field' => 'f32.demote_f64', 'args' => [['type' => 'f64', 'value' => '5183643170566569984']]],
             expected: [['type' => 'f32', 'value' => '2139095039']],
             line: 581,
@@ -5567,7 +5063,6 @@ final class ConversionsTest extends SpecTestsuiteBase
     public function testAssertReturn505(): void
     {
         $this->runAssertReturnCommand(
-            module: null,
             action: ['type' => 'invoke', 'field' => 'f32.demote_f64', 'args' => [['type' => 'f64', 'value' => '14407015207421345792']]],
             expected: [['type' => 'f32', 'value' => '4286578687']],
             line: 582,
@@ -5578,7 +5073,6 @@ final class ConversionsTest extends SpecTestsuiteBase
     public function testAssertReturn506(): void
     {
         $this->runAssertReturnCommand(
-            module: null,
             action: ['type' => 'invoke', 'field' => 'f32.demote_f64', 'args' => [['type' => 'f64', 'value' => '5183643170835005439']]],
             expected: [['type' => 'f32', 'value' => '2139095039']],
             line: 583,
@@ -5589,7 +5083,6 @@ final class ConversionsTest extends SpecTestsuiteBase
     public function testAssertReturn507(): void
     {
         $this->runAssertReturnCommand(
-            module: null,
             action: ['type' => 'invoke', 'field' => 'f32.demote_f64', 'args' => [['type' => 'f64', 'value' => '14407015207689781247']]],
             expected: [['type' => 'f32', 'value' => '4286578687']],
             line: 584,
@@ -5600,7 +5093,6 @@ final class ConversionsTest extends SpecTestsuiteBase
     public function testAssertReturn508(): void
     {
         $this->runAssertReturnCommand(
-            module: null,
             action: ['type' => 'invoke', 'field' => 'f32.demote_f64', 'args' => [['type' => 'f64', 'value' => '5183643170835005440']]],
             expected: [['type' => 'f32', 'value' => '2139095040']],
             line: 585,
@@ -5611,7 +5103,6 @@ final class ConversionsTest extends SpecTestsuiteBase
     public function testAssertReturn509(): void
     {
         $this->runAssertReturnCommand(
-            module: null,
             action: ['type' => 'invoke', 'field' => 'f32.demote_f64', 'args' => [['type' => 'f64', 'value' => '14407015207689781248']]],
             expected: [['type' => 'f32', 'value' => '4286578688']],
             line: 586,
@@ -5622,7 +5113,6 @@ final class ConversionsTest extends SpecTestsuiteBase
     public function testAssertReturn510(): void
     {
         $this->runAssertReturnCommand(
-            module: null,
             action: ['type' => 'invoke', 'field' => 'f32.demote_f64', 'args' => [['type' => 'f64', 'value' => '4071254063142928384']]],
             expected: [['type' => 'f32', 'value' => '67108864']],
             line: 587,
@@ -5633,7 +5123,6 @@ final class ConversionsTest extends SpecTestsuiteBase
     public function testAssertReturn511(): void
     {
         $this->runAssertReturnCommand(
-            module: null,
             action: ['type' => 'invoke', 'field' => 'f32.demote_f64', 'args' => [['type' => 'f64', 'value' => '5172657297058430976']]],
             expected: [['type' => 'f32', 'value' => '2118632255']],
             line: 588,
@@ -5644,7 +5133,6 @@ final class ConversionsTest extends SpecTestsuiteBase
     public function testAssertReturn512(): void
     {
         $this->runAssertReturnCommand(
-            module: null,
             action: ['type' => 'invoke', 'field' => 'f32.demote_f64', 'args' => [['type' => 'f64', 'value' => '9218868437227405312']]],
             expected: [['type' => 'f32', 'value' => '2139095040']],
             line: 589,
@@ -5655,7 +5143,6 @@ final class ConversionsTest extends SpecTestsuiteBase
     public function testAssertReturn513(): void
     {
         $this->runAssertReturnCommand(
-            module: null,
             action: ['type' => 'invoke', 'field' => 'f32.demote_f64', 'args' => [['type' => 'f64', 'value' => '18442240474082181120']]],
             expected: [['type' => 'f32', 'value' => '4286578688']],
             line: 590,
@@ -5666,7 +5153,6 @@ final class ConversionsTest extends SpecTestsuiteBase
     public function testAssertReturn514(): void
     {
         $this->runAssertReturnCommand(
-            module: null,
             action: ['type' => 'invoke', 'field' => 'f32.demote_f64', 'args' => [['type' => 'f64', 'value' => '4607182418800017409']]],
             expected: [['type' => 'f32', 'value' => '1065353216']],
             line: 591,
@@ -5677,7 +5163,6 @@ final class ConversionsTest extends SpecTestsuiteBase
     public function testAssertReturn515(): void
     {
         $this->runAssertReturnCommand(
-            module: null,
             action: ['type' => 'invoke', 'field' => 'f32.demote_f64', 'args' => [['type' => 'f64', 'value' => '4607182418800017407']]],
             expected: [['type' => 'f32', 'value' => '1065353216']],
             line: 592,
@@ -5688,7 +5173,6 @@ final class ConversionsTest extends SpecTestsuiteBase
     public function testAssertReturn516(): void
     {
         $this->runAssertReturnCommand(
-            module: null,
             action: ['type' => 'invoke', 'field' => 'f32.demote_f64', 'args' => [['type' => 'f64', 'value' => '4607182419068452864']]],
             expected: [['type' => 'f32', 'value' => '1065353216']],
             line: 593,
@@ -5699,7 +5183,6 @@ final class ConversionsTest extends SpecTestsuiteBase
     public function testAssertReturn517(): void
     {
         $this->runAssertReturnCommand(
-            module: null,
             action: ['type' => 'invoke', 'field' => 'f32.demote_f64', 'args' => [['type' => 'f64', 'value' => '4607182419068452865']]],
             expected: [['type' => 'f32', 'value' => '1065353217']],
             line: 594,
@@ -5710,7 +5193,6 @@ final class ConversionsTest extends SpecTestsuiteBase
     public function testAssertReturn518(): void
     {
         $this->runAssertReturnCommand(
-            module: null,
             action: ['type' => 'invoke', 'field' => 'f32.demote_f64', 'args' => [['type' => 'f64', 'value' => '4607182419605323775']]],
             expected: [['type' => 'f32', 'value' => '1065353217']],
             line: 595,
@@ -5721,7 +5203,6 @@ final class ConversionsTest extends SpecTestsuiteBase
     public function testAssertReturn519(): void
     {
         $this->runAssertReturnCommand(
-            module: null,
             action: ['type' => 'invoke', 'field' => 'f32.demote_f64', 'args' => [['type' => 'f64', 'value' => '4607182419605323776']]],
             expected: [['type' => 'f32', 'value' => '1065353218']],
             line: 596,
@@ -5732,7 +5213,6 @@ final class ConversionsTest extends SpecTestsuiteBase
     public function testAssertReturn520(): void
     {
         $this->runAssertReturnCommand(
-            module: null,
             action: ['type' => 'invoke', 'field' => 'f32.demote_f64', 'args' => [['type' => 'f64', 'value' => '4607182420142194688']]],
             expected: [['type' => 'f32', 'value' => '1065353218']],
             line: 597,
@@ -5743,7 +5223,6 @@ final class ConversionsTest extends SpecTestsuiteBase
     public function testAssertReturn521(): void
     {
         $this->runAssertReturnCommand(
-            module: null,
             action: ['type' => 'invoke', 'field' => 'f32.demote_f64', 'args' => [['type' => 'f64', 'value' => '4715268810125344768']]],
             expected: [['type' => 'f32', 'value' => '1266679808']],
             line: 598,
@@ -5754,7 +5233,6 @@ final class ConversionsTest extends SpecTestsuiteBase
     public function testAssertReturn522(): void
     {
         $this->runAssertReturnCommand(
-            module: null,
             action: ['type' => 'invoke', 'field' => 'f32.demote_f64', 'args' => [['type' => 'f64', 'value' => '4715268810125344769']]],
             expected: [['type' => 'f32', 'value' => '1266679809']],
             line: 599,
@@ -5765,7 +5243,6 @@ final class ConversionsTest extends SpecTestsuiteBase
     public function testAssertReturn523(): void
     {
         $this->runAssertReturnCommand(
-            module: null,
             action: ['type' => 'invoke', 'field' => 'f32.demote_f64', 'args' => [['type' => 'f64', 'value' => '4715268810662215679']]],
             expected: [['type' => 'f32', 'value' => '1266679809']],
             line: 600,
@@ -5776,7 +5253,6 @@ final class ConversionsTest extends SpecTestsuiteBase
     public function testAssertReturn524(): void
     {
         $this->runAssertReturnCommand(
-            module: null,
             action: ['type' => 'invoke', 'field' => 'f32.demote_f64', 'args' => [['type' => 'f64', 'value' => '4715268810662215680']]],
             expected: [['type' => 'f32', 'value' => '1266679810']],
             line: 601,
@@ -5787,7 +5263,6 @@ final class ConversionsTest extends SpecTestsuiteBase
     public function testAssertReturn525(): void
     {
         $this->runAssertReturnCommand(
-            module: null,
             action: ['type' => 'invoke', 'field' => 'f32.demote_f64', 'args' => [['type' => 'f64', 'value' => '5094955347580439664']]],
             expected: [['type' => 'f32', 'value' => '1973901096']],
             line: 602,
@@ -5798,7 +5273,6 @@ final class ConversionsTest extends SpecTestsuiteBase
     public function testAssertReturn526(): void
     {
         $this->runAssertReturnCommand(
-            module: null,
             action: ['type' => 'invoke', 'field' => 'f32.demote_f64', 'args' => [['type' => 'f64', 'value' => '4101111194527827589']]],
             expected: [['type' => 'f32', 'value' => '122722105']],
             line: 603,
@@ -5809,7 +5283,6 @@ final class ConversionsTest extends SpecTestsuiteBase
     public function testAssertReturn527(): void
     {
         $this->runAssertReturnCommand(
-            module: null,
             action: ['type' => 'invoke', 'field' => 'f32.demote_f64', 'args' => [['type' => 'f64', 'value' => '4038806939559600639']]],
             expected: [['type' => 'f32', 'value' => '7529997']],
             line: 604,
@@ -5820,7 +5293,6 @@ final class ConversionsTest extends SpecTestsuiteBase
     public function testAssertReturn528(): void
     {
         $this->runAssertReturnCommand(
-            module: null,
             action: ['type' => 'invoke', 'field' => 'f32.demote_f64', 'args' => [['type' => 'f64', 'value' => '13836913116900734306']]],
             expected: [['type' => 'f32', 'value' => '3224680794']],
             line: 605,
@@ -5831,7 +5303,6 @@ final class ConversionsTest extends SpecTestsuiteBase
     public function testAssertReturn529(): void
     {
         $this->runAssertReturnCommand(
-            module: null,
             action: ['type' => 'invoke', 'field' => 'f32.demote_f64', 'args' => [['type' => 'f64', 'value' => '14338315240173327556']]],
             expected: [['type' => 'f32', 'value' => '4158615026']],
             line: 606,
@@ -5842,7 +5313,6 @@ final class ConversionsTest extends SpecTestsuiteBase
     public function testAssertReturn530(): void
     {
         $this->runAssertReturnCommand(
-            module: null,
             action: ['type' => 'invoke', 'field' => 'f32.demote_f64', 'args' => [['type' => 'f64', 'value' => '9221120237041090560']]],
             expected: [['type' => 'f32', 'value' => 'nan:canonical']],
             line: 607,
@@ -5853,7 +5323,6 @@ final class ConversionsTest extends SpecTestsuiteBase
     public function testAssertReturn531(): void
     {
         $this->runAssertReturnCommand(
-            module: null,
             action: ['type' => 'invoke', 'field' => 'f32.demote_f64', 'args' => [['type' => 'f64', 'value' => '9219994337134247936']]],
             expected: [['type' => 'f32', 'value' => 'nan:arithmetic']],
             line: 608,
@@ -5864,7 +5333,6 @@ final class ConversionsTest extends SpecTestsuiteBase
     public function testAssertReturn532(): void
     {
         $this->runAssertReturnCommand(
-            module: null,
             action: ['type' => 'invoke', 'field' => 'f32.demote_f64', 'args' => [['type' => 'f64', 'value' => '18444492273895866368']]],
             expected: [['type' => 'f32', 'value' => 'nan:canonical']],
             line: 609,
@@ -5875,7 +5343,6 @@ final class ConversionsTest extends SpecTestsuiteBase
     public function testAssertReturn533(): void
     {
         $this->runAssertReturnCommand(
-            module: null,
             action: ['type' => 'invoke', 'field' => 'f32.demote_f64', 'args' => [['type' => 'f64', 'value' => '18443366373989023744']]],
             expected: [['type' => 'f32', 'value' => 'nan:arithmetic']],
             line: 610,
@@ -5886,7 +5353,6 @@ final class ConversionsTest extends SpecTestsuiteBase
     public function testAssertReturn534(): void
     {
         $this->runAssertReturnCommand(
-            module: null,
             action: ['type' => 'invoke', 'field' => 'f32.demote_f64', 'args' => [['type' => 'f64', 'value' => '4503599627370496']]],
             expected: [['type' => 'f32', 'value' => '0']],
             line: 611,
@@ -5897,7 +5363,6 @@ final class ConversionsTest extends SpecTestsuiteBase
     public function testAssertReturn535(): void
     {
         $this->runAssertReturnCommand(
-            module: null,
             action: ['type' => 'invoke', 'field' => 'f32.demote_f64', 'args' => [['type' => 'f64', 'value' => '9227875636482146304']]],
             expected: [['type' => 'f32', 'value' => '2147483648']],
             line: 612,
@@ -5908,7 +5373,6 @@ final class ConversionsTest extends SpecTestsuiteBase
     public function testAssertReturn536(): void
     {
         $this->runAssertReturnCommand(
-            module: null,
             action: ['type' => 'invoke', 'field' => 'f32.demote_f64', 'args' => [['type' => 'f64', 'value' => '3931642474694443008']]],
             expected: [['type' => 'f32', 'value' => '0']],
             line: 613,
@@ -5919,7 +5383,6 @@ final class ConversionsTest extends SpecTestsuiteBase
     public function testAssertReturn537(): void
     {
         $this->runAssertReturnCommand(
-            module: null,
             action: ['type' => 'invoke', 'field' => 'f32.demote_f64', 'args' => [['type' => 'f64', 'value' => '13155014511549218816']]],
             expected: [['type' => 'f32', 'value' => '2147483648']],
             line: 614,
@@ -5930,7 +5393,6 @@ final class ConversionsTest extends SpecTestsuiteBase
     public function testAssertReturn538(): void
     {
         $this->runAssertReturnCommand(
-            module: null,
             action: ['type' => 'invoke', 'field' => 'f32.demote_f64', 'args' => [['type' => 'f64', 'value' => '3931642474694443009']]],
             expected: [['type' => 'f32', 'value' => '1']],
             line: 615,
@@ -5941,7 +5403,6 @@ final class ConversionsTest extends SpecTestsuiteBase
     public function testAssertReturn539(): void
     {
         $this->runAssertReturnCommand(
-            module: null,
             action: ['type' => 'invoke', 'field' => 'f32.demote_f64', 'args' => [['type' => 'f64', 'value' => '13155014511549218817']]],
             expected: [['type' => 'f32', 'value' => '2147483649']],
             line: 616,
@@ -5952,7 +5413,6 @@ final class ConversionsTest extends SpecTestsuiteBase
     public function testAssertReturn540(): void
     {
         $this->runAssertReturnCommand(
-            module: null,
             action: ['type' => 'invoke', 'field' => 'f32.reinterpret_i32', 'args' => [['type' => 'i32', 'value' => '0']]],
             expected: [['type' => 'f32', 'value' => '0']],
             line: 618,
@@ -5963,7 +5423,6 @@ final class ConversionsTest extends SpecTestsuiteBase
     public function testAssertReturn541(): void
     {
         $this->runAssertReturnCommand(
-            module: null,
             action: ['type' => 'invoke', 'field' => 'f32.reinterpret_i32', 'args' => [['type' => 'i32', 'value' => '2147483648']]],
             expected: [['type' => 'f32', 'value' => '2147483648']],
             line: 619,
@@ -5974,7 +5433,6 @@ final class ConversionsTest extends SpecTestsuiteBase
     public function testAssertReturn542(): void
     {
         $this->runAssertReturnCommand(
-            module: null,
             action: ['type' => 'invoke', 'field' => 'f32.reinterpret_i32', 'args' => [['type' => 'i32', 'value' => '1']]],
             expected: [['type' => 'f32', 'value' => '1']],
             line: 620,
@@ -5985,7 +5443,6 @@ final class ConversionsTest extends SpecTestsuiteBase
     public function testAssertReturn543(): void
     {
         $this->runAssertReturnCommand(
-            module: null,
             action: ['type' => 'invoke', 'field' => 'f32.reinterpret_i32', 'args' => [['type' => 'i32', 'value' => '4294967295']]],
             expected: [['type' => 'f32', 'value' => '4294967295']],
             line: 621,
@@ -5996,7 +5453,6 @@ final class ConversionsTest extends SpecTestsuiteBase
     public function testAssertReturn544(): void
     {
         $this->runAssertReturnCommand(
-            module: null,
             action: ['type' => 'invoke', 'field' => 'f32.reinterpret_i32', 'args' => [['type' => 'i32', 'value' => '123456789']]],
             expected: [['type' => 'f32', 'value' => '123456789']],
             line: 622,
@@ -6007,7 +5463,6 @@ final class ConversionsTest extends SpecTestsuiteBase
     public function testAssertReturn545(): void
     {
         $this->runAssertReturnCommand(
-            module: null,
             action: ['type' => 'invoke', 'field' => 'f32.reinterpret_i32', 'args' => [['type' => 'i32', 'value' => '2147483649']]],
             expected: [['type' => 'f32', 'value' => '2147483649']],
             line: 623,
@@ -6018,7 +5473,6 @@ final class ConversionsTest extends SpecTestsuiteBase
     public function testAssertReturn546(): void
     {
         $this->runAssertReturnCommand(
-            module: null,
             action: ['type' => 'invoke', 'field' => 'f32.reinterpret_i32', 'args' => [['type' => 'i32', 'value' => '2139095040']]],
             expected: [['type' => 'f32', 'value' => '2139095040']],
             line: 624,
@@ -6029,7 +5483,6 @@ final class ConversionsTest extends SpecTestsuiteBase
     public function testAssertReturn547(): void
     {
         $this->runAssertReturnCommand(
-            module: null,
             action: ['type' => 'invoke', 'field' => 'f32.reinterpret_i32', 'args' => [['type' => 'i32', 'value' => '4286578688']]],
             expected: [['type' => 'f32', 'value' => '4286578688']],
             line: 625,
@@ -6040,7 +5493,6 @@ final class ConversionsTest extends SpecTestsuiteBase
     public function testAssertReturn548(): void
     {
         $this->runAssertReturnCommand(
-            module: null,
             action: ['type' => 'invoke', 'field' => 'f32.reinterpret_i32', 'args' => [['type' => 'i32', 'value' => '2143289344']]],
             expected: [['type' => 'f32', 'value' => '2143289344']],
             line: 626,
@@ -6051,7 +5503,6 @@ final class ConversionsTest extends SpecTestsuiteBase
     public function testAssertReturn549(): void
     {
         $this->runAssertReturnCommand(
-            module: null,
             action: ['type' => 'invoke', 'field' => 'f32.reinterpret_i32', 'args' => [['type' => 'i32', 'value' => '4290772992']]],
             expected: [['type' => 'f32', 'value' => '4290772992']],
             line: 627,
@@ -6062,7 +5513,6 @@ final class ConversionsTest extends SpecTestsuiteBase
     public function testAssertReturn550(): void
     {
         $this->runAssertReturnCommand(
-            module: null,
             action: ['type' => 'invoke', 'field' => 'f32.reinterpret_i32', 'args' => [['type' => 'i32', 'value' => '2141192192']]],
             expected: [['type' => 'f32', 'value' => '2141192192']],
             line: 628,
@@ -6073,7 +5523,6 @@ final class ConversionsTest extends SpecTestsuiteBase
     public function testAssertReturn551(): void
     {
         $this->runAssertReturnCommand(
-            module: null,
             action: ['type' => 'invoke', 'field' => 'f32.reinterpret_i32', 'args' => [['type' => 'i32', 'value' => '4288675840']]],
             expected: [['type' => 'f32', 'value' => '4288675840']],
             line: 629,
@@ -6084,7 +5533,6 @@ final class ConversionsTest extends SpecTestsuiteBase
     public function testAssertReturn552(): void
     {
         $this->runAssertReturnCommand(
-            module: null,
             action: ['type' => 'invoke', 'field' => 'f64.reinterpret_i64', 'args' => [['type' => 'i64', 'value' => '0']]],
             expected: [['type' => 'f64', 'value' => '0']],
             line: 631,
@@ -6095,7 +5543,6 @@ final class ConversionsTest extends SpecTestsuiteBase
     public function testAssertReturn553(): void
     {
         $this->runAssertReturnCommand(
-            module: null,
             action: ['type' => 'invoke', 'field' => 'f64.reinterpret_i64', 'args' => [['type' => 'i64', 'value' => '1']]],
             expected: [['type' => 'f64', 'value' => '1']],
             line: 632,
@@ -6106,7 +5553,6 @@ final class ConversionsTest extends SpecTestsuiteBase
     public function testAssertReturn554(): void
     {
         $this->runAssertReturnCommand(
-            module: null,
             action: ['type' => 'invoke', 'field' => 'f64.reinterpret_i64', 'args' => [['type' => 'i64', 'value' => '18446744073709551615']]],
             expected: [['type' => 'f64', 'value' => '18446744073709551615']],
             line: 633,
@@ -6117,7 +5563,6 @@ final class ConversionsTest extends SpecTestsuiteBase
     public function testAssertReturn555(): void
     {
         $this->runAssertReturnCommand(
-            module: null,
             action: ['type' => 'invoke', 'field' => 'f64.reinterpret_i64', 'args' => [['type' => 'i64', 'value' => '9223372036854775808']]],
             expected: [['type' => 'f64', 'value' => '9223372036854775808']],
             line: 634,
@@ -6128,7 +5573,6 @@ final class ConversionsTest extends SpecTestsuiteBase
     public function testAssertReturn556(): void
     {
         $this->runAssertReturnCommand(
-            module: null,
             action: ['type' => 'invoke', 'field' => 'f64.reinterpret_i64', 'args' => [['type' => 'i64', 'value' => '1234567890']]],
             expected: [['type' => 'f64', 'value' => '1234567890']],
             line: 635,
@@ -6139,7 +5583,6 @@ final class ConversionsTest extends SpecTestsuiteBase
     public function testAssertReturn557(): void
     {
         $this->runAssertReturnCommand(
-            module: null,
             action: ['type' => 'invoke', 'field' => 'f64.reinterpret_i64', 'args' => [['type' => 'i64', 'value' => '9223372036854775809']]],
             expected: [['type' => 'f64', 'value' => '9223372036854775809']],
             line: 636,
@@ -6150,7 +5593,6 @@ final class ConversionsTest extends SpecTestsuiteBase
     public function testAssertReturn558(): void
     {
         $this->runAssertReturnCommand(
-            module: null,
             action: ['type' => 'invoke', 'field' => 'f64.reinterpret_i64', 'args' => [['type' => 'i64', 'value' => '9218868437227405312']]],
             expected: [['type' => 'f64', 'value' => '9218868437227405312']],
             line: 637,
@@ -6161,7 +5603,6 @@ final class ConversionsTest extends SpecTestsuiteBase
     public function testAssertReturn559(): void
     {
         $this->runAssertReturnCommand(
-            module: null,
             action: ['type' => 'invoke', 'field' => 'f64.reinterpret_i64', 'args' => [['type' => 'i64', 'value' => '18442240474082181120']]],
             expected: [['type' => 'f64', 'value' => '18442240474082181120']],
             line: 638,
@@ -6172,7 +5613,6 @@ final class ConversionsTest extends SpecTestsuiteBase
     public function testAssertReturn560(): void
     {
         $this->runAssertReturnCommand(
-            module: null,
             action: ['type' => 'invoke', 'field' => 'f64.reinterpret_i64', 'args' => [['type' => 'i64', 'value' => '9221120237041090560']]],
             expected: [['type' => 'f64', 'value' => '9221120237041090560']],
             line: 639,
@@ -6183,7 +5623,6 @@ final class ConversionsTest extends SpecTestsuiteBase
     public function testAssertReturn561(): void
     {
         $this->runAssertReturnCommand(
-            module: null,
             action: ['type' => 'invoke', 'field' => 'f64.reinterpret_i64', 'args' => [['type' => 'i64', 'value' => '18444492273895866368']]],
             expected: [['type' => 'f64', 'value' => '18444492273895866368']],
             line: 640,
@@ -6194,7 +5633,6 @@ final class ConversionsTest extends SpecTestsuiteBase
     public function testAssertReturn562(): void
     {
         $this->runAssertReturnCommand(
-            module: null,
             action: ['type' => 'invoke', 'field' => 'f64.reinterpret_i64', 'args' => [['type' => 'i64', 'value' => '9219994337134247936']]],
             expected: [['type' => 'f64', 'value' => '9219994337134247936']],
             line: 641,
@@ -6205,7 +5643,6 @@ final class ConversionsTest extends SpecTestsuiteBase
     public function testAssertReturn563(): void
     {
         $this->runAssertReturnCommand(
-            module: null,
             action: ['type' => 'invoke', 'field' => 'f64.reinterpret_i64', 'args' => [['type' => 'i64', 'value' => '18443366373989023744']]],
             expected: [['type' => 'f64', 'value' => '18443366373989023744']],
             line: 642,
@@ -6216,7 +5653,6 @@ final class ConversionsTest extends SpecTestsuiteBase
     public function testAssertReturn564(): void
     {
         $this->runAssertReturnCommand(
-            module: null,
             action: ['type' => 'invoke', 'field' => 'i32.reinterpret_f32', 'args' => [['type' => 'f32', 'value' => '0']]],
             expected: [['type' => 'i32', 'value' => '0']],
             line: 644,
@@ -6227,7 +5663,6 @@ final class ConversionsTest extends SpecTestsuiteBase
     public function testAssertReturn565(): void
     {
         $this->runAssertReturnCommand(
-            module: null,
             action: ['type' => 'invoke', 'field' => 'i32.reinterpret_f32', 'args' => [['type' => 'f32', 'value' => '2147483648']]],
             expected: [['type' => 'i32', 'value' => '2147483648']],
             line: 645,
@@ -6238,7 +5673,6 @@ final class ConversionsTest extends SpecTestsuiteBase
     public function testAssertReturn566(): void
     {
         $this->runAssertReturnCommand(
-            module: null,
             action: ['type' => 'invoke', 'field' => 'i32.reinterpret_f32', 'args' => [['type' => 'f32', 'value' => '1']]],
             expected: [['type' => 'i32', 'value' => '1']],
             line: 646,
@@ -6249,7 +5683,6 @@ final class ConversionsTest extends SpecTestsuiteBase
     public function testAssertReturn567(): void
     {
         $this->runAssertReturnCommand(
-            module: null,
             action: ['type' => 'invoke', 'field' => 'i32.reinterpret_f32', 'args' => [['type' => 'f32', 'value' => '4294967295']]],
             expected: [['type' => 'i32', 'value' => '4294967295']],
             line: 647,
@@ -6260,7 +5693,6 @@ final class ConversionsTest extends SpecTestsuiteBase
     public function testAssertReturn568(): void
     {
         $this->runAssertReturnCommand(
-            module: null,
             action: ['type' => 'invoke', 'field' => 'i32.reinterpret_f32', 'args' => [['type' => 'f32', 'value' => '2147483649']]],
             expected: [['type' => 'i32', 'value' => '2147483649']],
             line: 648,
@@ -6271,7 +5703,6 @@ final class ConversionsTest extends SpecTestsuiteBase
     public function testAssertReturn569(): void
     {
         $this->runAssertReturnCommand(
-            module: null,
             action: ['type' => 'invoke', 'field' => 'i32.reinterpret_f32', 'args' => [['type' => 'f32', 'value' => '1065353216']]],
             expected: [['type' => 'i32', 'value' => '1065353216']],
             line: 649,
@@ -6282,7 +5713,6 @@ final class ConversionsTest extends SpecTestsuiteBase
     public function testAssertReturn570(): void
     {
         $this->runAssertReturnCommand(
-            module: null,
             action: ['type' => 'invoke', 'field' => 'i32.reinterpret_f32', 'args' => [['type' => 'f32', 'value' => '1078530010']]],
             expected: [['type' => 'i32', 'value' => '1078530010']],
             line: 650,
@@ -6293,7 +5723,6 @@ final class ConversionsTest extends SpecTestsuiteBase
     public function testAssertReturn571(): void
     {
         $this->runAssertReturnCommand(
-            module: null,
             action: ['type' => 'invoke', 'field' => 'i32.reinterpret_f32', 'args' => [['type' => 'f32', 'value' => '2139095039']]],
             expected: [['type' => 'i32', 'value' => '2139095039']],
             line: 651,
@@ -6304,7 +5733,6 @@ final class ConversionsTest extends SpecTestsuiteBase
     public function testAssertReturn572(): void
     {
         $this->runAssertReturnCommand(
-            module: null,
             action: ['type' => 'invoke', 'field' => 'i32.reinterpret_f32', 'args' => [['type' => 'f32', 'value' => '4286578687']]],
             expected: [['type' => 'i32', 'value' => '4286578687']],
             line: 652,
@@ -6315,7 +5743,6 @@ final class ConversionsTest extends SpecTestsuiteBase
     public function testAssertReturn573(): void
     {
         $this->runAssertReturnCommand(
-            module: null,
             action: ['type' => 'invoke', 'field' => 'i32.reinterpret_f32', 'args' => [['type' => 'f32', 'value' => '2139095040']]],
             expected: [['type' => 'i32', 'value' => '2139095040']],
             line: 653,
@@ -6326,7 +5753,6 @@ final class ConversionsTest extends SpecTestsuiteBase
     public function testAssertReturn574(): void
     {
         $this->runAssertReturnCommand(
-            module: null,
             action: ['type' => 'invoke', 'field' => 'i32.reinterpret_f32', 'args' => [['type' => 'f32', 'value' => '4286578688']]],
             expected: [['type' => 'i32', 'value' => '4286578688']],
             line: 654,
@@ -6337,7 +5763,6 @@ final class ConversionsTest extends SpecTestsuiteBase
     public function testAssertReturn575(): void
     {
         $this->runAssertReturnCommand(
-            module: null,
             action: ['type' => 'invoke', 'field' => 'i32.reinterpret_f32', 'args' => [['type' => 'f32', 'value' => '2143289344']]],
             expected: [['type' => 'i32', 'value' => '2143289344']],
             line: 655,
@@ -6348,7 +5773,6 @@ final class ConversionsTest extends SpecTestsuiteBase
     public function testAssertReturn576(): void
     {
         $this->runAssertReturnCommand(
-            module: null,
             action: ['type' => 'invoke', 'field' => 'i32.reinterpret_f32', 'args' => [['type' => 'f32', 'value' => '4290772992']]],
             expected: [['type' => 'i32', 'value' => '4290772992']],
             line: 656,
@@ -6359,7 +5783,6 @@ final class ConversionsTest extends SpecTestsuiteBase
     public function testAssertReturn577(): void
     {
         $this->runAssertReturnCommand(
-            module: null,
             action: ['type' => 'invoke', 'field' => 'i32.reinterpret_f32', 'args' => [['type' => 'f32', 'value' => '2141192192']]],
             expected: [['type' => 'i32', 'value' => '2141192192']],
             line: 657,
@@ -6370,7 +5793,6 @@ final class ConversionsTest extends SpecTestsuiteBase
     public function testAssertReturn578(): void
     {
         $this->runAssertReturnCommand(
-            module: null,
             action: ['type' => 'invoke', 'field' => 'i32.reinterpret_f32', 'args' => [['type' => 'f32', 'value' => '4288675840']]],
             expected: [['type' => 'i32', 'value' => '4288675840']],
             line: 658,
@@ -6381,7 +5803,6 @@ final class ConversionsTest extends SpecTestsuiteBase
     public function testAssertReturn579(): void
     {
         $this->runAssertReturnCommand(
-            module: null,
             action: ['type' => 'invoke', 'field' => 'i64.reinterpret_f64', 'args' => [['type' => 'f64', 'value' => '0']]],
             expected: [['type' => 'i64', 'value' => '0']],
             line: 660,
@@ -6392,7 +5813,6 @@ final class ConversionsTest extends SpecTestsuiteBase
     public function testAssertReturn580(): void
     {
         $this->runAssertReturnCommand(
-            module: null,
             action: ['type' => 'invoke', 'field' => 'i64.reinterpret_f64', 'args' => [['type' => 'f64', 'value' => '9223372036854775808']]],
             expected: [['type' => 'i64', 'value' => '9223372036854775808']],
             line: 661,
@@ -6403,7 +5823,6 @@ final class ConversionsTest extends SpecTestsuiteBase
     public function testAssertReturn581(): void
     {
         $this->runAssertReturnCommand(
-            module: null,
             action: ['type' => 'invoke', 'field' => 'i64.reinterpret_f64', 'args' => [['type' => 'f64', 'value' => '1']]],
             expected: [['type' => 'i64', 'value' => '1']],
             line: 662,
@@ -6414,7 +5833,6 @@ final class ConversionsTest extends SpecTestsuiteBase
     public function testAssertReturn582(): void
     {
         $this->runAssertReturnCommand(
-            module: null,
             action: ['type' => 'invoke', 'field' => 'i64.reinterpret_f64', 'args' => [['type' => 'f64', 'value' => '18446744073709551615']]],
             expected: [['type' => 'i64', 'value' => '18446744073709551615']],
             line: 663,
@@ -6425,7 +5843,6 @@ final class ConversionsTest extends SpecTestsuiteBase
     public function testAssertReturn583(): void
     {
         $this->runAssertReturnCommand(
-            module: null,
             action: ['type' => 'invoke', 'field' => 'i64.reinterpret_f64', 'args' => [['type' => 'f64', 'value' => '9223372036854775809']]],
             expected: [['type' => 'i64', 'value' => '9223372036854775809']],
             line: 664,
@@ -6436,7 +5853,6 @@ final class ConversionsTest extends SpecTestsuiteBase
     public function testAssertReturn584(): void
     {
         $this->runAssertReturnCommand(
-            module: null,
             action: ['type' => 'invoke', 'field' => 'i64.reinterpret_f64', 'args' => [['type' => 'f64', 'value' => '4607182418800017408']]],
             expected: [['type' => 'i64', 'value' => '4607182418800017408']],
             line: 665,
@@ -6447,7 +5863,6 @@ final class ConversionsTest extends SpecTestsuiteBase
     public function testAssertReturn585(): void
     {
         $this->runAssertReturnCommand(
-            module: null,
             action: ['type' => 'invoke', 'field' => 'i64.reinterpret_f64', 'args' => [['type' => 'f64', 'value' => '4614256656552045841']]],
             expected: [['type' => 'i64', 'value' => '4614256656552045841']],
             line: 666,
@@ -6458,7 +5873,6 @@ final class ConversionsTest extends SpecTestsuiteBase
     public function testAssertReturn586(): void
     {
         $this->runAssertReturnCommand(
-            module: null,
             action: ['type' => 'invoke', 'field' => 'i64.reinterpret_f64', 'args' => [['type' => 'f64', 'value' => '9218868437227405311']]],
             expected: [['type' => 'i64', 'value' => '9218868437227405311']],
             line: 667,
@@ -6469,7 +5883,6 @@ final class ConversionsTest extends SpecTestsuiteBase
     public function testAssertReturn587(): void
     {
         $this->runAssertReturnCommand(
-            module: null,
             action: ['type' => 'invoke', 'field' => 'i64.reinterpret_f64', 'args' => [['type' => 'f64', 'value' => '18442240474082181119']]],
             expected: [['type' => 'i64', 'value' => '18442240474082181119']],
             line: 668,
@@ -6480,7 +5893,6 @@ final class ConversionsTest extends SpecTestsuiteBase
     public function testAssertReturn588(): void
     {
         $this->runAssertReturnCommand(
-            module: null,
             action: ['type' => 'invoke', 'field' => 'i64.reinterpret_f64', 'args' => [['type' => 'f64', 'value' => '9218868437227405312']]],
             expected: [['type' => 'i64', 'value' => '9218868437227405312']],
             line: 669,
@@ -6491,7 +5903,6 @@ final class ConversionsTest extends SpecTestsuiteBase
     public function testAssertReturn589(): void
     {
         $this->runAssertReturnCommand(
-            module: null,
             action: ['type' => 'invoke', 'field' => 'i64.reinterpret_f64', 'args' => [['type' => 'f64', 'value' => '18442240474082181120']]],
             expected: [['type' => 'i64', 'value' => '18442240474082181120']],
             line: 670,
@@ -6502,7 +5913,6 @@ final class ConversionsTest extends SpecTestsuiteBase
     public function testAssertReturn590(): void
     {
         $this->runAssertReturnCommand(
-            module: null,
             action: ['type' => 'invoke', 'field' => 'i64.reinterpret_f64', 'args' => [['type' => 'f64', 'value' => '9221120237041090560']]],
             expected: [['type' => 'i64', 'value' => '9221120237041090560']],
             line: 671,
@@ -6513,7 +5923,6 @@ final class ConversionsTest extends SpecTestsuiteBase
     public function testAssertReturn591(): void
     {
         $this->runAssertReturnCommand(
-            module: null,
             action: ['type' => 'invoke', 'field' => 'i64.reinterpret_f64', 'args' => [['type' => 'f64', 'value' => '18444492273895866368']]],
             expected: [['type' => 'i64', 'value' => '18444492273895866368']],
             line: 672,
@@ -6524,7 +5933,6 @@ final class ConversionsTest extends SpecTestsuiteBase
     public function testAssertReturn592(): void
     {
         $this->runAssertReturnCommand(
-            module: null,
             action: ['type' => 'invoke', 'field' => 'i64.reinterpret_f64', 'args' => [['type' => 'f64', 'value' => '9219994337134247936']]],
             expected: [['type' => 'i64', 'value' => '9219994337134247936']],
             line: 673,
@@ -6535,7 +5943,6 @@ final class ConversionsTest extends SpecTestsuiteBase
     public function testAssertReturn593(): void
     {
         $this->runAssertReturnCommand(
-            module: null,
             action: ['type' => 'invoke', 'field' => 'i64.reinterpret_f64', 'args' => [['type' => 'f64', 'value' => '18443366373989023744']]],
             expected: [['type' => 'i64', 'value' => '18443366373989023744']],
             line: 674,

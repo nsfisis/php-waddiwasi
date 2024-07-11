@@ -23,7 +23,6 @@ final class LocalGetTest extends SpecTestsuiteBase
     public function testAssertReturn1(): void
     {
         $this->runAssertReturnCommand(
-            module: null,
             action: ['type' => 'invoke', 'field' => 'type-local-i32', 'args' => []],
             expected: [['type' => 'i32', 'value' => '0']],
             line: 109,
@@ -34,7 +33,6 @@ final class LocalGetTest extends SpecTestsuiteBase
     public function testAssertReturn2(): void
     {
         $this->runAssertReturnCommand(
-            module: null,
             action: ['type' => 'invoke', 'field' => 'type-local-i64', 'args' => []],
             expected: [['type' => 'i64', 'value' => '0']],
             line: 110,
@@ -45,7 +43,6 @@ final class LocalGetTest extends SpecTestsuiteBase
     public function testAssertReturn3(): void
     {
         $this->runAssertReturnCommand(
-            module: null,
             action: ['type' => 'invoke', 'field' => 'type-local-f32', 'args' => []],
             expected: [['type' => 'f32', 'value' => '0']],
             line: 111,
@@ -56,7 +53,6 @@ final class LocalGetTest extends SpecTestsuiteBase
     public function testAssertReturn4(): void
     {
         $this->runAssertReturnCommand(
-            module: null,
             action: ['type' => 'invoke', 'field' => 'type-local-f64', 'args' => []],
             expected: [['type' => 'f64', 'value' => '0']],
             line: 112,
@@ -67,7 +63,6 @@ final class LocalGetTest extends SpecTestsuiteBase
     public function testAssertReturn5(): void
     {
         $this->runAssertReturnCommand(
-            module: null,
             action: ['type' => 'invoke', 'field' => 'type-param-i32', 'args' => [['type' => 'i32', 'value' => '2']]],
             expected: [['type' => 'i32', 'value' => '2']],
             line: 114,
@@ -78,7 +73,6 @@ final class LocalGetTest extends SpecTestsuiteBase
     public function testAssertReturn6(): void
     {
         $this->runAssertReturnCommand(
-            module: null,
             action: ['type' => 'invoke', 'field' => 'type-param-i64', 'args' => [['type' => 'i64', 'value' => '3']]],
             expected: [['type' => 'i64', 'value' => '3']],
             line: 115,
@@ -89,7 +83,6 @@ final class LocalGetTest extends SpecTestsuiteBase
     public function testAssertReturn7(): void
     {
         $this->runAssertReturnCommand(
-            module: null,
             action: ['type' => 'invoke', 'field' => 'type-param-f32', 'args' => [['type' => 'f32', 'value' => '1082969293']]],
             expected: [['type' => 'f32', 'value' => '1082969293']],
             line: 116,
@@ -100,7 +93,6 @@ final class LocalGetTest extends SpecTestsuiteBase
     public function testAssertReturn8(): void
     {
         $this->runAssertReturnCommand(
-            module: null,
             action: ['type' => 'invoke', 'field' => 'type-param-f64', 'args' => [['type' => 'f64', 'value' => '4617878467915022336']]],
             expected: [['type' => 'f64', 'value' => '4617878467915022336']],
             line: 117,
@@ -111,7 +103,6 @@ final class LocalGetTest extends SpecTestsuiteBase
     public function testAssertReturn9(): void
     {
         $this->runAssertReturnCommand(
-            module: null,
             action: ['type' => 'invoke', 'field' => 'as-block-value', 'args' => [['type' => 'i32', 'value' => '6']]],
             expected: [['type' => 'i32', 'value' => '6']],
             line: 119,
@@ -122,7 +113,6 @@ final class LocalGetTest extends SpecTestsuiteBase
     public function testAssertReturn10(): void
     {
         $this->runAssertReturnCommand(
-            module: null,
             action: ['type' => 'invoke', 'field' => 'as-loop-value', 'args' => [['type' => 'i32', 'value' => '7']]],
             expected: [['type' => 'i32', 'value' => '7']],
             line: 120,
@@ -133,7 +123,6 @@ final class LocalGetTest extends SpecTestsuiteBase
     public function testAssertReturn11(): void
     {
         $this->runAssertReturnCommand(
-            module: null,
             action: ['type' => 'invoke', 'field' => 'as-br-value', 'args' => [['type' => 'i32', 'value' => '8']]],
             expected: [['type' => 'i32', 'value' => '8']],
             line: 122,
@@ -144,7 +133,6 @@ final class LocalGetTest extends SpecTestsuiteBase
     public function testAssertReturn12(): void
     {
         $this->runAssertReturnCommand(
-            module: null,
             action: ['type' => 'invoke', 'field' => 'as-br_if-value', 'args' => [['type' => 'i32', 'value' => '9']]],
             expected: [['type' => 'i32', 'value' => '9']],
             line: 123,
@@ -155,7 +143,6 @@ final class LocalGetTest extends SpecTestsuiteBase
     public function testAssertReturn13(): void
     {
         $this->runAssertReturnCommand(
-            module: null,
             action: ['type' => 'invoke', 'field' => 'as-br_if-value-cond', 'args' => [['type' => 'i32', 'value' => '10']]],
             expected: [['type' => 'i32', 'value' => '10']],
             line: 124,
@@ -166,7 +153,6 @@ final class LocalGetTest extends SpecTestsuiteBase
     public function testAssertReturn14(): void
     {
         $this->runAssertReturnCommand(
-            module: null,
             action: ['type' => 'invoke', 'field' => 'as-br_table-value', 'args' => [['type' => 'i32', 'value' => '1']]],
             expected: [['type' => 'i32', 'value' => '2']],
             line: 125,
@@ -177,7 +163,6 @@ final class LocalGetTest extends SpecTestsuiteBase
     public function testAssertReturn15(): void
     {
         $this->runAssertReturnCommand(
-            module: null,
             action: ['type' => 'invoke', 'field' => 'as-return-value', 'args' => [['type' => 'i32', 'value' => '0']]],
             expected: [['type' => 'i32', 'value' => '0']],
             line: 127,
@@ -188,7 +173,6 @@ final class LocalGetTest extends SpecTestsuiteBase
     public function testAssertReturn16(): void
     {
         $this->runAssertReturnCommand(
-            module: null,
             action: ['type' => 'invoke', 'field' => 'as-if-then', 'args' => [['type' => 'i32', 'value' => '1']]],
             expected: [['type' => 'i32', 'value' => '1']],
             line: 129,
@@ -199,7 +183,6 @@ final class LocalGetTest extends SpecTestsuiteBase
     public function testAssertReturn17(): void
     {
         $this->runAssertReturnCommand(
-            module: null,
             action: ['type' => 'invoke', 'field' => 'as-if-else', 'args' => [['type' => 'i32', 'value' => '0']]],
             expected: [['type' => 'i32', 'value' => '0']],
             line: 130,
@@ -210,7 +193,6 @@ final class LocalGetTest extends SpecTestsuiteBase
     public function testAssertReturn18(): void
     {
         $this->runAssertReturnCommand(
-            module: null,
             action: ['type' => 'invoke', 'field' => 'type-mixed', 'args' => [['type' => 'i64', 'value' => '1'], ['type' => 'f32', 'value' => '1074580685'], ['type' => 'f64', 'value' => '4614613358185178726'], ['type' => 'i32', 'value' => '4'], ['type' => 'i32', 'value' => '5']]],
             expected: [],
             line: 133,
@@ -221,7 +203,6 @@ final class LocalGetTest extends SpecTestsuiteBase
     public function testAssertReturn19(): void
     {
         $this->runAssertReturnCommand(
-            module: null,
             action: ['type' => 'invoke', 'field' => 'read', 'args' => [['type' => 'i64', 'value' => '1'], ['type' => 'f32', 'value' => '1073741824'], ['type' => 'f64', 'value' => '4614613358185178726'], ['type' => 'i32', 'value' => '4'], ['type' => 'i32', 'value' => '5']]],
             expected: [['type' => 'f64', 'value' => '4630094481904264806']],
             line: 139,

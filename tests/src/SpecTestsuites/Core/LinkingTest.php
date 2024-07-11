@@ -43,7 +43,6 @@ final class LinkingTest extends SpecTestsuiteBase
     public function testAssertReturn3(): void
     {
         $this->runAssertReturnCommand(
-            module: null,
             action: ['type' => 'invoke', 'module' => '$Mf', 'field' => 'call', 'args' => []],
             expected: [['type' => 'i32', 'value' => '2']],
             line: 17,
@@ -54,7 +53,6 @@ final class LinkingTest extends SpecTestsuiteBase
     public function testAssertReturn4(): void
     {
         $this->runAssertReturnCommand(
-            module: null,
             action: ['type' => 'invoke', 'module' => '$Nf', 'field' => 'Mf.call', 'args' => []],
             expected: [['type' => 'i32', 'value' => '2']],
             line: 18,
@@ -65,7 +63,6 @@ final class LinkingTest extends SpecTestsuiteBase
     public function testAssertReturn5(): void
     {
         $this->runAssertReturnCommand(
-            module: null,
             action: ['type' => 'invoke', 'module' => '$Nf', 'field' => 'call', 'args' => []],
             expected: [['type' => 'i32', 'value' => '3']],
             line: 19,
@@ -76,7 +73,6 @@ final class LinkingTest extends SpecTestsuiteBase
     public function testAssertReturn6(): void
     {
         $this->runAssertReturnCommand(
-            module: null,
             action: ['type' => 'invoke', 'module' => '$Nf', 'field' => 'call Mf.call', 'args' => []],
             expected: [['type' => 'i32', 'value' => '2']],
             line: 20,
@@ -157,7 +153,6 @@ final class LinkingTest extends SpecTestsuiteBase
     public function testAssertReturn14(): void
     {
         $this->runAssertReturnCommand(
-            module: null,
             action: ['type' => 'get', 'module' => '$Mg', 'field' => 'glob'],
             expected: [['type' => 'i32', 'value' => '42']],
             line: 67,
@@ -168,7 +163,6 @@ final class LinkingTest extends SpecTestsuiteBase
     public function testAssertReturn15(): void
     {
         $this->runAssertReturnCommand(
-            module: null,
             action: ['type' => 'get', 'module' => '$Ng', 'field' => 'Mg.glob'],
             expected: [['type' => 'i32', 'value' => '42']],
             line: 68,
@@ -179,7 +173,6 @@ final class LinkingTest extends SpecTestsuiteBase
     public function testAssertReturn16(): void
     {
         $this->runAssertReturnCommand(
-            module: null,
             action: ['type' => 'get', 'module' => '$Ng', 'field' => 'glob'],
             expected: [['type' => 'i32', 'value' => '43']],
             line: 69,
@@ -190,7 +183,6 @@ final class LinkingTest extends SpecTestsuiteBase
     public function testAssertReturn17(): void
     {
         $this->runAssertReturnCommand(
-            module: null,
             action: ['type' => 'invoke', 'module' => '$Mg', 'field' => 'get', 'args' => []],
             expected: [['type' => 'i32', 'value' => '42']],
             line: 70,
@@ -201,7 +193,6 @@ final class LinkingTest extends SpecTestsuiteBase
     public function testAssertReturn18(): void
     {
         $this->runAssertReturnCommand(
-            module: null,
             action: ['type' => 'invoke', 'module' => '$Ng', 'field' => 'Mg.get', 'args' => []],
             expected: [['type' => 'i32', 'value' => '42']],
             line: 71,
@@ -212,7 +203,6 @@ final class LinkingTest extends SpecTestsuiteBase
     public function testAssertReturn19(): void
     {
         $this->runAssertReturnCommand(
-            module: null,
             action: ['type' => 'invoke', 'module' => '$Ng', 'field' => 'get', 'args' => []],
             expected: [['type' => 'i32', 'value' => '43']],
             line: 72,
@@ -223,7 +213,6 @@ final class LinkingTest extends SpecTestsuiteBase
     public function testAssertReturn20(): void
     {
         $this->runAssertReturnCommand(
-            module: null,
             action: ['type' => 'get', 'module' => '$Mg', 'field' => 'mut_glob'],
             expected: [['type' => 'i32', 'value' => '142']],
             line: 74,
@@ -234,7 +223,6 @@ final class LinkingTest extends SpecTestsuiteBase
     public function testAssertReturn21(): void
     {
         $this->runAssertReturnCommand(
-            module: null,
             action: ['type' => 'get', 'module' => '$Ng', 'field' => 'Mg.mut_glob'],
             expected: [['type' => 'i32', 'value' => '142']],
             line: 75,
@@ -245,7 +233,6 @@ final class LinkingTest extends SpecTestsuiteBase
     public function testAssertReturn22(): void
     {
         $this->runAssertReturnCommand(
-            module: null,
             action: ['type' => 'invoke', 'module' => '$Mg', 'field' => 'get_mut', 'args' => []],
             expected: [['type' => 'i32', 'value' => '142']],
             line: 76,
@@ -256,7 +243,6 @@ final class LinkingTest extends SpecTestsuiteBase
     public function testAssertReturn23(): void
     {
         $this->runAssertReturnCommand(
-            module: null,
             action: ['type' => 'invoke', 'module' => '$Ng', 'field' => 'Mg.get_mut', 'args' => []],
             expected: [['type' => 'i32', 'value' => '142']],
             line: 77,
@@ -267,7 +253,6 @@ final class LinkingTest extends SpecTestsuiteBase
     public function testAssertReturn24(): void
     {
         $this->runAssertReturnCommand(
-            module: null,
             action: ['type' => 'invoke', 'module' => '$Mg', 'field' => 'set_mut', 'args' => [['type' => 'i32', 'value' => '241']]],
             expected: [],
             line: 79,
@@ -278,7 +263,6 @@ final class LinkingTest extends SpecTestsuiteBase
     public function testAssertReturn25(): void
     {
         $this->runAssertReturnCommand(
-            module: null,
             action: ['type' => 'get', 'module' => '$Mg', 'field' => 'mut_glob'],
             expected: [['type' => 'i32', 'value' => '241']],
             line: 80,
@@ -289,7 +273,6 @@ final class LinkingTest extends SpecTestsuiteBase
     public function testAssertReturn26(): void
     {
         $this->runAssertReturnCommand(
-            module: null,
             action: ['type' => 'get', 'module' => '$Ng', 'field' => 'Mg.mut_glob'],
             expected: [['type' => 'i32', 'value' => '241']],
             line: 81,
@@ -300,7 +283,6 @@ final class LinkingTest extends SpecTestsuiteBase
     public function testAssertReturn27(): void
     {
         $this->runAssertReturnCommand(
-            module: null,
             action: ['type' => 'invoke', 'module' => '$Mg', 'field' => 'get_mut', 'args' => []],
             expected: [['type' => 'i32', 'value' => '241']],
             line: 82,
@@ -311,7 +293,6 @@ final class LinkingTest extends SpecTestsuiteBase
     public function testAssertReturn28(): void
     {
         $this->runAssertReturnCommand(
-            module: null,
             action: ['type' => 'invoke', 'module' => '$Ng', 'field' => 'Mg.get_mut', 'args' => []],
             expected: [['type' => 'i32', 'value' => '241']],
             line: 83,
@@ -442,7 +423,6 @@ final class LinkingTest extends SpecTestsuiteBase
     public function testAssertReturn41(): void
     {
         $this->runAssertReturnCommand(
-            module: null,
             action: ['type' => 'invoke', 'module' => '$Mt', 'field' => 'call', 'args' => [['type' => 'i32', 'value' => '2']]],
             expected: [['type' => 'i32', 'value' => '4']],
             line: 168,
@@ -453,7 +433,6 @@ final class LinkingTest extends SpecTestsuiteBase
     public function testAssertReturn42(): void
     {
         $this->runAssertReturnCommand(
-            module: null,
             action: ['type' => 'invoke', 'module' => '$Nt', 'field' => 'Mt.call', 'args' => [['type' => 'i32', 'value' => '2']]],
             expected: [['type' => 'i32', 'value' => '4']],
             line: 169,
@@ -464,7 +443,6 @@ final class LinkingTest extends SpecTestsuiteBase
     public function testAssertReturn43(): void
     {
         $this->runAssertReturnCommand(
-            module: null,
             action: ['type' => 'invoke', 'module' => '$Nt', 'field' => 'call', 'args' => [['type' => 'i32', 'value' => '2']]],
             expected: [['type' => 'i32', 'value' => '5']],
             line: 170,
@@ -475,7 +453,6 @@ final class LinkingTest extends SpecTestsuiteBase
     public function testAssertReturn44(): void
     {
         $this->runAssertReturnCommand(
-            module: null,
             action: ['type' => 'invoke', 'module' => '$Nt', 'field' => 'call Mt.call', 'args' => [['type' => 'i32', 'value' => '2']]],
             expected: [['type' => 'i32', 'value' => '4']],
             line: 171,
@@ -486,7 +463,6 @@ final class LinkingTest extends SpecTestsuiteBase
     public function testAssertTrap45(): void
     {
         $this->runAssertTrapCommand(
-            module: null,
             action: ['type' => 'invoke', 'module' => '$Mt', 'field' => 'call', 'args' => [['type' => 'i32', 'value' => '1']]],
             text: 'uninitialized element',
             line: 173,
@@ -497,7 +473,6 @@ final class LinkingTest extends SpecTestsuiteBase
     public function testAssertTrap46(): void
     {
         $this->runAssertTrapCommand(
-            module: null,
             action: ['type' => 'invoke', 'module' => '$Nt', 'field' => 'Mt.call', 'args' => [['type' => 'i32', 'value' => '1']]],
             text: 'uninitialized element',
             line: 174,
@@ -508,7 +483,6 @@ final class LinkingTest extends SpecTestsuiteBase
     public function testAssertReturn47(): void
     {
         $this->runAssertReturnCommand(
-            module: null,
             action: ['type' => 'invoke', 'module' => '$Nt', 'field' => 'call', 'args' => [['type' => 'i32', 'value' => '1']]],
             expected: [['type' => 'i32', 'value' => '5']],
             line: 175,
@@ -519,7 +493,6 @@ final class LinkingTest extends SpecTestsuiteBase
     public function testAssertTrap48(): void
     {
         $this->runAssertTrapCommand(
-            module: null,
             action: ['type' => 'invoke', 'module' => '$Nt', 'field' => 'call Mt.call', 'args' => [['type' => 'i32', 'value' => '1']]],
             text: 'uninitialized element',
             line: 176,
@@ -530,7 +503,6 @@ final class LinkingTest extends SpecTestsuiteBase
     public function testAssertTrap49(): void
     {
         $this->runAssertTrapCommand(
-            module: null,
             action: ['type' => 'invoke', 'module' => '$Mt', 'field' => 'call', 'args' => [['type' => 'i32', 'value' => '0']]],
             text: 'uninitialized element',
             line: 178,
@@ -541,7 +513,6 @@ final class LinkingTest extends SpecTestsuiteBase
     public function testAssertTrap50(): void
     {
         $this->runAssertTrapCommand(
-            module: null,
             action: ['type' => 'invoke', 'module' => '$Nt', 'field' => 'Mt.call', 'args' => [['type' => 'i32', 'value' => '0']]],
             text: 'uninitialized element',
             line: 179,
@@ -552,7 +523,6 @@ final class LinkingTest extends SpecTestsuiteBase
     public function testAssertReturn51(): void
     {
         $this->runAssertReturnCommand(
-            module: null,
             action: ['type' => 'invoke', 'module' => '$Nt', 'field' => 'call', 'args' => [['type' => 'i32', 'value' => '0']]],
             expected: [['type' => 'i32', 'value' => '5']],
             line: 180,
@@ -563,7 +533,6 @@ final class LinkingTest extends SpecTestsuiteBase
     public function testAssertTrap52(): void
     {
         $this->runAssertTrapCommand(
-            module: null,
             action: ['type' => 'invoke', 'module' => '$Nt', 'field' => 'call Mt.call', 'args' => [['type' => 'i32', 'value' => '0']]],
             text: 'uninitialized element',
             line: 181,
@@ -574,7 +543,6 @@ final class LinkingTest extends SpecTestsuiteBase
     public function testAssertTrap53(): void
     {
         $this->runAssertTrapCommand(
-            module: null,
             action: ['type' => 'invoke', 'module' => '$Mt', 'field' => 'call', 'args' => [['type' => 'i32', 'value' => '20']]],
             text: 'undefined element',
             line: 183,
@@ -585,7 +553,6 @@ final class LinkingTest extends SpecTestsuiteBase
     public function testAssertTrap54(): void
     {
         $this->runAssertTrapCommand(
-            module: null,
             action: ['type' => 'invoke', 'module' => '$Nt', 'field' => 'Mt.call', 'args' => [['type' => 'i32', 'value' => '20']]],
             text: 'undefined element',
             line: 184,
@@ -596,7 +563,6 @@ final class LinkingTest extends SpecTestsuiteBase
     public function testAssertTrap55(): void
     {
         $this->runAssertTrapCommand(
-            module: null,
             action: ['type' => 'invoke', 'module' => '$Nt', 'field' => 'call', 'args' => [['type' => 'i32', 'value' => '7']]],
             text: 'undefined element',
             line: 185,
@@ -607,7 +573,6 @@ final class LinkingTest extends SpecTestsuiteBase
     public function testAssertTrap56(): void
     {
         $this->runAssertTrapCommand(
-            module: null,
             action: ['type' => 'invoke', 'module' => '$Nt', 'field' => 'call Mt.call', 'args' => [['type' => 'i32', 'value' => '20']]],
             text: 'undefined element',
             line: 186,
@@ -618,7 +583,6 @@ final class LinkingTest extends SpecTestsuiteBase
     public function testAssertReturn57(): void
     {
         $this->runAssertReturnCommand(
-            module: null,
             action: ['type' => 'invoke', 'module' => '$Nt', 'field' => 'call', 'args' => [['type' => 'i32', 'value' => '3']]],
             expected: [['type' => 'i32', 'value' => '4294967292']],
             line: 188,
@@ -629,7 +593,6 @@ final class LinkingTest extends SpecTestsuiteBase
     public function testAssertTrap58(): void
     {
         $this->runAssertTrapCommand(
-            module: null,
             action: ['type' => 'invoke', 'module' => '$Nt', 'field' => 'call', 'args' => [['type' => 'i32', 'value' => '4']]],
             text: 'indirect call type mismatch',
             line: 189,
@@ -650,7 +613,6 @@ final class LinkingTest extends SpecTestsuiteBase
     public function testAssertReturn60(): void
     {
         $this->runAssertReturnCommand(
-            module: null,
             action: ['type' => 'invoke', 'module' => '$Mt', 'field' => 'call', 'args' => [['type' => 'i32', 'value' => '3']]],
             expected: [['type' => 'i32', 'value' => '4']],
             line: 204,
@@ -661,7 +623,6 @@ final class LinkingTest extends SpecTestsuiteBase
     public function testAssertReturn61(): void
     {
         $this->runAssertReturnCommand(
-            module: null,
             action: ['type' => 'invoke', 'module' => '$Nt', 'field' => 'Mt.call', 'args' => [['type' => 'i32', 'value' => '3']]],
             expected: [['type' => 'i32', 'value' => '4']],
             line: 205,
@@ -672,7 +633,6 @@ final class LinkingTest extends SpecTestsuiteBase
     public function testAssertReturn62(): void
     {
         $this->runAssertReturnCommand(
-            module: null,
             action: ['type' => 'invoke', 'module' => '$Nt', 'field' => 'call Mt.call', 'args' => [['type' => 'i32', 'value' => '3']]],
             expected: [['type' => 'i32', 'value' => '4']],
             line: 206,
@@ -683,7 +643,6 @@ final class LinkingTest extends SpecTestsuiteBase
     public function testAssertReturn63(): void
     {
         $this->runAssertReturnCommand(
-            module: null,
             action: ['type' => 'invoke', 'module' => '$Ot', 'field' => 'call', 'args' => [['type' => 'i32', 'value' => '3']]],
             expected: [['type' => 'i32', 'value' => '4']],
             line: 207,
@@ -694,7 +653,6 @@ final class LinkingTest extends SpecTestsuiteBase
     public function testAssertReturn64(): void
     {
         $this->runAssertReturnCommand(
-            module: null,
             action: ['type' => 'invoke', 'module' => '$Mt', 'field' => 'call', 'args' => [['type' => 'i32', 'value' => '2']]],
             expected: [['type' => 'i32', 'value' => '4294967292']],
             line: 209,
@@ -705,7 +663,6 @@ final class LinkingTest extends SpecTestsuiteBase
     public function testAssertReturn65(): void
     {
         $this->runAssertReturnCommand(
-            module: null,
             action: ['type' => 'invoke', 'module' => '$Nt', 'field' => 'Mt.call', 'args' => [['type' => 'i32', 'value' => '2']]],
             expected: [['type' => 'i32', 'value' => '4294967292']],
             line: 210,
@@ -716,7 +673,6 @@ final class LinkingTest extends SpecTestsuiteBase
     public function testAssertReturn66(): void
     {
         $this->runAssertReturnCommand(
-            module: null,
             action: ['type' => 'invoke', 'module' => '$Nt', 'field' => 'call', 'args' => [['type' => 'i32', 'value' => '2']]],
             expected: [['type' => 'i32', 'value' => '5']],
             line: 211,
@@ -727,7 +683,6 @@ final class LinkingTest extends SpecTestsuiteBase
     public function testAssertReturn67(): void
     {
         $this->runAssertReturnCommand(
-            module: null,
             action: ['type' => 'invoke', 'module' => '$Nt', 'field' => 'call Mt.call', 'args' => [['type' => 'i32', 'value' => '2']]],
             expected: [['type' => 'i32', 'value' => '4294967292']],
             line: 212,
@@ -738,7 +693,6 @@ final class LinkingTest extends SpecTestsuiteBase
     public function testAssertReturn68(): void
     {
         $this->runAssertReturnCommand(
-            module: null,
             action: ['type' => 'invoke', 'module' => '$Ot', 'field' => 'call', 'args' => [['type' => 'i32', 'value' => '2']]],
             expected: [['type' => 'i32', 'value' => '4294967292']],
             line: 213,
@@ -749,7 +703,6 @@ final class LinkingTest extends SpecTestsuiteBase
     public function testAssertReturn69(): void
     {
         $this->runAssertReturnCommand(
-            module: null,
             action: ['type' => 'invoke', 'module' => '$Mt', 'field' => 'call', 'args' => [['type' => 'i32', 'value' => '1']]],
             expected: [['type' => 'i32', 'value' => '6']],
             line: 215,
@@ -760,7 +713,6 @@ final class LinkingTest extends SpecTestsuiteBase
     public function testAssertReturn70(): void
     {
         $this->runAssertReturnCommand(
-            module: null,
             action: ['type' => 'invoke', 'module' => '$Nt', 'field' => 'Mt.call', 'args' => [['type' => 'i32', 'value' => '1']]],
             expected: [['type' => 'i32', 'value' => '6']],
             line: 216,
@@ -771,7 +723,6 @@ final class LinkingTest extends SpecTestsuiteBase
     public function testAssertReturn71(): void
     {
         $this->runAssertReturnCommand(
-            module: null,
             action: ['type' => 'invoke', 'module' => '$Nt', 'field' => 'call', 'args' => [['type' => 'i32', 'value' => '1']]],
             expected: [['type' => 'i32', 'value' => '5']],
             line: 217,
@@ -782,7 +733,6 @@ final class LinkingTest extends SpecTestsuiteBase
     public function testAssertReturn72(): void
     {
         $this->runAssertReturnCommand(
-            module: null,
             action: ['type' => 'invoke', 'module' => '$Nt', 'field' => 'call Mt.call', 'args' => [['type' => 'i32', 'value' => '1']]],
             expected: [['type' => 'i32', 'value' => '6']],
             line: 218,
@@ -793,7 +743,6 @@ final class LinkingTest extends SpecTestsuiteBase
     public function testAssertReturn73(): void
     {
         $this->runAssertReturnCommand(
-            module: null,
             action: ['type' => 'invoke', 'module' => '$Ot', 'field' => 'call', 'args' => [['type' => 'i32', 'value' => '1']]],
             expected: [['type' => 'i32', 'value' => '6']],
             line: 219,
@@ -804,7 +753,6 @@ final class LinkingTest extends SpecTestsuiteBase
     public function testAssertTrap74(): void
     {
         $this->runAssertTrapCommand(
-            module: null,
             action: ['type' => 'invoke', 'module' => '$Mt', 'field' => 'call', 'args' => [['type' => 'i32', 'value' => '0']]],
             text: 'uninitialized element',
             line: 221,
@@ -815,7 +763,6 @@ final class LinkingTest extends SpecTestsuiteBase
     public function testAssertTrap75(): void
     {
         $this->runAssertTrapCommand(
-            module: null,
             action: ['type' => 'invoke', 'module' => '$Nt', 'field' => 'Mt.call', 'args' => [['type' => 'i32', 'value' => '0']]],
             text: 'uninitialized element',
             line: 222,
@@ -826,7 +773,6 @@ final class LinkingTest extends SpecTestsuiteBase
     public function testAssertReturn76(): void
     {
         $this->runAssertReturnCommand(
-            module: null,
             action: ['type' => 'invoke', 'module' => '$Nt', 'field' => 'call', 'args' => [['type' => 'i32', 'value' => '0']]],
             expected: [['type' => 'i32', 'value' => '5']],
             line: 223,
@@ -837,7 +783,6 @@ final class LinkingTest extends SpecTestsuiteBase
     public function testAssertTrap77(): void
     {
         $this->runAssertTrapCommand(
-            module: null,
             action: ['type' => 'invoke', 'module' => '$Nt', 'field' => 'call Mt.call', 'args' => [['type' => 'i32', 'value' => '0']]],
             text: 'uninitialized element',
             line: 224,
@@ -848,7 +793,6 @@ final class LinkingTest extends SpecTestsuiteBase
     public function testAssertTrap78(): void
     {
         $this->runAssertTrapCommand(
-            module: null,
             action: ['type' => 'invoke', 'module' => '$Ot', 'field' => 'call', 'args' => [['type' => 'i32', 'value' => '0']]],
             text: 'uninitialized element',
             line: 225,
@@ -859,7 +803,6 @@ final class LinkingTest extends SpecTestsuiteBase
     public function testAssertTrap79(): void
     {
         $this->runAssertTrapCommand(
-            module: null,
             action: ['type' => 'invoke', 'module' => '$Ot', 'field' => 'call', 'args' => [['type' => 'i32', 'value' => '20']]],
             text: 'undefined element',
             line: 227,
@@ -910,7 +853,6 @@ final class LinkingTest extends SpecTestsuiteBase
     public function testAssertReturn84(): void
     {
         $this->runAssertReturnCommand(
-            module: null,
             action: ['type' => 'get', 'module' => '$G2', 'field' => 'g'],
             expected: [['type' => 'i32', 'value' => '5']],
             line: 241,
@@ -941,7 +883,6 @@ final class LinkingTest extends SpecTestsuiteBase
     public function testAssertTrap87(): void
     {
         $this->runAssertTrapCommand(
-            module: null,
             action: ['type' => 'invoke', 'module' => '$Mt', 'field' => 'call', 'args' => [['type' => 'i32', 'value' => '7']]],
             text: 'uninitialized element',
             line: 262,
@@ -962,7 +903,6 @@ final class LinkingTest extends SpecTestsuiteBase
     public function testAssertReturn89(): void
     {
         $this->runAssertReturnCommand(
-            module: null,
             action: ['type' => 'invoke', 'module' => '$Mt', 'field' => 'call', 'args' => [['type' => 'i32', 'value' => '7']]],
             expected: [['type' => 'i32', 'value' => '0']],
             line: 275,
@@ -973,7 +913,6 @@ final class LinkingTest extends SpecTestsuiteBase
     public function testAssertTrap90(): void
     {
         $this->runAssertTrapCommand(
-            module: null,
             action: ['type' => 'invoke', 'module' => '$Mt', 'field' => 'call', 'args' => [['type' => 'i32', 'value' => '8']]],
             text: 'uninitialized element',
             line: 276,
@@ -994,7 +933,6 @@ final class LinkingTest extends SpecTestsuiteBase
     public function testAssertReturn92(): void
     {
         $this->runAssertReturnCommand(
-            module: null,
             action: ['type' => 'invoke', 'module' => '$Mt', 'field' => 'call', 'args' => [['type' => 'i32', 'value' => '7']]],
             expected: [['type' => 'i32', 'value' => '0']],
             line: 288,
@@ -1085,7 +1023,6 @@ final class LinkingTest extends SpecTestsuiteBase
     public function testAssertReturn101(): void
     {
         $this->runAssertReturnCommand(
-            module: null,
             action: ['type' => 'invoke', 'module' => '$Mm', 'field' => 'load', 'args' => [['type' => 'i32', 'value' => '12']]],
             expected: [['type' => 'i32', 'value' => '2']],
             line: 336,
@@ -1096,7 +1033,6 @@ final class LinkingTest extends SpecTestsuiteBase
     public function testAssertReturn102(): void
     {
         $this->runAssertReturnCommand(
-            module: null,
             action: ['type' => 'invoke', 'module' => '$Nm', 'field' => 'Mm.load', 'args' => [['type' => 'i32', 'value' => '12']]],
             expected: [['type' => 'i32', 'value' => '2']],
             line: 337,
@@ -1107,7 +1043,6 @@ final class LinkingTest extends SpecTestsuiteBase
     public function testAssertReturn103(): void
     {
         $this->runAssertReturnCommand(
-            module: null,
             action: ['type' => 'invoke', 'module' => '$Nm', 'field' => 'load', 'args' => [['type' => 'i32', 'value' => '12']]],
             expected: [['type' => 'i32', 'value' => '242']],
             line: 338,
@@ -1128,7 +1063,6 @@ final class LinkingTest extends SpecTestsuiteBase
     public function testAssertReturn105(): void
     {
         $this->runAssertReturnCommand(
-            module: null,
             action: ['type' => 'invoke', 'module' => '$Mm', 'field' => 'load', 'args' => [['type' => 'i32', 'value' => '12']]],
             expected: [['type' => 'i32', 'value' => '167']],
             line: 349,
@@ -1139,7 +1073,6 @@ final class LinkingTest extends SpecTestsuiteBase
     public function testAssertReturn106(): void
     {
         $this->runAssertReturnCommand(
-            module: null,
             action: ['type' => 'invoke', 'module' => '$Nm', 'field' => 'Mm.load', 'args' => [['type' => 'i32', 'value' => '12']]],
             expected: [['type' => 'i32', 'value' => '167']],
             line: 350,
@@ -1150,7 +1083,6 @@ final class LinkingTest extends SpecTestsuiteBase
     public function testAssertReturn107(): void
     {
         $this->runAssertReturnCommand(
-            module: null,
             action: ['type' => 'invoke', 'module' => '$Nm', 'field' => 'load', 'args' => [['type' => 'i32', 'value' => '12']]],
             expected: [['type' => 'i32', 'value' => '242']],
             line: 351,
@@ -1161,7 +1093,6 @@ final class LinkingTest extends SpecTestsuiteBase
     public function testAssertReturn108(): void
     {
         $this->runAssertReturnCommand(
-            module: null,
             action: ['type' => 'invoke', 'module' => '$Om', 'field' => 'load', 'args' => [['type' => 'i32', 'value' => '12']]],
             expected: [['type' => 'i32', 'value' => '167']],
             line: 352,
@@ -1202,7 +1133,6 @@ final class LinkingTest extends SpecTestsuiteBase
     public function testAssertReturn112(): void
     {
         $this->runAssertReturnCommand(
-            module: null,
             action: ['type' => 'invoke', 'module' => '$Pm', 'field' => 'grow', 'args' => [['type' => 'i32', 'value' => '0']]],
             expected: [['type' => 'i32', 'value' => '1']],
             line: 375,
@@ -1213,7 +1143,6 @@ final class LinkingTest extends SpecTestsuiteBase
     public function testAssertReturn113(): void
     {
         $this->runAssertReturnCommand(
-            module: null,
             action: ['type' => 'invoke', 'module' => '$Pm', 'field' => 'grow', 'args' => [['type' => 'i32', 'value' => '2']]],
             expected: [['type' => 'i32', 'value' => '1']],
             line: 376,
@@ -1224,7 +1153,6 @@ final class LinkingTest extends SpecTestsuiteBase
     public function testAssertReturn114(): void
     {
         $this->runAssertReturnCommand(
-            module: null,
             action: ['type' => 'invoke', 'module' => '$Pm', 'field' => 'grow', 'args' => [['type' => 'i32', 'value' => '0']]],
             expected: [['type' => 'i32', 'value' => '3']],
             line: 377,
@@ -1235,7 +1163,6 @@ final class LinkingTest extends SpecTestsuiteBase
     public function testAssertReturn115(): void
     {
         $this->runAssertReturnCommand(
-            module: null,
             action: ['type' => 'invoke', 'module' => '$Pm', 'field' => 'grow', 'args' => [['type' => 'i32', 'value' => '1']]],
             expected: [['type' => 'i32', 'value' => '3']],
             line: 378,
@@ -1246,7 +1173,6 @@ final class LinkingTest extends SpecTestsuiteBase
     public function testAssertReturn116(): void
     {
         $this->runAssertReturnCommand(
-            module: null,
             action: ['type' => 'invoke', 'module' => '$Pm', 'field' => 'grow', 'args' => [['type' => 'i32', 'value' => '1']]],
             expected: [['type' => 'i32', 'value' => '4']],
             line: 379,
@@ -1257,7 +1183,6 @@ final class LinkingTest extends SpecTestsuiteBase
     public function testAssertReturn117(): void
     {
         $this->runAssertReturnCommand(
-            module: null,
             action: ['type' => 'invoke', 'module' => '$Pm', 'field' => 'grow', 'args' => [['type' => 'i32', 'value' => '0']]],
             expected: [['type' => 'i32', 'value' => '5']],
             line: 380,
@@ -1268,7 +1193,6 @@ final class LinkingTest extends SpecTestsuiteBase
     public function testAssertReturn118(): void
     {
         $this->runAssertReturnCommand(
-            module: null,
             action: ['type' => 'invoke', 'module' => '$Pm', 'field' => 'grow', 'args' => [['type' => 'i32', 'value' => '1']]],
             expected: [['type' => 'i32', 'value' => '4294967295']],
             line: 381,
@@ -1279,7 +1203,6 @@ final class LinkingTest extends SpecTestsuiteBase
     public function testAssertReturn119(): void
     {
         $this->runAssertReturnCommand(
-            module: null,
             action: ['type' => 'invoke', 'module' => '$Pm', 'field' => 'grow', 'args' => [['type' => 'i32', 'value' => '0']]],
             expected: [['type' => 'i32', 'value' => '5']],
             line: 382,
@@ -1300,7 +1223,6 @@ final class LinkingTest extends SpecTestsuiteBase
     public function testAssertReturn121(): void
     {
         $this->runAssertReturnCommand(
-            module: null,
             action: ['type' => 'invoke', 'module' => '$Mm', 'field' => 'load', 'args' => [['type' => 'i32', 'value' => '0']]],
             expected: [['type' => 'i32', 'value' => '0']],
             line: 393,
@@ -1321,7 +1243,6 @@ final class LinkingTest extends SpecTestsuiteBase
     public function testAssertReturn123(): void
     {
         $this->runAssertReturnCommand(
-            module: null,
             action: ['type' => 'invoke', 'module' => '$Mm', 'field' => 'load', 'args' => [['type' => 'i32', 'value' => '0']]],
             expected: [['type' => 'i32', 'value' => '97']],
             line: 406,
@@ -1332,7 +1253,6 @@ final class LinkingTest extends SpecTestsuiteBase
     public function testAssertReturn124(): void
     {
         $this->runAssertReturnCommand(
-            module: null,
             action: ['type' => 'invoke', 'module' => '$Mm', 'field' => 'load', 'args' => [['type' => 'i32', 'value' => '327670']]],
             expected: [['type' => 'i32', 'value' => '0']],
             line: 407,
@@ -1353,7 +1273,6 @@ final class LinkingTest extends SpecTestsuiteBase
     public function testAssertReturn126(): void
     {
         $this->runAssertReturnCommand(
-            module: null,
             action: ['type' => 'invoke', 'module' => '$Mm', 'field' => 'load', 'args' => [['type' => 'i32', 'value' => '0']]],
             expected: [['type' => 'i32', 'value' => '97']],
             line: 419,
@@ -1394,7 +1313,6 @@ final class LinkingTest extends SpecTestsuiteBase
     public function testAssertReturn130(): void
     {
         $this->runAssertReturnCommand(
-            module: null,
             action: ['type' => 'invoke', 'module' => '$Ms', 'field' => 'get memory[0]', 'args' => []],
             expected: [['type' => 'i32', 'value' => '104']],
             line: 452,
@@ -1405,7 +1323,6 @@ final class LinkingTest extends SpecTestsuiteBase
     public function testAssertReturn131(): void
     {
         $this->runAssertReturnCommand(
-            module: null,
             action: ['type' => 'invoke', 'module' => '$Ms', 'field' => 'get table[0]', 'args' => []],
             expected: [['type' => 'i32', 'value' => '57005']],
             line: 453,

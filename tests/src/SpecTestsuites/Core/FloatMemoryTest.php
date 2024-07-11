@@ -23,7 +23,6 @@ final class FloatMemoryTest extends SpecTestsuiteBase
     public function testAssertReturn1(): void
     {
         $this->runAssertReturnCommand(
-            module: null,
             action: ['type' => 'invoke', 'field' => 'i32.load', 'args' => []],
             expected: [['type' => 'i32', 'value' => '2141192192']],
             line: 15,
@@ -34,7 +33,6 @@ final class FloatMemoryTest extends SpecTestsuiteBase
     public function testAssertReturn2(): void
     {
         $this->runAssertReturnCommand(
-            module: null,
             action: ['type' => 'invoke', 'field' => 'f32.load', 'args' => []],
             expected: [['type' => 'f32', 'value' => '2141192192']],
             line: 16,
@@ -45,7 +43,6 @@ final class FloatMemoryTest extends SpecTestsuiteBase
     public function testAction3(): void
     {
         $this->runActionCommand(
-            module: null,
             action: ['type' => 'invoke', 'field' => 'reset', 'args' => []],
             line: 17,
         );
@@ -55,7 +52,6 @@ final class FloatMemoryTest extends SpecTestsuiteBase
     public function testAssertReturn4(): void
     {
         $this->runAssertReturnCommand(
-            module: null,
             action: ['type' => 'invoke', 'field' => 'i32.load', 'args' => []],
             expected: [['type' => 'i32', 'value' => '0']],
             line: 18,
@@ -66,7 +62,6 @@ final class FloatMemoryTest extends SpecTestsuiteBase
     public function testAssertReturn5(): void
     {
         $this->runAssertReturnCommand(
-            module: null,
             action: ['type' => 'invoke', 'field' => 'f32.load', 'args' => []],
             expected: [['type' => 'f32', 'value' => '0']],
             line: 19,
@@ -77,7 +72,6 @@ final class FloatMemoryTest extends SpecTestsuiteBase
     public function testAction6(): void
     {
         $this->runActionCommand(
-            module: null,
             action: ['type' => 'invoke', 'field' => 'f32.store', 'args' => []],
             line: 20,
         );
@@ -87,7 +81,6 @@ final class FloatMemoryTest extends SpecTestsuiteBase
     public function testAssertReturn7(): void
     {
         $this->runAssertReturnCommand(
-            module: null,
             action: ['type' => 'invoke', 'field' => 'i32.load', 'args' => []],
             expected: [['type' => 'i32', 'value' => '2141192192']],
             line: 21,
@@ -98,7 +91,6 @@ final class FloatMemoryTest extends SpecTestsuiteBase
     public function testAssertReturn8(): void
     {
         $this->runAssertReturnCommand(
-            module: null,
             action: ['type' => 'invoke', 'field' => 'f32.load', 'args' => []],
             expected: [['type' => 'f32', 'value' => '2141192192']],
             line: 22,
@@ -109,7 +101,6 @@ final class FloatMemoryTest extends SpecTestsuiteBase
     public function testAction9(): void
     {
         $this->runActionCommand(
-            module: null,
             action: ['type' => 'invoke', 'field' => 'reset', 'args' => []],
             line: 23,
         );
@@ -119,7 +110,6 @@ final class FloatMemoryTest extends SpecTestsuiteBase
     public function testAssertReturn10(): void
     {
         $this->runAssertReturnCommand(
-            module: null,
             action: ['type' => 'invoke', 'field' => 'i32.load', 'args' => []],
             expected: [['type' => 'i32', 'value' => '0']],
             line: 24,
@@ -130,7 +120,6 @@ final class FloatMemoryTest extends SpecTestsuiteBase
     public function testAssertReturn11(): void
     {
         $this->runAssertReturnCommand(
-            module: null,
             action: ['type' => 'invoke', 'field' => 'f32.load', 'args' => []],
             expected: [['type' => 'f32', 'value' => '0']],
             line: 25,
@@ -141,7 +130,6 @@ final class FloatMemoryTest extends SpecTestsuiteBase
     public function testAction12(): void
     {
         $this->runActionCommand(
-            module: null,
             action: ['type' => 'invoke', 'field' => 'i32.store', 'args' => []],
             line: 26,
         );
@@ -151,7 +139,6 @@ final class FloatMemoryTest extends SpecTestsuiteBase
     public function testAssertReturn13(): void
     {
         $this->runAssertReturnCommand(
-            module: null,
             action: ['type' => 'invoke', 'field' => 'i32.load', 'args' => []],
             expected: [['type' => 'i32', 'value' => '2141192192']],
             line: 27,
@@ -162,7 +149,6 @@ final class FloatMemoryTest extends SpecTestsuiteBase
     public function testAssertReturn14(): void
     {
         $this->runAssertReturnCommand(
-            module: null,
             action: ['type' => 'invoke', 'field' => 'f32.load', 'args' => []],
             expected: [['type' => 'f32', 'value' => '2141192192']],
             line: 28,
@@ -183,7 +169,6 @@ final class FloatMemoryTest extends SpecTestsuiteBase
     public function testAssertReturn16(): void
     {
         $this->runAssertReturnCommand(
-            module: null,
             action: ['type' => 'invoke', 'field' => 'i64.load', 'args' => []],
             expected: [['type' => 'i64', 'value' => '9219994337134247936']],
             line: 40,
@@ -194,7 +179,6 @@ final class FloatMemoryTest extends SpecTestsuiteBase
     public function testAssertReturn17(): void
     {
         $this->runAssertReturnCommand(
-            module: null,
             action: ['type' => 'invoke', 'field' => 'f64.load', 'args' => []],
             expected: [['type' => 'f64', 'value' => '9219994337134247936']],
             line: 41,
@@ -205,7 +189,6 @@ final class FloatMemoryTest extends SpecTestsuiteBase
     public function testAction18(): void
     {
         $this->runActionCommand(
-            module: null,
             action: ['type' => 'invoke', 'field' => 'reset', 'args' => []],
             line: 42,
         );
@@ -215,7 +198,6 @@ final class FloatMemoryTest extends SpecTestsuiteBase
     public function testAssertReturn19(): void
     {
         $this->runAssertReturnCommand(
-            module: null,
             action: ['type' => 'invoke', 'field' => 'i64.load', 'args' => []],
             expected: [['type' => 'i64', 'value' => '0']],
             line: 43,
@@ -226,7 +208,6 @@ final class FloatMemoryTest extends SpecTestsuiteBase
     public function testAssertReturn20(): void
     {
         $this->runAssertReturnCommand(
-            module: null,
             action: ['type' => 'invoke', 'field' => 'f64.load', 'args' => []],
             expected: [['type' => 'f64', 'value' => '0']],
             line: 44,
@@ -237,7 +218,6 @@ final class FloatMemoryTest extends SpecTestsuiteBase
     public function testAction21(): void
     {
         $this->runActionCommand(
-            module: null,
             action: ['type' => 'invoke', 'field' => 'f64.store', 'args' => []],
             line: 45,
         );
@@ -247,7 +227,6 @@ final class FloatMemoryTest extends SpecTestsuiteBase
     public function testAssertReturn22(): void
     {
         $this->runAssertReturnCommand(
-            module: null,
             action: ['type' => 'invoke', 'field' => 'i64.load', 'args' => []],
             expected: [['type' => 'i64', 'value' => '9219994337134247936']],
             line: 46,
@@ -258,7 +237,6 @@ final class FloatMemoryTest extends SpecTestsuiteBase
     public function testAssertReturn23(): void
     {
         $this->runAssertReturnCommand(
-            module: null,
             action: ['type' => 'invoke', 'field' => 'f64.load', 'args' => []],
             expected: [['type' => 'f64', 'value' => '9219994337134247936']],
             line: 47,
@@ -269,7 +247,6 @@ final class FloatMemoryTest extends SpecTestsuiteBase
     public function testAction24(): void
     {
         $this->runActionCommand(
-            module: null,
             action: ['type' => 'invoke', 'field' => 'reset', 'args' => []],
             line: 48,
         );
@@ -279,7 +256,6 @@ final class FloatMemoryTest extends SpecTestsuiteBase
     public function testAssertReturn25(): void
     {
         $this->runAssertReturnCommand(
-            module: null,
             action: ['type' => 'invoke', 'field' => 'i64.load', 'args' => []],
             expected: [['type' => 'i64', 'value' => '0']],
             line: 49,
@@ -290,7 +266,6 @@ final class FloatMemoryTest extends SpecTestsuiteBase
     public function testAssertReturn26(): void
     {
         $this->runAssertReturnCommand(
-            module: null,
             action: ['type' => 'invoke', 'field' => 'f64.load', 'args' => []],
             expected: [['type' => 'f64', 'value' => '0']],
             line: 50,
@@ -301,7 +276,6 @@ final class FloatMemoryTest extends SpecTestsuiteBase
     public function testAction27(): void
     {
         $this->runActionCommand(
-            module: null,
             action: ['type' => 'invoke', 'field' => 'i64.store', 'args' => []],
             line: 51,
         );
@@ -311,7 +285,6 @@ final class FloatMemoryTest extends SpecTestsuiteBase
     public function testAssertReturn28(): void
     {
         $this->runAssertReturnCommand(
-            module: null,
             action: ['type' => 'invoke', 'field' => 'i64.load', 'args' => []],
             expected: [['type' => 'i64', 'value' => '9219994337134247936']],
             line: 52,
@@ -322,7 +295,6 @@ final class FloatMemoryTest extends SpecTestsuiteBase
     public function testAssertReturn29(): void
     {
         $this->runAssertReturnCommand(
-            module: null,
             action: ['type' => 'invoke', 'field' => 'f64.load', 'args' => []],
             expected: [['type' => 'f64', 'value' => '9219994337134247936']],
             line: 53,
@@ -343,7 +315,6 @@ final class FloatMemoryTest extends SpecTestsuiteBase
     public function testAssertReturn31(): void
     {
         $this->runAssertReturnCommand(
-            module: null,
             action: ['type' => 'invoke', 'field' => 'i32.load', 'args' => []],
             expected: [['type' => 'i32', 'value' => '2141192192']],
             line: 67,
@@ -354,7 +325,6 @@ final class FloatMemoryTest extends SpecTestsuiteBase
     public function testAssertReturn32(): void
     {
         $this->runAssertReturnCommand(
-            module: null,
             action: ['type' => 'invoke', 'field' => 'f32.load', 'args' => []],
             expected: [['type' => 'f32', 'value' => '2141192192']],
             line: 68,
@@ -365,7 +335,6 @@ final class FloatMemoryTest extends SpecTestsuiteBase
     public function testAction33(): void
     {
         $this->runActionCommand(
-            module: null,
             action: ['type' => 'invoke', 'field' => 'reset', 'args' => []],
             line: 69,
         );
@@ -375,7 +344,6 @@ final class FloatMemoryTest extends SpecTestsuiteBase
     public function testAssertReturn34(): void
     {
         $this->runAssertReturnCommand(
-            module: null,
             action: ['type' => 'invoke', 'field' => 'i32.load', 'args' => []],
             expected: [['type' => 'i32', 'value' => '0']],
             line: 70,
@@ -386,7 +354,6 @@ final class FloatMemoryTest extends SpecTestsuiteBase
     public function testAssertReturn35(): void
     {
         $this->runAssertReturnCommand(
-            module: null,
             action: ['type' => 'invoke', 'field' => 'f32.load', 'args' => []],
             expected: [['type' => 'f32', 'value' => '0']],
             line: 71,
@@ -397,7 +364,6 @@ final class FloatMemoryTest extends SpecTestsuiteBase
     public function testAction36(): void
     {
         $this->runActionCommand(
-            module: null,
             action: ['type' => 'invoke', 'field' => 'f32.store', 'args' => []],
             line: 72,
         );
@@ -407,7 +373,6 @@ final class FloatMemoryTest extends SpecTestsuiteBase
     public function testAssertReturn37(): void
     {
         $this->runAssertReturnCommand(
-            module: null,
             action: ['type' => 'invoke', 'field' => 'i32.load', 'args' => []],
             expected: [['type' => 'i32', 'value' => '2141192192']],
             line: 73,
@@ -418,7 +383,6 @@ final class FloatMemoryTest extends SpecTestsuiteBase
     public function testAssertReturn38(): void
     {
         $this->runAssertReturnCommand(
-            module: null,
             action: ['type' => 'invoke', 'field' => 'f32.load', 'args' => []],
             expected: [['type' => 'f32', 'value' => '2141192192']],
             line: 74,
@@ -429,7 +393,6 @@ final class FloatMemoryTest extends SpecTestsuiteBase
     public function testAction39(): void
     {
         $this->runActionCommand(
-            module: null,
             action: ['type' => 'invoke', 'field' => 'reset', 'args' => []],
             line: 75,
         );
@@ -439,7 +402,6 @@ final class FloatMemoryTest extends SpecTestsuiteBase
     public function testAssertReturn40(): void
     {
         $this->runAssertReturnCommand(
-            module: null,
             action: ['type' => 'invoke', 'field' => 'i32.load', 'args' => []],
             expected: [['type' => 'i32', 'value' => '0']],
             line: 76,
@@ -450,7 +412,6 @@ final class FloatMemoryTest extends SpecTestsuiteBase
     public function testAssertReturn41(): void
     {
         $this->runAssertReturnCommand(
-            module: null,
             action: ['type' => 'invoke', 'field' => 'f32.load', 'args' => []],
             expected: [['type' => 'f32', 'value' => '0']],
             line: 77,
@@ -461,7 +422,6 @@ final class FloatMemoryTest extends SpecTestsuiteBase
     public function testAction42(): void
     {
         $this->runActionCommand(
-            module: null,
             action: ['type' => 'invoke', 'field' => 'i32.store', 'args' => []],
             line: 78,
         );
@@ -471,7 +431,6 @@ final class FloatMemoryTest extends SpecTestsuiteBase
     public function testAssertReturn43(): void
     {
         $this->runAssertReturnCommand(
-            module: null,
             action: ['type' => 'invoke', 'field' => 'i32.load', 'args' => []],
             expected: [['type' => 'i32', 'value' => '2141192192']],
             line: 79,
@@ -482,7 +441,6 @@ final class FloatMemoryTest extends SpecTestsuiteBase
     public function testAssertReturn44(): void
     {
         $this->runAssertReturnCommand(
-            module: null,
             action: ['type' => 'invoke', 'field' => 'f32.load', 'args' => []],
             expected: [['type' => 'f32', 'value' => '2141192192']],
             line: 80,
@@ -503,7 +461,6 @@ final class FloatMemoryTest extends SpecTestsuiteBase
     public function testAssertReturn46(): void
     {
         $this->runAssertReturnCommand(
-            module: null,
             action: ['type' => 'invoke', 'field' => 'i64.load', 'args' => []],
             expected: [['type' => 'i64', 'value' => '9219994337134247936']],
             line: 92,
@@ -514,7 +471,6 @@ final class FloatMemoryTest extends SpecTestsuiteBase
     public function testAssertReturn47(): void
     {
         $this->runAssertReturnCommand(
-            module: null,
             action: ['type' => 'invoke', 'field' => 'f64.load', 'args' => []],
             expected: [['type' => 'f64', 'value' => '9219994337134247936']],
             line: 93,
@@ -525,7 +481,6 @@ final class FloatMemoryTest extends SpecTestsuiteBase
     public function testAction48(): void
     {
         $this->runActionCommand(
-            module: null,
             action: ['type' => 'invoke', 'field' => 'reset', 'args' => []],
             line: 94,
         );
@@ -535,7 +490,6 @@ final class FloatMemoryTest extends SpecTestsuiteBase
     public function testAssertReturn49(): void
     {
         $this->runAssertReturnCommand(
-            module: null,
             action: ['type' => 'invoke', 'field' => 'i64.load', 'args' => []],
             expected: [['type' => 'i64', 'value' => '0']],
             line: 95,
@@ -546,7 +500,6 @@ final class FloatMemoryTest extends SpecTestsuiteBase
     public function testAssertReturn50(): void
     {
         $this->runAssertReturnCommand(
-            module: null,
             action: ['type' => 'invoke', 'field' => 'f64.load', 'args' => []],
             expected: [['type' => 'f64', 'value' => '0']],
             line: 96,
@@ -557,7 +510,6 @@ final class FloatMemoryTest extends SpecTestsuiteBase
     public function testAction51(): void
     {
         $this->runActionCommand(
-            module: null,
             action: ['type' => 'invoke', 'field' => 'f64.store', 'args' => []],
             line: 97,
         );
@@ -567,7 +519,6 @@ final class FloatMemoryTest extends SpecTestsuiteBase
     public function testAssertReturn52(): void
     {
         $this->runAssertReturnCommand(
-            module: null,
             action: ['type' => 'invoke', 'field' => 'i64.load', 'args' => []],
             expected: [['type' => 'i64', 'value' => '9219994337134247936']],
             line: 98,
@@ -578,7 +529,6 @@ final class FloatMemoryTest extends SpecTestsuiteBase
     public function testAssertReturn53(): void
     {
         $this->runAssertReturnCommand(
-            module: null,
             action: ['type' => 'invoke', 'field' => 'f64.load', 'args' => []],
             expected: [['type' => 'f64', 'value' => '9219994337134247936']],
             line: 99,
@@ -589,7 +539,6 @@ final class FloatMemoryTest extends SpecTestsuiteBase
     public function testAction54(): void
     {
         $this->runActionCommand(
-            module: null,
             action: ['type' => 'invoke', 'field' => 'reset', 'args' => []],
             line: 100,
         );
@@ -599,7 +548,6 @@ final class FloatMemoryTest extends SpecTestsuiteBase
     public function testAssertReturn55(): void
     {
         $this->runAssertReturnCommand(
-            module: null,
             action: ['type' => 'invoke', 'field' => 'i64.load', 'args' => []],
             expected: [['type' => 'i64', 'value' => '0']],
             line: 101,
@@ -610,7 +558,6 @@ final class FloatMemoryTest extends SpecTestsuiteBase
     public function testAssertReturn56(): void
     {
         $this->runAssertReturnCommand(
-            module: null,
             action: ['type' => 'invoke', 'field' => 'f64.load', 'args' => []],
             expected: [['type' => 'f64', 'value' => '0']],
             line: 102,
@@ -621,7 +568,6 @@ final class FloatMemoryTest extends SpecTestsuiteBase
     public function testAction57(): void
     {
         $this->runActionCommand(
-            module: null,
             action: ['type' => 'invoke', 'field' => 'i64.store', 'args' => []],
             line: 103,
         );
@@ -631,7 +577,6 @@ final class FloatMemoryTest extends SpecTestsuiteBase
     public function testAssertReturn58(): void
     {
         $this->runAssertReturnCommand(
-            module: null,
             action: ['type' => 'invoke', 'field' => 'i64.load', 'args' => []],
             expected: [['type' => 'i64', 'value' => '9219994337134247936']],
             line: 104,
@@ -642,7 +587,6 @@ final class FloatMemoryTest extends SpecTestsuiteBase
     public function testAssertReturn59(): void
     {
         $this->runAssertReturnCommand(
-            module: null,
             action: ['type' => 'invoke', 'field' => 'f64.load', 'args' => []],
             expected: [['type' => 'f64', 'value' => '9219994337134247936']],
             line: 105,
@@ -663,7 +607,6 @@ final class FloatMemoryTest extends SpecTestsuiteBase
     public function testAssertReturn61(): void
     {
         $this->runAssertReturnCommand(
-            module: null,
             action: ['type' => 'invoke', 'field' => 'i32.load', 'args' => []],
             expected: [['type' => 'i32', 'value' => '2144337921']],
             line: 119,
@@ -674,7 +617,6 @@ final class FloatMemoryTest extends SpecTestsuiteBase
     public function testAssertReturn62(): void
     {
         $this->runAssertReturnCommand(
-            module: null,
             action: ['type' => 'invoke', 'field' => 'f32.load', 'args' => []],
             expected: [['type' => 'f32', 'value' => '2144337921']],
             line: 120,
@@ -685,7 +627,6 @@ final class FloatMemoryTest extends SpecTestsuiteBase
     public function testAction63(): void
     {
         $this->runActionCommand(
-            module: null,
             action: ['type' => 'invoke', 'field' => 'reset', 'args' => []],
             line: 121,
         );
@@ -695,7 +636,6 @@ final class FloatMemoryTest extends SpecTestsuiteBase
     public function testAssertReturn64(): void
     {
         $this->runAssertReturnCommand(
-            module: null,
             action: ['type' => 'invoke', 'field' => 'i32.load', 'args' => []],
             expected: [['type' => 'i32', 'value' => '0']],
             line: 122,
@@ -706,7 +646,6 @@ final class FloatMemoryTest extends SpecTestsuiteBase
     public function testAssertReturn65(): void
     {
         $this->runAssertReturnCommand(
-            module: null,
             action: ['type' => 'invoke', 'field' => 'f32.load', 'args' => []],
             expected: [['type' => 'f32', 'value' => '0']],
             line: 123,
@@ -717,7 +656,6 @@ final class FloatMemoryTest extends SpecTestsuiteBase
     public function testAction66(): void
     {
         $this->runActionCommand(
-            module: null,
             action: ['type' => 'invoke', 'field' => 'f32.store', 'args' => []],
             line: 124,
         );
@@ -727,7 +665,6 @@ final class FloatMemoryTest extends SpecTestsuiteBase
     public function testAssertReturn67(): void
     {
         $this->runAssertReturnCommand(
-            module: null,
             action: ['type' => 'invoke', 'field' => 'i32.load', 'args' => []],
             expected: [['type' => 'i32', 'value' => '2144337921']],
             line: 125,
@@ -738,7 +675,6 @@ final class FloatMemoryTest extends SpecTestsuiteBase
     public function testAssertReturn68(): void
     {
         $this->runAssertReturnCommand(
-            module: null,
             action: ['type' => 'invoke', 'field' => 'f32.load', 'args' => []],
             expected: [['type' => 'f32', 'value' => '2144337921']],
             line: 126,
@@ -749,7 +685,6 @@ final class FloatMemoryTest extends SpecTestsuiteBase
     public function testAction69(): void
     {
         $this->runActionCommand(
-            module: null,
             action: ['type' => 'invoke', 'field' => 'reset', 'args' => []],
             line: 127,
         );
@@ -759,7 +694,6 @@ final class FloatMemoryTest extends SpecTestsuiteBase
     public function testAssertReturn70(): void
     {
         $this->runAssertReturnCommand(
-            module: null,
             action: ['type' => 'invoke', 'field' => 'i32.load', 'args' => []],
             expected: [['type' => 'i32', 'value' => '0']],
             line: 128,
@@ -770,7 +704,6 @@ final class FloatMemoryTest extends SpecTestsuiteBase
     public function testAssertReturn71(): void
     {
         $this->runAssertReturnCommand(
-            module: null,
             action: ['type' => 'invoke', 'field' => 'f32.load', 'args' => []],
             expected: [['type' => 'f32', 'value' => '0']],
             line: 129,
@@ -781,7 +714,6 @@ final class FloatMemoryTest extends SpecTestsuiteBase
     public function testAction72(): void
     {
         $this->runActionCommand(
-            module: null,
             action: ['type' => 'invoke', 'field' => 'i32.store', 'args' => []],
             line: 130,
         );
@@ -791,7 +723,6 @@ final class FloatMemoryTest extends SpecTestsuiteBase
     public function testAssertReturn73(): void
     {
         $this->runAssertReturnCommand(
-            module: null,
             action: ['type' => 'invoke', 'field' => 'i32.load', 'args' => []],
             expected: [['type' => 'i32', 'value' => '2144337921']],
             line: 131,
@@ -802,7 +733,6 @@ final class FloatMemoryTest extends SpecTestsuiteBase
     public function testAssertReturn74(): void
     {
         $this->runAssertReturnCommand(
-            module: null,
             action: ['type' => 'invoke', 'field' => 'f32.load', 'args' => []],
             expected: [['type' => 'f32', 'value' => '2144337921']],
             line: 132,
@@ -823,7 +753,6 @@ final class FloatMemoryTest extends SpecTestsuiteBase
     public function testAssertReturn76(): void
     {
         $this->runAssertReturnCommand(
-            module: null,
             action: ['type' => 'invoke', 'field' => 'i64.load', 'args' => []],
             expected: [['type' => 'i64', 'value' => '9222246136947933185']],
             line: 144,
@@ -834,7 +763,6 @@ final class FloatMemoryTest extends SpecTestsuiteBase
     public function testAssertReturn77(): void
     {
         $this->runAssertReturnCommand(
-            module: null,
             action: ['type' => 'invoke', 'field' => 'f64.load', 'args' => []],
             expected: [['type' => 'f64', 'value' => '9222246136947933185']],
             line: 145,
@@ -845,7 +773,6 @@ final class FloatMemoryTest extends SpecTestsuiteBase
     public function testAction78(): void
     {
         $this->runActionCommand(
-            module: null,
             action: ['type' => 'invoke', 'field' => 'reset', 'args' => []],
             line: 146,
         );
@@ -855,7 +782,6 @@ final class FloatMemoryTest extends SpecTestsuiteBase
     public function testAssertReturn79(): void
     {
         $this->runAssertReturnCommand(
-            module: null,
             action: ['type' => 'invoke', 'field' => 'i64.load', 'args' => []],
             expected: [['type' => 'i64', 'value' => '0']],
             line: 147,
@@ -866,7 +792,6 @@ final class FloatMemoryTest extends SpecTestsuiteBase
     public function testAssertReturn80(): void
     {
         $this->runAssertReturnCommand(
-            module: null,
             action: ['type' => 'invoke', 'field' => 'f64.load', 'args' => []],
             expected: [['type' => 'f64', 'value' => '0']],
             line: 148,
@@ -877,7 +802,6 @@ final class FloatMemoryTest extends SpecTestsuiteBase
     public function testAction81(): void
     {
         $this->runActionCommand(
-            module: null,
             action: ['type' => 'invoke', 'field' => 'f64.store', 'args' => []],
             line: 149,
         );
@@ -887,7 +811,6 @@ final class FloatMemoryTest extends SpecTestsuiteBase
     public function testAssertReturn82(): void
     {
         $this->runAssertReturnCommand(
-            module: null,
             action: ['type' => 'invoke', 'field' => 'i64.load', 'args' => []],
             expected: [['type' => 'i64', 'value' => '9222246136947933185']],
             line: 150,
@@ -898,7 +821,6 @@ final class FloatMemoryTest extends SpecTestsuiteBase
     public function testAssertReturn83(): void
     {
         $this->runAssertReturnCommand(
-            module: null,
             action: ['type' => 'invoke', 'field' => 'f64.load', 'args' => []],
             expected: [['type' => 'f64', 'value' => '9222246136947933185']],
             line: 151,
@@ -909,7 +831,6 @@ final class FloatMemoryTest extends SpecTestsuiteBase
     public function testAction84(): void
     {
         $this->runActionCommand(
-            module: null,
             action: ['type' => 'invoke', 'field' => 'reset', 'args' => []],
             line: 152,
         );
@@ -919,7 +840,6 @@ final class FloatMemoryTest extends SpecTestsuiteBase
     public function testAssertReturn85(): void
     {
         $this->runAssertReturnCommand(
-            module: null,
             action: ['type' => 'invoke', 'field' => 'i64.load', 'args' => []],
             expected: [['type' => 'i64', 'value' => '0']],
             line: 153,
@@ -930,7 +850,6 @@ final class FloatMemoryTest extends SpecTestsuiteBase
     public function testAssertReturn86(): void
     {
         $this->runAssertReturnCommand(
-            module: null,
             action: ['type' => 'invoke', 'field' => 'f64.load', 'args' => []],
             expected: [['type' => 'f64', 'value' => '0']],
             line: 154,
@@ -941,7 +860,6 @@ final class FloatMemoryTest extends SpecTestsuiteBase
     public function testAction87(): void
     {
         $this->runActionCommand(
-            module: null,
             action: ['type' => 'invoke', 'field' => 'i64.store', 'args' => []],
             line: 155,
         );
@@ -951,7 +869,6 @@ final class FloatMemoryTest extends SpecTestsuiteBase
     public function testAssertReturn88(): void
     {
         $this->runAssertReturnCommand(
-            module: null,
             action: ['type' => 'invoke', 'field' => 'i64.load', 'args' => []],
             expected: [['type' => 'i64', 'value' => '9222246136947933185']],
             line: 156,
@@ -962,7 +879,6 @@ final class FloatMemoryTest extends SpecTestsuiteBase
     public function testAssertReturn89(): void
     {
         $this->runAssertReturnCommand(
-            module: null,
             action: ['type' => 'invoke', 'field' => 'f64.load', 'args' => []],
             expected: [['type' => 'f64', 'value' => '9222246136947933185']],
             line: 157,

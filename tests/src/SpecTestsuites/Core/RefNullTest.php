@@ -23,7 +23,6 @@ final class RefNullTest extends SpecTestsuiteBase
     public function testAssertReturn1(): void
     {
         $this->runAssertReturnCommand(
-            module: null,
             action: ['type' => 'invoke', 'field' => 'externref', 'args' => []],
             expected: [['type' => 'externref', 'value' => 'null']],
             line: 9,
@@ -34,7 +33,6 @@ final class RefNullTest extends SpecTestsuiteBase
     public function testAssertReturn2(): void
     {
         $this->runAssertReturnCommand(
-            module: null,
             action: ['type' => 'invoke', 'field' => 'funcref', 'args' => []],
             expected: [['type' => 'funcref', 'value' => 'null']],
             line: 10,

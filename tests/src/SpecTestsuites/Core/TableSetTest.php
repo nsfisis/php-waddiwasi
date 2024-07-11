@@ -23,7 +23,6 @@ final class TableSetTest extends SpecTestsuiteBase
     public function testAssertReturn1(): void
     {
         $this->runAssertReturnCommand(
-            module: null,
             action: ['type' => 'invoke', 'field' => 'get-externref', 'args' => [['type' => 'i32', 'value' => '0']]],
             expected: [['type' => 'externref', 'value' => 'null']],
             line: 29,
@@ -34,7 +33,6 @@ final class TableSetTest extends SpecTestsuiteBase
     public function testAssertReturn2(): void
     {
         $this->runAssertReturnCommand(
-            module: null,
             action: ['type' => 'invoke', 'field' => 'set-externref', 'args' => [['type' => 'i32', 'value' => '0'], ['type' => 'externref', 'value' => '1']]],
             expected: [],
             line: 30,
@@ -45,7 +43,6 @@ final class TableSetTest extends SpecTestsuiteBase
     public function testAssertReturn3(): void
     {
         $this->runAssertReturnCommand(
-            module: null,
             action: ['type' => 'invoke', 'field' => 'get-externref', 'args' => [['type' => 'i32', 'value' => '0']]],
             expected: [['type' => 'externref', 'value' => '1']],
             line: 31,
@@ -56,7 +53,6 @@ final class TableSetTest extends SpecTestsuiteBase
     public function testAssertReturn4(): void
     {
         $this->runAssertReturnCommand(
-            module: null,
             action: ['type' => 'invoke', 'field' => 'set-externref', 'args' => [['type' => 'i32', 'value' => '0'], ['type' => 'externref', 'value' => 'null']]],
             expected: [],
             line: 32,
@@ -67,7 +63,6 @@ final class TableSetTest extends SpecTestsuiteBase
     public function testAssertReturn5(): void
     {
         $this->runAssertReturnCommand(
-            module: null,
             action: ['type' => 'invoke', 'field' => 'get-externref', 'args' => [['type' => 'i32', 'value' => '0']]],
             expected: [['type' => 'externref', 'value' => 'null']],
             line: 33,
@@ -78,7 +73,6 @@ final class TableSetTest extends SpecTestsuiteBase
     public function testAssertReturn6(): void
     {
         $this->runAssertReturnCommand(
-            module: null,
             action: ['type' => 'invoke', 'field' => 'get-funcref', 'args' => [['type' => 'i32', 'value' => '0']]],
             expected: [['type' => 'funcref', 'value' => 'null']],
             line: 35,
@@ -89,7 +83,6 @@ final class TableSetTest extends SpecTestsuiteBase
     public function testAssertReturn7(): void
     {
         $this->runAssertReturnCommand(
-            module: null,
             action: ['type' => 'invoke', 'field' => 'set-funcref-from', 'args' => [['type' => 'i32', 'value' => '0'], ['type' => 'i32', 'value' => '1']]],
             expected: [],
             line: 36,
@@ -100,7 +93,6 @@ final class TableSetTest extends SpecTestsuiteBase
     public function testAssertReturn8(): void
     {
         $this->runAssertReturnCommand(
-            module: null,
             action: ['type' => 'invoke', 'field' => 'is_null-funcref', 'args' => [['type' => 'i32', 'value' => '0']]],
             expected: [['type' => 'i32', 'value' => '0']],
             line: 37,
@@ -111,7 +103,6 @@ final class TableSetTest extends SpecTestsuiteBase
     public function testAssertReturn9(): void
     {
         $this->runAssertReturnCommand(
-            module: null,
             action: ['type' => 'invoke', 'field' => 'set-funcref', 'args' => [['type' => 'i32', 'value' => '0'], ['type' => 'funcref', 'value' => 'null']]],
             expected: [],
             line: 38,
@@ -122,7 +113,6 @@ final class TableSetTest extends SpecTestsuiteBase
     public function testAssertReturn10(): void
     {
         $this->runAssertReturnCommand(
-            module: null,
             action: ['type' => 'invoke', 'field' => 'get-funcref', 'args' => [['type' => 'i32', 'value' => '0']]],
             expected: [['type' => 'funcref', 'value' => 'null']],
             line: 39,
@@ -133,7 +123,6 @@ final class TableSetTest extends SpecTestsuiteBase
     public function testAssertTrap11(): void
     {
         $this->runAssertTrapCommand(
-            module: null,
             action: ['type' => 'invoke', 'field' => 'set-externref', 'args' => [['type' => 'i32', 'value' => '2'], ['type' => 'externref', 'value' => 'null']]],
             text: 'out of bounds table access',
             line: 41,
@@ -144,7 +133,6 @@ final class TableSetTest extends SpecTestsuiteBase
     public function testAssertTrap12(): void
     {
         $this->runAssertTrapCommand(
-            module: null,
             action: ['type' => 'invoke', 'field' => 'set-funcref', 'args' => [['type' => 'i32', 'value' => '3'], ['type' => 'funcref', 'value' => 'null']]],
             text: 'out of bounds table access',
             line: 42,
@@ -155,7 +143,6 @@ final class TableSetTest extends SpecTestsuiteBase
     public function testAssertTrap13(): void
     {
         $this->runAssertTrapCommand(
-            module: null,
             action: ['type' => 'invoke', 'field' => 'set-externref', 'args' => [['type' => 'i32', 'value' => '4294967295'], ['type' => 'externref', 'value' => 'null']]],
             text: 'out of bounds table access',
             line: 43,
@@ -166,7 +153,6 @@ final class TableSetTest extends SpecTestsuiteBase
     public function testAssertTrap14(): void
     {
         $this->runAssertTrapCommand(
-            module: null,
             action: ['type' => 'invoke', 'field' => 'set-funcref', 'args' => [['type' => 'i32', 'value' => '4294967295'], ['type' => 'funcref', 'value' => 'null']]],
             text: 'out of bounds table access',
             line: 44,
@@ -177,7 +163,6 @@ final class TableSetTest extends SpecTestsuiteBase
     public function testAssertTrap15(): void
     {
         $this->runAssertTrapCommand(
-            module: null,
             action: ['type' => 'invoke', 'field' => 'set-externref', 'args' => [['type' => 'i32', 'value' => '2'], ['type' => 'externref', 'value' => '0']]],
             text: 'out of bounds table access',
             line: 46,
@@ -188,7 +173,6 @@ final class TableSetTest extends SpecTestsuiteBase
     public function testAssertTrap16(): void
     {
         $this->runAssertTrapCommand(
-            module: null,
             action: ['type' => 'invoke', 'field' => 'set-funcref-from', 'args' => [['type' => 'i32', 'value' => '3'], ['type' => 'i32', 'value' => '1']]],
             text: 'out of bounds table access',
             line: 47,
@@ -199,7 +183,6 @@ final class TableSetTest extends SpecTestsuiteBase
     public function testAssertTrap17(): void
     {
         $this->runAssertTrapCommand(
-            module: null,
             action: ['type' => 'invoke', 'field' => 'set-externref', 'args' => [['type' => 'i32', 'value' => '4294967295'], ['type' => 'externref', 'value' => '0']]],
             text: 'out of bounds table access',
             line: 48,
@@ -210,7 +193,6 @@ final class TableSetTest extends SpecTestsuiteBase
     public function testAssertTrap18(): void
     {
         $this->runAssertTrapCommand(
-            module: null,
             action: ['type' => 'invoke', 'field' => 'set-funcref-from', 'args' => [['type' => 'i32', 'value' => '4294967295'], ['type' => 'i32', 'value' => '1']]],
             text: 'out of bounds table access',
             line: 49,

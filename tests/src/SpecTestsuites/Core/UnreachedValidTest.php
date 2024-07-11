@@ -23,7 +23,6 @@ final class UnreachedValidTest extends SpecTestsuiteBase
     public function testAssertTrap1(): void
     {
         $this->runAssertTrapCommand(
-            module: null,
             action: ['type' => 'invoke', 'field' => 'select-trap-left', 'args' => [['type' => 'i32', 'value' => '1']]],
             text: 'unreachable',
             line: 42,
@@ -34,7 +33,6 @@ final class UnreachedValidTest extends SpecTestsuiteBase
     public function testAssertTrap2(): void
     {
         $this->runAssertTrapCommand(
-            module: null,
             action: ['type' => 'invoke', 'field' => 'select-trap-left', 'args' => [['type' => 'i32', 'value' => '0']]],
             text: 'unreachable',
             line: 43,
@@ -45,7 +43,6 @@ final class UnreachedValidTest extends SpecTestsuiteBase
     public function testAssertTrap3(): void
     {
         $this->runAssertTrapCommand(
-            module: null,
             action: ['type' => 'invoke', 'field' => 'select-trap-right', 'args' => [['type' => 'i32', 'value' => '1']]],
             text: 'unreachable',
             line: 44,
@@ -56,7 +53,6 @@ final class UnreachedValidTest extends SpecTestsuiteBase
     public function testAssertTrap4(): void
     {
         $this->runAssertTrapCommand(
-            module: null,
             action: ['type' => 'invoke', 'field' => 'select-trap-right', 'args' => [['type' => 'i32', 'value' => '0']]],
             text: 'unreachable',
             line: 45,
@@ -77,7 +73,6 @@ final class UnreachedValidTest extends SpecTestsuiteBase
     public function testAssertTrap6(): void
     {
         $this->runAssertTrapCommand(
-            module: null,
             action: ['type' => 'invoke', 'field' => 'meet-bottom', 'args' => []],
             text: 'unreachable',
             line: 63,

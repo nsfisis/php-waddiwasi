@@ -23,7 +23,6 @@ final class F64BitwiseTest extends SpecTestsuiteBase
     public function testAssertReturn1(): void
     {
         $this->runAssertReturnCommand(
-            module: null,
             action: ['type' => 'invoke', 'field' => 'copysign', 'args' => [['type' => 'f64', 'value' => '9223372036854775808'], ['type' => 'f64', 'value' => '9223372036854775808']]],
             expected: [['type' => 'f64', 'value' => '9223372036854775808']],
             line: 10,
@@ -34,7 +33,6 @@ final class F64BitwiseTest extends SpecTestsuiteBase
     public function testAssertReturn2(): void
     {
         $this->runAssertReturnCommand(
-            module: null,
             action: ['type' => 'invoke', 'field' => 'copysign', 'args' => [['type' => 'f64', 'value' => '9223372036854775808'], ['type' => 'f64', 'value' => '0']]],
             expected: [['type' => 'f64', 'value' => '0']],
             line: 11,
@@ -45,7 +43,6 @@ final class F64BitwiseTest extends SpecTestsuiteBase
     public function testAssertReturn3(): void
     {
         $this->runAssertReturnCommand(
-            module: null,
             action: ['type' => 'invoke', 'field' => 'copysign', 'args' => [['type' => 'f64', 'value' => '0'], ['type' => 'f64', 'value' => '9223372036854775808']]],
             expected: [['type' => 'f64', 'value' => '9223372036854775808']],
             line: 12,
@@ -56,7 +53,6 @@ final class F64BitwiseTest extends SpecTestsuiteBase
     public function testAssertReturn4(): void
     {
         $this->runAssertReturnCommand(
-            module: null,
             action: ['type' => 'invoke', 'field' => 'copysign', 'args' => [['type' => 'f64', 'value' => '0'], ['type' => 'f64', 'value' => '0']]],
             expected: [['type' => 'f64', 'value' => '0']],
             line: 13,
@@ -67,7 +63,6 @@ final class F64BitwiseTest extends SpecTestsuiteBase
     public function testAssertReturn5(): void
     {
         $this->runAssertReturnCommand(
-            module: null,
             action: ['type' => 'invoke', 'field' => 'copysign', 'args' => [['type' => 'f64', 'value' => '9223372036854775808'], ['type' => 'f64', 'value' => '9223372036854775809']]],
             expected: [['type' => 'f64', 'value' => '9223372036854775808']],
             line: 14,
@@ -78,7 +73,6 @@ final class F64BitwiseTest extends SpecTestsuiteBase
     public function testAssertReturn6(): void
     {
         $this->runAssertReturnCommand(
-            module: null,
             action: ['type' => 'invoke', 'field' => 'copysign', 'args' => [['type' => 'f64', 'value' => '9223372036854775808'], ['type' => 'f64', 'value' => '1']]],
             expected: [['type' => 'f64', 'value' => '0']],
             line: 15,
@@ -89,7 +83,6 @@ final class F64BitwiseTest extends SpecTestsuiteBase
     public function testAssertReturn7(): void
     {
         $this->runAssertReturnCommand(
-            module: null,
             action: ['type' => 'invoke', 'field' => 'copysign', 'args' => [['type' => 'f64', 'value' => '0'], ['type' => 'f64', 'value' => '9223372036854775809']]],
             expected: [['type' => 'f64', 'value' => '9223372036854775808']],
             line: 16,
@@ -100,7 +93,6 @@ final class F64BitwiseTest extends SpecTestsuiteBase
     public function testAssertReturn8(): void
     {
         $this->runAssertReturnCommand(
-            module: null,
             action: ['type' => 'invoke', 'field' => 'copysign', 'args' => [['type' => 'f64', 'value' => '0'], ['type' => 'f64', 'value' => '1']]],
             expected: [['type' => 'f64', 'value' => '0']],
             line: 17,
@@ -111,7 +103,6 @@ final class F64BitwiseTest extends SpecTestsuiteBase
     public function testAssertReturn9(): void
     {
         $this->runAssertReturnCommand(
-            module: null,
             action: ['type' => 'invoke', 'field' => 'copysign', 'args' => [['type' => 'f64', 'value' => '9223372036854775808'], ['type' => 'f64', 'value' => '9227875636482146304']]],
             expected: [['type' => 'f64', 'value' => '9223372036854775808']],
             line: 18,
@@ -122,7 +113,6 @@ final class F64BitwiseTest extends SpecTestsuiteBase
     public function testAssertReturn10(): void
     {
         $this->runAssertReturnCommand(
-            module: null,
             action: ['type' => 'invoke', 'field' => 'copysign', 'args' => [['type' => 'f64', 'value' => '9223372036854775808'], ['type' => 'f64', 'value' => '4503599627370496']]],
             expected: [['type' => 'f64', 'value' => '0']],
             line: 19,
@@ -133,7 +123,6 @@ final class F64BitwiseTest extends SpecTestsuiteBase
     public function testAssertReturn11(): void
     {
         $this->runAssertReturnCommand(
-            module: null,
             action: ['type' => 'invoke', 'field' => 'copysign', 'args' => [['type' => 'f64', 'value' => '0'], ['type' => 'f64', 'value' => '9227875636482146304']]],
             expected: [['type' => 'f64', 'value' => '9223372036854775808']],
             line: 20,
@@ -144,7 +133,6 @@ final class F64BitwiseTest extends SpecTestsuiteBase
     public function testAssertReturn12(): void
     {
         $this->runAssertReturnCommand(
-            module: null,
             action: ['type' => 'invoke', 'field' => 'copysign', 'args' => [['type' => 'f64', 'value' => '0'], ['type' => 'f64', 'value' => '4503599627370496']]],
             expected: [['type' => 'f64', 'value' => '0']],
             line: 21,
@@ -155,7 +143,6 @@ final class F64BitwiseTest extends SpecTestsuiteBase
     public function testAssertReturn13(): void
     {
         $this->runAssertReturnCommand(
-            module: null,
             action: ['type' => 'invoke', 'field' => 'copysign', 'args' => [['type' => 'f64', 'value' => '9223372036854775808'], ['type' => 'f64', 'value' => '13826050856027422720']]],
             expected: [['type' => 'f64', 'value' => '9223372036854775808']],
             line: 22,
@@ -166,7 +153,6 @@ final class F64BitwiseTest extends SpecTestsuiteBase
     public function testAssertReturn14(): void
     {
         $this->runAssertReturnCommand(
-            module: null,
             action: ['type' => 'invoke', 'field' => 'copysign', 'args' => [['type' => 'f64', 'value' => '9223372036854775808'], ['type' => 'f64', 'value' => '4602678819172646912']]],
             expected: [['type' => 'f64', 'value' => '0']],
             line: 23,
@@ -177,7 +163,6 @@ final class F64BitwiseTest extends SpecTestsuiteBase
     public function testAssertReturn15(): void
     {
         $this->runAssertReturnCommand(
-            module: null,
             action: ['type' => 'invoke', 'field' => 'copysign', 'args' => [['type' => 'f64', 'value' => '0'], ['type' => 'f64', 'value' => '13826050856027422720']]],
             expected: [['type' => 'f64', 'value' => '9223372036854775808']],
             line: 24,
@@ -188,7 +173,6 @@ final class F64BitwiseTest extends SpecTestsuiteBase
     public function testAssertReturn16(): void
     {
         $this->runAssertReturnCommand(
-            module: null,
             action: ['type' => 'invoke', 'field' => 'copysign', 'args' => [['type' => 'f64', 'value' => '0'], ['type' => 'f64', 'value' => '4602678819172646912']]],
             expected: [['type' => 'f64', 'value' => '0']],
             line: 25,
@@ -199,7 +183,6 @@ final class F64BitwiseTest extends SpecTestsuiteBase
     public function testAssertReturn17(): void
     {
         $this->runAssertReturnCommand(
-            module: null,
             action: ['type' => 'invoke', 'field' => 'copysign', 'args' => [['type' => 'f64', 'value' => '9223372036854775808'], ['type' => 'f64', 'value' => '13830554455654793216']]],
             expected: [['type' => 'f64', 'value' => '9223372036854775808']],
             line: 26,
@@ -210,7 +193,6 @@ final class F64BitwiseTest extends SpecTestsuiteBase
     public function testAssertReturn18(): void
     {
         $this->runAssertReturnCommand(
-            module: null,
             action: ['type' => 'invoke', 'field' => 'copysign', 'args' => [['type' => 'f64', 'value' => '9223372036854775808'], ['type' => 'f64', 'value' => '4607182418800017408']]],
             expected: [['type' => 'f64', 'value' => '0']],
             line: 27,
@@ -221,7 +203,6 @@ final class F64BitwiseTest extends SpecTestsuiteBase
     public function testAssertReturn19(): void
     {
         $this->runAssertReturnCommand(
-            module: null,
             action: ['type' => 'invoke', 'field' => 'copysign', 'args' => [['type' => 'f64', 'value' => '0'], ['type' => 'f64', 'value' => '13830554455654793216']]],
             expected: [['type' => 'f64', 'value' => '9223372036854775808']],
             line: 28,
@@ -232,7 +213,6 @@ final class F64BitwiseTest extends SpecTestsuiteBase
     public function testAssertReturn20(): void
     {
         $this->runAssertReturnCommand(
-            module: null,
             action: ['type' => 'invoke', 'field' => 'copysign', 'args' => [['type' => 'f64', 'value' => '0'], ['type' => 'f64', 'value' => '4607182418800017408']]],
             expected: [['type' => 'f64', 'value' => '0']],
             line: 29,
@@ -243,7 +223,6 @@ final class F64BitwiseTest extends SpecTestsuiteBase
     public function testAssertReturn21(): void
     {
         $this->runAssertReturnCommand(
-            module: null,
             action: ['type' => 'invoke', 'field' => 'copysign', 'args' => [['type' => 'f64', 'value' => '9223372036854775808'], ['type' => 'f64', 'value' => '13842132293034192152']]],
             expected: [['type' => 'f64', 'value' => '9223372036854775808']],
             line: 30,
@@ -254,7 +233,6 @@ final class F64BitwiseTest extends SpecTestsuiteBase
     public function testAssertReturn22(): void
     {
         $this->runAssertReturnCommand(
-            module: null,
             action: ['type' => 'invoke', 'field' => 'copysign', 'args' => [['type' => 'f64', 'value' => '9223372036854775808'], ['type' => 'f64', 'value' => '4618760256179416344']]],
             expected: [['type' => 'f64', 'value' => '0']],
             line: 31,
@@ -265,7 +243,6 @@ final class F64BitwiseTest extends SpecTestsuiteBase
     public function testAssertReturn23(): void
     {
         $this->runAssertReturnCommand(
-            module: null,
             action: ['type' => 'invoke', 'field' => 'copysign', 'args' => [['type' => 'f64', 'value' => '0'], ['type' => 'f64', 'value' => '13842132293034192152']]],
             expected: [['type' => 'f64', 'value' => '9223372036854775808']],
             line: 32,
@@ -276,7 +253,6 @@ final class F64BitwiseTest extends SpecTestsuiteBase
     public function testAssertReturn24(): void
     {
         $this->runAssertReturnCommand(
-            module: null,
             action: ['type' => 'invoke', 'field' => 'copysign', 'args' => [['type' => 'f64', 'value' => '0'], ['type' => 'f64', 'value' => '4618760256179416344']]],
             expected: [['type' => 'f64', 'value' => '0']],
             line: 33,
@@ -287,7 +263,6 @@ final class F64BitwiseTest extends SpecTestsuiteBase
     public function testAssertReturn25(): void
     {
         $this->runAssertReturnCommand(
-            module: null,
             action: ['type' => 'invoke', 'field' => 'copysign', 'args' => [['type' => 'f64', 'value' => '9223372036854775808'], ['type' => 'f64', 'value' => '18442240474082181119']]],
             expected: [['type' => 'f64', 'value' => '9223372036854775808']],
             line: 34,
@@ -298,7 +273,6 @@ final class F64BitwiseTest extends SpecTestsuiteBase
     public function testAssertReturn26(): void
     {
         $this->runAssertReturnCommand(
-            module: null,
             action: ['type' => 'invoke', 'field' => 'copysign', 'args' => [['type' => 'f64', 'value' => '9223372036854775808'], ['type' => 'f64', 'value' => '9218868437227405311']]],
             expected: [['type' => 'f64', 'value' => '0']],
             line: 35,
@@ -309,7 +283,6 @@ final class F64BitwiseTest extends SpecTestsuiteBase
     public function testAssertReturn27(): void
     {
         $this->runAssertReturnCommand(
-            module: null,
             action: ['type' => 'invoke', 'field' => 'copysign', 'args' => [['type' => 'f64', 'value' => '0'], ['type' => 'f64', 'value' => '18442240474082181119']]],
             expected: [['type' => 'f64', 'value' => '9223372036854775808']],
             line: 36,
@@ -320,7 +293,6 @@ final class F64BitwiseTest extends SpecTestsuiteBase
     public function testAssertReturn28(): void
     {
         $this->runAssertReturnCommand(
-            module: null,
             action: ['type' => 'invoke', 'field' => 'copysign', 'args' => [['type' => 'f64', 'value' => '0'], ['type' => 'f64', 'value' => '9218868437227405311']]],
             expected: [['type' => 'f64', 'value' => '0']],
             line: 37,
@@ -331,7 +303,6 @@ final class F64BitwiseTest extends SpecTestsuiteBase
     public function testAssertReturn29(): void
     {
         $this->runAssertReturnCommand(
-            module: null,
             action: ['type' => 'invoke', 'field' => 'copysign', 'args' => [['type' => 'f64', 'value' => '9223372036854775808'], ['type' => 'f64', 'value' => '18442240474082181120']]],
             expected: [['type' => 'f64', 'value' => '9223372036854775808']],
             line: 38,
@@ -342,7 +313,6 @@ final class F64BitwiseTest extends SpecTestsuiteBase
     public function testAssertReturn30(): void
     {
         $this->runAssertReturnCommand(
-            module: null,
             action: ['type' => 'invoke', 'field' => 'copysign', 'args' => [['type' => 'f64', 'value' => '9223372036854775808'], ['type' => 'f64', 'value' => '9218868437227405312']]],
             expected: [['type' => 'f64', 'value' => '0']],
             line: 39,
@@ -353,7 +323,6 @@ final class F64BitwiseTest extends SpecTestsuiteBase
     public function testAssertReturn31(): void
     {
         $this->runAssertReturnCommand(
-            module: null,
             action: ['type' => 'invoke', 'field' => 'copysign', 'args' => [['type' => 'f64', 'value' => '0'], ['type' => 'f64', 'value' => '18442240474082181120']]],
             expected: [['type' => 'f64', 'value' => '9223372036854775808']],
             line: 40,
@@ -364,7 +333,6 @@ final class F64BitwiseTest extends SpecTestsuiteBase
     public function testAssertReturn32(): void
     {
         $this->runAssertReturnCommand(
-            module: null,
             action: ['type' => 'invoke', 'field' => 'copysign', 'args' => [['type' => 'f64', 'value' => '0'], ['type' => 'f64', 'value' => '9218868437227405312']]],
             expected: [['type' => 'f64', 'value' => '0']],
             line: 41,
@@ -375,7 +343,6 @@ final class F64BitwiseTest extends SpecTestsuiteBase
     public function testAssertReturn33(): void
     {
         $this->runAssertReturnCommand(
-            module: null,
             action: ['type' => 'invoke', 'field' => 'copysign', 'args' => [['type' => 'f64', 'value' => '9223372036854775808'], ['type' => 'f64', 'value' => '18444492273895866368']]],
             expected: [['type' => 'f64', 'value' => '9223372036854775808']],
             line: 42,
@@ -386,7 +353,6 @@ final class F64BitwiseTest extends SpecTestsuiteBase
     public function testAssertReturn34(): void
     {
         $this->runAssertReturnCommand(
-            module: null,
             action: ['type' => 'invoke', 'field' => 'copysign', 'args' => [['type' => 'f64', 'value' => '9223372036854775808'], ['type' => 'f64', 'value' => '9221120237041090560']]],
             expected: [['type' => 'f64', 'value' => '0']],
             line: 43,
@@ -397,7 +363,6 @@ final class F64BitwiseTest extends SpecTestsuiteBase
     public function testAssertReturn35(): void
     {
         $this->runAssertReturnCommand(
-            module: null,
             action: ['type' => 'invoke', 'field' => 'copysign', 'args' => [['type' => 'f64', 'value' => '0'], ['type' => 'f64', 'value' => '18444492273895866368']]],
             expected: [['type' => 'f64', 'value' => '9223372036854775808']],
             line: 44,
@@ -408,7 +373,6 @@ final class F64BitwiseTest extends SpecTestsuiteBase
     public function testAssertReturn36(): void
     {
         $this->runAssertReturnCommand(
-            module: null,
             action: ['type' => 'invoke', 'field' => 'copysign', 'args' => [['type' => 'f64', 'value' => '0'], ['type' => 'f64', 'value' => '9221120237041090560']]],
             expected: [['type' => 'f64', 'value' => '0']],
             line: 45,
@@ -419,7 +383,6 @@ final class F64BitwiseTest extends SpecTestsuiteBase
     public function testAssertReturn37(): void
     {
         $this->runAssertReturnCommand(
-            module: null,
             action: ['type' => 'invoke', 'field' => 'copysign', 'args' => [['type' => 'f64', 'value' => '9223372036854775809'], ['type' => 'f64', 'value' => '9223372036854775808']]],
             expected: [['type' => 'f64', 'value' => '9223372036854775809']],
             line: 46,
@@ -430,7 +393,6 @@ final class F64BitwiseTest extends SpecTestsuiteBase
     public function testAssertReturn38(): void
     {
         $this->runAssertReturnCommand(
-            module: null,
             action: ['type' => 'invoke', 'field' => 'copysign', 'args' => [['type' => 'f64', 'value' => '9223372036854775809'], ['type' => 'f64', 'value' => '0']]],
             expected: [['type' => 'f64', 'value' => '1']],
             line: 47,
@@ -441,7 +403,6 @@ final class F64BitwiseTest extends SpecTestsuiteBase
     public function testAssertReturn39(): void
     {
         $this->runAssertReturnCommand(
-            module: null,
             action: ['type' => 'invoke', 'field' => 'copysign', 'args' => [['type' => 'f64', 'value' => '1'], ['type' => 'f64', 'value' => '9223372036854775808']]],
             expected: [['type' => 'f64', 'value' => '9223372036854775809']],
             line: 48,
@@ -452,7 +413,6 @@ final class F64BitwiseTest extends SpecTestsuiteBase
     public function testAssertReturn40(): void
     {
         $this->runAssertReturnCommand(
-            module: null,
             action: ['type' => 'invoke', 'field' => 'copysign', 'args' => [['type' => 'f64', 'value' => '1'], ['type' => 'f64', 'value' => '0']]],
             expected: [['type' => 'f64', 'value' => '1']],
             line: 49,
@@ -463,7 +423,6 @@ final class F64BitwiseTest extends SpecTestsuiteBase
     public function testAssertReturn41(): void
     {
         $this->runAssertReturnCommand(
-            module: null,
             action: ['type' => 'invoke', 'field' => 'copysign', 'args' => [['type' => 'f64', 'value' => '9223372036854775809'], ['type' => 'f64', 'value' => '9223372036854775809']]],
             expected: [['type' => 'f64', 'value' => '9223372036854775809']],
             line: 50,
@@ -474,7 +433,6 @@ final class F64BitwiseTest extends SpecTestsuiteBase
     public function testAssertReturn42(): void
     {
         $this->runAssertReturnCommand(
-            module: null,
             action: ['type' => 'invoke', 'field' => 'copysign', 'args' => [['type' => 'f64', 'value' => '9223372036854775809'], ['type' => 'f64', 'value' => '1']]],
             expected: [['type' => 'f64', 'value' => '1']],
             line: 51,
@@ -485,7 +443,6 @@ final class F64BitwiseTest extends SpecTestsuiteBase
     public function testAssertReturn43(): void
     {
         $this->runAssertReturnCommand(
-            module: null,
             action: ['type' => 'invoke', 'field' => 'copysign', 'args' => [['type' => 'f64', 'value' => '1'], ['type' => 'f64', 'value' => '9223372036854775809']]],
             expected: [['type' => 'f64', 'value' => '9223372036854775809']],
             line: 52,
@@ -496,7 +453,6 @@ final class F64BitwiseTest extends SpecTestsuiteBase
     public function testAssertReturn44(): void
     {
         $this->runAssertReturnCommand(
-            module: null,
             action: ['type' => 'invoke', 'field' => 'copysign', 'args' => [['type' => 'f64', 'value' => '1'], ['type' => 'f64', 'value' => '1']]],
             expected: [['type' => 'f64', 'value' => '1']],
             line: 53,
@@ -507,7 +463,6 @@ final class F64BitwiseTest extends SpecTestsuiteBase
     public function testAssertReturn45(): void
     {
         $this->runAssertReturnCommand(
-            module: null,
             action: ['type' => 'invoke', 'field' => 'copysign', 'args' => [['type' => 'f64', 'value' => '9223372036854775809'], ['type' => 'f64', 'value' => '9227875636482146304']]],
             expected: [['type' => 'f64', 'value' => '9223372036854775809']],
             line: 54,
@@ -518,7 +473,6 @@ final class F64BitwiseTest extends SpecTestsuiteBase
     public function testAssertReturn46(): void
     {
         $this->runAssertReturnCommand(
-            module: null,
             action: ['type' => 'invoke', 'field' => 'copysign', 'args' => [['type' => 'f64', 'value' => '9223372036854775809'], ['type' => 'f64', 'value' => '4503599627370496']]],
             expected: [['type' => 'f64', 'value' => '1']],
             line: 55,
@@ -529,7 +483,6 @@ final class F64BitwiseTest extends SpecTestsuiteBase
     public function testAssertReturn47(): void
     {
         $this->runAssertReturnCommand(
-            module: null,
             action: ['type' => 'invoke', 'field' => 'copysign', 'args' => [['type' => 'f64', 'value' => '1'], ['type' => 'f64', 'value' => '9227875636482146304']]],
             expected: [['type' => 'f64', 'value' => '9223372036854775809']],
             line: 56,
@@ -540,7 +493,6 @@ final class F64BitwiseTest extends SpecTestsuiteBase
     public function testAssertReturn48(): void
     {
         $this->runAssertReturnCommand(
-            module: null,
             action: ['type' => 'invoke', 'field' => 'copysign', 'args' => [['type' => 'f64', 'value' => '1'], ['type' => 'f64', 'value' => '4503599627370496']]],
             expected: [['type' => 'f64', 'value' => '1']],
             line: 57,
@@ -551,7 +503,6 @@ final class F64BitwiseTest extends SpecTestsuiteBase
     public function testAssertReturn49(): void
     {
         $this->runAssertReturnCommand(
-            module: null,
             action: ['type' => 'invoke', 'field' => 'copysign', 'args' => [['type' => 'f64', 'value' => '9223372036854775809'], ['type' => 'f64', 'value' => '13826050856027422720']]],
             expected: [['type' => 'f64', 'value' => '9223372036854775809']],
             line: 58,
@@ -562,7 +513,6 @@ final class F64BitwiseTest extends SpecTestsuiteBase
     public function testAssertReturn50(): void
     {
         $this->runAssertReturnCommand(
-            module: null,
             action: ['type' => 'invoke', 'field' => 'copysign', 'args' => [['type' => 'f64', 'value' => '9223372036854775809'], ['type' => 'f64', 'value' => '4602678819172646912']]],
             expected: [['type' => 'f64', 'value' => '1']],
             line: 59,
@@ -573,7 +523,6 @@ final class F64BitwiseTest extends SpecTestsuiteBase
     public function testAssertReturn51(): void
     {
         $this->runAssertReturnCommand(
-            module: null,
             action: ['type' => 'invoke', 'field' => 'copysign', 'args' => [['type' => 'f64', 'value' => '1'], ['type' => 'f64', 'value' => '13826050856027422720']]],
             expected: [['type' => 'f64', 'value' => '9223372036854775809']],
             line: 60,
@@ -584,7 +533,6 @@ final class F64BitwiseTest extends SpecTestsuiteBase
     public function testAssertReturn52(): void
     {
         $this->runAssertReturnCommand(
-            module: null,
             action: ['type' => 'invoke', 'field' => 'copysign', 'args' => [['type' => 'f64', 'value' => '1'], ['type' => 'f64', 'value' => '4602678819172646912']]],
             expected: [['type' => 'f64', 'value' => '1']],
             line: 61,
@@ -595,7 +543,6 @@ final class F64BitwiseTest extends SpecTestsuiteBase
     public function testAssertReturn53(): void
     {
         $this->runAssertReturnCommand(
-            module: null,
             action: ['type' => 'invoke', 'field' => 'copysign', 'args' => [['type' => 'f64', 'value' => '9223372036854775809'], ['type' => 'f64', 'value' => '13830554455654793216']]],
             expected: [['type' => 'f64', 'value' => '9223372036854775809']],
             line: 62,
@@ -606,7 +553,6 @@ final class F64BitwiseTest extends SpecTestsuiteBase
     public function testAssertReturn54(): void
     {
         $this->runAssertReturnCommand(
-            module: null,
             action: ['type' => 'invoke', 'field' => 'copysign', 'args' => [['type' => 'f64', 'value' => '9223372036854775809'], ['type' => 'f64', 'value' => '4607182418800017408']]],
             expected: [['type' => 'f64', 'value' => '1']],
             line: 63,
@@ -617,7 +563,6 @@ final class F64BitwiseTest extends SpecTestsuiteBase
     public function testAssertReturn55(): void
     {
         $this->runAssertReturnCommand(
-            module: null,
             action: ['type' => 'invoke', 'field' => 'copysign', 'args' => [['type' => 'f64', 'value' => '1'], ['type' => 'f64', 'value' => '13830554455654793216']]],
             expected: [['type' => 'f64', 'value' => '9223372036854775809']],
             line: 64,
@@ -628,7 +573,6 @@ final class F64BitwiseTest extends SpecTestsuiteBase
     public function testAssertReturn56(): void
     {
         $this->runAssertReturnCommand(
-            module: null,
             action: ['type' => 'invoke', 'field' => 'copysign', 'args' => [['type' => 'f64', 'value' => '1'], ['type' => 'f64', 'value' => '4607182418800017408']]],
             expected: [['type' => 'f64', 'value' => '1']],
             line: 65,
@@ -639,7 +583,6 @@ final class F64BitwiseTest extends SpecTestsuiteBase
     public function testAssertReturn57(): void
     {
         $this->runAssertReturnCommand(
-            module: null,
             action: ['type' => 'invoke', 'field' => 'copysign', 'args' => [['type' => 'f64', 'value' => '9223372036854775809'], ['type' => 'f64', 'value' => '13842132293034192152']]],
             expected: [['type' => 'f64', 'value' => '9223372036854775809']],
             line: 66,
@@ -650,7 +593,6 @@ final class F64BitwiseTest extends SpecTestsuiteBase
     public function testAssertReturn58(): void
     {
         $this->runAssertReturnCommand(
-            module: null,
             action: ['type' => 'invoke', 'field' => 'copysign', 'args' => [['type' => 'f64', 'value' => '9223372036854775809'], ['type' => 'f64', 'value' => '4618760256179416344']]],
             expected: [['type' => 'f64', 'value' => '1']],
             line: 67,
@@ -661,7 +603,6 @@ final class F64BitwiseTest extends SpecTestsuiteBase
     public function testAssertReturn59(): void
     {
         $this->runAssertReturnCommand(
-            module: null,
             action: ['type' => 'invoke', 'field' => 'copysign', 'args' => [['type' => 'f64', 'value' => '1'], ['type' => 'f64', 'value' => '13842132293034192152']]],
             expected: [['type' => 'f64', 'value' => '9223372036854775809']],
             line: 68,
@@ -672,7 +613,6 @@ final class F64BitwiseTest extends SpecTestsuiteBase
     public function testAssertReturn60(): void
     {
         $this->runAssertReturnCommand(
-            module: null,
             action: ['type' => 'invoke', 'field' => 'copysign', 'args' => [['type' => 'f64', 'value' => '1'], ['type' => 'f64', 'value' => '4618760256179416344']]],
             expected: [['type' => 'f64', 'value' => '1']],
             line: 69,
@@ -683,7 +623,6 @@ final class F64BitwiseTest extends SpecTestsuiteBase
     public function testAssertReturn61(): void
     {
         $this->runAssertReturnCommand(
-            module: null,
             action: ['type' => 'invoke', 'field' => 'copysign', 'args' => [['type' => 'f64', 'value' => '9223372036854775809'], ['type' => 'f64', 'value' => '18442240474082181119']]],
             expected: [['type' => 'f64', 'value' => '9223372036854775809']],
             line: 70,
@@ -694,7 +633,6 @@ final class F64BitwiseTest extends SpecTestsuiteBase
     public function testAssertReturn62(): void
     {
         $this->runAssertReturnCommand(
-            module: null,
             action: ['type' => 'invoke', 'field' => 'copysign', 'args' => [['type' => 'f64', 'value' => '9223372036854775809'], ['type' => 'f64', 'value' => '9218868437227405311']]],
             expected: [['type' => 'f64', 'value' => '1']],
             line: 71,
@@ -705,7 +643,6 @@ final class F64BitwiseTest extends SpecTestsuiteBase
     public function testAssertReturn63(): void
     {
         $this->runAssertReturnCommand(
-            module: null,
             action: ['type' => 'invoke', 'field' => 'copysign', 'args' => [['type' => 'f64', 'value' => '1'], ['type' => 'f64', 'value' => '18442240474082181119']]],
             expected: [['type' => 'f64', 'value' => '9223372036854775809']],
             line: 72,
@@ -716,7 +653,6 @@ final class F64BitwiseTest extends SpecTestsuiteBase
     public function testAssertReturn64(): void
     {
         $this->runAssertReturnCommand(
-            module: null,
             action: ['type' => 'invoke', 'field' => 'copysign', 'args' => [['type' => 'f64', 'value' => '1'], ['type' => 'f64', 'value' => '9218868437227405311']]],
             expected: [['type' => 'f64', 'value' => '1']],
             line: 73,
@@ -727,7 +663,6 @@ final class F64BitwiseTest extends SpecTestsuiteBase
     public function testAssertReturn65(): void
     {
         $this->runAssertReturnCommand(
-            module: null,
             action: ['type' => 'invoke', 'field' => 'copysign', 'args' => [['type' => 'f64', 'value' => '9223372036854775809'], ['type' => 'f64', 'value' => '18442240474082181120']]],
             expected: [['type' => 'f64', 'value' => '9223372036854775809']],
             line: 74,
@@ -738,7 +673,6 @@ final class F64BitwiseTest extends SpecTestsuiteBase
     public function testAssertReturn66(): void
     {
         $this->runAssertReturnCommand(
-            module: null,
             action: ['type' => 'invoke', 'field' => 'copysign', 'args' => [['type' => 'f64', 'value' => '9223372036854775809'], ['type' => 'f64', 'value' => '9218868437227405312']]],
             expected: [['type' => 'f64', 'value' => '1']],
             line: 75,
@@ -749,7 +683,6 @@ final class F64BitwiseTest extends SpecTestsuiteBase
     public function testAssertReturn67(): void
     {
         $this->runAssertReturnCommand(
-            module: null,
             action: ['type' => 'invoke', 'field' => 'copysign', 'args' => [['type' => 'f64', 'value' => '1'], ['type' => 'f64', 'value' => '18442240474082181120']]],
             expected: [['type' => 'f64', 'value' => '9223372036854775809']],
             line: 76,
@@ -760,7 +693,6 @@ final class F64BitwiseTest extends SpecTestsuiteBase
     public function testAssertReturn68(): void
     {
         $this->runAssertReturnCommand(
-            module: null,
             action: ['type' => 'invoke', 'field' => 'copysign', 'args' => [['type' => 'f64', 'value' => '1'], ['type' => 'f64', 'value' => '9218868437227405312']]],
             expected: [['type' => 'f64', 'value' => '1']],
             line: 77,
@@ -771,7 +703,6 @@ final class F64BitwiseTest extends SpecTestsuiteBase
     public function testAssertReturn69(): void
     {
         $this->runAssertReturnCommand(
-            module: null,
             action: ['type' => 'invoke', 'field' => 'copysign', 'args' => [['type' => 'f64', 'value' => '9223372036854775809'], ['type' => 'f64', 'value' => '18444492273895866368']]],
             expected: [['type' => 'f64', 'value' => '9223372036854775809']],
             line: 78,
@@ -782,7 +713,6 @@ final class F64BitwiseTest extends SpecTestsuiteBase
     public function testAssertReturn70(): void
     {
         $this->runAssertReturnCommand(
-            module: null,
             action: ['type' => 'invoke', 'field' => 'copysign', 'args' => [['type' => 'f64', 'value' => '9223372036854775809'], ['type' => 'f64', 'value' => '9221120237041090560']]],
             expected: [['type' => 'f64', 'value' => '1']],
             line: 79,
@@ -793,7 +723,6 @@ final class F64BitwiseTest extends SpecTestsuiteBase
     public function testAssertReturn71(): void
     {
         $this->runAssertReturnCommand(
-            module: null,
             action: ['type' => 'invoke', 'field' => 'copysign', 'args' => [['type' => 'f64', 'value' => '1'], ['type' => 'f64', 'value' => '18444492273895866368']]],
             expected: [['type' => 'f64', 'value' => '9223372036854775809']],
             line: 80,
@@ -804,7 +733,6 @@ final class F64BitwiseTest extends SpecTestsuiteBase
     public function testAssertReturn72(): void
     {
         $this->runAssertReturnCommand(
-            module: null,
             action: ['type' => 'invoke', 'field' => 'copysign', 'args' => [['type' => 'f64', 'value' => '1'], ['type' => 'f64', 'value' => '9221120237041090560']]],
             expected: [['type' => 'f64', 'value' => '1']],
             line: 81,
@@ -815,7 +743,6 @@ final class F64BitwiseTest extends SpecTestsuiteBase
     public function testAssertReturn73(): void
     {
         $this->runAssertReturnCommand(
-            module: null,
             action: ['type' => 'invoke', 'field' => 'copysign', 'args' => [['type' => 'f64', 'value' => '9227875636482146304'], ['type' => 'f64', 'value' => '9223372036854775808']]],
             expected: [['type' => 'f64', 'value' => '9227875636482146304']],
             line: 82,
@@ -826,7 +753,6 @@ final class F64BitwiseTest extends SpecTestsuiteBase
     public function testAssertReturn74(): void
     {
         $this->runAssertReturnCommand(
-            module: null,
             action: ['type' => 'invoke', 'field' => 'copysign', 'args' => [['type' => 'f64', 'value' => '9227875636482146304'], ['type' => 'f64', 'value' => '0']]],
             expected: [['type' => 'f64', 'value' => '4503599627370496']],
             line: 83,
@@ -837,7 +763,6 @@ final class F64BitwiseTest extends SpecTestsuiteBase
     public function testAssertReturn75(): void
     {
         $this->runAssertReturnCommand(
-            module: null,
             action: ['type' => 'invoke', 'field' => 'copysign', 'args' => [['type' => 'f64', 'value' => '4503599627370496'], ['type' => 'f64', 'value' => '9223372036854775808']]],
             expected: [['type' => 'f64', 'value' => '9227875636482146304']],
             line: 84,
@@ -848,7 +773,6 @@ final class F64BitwiseTest extends SpecTestsuiteBase
     public function testAssertReturn76(): void
     {
         $this->runAssertReturnCommand(
-            module: null,
             action: ['type' => 'invoke', 'field' => 'copysign', 'args' => [['type' => 'f64', 'value' => '4503599627370496'], ['type' => 'f64', 'value' => '0']]],
             expected: [['type' => 'f64', 'value' => '4503599627370496']],
             line: 85,
@@ -859,7 +783,6 @@ final class F64BitwiseTest extends SpecTestsuiteBase
     public function testAssertReturn77(): void
     {
         $this->runAssertReturnCommand(
-            module: null,
             action: ['type' => 'invoke', 'field' => 'copysign', 'args' => [['type' => 'f64', 'value' => '9227875636482146304'], ['type' => 'f64', 'value' => '9223372036854775809']]],
             expected: [['type' => 'f64', 'value' => '9227875636482146304']],
             line: 86,
@@ -870,7 +793,6 @@ final class F64BitwiseTest extends SpecTestsuiteBase
     public function testAssertReturn78(): void
     {
         $this->runAssertReturnCommand(
-            module: null,
             action: ['type' => 'invoke', 'field' => 'copysign', 'args' => [['type' => 'f64', 'value' => '9227875636482146304'], ['type' => 'f64', 'value' => '1']]],
             expected: [['type' => 'f64', 'value' => '4503599627370496']],
             line: 87,
@@ -881,7 +803,6 @@ final class F64BitwiseTest extends SpecTestsuiteBase
     public function testAssertReturn79(): void
     {
         $this->runAssertReturnCommand(
-            module: null,
             action: ['type' => 'invoke', 'field' => 'copysign', 'args' => [['type' => 'f64', 'value' => '4503599627370496'], ['type' => 'f64', 'value' => '9223372036854775809']]],
             expected: [['type' => 'f64', 'value' => '9227875636482146304']],
             line: 88,
@@ -892,7 +813,6 @@ final class F64BitwiseTest extends SpecTestsuiteBase
     public function testAssertReturn80(): void
     {
         $this->runAssertReturnCommand(
-            module: null,
             action: ['type' => 'invoke', 'field' => 'copysign', 'args' => [['type' => 'f64', 'value' => '4503599627370496'], ['type' => 'f64', 'value' => '1']]],
             expected: [['type' => 'f64', 'value' => '4503599627370496']],
             line: 89,
@@ -903,7 +823,6 @@ final class F64BitwiseTest extends SpecTestsuiteBase
     public function testAssertReturn81(): void
     {
         $this->runAssertReturnCommand(
-            module: null,
             action: ['type' => 'invoke', 'field' => 'copysign', 'args' => [['type' => 'f64', 'value' => '9227875636482146304'], ['type' => 'f64', 'value' => '9227875636482146304']]],
             expected: [['type' => 'f64', 'value' => '9227875636482146304']],
             line: 90,
@@ -914,7 +833,6 @@ final class F64BitwiseTest extends SpecTestsuiteBase
     public function testAssertReturn82(): void
     {
         $this->runAssertReturnCommand(
-            module: null,
             action: ['type' => 'invoke', 'field' => 'copysign', 'args' => [['type' => 'f64', 'value' => '9227875636482146304'], ['type' => 'f64', 'value' => '4503599627370496']]],
             expected: [['type' => 'f64', 'value' => '4503599627370496']],
             line: 91,
@@ -925,7 +843,6 @@ final class F64BitwiseTest extends SpecTestsuiteBase
     public function testAssertReturn83(): void
     {
         $this->runAssertReturnCommand(
-            module: null,
             action: ['type' => 'invoke', 'field' => 'copysign', 'args' => [['type' => 'f64', 'value' => '4503599627370496'], ['type' => 'f64', 'value' => '9227875636482146304']]],
             expected: [['type' => 'f64', 'value' => '9227875636482146304']],
             line: 92,
@@ -936,7 +853,6 @@ final class F64BitwiseTest extends SpecTestsuiteBase
     public function testAssertReturn84(): void
     {
         $this->runAssertReturnCommand(
-            module: null,
             action: ['type' => 'invoke', 'field' => 'copysign', 'args' => [['type' => 'f64', 'value' => '4503599627370496'], ['type' => 'f64', 'value' => '4503599627370496']]],
             expected: [['type' => 'f64', 'value' => '4503599627370496']],
             line: 93,
@@ -947,7 +863,6 @@ final class F64BitwiseTest extends SpecTestsuiteBase
     public function testAssertReturn85(): void
     {
         $this->runAssertReturnCommand(
-            module: null,
             action: ['type' => 'invoke', 'field' => 'copysign', 'args' => [['type' => 'f64', 'value' => '9227875636482146304'], ['type' => 'f64', 'value' => '13826050856027422720']]],
             expected: [['type' => 'f64', 'value' => '9227875636482146304']],
             line: 94,
@@ -958,7 +873,6 @@ final class F64BitwiseTest extends SpecTestsuiteBase
     public function testAssertReturn86(): void
     {
         $this->runAssertReturnCommand(
-            module: null,
             action: ['type' => 'invoke', 'field' => 'copysign', 'args' => [['type' => 'f64', 'value' => '9227875636482146304'], ['type' => 'f64', 'value' => '4602678819172646912']]],
             expected: [['type' => 'f64', 'value' => '4503599627370496']],
             line: 95,
@@ -969,7 +883,6 @@ final class F64BitwiseTest extends SpecTestsuiteBase
     public function testAssertReturn87(): void
     {
         $this->runAssertReturnCommand(
-            module: null,
             action: ['type' => 'invoke', 'field' => 'copysign', 'args' => [['type' => 'f64', 'value' => '4503599627370496'], ['type' => 'f64', 'value' => '13826050856027422720']]],
             expected: [['type' => 'f64', 'value' => '9227875636482146304']],
             line: 96,
@@ -980,7 +893,6 @@ final class F64BitwiseTest extends SpecTestsuiteBase
     public function testAssertReturn88(): void
     {
         $this->runAssertReturnCommand(
-            module: null,
             action: ['type' => 'invoke', 'field' => 'copysign', 'args' => [['type' => 'f64', 'value' => '4503599627370496'], ['type' => 'f64', 'value' => '4602678819172646912']]],
             expected: [['type' => 'f64', 'value' => '4503599627370496']],
             line: 97,
@@ -991,7 +903,6 @@ final class F64BitwiseTest extends SpecTestsuiteBase
     public function testAssertReturn89(): void
     {
         $this->runAssertReturnCommand(
-            module: null,
             action: ['type' => 'invoke', 'field' => 'copysign', 'args' => [['type' => 'f64', 'value' => '9227875636482146304'], ['type' => 'f64', 'value' => '13830554455654793216']]],
             expected: [['type' => 'f64', 'value' => '9227875636482146304']],
             line: 98,
@@ -1002,7 +913,6 @@ final class F64BitwiseTest extends SpecTestsuiteBase
     public function testAssertReturn90(): void
     {
         $this->runAssertReturnCommand(
-            module: null,
             action: ['type' => 'invoke', 'field' => 'copysign', 'args' => [['type' => 'f64', 'value' => '9227875636482146304'], ['type' => 'f64', 'value' => '4607182418800017408']]],
             expected: [['type' => 'f64', 'value' => '4503599627370496']],
             line: 99,
@@ -1013,7 +923,6 @@ final class F64BitwiseTest extends SpecTestsuiteBase
     public function testAssertReturn91(): void
     {
         $this->runAssertReturnCommand(
-            module: null,
             action: ['type' => 'invoke', 'field' => 'copysign', 'args' => [['type' => 'f64', 'value' => '4503599627370496'], ['type' => 'f64', 'value' => '13830554455654793216']]],
             expected: [['type' => 'f64', 'value' => '9227875636482146304']],
             line: 100,
@@ -1024,7 +933,6 @@ final class F64BitwiseTest extends SpecTestsuiteBase
     public function testAssertReturn92(): void
     {
         $this->runAssertReturnCommand(
-            module: null,
             action: ['type' => 'invoke', 'field' => 'copysign', 'args' => [['type' => 'f64', 'value' => '4503599627370496'], ['type' => 'f64', 'value' => '4607182418800017408']]],
             expected: [['type' => 'f64', 'value' => '4503599627370496']],
             line: 101,
@@ -1035,7 +943,6 @@ final class F64BitwiseTest extends SpecTestsuiteBase
     public function testAssertReturn93(): void
     {
         $this->runAssertReturnCommand(
-            module: null,
             action: ['type' => 'invoke', 'field' => 'copysign', 'args' => [['type' => 'f64', 'value' => '9227875636482146304'], ['type' => 'f64', 'value' => '13842132293034192152']]],
             expected: [['type' => 'f64', 'value' => '9227875636482146304']],
             line: 102,
@@ -1046,7 +953,6 @@ final class F64BitwiseTest extends SpecTestsuiteBase
     public function testAssertReturn94(): void
     {
         $this->runAssertReturnCommand(
-            module: null,
             action: ['type' => 'invoke', 'field' => 'copysign', 'args' => [['type' => 'f64', 'value' => '9227875636482146304'], ['type' => 'f64', 'value' => '4618760256179416344']]],
             expected: [['type' => 'f64', 'value' => '4503599627370496']],
             line: 103,
@@ -1057,7 +963,6 @@ final class F64BitwiseTest extends SpecTestsuiteBase
     public function testAssertReturn95(): void
     {
         $this->runAssertReturnCommand(
-            module: null,
             action: ['type' => 'invoke', 'field' => 'copysign', 'args' => [['type' => 'f64', 'value' => '4503599627370496'], ['type' => 'f64', 'value' => '13842132293034192152']]],
             expected: [['type' => 'f64', 'value' => '9227875636482146304']],
             line: 104,
@@ -1068,7 +973,6 @@ final class F64BitwiseTest extends SpecTestsuiteBase
     public function testAssertReturn96(): void
     {
         $this->runAssertReturnCommand(
-            module: null,
             action: ['type' => 'invoke', 'field' => 'copysign', 'args' => [['type' => 'f64', 'value' => '4503599627370496'], ['type' => 'f64', 'value' => '4618760256179416344']]],
             expected: [['type' => 'f64', 'value' => '4503599627370496']],
             line: 105,
@@ -1079,7 +983,6 @@ final class F64BitwiseTest extends SpecTestsuiteBase
     public function testAssertReturn97(): void
     {
         $this->runAssertReturnCommand(
-            module: null,
             action: ['type' => 'invoke', 'field' => 'copysign', 'args' => [['type' => 'f64', 'value' => '9227875636482146304'], ['type' => 'f64', 'value' => '18442240474082181119']]],
             expected: [['type' => 'f64', 'value' => '9227875636482146304']],
             line: 106,
@@ -1090,7 +993,6 @@ final class F64BitwiseTest extends SpecTestsuiteBase
     public function testAssertReturn98(): void
     {
         $this->runAssertReturnCommand(
-            module: null,
             action: ['type' => 'invoke', 'field' => 'copysign', 'args' => [['type' => 'f64', 'value' => '9227875636482146304'], ['type' => 'f64', 'value' => '9218868437227405311']]],
             expected: [['type' => 'f64', 'value' => '4503599627370496']],
             line: 107,
@@ -1101,7 +1003,6 @@ final class F64BitwiseTest extends SpecTestsuiteBase
     public function testAssertReturn99(): void
     {
         $this->runAssertReturnCommand(
-            module: null,
             action: ['type' => 'invoke', 'field' => 'copysign', 'args' => [['type' => 'f64', 'value' => '4503599627370496'], ['type' => 'f64', 'value' => '18442240474082181119']]],
             expected: [['type' => 'f64', 'value' => '9227875636482146304']],
             line: 108,
@@ -1112,7 +1013,6 @@ final class F64BitwiseTest extends SpecTestsuiteBase
     public function testAssertReturn100(): void
     {
         $this->runAssertReturnCommand(
-            module: null,
             action: ['type' => 'invoke', 'field' => 'copysign', 'args' => [['type' => 'f64', 'value' => '4503599627370496'], ['type' => 'f64', 'value' => '9218868437227405311']]],
             expected: [['type' => 'f64', 'value' => '4503599627370496']],
             line: 109,
@@ -1123,7 +1023,6 @@ final class F64BitwiseTest extends SpecTestsuiteBase
     public function testAssertReturn101(): void
     {
         $this->runAssertReturnCommand(
-            module: null,
             action: ['type' => 'invoke', 'field' => 'copysign', 'args' => [['type' => 'f64', 'value' => '9227875636482146304'], ['type' => 'f64', 'value' => '18442240474082181120']]],
             expected: [['type' => 'f64', 'value' => '9227875636482146304']],
             line: 110,
@@ -1134,7 +1033,6 @@ final class F64BitwiseTest extends SpecTestsuiteBase
     public function testAssertReturn102(): void
     {
         $this->runAssertReturnCommand(
-            module: null,
             action: ['type' => 'invoke', 'field' => 'copysign', 'args' => [['type' => 'f64', 'value' => '9227875636482146304'], ['type' => 'f64', 'value' => '9218868437227405312']]],
             expected: [['type' => 'f64', 'value' => '4503599627370496']],
             line: 111,
@@ -1145,7 +1043,6 @@ final class F64BitwiseTest extends SpecTestsuiteBase
     public function testAssertReturn103(): void
     {
         $this->runAssertReturnCommand(
-            module: null,
             action: ['type' => 'invoke', 'field' => 'copysign', 'args' => [['type' => 'f64', 'value' => '4503599627370496'], ['type' => 'f64', 'value' => '18442240474082181120']]],
             expected: [['type' => 'f64', 'value' => '9227875636482146304']],
             line: 112,
@@ -1156,7 +1053,6 @@ final class F64BitwiseTest extends SpecTestsuiteBase
     public function testAssertReturn104(): void
     {
         $this->runAssertReturnCommand(
-            module: null,
             action: ['type' => 'invoke', 'field' => 'copysign', 'args' => [['type' => 'f64', 'value' => '4503599627370496'], ['type' => 'f64', 'value' => '9218868437227405312']]],
             expected: [['type' => 'f64', 'value' => '4503599627370496']],
             line: 113,
@@ -1167,7 +1063,6 @@ final class F64BitwiseTest extends SpecTestsuiteBase
     public function testAssertReturn105(): void
     {
         $this->runAssertReturnCommand(
-            module: null,
             action: ['type' => 'invoke', 'field' => 'copysign', 'args' => [['type' => 'f64', 'value' => '9227875636482146304'], ['type' => 'f64', 'value' => '18444492273895866368']]],
             expected: [['type' => 'f64', 'value' => '9227875636482146304']],
             line: 114,
@@ -1178,7 +1073,6 @@ final class F64BitwiseTest extends SpecTestsuiteBase
     public function testAssertReturn106(): void
     {
         $this->runAssertReturnCommand(
-            module: null,
             action: ['type' => 'invoke', 'field' => 'copysign', 'args' => [['type' => 'f64', 'value' => '9227875636482146304'], ['type' => 'f64', 'value' => '9221120237041090560']]],
             expected: [['type' => 'f64', 'value' => '4503599627370496']],
             line: 115,
@@ -1189,7 +1083,6 @@ final class F64BitwiseTest extends SpecTestsuiteBase
     public function testAssertReturn107(): void
     {
         $this->runAssertReturnCommand(
-            module: null,
             action: ['type' => 'invoke', 'field' => 'copysign', 'args' => [['type' => 'f64', 'value' => '4503599627370496'], ['type' => 'f64', 'value' => '18444492273895866368']]],
             expected: [['type' => 'f64', 'value' => '9227875636482146304']],
             line: 116,
@@ -1200,7 +1093,6 @@ final class F64BitwiseTest extends SpecTestsuiteBase
     public function testAssertReturn108(): void
     {
         $this->runAssertReturnCommand(
-            module: null,
             action: ['type' => 'invoke', 'field' => 'copysign', 'args' => [['type' => 'f64', 'value' => '4503599627370496'], ['type' => 'f64', 'value' => '9221120237041090560']]],
             expected: [['type' => 'f64', 'value' => '4503599627370496']],
             line: 117,
@@ -1211,7 +1103,6 @@ final class F64BitwiseTest extends SpecTestsuiteBase
     public function testAssertReturn109(): void
     {
         $this->runAssertReturnCommand(
-            module: null,
             action: ['type' => 'invoke', 'field' => 'copysign', 'args' => [['type' => 'f64', 'value' => '13826050856027422720'], ['type' => 'f64', 'value' => '9223372036854775808']]],
             expected: [['type' => 'f64', 'value' => '13826050856027422720']],
             line: 118,
@@ -1222,7 +1113,6 @@ final class F64BitwiseTest extends SpecTestsuiteBase
     public function testAssertReturn110(): void
     {
         $this->runAssertReturnCommand(
-            module: null,
             action: ['type' => 'invoke', 'field' => 'copysign', 'args' => [['type' => 'f64', 'value' => '13826050856027422720'], ['type' => 'f64', 'value' => '0']]],
             expected: [['type' => 'f64', 'value' => '4602678819172646912']],
             line: 119,
@@ -1233,7 +1123,6 @@ final class F64BitwiseTest extends SpecTestsuiteBase
     public function testAssertReturn111(): void
     {
         $this->runAssertReturnCommand(
-            module: null,
             action: ['type' => 'invoke', 'field' => 'copysign', 'args' => [['type' => 'f64', 'value' => '4602678819172646912'], ['type' => 'f64', 'value' => '9223372036854775808']]],
             expected: [['type' => 'f64', 'value' => '13826050856027422720']],
             line: 120,
@@ -1244,7 +1133,6 @@ final class F64BitwiseTest extends SpecTestsuiteBase
     public function testAssertReturn112(): void
     {
         $this->runAssertReturnCommand(
-            module: null,
             action: ['type' => 'invoke', 'field' => 'copysign', 'args' => [['type' => 'f64', 'value' => '4602678819172646912'], ['type' => 'f64', 'value' => '0']]],
             expected: [['type' => 'f64', 'value' => '4602678819172646912']],
             line: 121,
@@ -1255,7 +1143,6 @@ final class F64BitwiseTest extends SpecTestsuiteBase
     public function testAssertReturn113(): void
     {
         $this->runAssertReturnCommand(
-            module: null,
             action: ['type' => 'invoke', 'field' => 'copysign', 'args' => [['type' => 'f64', 'value' => '13826050856027422720'], ['type' => 'f64', 'value' => '9223372036854775809']]],
             expected: [['type' => 'f64', 'value' => '13826050856027422720']],
             line: 122,
@@ -1266,7 +1153,6 @@ final class F64BitwiseTest extends SpecTestsuiteBase
     public function testAssertReturn114(): void
     {
         $this->runAssertReturnCommand(
-            module: null,
             action: ['type' => 'invoke', 'field' => 'copysign', 'args' => [['type' => 'f64', 'value' => '13826050856027422720'], ['type' => 'f64', 'value' => '1']]],
             expected: [['type' => 'f64', 'value' => '4602678819172646912']],
             line: 123,
@@ -1277,7 +1163,6 @@ final class F64BitwiseTest extends SpecTestsuiteBase
     public function testAssertReturn115(): void
     {
         $this->runAssertReturnCommand(
-            module: null,
             action: ['type' => 'invoke', 'field' => 'copysign', 'args' => [['type' => 'f64', 'value' => '4602678819172646912'], ['type' => 'f64', 'value' => '9223372036854775809']]],
             expected: [['type' => 'f64', 'value' => '13826050856027422720']],
             line: 124,
@@ -1288,7 +1173,6 @@ final class F64BitwiseTest extends SpecTestsuiteBase
     public function testAssertReturn116(): void
     {
         $this->runAssertReturnCommand(
-            module: null,
             action: ['type' => 'invoke', 'field' => 'copysign', 'args' => [['type' => 'f64', 'value' => '4602678819172646912'], ['type' => 'f64', 'value' => '1']]],
             expected: [['type' => 'f64', 'value' => '4602678819172646912']],
             line: 125,
@@ -1299,7 +1183,6 @@ final class F64BitwiseTest extends SpecTestsuiteBase
     public function testAssertReturn117(): void
     {
         $this->runAssertReturnCommand(
-            module: null,
             action: ['type' => 'invoke', 'field' => 'copysign', 'args' => [['type' => 'f64', 'value' => '13826050856027422720'], ['type' => 'f64', 'value' => '9227875636482146304']]],
             expected: [['type' => 'f64', 'value' => '13826050856027422720']],
             line: 126,
@@ -1310,7 +1193,6 @@ final class F64BitwiseTest extends SpecTestsuiteBase
     public function testAssertReturn118(): void
     {
         $this->runAssertReturnCommand(
-            module: null,
             action: ['type' => 'invoke', 'field' => 'copysign', 'args' => [['type' => 'f64', 'value' => '13826050856027422720'], ['type' => 'f64', 'value' => '4503599627370496']]],
             expected: [['type' => 'f64', 'value' => '4602678819172646912']],
             line: 127,
@@ -1321,7 +1203,6 @@ final class F64BitwiseTest extends SpecTestsuiteBase
     public function testAssertReturn119(): void
     {
         $this->runAssertReturnCommand(
-            module: null,
             action: ['type' => 'invoke', 'field' => 'copysign', 'args' => [['type' => 'f64', 'value' => '4602678819172646912'], ['type' => 'f64', 'value' => '9227875636482146304']]],
             expected: [['type' => 'f64', 'value' => '13826050856027422720']],
             line: 128,
@@ -1332,7 +1213,6 @@ final class F64BitwiseTest extends SpecTestsuiteBase
     public function testAssertReturn120(): void
     {
         $this->runAssertReturnCommand(
-            module: null,
             action: ['type' => 'invoke', 'field' => 'copysign', 'args' => [['type' => 'f64', 'value' => '4602678819172646912'], ['type' => 'f64', 'value' => '4503599627370496']]],
             expected: [['type' => 'f64', 'value' => '4602678819172646912']],
             line: 129,
@@ -1343,7 +1223,6 @@ final class F64BitwiseTest extends SpecTestsuiteBase
     public function testAssertReturn121(): void
     {
         $this->runAssertReturnCommand(
-            module: null,
             action: ['type' => 'invoke', 'field' => 'copysign', 'args' => [['type' => 'f64', 'value' => '13826050856027422720'], ['type' => 'f64', 'value' => '13826050856027422720']]],
             expected: [['type' => 'f64', 'value' => '13826050856027422720']],
             line: 130,
@@ -1354,7 +1233,6 @@ final class F64BitwiseTest extends SpecTestsuiteBase
     public function testAssertReturn122(): void
     {
         $this->runAssertReturnCommand(
-            module: null,
             action: ['type' => 'invoke', 'field' => 'copysign', 'args' => [['type' => 'f64', 'value' => '13826050856027422720'], ['type' => 'f64', 'value' => '4602678819172646912']]],
             expected: [['type' => 'f64', 'value' => '4602678819172646912']],
             line: 131,
@@ -1365,7 +1243,6 @@ final class F64BitwiseTest extends SpecTestsuiteBase
     public function testAssertReturn123(): void
     {
         $this->runAssertReturnCommand(
-            module: null,
             action: ['type' => 'invoke', 'field' => 'copysign', 'args' => [['type' => 'f64', 'value' => '4602678819172646912'], ['type' => 'f64', 'value' => '13826050856027422720']]],
             expected: [['type' => 'f64', 'value' => '13826050856027422720']],
             line: 132,
@@ -1376,7 +1253,6 @@ final class F64BitwiseTest extends SpecTestsuiteBase
     public function testAssertReturn124(): void
     {
         $this->runAssertReturnCommand(
-            module: null,
             action: ['type' => 'invoke', 'field' => 'copysign', 'args' => [['type' => 'f64', 'value' => '4602678819172646912'], ['type' => 'f64', 'value' => '4602678819172646912']]],
             expected: [['type' => 'f64', 'value' => '4602678819172646912']],
             line: 133,
@@ -1387,7 +1263,6 @@ final class F64BitwiseTest extends SpecTestsuiteBase
     public function testAssertReturn125(): void
     {
         $this->runAssertReturnCommand(
-            module: null,
             action: ['type' => 'invoke', 'field' => 'copysign', 'args' => [['type' => 'f64', 'value' => '13826050856027422720'], ['type' => 'f64', 'value' => '13830554455654793216']]],
             expected: [['type' => 'f64', 'value' => '13826050856027422720']],
             line: 134,
@@ -1398,7 +1273,6 @@ final class F64BitwiseTest extends SpecTestsuiteBase
     public function testAssertReturn126(): void
     {
         $this->runAssertReturnCommand(
-            module: null,
             action: ['type' => 'invoke', 'field' => 'copysign', 'args' => [['type' => 'f64', 'value' => '13826050856027422720'], ['type' => 'f64', 'value' => '4607182418800017408']]],
             expected: [['type' => 'f64', 'value' => '4602678819172646912']],
             line: 135,
@@ -1409,7 +1283,6 @@ final class F64BitwiseTest extends SpecTestsuiteBase
     public function testAssertReturn127(): void
     {
         $this->runAssertReturnCommand(
-            module: null,
             action: ['type' => 'invoke', 'field' => 'copysign', 'args' => [['type' => 'f64', 'value' => '4602678819172646912'], ['type' => 'f64', 'value' => '13830554455654793216']]],
             expected: [['type' => 'f64', 'value' => '13826050856027422720']],
             line: 136,
@@ -1420,7 +1293,6 @@ final class F64BitwiseTest extends SpecTestsuiteBase
     public function testAssertReturn128(): void
     {
         $this->runAssertReturnCommand(
-            module: null,
             action: ['type' => 'invoke', 'field' => 'copysign', 'args' => [['type' => 'f64', 'value' => '4602678819172646912'], ['type' => 'f64', 'value' => '4607182418800017408']]],
             expected: [['type' => 'f64', 'value' => '4602678819172646912']],
             line: 137,
@@ -1431,7 +1303,6 @@ final class F64BitwiseTest extends SpecTestsuiteBase
     public function testAssertReturn129(): void
     {
         $this->runAssertReturnCommand(
-            module: null,
             action: ['type' => 'invoke', 'field' => 'copysign', 'args' => [['type' => 'f64', 'value' => '13826050856027422720'], ['type' => 'f64', 'value' => '13842132293034192152']]],
             expected: [['type' => 'f64', 'value' => '13826050856027422720']],
             line: 138,
@@ -1442,7 +1313,6 @@ final class F64BitwiseTest extends SpecTestsuiteBase
     public function testAssertReturn130(): void
     {
         $this->runAssertReturnCommand(
-            module: null,
             action: ['type' => 'invoke', 'field' => 'copysign', 'args' => [['type' => 'f64', 'value' => '13826050856027422720'], ['type' => 'f64', 'value' => '4618760256179416344']]],
             expected: [['type' => 'f64', 'value' => '4602678819172646912']],
             line: 139,
@@ -1453,7 +1323,6 @@ final class F64BitwiseTest extends SpecTestsuiteBase
     public function testAssertReturn131(): void
     {
         $this->runAssertReturnCommand(
-            module: null,
             action: ['type' => 'invoke', 'field' => 'copysign', 'args' => [['type' => 'f64', 'value' => '4602678819172646912'], ['type' => 'f64', 'value' => '13842132293034192152']]],
             expected: [['type' => 'f64', 'value' => '13826050856027422720']],
             line: 140,
@@ -1464,7 +1333,6 @@ final class F64BitwiseTest extends SpecTestsuiteBase
     public function testAssertReturn132(): void
     {
         $this->runAssertReturnCommand(
-            module: null,
             action: ['type' => 'invoke', 'field' => 'copysign', 'args' => [['type' => 'f64', 'value' => '4602678819172646912'], ['type' => 'f64', 'value' => '4618760256179416344']]],
             expected: [['type' => 'f64', 'value' => '4602678819172646912']],
             line: 141,
@@ -1475,7 +1343,6 @@ final class F64BitwiseTest extends SpecTestsuiteBase
     public function testAssertReturn133(): void
     {
         $this->runAssertReturnCommand(
-            module: null,
             action: ['type' => 'invoke', 'field' => 'copysign', 'args' => [['type' => 'f64', 'value' => '13826050856027422720'], ['type' => 'f64', 'value' => '18442240474082181119']]],
             expected: [['type' => 'f64', 'value' => '13826050856027422720']],
             line: 142,
@@ -1486,7 +1353,6 @@ final class F64BitwiseTest extends SpecTestsuiteBase
     public function testAssertReturn134(): void
     {
         $this->runAssertReturnCommand(
-            module: null,
             action: ['type' => 'invoke', 'field' => 'copysign', 'args' => [['type' => 'f64', 'value' => '13826050856027422720'], ['type' => 'f64', 'value' => '9218868437227405311']]],
             expected: [['type' => 'f64', 'value' => '4602678819172646912']],
             line: 143,
@@ -1497,7 +1363,6 @@ final class F64BitwiseTest extends SpecTestsuiteBase
     public function testAssertReturn135(): void
     {
         $this->runAssertReturnCommand(
-            module: null,
             action: ['type' => 'invoke', 'field' => 'copysign', 'args' => [['type' => 'f64', 'value' => '4602678819172646912'], ['type' => 'f64', 'value' => '18442240474082181119']]],
             expected: [['type' => 'f64', 'value' => '13826050856027422720']],
             line: 144,
@@ -1508,7 +1373,6 @@ final class F64BitwiseTest extends SpecTestsuiteBase
     public function testAssertReturn136(): void
     {
         $this->runAssertReturnCommand(
-            module: null,
             action: ['type' => 'invoke', 'field' => 'copysign', 'args' => [['type' => 'f64', 'value' => '4602678819172646912'], ['type' => 'f64', 'value' => '9218868437227405311']]],
             expected: [['type' => 'f64', 'value' => '4602678819172646912']],
             line: 145,
@@ -1519,7 +1383,6 @@ final class F64BitwiseTest extends SpecTestsuiteBase
     public function testAssertReturn137(): void
     {
         $this->runAssertReturnCommand(
-            module: null,
             action: ['type' => 'invoke', 'field' => 'copysign', 'args' => [['type' => 'f64', 'value' => '13826050856027422720'], ['type' => 'f64', 'value' => '18442240474082181120']]],
             expected: [['type' => 'f64', 'value' => '13826050856027422720']],
             line: 146,
@@ -1530,7 +1393,6 @@ final class F64BitwiseTest extends SpecTestsuiteBase
     public function testAssertReturn138(): void
     {
         $this->runAssertReturnCommand(
-            module: null,
             action: ['type' => 'invoke', 'field' => 'copysign', 'args' => [['type' => 'f64', 'value' => '13826050856027422720'], ['type' => 'f64', 'value' => '9218868437227405312']]],
             expected: [['type' => 'f64', 'value' => '4602678819172646912']],
             line: 147,
@@ -1541,7 +1403,6 @@ final class F64BitwiseTest extends SpecTestsuiteBase
     public function testAssertReturn139(): void
     {
         $this->runAssertReturnCommand(
-            module: null,
             action: ['type' => 'invoke', 'field' => 'copysign', 'args' => [['type' => 'f64', 'value' => '4602678819172646912'], ['type' => 'f64', 'value' => '18442240474082181120']]],
             expected: [['type' => 'f64', 'value' => '13826050856027422720']],
             line: 148,
@@ -1552,7 +1413,6 @@ final class F64BitwiseTest extends SpecTestsuiteBase
     public function testAssertReturn140(): void
     {
         $this->runAssertReturnCommand(
-            module: null,
             action: ['type' => 'invoke', 'field' => 'copysign', 'args' => [['type' => 'f64', 'value' => '4602678819172646912'], ['type' => 'f64', 'value' => '9218868437227405312']]],
             expected: [['type' => 'f64', 'value' => '4602678819172646912']],
             line: 149,
@@ -1563,7 +1423,6 @@ final class F64BitwiseTest extends SpecTestsuiteBase
     public function testAssertReturn141(): void
     {
         $this->runAssertReturnCommand(
-            module: null,
             action: ['type' => 'invoke', 'field' => 'copysign', 'args' => [['type' => 'f64', 'value' => '13826050856027422720'], ['type' => 'f64', 'value' => '18444492273895866368']]],
             expected: [['type' => 'f64', 'value' => '13826050856027422720']],
             line: 150,
@@ -1574,7 +1433,6 @@ final class F64BitwiseTest extends SpecTestsuiteBase
     public function testAssertReturn142(): void
     {
         $this->runAssertReturnCommand(
-            module: null,
             action: ['type' => 'invoke', 'field' => 'copysign', 'args' => [['type' => 'f64', 'value' => '13826050856027422720'], ['type' => 'f64', 'value' => '9221120237041090560']]],
             expected: [['type' => 'f64', 'value' => '4602678819172646912']],
             line: 151,
@@ -1585,7 +1443,6 @@ final class F64BitwiseTest extends SpecTestsuiteBase
     public function testAssertReturn143(): void
     {
         $this->runAssertReturnCommand(
-            module: null,
             action: ['type' => 'invoke', 'field' => 'copysign', 'args' => [['type' => 'f64', 'value' => '4602678819172646912'], ['type' => 'f64', 'value' => '18444492273895866368']]],
             expected: [['type' => 'f64', 'value' => '13826050856027422720']],
             line: 152,
@@ -1596,7 +1453,6 @@ final class F64BitwiseTest extends SpecTestsuiteBase
     public function testAssertReturn144(): void
     {
         $this->runAssertReturnCommand(
-            module: null,
             action: ['type' => 'invoke', 'field' => 'copysign', 'args' => [['type' => 'f64', 'value' => '4602678819172646912'], ['type' => 'f64', 'value' => '9221120237041090560']]],
             expected: [['type' => 'f64', 'value' => '4602678819172646912']],
             line: 153,
@@ -1607,7 +1463,6 @@ final class F64BitwiseTest extends SpecTestsuiteBase
     public function testAssertReturn145(): void
     {
         $this->runAssertReturnCommand(
-            module: null,
             action: ['type' => 'invoke', 'field' => 'copysign', 'args' => [['type' => 'f64', 'value' => '13830554455654793216'], ['type' => 'f64', 'value' => '9223372036854775808']]],
             expected: [['type' => 'f64', 'value' => '13830554455654793216']],
             line: 154,
@@ -1618,7 +1473,6 @@ final class F64BitwiseTest extends SpecTestsuiteBase
     public function testAssertReturn146(): void
     {
         $this->runAssertReturnCommand(
-            module: null,
             action: ['type' => 'invoke', 'field' => 'copysign', 'args' => [['type' => 'f64', 'value' => '13830554455654793216'], ['type' => 'f64', 'value' => '0']]],
             expected: [['type' => 'f64', 'value' => '4607182418800017408']],
             line: 155,
@@ -1629,7 +1483,6 @@ final class F64BitwiseTest extends SpecTestsuiteBase
     public function testAssertReturn147(): void
     {
         $this->runAssertReturnCommand(
-            module: null,
             action: ['type' => 'invoke', 'field' => 'copysign', 'args' => [['type' => 'f64', 'value' => '4607182418800017408'], ['type' => 'f64', 'value' => '9223372036854775808']]],
             expected: [['type' => 'f64', 'value' => '13830554455654793216']],
             line: 156,
@@ -1640,7 +1493,6 @@ final class F64BitwiseTest extends SpecTestsuiteBase
     public function testAssertReturn148(): void
     {
         $this->runAssertReturnCommand(
-            module: null,
             action: ['type' => 'invoke', 'field' => 'copysign', 'args' => [['type' => 'f64', 'value' => '4607182418800017408'], ['type' => 'f64', 'value' => '0']]],
             expected: [['type' => 'f64', 'value' => '4607182418800017408']],
             line: 157,
@@ -1651,7 +1503,6 @@ final class F64BitwiseTest extends SpecTestsuiteBase
     public function testAssertReturn149(): void
     {
         $this->runAssertReturnCommand(
-            module: null,
             action: ['type' => 'invoke', 'field' => 'copysign', 'args' => [['type' => 'f64', 'value' => '13830554455654793216'], ['type' => 'f64', 'value' => '9223372036854775809']]],
             expected: [['type' => 'f64', 'value' => '13830554455654793216']],
             line: 158,
@@ -1662,7 +1513,6 @@ final class F64BitwiseTest extends SpecTestsuiteBase
     public function testAssertReturn150(): void
     {
         $this->runAssertReturnCommand(
-            module: null,
             action: ['type' => 'invoke', 'field' => 'copysign', 'args' => [['type' => 'f64', 'value' => '13830554455654793216'], ['type' => 'f64', 'value' => '1']]],
             expected: [['type' => 'f64', 'value' => '4607182418800017408']],
             line: 159,
@@ -1673,7 +1523,6 @@ final class F64BitwiseTest extends SpecTestsuiteBase
     public function testAssertReturn151(): void
     {
         $this->runAssertReturnCommand(
-            module: null,
             action: ['type' => 'invoke', 'field' => 'copysign', 'args' => [['type' => 'f64', 'value' => '4607182418800017408'], ['type' => 'f64', 'value' => '9223372036854775809']]],
             expected: [['type' => 'f64', 'value' => '13830554455654793216']],
             line: 160,
@@ -1684,7 +1533,6 @@ final class F64BitwiseTest extends SpecTestsuiteBase
     public function testAssertReturn152(): void
     {
         $this->runAssertReturnCommand(
-            module: null,
             action: ['type' => 'invoke', 'field' => 'copysign', 'args' => [['type' => 'f64', 'value' => '4607182418800017408'], ['type' => 'f64', 'value' => '1']]],
             expected: [['type' => 'f64', 'value' => '4607182418800017408']],
             line: 161,
@@ -1695,7 +1543,6 @@ final class F64BitwiseTest extends SpecTestsuiteBase
     public function testAssertReturn153(): void
     {
         $this->runAssertReturnCommand(
-            module: null,
             action: ['type' => 'invoke', 'field' => 'copysign', 'args' => [['type' => 'f64', 'value' => '13830554455654793216'], ['type' => 'f64', 'value' => '9227875636482146304']]],
             expected: [['type' => 'f64', 'value' => '13830554455654793216']],
             line: 162,
@@ -1706,7 +1553,6 @@ final class F64BitwiseTest extends SpecTestsuiteBase
     public function testAssertReturn154(): void
     {
         $this->runAssertReturnCommand(
-            module: null,
             action: ['type' => 'invoke', 'field' => 'copysign', 'args' => [['type' => 'f64', 'value' => '13830554455654793216'], ['type' => 'f64', 'value' => '4503599627370496']]],
             expected: [['type' => 'f64', 'value' => '4607182418800017408']],
             line: 163,
@@ -1717,7 +1563,6 @@ final class F64BitwiseTest extends SpecTestsuiteBase
     public function testAssertReturn155(): void
     {
         $this->runAssertReturnCommand(
-            module: null,
             action: ['type' => 'invoke', 'field' => 'copysign', 'args' => [['type' => 'f64', 'value' => '4607182418800017408'], ['type' => 'f64', 'value' => '9227875636482146304']]],
             expected: [['type' => 'f64', 'value' => '13830554455654793216']],
             line: 164,
@@ -1728,7 +1573,6 @@ final class F64BitwiseTest extends SpecTestsuiteBase
     public function testAssertReturn156(): void
     {
         $this->runAssertReturnCommand(
-            module: null,
             action: ['type' => 'invoke', 'field' => 'copysign', 'args' => [['type' => 'f64', 'value' => '4607182418800017408'], ['type' => 'f64', 'value' => '4503599627370496']]],
             expected: [['type' => 'f64', 'value' => '4607182418800017408']],
             line: 165,
@@ -1739,7 +1583,6 @@ final class F64BitwiseTest extends SpecTestsuiteBase
     public function testAssertReturn157(): void
     {
         $this->runAssertReturnCommand(
-            module: null,
             action: ['type' => 'invoke', 'field' => 'copysign', 'args' => [['type' => 'f64', 'value' => '13830554455654793216'], ['type' => 'f64', 'value' => '13826050856027422720']]],
             expected: [['type' => 'f64', 'value' => '13830554455654793216']],
             line: 166,
@@ -1750,7 +1593,6 @@ final class F64BitwiseTest extends SpecTestsuiteBase
     public function testAssertReturn158(): void
     {
         $this->runAssertReturnCommand(
-            module: null,
             action: ['type' => 'invoke', 'field' => 'copysign', 'args' => [['type' => 'f64', 'value' => '13830554455654793216'], ['type' => 'f64', 'value' => '4602678819172646912']]],
             expected: [['type' => 'f64', 'value' => '4607182418800017408']],
             line: 167,
@@ -1761,7 +1603,6 @@ final class F64BitwiseTest extends SpecTestsuiteBase
     public function testAssertReturn159(): void
     {
         $this->runAssertReturnCommand(
-            module: null,
             action: ['type' => 'invoke', 'field' => 'copysign', 'args' => [['type' => 'f64', 'value' => '4607182418800017408'], ['type' => 'f64', 'value' => '13826050856027422720']]],
             expected: [['type' => 'f64', 'value' => '13830554455654793216']],
             line: 168,
@@ -1772,7 +1613,6 @@ final class F64BitwiseTest extends SpecTestsuiteBase
     public function testAssertReturn160(): void
     {
         $this->runAssertReturnCommand(
-            module: null,
             action: ['type' => 'invoke', 'field' => 'copysign', 'args' => [['type' => 'f64', 'value' => '4607182418800017408'], ['type' => 'f64', 'value' => '4602678819172646912']]],
             expected: [['type' => 'f64', 'value' => '4607182418800017408']],
             line: 169,
@@ -1783,7 +1623,6 @@ final class F64BitwiseTest extends SpecTestsuiteBase
     public function testAssertReturn161(): void
     {
         $this->runAssertReturnCommand(
-            module: null,
             action: ['type' => 'invoke', 'field' => 'copysign', 'args' => [['type' => 'f64', 'value' => '13830554455654793216'], ['type' => 'f64', 'value' => '13830554455654793216']]],
             expected: [['type' => 'f64', 'value' => '13830554455654793216']],
             line: 170,
@@ -1794,7 +1633,6 @@ final class F64BitwiseTest extends SpecTestsuiteBase
     public function testAssertReturn162(): void
     {
         $this->runAssertReturnCommand(
-            module: null,
             action: ['type' => 'invoke', 'field' => 'copysign', 'args' => [['type' => 'f64', 'value' => '13830554455654793216'], ['type' => 'f64', 'value' => '4607182418800017408']]],
             expected: [['type' => 'f64', 'value' => '4607182418800017408']],
             line: 171,
@@ -1805,7 +1643,6 @@ final class F64BitwiseTest extends SpecTestsuiteBase
     public function testAssertReturn163(): void
     {
         $this->runAssertReturnCommand(
-            module: null,
             action: ['type' => 'invoke', 'field' => 'copysign', 'args' => [['type' => 'f64', 'value' => '4607182418800017408'], ['type' => 'f64', 'value' => '13830554455654793216']]],
             expected: [['type' => 'f64', 'value' => '13830554455654793216']],
             line: 172,
@@ -1816,7 +1653,6 @@ final class F64BitwiseTest extends SpecTestsuiteBase
     public function testAssertReturn164(): void
     {
         $this->runAssertReturnCommand(
-            module: null,
             action: ['type' => 'invoke', 'field' => 'copysign', 'args' => [['type' => 'f64', 'value' => '4607182418800017408'], ['type' => 'f64', 'value' => '4607182418800017408']]],
             expected: [['type' => 'f64', 'value' => '4607182418800017408']],
             line: 173,
@@ -1827,7 +1663,6 @@ final class F64BitwiseTest extends SpecTestsuiteBase
     public function testAssertReturn165(): void
     {
         $this->runAssertReturnCommand(
-            module: null,
             action: ['type' => 'invoke', 'field' => 'copysign', 'args' => [['type' => 'f64', 'value' => '13830554455654793216'], ['type' => 'f64', 'value' => '13842132293034192152']]],
             expected: [['type' => 'f64', 'value' => '13830554455654793216']],
             line: 174,
@@ -1838,7 +1673,6 @@ final class F64BitwiseTest extends SpecTestsuiteBase
     public function testAssertReturn166(): void
     {
         $this->runAssertReturnCommand(
-            module: null,
             action: ['type' => 'invoke', 'field' => 'copysign', 'args' => [['type' => 'f64', 'value' => '13830554455654793216'], ['type' => 'f64', 'value' => '4618760256179416344']]],
             expected: [['type' => 'f64', 'value' => '4607182418800017408']],
             line: 175,
@@ -1849,7 +1683,6 @@ final class F64BitwiseTest extends SpecTestsuiteBase
     public function testAssertReturn167(): void
     {
         $this->runAssertReturnCommand(
-            module: null,
             action: ['type' => 'invoke', 'field' => 'copysign', 'args' => [['type' => 'f64', 'value' => '4607182418800017408'], ['type' => 'f64', 'value' => '13842132293034192152']]],
             expected: [['type' => 'f64', 'value' => '13830554455654793216']],
             line: 176,
@@ -1860,7 +1693,6 @@ final class F64BitwiseTest extends SpecTestsuiteBase
     public function testAssertReturn168(): void
     {
         $this->runAssertReturnCommand(
-            module: null,
             action: ['type' => 'invoke', 'field' => 'copysign', 'args' => [['type' => 'f64', 'value' => '4607182418800017408'], ['type' => 'f64', 'value' => '4618760256179416344']]],
             expected: [['type' => 'f64', 'value' => '4607182418800017408']],
             line: 177,
@@ -1871,7 +1703,6 @@ final class F64BitwiseTest extends SpecTestsuiteBase
     public function testAssertReturn169(): void
     {
         $this->runAssertReturnCommand(
-            module: null,
             action: ['type' => 'invoke', 'field' => 'copysign', 'args' => [['type' => 'f64', 'value' => '13830554455654793216'], ['type' => 'f64', 'value' => '18442240474082181119']]],
             expected: [['type' => 'f64', 'value' => '13830554455654793216']],
             line: 178,
@@ -1882,7 +1713,6 @@ final class F64BitwiseTest extends SpecTestsuiteBase
     public function testAssertReturn170(): void
     {
         $this->runAssertReturnCommand(
-            module: null,
             action: ['type' => 'invoke', 'field' => 'copysign', 'args' => [['type' => 'f64', 'value' => '13830554455654793216'], ['type' => 'f64', 'value' => '9218868437227405311']]],
             expected: [['type' => 'f64', 'value' => '4607182418800017408']],
             line: 179,
@@ -1893,7 +1723,6 @@ final class F64BitwiseTest extends SpecTestsuiteBase
     public function testAssertReturn171(): void
     {
         $this->runAssertReturnCommand(
-            module: null,
             action: ['type' => 'invoke', 'field' => 'copysign', 'args' => [['type' => 'f64', 'value' => '4607182418800017408'], ['type' => 'f64', 'value' => '18442240474082181119']]],
             expected: [['type' => 'f64', 'value' => '13830554455654793216']],
             line: 180,
@@ -1904,7 +1733,6 @@ final class F64BitwiseTest extends SpecTestsuiteBase
     public function testAssertReturn172(): void
     {
         $this->runAssertReturnCommand(
-            module: null,
             action: ['type' => 'invoke', 'field' => 'copysign', 'args' => [['type' => 'f64', 'value' => '4607182418800017408'], ['type' => 'f64', 'value' => '9218868437227405311']]],
             expected: [['type' => 'f64', 'value' => '4607182418800017408']],
             line: 181,
@@ -1915,7 +1743,6 @@ final class F64BitwiseTest extends SpecTestsuiteBase
     public function testAssertReturn173(): void
     {
         $this->runAssertReturnCommand(
-            module: null,
             action: ['type' => 'invoke', 'field' => 'copysign', 'args' => [['type' => 'f64', 'value' => '13830554455654793216'], ['type' => 'f64', 'value' => '18442240474082181120']]],
             expected: [['type' => 'f64', 'value' => '13830554455654793216']],
             line: 182,
@@ -1926,7 +1753,6 @@ final class F64BitwiseTest extends SpecTestsuiteBase
     public function testAssertReturn174(): void
     {
         $this->runAssertReturnCommand(
-            module: null,
             action: ['type' => 'invoke', 'field' => 'copysign', 'args' => [['type' => 'f64', 'value' => '13830554455654793216'], ['type' => 'f64', 'value' => '9218868437227405312']]],
             expected: [['type' => 'f64', 'value' => '4607182418800017408']],
             line: 183,
@@ -1937,7 +1763,6 @@ final class F64BitwiseTest extends SpecTestsuiteBase
     public function testAssertReturn175(): void
     {
         $this->runAssertReturnCommand(
-            module: null,
             action: ['type' => 'invoke', 'field' => 'copysign', 'args' => [['type' => 'f64', 'value' => '4607182418800017408'], ['type' => 'f64', 'value' => '18442240474082181120']]],
             expected: [['type' => 'f64', 'value' => '13830554455654793216']],
             line: 184,
@@ -1948,7 +1773,6 @@ final class F64BitwiseTest extends SpecTestsuiteBase
     public function testAssertReturn176(): void
     {
         $this->runAssertReturnCommand(
-            module: null,
             action: ['type' => 'invoke', 'field' => 'copysign', 'args' => [['type' => 'f64', 'value' => '4607182418800017408'], ['type' => 'f64', 'value' => '9218868437227405312']]],
             expected: [['type' => 'f64', 'value' => '4607182418800017408']],
             line: 185,
@@ -1959,7 +1783,6 @@ final class F64BitwiseTest extends SpecTestsuiteBase
     public function testAssertReturn177(): void
     {
         $this->runAssertReturnCommand(
-            module: null,
             action: ['type' => 'invoke', 'field' => 'copysign', 'args' => [['type' => 'f64', 'value' => '13830554455654793216'], ['type' => 'f64', 'value' => '18444492273895866368']]],
             expected: [['type' => 'f64', 'value' => '13830554455654793216']],
             line: 186,
@@ -1970,7 +1793,6 @@ final class F64BitwiseTest extends SpecTestsuiteBase
     public function testAssertReturn178(): void
     {
         $this->runAssertReturnCommand(
-            module: null,
             action: ['type' => 'invoke', 'field' => 'copysign', 'args' => [['type' => 'f64', 'value' => '13830554455654793216'], ['type' => 'f64', 'value' => '9221120237041090560']]],
             expected: [['type' => 'f64', 'value' => '4607182418800017408']],
             line: 187,
@@ -1981,7 +1803,6 @@ final class F64BitwiseTest extends SpecTestsuiteBase
     public function testAssertReturn179(): void
     {
         $this->runAssertReturnCommand(
-            module: null,
             action: ['type' => 'invoke', 'field' => 'copysign', 'args' => [['type' => 'f64', 'value' => '4607182418800017408'], ['type' => 'f64', 'value' => '18444492273895866368']]],
             expected: [['type' => 'f64', 'value' => '13830554455654793216']],
             line: 188,
@@ -1992,7 +1813,6 @@ final class F64BitwiseTest extends SpecTestsuiteBase
     public function testAssertReturn180(): void
     {
         $this->runAssertReturnCommand(
-            module: null,
             action: ['type' => 'invoke', 'field' => 'copysign', 'args' => [['type' => 'f64', 'value' => '4607182418800017408'], ['type' => 'f64', 'value' => '9221120237041090560']]],
             expected: [['type' => 'f64', 'value' => '4607182418800017408']],
             line: 189,
@@ -2003,7 +1823,6 @@ final class F64BitwiseTest extends SpecTestsuiteBase
     public function testAssertReturn181(): void
     {
         $this->runAssertReturnCommand(
-            module: null,
             action: ['type' => 'invoke', 'field' => 'copysign', 'args' => [['type' => 'f64', 'value' => '13842132293034192152'], ['type' => 'f64', 'value' => '9223372036854775808']]],
             expected: [['type' => 'f64', 'value' => '13842132293034192152']],
             line: 190,
@@ -2014,7 +1833,6 @@ final class F64BitwiseTest extends SpecTestsuiteBase
     public function testAssertReturn182(): void
     {
         $this->runAssertReturnCommand(
-            module: null,
             action: ['type' => 'invoke', 'field' => 'copysign', 'args' => [['type' => 'f64', 'value' => '13842132293034192152'], ['type' => 'f64', 'value' => '0']]],
             expected: [['type' => 'f64', 'value' => '4618760256179416344']],
             line: 191,
@@ -2025,7 +1843,6 @@ final class F64BitwiseTest extends SpecTestsuiteBase
     public function testAssertReturn183(): void
     {
         $this->runAssertReturnCommand(
-            module: null,
             action: ['type' => 'invoke', 'field' => 'copysign', 'args' => [['type' => 'f64', 'value' => '4618760256179416344'], ['type' => 'f64', 'value' => '9223372036854775808']]],
             expected: [['type' => 'f64', 'value' => '13842132293034192152']],
             line: 192,
@@ -2036,7 +1853,6 @@ final class F64BitwiseTest extends SpecTestsuiteBase
     public function testAssertReturn184(): void
     {
         $this->runAssertReturnCommand(
-            module: null,
             action: ['type' => 'invoke', 'field' => 'copysign', 'args' => [['type' => 'f64', 'value' => '4618760256179416344'], ['type' => 'f64', 'value' => '0']]],
             expected: [['type' => 'f64', 'value' => '4618760256179416344']],
             line: 193,
@@ -2047,7 +1863,6 @@ final class F64BitwiseTest extends SpecTestsuiteBase
     public function testAssertReturn185(): void
     {
         $this->runAssertReturnCommand(
-            module: null,
             action: ['type' => 'invoke', 'field' => 'copysign', 'args' => [['type' => 'f64', 'value' => '13842132293034192152'], ['type' => 'f64', 'value' => '9223372036854775809']]],
             expected: [['type' => 'f64', 'value' => '13842132293034192152']],
             line: 194,
@@ -2058,7 +1873,6 @@ final class F64BitwiseTest extends SpecTestsuiteBase
     public function testAssertReturn186(): void
     {
         $this->runAssertReturnCommand(
-            module: null,
             action: ['type' => 'invoke', 'field' => 'copysign', 'args' => [['type' => 'f64', 'value' => '13842132293034192152'], ['type' => 'f64', 'value' => '1']]],
             expected: [['type' => 'f64', 'value' => '4618760256179416344']],
             line: 195,
@@ -2069,7 +1883,6 @@ final class F64BitwiseTest extends SpecTestsuiteBase
     public function testAssertReturn187(): void
     {
         $this->runAssertReturnCommand(
-            module: null,
             action: ['type' => 'invoke', 'field' => 'copysign', 'args' => [['type' => 'f64', 'value' => '4618760256179416344'], ['type' => 'f64', 'value' => '9223372036854775809']]],
             expected: [['type' => 'f64', 'value' => '13842132293034192152']],
             line: 196,
@@ -2080,7 +1893,6 @@ final class F64BitwiseTest extends SpecTestsuiteBase
     public function testAssertReturn188(): void
     {
         $this->runAssertReturnCommand(
-            module: null,
             action: ['type' => 'invoke', 'field' => 'copysign', 'args' => [['type' => 'f64', 'value' => '4618760256179416344'], ['type' => 'f64', 'value' => '1']]],
             expected: [['type' => 'f64', 'value' => '4618760256179416344']],
             line: 197,
@@ -2091,7 +1903,6 @@ final class F64BitwiseTest extends SpecTestsuiteBase
     public function testAssertReturn189(): void
     {
         $this->runAssertReturnCommand(
-            module: null,
             action: ['type' => 'invoke', 'field' => 'copysign', 'args' => [['type' => 'f64', 'value' => '13842132293034192152'], ['type' => 'f64', 'value' => '9227875636482146304']]],
             expected: [['type' => 'f64', 'value' => '13842132293034192152']],
             line: 198,
@@ -2102,7 +1913,6 @@ final class F64BitwiseTest extends SpecTestsuiteBase
     public function testAssertReturn190(): void
     {
         $this->runAssertReturnCommand(
-            module: null,
             action: ['type' => 'invoke', 'field' => 'copysign', 'args' => [['type' => 'f64', 'value' => '13842132293034192152'], ['type' => 'f64', 'value' => '4503599627370496']]],
             expected: [['type' => 'f64', 'value' => '4618760256179416344']],
             line: 199,
@@ -2113,7 +1923,6 @@ final class F64BitwiseTest extends SpecTestsuiteBase
     public function testAssertReturn191(): void
     {
         $this->runAssertReturnCommand(
-            module: null,
             action: ['type' => 'invoke', 'field' => 'copysign', 'args' => [['type' => 'f64', 'value' => '4618760256179416344'], ['type' => 'f64', 'value' => '9227875636482146304']]],
             expected: [['type' => 'f64', 'value' => '13842132293034192152']],
             line: 200,
@@ -2124,7 +1933,6 @@ final class F64BitwiseTest extends SpecTestsuiteBase
     public function testAssertReturn192(): void
     {
         $this->runAssertReturnCommand(
-            module: null,
             action: ['type' => 'invoke', 'field' => 'copysign', 'args' => [['type' => 'f64', 'value' => '4618760256179416344'], ['type' => 'f64', 'value' => '4503599627370496']]],
             expected: [['type' => 'f64', 'value' => '4618760256179416344']],
             line: 201,
@@ -2135,7 +1943,6 @@ final class F64BitwiseTest extends SpecTestsuiteBase
     public function testAssertReturn193(): void
     {
         $this->runAssertReturnCommand(
-            module: null,
             action: ['type' => 'invoke', 'field' => 'copysign', 'args' => [['type' => 'f64', 'value' => '13842132293034192152'], ['type' => 'f64', 'value' => '13826050856027422720']]],
             expected: [['type' => 'f64', 'value' => '13842132293034192152']],
             line: 202,
@@ -2146,7 +1953,6 @@ final class F64BitwiseTest extends SpecTestsuiteBase
     public function testAssertReturn194(): void
     {
         $this->runAssertReturnCommand(
-            module: null,
             action: ['type' => 'invoke', 'field' => 'copysign', 'args' => [['type' => 'f64', 'value' => '13842132293034192152'], ['type' => 'f64', 'value' => '4602678819172646912']]],
             expected: [['type' => 'f64', 'value' => '4618760256179416344']],
             line: 203,
@@ -2157,7 +1963,6 @@ final class F64BitwiseTest extends SpecTestsuiteBase
     public function testAssertReturn195(): void
     {
         $this->runAssertReturnCommand(
-            module: null,
             action: ['type' => 'invoke', 'field' => 'copysign', 'args' => [['type' => 'f64', 'value' => '4618760256179416344'], ['type' => 'f64', 'value' => '13826050856027422720']]],
             expected: [['type' => 'f64', 'value' => '13842132293034192152']],
             line: 204,
@@ -2168,7 +1973,6 @@ final class F64BitwiseTest extends SpecTestsuiteBase
     public function testAssertReturn196(): void
     {
         $this->runAssertReturnCommand(
-            module: null,
             action: ['type' => 'invoke', 'field' => 'copysign', 'args' => [['type' => 'f64', 'value' => '4618760256179416344'], ['type' => 'f64', 'value' => '4602678819172646912']]],
             expected: [['type' => 'f64', 'value' => '4618760256179416344']],
             line: 205,
@@ -2179,7 +1983,6 @@ final class F64BitwiseTest extends SpecTestsuiteBase
     public function testAssertReturn197(): void
     {
         $this->runAssertReturnCommand(
-            module: null,
             action: ['type' => 'invoke', 'field' => 'copysign', 'args' => [['type' => 'f64', 'value' => '13842132293034192152'], ['type' => 'f64', 'value' => '13830554455654793216']]],
             expected: [['type' => 'f64', 'value' => '13842132293034192152']],
             line: 206,
@@ -2190,7 +1993,6 @@ final class F64BitwiseTest extends SpecTestsuiteBase
     public function testAssertReturn198(): void
     {
         $this->runAssertReturnCommand(
-            module: null,
             action: ['type' => 'invoke', 'field' => 'copysign', 'args' => [['type' => 'f64', 'value' => '13842132293034192152'], ['type' => 'f64', 'value' => '4607182418800017408']]],
             expected: [['type' => 'f64', 'value' => '4618760256179416344']],
             line: 207,
@@ -2201,7 +2003,6 @@ final class F64BitwiseTest extends SpecTestsuiteBase
     public function testAssertReturn199(): void
     {
         $this->runAssertReturnCommand(
-            module: null,
             action: ['type' => 'invoke', 'field' => 'copysign', 'args' => [['type' => 'f64', 'value' => '4618760256179416344'], ['type' => 'f64', 'value' => '13830554455654793216']]],
             expected: [['type' => 'f64', 'value' => '13842132293034192152']],
             line: 208,
@@ -2212,7 +2013,6 @@ final class F64BitwiseTest extends SpecTestsuiteBase
     public function testAssertReturn200(): void
     {
         $this->runAssertReturnCommand(
-            module: null,
             action: ['type' => 'invoke', 'field' => 'copysign', 'args' => [['type' => 'f64', 'value' => '4618760256179416344'], ['type' => 'f64', 'value' => '4607182418800017408']]],
             expected: [['type' => 'f64', 'value' => '4618760256179416344']],
             line: 209,
@@ -2223,7 +2023,6 @@ final class F64BitwiseTest extends SpecTestsuiteBase
     public function testAssertReturn201(): void
     {
         $this->runAssertReturnCommand(
-            module: null,
             action: ['type' => 'invoke', 'field' => 'copysign', 'args' => [['type' => 'f64', 'value' => '13842132293034192152'], ['type' => 'f64', 'value' => '13842132293034192152']]],
             expected: [['type' => 'f64', 'value' => '13842132293034192152']],
             line: 210,
@@ -2234,7 +2033,6 @@ final class F64BitwiseTest extends SpecTestsuiteBase
     public function testAssertReturn202(): void
     {
         $this->runAssertReturnCommand(
-            module: null,
             action: ['type' => 'invoke', 'field' => 'copysign', 'args' => [['type' => 'f64', 'value' => '13842132293034192152'], ['type' => 'f64', 'value' => '4618760256179416344']]],
             expected: [['type' => 'f64', 'value' => '4618760256179416344']],
             line: 211,
@@ -2245,7 +2043,6 @@ final class F64BitwiseTest extends SpecTestsuiteBase
     public function testAssertReturn203(): void
     {
         $this->runAssertReturnCommand(
-            module: null,
             action: ['type' => 'invoke', 'field' => 'copysign', 'args' => [['type' => 'f64', 'value' => '4618760256179416344'], ['type' => 'f64', 'value' => '13842132293034192152']]],
             expected: [['type' => 'f64', 'value' => '13842132293034192152']],
             line: 212,
@@ -2256,7 +2053,6 @@ final class F64BitwiseTest extends SpecTestsuiteBase
     public function testAssertReturn204(): void
     {
         $this->runAssertReturnCommand(
-            module: null,
             action: ['type' => 'invoke', 'field' => 'copysign', 'args' => [['type' => 'f64', 'value' => '4618760256179416344'], ['type' => 'f64', 'value' => '4618760256179416344']]],
             expected: [['type' => 'f64', 'value' => '4618760256179416344']],
             line: 213,
@@ -2267,7 +2063,6 @@ final class F64BitwiseTest extends SpecTestsuiteBase
     public function testAssertReturn205(): void
     {
         $this->runAssertReturnCommand(
-            module: null,
             action: ['type' => 'invoke', 'field' => 'copysign', 'args' => [['type' => 'f64', 'value' => '13842132293034192152'], ['type' => 'f64', 'value' => '18442240474082181119']]],
             expected: [['type' => 'f64', 'value' => '13842132293034192152']],
             line: 214,
@@ -2278,7 +2073,6 @@ final class F64BitwiseTest extends SpecTestsuiteBase
     public function testAssertReturn206(): void
     {
         $this->runAssertReturnCommand(
-            module: null,
             action: ['type' => 'invoke', 'field' => 'copysign', 'args' => [['type' => 'f64', 'value' => '13842132293034192152'], ['type' => 'f64', 'value' => '9218868437227405311']]],
             expected: [['type' => 'f64', 'value' => '4618760256179416344']],
             line: 215,
@@ -2289,7 +2083,6 @@ final class F64BitwiseTest extends SpecTestsuiteBase
     public function testAssertReturn207(): void
     {
         $this->runAssertReturnCommand(
-            module: null,
             action: ['type' => 'invoke', 'field' => 'copysign', 'args' => [['type' => 'f64', 'value' => '4618760256179416344'], ['type' => 'f64', 'value' => '18442240474082181119']]],
             expected: [['type' => 'f64', 'value' => '13842132293034192152']],
             line: 216,
@@ -2300,7 +2093,6 @@ final class F64BitwiseTest extends SpecTestsuiteBase
     public function testAssertReturn208(): void
     {
         $this->runAssertReturnCommand(
-            module: null,
             action: ['type' => 'invoke', 'field' => 'copysign', 'args' => [['type' => 'f64', 'value' => '4618760256179416344'], ['type' => 'f64', 'value' => '9218868437227405311']]],
             expected: [['type' => 'f64', 'value' => '4618760256179416344']],
             line: 217,
@@ -2311,7 +2103,6 @@ final class F64BitwiseTest extends SpecTestsuiteBase
     public function testAssertReturn209(): void
     {
         $this->runAssertReturnCommand(
-            module: null,
             action: ['type' => 'invoke', 'field' => 'copysign', 'args' => [['type' => 'f64', 'value' => '13842132293034192152'], ['type' => 'f64', 'value' => '18442240474082181120']]],
             expected: [['type' => 'f64', 'value' => '13842132293034192152']],
             line: 218,
@@ -2322,7 +2113,6 @@ final class F64BitwiseTest extends SpecTestsuiteBase
     public function testAssertReturn210(): void
     {
         $this->runAssertReturnCommand(
-            module: null,
             action: ['type' => 'invoke', 'field' => 'copysign', 'args' => [['type' => 'f64', 'value' => '13842132293034192152'], ['type' => 'f64', 'value' => '9218868437227405312']]],
             expected: [['type' => 'f64', 'value' => '4618760256179416344']],
             line: 219,
@@ -2333,7 +2123,6 @@ final class F64BitwiseTest extends SpecTestsuiteBase
     public function testAssertReturn211(): void
     {
         $this->runAssertReturnCommand(
-            module: null,
             action: ['type' => 'invoke', 'field' => 'copysign', 'args' => [['type' => 'f64', 'value' => '4618760256179416344'], ['type' => 'f64', 'value' => '18442240474082181120']]],
             expected: [['type' => 'f64', 'value' => '13842132293034192152']],
             line: 220,
@@ -2344,7 +2133,6 @@ final class F64BitwiseTest extends SpecTestsuiteBase
     public function testAssertReturn212(): void
     {
         $this->runAssertReturnCommand(
-            module: null,
             action: ['type' => 'invoke', 'field' => 'copysign', 'args' => [['type' => 'f64', 'value' => '4618760256179416344'], ['type' => 'f64', 'value' => '9218868437227405312']]],
             expected: [['type' => 'f64', 'value' => '4618760256179416344']],
             line: 221,
@@ -2355,7 +2143,6 @@ final class F64BitwiseTest extends SpecTestsuiteBase
     public function testAssertReturn213(): void
     {
         $this->runAssertReturnCommand(
-            module: null,
             action: ['type' => 'invoke', 'field' => 'copysign', 'args' => [['type' => 'f64', 'value' => '13842132293034192152'], ['type' => 'f64', 'value' => '18444492273895866368']]],
             expected: [['type' => 'f64', 'value' => '13842132293034192152']],
             line: 222,
@@ -2366,7 +2153,6 @@ final class F64BitwiseTest extends SpecTestsuiteBase
     public function testAssertReturn214(): void
     {
         $this->runAssertReturnCommand(
-            module: null,
             action: ['type' => 'invoke', 'field' => 'copysign', 'args' => [['type' => 'f64', 'value' => '13842132293034192152'], ['type' => 'f64', 'value' => '9221120237041090560']]],
             expected: [['type' => 'f64', 'value' => '4618760256179416344']],
             line: 223,
@@ -2377,7 +2163,6 @@ final class F64BitwiseTest extends SpecTestsuiteBase
     public function testAssertReturn215(): void
     {
         $this->runAssertReturnCommand(
-            module: null,
             action: ['type' => 'invoke', 'field' => 'copysign', 'args' => [['type' => 'f64', 'value' => '4618760256179416344'], ['type' => 'f64', 'value' => '18444492273895866368']]],
             expected: [['type' => 'f64', 'value' => '13842132293034192152']],
             line: 224,
@@ -2388,7 +2173,6 @@ final class F64BitwiseTest extends SpecTestsuiteBase
     public function testAssertReturn216(): void
     {
         $this->runAssertReturnCommand(
-            module: null,
             action: ['type' => 'invoke', 'field' => 'copysign', 'args' => [['type' => 'f64', 'value' => '4618760256179416344'], ['type' => 'f64', 'value' => '9221120237041090560']]],
             expected: [['type' => 'f64', 'value' => '4618760256179416344']],
             line: 225,
@@ -2399,7 +2183,6 @@ final class F64BitwiseTest extends SpecTestsuiteBase
     public function testAssertReturn217(): void
     {
         $this->runAssertReturnCommand(
-            module: null,
             action: ['type' => 'invoke', 'field' => 'copysign', 'args' => [['type' => 'f64', 'value' => '18442240474082181119'], ['type' => 'f64', 'value' => '9223372036854775808']]],
             expected: [['type' => 'f64', 'value' => '18442240474082181119']],
             line: 226,
@@ -2410,7 +2193,6 @@ final class F64BitwiseTest extends SpecTestsuiteBase
     public function testAssertReturn218(): void
     {
         $this->runAssertReturnCommand(
-            module: null,
             action: ['type' => 'invoke', 'field' => 'copysign', 'args' => [['type' => 'f64', 'value' => '18442240474082181119'], ['type' => 'f64', 'value' => '0']]],
             expected: [['type' => 'f64', 'value' => '9218868437227405311']],
             line: 227,
@@ -2421,7 +2203,6 @@ final class F64BitwiseTest extends SpecTestsuiteBase
     public function testAssertReturn219(): void
     {
         $this->runAssertReturnCommand(
-            module: null,
             action: ['type' => 'invoke', 'field' => 'copysign', 'args' => [['type' => 'f64', 'value' => '9218868437227405311'], ['type' => 'f64', 'value' => '9223372036854775808']]],
             expected: [['type' => 'f64', 'value' => '18442240474082181119']],
             line: 228,
@@ -2432,7 +2213,6 @@ final class F64BitwiseTest extends SpecTestsuiteBase
     public function testAssertReturn220(): void
     {
         $this->runAssertReturnCommand(
-            module: null,
             action: ['type' => 'invoke', 'field' => 'copysign', 'args' => [['type' => 'f64', 'value' => '9218868437227405311'], ['type' => 'f64', 'value' => '0']]],
             expected: [['type' => 'f64', 'value' => '9218868437227405311']],
             line: 229,
@@ -2443,7 +2223,6 @@ final class F64BitwiseTest extends SpecTestsuiteBase
     public function testAssertReturn221(): void
     {
         $this->runAssertReturnCommand(
-            module: null,
             action: ['type' => 'invoke', 'field' => 'copysign', 'args' => [['type' => 'f64', 'value' => '18442240474082181119'], ['type' => 'f64', 'value' => '9223372036854775809']]],
             expected: [['type' => 'f64', 'value' => '18442240474082181119']],
             line: 230,
@@ -2454,7 +2233,6 @@ final class F64BitwiseTest extends SpecTestsuiteBase
     public function testAssertReturn222(): void
     {
         $this->runAssertReturnCommand(
-            module: null,
             action: ['type' => 'invoke', 'field' => 'copysign', 'args' => [['type' => 'f64', 'value' => '18442240474082181119'], ['type' => 'f64', 'value' => '1']]],
             expected: [['type' => 'f64', 'value' => '9218868437227405311']],
             line: 231,
@@ -2465,7 +2243,6 @@ final class F64BitwiseTest extends SpecTestsuiteBase
     public function testAssertReturn223(): void
     {
         $this->runAssertReturnCommand(
-            module: null,
             action: ['type' => 'invoke', 'field' => 'copysign', 'args' => [['type' => 'f64', 'value' => '9218868437227405311'], ['type' => 'f64', 'value' => '9223372036854775809']]],
             expected: [['type' => 'f64', 'value' => '18442240474082181119']],
             line: 232,
@@ -2476,7 +2253,6 @@ final class F64BitwiseTest extends SpecTestsuiteBase
     public function testAssertReturn224(): void
     {
         $this->runAssertReturnCommand(
-            module: null,
             action: ['type' => 'invoke', 'field' => 'copysign', 'args' => [['type' => 'f64', 'value' => '9218868437227405311'], ['type' => 'f64', 'value' => '1']]],
             expected: [['type' => 'f64', 'value' => '9218868437227405311']],
             line: 233,
@@ -2487,7 +2263,6 @@ final class F64BitwiseTest extends SpecTestsuiteBase
     public function testAssertReturn225(): void
     {
         $this->runAssertReturnCommand(
-            module: null,
             action: ['type' => 'invoke', 'field' => 'copysign', 'args' => [['type' => 'f64', 'value' => '18442240474082181119'], ['type' => 'f64', 'value' => '9227875636482146304']]],
             expected: [['type' => 'f64', 'value' => '18442240474082181119']],
             line: 234,
@@ -2498,7 +2273,6 @@ final class F64BitwiseTest extends SpecTestsuiteBase
     public function testAssertReturn226(): void
     {
         $this->runAssertReturnCommand(
-            module: null,
             action: ['type' => 'invoke', 'field' => 'copysign', 'args' => [['type' => 'f64', 'value' => '18442240474082181119'], ['type' => 'f64', 'value' => '4503599627370496']]],
             expected: [['type' => 'f64', 'value' => '9218868437227405311']],
             line: 235,
@@ -2509,7 +2283,6 @@ final class F64BitwiseTest extends SpecTestsuiteBase
     public function testAssertReturn227(): void
     {
         $this->runAssertReturnCommand(
-            module: null,
             action: ['type' => 'invoke', 'field' => 'copysign', 'args' => [['type' => 'f64', 'value' => '9218868437227405311'], ['type' => 'f64', 'value' => '9227875636482146304']]],
             expected: [['type' => 'f64', 'value' => '18442240474082181119']],
             line: 236,
@@ -2520,7 +2293,6 @@ final class F64BitwiseTest extends SpecTestsuiteBase
     public function testAssertReturn228(): void
     {
         $this->runAssertReturnCommand(
-            module: null,
             action: ['type' => 'invoke', 'field' => 'copysign', 'args' => [['type' => 'f64', 'value' => '9218868437227405311'], ['type' => 'f64', 'value' => '4503599627370496']]],
             expected: [['type' => 'f64', 'value' => '9218868437227405311']],
             line: 237,
@@ -2531,7 +2303,6 @@ final class F64BitwiseTest extends SpecTestsuiteBase
     public function testAssertReturn229(): void
     {
         $this->runAssertReturnCommand(
-            module: null,
             action: ['type' => 'invoke', 'field' => 'copysign', 'args' => [['type' => 'f64', 'value' => '18442240474082181119'], ['type' => 'f64', 'value' => '13826050856027422720']]],
             expected: [['type' => 'f64', 'value' => '18442240474082181119']],
             line: 238,
@@ -2542,7 +2313,6 @@ final class F64BitwiseTest extends SpecTestsuiteBase
     public function testAssertReturn230(): void
     {
         $this->runAssertReturnCommand(
-            module: null,
             action: ['type' => 'invoke', 'field' => 'copysign', 'args' => [['type' => 'f64', 'value' => '18442240474082181119'], ['type' => 'f64', 'value' => '4602678819172646912']]],
             expected: [['type' => 'f64', 'value' => '9218868437227405311']],
             line: 239,
@@ -2553,7 +2323,6 @@ final class F64BitwiseTest extends SpecTestsuiteBase
     public function testAssertReturn231(): void
     {
         $this->runAssertReturnCommand(
-            module: null,
             action: ['type' => 'invoke', 'field' => 'copysign', 'args' => [['type' => 'f64', 'value' => '9218868437227405311'], ['type' => 'f64', 'value' => '13826050856027422720']]],
             expected: [['type' => 'f64', 'value' => '18442240474082181119']],
             line: 240,
@@ -2564,7 +2333,6 @@ final class F64BitwiseTest extends SpecTestsuiteBase
     public function testAssertReturn232(): void
     {
         $this->runAssertReturnCommand(
-            module: null,
             action: ['type' => 'invoke', 'field' => 'copysign', 'args' => [['type' => 'f64', 'value' => '9218868437227405311'], ['type' => 'f64', 'value' => '4602678819172646912']]],
             expected: [['type' => 'f64', 'value' => '9218868437227405311']],
             line: 241,
@@ -2575,7 +2343,6 @@ final class F64BitwiseTest extends SpecTestsuiteBase
     public function testAssertReturn233(): void
     {
         $this->runAssertReturnCommand(
-            module: null,
             action: ['type' => 'invoke', 'field' => 'copysign', 'args' => [['type' => 'f64', 'value' => '18442240474082181119'], ['type' => 'f64', 'value' => '13830554455654793216']]],
             expected: [['type' => 'f64', 'value' => '18442240474082181119']],
             line: 242,
@@ -2586,7 +2353,6 @@ final class F64BitwiseTest extends SpecTestsuiteBase
     public function testAssertReturn234(): void
     {
         $this->runAssertReturnCommand(
-            module: null,
             action: ['type' => 'invoke', 'field' => 'copysign', 'args' => [['type' => 'f64', 'value' => '18442240474082181119'], ['type' => 'f64', 'value' => '4607182418800017408']]],
             expected: [['type' => 'f64', 'value' => '9218868437227405311']],
             line: 243,
@@ -2597,7 +2363,6 @@ final class F64BitwiseTest extends SpecTestsuiteBase
     public function testAssertReturn235(): void
     {
         $this->runAssertReturnCommand(
-            module: null,
             action: ['type' => 'invoke', 'field' => 'copysign', 'args' => [['type' => 'f64', 'value' => '9218868437227405311'], ['type' => 'f64', 'value' => '13830554455654793216']]],
             expected: [['type' => 'f64', 'value' => '18442240474082181119']],
             line: 244,
@@ -2608,7 +2373,6 @@ final class F64BitwiseTest extends SpecTestsuiteBase
     public function testAssertReturn236(): void
     {
         $this->runAssertReturnCommand(
-            module: null,
             action: ['type' => 'invoke', 'field' => 'copysign', 'args' => [['type' => 'f64', 'value' => '9218868437227405311'], ['type' => 'f64', 'value' => '4607182418800017408']]],
             expected: [['type' => 'f64', 'value' => '9218868437227405311']],
             line: 245,
@@ -2619,7 +2383,6 @@ final class F64BitwiseTest extends SpecTestsuiteBase
     public function testAssertReturn237(): void
     {
         $this->runAssertReturnCommand(
-            module: null,
             action: ['type' => 'invoke', 'field' => 'copysign', 'args' => [['type' => 'f64', 'value' => '18442240474082181119'], ['type' => 'f64', 'value' => '13842132293034192152']]],
             expected: [['type' => 'f64', 'value' => '18442240474082181119']],
             line: 246,
@@ -2630,7 +2393,6 @@ final class F64BitwiseTest extends SpecTestsuiteBase
     public function testAssertReturn238(): void
     {
         $this->runAssertReturnCommand(
-            module: null,
             action: ['type' => 'invoke', 'field' => 'copysign', 'args' => [['type' => 'f64', 'value' => '18442240474082181119'], ['type' => 'f64', 'value' => '4618760256179416344']]],
             expected: [['type' => 'f64', 'value' => '9218868437227405311']],
             line: 247,
@@ -2641,7 +2403,6 @@ final class F64BitwiseTest extends SpecTestsuiteBase
     public function testAssertReturn239(): void
     {
         $this->runAssertReturnCommand(
-            module: null,
             action: ['type' => 'invoke', 'field' => 'copysign', 'args' => [['type' => 'f64', 'value' => '9218868437227405311'], ['type' => 'f64', 'value' => '13842132293034192152']]],
             expected: [['type' => 'f64', 'value' => '18442240474082181119']],
             line: 248,
@@ -2652,7 +2413,6 @@ final class F64BitwiseTest extends SpecTestsuiteBase
     public function testAssertReturn240(): void
     {
         $this->runAssertReturnCommand(
-            module: null,
             action: ['type' => 'invoke', 'field' => 'copysign', 'args' => [['type' => 'f64', 'value' => '9218868437227405311'], ['type' => 'f64', 'value' => '4618760256179416344']]],
             expected: [['type' => 'f64', 'value' => '9218868437227405311']],
             line: 249,
@@ -2663,7 +2423,6 @@ final class F64BitwiseTest extends SpecTestsuiteBase
     public function testAssertReturn241(): void
     {
         $this->runAssertReturnCommand(
-            module: null,
             action: ['type' => 'invoke', 'field' => 'copysign', 'args' => [['type' => 'f64', 'value' => '18442240474082181119'], ['type' => 'f64', 'value' => '18442240474082181119']]],
             expected: [['type' => 'f64', 'value' => '18442240474082181119']],
             line: 250,
@@ -2674,7 +2433,6 @@ final class F64BitwiseTest extends SpecTestsuiteBase
     public function testAssertReturn242(): void
     {
         $this->runAssertReturnCommand(
-            module: null,
             action: ['type' => 'invoke', 'field' => 'copysign', 'args' => [['type' => 'f64', 'value' => '18442240474082181119'], ['type' => 'f64', 'value' => '9218868437227405311']]],
             expected: [['type' => 'f64', 'value' => '9218868437227405311']],
             line: 251,
@@ -2685,7 +2443,6 @@ final class F64BitwiseTest extends SpecTestsuiteBase
     public function testAssertReturn243(): void
     {
         $this->runAssertReturnCommand(
-            module: null,
             action: ['type' => 'invoke', 'field' => 'copysign', 'args' => [['type' => 'f64', 'value' => '9218868437227405311'], ['type' => 'f64', 'value' => '18442240474082181119']]],
             expected: [['type' => 'f64', 'value' => '18442240474082181119']],
             line: 252,
@@ -2696,7 +2453,6 @@ final class F64BitwiseTest extends SpecTestsuiteBase
     public function testAssertReturn244(): void
     {
         $this->runAssertReturnCommand(
-            module: null,
             action: ['type' => 'invoke', 'field' => 'copysign', 'args' => [['type' => 'f64', 'value' => '9218868437227405311'], ['type' => 'f64', 'value' => '9218868437227405311']]],
             expected: [['type' => 'f64', 'value' => '9218868437227405311']],
             line: 253,
@@ -2707,7 +2463,6 @@ final class F64BitwiseTest extends SpecTestsuiteBase
     public function testAssertReturn245(): void
     {
         $this->runAssertReturnCommand(
-            module: null,
             action: ['type' => 'invoke', 'field' => 'copysign', 'args' => [['type' => 'f64', 'value' => '18442240474082181119'], ['type' => 'f64', 'value' => '18442240474082181120']]],
             expected: [['type' => 'f64', 'value' => '18442240474082181119']],
             line: 254,
@@ -2718,7 +2473,6 @@ final class F64BitwiseTest extends SpecTestsuiteBase
     public function testAssertReturn246(): void
     {
         $this->runAssertReturnCommand(
-            module: null,
             action: ['type' => 'invoke', 'field' => 'copysign', 'args' => [['type' => 'f64', 'value' => '18442240474082181119'], ['type' => 'f64', 'value' => '9218868437227405312']]],
             expected: [['type' => 'f64', 'value' => '9218868437227405311']],
             line: 255,
@@ -2729,7 +2483,6 @@ final class F64BitwiseTest extends SpecTestsuiteBase
     public function testAssertReturn247(): void
     {
         $this->runAssertReturnCommand(
-            module: null,
             action: ['type' => 'invoke', 'field' => 'copysign', 'args' => [['type' => 'f64', 'value' => '9218868437227405311'], ['type' => 'f64', 'value' => '18442240474082181120']]],
             expected: [['type' => 'f64', 'value' => '18442240474082181119']],
             line: 256,
@@ -2740,7 +2493,6 @@ final class F64BitwiseTest extends SpecTestsuiteBase
     public function testAssertReturn248(): void
     {
         $this->runAssertReturnCommand(
-            module: null,
             action: ['type' => 'invoke', 'field' => 'copysign', 'args' => [['type' => 'f64', 'value' => '9218868437227405311'], ['type' => 'f64', 'value' => '9218868437227405312']]],
             expected: [['type' => 'f64', 'value' => '9218868437227405311']],
             line: 257,
@@ -2751,7 +2503,6 @@ final class F64BitwiseTest extends SpecTestsuiteBase
     public function testAssertReturn249(): void
     {
         $this->runAssertReturnCommand(
-            module: null,
             action: ['type' => 'invoke', 'field' => 'copysign', 'args' => [['type' => 'f64', 'value' => '18442240474082181119'], ['type' => 'f64', 'value' => '18444492273895866368']]],
             expected: [['type' => 'f64', 'value' => '18442240474082181119']],
             line: 258,
@@ -2762,7 +2513,6 @@ final class F64BitwiseTest extends SpecTestsuiteBase
     public function testAssertReturn250(): void
     {
         $this->runAssertReturnCommand(
-            module: null,
             action: ['type' => 'invoke', 'field' => 'copysign', 'args' => [['type' => 'f64', 'value' => '18442240474082181119'], ['type' => 'f64', 'value' => '9221120237041090560']]],
             expected: [['type' => 'f64', 'value' => '9218868437227405311']],
             line: 259,
@@ -2773,7 +2523,6 @@ final class F64BitwiseTest extends SpecTestsuiteBase
     public function testAssertReturn251(): void
     {
         $this->runAssertReturnCommand(
-            module: null,
             action: ['type' => 'invoke', 'field' => 'copysign', 'args' => [['type' => 'f64', 'value' => '9218868437227405311'], ['type' => 'f64', 'value' => '18444492273895866368']]],
             expected: [['type' => 'f64', 'value' => '18442240474082181119']],
             line: 260,
@@ -2784,7 +2533,6 @@ final class F64BitwiseTest extends SpecTestsuiteBase
     public function testAssertReturn252(): void
     {
         $this->runAssertReturnCommand(
-            module: null,
             action: ['type' => 'invoke', 'field' => 'copysign', 'args' => [['type' => 'f64', 'value' => '9218868437227405311'], ['type' => 'f64', 'value' => '9221120237041090560']]],
             expected: [['type' => 'f64', 'value' => '9218868437227405311']],
             line: 261,
@@ -2795,7 +2543,6 @@ final class F64BitwiseTest extends SpecTestsuiteBase
     public function testAssertReturn253(): void
     {
         $this->runAssertReturnCommand(
-            module: null,
             action: ['type' => 'invoke', 'field' => 'copysign', 'args' => [['type' => 'f64', 'value' => '18442240474082181120'], ['type' => 'f64', 'value' => '9223372036854775808']]],
             expected: [['type' => 'f64', 'value' => '18442240474082181120']],
             line: 262,
@@ -2806,7 +2553,6 @@ final class F64BitwiseTest extends SpecTestsuiteBase
     public function testAssertReturn254(): void
     {
         $this->runAssertReturnCommand(
-            module: null,
             action: ['type' => 'invoke', 'field' => 'copysign', 'args' => [['type' => 'f64', 'value' => '18442240474082181120'], ['type' => 'f64', 'value' => '0']]],
             expected: [['type' => 'f64', 'value' => '9218868437227405312']],
             line: 263,
@@ -2817,7 +2563,6 @@ final class F64BitwiseTest extends SpecTestsuiteBase
     public function testAssertReturn255(): void
     {
         $this->runAssertReturnCommand(
-            module: null,
             action: ['type' => 'invoke', 'field' => 'copysign', 'args' => [['type' => 'f64', 'value' => '9218868437227405312'], ['type' => 'f64', 'value' => '9223372036854775808']]],
             expected: [['type' => 'f64', 'value' => '18442240474082181120']],
             line: 264,
@@ -2828,7 +2573,6 @@ final class F64BitwiseTest extends SpecTestsuiteBase
     public function testAssertReturn256(): void
     {
         $this->runAssertReturnCommand(
-            module: null,
             action: ['type' => 'invoke', 'field' => 'copysign', 'args' => [['type' => 'f64', 'value' => '9218868437227405312'], ['type' => 'f64', 'value' => '0']]],
             expected: [['type' => 'f64', 'value' => '9218868437227405312']],
             line: 265,
@@ -2839,7 +2583,6 @@ final class F64BitwiseTest extends SpecTestsuiteBase
     public function testAssertReturn257(): void
     {
         $this->runAssertReturnCommand(
-            module: null,
             action: ['type' => 'invoke', 'field' => 'copysign', 'args' => [['type' => 'f64', 'value' => '18442240474082181120'], ['type' => 'f64', 'value' => '9223372036854775809']]],
             expected: [['type' => 'f64', 'value' => '18442240474082181120']],
             line: 266,
@@ -2850,7 +2593,6 @@ final class F64BitwiseTest extends SpecTestsuiteBase
     public function testAssertReturn258(): void
     {
         $this->runAssertReturnCommand(
-            module: null,
             action: ['type' => 'invoke', 'field' => 'copysign', 'args' => [['type' => 'f64', 'value' => '18442240474082181120'], ['type' => 'f64', 'value' => '1']]],
             expected: [['type' => 'f64', 'value' => '9218868437227405312']],
             line: 267,
@@ -2861,7 +2603,6 @@ final class F64BitwiseTest extends SpecTestsuiteBase
     public function testAssertReturn259(): void
     {
         $this->runAssertReturnCommand(
-            module: null,
             action: ['type' => 'invoke', 'field' => 'copysign', 'args' => [['type' => 'f64', 'value' => '9218868437227405312'], ['type' => 'f64', 'value' => '9223372036854775809']]],
             expected: [['type' => 'f64', 'value' => '18442240474082181120']],
             line: 268,
@@ -2872,7 +2613,6 @@ final class F64BitwiseTest extends SpecTestsuiteBase
     public function testAssertReturn260(): void
     {
         $this->runAssertReturnCommand(
-            module: null,
             action: ['type' => 'invoke', 'field' => 'copysign', 'args' => [['type' => 'f64', 'value' => '9218868437227405312'], ['type' => 'f64', 'value' => '1']]],
             expected: [['type' => 'f64', 'value' => '9218868437227405312']],
             line: 269,
@@ -2883,7 +2623,6 @@ final class F64BitwiseTest extends SpecTestsuiteBase
     public function testAssertReturn261(): void
     {
         $this->runAssertReturnCommand(
-            module: null,
             action: ['type' => 'invoke', 'field' => 'copysign', 'args' => [['type' => 'f64', 'value' => '18442240474082181120'], ['type' => 'f64', 'value' => '9227875636482146304']]],
             expected: [['type' => 'f64', 'value' => '18442240474082181120']],
             line: 270,
@@ -2894,7 +2633,6 @@ final class F64BitwiseTest extends SpecTestsuiteBase
     public function testAssertReturn262(): void
     {
         $this->runAssertReturnCommand(
-            module: null,
             action: ['type' => 'invoke', 'field' => 'copysign', 'args' => [['type' => 'f64', 'value' => '18442240474082181120'], ['type' => 'f64', 'value' => '4503599627370496']]],
             expected: [['type' => 'f64', 'value' => '9218868437227405312']],
             line: 271,
@@ -2905,7 +2643,6 @@ final class F64BitwiseTest extends SpecTestsuiteBase
     public function testAssertReturn263(): void
     {
         $this->runAssertReturnCommand(
-            module: null,
             action: ['type' => 'invoke', 'field' => 'copysign', 'args' => [['type' => 'f64', 'value' => '9218868437227405312'], ['type' => 'f64', 'value' => '9227875636482146304']]],
             expected: [['type' => 'f64', 'value' => '18442240474082181120']],
             line: 272,
@@ -2916,7 +2653,6 @@ final class F64BitwiseTest extends SpecTestsuiteBase
     public function testAssertReturn264(): void
     {
         $this->runAssertReturnCommand(
-            module: null,
             action: ['type' => 'invoke', 'field' => 'copysign', 'args' => [['type' => 'f64', 'value' => '9218868437227405312'], ['type' => 'f64', 'value' => '4503599627370496']]],
             expected: [['type' => 'f64', 'value' => '9218868437227405312']],
             line: 273,
@@ -2927,7 +2663,6 @@ final class F64BitwiseTest extends SpecTestsuiteBase
     public function testAssertReturn265(): void
     {
         $this->runAssertReturnCommand(
-            module: null,
             action: ['type' => 'invoke', 'field' => 'copysign', 'args' => [['type' => 'f64', 'value' => '18442240474082181120'], ['type' => 'f64', 'value' => '13826050856027422720']]],
             expected: [['type' => 'f64', 'value' => '18442240474082181120']],
             line: 274,
@@ -2938,7 +2673,6 @@ final class F64BitwiseTest extends SpecTestsuiteBase
     public function testAssertReturn266(): void
     {
         $this->runAssertReturnCommand(
-            module: null,
             action: ['type' => 'invoke', 'field' => 'copysign', 'args' => [['type' => 'f64', 'value' => '18442240474082181120'], ['type' => 'f64', 'value' => '4602678819172646912']]],
             expected: [['type' => 'f64', 'value' => '9218868437227405312']],
             line: 275,
@@ -2949,7 +2683,6 @@ final class F64BitwiseTest extends SpecTestsuiteBase
     public function testAssertReturn267(): void
     {
         $this->runAssertReturnCommand(
-            module: null,
             action: ['type' => 'invoke', 'field' => 'copysign', 'args' => [['type' => 'f64', 'value' => '9218868437227405312'], ['type' => 'f64', 'value' => '13826050856027422720']]],
             expected: [['type' => 'f64', 'value' => '18442240474082181120']],
             line: 276,
@@ -2960,7 +2693,6 @@ final class F64BitwiseTest extends SpecTestsuiteBase
     public function testAssertReturn268(): void
     {
         $this->runAssertReturnCommand(
-            module: null,
             action: ['type' => 'invoke', 'field' => 'copysign', 'args' => [['type' => 'f64', 'value' => '9218868437227405312'], ['type' => 'f64', 'value' => '4602678819172646912']]],
             expected: [['type' => 'f64', 'value' => '9218868437227405312']],
             line: 277,
@@ -2971,7 +2703,6 @@ final class F64BitwiseTest extends SpecTestsuiteBase
     public function testAssertReturn269(): void
     {
         $this->runAssertReturnCommand(
-            module: null,
             action: ['type' => 'invoke', 'field' => 'copysign', 'args' => [['type' => 'f64', 'value' => '18442240474082181120'], ['type' => 'f64', 'value' => '13830554455654793216']]],
             expected: [['type' => 'f64', 'value' => '18442240474082181120']],
             line: 278,
@@ -2982,7 +2713,6 @@ final class F64BitwiseTest extends SpecTestsuiteBase
     public function testAssertReturn270(): void
     {
         $this->runAssertReturnCommand(
-            module: null,
             action: ['type' => 'invoke', 'field' => 'copysign', 'args' => [['type' => 'f64', 'value' => '18442240474082181120'], ['type' => 'f64', 'value' => '4607182418800017408']]],
             expected: [['type' => 'f64', 'value' => '9218868437227405312']],
             line: 279,
@@ -2993,7 +2723,6 @@ final class F64BitwiseTest extends SpecTestsuiteBase
     public function testAssertReturn271(): void
     {
         $this->runAssertReturnCommand(
-            module: null,
             action: ['type' => 'invoke', 'field' => 'copysign', 'args' => [['type' => 'f64', 'value' => '9218868437227405312'], ['type' => 'f64', 'value' => '13830554455654793216']]],
             expected: [['type' => 'f64', 'value' => '18442240474082181120']],
             line: 280,
@@ -3004,7 +2733,6 @@ final class F64BitwiseTest extends SpecTestsuiteBase
     public function testAssertReturn272(): void
     {
         $this->runAssertReturnCommand(
-            module: null,
             action: ['type' => 'invoke', 'field' => 'copysign', 'args' => [['type' => 'f64', 'value' => '9218868437227405312'], ['type' => 'f64', 'value' => '4607182418800017408']]],
             expected: [['type' => 'f64', 'value' => '9218868437227405312']],
             line: 281,
@@ -3015,7 +2743,6 @@ final class F64BitwiseTest extends SpecTestsuiteBase
     public function testAssertReturn273(): void
     {
         $this->runAssertReturnCommand(
-            module: null,
             action: ['type' => 'invoke', 'field' => 'copysign', 'args' => [['type' => 'f64', 'value' => '18442240474082181120'], ['type' => 'f64', 'value' => '13842132293034192152']]],
             expected: [['type' => 'f64', 'value' => '18442240474082181120']],
             line: 282,
@@ -3026,7 +2753,6 @@ final class F64BitwiseTest extends SpecTestsuiteBase
     public function testAssertReturn274(): void
     {
         $this->runAssertReturnCommand(
-            module: null,
             action: ['type' => 'invoke', 'field' => 'copysign', 'args' => [['type' => 'f64', 'value' => '18442240474082181120'], ['type' => 'f64', 'value' => '4618760256179416344']]],
             expected: [['type' => 'f64', 'value' => '9218868437227405312']],
             line: 283,
@@ -3037,7 +2763,6 @@ final class F64BitwiseTest extends SpecTestsuiteBase
     public function testAssertReturn275(): void
     {
         $this->runAssertReturnCommand(
-            module: null,
             action: ['type' => 'invoke', 'field' => 'copysign', 'args' => [['type' => 'f64', 'value' => '9218868437227405312'], ['type' => 'f64', 'value' => '13842132293034192152']]],
             expected: [['type' => 'f64', 'value' => '18442240474082181120']],
             line: 284,
@@ -3048,7 +2773,6 @@ final class F64BitwiseTest extends SpecTestsuiteBase
     public function testAssertReturn276(): void
     {
         $this->runAssertReturnCommand(
-            module: null,
             action: ['type' => 'invoke', 'field' => 'copysign', 'args' => [['type' => 'f64', 'value' => '9218868437227405312'], ['type' => 'f64', 'value' => '4618760256179416344']]],
             expected: [['type' => 'f64', 'value' => '9218868437227405312']],
             line: 285,
@@ -3059,7 +2783,6 @@ final class F64BitwiseTest extends SpecTestsuiteBase
     public function testAssertReturn277(): void
     {
         $this->runAssertReturnCommand(
-            module: null,
             action: ['type' => 'invoke', 'field' => 'copysign', 'args' => [['type' => 'f64', 'value' => '18442240474082181120'], ['type' => 'f64', 'value' => '18442240474082181119']]],
             expected: [['type' => 'f64', 'value' => '18442240474082181120']],
             line: 286,
@@ -3070,7 +2793,6 @@ final class F64BitwiseTest extends SpecTestsuiteBase
     public function testAssertReturn278(): void
     {
         $this->runAssertReturnCommand(
-            module: null,
             action: ['type' => 'invoke', 'field' => 'copysign', 'args' => [['type' => 'f64', 'value' => '18442240474082181120'], ['type' => 'f64', 'value' => '9218868437227405311']]],
             expected: [['type' => 'f64', 'value' => '9218868437227405312']],
             line: 287,
@@ -3081,7 +2803,6 @@ final class F64BitwiseTest extends SpecTestsuiteBase
     public function testAssertReturn279(): void
     {
         $this->runAssertReturnCommand(
-            module: null,
             action: ['type' => 'invoke', 'field' => 'copysign', 'args' => [['type' => 'f64', 'value' => '9218868437227405312'], ['type' => 'f64', 'value' => '18442240474082181119']]],
             expected: [['type' => 'f64', 'value' => '18442240474082181120']],
             line: 288,
@@ -3092,7 +2813,6 @@ final class F64BitwiseTest extends SpecTestsuiteBase
     public function testAssertReturn280(): void
     {
         $this->runAssertReturnCommand(
-            module: null,
             action: ['type' => 'invoke', 'field' => 'copysign', 'args' => [['type' => 'f64', 'value' => '9218868437227405312'], ['type' => 'f64', 'value' => '9218868437227405311']]],
             expected: [['type' => 'f64', 'value' => '9218868437227405312']],
             line: 289,
@@ -3103,7 +2823,6 @@ final class F64BitwiseTest extends SpecTestsuiteBase
     public function testAssertReturn281(): void
     {
         $this->runAssertReturnCommand(
-            module: null,
             action: ['type' => 'invoke', 'field' => 'copysign', 'args' => [['type' => 'f64', 'value' => '18442240474082181120'], ['type' => 'f64', 'value' => '18442240474082181120']]],
             expected: [['type' => 'f64', 'value' => '18442240474082181120']],
             line: 290,
@@ -3114,7 +2833,6 @@ final class F64BitwiseTest extends SpecTestsuiteBase
     public function testAssertReturn282(): void
     {
         $this->runAssertReturnCommand(
-            module: null,
             action: ['type' => 'invoke', 'field' => 'copysign', 'args' => [['type' => 'f64', 'value' => '18442240474082181120'], ['type' => 'f64', 'value' => '9218868437227405312']]],
             expected: [['type' => 'f64', 'value' => '9218868437227405312']],
             line: 291,
@@ -3125,7 +2843,6 @@ final class F64BitwiseTest extends SpecTestsuiteBase
     public function testAssertReturn283(): void
     {
         $this->runAssertReturnCommand(
-            module: null,
             action: ['type' => 'invoke', 'field' => 'copysign', 'args' => [['type' => 'f64', 'value' => '9218868437227405312'], ['type' => 'f64', 'value' => '18442240474082181120']]],
             expected: [['type' => 'f64', 'value' => '18442240474082181120']],
             line: 292,
@@ -3136,7 +2853,6 @@ final class F64BitwiseTest extends SpecTestsuiteBase
     public function testAssertReturn284(): void
     {
         $this->runAssertReturnCommand(
-            module: null,
             action: ['type' => 'invoke', 'field' => 'copysign', 'args' => [['type' => 'f64', 'value' => '9218868437227405312'], ['type' => 'f64', 'value' => '9218868437227405312']]],
             expected: [['type' => 'f64', 'value' => '9218868437227405312']],
             line: 293,
@@ -3147,7 +2863,6 @@ final class F64BitwiseTest extends SpecTestsuiteBase
     public function testAssertReturn285(): void
     {
         $this->runAssertReturnCommand(
-            module: null,
             action: ['type' => 'invoke', 'field' => 'copysign', 'args' => [['type' => 'f64', 'value' => '18442240474082181120'], ['type' => 'f64', 'value' => '18444492273895866368']]],
             expected: [['type' => 'f64', 'value' => '18442240474082181120']],
             line: 294,
@@ -3158,7 +2873,6 @@ final class F64BitwiseTest extends SpecTestsuiteBase
     public function testAssertReturn286(): void
     {
         $this->runAssertReturnCommand(
-            module: null,
             action: ['type' => 'invoke', 'field' => 'copysign', 'args' => [['type' => 'f64', 'value' => '18442240474082181120'], ['type' => 'f64', 'value' => '9221120237041090560']]],
             expected: [['type' => 'f64', 'value' => '9218868437227405312']],
             line: 295,
@@ -3169,7 +2883,6 @@ final class F64BitwiseTest extends SpecTestsuiteBase
     public function testAssertReturn287(): void
     {
         $this->runAssertReturnCommand(
-            module: null,
             action: ['type' => 'invoke', 'field' => 'copysign', 'args' => [['type' => 'f64', 'value' => '9218868437227405312'], ['type' => 'f64', 'value' => '18444492273895866368']]],
             expected: [['type' => 'f64', 'value' => '18442240474082181120']],
             line: 296,
@@ -3180,7 +2893,6 @@ final class F64BitwiseTest extends SpecTestsuiteBase
     public function testAssertReturn288(): void
     {
         $this->runAssertReturnCommand(
-            module: null,
             action: ['type' => 'invoke', 'field' => 'copysign', 'args' => [['type' => 'f64', 'value' => '9218868437227405312'], ['type' => 'f64', 'value' => '9221120237041090560']]],
             expected: [['type' => 'f64', 'value' => '9218868437227405312']],
             line: 297,
@@ -3191,7 +2903,6 @@ final class F64BitwiseTest extends SpecTestsuiteBase
     public function testAssertReturn289(): void
     {
         $this->runAssertReturnCommand(
-            module: null,
             action: ['type' => 'invoke', 'field' => 'copysign', 'args' => [['type' => 'f64', 'value' => '18444492273895866368'], ['type' => 'f64', 'value' => '9223372036854775808']]],
             expected: [['type' => 'f64', 'value' => '18444492273895866368']],
             line: 298,
@@ -3202,7 +2913,6 @@ final class F64BitwiseTest extends SpecTestsuiteBase
     public function testAssertReturn290(): void
     {
         $this->runAssertReturnCommand(
-            module: null,
             action: ['type' => 'invoke', 'field' => 'copysign', 'args' => [['type' => 'f64', 'value' => '18444492273895866368'], ['type' => 'f64', 'value' => '0']]],
             expected: [['type' => 'f64', 'value' => '9221120237041090560']],
             line: 299,
@@ -3213,7 +2923,6 @@ final class F64BitwiseTest extends SpecTestsuiteBase
     public function testAssertReturn291(): void
     {
         $this->runAssertReturnCommand(
-            module: null,
             action: ['type' => 'invoke', 'field' => 'copysign', 'args' => [['type' => 'f64', 'value' => '9221120237041090560'], ['type' => 'f64', 'value' => '9223372036854775808']]],
             expected: [['type' => 'f64', 'value' => '18444492273895866368']],
             line: 300,
@@ -3224,7 +2933,6 @@ final class F64BitwiseTest extends SpecTestsuiteBase
     public function testAssertReturn292(): void
     {
         $this->runAssertReturnCommand(
-            module: null,
             action: ['type' => 'invoke', 'field' => 'copysign', 'args' => [['type' => 'f64', 'value' => '9221120237041090560'], ['type' => 'f64', 'value' => '0']]],
             expected: [['type' => 'f64', 'value' => '9221120237041090560']],
             line: 301,
@@ -3235,7 +2943,6 @@ final class F64BitwiseTest extends SpecTestsuiteBase
     public function testAssertReturn293(): void
     {
         $this->runAssertReturnCommand(
-            module: null,
             action: ['type' => 'invoke', 'field' => 'copysign', 'args' => [['type' => 'f64', 'value' => '18444492273895866368'], ['type' => 'f64', 'value' => '9223372036854775809']]],
             expected: [['type' => 'f64', 'value' => '18444492273895866368']],
             line: 302,
@@ -3246,7 +2953,6 @@ final class F64BitwiseTest extends SpecTestsuiteBase
     public function testAssertReturn294(): void
     {
         $this->runAssertReturnCommand(
-            module: null,
             action: ['type' => 'invoke', 'field' => 'copysign', 'args' => [['type' => 'f64', 'value' => '18444492273895866368'], ['type' => 'f64', 'value' => '1']]],
             expected: [['type' => 'f64', 'value' => '9221120237041090560']],
             line: 303,
@@ -3257,7 +2963,6 @@ final class F64BitwiseTest extends SpecTestsuiteBase
     public function testAssertReturn295(): void
     {
         $this->runAssertReturnCommand(
-            module: null,
             action: ['type' => 'invoke', 'field' => 'copysign', 'args' => [['type' => 'f64', 'value' => '9221120237041090560'], ['type' => 'f64', 'value' => '9223372036854775809']]],
             expected: [['type' => 'f64', 'value' => '18444492273895866368']],
             line: 304,
@@ -3268,7 +2973,6 @@ final class F64BitwiseTest extends SpecTestsuiteBase
     public function testAssertReturn296(): void
     {
         $this->runAssertReturnCommand(
-            module: null,
             action: ['type' => 'invoke', 'field' => 'copysign', 'args' => [['type' => 'f64', 'value' => '9221120237041090560'], ['type' => 'f64', 'value' => '1']]],
             expected: [['type' => 'f64', 'value' => '9221120237041090560']],
             line: 305,
@@ -3279,7 +2983,6 @@ final class F64BitwiseTest extends SpecTestsuiteBase
     public function testAssertReturn297(): void
     {
         $this->runAssertReturnCommand(
-            module: null,
             action: ['type' => 'invoke', 'field' => 'copysign', 'args' => [['type' => 'f64', 'value' => '18444492273895866368'], ['type' => 'f64', 'value' => '9227875636482146304']]],
             expected: [['type' => 'f64', 'value' => '18444492273895866368']],
             line: 306,
@@ -3290,7 +2993,6 @@ final class F64BitwiseTest extends SpecTestsuiteBase
     public function testAssertReturn298(): void
     {
         $this->runAssertReturnCommand(
-            module: null,
             action: ['type' => 'invoke', 'field' => 'copysign', 'args' => [['type' => 'f64', 'value' => '18444492273895866368'], ['type' => 'f64', 'value' => '4503599627370496']]],
             expected: [['type' => 'f64', 'value' => '9221120237041090560']],
             line: 307,
@@ -3301,7 +3003,6 @@ final class F64BitwiseTest extends SpecTestsuiteBase
     public function testAssertReturn299(): void
     {
         $this->runAssertReturnCommand(
-            module: null,
             action: ['type' => 'invoke', 'field' => 'copysign', 'args' => [['type' => 'f64', 'value' => '9221120237041090560'], ['type' => 'f64', 'value' => '9227875636482146304']]],
             expected: [['type' => 'f64', 'value' => '18444492273895866368']],
             line: 308,
@@ -3312,7 +3013,6 @@ final class F64BitwiseTest extends SpecTestsuiteBase
     public function testAssertReturn300(): void
     {
         $this->runAssertReturnCommand(
-            module: null,
             action: ['type' => 'invoke', 'field' => 'copysign', 'args' => [['type' => 'f64', 'value' => '9221120237041090560'], ['type' => 'f64', 'value' => '4503599627370496']]],
             expected: [['type' => 'f64', 'value' => '9221120237041090560']],
             line: 309,
@@ -3323,7 +3023,6 @@ final class F64BitwiseTest extends SpecTestsuiteBase
     public function testAssertReturn301(): void
     {
         $this->runAssertReturnCommand(
-            module: null,
             action: ['type' => 'invoke', 'field' => 'copysign', 'args' => [['type' => 'f64', 'value' => '18444492273895866368'], ['type' => 'f64', 'value' => '13826050856027422720']]],
             expected: [['type' => 'f64', 'value' => '18444492273895866368']],
             line: 310,
@@ -3334,7 +3033,6 @@ final class F64BitwiseTest extends SpecTestsuiteBase
     public function testAssertReturn302(): void
     {
         $this->runAssertReturnCommand(
-            module: null,
             action: ['type' => 'invoke', 'field' => 'copysign', 'args' => [['type' => 'f64', 'value' => '18444492273895866368'], ['type' => 'f64', 'value' => '4602678819172646912']]],
             expected: [['type' => 'f64', 'value' => '9221120237041090560']],
             line: 311,
@@ -3345,7 +3043,6 @@ final class F64BitwiseTest extends SpecTestsuiteBase
     public function testAssertReturn303(): void
     {
         $this->runAssertReturnCommand(
-            module: null,
             action: ['type' => 'invoke', 'field' => 'copysign', 'args' => [['type' => 'f64', 'value' => '9221120237041090560'], ['type' => 'f64', 'value' => '13826050856027422720']]],
             expected: [['type' => 'f64', 'value' => '18444492273895866368']],
             line: 312,
@@ -3356,7 +3053,6 @@ final class F64BitwiseTest extends SpecTestsuiteBase
     public function testAssertReturn304(): void
     {
         $this->runAssertReturnCommand(
-            module: null,
             action: ['type' => 'invoke', 'field' => 'copysign', 'args' => [['type' => 'f64', 'value' => '9221120237041090560'], ['type' => 'f64', 'value' => '4602678819172646912']]],
             expected: [['type' => 'f64', 'value' => '9221120237041090560']],
             line: 313,
@@ -3367,7 +3063,6 @@ final class F64BitwiseTest extends SpecTestsuiteBase
     public function testAssertReturn305(): void
     {
         $this->runAssertReturnCommand(
-            module: null,
             action: ['type' => 'invoke', 'field' => 'copysign', 'args' => [['type' => 'f64', 'value' => '18444492273895866368'], ['type' => 'f64', 'value' => '13830554455654793216']]],
             expected: [['type' => 'f64', 'value' => '18444492273895866368']],
             line: 314,
@@ -3378,7 +3073,6 @@ final class F64BitwiseTest extends SpecTestsuiteBase
     public function testAssertReturn306(): void
     {
         $this->runAssertReturnCommand(
-            module: null,
             action: ['type' => 'invoke', 'field' => 'copysign', 'args' => [['type' => 'f64', 'value' => '18444492273895866368'], ['type' => 'f64', 'value' => '4607182418800017408']]],
             expected: [['type' => 'f64', 'value' => '9221120237041090560']],
             line: 315,
@@ -3389,7 +3083,6 @@ final class F64BitwiseTest extends SpecTestsuiteBase
     public function testAssertReturn307(): void
     {
         $this->runAssertReturnCommand(
-            module: null,
             action: ['type' => 'invoke', 'field' => 'copysign', 'args' => [['type' => 'f64', 'value' => '9221120237041090560'], ['type' => 'f64', 'value' => '13830554455654793216']]],
             expected: [['type' => 'f64', 'value' => '18444492273895866368']],
             line: 316,
@@ -3400,7 +3093,6 @@ final class F64BitwiseTest extends SpecTestsuiteBase
     public function testAssertReturn308(): void
     {
         $this->runAssertReturnCommand(
-            module: null,
             action: ['type' => 'invoke', 'field' => 'copysign', 'args' => [['type' => 'f64', 'value' => '9221120237041090560'], ['type' => 'f64', 'value' => '4607182418800017408']]],
             expected: [['type' => 'f64', 'value' => '9221120237041090560']],
             line: 317,
@@ -3411,7 +3103,6 @@ final class F64BitwiseTest extends SpecTestsuiteBase
     public function testAssertReturn309(): void
     {
         $this->runAssertReturnCommand(
-            module: null,
             action: ['type' => 'invoke', 'field' => 'copysign', 'args' => [['type' => 'f64', 'value' => '18444492273895866368'], ['type' => 'f64', 'value' => '13842132293034192152']]],
             expected: [['type' => 'f64', 'value' => '18444492273895866368']],
             line: 318,
@@ -3422,7 +3113,6 @@ final class F64BitwiseTest extends SpecTestsuiteBase
     public function testAssertReturn310(): void
     {
         $this->runAssertReturnCommand(
-            module: null,
             action: ['type' => 'invoke', 'field' => 'copysign', 'args' => [['type' => 'f64', 'value' => '18444492273895866368'], ['type' => 'f64', 'value' => '4618760256179416344']]],
             expected: [['type' => 'f64', 'value' => '9221120237041090560']],
             line: 319,
@@ -3433,7 +3123,6 @@ final class F64BitwiseTest extends SpecTestsuiteBase
     public function testAssertReturn311(): void
     {
         $this->runAssertReturnCommand(
-            module: null,
             action: ['type' => 'invoke', 'field' => 'copysign', 'args' => [['type' => 'f64', 'value' => '9221120237041090560'], ['type' => 'f64', 'value' => '13842132293034192152']]],
             expected: [['type' => 'f64', 'value' => '18444492273895866368']],
             line: 320,
@@ -3444,7 +3133,6 @@ final class F64BitwiseTest extends SpecTestsuiteBase
     public function testAssertReturn312(): void
     {
         $this->runAssertReturnCommand(
-            module: null,
             action: ['type' => 'invoke', 'field' => 'copysign', 'args' => [['type' => 'f64', 'value' => '9221120237041090560'], ['type' => 'f64', 'value' => '4618760256179416344']]],
             expected: [['type' => 'f64', 'value' => '9221120237041090560']],
             line: 321,
@@ -3455,7 +3143,6 @@ final class F64BitwiseTest extends SpecTestsuiteBase
     public function testAssertReturn313(): void
     {
         $this->runAssertReturnCommand(
-            module: null,
             action: ['type' => 'invoke', 'field' => 'copysign', 'args' => [['type' => 'f64', 'value' => '18444492273895866368'], ['type' => 'f64', 'value' => '18442240474082181119']]],
             expected: [['type' => 'f64', 'value' => '18444492273895866368']],
             line: 322,
@@ -3466,7 +3153,6 @@ final class F64BitwiseTest extends SpecTestsuiteBase
     public function testAssertReturn314(): void
     {
         $this->runAssertReturnCommand(
-            module: null,
             action: ['type' => 'invoke', 'field' => 'copysign', 'args' => [['type' => 'f64', 'value' => '18444492273895866368'], ['type' => 'f64', 'value' => '9218868437227405311']]],
             expected: [['type' => 'f64', 'value' => '9221120237041090560']],
             line: 323,
@@ -3477,7 +3163,6 @@ final class F64BitwiseTest extends SpecTestsuiteBase
     public function testAssertReturn315(): void
     {
         $this->runAssertReturnCommand(
-            module: null,
             action: ['type' => 'invoke', 'field' => 'copysign', 'args' => [['type' => 'f64', 'value' => '9221120237041090560'], ['type' => 'f64', 'value' => '18442240474082181119']]],
             expected: [['type' => 'f64', 'value' => '18444492273895866368']],
             line: 324,
@@ -3488,7 +3173,6 @@ final class F64BitwiseTest extends SpecTestsuiteBase
     public function testAssertReturn316(): void
     {
         $this->runAssertReturnCommand(
-            module: null,
             action: ['type' => 'invoke', 'field' => 'copysign', 'args' => [['type' => 'f64', 'value' => '9221120237041090560'], ['type' => 'f64', 'value' => '9218868437227405311']]],
             expected: [['type' => 'f64', 'value' => '9221120237041090560']],
             line: 325,
@@ -3499,7 +3183,6 @@ final class F64BitwiseTest extends SpecTestsuiteBase
     public function testAssertReturn317(): void
     {
         $this->runAssertReturnCommand(
-            module: null,
             action: ['type' => 'invoke', 'field' => 'copysign', 'args' => [['type' => 'f64', 'value' => '18444492273895866368'], ['type' => 'f64', 'value' => '18442240474082181120']]],
             expected: [['type' => 'f64', 'value' => '18444492273895866368']],
             line: 326,
@@ -3510,7 +3193,6 @@ final class F64BitwiseTest extends SpecTestsuiteBase
     public function testAssertReturn318(): void
     {
         $this->runAssertReturnCommand(
-            module: null,
             action: ['type' => 'invoke', 'field' => 'copysign', 'args' => [['type' => 'f64', 'value' => '18444492273895866368'], ['type' => 'f64', 'value' => '9218868437227405312']]],
             expected: [['type' => 'f64', 'value' => '9221120237041090560']],
             line: 327,
@@ -3521,7 +3203,6 @@ final class F64BitwiseTest extends SpecTestsuiteBase
     public function testAssertReturn319(): void
     {
         $this->runAssertReturnCommand(
-            module: null,
             action: ['type' => 'invoke', 'field' => 'copysign', 'args' => [['type' => 'f64', 'value' => '9221120237041090560'], ['type' => 'f64', 'value' => '18442240474082181120']]],
             expected: [['type' => 'f64', 'value' => '18444492273895866368']],
             line: 328,
@@ -3532,7 +3213,6 @@ final class F64BitwiseTest extends SpecTestsuiteBase
     public function testAssertReturn320(): void
     {
         $this->runAssertReturnCommand(
-            module: null,
             action: ['type' => 'invoke', 'field' => 'copysign', 'args' => [['type' => 'f64', 'value' => '9221120237041090560'], ['type' => 'f64', 'value' => '9218868437227405312']]],
             expected: [['type' => 'f64', 'value' => '9221120237041090560']],
             line: 329,
@@ -3543,7 +3223,6 @@ final class F64BitwiseTest extends SpecTestsuiteBase
     public function testAssertReturn321(): void
     {
         $this->runAssertReturnCommand(
-            module: null,
             action: ['type' => 'invoke', 'field' => 'copysign', 'args' => [['type' => 'f64', 'value' => '18444492273895866368'], ['type' => 'f64', 'value' => '18444492273895866368']]],
             expected: [['type' => 'f64', 'value' => '18444492273895866368']],
             line: 330,
@@ -3554,7 +3233,6 @@ final class F64BitwiseTest extends SpecTestsuiteBase
     public function testAssertReturn322(): void
     {
         $this->runAssertReturnCommand(
-            module: null,
             action: ['type' => 'invoke', 'field' => 'copysign', 'args' => [['type' => 'f64', 'value' => '18444492273895866368'], ['type' => 'f64', 'value' => '9221120237041090560']]],
             expected: [['type' => 'f64', 'value' => '9221120237041090560']],
             line: 331,
@@ -3565,7 +3243,6 @@ final class F64BitwiseTest extends SpecTestsuiteBase
     public function testAssertReturn323(): void
     {
         $this->runAssertReturnCommand(
-            module: null,
             action: ['type' => 'invoke', 'field' => 'copysign', 'args' => [['type' => 'f64', 'value' => '9221120237041090560'], ['type' => 'f64', 'value' => '18444492273895866368']]],
             expected: [['type' => 'f64', 'value' => '18444492273895866368']],
             line: 332,
@@ -3576,7 +3253,6 @@ final class F64BitwiseTest extends SpecTestsuiteBase
     public function testAssertReturn324(): void
     {
         $this->runAssertReturnCommand(
-            module: null,
             action: ['type' => 'invoke', 'field' => 'copysign', 'args' => [['type' => 'f64', 'value' => '9221120237041090560'], ['type' => 'f64', 'value' => '9221120237041090560']]],
             expected: [['type' => 'f64', 'value' => '9221120237041090560']],
             line: 333,
@@ -3587,7 +3263,6 @@ final class F64BitwiseTest extends SpecTestsuiteBase
     public function testAssertReturn325(): void
     {
         $this->runAssertReturnCommand(
-            module: null,
             action: ['type' => 'invoke', 'field' => 'abs', 'args' => [['type' => 'f64', 'value' => '9223372036854775808']]],
             expected: [['type' => 'f64', 'value' => '0']],
             line: 334,
@@ -3598,7 +3273,6 @@ final class F64BitwiseTest extends SpecTestsuiteBase
     public function testAssertReturn326(): void
     {
         $this->runAssertReturnCommand(
-            module: null,
             action: ['type' => 'invoke', 'field' => 'abs', 'args' => [['type' => 'f64', 'value' => '0']]],
             expected: [['type' => 'f64', 'value' => '0']],
             line: 335,
@@ -3609,7 +3283,6 @@ final class F64BitwiseTest extends SpecTestsuiteBase
     public function testAssertReturn327(): void
     {
         $this->runAssertReturnCommand(
-            module: null,
             action: ['type' => 'invoke', 'field' => 'abs', 'args' => [['type' => 'f64', 'value' => '9223372036854775809']]],
             expected: [['type' => 'f64', 'value' => '1']],
             line: 336,
@@ -3620,7 +3293,6 @@ final class F64BitwiseTest extends SpecTestsuiteBase
     public function testAssertReturn328(): void
     {
         $this->runAssertReturnCommand(
-            module: null,
             action: ['type' => 'invoke', 'field' => 'abs', 'args' => [['type' => 'f64', 'value' => '1']]],
             expected: [['type' => 'f64', 'value' => '1']],
             line: 337,
@@ -3631,7 +3303,6 @@ final class F64BitwiseTest extends SpecTestsuiteBase
     public function testAssertReturn329(): void
     {
         $this->runAssertReturnCommand(
-            module: null,
             action: ['type' => 'invoke', 'field' => 'abs', 'args' => [['type' => 'f64', 'value' => '9227875636482146304']]],
             expected: [['type' => 'f64', 'value' => '4503599627370496']],
             line: 338,
@@ -3642,7 +3313,6 @@ final class F64BitwiseTest extends SpecTestsuiteBase
     public function testAssertReturn330(): void
     {
         $this->runAssertReturnCommand(
-            module: null,
             action: ['type' => 'invoke', 'field' => 'abs', 'args' => [['type' => 'f64', 'value' => '4503599627370496']]],
             expected: [['type' => 'f64', 'value' => '4503599627370496']],
             line: 339,
@@ -3653,7 +3323,6 @@ final class F64BitwiseTest extends SpecTestsuiteBase
     public function testAssertReturn331(): void
     {
         $this->runAssertReturnCommand(
-            module: null,
             action: ['type' => 'invoke', 'field' => 'abs', 'args' => [['type' => 'f64', 'value' => '13826050856027422720']]],
             expected: [['type' => 'f64', 'value' => '4602678819172646912']],
             line: 340,
@@ -3664,7 +3333,6 @@ final class F64BitwiseTest extends SpecTestsuiteBase
     public function testAssertReturn332(): void
     {
         $this->runAssertReturnCommand(
-            module: null,
             action: ['type' => 'invoke', 'field' => 'abs', 'args' => [['type' => 'f64', 'value' => '4602678819172646912']]],
             expected: [['type' => 'f64', 'value' => '4602678819172646912']],
             line: 341,
@@ -3675,7 +3343,6 @@ final class F64BitwiseTest extends SpecTestsuiteBase
     public function testAssertReturn333(): void
     {
         $this->runAssertReturnCommand(
-            module: null,
             action: ['type' => 'invoke', 'field' => 'abs', 'args' => [['type' => 'f64', 'value' => '13830554455654793216']]],
             expected: [['type' => 'f64', 'value' => '4607182418800017408']],
             line: 342,
@@ -3686,7 +3353,6 @@ final class F64BitwiseTest extends SpecTestsuiteBase
     public function testAssertReturn334(): void
     {
         $this->runAssertReturnCommand(
-            module: null,
             action: ['type' => 'invoke', 'field' => 'abs', 'args' => [['type' => 'f64', 'value' => '4607182418800017408']]],
             expected: [['type' => 'f64', 'value' => '4607182418800017408']],
             line: 343,
@@ -3697,7 +3363,6 @@ final class F64BitwiseTest extends SpecTestsuiteBase
     public function testAssertReturn335(): void
     {
         $this->runAssertReturnCommand(
-            module: null,
             action: ['type' => 'invoke', 'field' => 'abs', 'args' => [['type' => 'f64', 'value' => '13842132293034192152']]],
             expected: [['type' => 'f64', 'value' => '4618760256179416344']],
             line: 344,
@@ -3708,7 +3373,6 @@ final class F64BitwiseTest extends SpecTestsuiteBase
     public function testAssertReturn336(): void
     {
         $this->runAssertReturnCommand(
-            module: null,
             action: ['type' => 'invoke', 'field' => 'abs', 'args' => [['type' => 'f64', 'value' => '4618760256179416344']]],
             expected: [['type' => 'f64', 'value' => '4618760256179416344']],
             line: 345,
@@ -3719,7 +3383,6 @@ final class F64BitwiseTest extends SpecTestsuiteBase
     public function testAssertReturn337(): void
     {
         $this->runAssertReturnCommand(
-            module: null,
             action: ['type' => 'invoke', 'field' => 'abs', 'args' => [['type' => 'f64', 'value' => '18442240474082181119']]],
             expected: [['type' => 'f64', 'value' => '9218868437227405311']],
             line: 346,
@@ -3730,7 +3393,6 @@ final class F64BitwiseTest extends SpecTestsuiteBase
     public function testAssertReturn338(): void
     {
         $this->runAssertReturnCommand(
-            module: null,
             action: ['type' => 'invoke', 'field' => 'abs', 'args' => [['type' => 'f64', 'value' => '9218868437227405311']]],
             expected: [['type' => 'f64', 'value' => '9218868437227405311']],
             line: 347,
@@ -3741,7 +3403,6 @@ final class F64BitwiseTest extends SpecTestsuiteBase
     public function testAssertReturn339(): void
     {
         $this->runAssertReturnCommand(
-            module: null,
             action: ['type' => 'invoke', 'field' => 'abs', 'args' => [['type' => 'f64', 'value' => '18442240474082181120']]],
             expected: [['type' => 'f64', 'value' => '9218868437227405312']],
             line: 348,
@@ -3752,7 +3413,6 @@ final class F64BitwiseTest extends SpecTestsuiteBase
     public function testAssertReturn340(): void
     {
         $this->runAssertReturnCommand(
-            module: null,
             action: ['type' => 'invoke', 'field' => 'abs', 'args' => [['type' => 'f64', 'value' => '9218868437227405312']]],
             expected: [['type' => 'f64', 'value' => '9218868437227405312']],
             line: 349,
@@ -3763,7 +3423,6 @@ final class F64BitwiseTest extends SpecTestsuiteBase
     public function testAssertReturn341(): void
     {
         $this->runAssertReturnCommand(
-            module: null,
             action: ['type' => 'invoke', 'field' => 'abs', 'args' => [['type' => 'f64', 'value' => '18444492273895866368']]],
             expected: [['type' => 'f64', 'value' => '9221120237041090560']],
             line: 350,
@@ -3774,7 +3433,6 @@ final class F64BitwiseTest extends SpecTestsuiteBase
     public function testAssertReturn342(): void
     {
         $this->runAssertReturnCommand(
-            module: null,
             action: ['type' => 'invoke', 'field' => 'abs', 'args' => [['type' => 'f64', 'value' => '9221120237041090560']]],
             expected: [['type' => 'f64', 'value' => '9221120237041090560']],
             line: 351,
@@ -3785,7 +3443,6 @@ final class F64BitwiseTest extends SpecTestsuiteBase
     public function testAssertReturn343(): void
     {
         $this->runAssertReturnCommand(
-            module: null,
             action: ['type' => 'invoke', 'field' => 'neg', 'args' => [['type' => 'f64', 'value' => '9223372036854775808']]],
             expected: [['type' => 'f64', 'value' => '0']],
             line: 352,
@@ -3796,7 +3453,6 @@ final class F64BitwiseTest extends SpecTestsuiteBase
     public function testAssertReturn344(): void
     {
         $this->runAssertReturnCommand(
-            module: null,
             action: ['type' => 'invoke', 'field' => 'neg', 'args' => [['type' => 'f64', 'value' => '0']]],
             expected: [['type' => 'f64', 'value' => '9223372036854775808']],
             line: 353,
@@ -3807,7 +3463,6 @@ final class F64BitwiseTest extends SpecTestsuiteBase
     public function testAssertReturn345(): void
     {
         $this->runAssertReturnCommand(
-            module: null,
             action: ['type' => 'invoke', 'field' => 'neg', 'args' => [['type' => 'f64', 'value' => '9223372036854775809']]],
             expected: [['type' => 'f64', 'value' => '1']],
             line: 354,
@@ -3818,7 +3473,6 @@ final class F64BitwiseTest extends SpecTestsuiteBase
     public function testAssertReturn346(): void
     {
         $this->runAssertReturnCommand(
-            module: null,
             action: ['type' => 'invoke', 'field' => 'neg', 'args' => [['type' => 'f64', 'value' => '1']]],
             expected: [['type' => 'f64', 'value' => '9223372036854775809']],
             line: 355,
@@ -3829,7 +3483,6 @@ final class F64BitwiseTest extends SpecTestsuiteBase
     public function testAssertReturn347(): void
     {
         $this->runAssertReturnCommand(
-            module: null,
             action: ['type' => 'invoke', 'field' => 'neg', 'args' => [['type' => 'f64', 'value' => '9227875636482146304']]],
             expected: [['type' => 'f64', 'value' => '4503599627370496']],
             line: 356,
@@ -3840,7 +3493,6 @@ final class F64BitwiseTest extends SpecTestsuiteBase
     public function testAssertReturn348(): void
     {
         $this->runAssertReturnCommand(
-            module: null,
             action: ['type' => 'invoke', 'field' => 'neg', 'args' => [['type' => 'f64', 'value' => '4503599627370496']]],
             expected: [['type' => 'f64', 'value' => '9227875636482146304']],
             line: 357,
@@ -3851,7 +3503,6 @@ final class F64BitwiseTest extends SpecTestsuiteBase
     public function testAssertReturn349(): void
     {
         $this->runAssertReturnCommand(
-            module: null,
             action: ['type' => 'invoke', 'field' => 'neg', 'args' => [['type' => 'f64', 'value' => '13826050856027422720']]],
             expected: [['type' => 'f64', 'value' => '4602678819172646912']],
             line: 358,
@@ -3862,7 +3513,6 @@ final class F64BitwiseTest extends SpecTestsuiteBase
     public function testAssertReturn350(): void
     {
         $this->runAssertReturnCommand(
-            module: null,
             action: ['type' => 'invoke', 'field' => 'neg', 'args' => [['type' => 'f64', 'value' => '4602678819172646912']]],
             expected: [['type' => 'f64', 'value' => '13826050856027422720']],
             line: 359,
@@ -3873,7 +3523,6 @@ final class F64BitwiseTest extends SpecTestsuiteBase
     public function testAssertReturn351(): void
     {
         $this->runAssertReturnCommand(
-            module: null,
             action: ['type' => 'invoke', 'field' => 'neg', 'args' => [['type' => 'f64', 'value' => '13830554455654793216']]],
             expected: [['type' => 'f64', 'value' => '4607182418800017408']],
             line: 360,
@@ -3884,7 +3533,6 @@ final class F64BitwiseTest extends SpecTestsuiteBase
     public function testAssertReturn352(): void
     {
         $this->runAssertReturnCommand(
-            module: null,
             action: ['type' => 'invoke', 'field' => 'neg', 'args' => [['type' => 'f64', 'value' => '4607182418800017408']]],
             expected: [['type' => 'f64', 'value' => '13830554455654793216']],
             line: 361,
@@ -3895,7 +3543,6 @@ final class F64BitwiseTest extends SpecTestsuiteBase
     public function testAssertReturn353(): void
     {
         $this->runAssertReturnCommand(
-            module: null,
             action: ['type' => 'invoke', 'field' => 'neg', 'args' => [['type' => 'f64', 'value' => '13842132293034192152']]],
             expected: [['type' => 'f64', 'value' => '4618760256179416344']],
             line: 362,
@@ -3906,7 +3553,6 @@ final class F64BitwiseTest extends SpecTestsuiteBase
     public function testAssertReturn354(): void
     {
         $this->runAssertReturnCommand(
-            module: null,
             action: ['type' => 'invoke', 'field' => 'neg', 'args' => [['type' => 'f64', 'value' => '4618760256179416344']]],
             expected: [['type' => 'f64', 'value' => '13842132293034192152']],
             line: 363,
@@ -3917,7 +3563,6 @@ final class F64BitwiseTest extends SpecTestsuiteBase
     public function testAssertReturn355(): void
     {
         $this->runAssertReturnCommand(
-            module: null,
             action: ['type' => 'invoke', 'field' => 'neg', 'args' => [['type' => 'f64', 'value' => '18442240474082181119']]],
             expected: [['type' => 'f64', 'value' => '9218868437227405311']],
             line: 364,
@@ -3928,7 +3573,6 @@ final class F64BitwiseTest extends SpecTestsuiteBase
     public function testAssertReturn356(): void
     {
         $this->runAssertReturnCommand(
-            module: null,
             action: ['type' => 'invoke', 'field' => 'neg', 'args' => [['type' => 'f64', 'value' => '9218868437227405311']]],
             expected: [['type' => 'f64', 'value' => '18442240474082181119']],
             line: 365,
@@ -3939,7 +3583,6 @@ final class F64BitwiseTest extends SpecTestsuiteBase
     public function testAssertReturn357(): void
     {
         $this->runAssertReturnCommand(
-            module: null,
             action: ['type' => 'invoke', 'field' => 'neg', 'args' => [['type' => 'f64', 'value' => '18442240474082181120']]],
             expected: [['type' => 'f64', 'value' => '9218868437227405312']],
             line: 366,
@@ -3950,7 +3593,6 @@ final class F64BitwiseTest extends SpecTestsuiteBase
     public function testAssertReturn358(): void
     {
         $this->runAssertReturnCommand(
-            module: null,
             action: ['type' => 'invoke', 'field' => 'neg', 'args' => [['type' => 'f64', 'value' => '9218868437227405312']]],
             expected: [['type' => 'f64', 'value' => '18442240474082181120']],
             line: 367,
@@ -3961,7 +3603,6 @@ final class F64BitwiseTest extends SpecTestsuiteBase
     public function testAssertReturn359(): void
     {
         $this->runAssertReturnCommand(
-            module: null,
             action: ['type' => 'invoke', 'field' => 'neg', 'args' => [['type' => 'f64', 'value' => '18444492273895866368']]],
             expected: [['type' => 'f64', 'value' => '9221120237041090560']],
             line: 368,
@@ -3972,7 +3613,6 @@ final class F64BitwiseTest extends SpecTestsuiteBase
     public function testAssertReturn360(): void
     {
         $this->runAssertReturnCommand(
-            module: null,
             action: ['type' => 'invoke', 'field' => 'neg', 'args' => [['type' => 'f64', 'value' => '9221120237041090560']]],
             expected: [['type' => 'f64', 'value' => '18444492273895866368']],
             line: 369,

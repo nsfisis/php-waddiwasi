@@ -23,7 +23,6 @@ final class TableSizeTest extends SpecTestsuiteBase
     public function testAssertReturn1(): void
     {
         $this->runAssertReturnCommand(
-            module: null,
             action: ['type' => 'invoke', 'field' => 'size-t0', 'args' => []],
             expected: [['type' => 'i32', 'value' => '0']],
             line: 26,
@@ -34,7 +33,6 @@ final class TableSizeTest extends SpecTestsuiteBase
     public function testAssertReturn2(): void
     {
         $this->runAssertReturnCommand(
-            module: null,
             action: ['type' => 'invoke', 'field' => 'grow-t0', 'args' => [['type' => 'i32', 'value' => '1']]],
             expected: [],
             line: 27,
@@ -45,7 +43,6 @@ final class TableSizeTest extends SpecTestsuiteBase
     public function testAssertReturn3(): void
     {
         $this->runAssertReturnCommand(
-            module: null,
             action: ['type' => 'invoke', 'field' => 'size-t0', 'args' => []],
             expected: [['type' => 'i32', 'value' => '1']],
             line: 28,
@@ -56,7 +53,6 @@ final class TableSizeTest extends SpecTestsuiteBase
     public function testAssertReturn4(): void
     {
         $this->runAssertReturnCommand(
-            module: null,
             action: ['type' => 'invoke', 'field' => 'grow-t0', 'args' => [['type' => 'i32', 'value' => '4']]],
             expected: [],
             line: 29,
@@ -67,7 +63,6 @@ final class TableSizeTest extends SpecTestsuiteBase
     public function testAssertReturn5(): void
     {
         $this->runAssertReturnCommand(
-            module: null,
             action: ['type' => 'invoke', 'field' => 'size-t0', 'args' => []],
             expected: [['type' => 'i32', 'value' => '5']],
             line: 30,
@@ -78,7 +73,6 @@ final class TableSizeTest extends SpecTestsuiteBase
     public function testAssertReturn6(): void
     {
         $this->runAssertReturnCommand(
-            module: null,
             action: ['type' => 'invoke', 'field' => 'grow-t0', 'args' => [['type' => 'i32', 'value' => '0']]],
             expected: [],
             line: 31,
@@ -89,7 +83,6 @@ final class TableSizeTest extends SpecTestsuiteBase
     public function testAssertReturn7(): void
     {
         $this->runAssertReturnCommand(
-            module: null,
             action: ['type' => 'invoke', 'field' => 'size-t0', 'args' => []],
             expected: [['type' => 'i32', 'value' => '5']],
             line: 32,
@@ -100,7 +93,6 @@ final class TableSizeTest extends SpecTestsuiteBase
     public function testAssertReturn8(): void
     {
         $this->runAssertReturnCommand(
-            module: null,
             action: ['type' => 'invoke', 'field' => 'size-t1', 'args' => []],
             expected: [['type' => 'i32', 'value' => '1']],
             line: 34,
@@ -111,7 +103,6 @@ final class TableSizeTest extends SpecTestsuiteBase
     public function testAssertReturn9(): void
     {
         $this->runAssertReturnCommand(
-            module: null,
             action: ['type' => 'invoke', 'field' => 'grow-t1', 'args' => [['type' => 'i32', 'value' => '1']]],
             expected: [],
             line: 35,
@@ -122,7 +113,6 @@ final class TableSizeTest extends SpecTestsuiteBase
     public function testAssertReturn10(): void
     {
         $this->runAssertReturnCommand(
-            module: null,
             action: ['type' => 'invoke', 'field' => 'size-t1', 'args' => []],
             expected: [['type' => 'i32', 'value' => '2']],
             line: 36,
@@ -133,7 +123,6 @@ final class TableSizeTest extends SpecTestsuiteBase
     public function testAssertReturn11(): void
     {
         $this->runAssertReturnCommand(
-            module: null,
             action: ['type' => 'invoke', 'field' => 'grow-t1', 'args' => [['type' => 'i32', 'value' => '4']]],
             expected: [],
             line: 37,
@@ -144,7 +133,6 @@ final class TableSizeTest extends SpecTestsuiteBase
     public function testAssertReturn12(): void
     {
         $this->runAssertReturnCommand(
-            module: null,
             action: ['type' => 'invoke', 'field' => 'size-t1', 'args' => []],
             expected: [['type' => 'i32', 'value' => '6']],
             line: 38,
@@ -155,7 +143,6 @@ final class TableSizeTest extends SpecTestsuiteBase
     public function testAssertReturn13(): void
     {
         $this->runAssertReturnCommand(
-            module: null,
             action: ['type' => 'invoke', 'field' => 'grow-t1', 'args' => [['type' => 'i32', 'value' => '0']]],
             expected: [],
             line: 39,
@@ -166,7 +153,6 @@ final class TableSizeTest extends SpecTestsuiteBase
     public function testAssertReturn14(): void
     {
         $this->runAssertReturnCommand(
-            module: null,
             action: ['type' => 'invoke', 'field' => 'size-t1', 'args' => []],
             expected: [['type' => 'i32', 'value' => '6']],
             line: 40,
@@ -177,7 +163,6 @@ final class TableSizeTest extends SpecTestsuiteBase
     public function testAssertReturn15(): void
     {
         $this->runAssertReturnCommand(
-            module: null,
             action: ['type' => 'invoke', 'field' => 'size-t2', 'args' => []],
             expected: [['type' => 'i32', 'value' => '0']],
             line: 42,
@@ -188,7 +173,6 @@ final class TableSizeTest extends SpecTestsuiteBase
     public function testAssertReturn16(): void
     {
         $this->runAssertReturnCommand(
-            module: null,
             action: ['type' => 'invoke', 'field' => 'grow-t2', 'args' => [['type' => 'i32', 'value' => '3']]],
             expected: [],
             line: 43,
@@ -199,7 +183,6 @@ final class TableSizeTest extends SpecTestsuiteBase
     public function testAssertReturn17(): void
     {
         $this->runAssertReturnCommand(
-            module: null,
             action: ['type' => 'invoke', 'field' => 'size-t2', 'args' => []],
             expected: [['type' => 'i32', 'value' => '0']],
             line: 44,
@@ -210,7 +193,6 @@ final class TableSizeTest extends SpecTestsuiteBase
     public function testAssertReturn18(): void
     {
         $this->runAssertReturnCommand(
-            module: null,
             action: ['type' => 'invoke', 'field' => 'grow-t2', 'args' => [['type' => 'i32', 'value' => '1']]],
             expected: [],
             line: 45,
@@ -221,7 +203,6 @@ final class TableSizeTest extends SpecTestsuiteBase
     public function testAssertReturn19(): void
     {
         $this->runAssertReturnCommand(
-            module: null,
             action: ['type' => 'invoke', 'field' => 'size-t2', 'args' => []],
             expected: [['type' => 'i32', 'value' => '1']],
             line: 46,
@@ -232,7 +213,6 @@ final class TableSizeTest extends SpecTestsuiteBase
     public function testAssertReturn20(): void
     {
         $this->runAssertReturnCommand(
-            module: null,
             action: ['type' => 'invoke', 'field' => 'grow-t2', 'args' => [['type' => 'i32', 'value' => '0']]],
             expected: [],
             line: 47,
@@ -243,7 +223,6 @@ final class TableSizeTest extends SpecTestsuiteBase
     public function testAssertReturn21(): void
     {
         $this->runAssertReturnCommand(
-            module: null,
             action: ['type' => 'invoke', 'field' => 'size-t2', 'args' => []],
             expected: [['type' => 'i32', 'value' => '1']],
             line: 48,
@@ -254,7 +233,6 @@ final class TableSizeTest extends SpecTestsuiteBase
     public function testAssertReturn22(): void
     {
         $this->runAssertReturnCommand(
-            module: null,
             action: ['type' => 'invoke', 'field' => 'grow-t2', 'args' => [['type' => 'i32', 'value' => '4']]],
             expected: [],
             line: 49,
@@ -265,7 +243,6 @@ final class TableSizeTest extends SpecTestsuiteBase
     public function testAssertReturn23(): void
     {
         $this->runAssertReturnCommand(
-            module: null,
             action: ['type' => 'invoke', 'field' => 'size-t2', 'args' => []],
             expected: [['type' => 'i32', 'value' => '1']],
             line: 50,
@@ -276,7 +253,6 @@ final class TableSizeTest extends SpecTestsuiteBase
     public function testAssertReturn24(): void
     {
         $this->runAssertReturnCommand(
-            module: null,
             action: ['type' => 'invoke', 'field' => 'grow-t2', 'args' => [['type' => 'i32', 'value' => '1']]],
             expected: [],
             line: 51,
@@ -287,7 +263,6 @@ final class TableSizeTest extends SpecTestsuiteBase
     public function testAssertReturn25(): void
     {
         $this->runAssertReturnCommand(
-            module: null,
             action: ['type' => 'invoke', 'field' => 'size-t2', 'args' => []],
             expected: [['type' => 'i32', 'value' => '2']],
             line: 52,
@@ -298,7 +273,6 @@ final class TableSizeTest extends SpecTestsuiteBase
     public function testAssertReturn26(): void
     {
         $this->runAssertReturnCommand(
-            module: null,
             action: ['type' => 'invoke', 'field' => 'size-t3', 'args' => []],
             expected: [['type' => 'i32', 'value' => '3']],
             line: 54,
@@ -309,7 +283,6 @@ final class TableSizeTest extends SpecTestsuiteBase
     public function testAssertReturn27(): void
     {
         $this->runAssertReturnCommand(
-            module: null,
             action: ['type' => 'invoke', 'field' => 'grow-t3', 'args' => [['type' => 'i32', 'value' => '1']]],
             expected: [],
             line: 55,
@@ -320,7 +293,6 @@ final class TableSizeTest extends SpecTestsuiteBase
     public function testAssertReturn28(): void
     {
         $this->runAssertReturnCommand(
-            module: null,
             action: ['type' => 'invoke', 'field' => 'size-t3', 'args' => []],
             expected: [['type' => 'i32', 'value' => '4']],
             line: 56,
@@ -331,7 +303,6 @@ final class TableSizeTest extends SpecTestsuiteBase
     public function testAssertReturn29(): void
     {
         $this->runAssertReturnCommand(
-            module: null,
             action: ['type' => 'invoke', 'field' => 'grow-t3', 'args' => [['type' => 'i32', 'value' => '3']]],
             expected: [],
             line: 57,
@@ -342,7 +313,6 @@ final class TableSizeTest extends SpecTestsuiteBase
     public function testAssertReturn30(): void
     {
         $this->runAssertReturnCommand(
-            module: null,
             action: ['type' => 'invoke', 'field' => 'size-t3', 'args' => []],
             expected: [['type' => 'i32', 'value' => '7']],
             line: 58,
@@ -353,7 +323,6 @@ final class TableSizeTest extends SpecTestsuiteBase
     public function testAssertReturn31(): void
     {
         $this->runAssertReturnCommand(
-            module: null,
             action: ['type' => 'invoke', 'field' => 'grow-t3', 'args' => [['type' => 'i32', 'value' => '0']]],
             expected: [],
             line: 59,
@@ -364,7 +333,6 @@ final class TableSizeTest extends SpecTestsuiteBase
     public function testAssertReturn32(): void
     {
         $this->runAssertReturnCommand(
-            module: null,
             action: ['type' => 'invoke', 'field' => 'size-t3', 'args' => []],
             expected: [['type' => 'i32', 'value' => '7']],
             line: 60,
@@ -375,7 +343,6 @@ final class TableSizeTest extends SpecTestsuiteBase
     public function testAssertReturn33(): void
     {
         $this->runAssertReturnCommand(
-            module: null,
             action: ['type' => 'invoke', 'field' => 'grow-t3', 'args' => [['type' => 'i32', 'value' => '2']]],
             expected: [],
             line: 61,
@@ -386,7 +353,6 @@ final class TableSizeTest extends SpecTestsuiteBase
     public function testAssertReturn34(): void
     {
         $this->runAssertReturnCommand(
-            module: null,
             action: ['type' => 'invoke', 'field' => 'size-t3', 'args' => []],
             expected: [['type' => 'i32', 'value' => '7']],
             line: 62,
@@ -397,7 +363,6 @@ final class TableSizeTest extends SpecTestsuiteBase
     public function testAssertReturn35(): void
     {
         $this->runAssertReturnCommand(
-            module: null,
             action: ['type' => 'invoke', 'field' => 'grow-t3', 'args' => [['type' => 'i32', 'value' => '1']]],
             expected: [],
             line: 63,
@@ -408,7 +373,6 @@ final class TableSizeTest extends SpecTestsuiteBase
     public function testAssertReturn36(): void
     {
         $this->runAssertReturnCommand(
-            module: null,
             action: ['type' => 'invoke', 'field' => 'size-t3', 'args' => []],
             expected: [['type' => 'i32', 'value' => '8']],
             line: 64,

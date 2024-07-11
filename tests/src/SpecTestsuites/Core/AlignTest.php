@@ -899,7 +899,6 @@ final class AlignTest extends SpecTestsuiteBase
     public function testAssertReturn107(): void
     {
         $this->runAssertReturnCommand(
-            module: null,
             action: ['type' => 'invoke', 'field' => 'f32_align_switch', 'args' => [['type' => 'i32', 'value' => '0']]],
             expected: [['type' => 'f32', 'value' => '1092616192']],
             line: 802,
@@ -910,7 +909,6 @@ final class AlignTest extends SpecTestsuiteBase
     public function testAssertReturn108(): void
     {
         $this->runAssertReturnCommand(
-            module: null,
             action: ['type' => 'invoke', 'field' => 'f32_align_switch', 'args' => [['type' => 'i32', 'value' => '1']]],
             expected: [['type' => 'f32', 'value' => '1092616192']],
             line: 803,
@@ -921,7 +919,6 @@ final class AlignTest extends SpecTestsuiteBase
     public function testAssertReturn109(): void
     {
         $this->runAssertReturnCommand(
-            module: null,
             action: ['type' => 'invoke', 'field' => 'f32_align_switch', 'args' => [['type' => 'i32', 'value' => '2']]],
             expected: [['type' => 'f32', 'value' => '1092616192']],
             line: 804,
@@ -932,7 +929,6 @@ final class AlignTest extends SpecTestsuiteBase
     public function testAssertReturn110(): void
     {
         $this->runAssertReturnCommand(
-            module: null,
             action: ['type' => 'invoke', 'field' => 'f32_align_switch', 'args' => [['type' => 'i32', 'value' => '3']]],
             expected: [['type' => 'f32', 'value' => '1092616192']],
             line: 805,
@@ -943,7 +939,6 @@ final class AlignTest extends SpecTestsuiteBase
     public function testAssertReturn111(): void
     {
         $this->runAssertReturnCommand(
-            module: null,
             action: ['type' => 'invoke', 'field' => 'f64_align_switch', 'args' => [['type' => 'i32', 'value' => '0']]],
             expected: [['type' => 'f64', 'value' => '4621819117588971520']],
             line: 807,
@@ -954,7 +949,6 @@ final class AlignTest extends SpecTestsuiteBase
     public function testAssertReturn112(): void
     {
         $this->runAssertReturnCommand(
-            module: null,
             action: ['type' => 'invoke', 'field' => 'f64_align_switch', 'args' => [['type' => 'i32', 'value' => '1']]],
             expected: [['type' => 'f64', 'value' => '4621819117588971520']],
             line: 808,
@@ -965,7 +959,6 @@ final class AlignTest extends SpecTestsuiteBase
     public function testAssertReturn113(): void
     {
         $this->runAssertReturnCommand(
-            module: null,
             action: ['type' => 'invoke', 'field' => 'f64_align_switch', 'args' => [['type' => 'i32', 'value' => '2']]],
             expected: [['type' => 'f64', 'value' => '4621819117588971520']],
             line: 809,
@@ -976,7 +969,6 @@ final class AlignTest extends SpecTestsuiteBase
     public function testAssertReturn114(): void
     {
         $this->runAssertReturnCommand(
-            module: null,
             action: ['type' => 'invoke', 'field' => 'f64_align_switch', 'args' => [['type' => 'i32', 'value' => '3']]],
             expected: [['type' => 'f64', 'value' => '4621819117588971520']],
             line: 810,
@@ -987,7 +979,6 @@ final class AlignTest extends SpecTestsuiteBase
     public function testAssertReturn115(): void
     {
         $this->runAssertReturnCommand(
-            module: null,
             action: ['type' => 'invoke', 'field' => 'f64_align_switch', 'args' => [['type' => 'i32', 'value' => '4']]],
             expected: [['type' => 'f64', 'value' => '4621819117588971520']],
             line: 811,
@@ -998,7 +989,6 @@ final class AlignTest extends SpecTestsuiteBase
     public function testAssertReturn116(): void
     {
         $this->runAssertReturnCommand(
-            module: null,
             action: ['type' => 'invoke', 'field' => 'i32_align_switch', 'args' => [['type' => 'i32', 'value' => '0'], ['type' => 'i32', 'value' => '0']]],
             expected: [['type' => 'i32', 'value' => '10']],
             line: 813,
@@ -1009,7 +999,6 @@ final class AlignTest extends SpecTestsuiteBase
     public function testAssertReturn117(): void
     {
         $this->runAssertReturnCommand(
-            module: null,
             action: ['type' => 'invoke', 'field' => 'i32_align_switch', 'args' => [['type' => 'i32', 'value' => '0'], ['type' => 'i32', 'value' => '1']]],
             expected: [['type' => 'i32', 'value' => '10']],
             line: 814,
@@ -1020,7 +1009,6 @@ final class AlignTest extends SpecTestsuiteBase
     public function testAssertReturn118(): void
     {
         $this->runAssertReturnCommand(
-            module: null,
             action: ['type' => 'invoke', 'field' => 'i32_align_switch', 'args' => [['type' => 'i32', 'value' => '1'], ['type' => 'i32', 'value' => '0']]],
             expected: [['type' => 'i32', 'value' => '10']],
             line: 815,
@@ -1031,7 +1019,6 @@ final class AlignTest extends SpecTestsuiteBase
     public function testAssertReturn119(): void
     {
         $this->runAssertReturnCommand(
-            module: null,
             action: ['type' => 'invoke', 'field' => 'i32_align_switch', 'args' => [['type' => 'i32', 'value' => '1'], ['type' => 'i32', 'value' => '1']]],
             expected: [['type' => 'i32', 'value' => '10']],
             line: 816,
@@ -1042,7 +1029,6 @@ final class AlignTest extends SpecTestsuiteBase
     public function testAssertReturn120(): void
     {
         $this->runAssertReturnCommand(
-            module: null,
             action: ['type' => 'invoke', 'field' => 'i32_align_switch', 'args' => [['type' => 'i32', 'value' => '2'], ['type' => 'i32', 'value' => '0']]],
             expected: [['type' => 'i32', 'value' => '10']],
             line: 817,
@@ -1053,7 +1039,6 @@ final class AlignTest extends SpecTestsuiteBase
     public function testAssertReturn121(): void
     {
         $this->runAssertReturnCommand(
-            module: null,
             action: ['type' => 'invoke', 'field' => 'i32_align_switch', 'args' => [['type' => 'i32', 'value' => '2'], ['type' => 'i32', 'value' => '1']]],
             expected: [['type' => 'i32', 'value' => '10']],
             line: 818,
@@ -1064,7 +1049,6 @@ final class AlignTest extends SpecTestsuiteBase
     public function testAssertReturn122(): void
     {
         $this->runAssertReturnCommand(
-            module: null,
             action: ['type' => 'invoke', 'field' => 'i32_align_switch', 'args' => [['type' => 'i32', 'value' => '2'], ['type' => 'i32', 'value' => '2']]],
             expected: [['type' => 'i32', 'value' => '10']],
             line: 819,
@@ -1075,7 +1059,6 @@ final class AlignTest extends SpecTestsuiteBase
     public function testAssertReturn123(): void
     {
         $this->runAssertReturnCommand(
-            module: null,
             action: ['type' => 'invoke', 'field' => 'i32_align_switch', 'args' => [['type' => 'i32', 'value' => '3'], ['type' => 'i32', 'value' => '0']]],
             expected: [['type' => 'i32', 'value' => '10']],
             line: 820,
@@ -1086,7 +1069,6 @@ final class AlignTest extends SpecTestsuiteBase
     public function testAssertReturn124(): void
     {
         $this->runAssertReturnCommand(
-            module: null,
             action: ['type' => 'invoke', 'field' => 'i32_align_switch', 'args' => [['type' => 'i32', 'value' => '3'], ['type' => 'i32', 'value' => '1']]],
             expected: [['type' => 'i32', 'value' => '10']],
             line: 821,
@@ -1097,7 +1079,6 @@ final class AlignTest extends SpecTestsuiteBase
     public function testAssertReturn125(): void
     {
         $this->runAssertReturnCommand(
-            module: null,
             action: ['type' => 'invoke', 'field' => 'i32_align_switch', 'args' => [['type' => 'i32', 'value' => '3'], ['type' => 'i32', 'value' => '2']]],
             expected: [['type' => 'i32', 'value' => '10']],
             line: 822,
@@ -1108,7 +1089,6 @@ final class AlignTest extends SpecTestsuiteBase
     public function testAssertReturn126(): void
     {
         $this->runAssertReturnCommand(
-            module: null,
             action: ['type' => 'invoke', 'field' => 'i32_align_switch', 'args' => [['type' => 'i32', 'value' => '4'], ['type' => 'i32', 'value' => '0']]],
             expected: [['type' => 'i32', 'value' => '10']],
             line: 823,
@@ -1119,7 +1099,6 @@ final class AlignTest extends SpecTestsuiteBase
     public function testAssertReturn127(): void
     {
         $this->runAssertReturnCommand(
-            module: null,
             action: ['type' => 'invoke', 'field' => 'i32_align_switch', 'args' => [['type' => 'i32', 'value' => '4'], ['type' => 'i32', 'value' => '1']]],
             expected: [['type' => 'i32', 'value' => '10']],
             line: 824,
@@ -1130,7 +1109,6 @@ final class AlignTest extends SpecTestsuiteBase
     public function testAssertReturn128(): void
     {
         $this->runAssertReturnCommand(
-            module: null,
             action: ['type' => 'invoke', 'field' => 'i32_align_switch', 'args' => [['type' => 'i32', 'value' => '4'], ['type' => 'i32', 'value' => '2']]],
             expected: [['type' => 'i32', 'value' => '10']],
             line: 825,
@@ -1141,7 +1119,6 @@ final class AlignTest extends SpecTestsuiteBase
     public function testAssertReturn129(): void
     {
         $this->runAssertReturnCommand(
-            module: null,
             action: ['type' => 'invoke', 'field' => 'i32_align_switch', 'args' => [['type' => 'i32', 'value' => '4'], ['type' => 'i32', 'value' => '4']]],
             expected: [['type' => 'i32', 'value' => '10']],
             line: 826,
@@ -1152,7 +1129,6 @@ final class AlignTest extends SpecTestsuiteBase
     public function testAssertReturn130(): void
     {
         $this->runAssertReturnCommand(
-            module: null,
             action: ['type' => 'invoke', 'field' => 'i64_align_switch', 'args' => [['type' => 'i32', 'value' => '0'], ['type' => 'i32', 'value' => '0']]],
             expected: [['type' => 'i64', 'value' => '10']],
             line: 828,
@@ -1163,7 +1139,6 @@ final class AlignTest extends SpecTestsuiteBase
     public function testAssertReturn131(): void
     {
         $this->runAssertReturnCommand(
-            module: null,
             action: ['type' => 'invoke', 'field' => 'i64_align_switch', 'args' => [['type' => 'i32', 'value' => '0'], ['type' => 'i32', 'value' => '1']]],
             expected: [['type' => 'i64', 'value' => '10']],
             line: 829,
@@ -1174,7 +1149,6 @@ final class AlignTest extends SpecTestsuiteBase
     public function testAssertReturn132(): void
     {
         $this->runAssertReturnCommand(
-            module: null,
             action: ['type' => 'invoke', 'field' => 'i64_align_switch', 'args' => [['type' => 'i32', 'value' => '1'], ['type' => 'i32', 'value' => '0']]],
             expected: [['type' => 'i64', 'value' => '10']],
             line: 830,
@@ -1185,7 +1159,6 @@ final class AlignTest extends SpecTestsuiteBase
     public function testAssertReturn133(): void
     {
         $this->runAssertReturnCommand(
-            module: null,
             action: ['type' => 'invoke', 'field' => 'i64_align_switch', 'args' => [['type' => 'i32', 'value' => '1'], ['type' => 'i32', 'value' => '1']]],
             expected: [['type' => 'i64', 'value' => '10']],
             line: 831,
@@ -1196,7 +1169,6 @@ final class AlignTest extends SpecTestsuiteBase
     public function testAssertReturn134(): void
     {
         $this->runAssertReturnCommand(
-            module: null,
             action: ['type' => 'invoke', 'field' => 'i64_align_switch', 'args' => [['type' => 'i32', 'value' => '2'], ['type' => 'i32', 'value' => '0']]],
             expected: [['type' => 'i64', 'value' => '10']],
             line: 832,
@@ -1207,7 +1179,6 @@ final class AlignTest extends SpecTestsuiteBase
     public function testAssertReturn135(): void
     {
         $this->runAssertReturnCommand(
-            module: null,
             action: ['type' => 'invoke', 'field' => 'i64_align_switch', 'args' => [['type' => 'i32', 'value' => '2'], ['type' => 'i32', 'value' => '1']]],
             expected: [['type' => 'i64', 'value' => '10']],
             line: 833,
@@ -1218,7 +1189,6 @@ final class AlignTest extends SpecTestsuiteBase
     public function testAssertReturn136(): void
     {
         $this->runAssertReturnCommand(
-            module: null,
             action: ['type' => 'invoke', 'field' => 'i64_align_switch', 'args' => [['type' => 'i32', 'value' => '2'], ['type' => 'i32', 'value' => '2']]],
             expected: [['type' => 'i64', 'value' => '10']],
             line: 834,
@@ -1229,7 +1199,6 @@ final class AlignTest extends SpecTestsuiteBase
     public function testAssertReturn137(): void
     {
         $this->runAssertReturnCommand(
-            module: null,
             action: ['type' => 'invoke', 'field' => 'i64_align_switch', 'args' => [['type' => 'i32', 'value' => '3'], ['type' => 'i32', 'value' => '0']]],
             expected: [['type' => 'i64', 'value' => '10']],
             line: 835,
@@ -1240,7 +1209,6 @@ final class AlignTest extends SpecTestsuiteBase
     public function testAssertReturn138(): void
     {
         $this->runAssertReturnCommand(
-            module: null,
             action: ['type' => 'invoke', 'field' => 'i64_align_switch', 'args' => [['type' => 'i32', 'value' => '3'], ['type' => 'i32', 'value' => '1']]],
             expected: [['type' => 'i64', 'value' => '10']],
             line: 836,
@@ -1251,7 +1219,6 @@ final class AlignTest extends SpecTestsuiteBase
     public function testAssertReturn139(): void
     {
         $this->runAssertReturnCommand(
-            module: null,
             action: ['type' => 'invoke', 'field' => 'i64_align_switch', 'args' => [['type' => 'i32', 'value' => '3'], ['type' => 'i32', 'value' => '2']]],
             expected: [['type' => 'i64', 'value' => '10']],
             line: 837,
@@ -1262,7 +1229,6 @@ final class AlignTest extends SpecTestsuiteBase
     public function testAssertReturn140(): void
     {
         $this->runAssertReturnCommand(
-            module: null,
             action: ['type' => 'invoke', 'field' => 'i64_align_switch', 'args' => [['type' => 'i32', 'value' => '4'], ['type' => 'i32', 'value' => '0']]],
             expected: [['type' => 'i64', 'value' => '10']],
             line: 838,
@@ -1273,7 +1239,6 @@ final class AlignTest extends SpecTestsuiteBase
     public function testAssertReturn141(): void
     {
         $this->runAssertReturnCommand(
-            module: null,
             action: ['type' => 'invoke', 'field' => 'i64_align_switch', 'args' => [['type' => 'i32', 'value' => '4'], ['type' => 'i32', 'value' => '1']]],
             expected: [['type' => 'i64', 'value' => '10']],
             line: 839,
@@ -1284,7 +1249,6 @@ final class AlignTest extends SpecTestsuiteBase
     public function testAssertReturn142(): void
     {
         $this->runAssertReturnCommand(
-            module: null,
             action: ['type' => 'invoke', 'field' => 'i64_align_switch', 'args' => [['type' => 'i32', 'value' => '4'], ['type' => 'i32', 'value' => '2']]],
             expected: [['type' => 'i64', 'value' => '10']],
             line: 840,
@@ -1295,7 +1259,6 @@ final class AlignTest extends SpecTestsuiteBase
     public function testAssertReturn143(): void
     {
         $this->runAssertReturnCommand(
-            module: null,
             action: ['type' => 'invoke', 'field' => 'i64_align_switch', 'args' => [['type' => 'i32', 'value' => '4'], ['type' => 'i32', 'value' => '4']]],
             expected: [['type' => 'i64', 'value' => '10']],
             line: 841,
@@ -1306,7 +1269,6 @@ final class AlignTest extends SpecTestsuiteBase
     public function testAssertReturn144(): void
     {
         $this->runAssertReturnCommand(
-            module: null,
             action: ['type' => 'invoke', 'field' => 'i64_align_switch', 'args' => [['type' => 'i32', 'value' => '5'], ['type' => 'i32', 'value' => '0']]],
             expected: [['type' => 'i64', 'value' => '10']],
             line: 842,
@@ -1317,7 +1279,6 @@ final class AlignTest extends SpecTestsuiteBase
     public function testAssertReturn145(): void
     {
         $this->runAssertReturnCommand(
-            module: null,
             action: ['type' => 'invoke', 'field' => 'i64_align_switch', 'args' => [['type' => 'i32', 'value' => '5'], ['type' => 'i32', 'value' => '1']]],
             expected: [['type' => 'i64', 'value' => '10']],
             line: 843,
@@ -1328,7 +1289,6 @@ final class AlignTest extends SpecTestsuiteBase
     public function testAssertReturn146(): void
     {
         $this->runAssertReturnCommand(
-            module: null,
             action: ['type' => 'invoke', 'field' => 'i64_align_switch', 'args' => [['type' => 'i32', 'value' => '5'], ['type' => 'i32', 'value' => '2']]],
             expected: [['type' => 'i64', 'value' => '10']],
             line: 844,
@@ -1339,7 +1299,6 @@ final class AlignTest extends SpecTestsuiteBase
     public function testAssertReturn147(): void
     {
         $this->runAssertReturnCommand(
-            module: null,
             action: ['type' => 'invoke', 'field' => 'i64_align_switch', 'args' => [['type' => 'i32', 'value' => '5'], ['type' => 'i32', 'value' => '4']]],
             expected: [['type' => 'i64', 'value' => '10']],
             line: 845,
@@ -1350,7 +1309,6 @@ final class AlignTest extends SpecTestsuiteBase
     public function testAssertReturn148(): void
     {
         $this->runAssertReturnCommand(
-            module: null,
             action: ['type' => 'invoke', 'field' => 'i64_align_switch', 'args' => [['type' => 'i32', 'value' => '6'], ['type' => 'i32', 'value' => '0']]],
             expected: [['type' => 'i64', 'value' => '10']],
             line: 846,
@@ -1361,7 +1319,6 @@ final class AlignTest extends SpecTestsuiteBase
     public function testAssertReturn149(): void
     {
         $this->runAssertReturnCommand(
-            module: null,
             action: ['type' => 'invoke', 'field' => 'i64_align_switch', 'args' => [['type' => 'i32', 'value' => '6'], ['type' => 'i32', 'value' => '1']]],
             expected: [['type' => 'i64', 'value' => '10']],
             line: 847,
@@ -1372,7 +1329,6 @@ final class AlignTest extends SpecTestsuiteBase
     public function testAssertReturn150(): void
     {
         $this->runAssertReturnCommand(
-            module: null,
             action: ['type' => 'invoke', 'field' => 'i64_align_switch', 'args' => [['type' => 'i32', 'value' => '6'], ['type' => 'i32', 'value' => '2']]],
             expected: [['type' => 'i64', 'value' => '10']],
             line: 848,
@@ -1383,7 +1339,6 @@ final class AlignTest extends SpecTestsuiteBase
     public function testAssertReturn151(): void
     {
         $this->runAssertReturnCommand(
-            module: null,
             action: ['type' => 'invoke', 'field' => 'i64_align_switch', 'args' => [['type' => 'i32', 'value' => '6'], ['type' => 'i32', 'value' => '4']]],
             expected: [['type' => 'i64', 'value' => '10']],
             line: 849,
@@ -1394,7 +1349,6 @@ final class AlignTest extends SpecTestsuiteBase
     public function testAssertReturn152(): void
     {
         $this->runAssertReturnCommand(
-            module: null,
             action: ['type' => 'invoke', 'field' => 'i64_align_switch', 'args' => [['type' => 'i32', 'value' => '6'], ['type' => 'i32', 'value' => '8']]],
             expected: [['type' => 'i64', 'value' => '10']],
             line: 850,
@@ -1415,7 +1369,6 @@ final class AlignTest extends SpecTestsuiteBase
     public function testAssertTrap154(): void
     {
         $this->runAssertTrapCommand(
-            module: null,
             action: ['type' => 'invoke', 'field' => 'store', 'args' => [['type' => 'i32', 'value' => '65532'], ['type' => 'i64', 'value' => '18446744073709551615']]],
             text: 'out of bounds memory access',
             line: 864,
@@ -1426,10 +1379,69 @@ final class AlignTest extends SpecTestsuiteBase
     public function testAssertReturn155(): void
     {
         $this->runAssertReturnCommand(
-            module: null,
             action: ['type' => 'invoke', 'field' => 'load', 'args' => [['type' => 'i32', 'value' => '65532']]],
             expected: [['type' => 'i32', 'value' => '0']],
             line: 866,
+        );
+    }
+
+    #[Depends('testAssertReturn155')]
+    public function testAssertInvalid156(): void
+    {
+        $this->runAssertInvalidCommand(
+            filename: 'align.108.wasm',
+            text: 'alignment must not be larger than natural',
+            line: 873,
+        );
+    }
+
+    #[Depends('testAssertInvalid156')]
+    public function testAssertMalformed157(): void
+    {
+        $this->runAssertMalformedCommand(
+            filename: 'align.109.wasm',
+            text: 'malformed memop flags',
+            line: 892,
+        );
+    }
+
+    #[Depends('testAssertMalformed157')]
+    public function testAssertMalformed158(): void
+    {
+        $this->runAssertMalformedCommand(
+            filename: 'align.110.wasm',
+            text: 'malformed memop flags',
+            line: 911,
+        );
+    }
+
+    #[Depends('testAssertMalformed158')]
+    public function testAssertMalformed159(): void
+    {
+        $this->runAssertMalformedCommand(
+            filename: 'align.111.wasm',
+            text: 'malformed memop flags',
+            line: 930,
+        );
+    }
+
+    #[Depends('testAssertMalformed159')]
+    public function testAssertMalformed160(): void
+    {
+        $this->runAssertMalformedCommand(
+            filename: 'align.112.wasm',
+            text: 'malformed memop flags',
+            line: 949,
+        );
+    }
+
+    #[Depends('testAssertMalformed160')]
+    public function testAssertMalformed161(): void
+    {
+        $this->runAssertMalformedCommand(
+            filename: 'align.113.wasm',
+            text: 'malformed memop flags',
+            line: 968,
         );
     }
 }

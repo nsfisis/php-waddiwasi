@@ -23,7 +23,6 @@ final class UnreachableTest extends SpecTestsuiteBase
     public function testAssertTrap1(): void
     {
         $this->runAssertTrapCommand(
-            module: null,
             action: ['type' => 'invoke', 'field' => 'type-i32', 'args' => []],
             text: 'unreachable',
             line: 221,
@@ -34,7 +33,6 @@ final class UnreachableTest extends SpecTestsuiteBase
     public function testAssertTrap2(): void
     {
         $this->runAssertTrapCommand(
-            module: null,
             action: ['type' => 'invoke', 'field' => 'type-i64', 'args' => []],
             text: 'unreachable',
             line: 222,
@@ -45,7 +43,6 @@ final class UnreachableTest extends SpecTestsuiteBase
     public function testAssertTrap3(): void
     {
         $this->runAssertTrapCommand(
-            module: null,
             action: ['type' => 'invoke', 'field' => 'type-f32', 'args' => []],
             text: 'unreachable',
             line: 223,
@@ -56,7 +53,6 @@ final class UnreachableTest extends SpecTestsuiteBase
     public function testAssertTrap4(): void
     {
         $this->runAssertTrapCommand(
-            module: null,
             action: ['type' => 'invoke', 'field' => 'type-f64', 'args' => []],
             text: 'unreachable',
             line: 224,
@@ -67,7 +63,6 @@ final class UnreachableTest extends SpecTestsuiteBase
     public function testAssertTrap5(): void
     {
         $this->runAssertTrapCommand(
-            module: null,
             action: ['type' => 'invoke', 'field' => 'as-func-first', 'args' => []],
             text: 'unreachable',
             line: 226,
@@ -78,7 +73,6 @@ final class UnreachableTest extends SpecTestsuiteBase
     public function testAssertTrap6(): void
     {
         $this->runAssertTrapCommand(
-            module: null,
             action: ['type' => 'invoke', 'field' => 'as-func-mid', 'args' => []],
             text: 'unreachable',
             line: 227,
@@ -89,7 +83,6 @@ final class UnreachableTest extends SpecTestsuiteBase
     public function testAssertTrap7(): void
     {
         $this->runAssertTrapCommand(
-            module: null,
             action: ['type' => 'invoke', 'field' => 'as-func-last', 'args' => []],
             text: 'unreachable',
             line: 228,
@@ -100,7 +93,6 @@ final class UnreachableTest extends SpecTestsuiteBase
     public function testAssertTrap8(): void
     {
         $this->runAssertTrapCommand(
-            module: null,
             action: ['type' => 'invoke', 'field' => 'as-func-value', 'args' => []],
             text: 'unreachable',
             line: 229,
@@ -111,7 +103,6 @@ final class UnreachableTest extends SpecTestsuiteBase
     public function testAssertTrap9(): void
     {
         $this->runAssertTrapCommand(
-            module: null,
             action: ['type' => 'invoke', 'field' => 'as-block-first', 'args' => []],
             text: 'unreachable',
             line: 231,
@@ -122,7 +113,6 @@ final class UnreachableTest extends SpecTestsuiteBase
     public function testAssertTrap10(): void
     {
         $this->runAssertTrapCommand(
-            module: null,
             action: ['type' => 'invoke', 'field' => 'as-block-mid', 'args' => []],
             text: 'unreachable',
             line: 232,
@@ -133,7 +123,6 @@ final class UnreachableTest extends SpecTestsuiteBase
     public function testAssertTrap11(): void
     {
         $this->runAssertTrapCommand(
-            module: null,
             action: ['type' => 'invoke', 'field' => 'as-block-last', 'args' => []],
             text: 'unreachable',
             line: 233,
@@ -144,7 +133,6 @@ final class UnreachableTest extends SpecTestsuiteBase
     public function testAssertTrap12(): void
     {
         $this->runAssertTrapCommand(
-            module: null,
             action: ['type' => 'invoke', 'field' => 'as-block-value', 'args' => []],
             text: 'unreachable',
             line: 234,
@@ -155,7 +143,6 @@ final class UnreachableTest extends SpecTestsuiteBase
     public function testAssertReturn13(): void
     {
         $this->runAssertReturnCommand(
-            module: null,
             action: ['type' => 'invoke', 'field' => 'as-block-broke', 'args' => []],
             expected: [['type' => 'i32', 'value' => '1']],
             line: 235,
@@ -166,7 +153,6 @@ final class UnreachableTest extends SpecTestsuiteBase
     public function testAssertTrap14(): void
     {
         $this->runAssertTrapCommand(
-            module: null,
             action: ['type' => 'invoke', 'field' => 'as-loop-first', 'args' => []],
             text: 'unreachable',
             line: 237,
@@ -177,7 +163,6 @@ final class UnreachableTest extends SpecTestsuiteBase
     public function testAssertTrap15(): void
     {
         $this->runAssertTrapCommand(
-            module: null,
             action: ['type' => 'invoke', 'field' => 'as-loop-mid', 'args' => []],
             text: 'unreachable',
             line: 238,
@@ -188,7 +173,6 @@ final class UnreachableTest extends SpecTestsuiteBase
     public function testAssertTrap16(): void
     {
         $this->runAssertTrapCommand(
-            module: null,
             action: ['type' => 'invoke', 'field' => 'as-loop-last', 'args' => []],
             text: 'unreachable',
             line: 239,
@@ -199,7 +183,6 @@ final class UnreachableTest extends SpecTestsuiteBase
     public function testAssertReturn17(): void
     {
         $this->runAssertReturnCommand(
-            module: null,
             action: ['type' => 'invoke', 'field' => 'as-loop-broke', 'args' => []],
             expected: [['type' => 'i32', 'value' => '1']],
             line: 240,
@@ -210,7 +193,6 @@ final class UnreachableTest extends SpecTestsuiteBase
     public function testAssertTrap18(): void
     {
         $this->runAssertTrapCommand(
-            module: null,
             action: ['type' => 'invoke', 'field' => 'as-br-value', 'args' => []],
             text: 'unreachable',
             line: 242,
@@ -221,7 +203,6 @@ final class UnreachableTest extends SpecTestsuiteBase
     public function testAssertTrap19(): void
     {
         $this->runAssertTrapCommand(
-            module: null,
             action: ['type' => 'invoke', 'field' => 'as-br_if-cond', 'args' => []],
             text: 'unreachable',
             line: 244,
@@ -232,7 +213,6 @@ final class UnreachableTest extends SpecTestsuiteBase
     public function testAssertTrap20(): void
     {
         $this->runAssertTrapCommand(
-            module: null,
             action: ['type' => 'invoke', 'field' => 'as-br_if-value', 'args' => []],
             text: 'unreachable',
             line: 245,
@@ -243,7 +223,6 @@ final class UnreachableTest extends SpecTestsuiteBase
     public function testAssertTrap21(): void
     {
         $this->runAssertTrapCommand(
-            module: null,
             action: ['type' => 'invoke', 'field' => 'as-br_if-value-cond', 'args' => []],
             text: 'unreachable',
             line: 246,
@@ -254,7 +233,6 @@ final class UnreachableTest extends SpecTestsuiteBase
     public function testAssertTrap22(): void
     {
         $this->runAssertTrapCommand(
-            module: null,
             action: ['type' => 'invoke', 'field' => 'as-br_table-index', 'args' => []],
             text: 'unreachable',
             line: 248,
@@ -265,7 +243,6 @@ final class UnreachableTest extends SpecTestsuiteBase
     public function testAssertTrap23(): void
     {
         $this->runAssertTrapCommand(
-            module: null,
             action: ['type' => 'invoke', 'field' => 'as-br_table-value', 'args' => []],
             text: 'unreachable',
             line: 249,
@@ -276,7 +253,6 @@ final class UnreachableTest extends SpecTestsuiteBase
     public function testAssertTrap24(): void
     {
         $this->runAssertTrapCommand(
-            module: null,
             action: ['type' => 'invoke', 'field' => 'as-br_table-value-2', 'args' => []],
             text: 'unreachable',
             line: 250,
@@ -287,7 +263,6 @@ final class UnreachableTest extends SpecTestsuiteBase
     public function testAssertTrap25(): void
     {
         $this->runAssertTrapCommand(
-            module: null,
             action: ['type' => 'invoke', 'field' => 'as-br_table-value-index', 'args' => []],
             text: 'unreachable',
             line: 251,
@@ -298,7 +273,6 @@ final class UnreachableTest extends SpecTestsuiteBase
     public function testAssertTrap26(): void
     {
         $this->runAssertTrapCommand(
-            module: null,
             action: ['type' => 'invoke', 'field' => 'as-br_table-value-and-index', 'args' => []],
             text: 'unreachable',
             line: 252,
@@ -309,7 +283,6 @@ final class UnreachableTest extends SpecTestsuiteBase
     public function testAssertTrap27(): void
     {
         $this->runAssertTrapCommand(
-            module: null,
             action: ['type' => 'invoke', 'field' => 'as-return-value', 'args' => []],
             text: 'unreachable',
             line: 254,
@@ -320,7 +293,6 @@ final class UnreachableTest extends SpecTestsuiteBase
     public function testAssertTrap28(): void
     {
         $this->runAssertTrapCommand(
-            module: null,
             action: ['type' => 'invoke', 'field' => 'as-if-cond', 'args' => []],
             text: 'unreachable',
             line: 256,
@@ -331,7 +303,6 @@ final class UnreachableTest extends SpecTestsuiteBase
     public function testAssertTrap29(): void
     {
         $this->runAssertTrapCommand(
-            module: null,
             action: ['type' => 'invoke', 'field' => 'as-if-then', 'args' => [['type' => 'i32', 'value' => '1'], ['type' => 'i32', 'value' => '6']]],
             text: 'unreachable',
             line: 257,
@@ -342,7 +313,6 @@ final class UnreachableTest extends SpecTestsuiteBase
     public function testAssertReturn30(): void
     {
         $this->runAssertReturnCommand(
-            module: null,
             action: ['type' => 'invoke', 'field' => 'as-if-then', 'args' => [['type' => 'i32', 'value' => '0'], ['type' => 'i32', 'value' => '6']]],
             expected: [['type' => 'i32', 'value' => '6']],
             line: 258,
@@ -353,7 +323,6 @@ final class UnreachableTest extends SpecTestsuiteBase
     public function testAssertTrap31(): void
     {
         $this->runAssertTrapCommand(
-            module: null,
             action: ['type' => 'invoke', 'field' => 'as-if-else', 'args' => [['type' => 'i32', 'value' => '0'], ['type' => 'i32', 'value' => '6']]],
             text: 'unreachable',
             line: 259,
@@ -364,7 +333,6 @@ final class UnreachableTest extends SpecTestsuiteBase
     public function testAssertReturn32(): void
     {
         $this->runAssertReturnCommand(
-            module: null,
             action: ['type' => 'invoke', 'field' => 'as-if-else', 'args' => [['type' => 'i32', 'value' => '1'], ['type' => 'i32', 'value' => '6']]],
             expected: [['type' => 'i32', 'value' => '6']],
             line: 260,
@@ -375,7 +343,6 @@ final class UnreachableTest extends SpecTestsuiteBase
     public function testAssertTrap33(): void
     {
         $this->runAssertTrapCommand(
-            module: null,
             action: ['type' => 'invoke', 'field' => 'as-if-then-no-else', 'args' => [['type' => 'i32', 'value' => '1'], ['type' => 'i32', 'value' => '6']]],
             text: 'unreachable',
             line: 261,
@@ -386,7 +353,6 @@ final class UnreachableTest extends SpecTestsuiteBase
     public function testAssertReturn34(): void
     {
         $this->runAssertReturnCommand(
-            module: null,
             action: ['type' => 'invoke', 'field' => 'as-if-then-no-else', 'args' => [['type' => 'i32', 'value' => '0'], ['type' => 'i32', 'value' => '6']]],
             expected: [['type' => 'i32', 'value' => '6']],
             line: 262,
@@ -397,7 +363,6 @@ final class UnreachableTest extends SpecTestsuiteBase
     public function testAssertTrap35(): void
     {
         $this->runAssertTrapCommand(
-            module: null,
             action: ['type' => 'invoke', 'field' => 'as-select-first', 'args' => [['type' => 'i32', 'value' => '0'], ['type' => 'i32', 'value' => '6']]],
             text: 'unreachable',
             line: 264,
@@ -408,7 +373,6 @@ final class UnreachableTest extends SpecTestsuiteBase
     public function testAssertTrap36(): void
     {
         $this->runAssertTrapCommand(
-            module: null,
             action: ['type' => 'invoke', 'field' => 'as-select-first', 'args' => [['type' => 'i32', 'value' => '1'], ['type' => 'i32', 'value' => '6']]],
             text: 'unreachable',
             line: 265,
@@ -419,7 +383,6 @@ final class UnreachableTest extends SpecTestsuiteBase
     public function testAssertTrap37(): void
     {
         $this->runAssertTrapCommand(
-            module: null,
             action: ['type' => 'invoke', 'field' => 'as-select-second', 'args' => [['type' => 'i32', 'value' => '0'], ['type' => 'i32', 'value' => '6']]],
             text: 'unreachable',
             line: 266,
@@ -430,7 +393,6 @@ final class UnreachableTest extends SpecTestsuiteBase
     public function testAssertTrap38(): void
     {
         $this->runAssertTrapCommand(
-            module: null,
             action: ['type' => 'invoke', 'field' => 'as-select-second', 'args' => [['type' => 'i32', 'value' => '1'], ['type' => 'i32', 'value' => '6']]],
             text: 'unreachable',
             line: 267,
@@ -441,7 +403,6 @@ final class UnreachableTest extends SpecTestsuiteBase
     public function testAssertTrap39(): void
     {
         $this->runAssertTrapCommand(
-            module: null,
             action: ['type' => 'invoke', 'field' => 'as-select-cond', 'args' => []],
             text: 'unreachable',
             line: 268,
@@ -452,7 +413,6 @@ final class UnreachableTest extends SpecTestsuiteBase
     public function testAssertTrap40(): void
     {
         $this->runAssertTrapCommand(
-            module: null,
             action: ['type' => 'invoke', 'field' => 'as-call-first', 'args' => []],
             text: 'unreachable',
             line: 270,
@@ -463,7 +423,6 @@ final class UnreachableTest extends SpecTestsuiteBase
     public function testAssertTrap41(): void
     {
         $this->runAssertTrapCommand(
-            module: null,
             action: ['type' => 'invoke', 'field' => 'as-call-mid', 'args' => []],
             text: 'unreachable',
             line: 271,
@@ -474,7 +433,6 @@ final class UnreachableTest extends SpecTestsuiteBase
     public function testAssertTrap42(): void
     {
         $this->runAssertTrapCommand(
-            module: null,
             action: ['type' => 'invoke', 'field' => 'as-call-last', 'args' => []],
             text: 'unreachable',
             line: 272,
@@ -485,7 +443,6 @@ final class UnreachableTest extends SpecTestsuiteBase
     public function testAssertTrap43(): void
     {
         $this->runAssertTrapCommand(
-            module: null,
             action: ['type' => 'invoke', 'field' => 'as-call_indirect-func', 'args' => []],
             text: 'unreachable',
             line: 274,
@@ -496,7 +453,6 @@ final class UnreachableTest extends SpecTestsuiteBase
     public function testAssertTrap44(): void
     {
         $this->runAssertTrapCommand(
-            module: null,
             action: ['type' => 'invoke', 'field' => 'as-call_indirect-first', 'args' => []],
             text: 'unreachable',
             line: 275,
@@ -507,7 +463,6 @@ final class UnreachableTest extends SpecTestsuiteBase
     public function testAssertTrap45(): void
     {
         $this->runAssertTrapCommand(
-            module: null,
             action: ['type' => 'invoke', 'field' => 'as-call_indirect-mid', 'args' => []],
             text: 'unreachable',
             line: 276,
@@ -518,7 +473,6 @@ final class UnreachableTest extends SpecTestsuiteBase
     public function testAssertTrap46(): void
     {
         $this->runAssertTrapCommand(
-            module: null,
             action: ['type' => 'invoke', 'field' => 'as-call_indirect-last', 'args' => []],
             text: 'unreachable',
             line: 277,
@@ -529,7 +483,6 @@ final class UnreachableTest extends SpecTestsuiteBase
     public function testAssertTrap47(): void
     {
         $this->runAssertTrapCommand(
-            module: null,
             action: ['type' => 'invoke', 'field' => 'as-local.set-value', 'args' => []],
             text: 'unreachable',
             line: 279,
@@ -540,7 +493,6 @@ final class UnreachableTest extends SpecTestsuiteBase
     public function testAssertTrap48(): void
     {
         $this->runAssertTrapCommand(
-            module: null,
             action: ['type' => 'invoke', 'field' => 'as-local.tee-value', 'args' => []],
             text: 'unreachable',
             line: 280,
@@ -551,7 +503,6 @@ final class UnreachableTest extends SpecTestsuiteBase
     public function testAssertTrap49(): void
     {
         $this->runAssertTrapCommand(
-            module: null,
             action: ['type' => 'invoke', 'field' => 'as-global.set-value', 'args' => []],
             text: 'unreachable',
             line: 281,
@@ -562,7 +513,6 @@ final class UnreachableTest extends SpecTestsuiteBase
     public function testAssertTrap50(): void
     {
         $this->runAssertTrapCommand(
-            module: null,
             action: ['type' => 'invoke', 'field' => 'as-load-address', 'args' => []],
             text: 'unreachable',
             line: 283,
@@ -573,7 +523,6 @@ final class UnreachableTest extends SpecTestsuiteBase
     public function testAssertTrap51(): void
     {
         $this->runAssertTrapCommand(
-            module: null,
             action: ['type' => 'invoke', 'field' => 'as-loadN-address', 'args' => []],
             text: 'unreachable',
             line: 284,
@@ -584,7 +533,6 @@ final class UnreachableTest extends SpecTestsuiteBase
     public function testAssertTrap52(): void
     {
         $this->runAssertTrapCommand(
-            module: null,
             action: ['type' => 'invoke', 'field' => 'as-store-address', 'args' => []],
             text: 'unreachable',
             line: 286,
@@ -595,7 +543,6 @@ final class UnreachableTest extends SpecTestsuiteBase
     public function testAssertTrap53(): void
     {
         $this->runAssertTrapCommand(
-            module: null,
             action: ['type' => 'invoke', 'field' => 'as-store-value', 'args' => []],
             text: 'unreachable',
             line: 287,
@@ -606,7 +553,6 @@ final class UnreachableTest extends SpecTestsuiteBase
     public function testAssertTrap54(): void
     {
         $this->runAssertTrapCommand(
-            module: null,
             action: ['type' => 'invoke', 'field' => 'as-storeN-address', 'args' => []],
             text: 'unreachable',
             line: 288,
@@ -617,7 +563,6 @@ final class UnreachableTest extends SpecTestsuiteBase
     public function testAssertTrap55(): void
     {
         $this->runAssertTrapCommand(
-            module: null,
             action: ['type' => 'invoke', 'field' => 'as-storeN-value', 'args' => []],
             text: 'unreachable',
             line: 289,
@@ -628,7 +573,6 @@ final class UnreachableTest extends SpecTestsuiteBase
     public function testAssertTrap56(): void
     {
         $this->runAssertTrapCommand(
-            module: null,
             action: ['type' => 'invoke', 'field' => 'as-unary-operand', 'args' => []],
             text: 'unreachable',
             line: 291,
@@ -639,7 +583,6 @@ final class UnreachableTest extends SpecTestsuiteBase
     public function testAssertTrap57(): void
     {
         $this->runAssertTrapCommand(
-            module: null,
             action: ['type' => 'invoke', 'field' => 'as-binary-left', 'args' => []],
             text: 'unreachable',
             line: 293,
@@ -650,7 +593,6 @@ final class UnreachableTest extends SpecTestsuiteBase
     public function testAssertTrap58(): void
     {
         $this->runAssertTrapCommand(
-            module: null,
             action: ['type' => 'invoke', 'field' => 'as-binary-right', 'args' => []],
             text: 'unreachable',
             line: 294,
@@ -661,7 +603,6 @@ final class UnreachableTest extends SpecTestsuiteBase
     public function testAssertTrap59(): void
     {
         $this->runAssertTrapCommand(
-            module: null,
             action: ['type' => 'invoke', 'field' => 'as-test-operand', 'args' => []],
             text: 'unreachable',
             line: 296,
@@ -672,7 +613,6 @@ final class UnreachableTest extends SpecTestsuiteBase
     public function testAssertTrap60(): void
     {
         $this->runAssertTrapCommand(
-            module: null,
             action: ['type' => 'invoke', 'field' => 'as-compare-left', 'args' => []],
             text: 'unreachable',
             line: 298,
@@ -683,7 +623,6 @@ final class UnreachableTest extends SpecTestsuiteBase
     public function testAssertTrap61(): void
     {
         $this->runAssertTrapCommand(
-            module: null,
             action: ['type' => 'invoke', 'field' => 'as-compare-right', 'args' => []],
             text: 'unreachable',
             line: 299,
@@ -694,7 +633,6 @@ final class UnreachableTest extends SpecTestsuiteBase
     public function testAssertTrap62(): void
     {
         $this->runAssertTrapCommand(
-            module: null,
             action: ['type' => 'invoke', 'field' => 'as-convert-operand', 'args' => []],
             text: 'unreachable',
             line: 301,
@@ -705,7 +643,6 @@ final class UnreachableTest extends SpecTestsuiteBase
     public function testAssertTrap63(): void
     {
         $this->runAssertTrapCommand(
-            module: null,
             action: ['type' => 'invoke', 'field' => 'as-memory.grow-size', 'args' => []],
             text: 'unreachable',
             line: 303,

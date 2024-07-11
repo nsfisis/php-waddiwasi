@@ -23,7 +23,6 @@ final class StackTest extends SpecTestsuiteBase
     public function testAssertReturn1(): void
     {
         $this->runAssertReturnCommand(
-            module: null,
             action: ['type' => 'invoke', 'field' => 'fac-expr', 'args' => [['type' => 'i64', 'value' => '25']]],
             expected: [['type' => 'i64', 'value' => '7034535277573963776']],
             line: 146,
@@ -34,7 +33,6 @@ final class StackTest extends SpecTestsuiteBase
     public function testAssertReturn2(): void
     {
         $this->runAssertReturnCommand(
-            module: null,
             action: ['type' => 'invoke', 'field' => 'fac-stack', 'args' => [['type' => 'i64', 'value' => '25']]],
             expected: [['type' => 'i64', 'value' => '7034535277573963776']],
             line: 147,
@@ -45,7 +43,6 @@ final class StackTest extends SpecTestsuiteBase
     public function testAssertReturn3(): void
     {
         $this->runAssertReturnCommand(
-            module: null,
             action: ['type' => 'invoke', 'field' => 'fac-mixed', 'args' => [['type' => 'i64', 'value' => '25']]],
             expected: [['type' => 'i64', 'value' => '7034535277573963776']],
             line: 148,
@@ -56,7 +53,6 @@ final class StackTest extends SpecTestsuiteBase
     public function testAssertReturn4(): void
     {
         $this->runAssertReturnCommand(
-            module: null,
             action: ['type' => 'invoke', 'field' => 'not-quite-a-tree', 'args' => []],
             expected: [['type' => 'i32', 'value' => '3']],
             line: 150,
@@ -67,7 +63,6 @@ final class StackTest extends SpecTestsuiteBase
     public function testAssertReturn5(): void
     {
         $this->runAssertReturnCommand(
-            module: null,
             action: ['type' => 'invoke', 'field' => 'not-quite-a-tree', 'args' => []],
             expected: [['type' => 'i32', 'value' => '9']],
             line: 151,

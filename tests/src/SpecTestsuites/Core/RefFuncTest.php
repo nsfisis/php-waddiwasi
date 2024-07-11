@@ -43,7 +43,6 @@ final class RefFuncTest extends SpecTestsuiteBase
     public function testAssertReturn3(): void
     {
         $this->runAssertReturnCommand(
-            module: null,
             action: ['type' => 'invoke', 'field' => 'is_null-f', 'args' => []],
             expected: [['type' => 'i32', 'value' => '0']],
             line: 56,
@@ -54,7 +53,6 @@ final class RefFuncTest extends SpecTestsuiteBase
     public function testAssertReturn4(): void
     {
         $this->runAssertReturnCommand(
-            module: null,
             action: ['type' => 'invoke', 'field' => 'is_null-g', 'args' => []],
             expected: [['type' => 'i32', 'value' => '0']],
             line: 57,
@@ -65,7 +63,6 @@ final class RefFuncTest extends SpecTestsuiteBase
     public function testAssertReturn5(): void
     {
         $this->runAssertReturnCommand(
-            module: null,
             action: ['type' => 'invoke', 'field' => 'is_null-v', 'args' => []],
             expected: [['type' => 'i32', 'value' => '0']],
             line: 58,
@@ -76,7 +73,6 @@ final class RefFuncTest extends SpecTestsuiteBase
     public function testAssertReturn6(): void
     {
         $this->runAssertReturnCommand(
-            module: null,
             action: ['type' => 'invoke', 'field' => 'call-f', 'args' => [['type' => 'i32', 'value' => '4']]],
             expected: [['type' => 'i32', 'value' => '4']],
             line: 60,
@@ -87,7 +83,6 @@ final class RefFuncTest extends SpecTestsuiteBase
     public function testAssertReturn7(): void
     {
         $this->runAssertReturnCommand(
-            module: null,
             action: ['type' => 'invoke', 'field' => 'call-g', 'args' => [['type' => 'i32', 'value' => '4']]],
             expected: [['type' => 'i32', 'value' => '5']],
             line: 61,
@@ -98,7 +93,6 @@ final class RefFuncTest extends SpecTestsuiteBase
     public function testAssertReturn8(): void
     {
         $this->runAssertReturnCommand(
-            module: null,
             action: ['type' => 'invoke', 'field' => 'call-v', 'args' => [['type' => 'i32', 'value' => '4']]],
             expected: [['type' => 'i32', 'value' => '4']],
             line: 62,
@@ -109,7 +103,6 @@ final class RefFuncTest extends SpecTestsuiteBase
     public function testAction9(): void
     {
         $this->runActionCommand(
-            module: null,
             action: ['type' => 'invoke', 'field' => 'set-g', 'args' => []],
             line: 63,
         );
@@ -119,7 +112,6 @@ final class RefFuncTest extends SpecTestsuiteBase
     public function testAssertReturn10(): void
     {
         $this->runAssertReturnCommand(
-            module: null,
             action: ['type' => 'invoke', 'field' => 'call-v', 'args' => [['type' => 'i32', 'value' => '4']]],
             expected: [['type' => 'i32', 'value' => '5']],
             line: 64,
@@ -130,7 +122,6 @@ final class RefFuncTest extends SpecTestsuiteBase
     public function testAction11(): void
     {
         $this->runActionCommand(
-            module: null,
             action: ['type' => 'invoke', 'field' => 'set-f', 'args' => []],
             line: 65,
         );
@@ -140,7 +131,6 @@ final class RefFuncTest extends SpecTestsuiteBase
     public function testAssertReturn12(): void
     {
         $this->runAssertReturnCommand(
-            module: null,
             action: ['type' => 'invoke', 'field' => 'call-v', 'args' => [['type' => 'i32', 'value' => '4']]],
             expected: [['type' => 'i32', 'value' => '4']],
             line: 66,

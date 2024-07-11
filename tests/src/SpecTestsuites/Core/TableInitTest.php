@@ -43,7 +43,6 @@ final class TableInitTest extends SpecTestsuiteBase
     public function testAction3(): void
     {
         $this->runActionCommand(
-            module: null,
             action: ['type' => 'invoke', 'field' => 'test', 'args' => []],
             line: 41,
         );
@@ -53,7 +52,6 @@ final class TableInitTest extends SpecTestsuiteBase
     public function testAssertTrap4(): void
     {
         $this->runAssertTrapCommand(
-            module: null,
             action: ['type' => 'invoke', 'field' => 'check', 'args' => [['type' => 'i32', 'value' => '0']]],
             text: 'uninitialized element',
             line: 42,
@@ -64,7 +62,6 @@ final class TableInitTest extends SpecTestsuiteBase
     public function testAssertTrap5(): void
     {
         $this->runAssertTrapCommand(
-            module: null,
             action: ['type' => 'invoke', 'field' => 'check', 'args' => [['type' => 'i32', 'value' => '1']]],
             text: 'uninitialized element',
             line: 43,
@@ -75,7 +72,6 @@ final class TableInitTest extends SpecTestsuiteBase
     public function testAssertReturn6(): void
     {
         $this->runAssertReturnCommand(
-            module: null,
             action: ['type' => 'invoke', 'field' => 'check', 'args' => [['type' => 'i32', 'value' => '2']]],
             expected: [['type' => 'i32', 'value' => '3']],
             line: 44,
@@ -86,7 +82,6 @@ final class TableInitTest extends SpecTestsuiteBase
     public function testAssertReturn7(): void
     {
         $this->runAssertReturnCommand(
-            module: null,
             action: ['type' => 'invoke', 'field' => 'check', 'args' => [['type' => 'i32', 'value' => '3']]],
             expected: [['type' => 'i32', 'value' => '1']],
             line: 45,
@@ -97,7 +92,6 @@ final class TableInitTest extends SpecTestsuiteBase
     public function testAssertReturn8(): void
     {
         $this->runAssertReturnCommand(
-            module: null,
             action: ['type' => 'invoke', 'field' => 'check', 'args' => [['type' => 'i32', 'value' => '4']]],
             expected: [['type' => 'i32', 'value' => '4']],
             line: 46,
@@ -108,7 +102,6 @@ final class TableInitTest extends SpecTestsuiteBase
     public function testAssertReturn9(): void
     {
         $this->runAssertReturnCommand(
-            module: null,
             action: ['type' => 'invoke', 'field' => 'check', 'args' => [['type' => 'i32', 'value' => '5']]],
             expected: [['type' => 'i32', 'value' => '1']],
             line: 47,
@@ -119,7 +112,6 @@ final class TableInitTest extends SpecTestsuiteBase
     public function testAssertTrap10(): void
     {
         $this->runAssertTrapCommand(
-            module: null,
             action: ['type' => 'invoke', 'field' => 'check', 'args' => [['type' => 'i32', 'value' => '6']]],
             text: 'uninitialized element',
             line: 48,
@@ -130,7 +122,6 @@ final class TableInitTest extends SpecTestsuiteBase
     public function testAssertReturn11(): void
     {
         $this->runAssertReturnCommand(
-            module: null,
             action: ['type' => 'invoke', 'field' => 'check', 'args' => [['type' => 'i32', 'value' => '7']]],
             expected: [['type' => 'i32', 'value' => '2']],
             line: 49,
@@ -141,7 +132,6 @@ final class TableInitTest extends SpecTestsuiteBase
     public function testAssertReturn12(): void
     {
         $this->runAssertReturnCommand(
-            module: null,
             action: ['type' => 'invoke', 'field' => 'check', 'args' => [['type' => 'i32', 'value' => '8']]],
             expected: [['type' => 'i32', 'value' => '7']],
             line: 50,
@@ -152,7 +142,6 @@ final class TableInitTest extends SpecTestsuiteBase
     public function testAssertReturn13(): void
     {
         $this->runAssertReturnCommand(
-            module: null,
             action: ['type' => 'invoke', 'field' => 'check', 'args' => [['type' => 'i32', 'value' => '9']]],
             expected: [['type' => 'i32', 'value' => '1']],
             line: 51,
@@ -163,7 +152,6 @@ final class TableInitTest extends SpecTestsuiteBase
     public function testAssertReturn14(): void
     {
         $this->runAssertReturnCommand(
-            module: null,
             action: ['type' => 'invoke', 'field' => 'check', 'args' => [['type' => 'i32', 'value' => '10']]],
             expected: [['type' => 'i32', 'value' => '8']],
             line: 52,
@@ -174,7 +162,6 @@ final class TableInitTest extends SpecTestsuiteBase
     public function testAssertTrap15(): void
     {
         $this->runAssertTrapCommand(
-            module: null,
             action: ['type' => 'invoke', 'field' => 'check', 'args' => [['type' => 'i32', 'value' => '11']]],
             text: 'uninitialized element',
             line: 53,
@@ -185,7 +172,6 @@ final class TableInitTest extends SpecTestsuiteBase
     public function testAssertReturn16(): void
     {
         $this->runAssertReturnCommand(
-            module: null,
             action: ['type' => 'invoke', 'field' => 'check', 'args' => [['type' => 'i32', 'value' => '12']]],
             expected: [['type' => 'i32', 'value' => '7']],
             line: 54,
@@ -196,7 +182,6 @@ final class TableInitTest extends SpecTestsuiteBase
     public function testAssertReturn17(): void
     {
         $this->runAssertReturnCommand(
-            module: null,
             action: ['type' => 'invoke', 'field' => 'check', 'args' => [['type' => 'i32', 'value' => '13']]],
             expected: [['type' => 'i32', 'value' => '5']],
             line: 55,
@@ -207,7 +192,6 @@ final class TableInitTest extends SpecTestsuiteBase
     public function testAssertReturn18(): void
     {
         $this->runAssertReturnCommand(
-            module: null,
             action: ['type' => 'invoke', 'field' => 'check', 'args' => [['type' => 'i32', 'value' => '14']]],
             expected: [['type' => 'i32', 'value' => '2']],
             line: 56,
@@ -218,7 +202,6 @@ final class TableInitTest extends SpecTestsuiteBase
     public function testAssertReturn19(): void
     {
         $this->runAssertReturnCommand(
-            module: null,
             action: ['type' => 'invoke', 'field' => 'check', 'args' => [['type' => 'i32', 'value' => '15']]],
             expected: [['type' => 'i32', 'value' => '3']],
             line: 57,
@@ -229,7 +212,6 @@ final class TableInitTest extends SpecTestsuiteBase
     public function testAssertReturn20(): void
     {
         $this->runAssertReturnCommand(
-            module: null,
             action: ['type' => 'invoke', 'field' => 'check', 'args' => [['type' => 'i32', 'value' => '16']]],
             expected: [['type' => 'i32', 'value' => '6']],
             line: 58,
@@ -240,7 +222,6 @@ final class TableInitTest extends SpecTestsuiteBase
     public function testAssertTrap21(): void
     {
         $this->runAssertTrapCommand(
-            module: null,
             action: ['type' => 'invoke', 'field' => 'check', 'args' => [['type' => 'i32', 'value' => '17']]],
             text: 'uninitialized element',
             line: 59,
@@ -251,7 +232,6 @@ final class TableInitTest extends SpecTestsuiteBase
     public function testAssertTrap22(): void
     {
         $this->runAssertTrapCommand(
-            module: null,
             action: ['type' => 'invoke', 'field' => 'check', 'args' => [['type' => 'i32', 'value' => '18']]],
             text: 'uninitialized element',
             line: 60,
@@ -262,7 +242,6 @@ final class TableInitTest extends SpecTestsuiteBase
     public function testAssertTrap23(): void
     {
         $this->runAssertTrapCommand(
-            module: null,
             action: ['type' => 'invoke', 'field' => 'check', 'args' => [['type' => 'i32', 'value' => '19']]],
             text: 'uninitialized element',
             line: 61,
@@ -273,7 +252,6 @@ final class TableInitTest extends SpecTestsuiteBase
     public function testAssertTrap24(): void
     {
         $this->runAssertTrapCommand(
-            module: null,
             action: ['type' => 'invoke', 'field' => 'check', 'args' => [['type' => 'i32', 'value' => '20']]],
             text: 'uninitialized element',
             line: 62,
@@ -284,7 +262,6 @@ final class TableInitTest extends SpecTestsuiteBase
     public function testAssertTrap25(): void
     {
         $this->runAssertTrapCommand(
-            module: null,
             action: ['type' => 'invoke', 'field' => 'check', 'args' => [['type' => 'i32', 'value' => '21']]],
             text: 'uninitialized element',
             line: 63,
@@ -295,7 +272,6 @@ final class TableInitTest extends SpecTestsuiteBase
     public function testAssertTrap26(): void
     {
         $this->runAssertTrapCommand(
-            module: null,
             action: ['type' => 'invoke', 'field' => 'check', 'args' => [['type' => 'i32', 'value' => '22']]],
             text: 'uninitialized element',
             line: 64,
@@ -306,7 +282,6 @@ final class TableInitTest extends SpecTestsuiteBase
     public function testAssertTrap27(): void
     {
         $this->runAssertTrapCommand(
-            module: null,
             action: ['type' => 'invoke', 'field' => 'check', 'args' => [['type' => 'i32', 'value' => '23']]],
             text: 'uninitialized element',
             line: 65,
@@ -317,7 +292,6 @@ final class TableInitTest extends SpecTestsuiteBase
     public function testAssertTrap28(): void
     {
         $this->runAssertTrapCommand(
-            module: null,
             action: ['type' => 'invoke', 'field' => 'check', 'args' => [['type' => 'i32', 'value' => '24']]],
             text: 'uninitialized element',
             line: 66,
@@ -328,7 +302,6 @@ final class TableInitTest extends SpecTestsuiteBase
     public function testAssertTrap29(): void
     {
         $this->runAssertTrapCommand(
-            module: null,
             action: ['type' => 'invoke', 'field' => 'check', 'args' => [['type' => 'i32', 'value' => '25']]],
             text: 'uninitialized element',
             line: 67,
@@ -339,7 +312,6 @@ final class TableInitTest extends SpecTestsuiteBase
     public function testAssertTrap30(): void
     {
         $this->runAssertTrapCommand(
-            module: null,
             action: ['type' => 'invoke', 'field' => 'check', 'args' => [['type' => 'i32', 'value' => '26']]],
             text: 'uninitialized element',
             line: 68,
@@ -350,7 +322,6 @@ final class TableInitTest extends SpecTestsuiteBase
     public function testAssertTrap31(): void
     {
         $this->runAssertTrapCommand(
-            module: null,
             action: ['type' => 'invoke', 'field' => 'check', 'args' => [['type' => 'i32', 'value' => '27']]],
             text: 'uninitialized element',
             line: 69,
@@ -361,7 +332,6 @@ final class TableInitTest extends SpecTestsuiteBase
     public function testAssertTrap32(): void
     {
         $this->runAssertTrapCommand(
-            module: null,
             action: ['type' => 'invoke', 'field' => 'check', 'args' => [['type' => 'i32', 'value' => '28']]],
             text: 'uninitialized element',
             line: 70,
@@ -372,7 +342,6 @@ final class TableInitTest extends SpecTestsuiteBase
     public function testAssertTrap33(): void
     {
         $this->runAssertTrapCommand(
-            module: null,
             action: ['type' => 'invoke', 'field' => 'check', 'args' => [['type' => 'i32', 'value' => '29']]],
             text: 'uninitialized element',
             line: 71,
@@ -393,7 +362,6 @@ final class TableInitTest extends SpecTestsuiteBase
     public function testAction35(): void
     {
         $this->runActionCommand(
-            module: null,
             action: ['type' => 'invoke', 'field' => 'test', 'args' => []],
             line: 99,
         );
@@ -403,7 +371,6 @@ final class TableInitTest extends SpecTestsuiteBase
     public function testAssertTrap36(): void
     {
         $this->runAssertTrapCommand(
-            module: null,
             action: ['type' => 'invoke', 'field' => 'check', 'args' => [['type' => 'i32', 'value' => '0']]],
             text: 'uninitialized element',
             line: 100,
@@ -414,7 +381,6 @@ final class TableInitTest extends SpecTestsuiteBase
     public function testAssertTrap37(): void
     {
         $this->runAssertTrapCommand(
-            module: null,
             action: ['type' => 'invoke', 'field' => 'check', 'args' => [['type' => 'i32', 'value' => '1']]],
             text: 'uninitialized element',
             line: 101,
@@ -425,7 +391,6 @@ final class TableInitTest extends SpecTestsuiteBase
     public function testAssertReturn38(): void
     {
         $this->runAssertReturnCommand(
-            module: null,
             action: ['type' => 'invoke', 'field' => 'check', 'args' => [['type' => 'i32', 'value' => '2']]],
             expected: [['type' => 'i32', 'value' => '3']],
             line: 102,
@@ -436,7 +401,6 @@ final class TableInitTest extends SpecTestsuiteBase
     public function testAssertReturn39(): void
     {
         $this->runAssertReturnCommand(
-            module: null,
             action: ['type' => 'invoke', 'field' => 'check', 'args' => [['type' => 'i32', 'value' => '3']]],
             expected: [['type' => 'i32', 'value' => '1']],
             line: 103,
@@ -447,7 +411,6 @@ final class TableInitTest extends SpecTestsuiteBase
     public function testAssertReturn40(): void
     {
         $this->runAssertReturnCommand(
-            module: null,
             action: ['type' => 'invoke', 'field' => 'check', 'args' => [['type' => 'i32', 'value' => '4']]],
             expected: [['type' => 'i32', 'value' => '4']],
             line: 104,
@@ -458,7 +421,6 @@ final class TableInitTest extends SpecTestsuiteBase
     public function testAssertReturn41(): void
     {
         $this->runAssertReturnCommand(
-            module: null,
             action: ['type' => 'invoke', 'field' => 'check', 'args' => [['type' => 'i32', 'value' => '5']]],
             expected: [['type' => 'i32', 'value' => '1']],
             line: 105,
@@ -469,7 +431,6 @@ final class TableInitTest extends SpecTestsuiteBase
     public function testAssertTrap42(): void
     {
         $this->runAssertTrapCommand(
-            module: null,
             action: ['type' => 'invoke', 'field' => 'check', 'args' => [['type' => 'i32', 'value' => '6']]],
             text: 'uninitialized element',
             line: 106,
@@ -480,7 +441,6 @@ final class TableInitTest extends SpecTestsuiteBase
     public function testAssertTrap43(): void
     {
         $this->runAssertTrapCommand(
-            module: null,
             action: ['type' => 'invoke', 'field' => 'check', 'args' => [['type' => 'i32', 'value' => '7']]],
             text: 'uninitialized element',
             line: 107,
@@ -491,7 +451,6 @@ final class TableInitTest extends SpecTestsuiteBase
     public function testAssertTrap44(): void
     {
         $this->runAssertTrapCommand(
-            module: null,
             action: ['type' => 'invoke', 'field' => 'check', 'args' => [['type' => 'i32', 'value' => '8']]],
             text: 'uninitialized element',
             line: 108,
@@ -502,7 +461,6 @@ final class TableInitTest extends SpecTestsuiteBase
     public function testAssertTrap45(): void
     {
         $this->runAssertTrapCommand(
-            module: null,
             action: ['type' => 'invoke', 'field' => 'check', 'args' => [['type' => 'i32', 'value' => '9']]],
             text: 'uninitialized element',
             line: 109,
@@ -513,7 +471,6 @@ final class TableInitTest extends SpecTestsuiteBase
     public function testAssertTrap46(): void
     {
         $this->runAssertTrapCommand(
-            module: null,
             action: ['type' => 'invoke', 'field' => 'check', 'args' => [['type' => 'i32', 'value' => '10']]],
             text: 'uninitialized element',
             line: 110,
@@ -524,7 +481,6 @@ final class TableInitTest extends SpecTestsuiteBase
     public function testAssertTrap47(): void
     {
         $this->runAssertTrapCommand(
-            module: null,
             action: ['type' => 'invoke', 'field' => 'check', 'args' => [['type' => 'i32', 'value' => '11']]],
             text: 'uninitialized element',
             line: 111,
@@ -535,7 +491,6 @@ final class TableInitTest extends SpecTestsuiteBase
     public function testAssertReturn48(): void
     {
         $this->runAssertReturnCommand(
-            module: null,
             action: ['type' => 'invoke', 'field' => 'check', 'args' => [['type' => 'i32', 'value' => '12']]],
             expected: [['type' => 'i32', 'value' => '7']],
             line: 112,
@@ -546,7 +501,6 @@ final class TableInitTest extends SpecTestsuiteBase
     public function testAssertReturn49(): void
     {
         $this->runAssertReturnCommand(
-            module: null,
             action: ['type' => 'invoke', 'field' => 'check', 'args' => [['type' => 'i32', 'value' => '13']]],
             expected: [['type' => 'i32', 'value' => '5']],
             line: 113,
@@ -557,7 +511,6 @@ final class TableInitTest extends SpecTestsuiteBase
     public function testAssertReturn50(): void
     {
         $this->runAssertReturnCommand(
-            module: null,
             action: ['type' => 'invoke', 'field' => 'check', 'args' => [['type' => 'i32', 'value' => '14']]],
             expected: [['type' => 'i32', 'value' => '2']],
             line: 114,
@@ -568,7 +521,6 @@ final class TableInitTest extends SpecTestsuiteBase
     public function testAssertReturn51(): void
     {
         $this->runAssertReturnCommand(
-            module: null,
             action: ['type' => 'invoke', 'field' => 'check', 'args' => [['type' => 'i32', 'value' => '15']]],
             expected: [['type' => 'i32', 'value' => '9']],
             line: 115,
@@ -579,7 +531,6 @@ final class TableInitTest extends SpecTestsuiteBase
     public function testAssertReturn52(): void
     {
         $this->runAssertReturnCommand(
-            module: null,
             action: ['type' => 'invoke', 'field' => 'check', 'args' => [['type' => 'i32', 'value' => '16']]],
             expected: [['type' => 'i32', 'value' => '2']],
             line: 116,
@@ -590,7 +541,6 @@ final class TableInitTest extends SpecTestsuiteBase
     public function testAssertReturn53(): void
     {
         $this->runAssertReturnCommand(
-            module: null,
             action: ['type' => 'invoke', 'field' => 'check', 'args' => [['type' => 'i32', 'value' => '17']]],
             expected: [['type' => 'i32', 'value' => '7']],
             line: 117,
@@ -601,7 +551,6 @@ final class TableInitTest extends SpecTestsuiteBase
     public function testAssertTrap54(): void
     {
         $this->runAssertTrapCommand(
-            module: null,
             action: ['type' => 'invoke', 'field' => 'check', 'args' => [['type' => 'i32', 'value' => '18']]],
             text: 'uninitialized element',
             line: 118,
@@ -612,7 +561,6 @@ final class TableInitTest extends SpecTestsuiteBase
     public function testAssertTrap55(): void
     {
         $this->runAssertTrapCommand(
-            module: null,
             action: ['type' => 'invoke', 'field' => 'check', 'args' => [['type' => 'i32', 'value' => '19']]],
             text: 'uninitialized element',
             line: 119,
@@ -623,7 +571,6 @@ final class TableInitTest extends SpecTestsuiteBase
     public function testAssertTrap56(): void
     {
         $this->runAssertTrapCommand(
-            module: null,
             action: ['type' => 'invoke', 'field' => 'check', 'args' => [['type' => 'i32', 'value' => '20']]],
             text: 'uninitialized element',
             line: 120,
@@ -634,7 +581,6 @@ final class TableInitTest extends SpecTestsuiteBase
     public function testAssertTrap57(): void
     {
         $this->runAssertTrapCommand(
-            module: null,
             action: ['type' => 'invoke', 'field' => 'check', 'args' => [['type' => 'i32', 'value' => '21']]],
             text: 'uninitialized element',
             line: 121,
@@ -645,7 +591,6 @@ final class TableInitTest extends SpecTestsuiteBase
     public function testAssertTrap58(): void
     {
         $this->runAssertTrapCommand(
-            module: null,
             action: ['type' => 'invoke', 'field' => 'check', 'args' => [['type' => 'i32', 'value' => '22']]],
             text: 'uninitialized element',
             line: 122,
@@ -656,7 +601,6 @@ final class TableInitTest extends SpecTestsuiteBase
     public function testAssertTrap59(): void
     {
         $this->runAssertTrapCommand(
-            module: null,
             action: ['type' => 'invoke', 'field' => 'check', 'args' => [['type' => 'i32', 'value' => '23']]],
             text: 'uninitialized element',
             line: 123,
@@ -667,7 +611,6 @@ final class TableInitTest extends SpecTestsuiteBase
     public function testAssertTrap60(): void
     {
         $this->runAssertTrapCommand(
-            module: null,
             action: ['type' => 'invoke', 'field' => 'check', 'args' => [['type' => 'i32', 'value' => '24']]],
             text: 'uninitialized element',
             line: 124,
@@ -678,7 +621,6 @@ final class TableInitTest extends SpecTestsuiteBase
     public function testAssertTrap61(): void
     {
         $this->runAssertTrapCommand(
-            module: null,
             action: ['type' => 'invoke', 'field' => 'check', 'args' => [['type' => 'i32', 'value' => '25']]],
             text: 'uninitialized element',
             line: 125,
@@ -689,7 +631,6 @@ final class TableInitTest extends SpecTestsuiteBase
     public function testAssertTrap62(): void
     {
         $this->runAssertTrapCommand(
-            module: null,
             action: ['type' => 'invoke', 'field' => 'check', 'args' => [['type' => 'i32', 'value' => '26']]],
             text: 'uninitialized element',
             line: 126,
@@ -700,7 +641,6 @@ final class TableInitTest extends SpecTestsuiteBase
     public function testAssertTrap63(): void
     {
         $this->runAssertTrapCommand(
-            module: null,
             action: ['type' => 'invoke', 'field' => 'check', 'args' => [['type' => 'i32', 'value' => '27']]],
             text: 'uninitialized element',
             line: 127,
@@ -711,7 +651,6 @@ final class TableInitTest extends SpecTestsuiteBase
     public function testAssertTrap64(): void
     {
         $this->runAssertTrapCommand(
-            module: null,
             action: ['type' => 'invoke', 'field' => 'check', 'args' => [['type' => 'i32', 'value' => '28']]],
             text: 'uninitialized element',
             line: 128,
@@ -722,7 +661,6 @@ final class TableInitTest extends SpecTestsuiteBase
     public function testAssertTrap65(): void
     {
         $this->runAssertTrapCommand(
-            module: null,
             action: ['type' => 'invoke', 'field' => 'check', 'args' => [['type' => 'i32', 'value' => '29']]],
             text: 'uninitialized element',
             line: 129,
@@ -743,7 +681,6 @@ final class TableInitTest extends SpecTestsuiteBase
     public function testAction67(): void
     {
         $this->runActionCommand(
-            module: null,
             action: ['type' => 'invoke', 'field' => 'test', 'args' => []],
             line: 165,
         );
@@ -753,7 +690,6 @@ final class TableInitTest extends SpecTestsuiteBase
     public function testAssertTrap68(): void
     {
         $this->runAssertTrapCommand(
-            module: null,
             action: ['type' => 'invoke', 'field' => 'check', 'args' => [['type' => 'i32', 'value' => '0']]],
             text: 'uninitialized element',
             line: 166,
@@ -764,7 +700,6 @@ final class TableInitTest extends SpecTestsuiteBase
     public function testAssertTrap69(): void
     {
         $this->runAssertTrapCommand(
-            module: null,
             action: ['type' => 'invoke', 'field' => 'check', 'args' => [['type' => 'i32', 'value' => '1']]],
             text: 'uninitialized element',
             line: 167,
@@ -775,7 +710,6 @@ final class TableInitTest extends SpecTestsuiteBase
     public function testAssertReturn70(): void
     {
         $this->runAssertReturnCommand(
-            module: null,
             action: ['type' => 'invoke', 'field' => 'check', 'args' => [['type' => 'i32', 'value' => '2']]],
             expected: [['type' => 'i32', 'value' => '3']],
             line: 168,
@@ -786,7 +720,6 @@ final class TableInitTest extends SpecTestsuiteBase
     public function testAssertReturn71(): void
     {
         $this->runAssertReturnCommand(
-            module: null,
             action: ['type' => 'invoke', 'field' => 'check', 'args' => [['type' => 'i32', 'value' => '3']]],
             expected: [['type' => 'i32', 'value' => '1']],
             line: 169,
@@ -797,7 +730,6 @@ final class TableInitTest extends SpecTestsuiteBase
     public function testAssertReturn72(): void
     {
         $this->runAssertReturnCommand(
-            module: null,
             action: ['type' => 'invoke', 'field' => 'check', 'args' => [['type' => 'i32', 'value' => '4']]],
             expected: [['type' => 'i32', 'value' => '4']],
             line: 170,
@@ -808,7 +740,6 @@ final class TableInitTest extends SpecTestsuiteBase
     public function testAssertReturn73(): void
     {
         $this->runAssertReturnCommand(
-            module: null,
             action: ['type' => 'invoke', 'field' => 'check', 'args' => [['type' => 'i32', 'value' => '5']]],
             expected: [['type' => 'i32', 'value' => '1']],
             line: 171,
@@ -819,7 +750,6 @@ final class TableInitTest extends SpecTestsuiteBase
     public function testAssertTrap74(): void
     {
         $this->runAssertTrapCommand(
-            module: null,
             action: ['type' => 'invoke', 'field' => 'check', 'args' => [['type' => 'i32', 'value' => '6']]],
             text: 'uninitialized element',
             line: 172,
@@ -830,7 +760,6 @@ final class TableInitTest extends SpecTestsuiteBase
     public function testAssertReturn75(): void
     {
         $this->runAssertReturnCommand(
-            module: null,
             action: ['type' => 'invoke', 'field' => 'check', 'args' => [['type' => 'i32', 'value' => '7']]],
             expected: [['type' => 'i32', 'value' => '2']],
             line: 173,
@@ -841,7 +770,6 @@ final class TableInitTest extends SpecTestsuiteBase
     public function testAssertReturn76(): void
     {
         $this->runAssertReturnCommand(
-            module: null,
             action: ['type' => 'invoke', 'field' => 'check', 'args' => [['type' => 'i32', 'value' => '8']]],
             expected: [['type' => 'i32', 'value' => '7']],
             line: 174,
@@ -852,7 +780,6 @@ final class TableInitTest extends SpecTestsuiteBase
     public function testAssertReturn77(): void
     {
         $this->runAssertReturnCommand(
-            module: null,
             action: ['type' => 'invoke', 'field' => 'check', 'args' => [['type' => 'i32', 'value' => '9']]],
             expected: [['type' => 'i32', 'value' => '1']],
             line: 175,
@@ -863,7 +790,6 @@ final class TableInitTest extends SpecTestsuiteBase
     public function testAssertReturn78(): void
     {
         $this->runAssertReturnCommand(
-            module: null,
             action: ['type' => 'invoke', 'field' => 'check', 'args' => [['type' => 'i32', 'value' => '10']]],
             expected: [['type' => 'i32', 'value' => '8']],
             line: 176,
@@ -874,7 +800,6 @@ final class TableInitTest extends SpecTestsuiteBase
     public function testAssertTrap79(): void
     {
         $this->runAssertTrapCommand(
-            module: null,
             action: ['type' => 'invoke', 'field' => 'check', 'args' => [['type' => 'i32', 'value' => '11']]],
             text: 'uninitialized element',
             line: 177,
@@ -885,7 +810,6 @@ final class TableInitTest extends SpecTestsuiteBase
     public function testAssertReturn80(): void
     {
         $this->runAssertReturnCommand(
-            module: null,
             action: ['type' => 'invoke', 'field' => 'check', 'args' => [['type' => 'i32', 'value' => '12']]],
             expected: [['type' => 'i32', 'value' => '7']],
             line: 178,
@@ -896,7 +820,6 @@ final class TableInitTest extends SpecTestsuiteBase
     public function testAssertTrap81(): void
     {
         $this->runAssertTrapCommand(
-            module: null,
             action: ['type' => 'invoke', 'field' => 'check', 'args' => [['type' => 'i32', 'value' => '13']]],
             text: 'uninitialized element',
             line: 179,
@@ -907,7 +830,6 @@ final class TableInitTest extends SpecTestsuiteBase
     public function testAssertReturn82(): void
     {
         $this->runAssertReturnCommand(
-            module: null,
             action: ['type' => 'invoke', 'field' => 'check', 'args' => [['type' => 'i32', 'value' => '14']]],
             expected: [['type' => 'i32', 'value' => '7']],
             line: 180,
@@ -918,7 +840,6 @@ final class TableInitTest extends SpecTestsuiteBase
     public function testAssertReturn83(): void
     {
         $this->runAssertReturnCommand(
-            module: null,
             action: ['type' => 'invoke', 'field' => 'check', 'args' => [['type' => 'i32', 'value' => '15']]],
             expected: [['type' => 'i32', 'value' => '5']],
             line: 181,
@@ -929,7 +850,6 @@ final class TableInitTest extends SpecTestsuiteBase
     public function testAssertReturn84(): void
     {
         $this->runAssertReturnCommand(
-            module: null,
             action: ['type' => 'invoke', 'field' => 'check', 'args' => [['type' => 'i32', 'value' => '16']]],
             expected: [['type' => 'i32', 'value' => '2']],
             line: 182,
@@ -940,7 +860,6 @@ final class TableInitTest extends SpecTestsuiteBase
     public function testAssertReturn85(): void
     {
         $this->runAssertReturnCommand(
-            module: null,
             action: ['type' => 'invoke', 'field' => 'check', 'args' => [['type' => 'i32', 'value' => '17']]],
             expected: [['type' => 'i32', 'value' => '7']],
             line: 183,
@@ -951,7 +870,6 @@ final class TableInitTest extends SpecTestsuiteBase
     public function testAssertTrap86(): void
     {
         $this->runAssertTrapCommand(
-            module: null,
             action: ['type' => 'invoke', 'field' => 'check', 'args' => [['type' => 'i32', 'value' => '18']]],
             text: 'uninitialized element',
             line: 184,
@@ -962,7 +880,6 @@ final class TableInitTest extends SpecTestsuiteBase
     public function testAssertReturn87(): void
     {
         $this->runAssertReturnCommand(
-            module: null,
             action: ['type' => 'invoke', 'field' => 'check', 'args' => [['type' => 'i32', 'value' => '19']]],
             expected: [['type' => 'i32', 'value' => '9']],
             line: 185,
@@ -973,7 +890,6 @@ final class TableInitTest extends SpecTestsuiteBase
     public function testAssertTrap88(): void
     {
         $this->runAssertTrapCommand(
-            module: null,
             action: ['type' => 'invoke', 'field' => 'check', 'args' => [['type' => 'i32', 'value' => '20']]],
             text: 'uninitialized element',
             line: 186,
@@ -984,7 +900,6 @@ final class TableInitTest extends SpecTestsuiteBase
     public function testAssertReturn89(): void
     {
         $this->runAssertReturnCommand(
-            module: null,
             action: ['type' => 'invoke', 'field' => 'check', 'args' => [['type' => 'i32', 'value' => '21']]],
             expected: [['type' => 'i32', 'value' => '7']],
             line: 187,
@@ -995,7 +910,6 @@ final class TableInitTest extends SpecTestsuiteBase
     public function testAssertTrap90(): void
     {
         $this->runAssertTrapCommand(
-            module: null,
             action: ['type' => 'invoke', 'field' => 'check', 'args' => [['type' => 'i32', 'value' => '22']]],
             text: 'uninitialized element',
             line: 188,
@@ -1006,7 +920,6 @@ final class TableInitTest extends SpecTestsuiteBase
     public function testAssertReturn91(): void
     {
         $this->runAssertReturnCommand(
-            module: null,
             action: ['type' => 'invoke', 'field' => 'check', 'args' => [['type' => 'i32', 'value' => '23']]],
             expected: [['type' => 'i32', 'value' => '8']],
             line: 189,
@@ -1017,7 +930,6 @@ final class TableInitTest extends SpecTestsuiteBase
     public function testAssertReturn92(): void
     {
         $this->runAssertReturnCommand(
-            module: null,
             action: ['type' => 'invoke', 'field' => 'check', 'args' => [['type' => 'i32', 'value' => '24']]],
             expected: [['type' => 'i32', 'value' => '8']],
             line: 190,
@@ -1028,7 +940,6 @@ final class TableInitTest extends SpecTestsuiteBase
     public function testAssertTrap93(): void
     {
         $this->runAssertTrapCommand(
-            module: null,
             action: ['type' => 'invoke', 'field' => 'check', 'args' => [['type' => 'i32', 'value' => '25']]],
             text: 'uninitialized element',
             line: 191,
@@ -1039,7 +950,6 @@ final class TableInitTest extends SpecTestsuiteBase
     public function testAssertTrap94(): void
     {
         $this->runAssertTrapCommand(
-            module: null,
             action: ['type' => 'invoke', 'field' => 'check', 'args' => [['type' => 'i32', 'value' => '26']]],
             text: 'uninitialized element',
             line: 192,
@@ -1050,7 +960,6 @@ final class TableInitTest extends SpecTestsuiteBase
     public function testAssertTrap95(): void
     {
         $this->runAssertTrapCommand(
-            module: null,
             action: ['type' => 'invoke', 'field' => 'check', 'args' => [['type' => 'i32', 'value' => '27']]],
             text: 'uninitialized element',
             line: 193,
@@ -1061,7 +970,6 @@ final class TableInitTest extends SpecTestsuiteBase
     public function testAssertTrap96(): void
     {
         $this->runAssertTrapCommand(
-            module: null,
             action: ['type' => 'invoke', 'field' => 'check', 'args' => [['type' => 'i32', 'value' => '28']]],
             text: 'uninitialized element',
             line: 194,
@@ -1072,7 +980,6 @@ final class TableInitTest extends SpecTestsuiteBase
     public function testAssertTrap97(): void
     {
         $this->runAssertTrapCommand(
-            module: null,
             action: ['type' => 'invoke', 'field' => 'check', 'args' => [['type' => 'i32', 'value' => '29']]],
             text: 'uninitialized element',
             line: 195,
@@ -1093,7 +1000,6 @@ final class TableInitTest extends SpecTestsuiteBase
     public function testAction99(): void
     {
         $this->runActionCommand(
-            module: null,
             action: ['type' => 'invoke', 'field' => 'test', 'args' => []],
             line: 223,
         );
@@ -1103,7 +1009,6 @@ final class TableInitTest extends SpecTestsuiteBase
     public function testAssertTrap100(): void
     {
         $this->runAssertTrapCommand(
-            module: null,
             action: ['type' => 'invoke', 'field' => 'check', 'args' => [['type' => 'i32', 'value' => '0']]],
             text: 'uninitialized element',
             line: 224,
@@ -1114,7 +1019,6 @@ final class TableInitTest extends SpecTestsuiteBase
     public function testAssertTrap101(): void
     {
         $this->runAssertTrapCommand(
-            module: null,
             action: ['type' => 'invoke', 'field' => 'check', 'args' => [['type' => 'i32', 'value' => '1']]],
             text: 'uninitialized element',
             line: 225,
@@ -1125,7 +1029,6 @@ final class TableInitTest extends SpecTestsuiteBase
     public function testAssertReturn102(): void
     {
         $this->runAssertReturnCommand(
-            module: null,
             action: ['type' => 'invoke', 'field' => 'check', 'args' => [['type' => 'i32', 'value' => '2']]],
             expected: [['type' => 'i32', 'value' => '3']],
             line: 226,
@@ -1136,7 +1039,6 @@ final class TableInitTest extends SpecTestsuiteBase
     public function testAssertReturn103(): void
     {
         $this->runAssertReturnCommand(
-            module: null,
             action: ['type' => 'invoke', 'field' => 'check', 'args' => [['type' => 'i32', 'value' => '3']]],
             expected: [['type' => 'i32', 'value' => '1']],
             line: 227,
@@ -1147,7 +1049,6 @@ final class TableInitTest extends SpecTestsuiteBase
     public function testAssertReturn104(): void
     {
         $this->runAssertReturnCommand(
-            module: null,
             action: ['type' => 'invoke', 'field' => 'check', 'args' => [['type' => 'i32', 'value' => '4']]],
             expected: [['type' => 'i32', 'value' => '4']],
             line: 228,
@@ -1158,7 +1059,6 @@ final class TableInitTest extends SpecTestsuiteBase
     public function testAssertReturn105(): void
     {
         $this->runAssertReturnCommand(
-            module: null,
             action: ['type' => 'invoke', 'field' => 'check', 'args' => [['type' => 'i32', 'value' => '5']]],
             expected: [['type' => 'i32', 'value' => '1']],
             line: 229,
@@ -1169,7 +1069,6 @@ final class TableInitTest extends SpecTestsuiteBase
     public function testAssertTrap106(): void
     {
         $this->runAssertTrapCommand(
-            module: null,
             action: ['type' => 'invoke', 'field' => 'check', 'args' => [['type' => 'i32', 'value' => '6']]],
             text: 'uninitialized element',
             line: 230,
@@ -1180,7 +1079,6 @@ final class TableInitTest extends SpecTestsuiteBase
     public function testAssertReturn107(): void
     {
         $this->runAssertReturnCommand(
-            module: null,
             action: ['type' => 'invoke', 'field' => 'check', 'args' => [['type' => 'i32', 'value' => '7']]],
             expected: [['type' => 'i32', 'value' => '2']],
             line: 231,
@@ -1191,7 +1089,6 @@ final class TableInitTest extends SpecTestsuiteBase
     public function testAssertReturn108(): void
     {
         $this->runAssertReturnCommand(
-            module: null,
             action: ['type' => 'invoke', 'field' => 'check', 'args' => [['type' => 'i32', 'value' => '8']]],
             expected: [['type' => 'i32', 'value' => '7']],
             line: 232,
@@ -1202,7 +1099,6 @@ final class TableInitTest extends SpecTestsuiteBase
     public function testAssertReturn109(): void
     {
         $this->runAssertReturnCommand(
-            module: null,
             action: ['type' => 'invoke', 'field' => 'check', 'args' => [['type' => 'i32', 'value' => '9']]],
             expected: [['type' => 'i32', 'value' => '1']],
             line: 233,
@@ -1213,7 +1109,6 @@ final class TableInitTest extends SpecTestsuiteBase
     public function testAssertReturn110(): void
     {
         $this->runAssertReturnCommand(
-            module: null,
             action: ['type' => 'invoke', 'field' => 'check', 'args' => [['type' => 'i32', 'value' => '10']]],
             expected: [['type' => 'i32', 'value' => '8']],
             line: 234,
@@ -1224,7 +1119,6 @@ final class TableInitTest extends SpecTestsuiteBase
     public function testAssertTrap111(): void
     {
         $this->runAssertTrapCommand(
-            module: null,
             action: ['type' => 'invoke', 'field' => 'check', 'args' => [['type' => 'i32', 'value' => '11']]],
             text: 'uninitialized element',
             line: 235,
@@ -1235,7 +1129,6 @@ final class TableInitTest extends SpecTestsuiteBase
     public function testAssertReturn112(): void
     {
         $this->runAssertReturnCommand(
-            module: null,
             action: ['type' => 'invoke', 'field' => 'check', 'args' => [['type' => 'i32', 'value' => '12']]],
             expected: [['type' => 'i32', 'value' => '7']],
             line: 236,
@@ -1246,7 +1139,6 @@ final class TableInitTest extends SpecTestsuiteBase
     public function testAssertReturn113(): void
     {
         $this->runAssertReturnCommand(
-            module: null,
             action: ['type' => 'invoke', 'field' => 'check', 'args' => [['type' => 'i32', 'value' => '13']]],
             expected: [['type' => 'i32', 'value' => '5']],
             line: 237,
@@ -1257,7 +1149,6 @@ final class TableInitTest extends SpecTestsuiteBase
     public function testAssertReturn114(): void
     {
         $this->runAssertReturnCommand(
-            module: null,
             action: ['type' => 'invoke', 'field' => 'check', 'args' => [['type' => 'i32', 'value' => '14']]],
             expected: [['type' => 'i32', 'value' => '2']],
             line: 238,
@@ -1268,7 +1159,6 @@ final class TableInitTest extends SpecTestsuiteBase
     public function testAssertReturn115(): void
     {
         $this->runAssertReturnCommand(
-            module: null,
             action: ['type' => 'invoke', 'field' => 'check', 'args' => [['type' => 'i32', 'value' => '15']]],
             expected: [['type' => 'i32', 'value' => '3']],
             line: 239,
@@ -1279,7 +1169,6 @@ final class TableInitTest extends SpecTestsuiteBase
     public function testAssertReturn116(): void
     {
         $this->runAssertReturnCommand(
-            module: null,
             action: ['type' => 'invoke', 'field' => 'check', 'args' => [['type' => 'i32', 'value' => '16']]],
             expected: [['type' => 'i32', 'value' => '6']],
             line: 240,
@@ -1290,7 +1179,6 @@ final class TableInitTest extends SpecTestsuiteBase
     public function testAssertTrap117(): void
     {
         $this->runAssertTrapCommand(
-            module: null,
             action: ['type' => 'invoke', 'field' => 'check', 'args' => [['type' => 'i32', 'value' => '17']]],
             text: 'uninitialized element',
             line: 241,
@@ -1301,7 +1189,6 @@ final class TableInitTest extends SpecTestsuiteBase
     public function testAssertTrap118(): void
     {
         $this->runAssertTrapCommand(
-            module: null,
             action: ['type' => 'invoke', 'field' => 'check', 'args' => [['type' => 'i32', 'value' => '18']]],
             text: 'uninitialized element',
             line: 242,
@@ -1312,7 +1199,6 @@ final class TableInitTest extends SpecTestsuiteBase
     public function testAssertTrap119(): void
     {
         $this->runAssertTrapCommand(
-            module: null,
             action: ['type' => 'invoke', 'field' => 'check', 'args' => [['type' => 'i32', 'value' => '19']]],
             text: 'uninitialized element',
             line: 243,
@@ -1323,7 +1209,6 @@ final class TableInitTest extends SpecTestsuiteBase
     public function testAssertTrap120(): void
     {
         $this->runAssertTrapCommand(
-            module: null,
             action: ['type' => 'invoke', 'field' => 'check', 'args' => [['type' => 'i32', 'value' => '20']]],
             text: 'uninitialized element',
             line: 244,
@@ -1334,7 +1219,6 @@ final class TableInitTest extends SpecTestsuiteBase
     public function testAssertTrap121(): void
     {
         $this->runAssertTrapCommand(
-            module: null,
             action: ['type' => 'invoke', 'field' => 'check', 'args' => [['type' => 'i32', 'value' => '21']]],
             text: 'uninitialized element',
             line: 245,
@@ -1345,7 +1229,6 @@ final class TableInitTest extends SpecTestsuiteBase
     public function testAssertTrap122(): void
     {
         $this->runAssertTrapCommand(
-            module: null,
             action: ['type' => 'invoke', 'field' => 'check', 'args' => [['type' => 'i32', 'value' => '22']]],
             text: 'uninitialized element',
             line: 246,
@@ -1356,7 +1239,6 @@ final class TableInitTest extends SpecTestsuiteBase
     public function testAssertTrap123(): void
     {
         $this->runAssertTrapCommand(
-            module: null,
             action: ['type' => 'invoke', 'field' => 'check', 'args' => [['type' => 'i32', 'value' => '23']]],
             text: 'uninitialized element',
             line: 247,
@@ -1367,7 +1249,6 @@ final class TableInitTest extends SpecTestsuiteBase
     public function testAssertTrap124(): void
     {
         $this->runAssertTrapCommand(
-            module: null,
             action: ['type' => 'invoke', 'field' => 'check', 'args' => [['type' => 'i32', 'value' => '24']]],
             text: 'uninitialized element',
             line: 248,
@@ -1378,7 +1259,6 @@ final class TableInitTest extends SpecTestsuiteBase
     public function testAssertTrap125(): void
     {
         $this->runAssertTrapCommand(
-            module: null,
             action: ['type' => 'invoke', 'field' => 'check', 'args' => [['type' => 'i32', 'value' => '25']]],
             text: 'uninitialized element',
             line: 249,
@@ -1389,7 +1269,6 @@ final class TableInitTest extends SpecTestsuiteBase
     public function testAssertTrap126(): void
     {
         $this->runAssertTrapCommand(
-            module: null,
             action: ['type' => 'invoke', 'field' => 'check', 'args' => [['type' => 'i32', 'value' => '26']]],
             text: 'uninitialized element',
             line: 250,
@@ -1400,7 +1279,6 @@ final class TableInitTest extends SpecTestsuiteBase
     public function testAssertTrap127(): void
     {
         $this->runAssertTrapCommand(
-            module: null,
             action: ['type' => 'invoke', 'field' => 'check', 'args' => [['type' => 'i32', 'value' => '27']]],
             text: 'uninitialized element',
             line: 251,
@@ -1411,7 +1289,6 @@ final class TableInitTest extends SpecTestsuiteBase
     public function testAssertTrap128(): void
     {
         $this->runAssertTrapCommand(
-            module: null,
             action: ['type' => 'invoke', 'field' => 'check', 'args' => [['type' => 'i32', 'value' => '28']]],
             text: 'uninitialized element',
             line: 252,
@@ -1422,7 +1299,6 @@ final class TableInitTest extends SpecTestsuiteBase
     public function testAssertTrap129(): void
     {
         $this->runAssertTrapCommand(
-            module: null,
             action: ['type' => 'invoke', 'field' => 'check', 'args' => [['type' => 'i32', 'value' => '29']]],
             text: 'uninitialized element',
             line: 253,
@@ -1443,7 +1319,6 @@ final class TableInitTest extends SpecTestsuiteBase
     public function testAction131(): void
     {
         $this->runActionCommand(
-            module: null,
             action: ['type' => 'invoke', 'field' => 'test', 'args' => []],
             line: 281,
         );
@@ -1453,7 +1328,6 @@ final class TableInitTest extends SpecTestsuiteBase
     public function testAssertTrap132(): void
     {
         $this->runAssertTrapCommand(
-            module: null,
             action: ['type' => 'invoke', 'field' => 'check', 'args' => [['type' => 'i32', 'value' => '0']]],
             text: 'uninitialized element',
             line: 282,
@@ -1464,7 +1338,6 @@ final class TableInitTest extends SpecTestsuiteBase
     public function testAssertTrap133(): void
     {
         $this->runAssertTrapCommand(
-            module: null,
             action: ['type' => 'invoke', 'field' => 'check', 'args' => [['type' => 'i32', 'value' => '1']]],
             text: 'uninitialized element',
             line: 283,
@@ -1475,7 +1348,6 @@ final class TableInitTest extends SpecTestsuiteBase
     public function testAssertReturn134(): void
     {
         $this->runAssertReturnCommand(
-            module: null,
             action: ['type' => 'invoke', 'field' => 'check', 'args' => [['type' => 'i32', 'value' => '2']]],
             expected: [['type' => 'i32', 'value' => '3']],
             line: 284,
@@ -1486,7 +1358,6 @@ final class TableInitTest extends SpecTestsuiteBase
     public function testAssertReturn135(): void
     {
         $this->runAssertReturnCommand(
-            module: null,
             action: ['type' => 'invoke', 'field' => 'check', 'args' => [['type' => 'i32', 'value' => '3']]],
             expected: [['type' => 'i32', 'value' => '1']],
             line: 285,
@@ -1497,7 +1368,6 @@ final class TableInitTest extends SpecTestsuiteBase
     public function testAssertReturn136(): void
     {
         $this->runAssertReturnCommand(
-            module: null,
             action: ['type' => 'invoke', 'field' => 'check', 'args' => [['type' => 'i32', 'value' => '4']]],
             expected: [['type' => 'i32', 'value' => '4']],
             line: 286,
@@ -1508,7 +1378,6 @@ final class TableInitTest extends SpecTestsuiteBase
     public function testAssertReturn137(): void
     {
         $this->runAssertReturnCommand(
-            module: null,
             action: ['type' => 'invoke', 'field' => 'check', 'args' => [['type' => 'i32', 'value' => '5']]],
             expected: [['type' => 'i32', 'value' => '1']],
             line: 287,
@@ -1519,7 +1388,6 @@ final class TableInitTest extends SpecTestsuiteBase
     public function testAssertTrap138(): void
     {
         $this->runAssertTrapCommand(
-            module: null,
             action: ['type' => 'invoke', 'field' => 'check', 'args' => [['type' => 'i32', 'value' => '6']]],
             text: 'uninitialized element',
             line: 288,
@@ -1530,7 +1398,6 @@ final class TableInitTest extends SpecTestsuiteBase
     public function testAssertTrap139(): void
     {
         $this->runAssertTrapCommand(
-            module: null,
             action: ['type' => 'invoke', 'field' => 'check', 'args' => [['type' => 'i32', 'value' => '7']]],
             text: 'uninitialized element',
             line: 289,
@@ -1541,7 +1408,6 @@ final class TableInitTest extends SpecTestsuiteBase
     public function testAssertTrap140(): void
     {
         $this->runAssertTrapCommand(
-            module: null,
             action: ['type' => 'invoke', 'field' => 'check', 'args' => [['type' => 'i32', 'value' => '8']]],
             text: 'uninitialized element',
             line: 290,
@@ -1552,7 +1418,6 @@ final class TableInitTest extends SpecTestsuiteBase
     public function testAssertTrap141(): void
     {
         $this->runAssertTrapCommand(
-            module: null,
             action: ['type' => 'invoke', 'field' => 'check', 'args' => [['type' => 'i32', 'value' => '9']]],
             text: 'uninitialized element',
             line: 291,
@@ -1563,7 +1428,6 @@ final class TableInitTest extends SpecTestsuiteBase
     public function testAssertTrap142(): void
     {
         $this->runAssertTrapCommand(
-            module: null,
             action: ['type' => 'invoke', 'field' => 'check', 'args' => [['type' => 'i32', 'value' => '10']]],
             text: 'uninitialized element',
             line: 292,
@@ -1574,7 +1438,6 @@ final class TableInitTest extends SpecTestsuiteBase
     public function testAssertTrap143(): void
     {
         $this->runAssertTrapCommand(
-            module: null,
             action: ['type' => 'invoke', 'field' => 'check', 'args' => [['type' => 'i32', 'value' => '11']]],
             text: 'uninitialized element',
             line: 293,
@@ -1585,7 +1448,6 @@ final class TableInitTest extends SpecTestsuiteBase
     public function testAssertReturn144(): void
     {
         $this->runAssertReturnCommand(
-            module: null,
             action: ['type' => 'invoke', 'field' => 'check', 'args' => [['type' => 'i32', 'value' => '12']]],
             expected: [['type' => 'i32', 'value' => '7']],
             line: 294,
@@ -1596,7 +1458,6 @@ final class TableInitTest extends SpecTestsuiteBase
     public function testAssertReturn145(): void
     {
         $this->runAssertReturnCommand(
-            module: null,
             action: ['type' => 'invoke', 'field' => 'check', 'args' => [['type' => 'i32', 'value' => '13']]],
             expected: [['type' => 'i32', 'value' => '5']],
             line: 295,
@@ -1607,7 +1468,6 @@ final class TableInitTest extends SpecTestsuiteBase
     public function testAssertReturn146(): void
     {
         $this->runAssertReturnCommand(
-            module: null,
             action: ['type' => 'invoke', 'field' => 'check', 'args' => [['type' => 'i32', 'value' => '14']]],
             expected: [['type' => 'i32', 'value' => '2']],
             line: 296,
@@ -1618,7 +1478,6 @@ final class TableInitTest extends SpecTestsuiteBase
     public function testAssertReturn147(): void
     {
         $this->runAssertReturnCommand(
-            module: null,
             action: ['type' => 'invoke', 'field' => 'check', 'args' => [['type' => 'i32', 'value' => '15']]],
             expected: [['type' => 'i32', 'value' => '9']],
             line: 297,
@@ -1629,7 +1488,6 @@ final class TableInitTest extends SpecTestsuiteBase
     public function testAssertReturn148(): void
     {
         $this->runAssertReturnCommand(
-            module: null,
             action: ['type' => 'invoke', 'field' => 'check', 'args' => [['type' => 'i32', 'value' => '16']]],
             expected: [['type' => 'i32', 'value' => '2']],
             line: 298,
@@ -1640,7 +1498,6 @@ final class TableInitTest extends SpecTestsuiteBase
     public function testAssertReturn149(): void
     {
         $this->runAssertReturnCommand(
-            module: null,
             action: ['type' => 'invoke', 'field' => 'check', 'args' => [['type' => 'i32', 'value' => '17']]],
             expected: [['type' => 'i32', 'value' => '7']],
             line: 299,
@@ -1651,7 +1508,6 @@ final class TableInitTest extends SpecTestsuiteBase
     public function testAssertTrap150(): void
     {
         $this->runAssertTrapCommand(
-            module: null,
             action: ['type' => 'invoke', 'field' => 'check', 'args' => [['type' => 'i32', 'value' => '18']]],
             text: 'uninitialized element',
             line: 300,
@@ -1662,7 +1518,6 @@ final class TableInitTest extends SpecTestsuiteBase
     public function testAssertTrap151(): void
     {
         $this->runAssertTrapCommand(
-            module: null,
             action: ['type' => 'invoke', 'field' => 'check', 'args' => [['type' => 'i32', 'value' => '19']]],
             text: 'uninitialized element',
             line: 301,
@@ -1673,7 +1528,6 @@ final class TableInitTest extends SpecTestsuiteBase
     public function testAssertTrap152(): void
     {
         $this->runAssertTrapCommand(
-            module: null,
             action: ['type' => 'invoke', 'field' => 'check', 'args' => [['type' => 'i32', 'value' => '20']]],
             text: 'uninitialized element',
             line: 302,
@@ -1684,7 +1538,6 @@ final class TableInitTest extends SpecTestsuiteBase
     public function testAssertTrap153(): void
     {
         $this->runAssertTrapCommand(
-            module: null,
             action: ['type' => 'invoke', 'field' => 'check', 'args' => [['type' => 'i32', 'value' => '21']]],
             text: 'uninitialized element',
             line: 303,
@@ -1695,7 +1548,6 @@ final class TableInitTest extends SpecTestsuiteBase
     public function testAssertTrap154(): void
     {
         $this->runAssertTrapCommand(
-            module: null,
             action: ['type' => 'invoke', 'field' => 'check', 'args' => [['type' => 'i32', 'value' => '22']]],
             text: 'uninitialized element',
             line: 304,
@@ -1706,7 +1558,6 @@ final class TableInitTest extends SpecTestsuiteBase
     public function testAssertTrap155(): void
     {
         $this->runAssertTrapCommand(
-            module: null,
             action: ['type' => 'invoke', 'field' => 'check', 'args' => [['type' => 'i32', 'value' => '23']]],
             text: 'uninitialized element',
             line: 305,
@@ -1717,7 +1568,6 @@ final class TableInitTest extends SpecTestsuiteBase
     public function testAssertTrap156(): void
     {
         $this->runAssertTrapCommand(
-            module: null,
             action: ['type' => 'invoke', 'field' => 'check', 'args' => [['type' => 'i32', 'value' => '24']]],
             text: 'uninitialized element',
             line: 306,
@@ -1728,7 +1578,6 @@ final class TableInitTest extends SpecTestsuiteBase
     public function testAssertTrap157(): void
     {
         $this->runAssertTrapCommand(
-            module: null,
             action: ['type' => 'invoke', 'field' => 'check', 'args' => [['type' => 'i32', 'value' => '25']]],
             text: 'uninitialized element',
             line: 307,
@@ -1739,7 +1588,6 @@ final class TableInitTest extends SpecTestsuiteBase
     public function testAssertTrap158(): void
     {
         $this->runAssertTrapCommand(
-            module: null,
             action: ['type' => 'invoke', 'field' => 'check', 'args' => [['type' => 'i32', 'value' => '26']]],
             text: 'uninitialized element',
             line: 308,
@@ -1750,7 +1598,6 @@ final class TableInitTest extends SpecTestsuiteBase
     public function testAssertTrap159(): void
     {
         $this->runAssertTrapCommand(
-            module: null,
             action: ['type' => 'invoke', 'field' => 'check', 'args' => [['type' => 'i32', 'value' => '27']]],
             text: 'uninitialized element',
             line: 309,
@@ -1761,7 +1608,6 @@ final class TableInitTest extends SpecTestsuiteBase
     public function testAssertTrap160(): void
     {
         $this->runAssertTrapCommand(
-            module: null,
             action: ['type' => 'invoke', 'field' => 'check', 'args' => [['type' => 'i32', 'value' => '28']]],
             text: 'uninitialized element',
             line: 310,
@@ -1772,7 +1618,6 @@ final class TableInitTest extends SpecTestsuiteBase
     public function testAssertTrap161(): void
     {
         $this->runAssertTrapCommand(
-            module: null,
             action: ['type' => 'invoke', 'field' => 'check', 'args' => [['type' => 'i32', 'value' => '29']]],
             text: 'uninitialized element',
             line: 311,
@@ -1793,7 +1638,6 @@ final class TableInitTest extends SpecTestsuiteBase
     public function testAction163(): void
     {
         $this->runActionCommand(
-            module: null,
             action: ['type' => 'invoke', 'field' => 'test', 'args' => []],
             line: 347,
         );
@@ -1803,7 +1647,6 @@ final class TableInitTest extends SpecTestsuiteBase
     public function testAssertTrap164(): void
     {
         $this->runAssertTrapCommand(
-            module: null,
             action: ['type' => 'invoke', 'field' => 'check', 'args' => [['type' => 'i32', 'value' => '0']]],
             text: 'uninitialized element',
             line: 348,
@@ -1814,7 +1657,6 @@ final class TableInitTest extends SpecTestsuiteBase
     public function testAssertTrap165(): void
     {
         $this->runAssertTrapCommand(
-            module: null,
             action: ['type' => 'invoke', 'field' => 'check', 'args' => [['type' => 'i32', 'value' => '1']]],
             text: 'uninitialized element',
             line: 349,
@@ -1825,7 +1667,6 @@ final class TableInitTest extends SpecTestsuiteBase
     public function testAssertReturn166(): void
     {
         $this->runAssertReturnCommand(
-            module: null,
             action: ['type' => 'invoke', 'field' => 'check', 'args' => [['type' => 'i32', 'value' => '2']]],
             expected: [['type' => 'i32', 'value' => '3']],
             line: 350,
@@ -1836,7 +1677,6 @@ final class TableInitTest extends SpecTestsuiteBase
     public function testAssertReturn167(): void
     {
         $this->runAssertReturnCommand(
-            module: null,
             action: ['type' => 'invoke', 'field' => 'check', 'args' => [['type' => 'i32', 'value' => '3']]],
             expected: [['type' => 'i32', 'value' => '1']],
             line: 351,
@@ -1847,7 +1687,6 @@ final class TableInitTest extends SpecTestsuiteBase
     public function testAssertReturn168(): void
     {
         $this->runAssertReturnCommand(
-            module: null,
             action: ['type' => 'invoke', 'field' => 'check', 'args' => [['type' => 'i32', 'value' => '4']]],
             expected: [['type' => 'i32', 'value' => '4']],
             line: 352,
@@ -1858,7 +1697,6 @@ final class TableInitTest extends SpecTestsuiteBase
     public function testAssertReturn169(): void
     {
         $this->runAssertReturnCommand(
-            module: null,
             action: ['type' => 'invoke', 'field' => 'check', 'args' => [['type' => 'i32', 'value' => '5']]],
             expected: [['type' => 'i32', 'value' => '1']],
             line: 353,
@@ -1869,7 +1707,6 @@ final class TableInitTest extends SpecTestsuiteBase
     public function testAssertTrap170(): void
     {
         $this->runAssertTrapCommand(
-            module: null,
             action: ['type' => 'invoke', 'field' => 'check', 'args' => [['type' => 'i32', 'value' => '6']]],
             text: 'uninitialized element',
             line: 354,
@@ -1880,7 +1717,6 @@ final class TableInitTest extends SpecTestsuiteBase
     public function testAssertReturn171(): void
     {
         $this->runAssertReturnCommand(
-            module: null,
             action: ['type' => 'invoke', 'field' => 'check', 'args' => [['type' => 'i32', 'value' => '7']]],
             expected: [['type' => 'i32', 'value' => '2']],
             line: 355,
@@ -1891,7 +1727,6 @@ final class TableInitTest extends SpecTestsuiteBase
     public function testAssertReturn172(): void
     {
         $this->runAssertReturnCommand(
-            module: null,
             action: ['type' => 'invoke', 'field' => 'check', 'args' => [['type' => 'i32', 'value' => '8']]],
             expected: [['type' => 'i32', 'value' => '7']],
             line: 356,
@@ -1902,7 +1737,6 @@ final class TableInitTest extends SpecTestsuiteBase
     public function testAssertReturn173(): void
     {
         $this->runAssertReturnCommand(
-            module: null,
             action: ['type' => 'invoke', 'field' => 'check', 'args' => [['type' => 'i32', 'value' => '9']]],
             expected: [['type' => 'i32', 'value' => '1']],
             line: 357,
@@ -1913,7 +1747,6 @@ final class TableInitTest extends SpecTestsuiteBase
     public function testAssertReturn174(): void
     {
         $this->runAssertReturnCommand(
-            module: null,
             action: ['type' => 'invoke', 'field' => 'check', 'args' => [['type' => 'i32', 'value' => '10']]],
             expected: [['type' => 'i32', 'value' => '8']],
             line: 358,
@@ -1924,7 +1757,6 @@ final class TableInitTest extends SpecTestsuiteBase
     public function testAssertTrap175(): void
     {
         $this->runAssertTrapCommand(
-            module: null,
             action: ['type' => 'invoke', 'field' => 'check', 'args' => [['type' => 'i32', 'value' => '11']]],
             text: 'uninitialized element',
             line: 359,
@@ -1935,7 +1767,6 @@ final class TableInitTest extends SpecTestsuiteBase
     public function testAssertReturn176(): void
     {
         $this->runAssertReturnCommand(
-            module: null,
             action: ['type' => 'invoke', 'field' => 'check', 'args' => [['type' => 'i32', 'value' => '12']]],
             expected: [['type' => 'i32', 'value' => '7']],
             line: 360,
@@ -1946,7 +1777,6 @@ final class TableInitTest extends SpecTestsuiteBase
     public function testAssertTrap177(): void
     {
         $this->runAssertTrapCommand(
-            module: null,
             action: ['type' => 'invoke', 'field' => 'check', 'args' => [['type' => 'i32', 'value' => '13']]],
             text: 'uninitialized element',
             line: 361,
@@ -1957,7 +1787,6 @@ final class TableInitTest extends SpecTestsuiteBase
     public function testAssertReturn178(): void
     {
         $this->runAssertReturnCommand(
-            module: null,
             action: ['type' => 'invoke', 'field' => 'check', 'args' => [['type' => 'i32', 'value' => '14']]],
             expected: [['type' => 'i32', 'value' => '7']],
             line: 362,
@@ -1968,7 +1797,6 @@ final class TableInitTest extends SpecTestsuiteBase
     public function testAssertReturn179(): void
     {
         $this->runAssertReturnCommand(
-            module: null,
             action: ['type' => 'invoke', 'field' => 'check', 'args' => [['type' => 'i32', 'value' => '15']]],
             expected: [['type' => 'i32', 'value' => '5']],
             line: 363,
@@ -1979,7 +1807,6 @@ final class TableInitTest extends SpecTestsuiteBase
     public function testAssertReturn180(): void
     {
         $this->runAssertReturnCommand(
-            module: null,
             action: ['type' => 'invoke', 'field' => 'check', 'args' => [['type' => 'i32', 'value' => '16']]],
             expected: [['type' => 'i32', 'value' => '2']],
             line: 364,
@@ -1990,7 +1817,6 @@ final class TableInitTest extends SpecTestsuiteBase
     public function testAssertReturn181(): void
     {
         $this->runAssertReturnCommand(
-            module: null,
             action: ['type' => 'invoke', 'field' => 'check', 'args' => [['type' => 'i32', 'value' => '17']]],
             expected: [['type' => 'i32', 'value' => '7']],
             line: 365,
@@ -2001,7 +1827,6 @@ final class TableInitTest extends SpecTestsuiteBase
     public function testAssertTrap182(): void
     {
         $this->runAssertTrapCommand(
-            module: null,
             action: ['type' => 'invoke', 'field' => 'check', 'args' => [['type' => 'i32', 'value' => '18']]],
             text: 'uninitialized element',
             line: 366,
@@ -2012,7 +1837,6 @@ final class TableInitTest extends SpecTestsuiteBase
     public function testAssertReturn183(): void
     {
         $this->runAssertReturnCommand(
-            module: null,
             action: ['type' => 'invoke', 'field' => 'check', 'args' => [['type' => 'i32', 'value' => '19']]],
             expected: [['type' => 'i32', 'value' => '9']],
             line: 367,
@@ -2023,7 +1847,6 @@ final class TableInitTest extends SpecTestsuiteBase
     public function testAssertTrap184(): void
     {
         $this->runAssertTrapCommand(
-            module: null,
             action: ['type' => 'invoke', 'field' => 'check', 'args' => [['type' => 'i32', 'value' => '20']]],
             text: 'uninitialized element',
             line: 368,
@@ -2034,7 +1857,6 @@ final class TableInitTest extends SpecTestsuiteBase
     public function testAssertReturn185(): void
     {
         $this->runAssertReturnCommand(
-            module: null,
             action: ['type' => 'invoke', 'field' => 'check', 'args' => [['type' => 'i32', 'value' => '21']]],
             expected: [['type' => 'i32', 'value' => '7']],
             line: 369,
@@ -2045,7 +1867,6 @@ final class TableInitTest extends SpecTestsuiteBase
     public function testAssertTrap186(): void
     {
         $this->runAssertTrapCommand(
-            module: null,
             action: ['type' => 'invoke', 'field' => 'check', 'args' => [['type' => 'i32', 'value' => '22']]],
             text: 'uninitialized element',
             line: 370,
@@ -2056,7 +1877,6 @@ final class TableInitTest extends SpecTestsuiteBase
     public function testAssertReturn187(): void
     {
         $this->runAssertReturnCommand(
-            module: null,
             action: ['type' => 'invoke', 'field' => 'check', 'args' => [['type' => 'i32', 'value' => '23']]],
             expected: [['type' => 'i32', 'value' => '8']],
             line: 371,
@@ -2067,7 +1887,6 @@ final class TableInitTest extends SpecTestsuiteBase
     public function testAssertReturn188(): void
     {
         $this->runAssertReturnCommand(
-            module: null,
             action: ['type' => 'invoke', 'field' => 'check', 'args' => [['type' => 'i32', 'value' => '24']]],
             expected: [['type' => 'i32', 'value' => '8']],
             line: 372,
@@ -2078,7 +1897,6 @@ final class TableInitTest extends SpecTestsuiteBase
     public function testAssertTrap189(): void
     {
         $this->runAssertTrapCommand(
-            module: null,
             action: ['type' => 'invoke', 'field' => 'check', 'args' => [['type' => 'i32', 'value' => '25']]],
             text: 'uninitialized element',
             line: 373,
@@ -2089,7 +1907,6 @@ final class TableInitTest extends SpecTestsuiteBase
     public function testAssertTrap190(): void
     {
         $this->runAssertTrapCommand(
-            module: null,
             action: ['type' => 'invoke', 'field' => 'check', 'args' => [['type' => 'i32', 'value' => '26']]],
             text: 'uninitialized element',
             line: 374,
@@ -2100,7 +1917,6 @@ final class TableInitTest extends SpecTestsuiteBase
     public function testAssertTrap191(): void
     {
         $this->runAssertTrapCommand(
-            module: null,
             action: ['type' => 'invoke', 'field' => 'check', 'args' => [['type' => 'i32', 'value' => '27']]],
             text: 'uninitialized element',
             line: 375,
@@ -2111,7 +1927,6 @@ final class TableInitTest extends SpecTestsuiteBase
     public function testAssertTrap192(): void
     {
         $this->runAssertTrapCommand(
-            module: null,
             action: ['type' => 'invoke', 'field' => 'check', 'args' => [['type' => 'i32', 'value' => '28']]],
             text: 'uninitialized element',
             line: 376,
@@ -2122,7 +1937,6 @@ final class TableInitTest extends SpecTestsuiteBase
     public function testAssertTrap193(): void
     {
         $this->runAssertTrapCommand(
-            module: null,
             action: ['type' => 'invoke', 'field' => 'check', 'args' => [['type' => 'i32', 'value' => '29']]],
             text: 'uninitialized element',
             line: 377,
@@ -2183,7 +1997,6 @@ final class TableInitTest extends SpecTestsuiteBase
     public function testAction199(): void
     {
         $this->runActionCommand(
-            module: null,
             action: ['type' => 'invoke', 'field' => 'test', 'args' => []],
             line: 429,
         );
@@ -2203,7 +2016,6 @@ final class TableInitTest extends SpecTestsuiteBase
     public function testAssertTrap201(): void
     {
         $this->runAssertTrapCommand(
-            module: null,
             action: ['type' => 'invoke', 'field' => 'test', 'args' => []],
             text: 'out of bounds table access',
             line: 453,
@@ -2224,7 +2036,6 @@ final class TableInitTest extends SpecTestsuiteBase
     public function testAction203(): void
     {
         $this->runActionCommand(
-            module: null,
             action: ['type' => 'invoke', 'field' => 'test', 'args' => []],
             line: 477,
         );
@@ -2244,7 +2055,6 @@ final class TableInitTest extends SpecTestsuiteBase
     public function testAction205(): void
     {
         $this->runActionCommand(
-            module: null,
             action: ['type' => 'invoke', 'field' => 'test', 'args' => []],
             line: 501,
         );
@@ -2264,7 +2074,6 @@ final class TableInitTest extends SpecTestsuiteBase
     public function testAssertTrap207(): void
     {
         $this->runAssertTrapCommand(
-            module: null,
             action: ['type' => 'invoke', 'field' => 'test', 'args' => []],
             text: 'out of bounds table access',
             line: 525,
@@ -2285,7 +2094,6 @@ final class TableInitTest extends SpecTestsuiteBase
     public function testAssertTrap209(): void
     {
         $this->runAssertTrapCommand(
-            module: null,
             action: ['type' => 'invoke', 'field' => 'test', 'args' => []],
             text: 'out of bounds table access',
             line: 549,
@@ -2306,7 +2114,6 @@ final class TableInitTest extends SpecTestsuiteBase
     public function testAssertTrap211(): void
     {
         $this->runAssertTrapCommand(
-            module: null,
             action: ['type' => 'invoke', 'field' => 'test', 'args' => []],
             text: 'out of bounds table access',
             line: 573,
@@ -2327,7 +2134,6 @@ final class TableInitTest extends SpecTestsuiteBase
     public function testAssertTrap213(): void
     {
         $this->runAssertTrapCommand(
-            module: null,
             action: ['type' => 'invoke', 'field' => 'test', 'args' => []],
             text: 'out of bounds table access',
             line: 597,
@@ -2348,7 +2154,6 @@ final class TableInitTest extends SpecTestsuiteBase
     public function testAction215(): void
     {
         $this->runActionCommand(
-            module: null,
             action: ['type' => 'invoke', 'field' => 'test', 'args' => []],
             line: 621,
         );
@@ -2368,7 +2173,6 @@ final class TableInitTest extends SpecTestsuiteBase
     public function testAssertTrap217(): void
     {
         $this->runAssertTrapCommand(
-            module: null,
             action: ['type' => 'invoke', 'field' => 'test', 'args' => []],
             text: 'out of bounds table access',
             line: 645,
@@ -2389,7 +2193,6 @@ final class TableInitTest extends SpecTestsuiteBase
     public function testAction219(): void
     {
         $this->runActionCommand(
-            module: null,
             action: ['type' => 'invoke', 'field' => 'test', 'args' => []],
             line: 669,
         );
@@ -2409,7 +2212,6 @@ final class TableInitTest extends SpecTestsuiteBase
     public function testAssertTrap221(): void
     {
         $this->runAssertTrapCommand(
-            module: null,
             action: ['type' => 'invoke', 'field' => 'test', 'args' => []],
             text: 'out of bounds table access',
             line: 693,
@@ -2430,7 +2232,6 @@ final class TableInitTest extends SpecTestsuiteBase
     public function testAction223(): void
     {
         $this->runActionCommand(
-            module: null,
             action: ['type' => 'invoke', 'field' => 'test', 'args' => []],
             line: 717,
         );
@@ -2450,7 +2251,6 @@ final class TableInitTest extends SpecTestsuiteBase
     public function testAssertTrap225(): void
     {
         $this->runAssertTrapCommand(
-            module: null,
             action: ['type' => 'invoke', 'field' => 'test', 'args' => []],
             text: 'out of bounds table access',
             line: 741,
@@ -2471,7 +2271,6 @@ final class TableInitTest extends SpecTestsuiteBase
     public function testAssertTrap227(): void
     {
         $this->runAssertTrapCommand(
-            module: null,
             action: ['type' => 'invoke', 'field' => 'test', 'args' => []],
             text: 'out of bounds table access',
             line: 765,
@@ -2492,7 +2291,6 @@ final class TableInitTest extends SpecTestsuiteBase
     public function testAction229(): void
     {
         $this->runActionCommand(
-            module: null,
             action: ['type' => 'invoke', 'field' => 'test', 'args' => []],
             line: 789,
         );
@@ -2512,7 +2310,6 @@ final class TableInitTest extends SpecTestsuiteBase
     public function testAssertTrap231(): void
     {
         $this->runAssertTrapCommand(
-            module: null,
             action: ['type' => 'invoke', 'field' => 'test', 'args' => []],
             text: 'out of bounds table access',
             line: 813,
@@ -2533,7 +2330,6 @@ final class TableInitTest extends SpecTestsuiteBase
     public function testAction233(): void
     {
         $this->runActionCommand(
-            module: null,
             action: ['type' => 'invoke', 'field' => 'test', 'args' => []],
             line: 837,
         );
@@ -2553,7 +2349,6 @@ final class TableInitTest extends SpecTestsuiteBase
     public function testAssertTrap235(): void
     {
         $this->runAssertTrapCommand(
-            module: null,
             action: ['type' => 'invoke', 'field' => 'test', 'args' => []],
             text: 'out of bounds table access',
             line: 861,
@@ -2574,7 +2369,6 @@ final class TableInitTest extends SpecTestsuiteBase
     public function testAction237(): void
     {
         $this->runActionCommand(
-            module: null,
             action: ['type' => 'invoke', 'field' => 'test', 'args' => []],
             line: 885,
         );
@@ -2594,7 +2388,6 @@ final class TableInitTest extends SpecTestsuiteBase
     public function testAssertTrap239(): void
     {
         $this->runAssertTrapCommand(
-            module: null,
             action: ['type' => 'invoke', 'field' => 'test', 'args' => []],
             text: 'out of bounds table access',
             line: 909,
@@ -3245,7 +3038,6 @@ final class TableInitTest extends SpecTestsuiteBase
     public function testAssertTrap304(): void
     {
         $this->runAssertTrapCommand(
-            module: null,
             action: ['type' => 'invoke', 'field' => 'run', 'args' => [['type' => 'i32', 'value' => '24'], ['type' => 'i32', 'value' => '16']]],
             text: 'out of bounds table access',
             line: 1506,
@@ -3256,7 +3048,6 @@ final class TableInitTest extends SpecTestsuiteBase
     public function testAssertTrap305(): void
     {
         $this->runAssertTrapCommand(
-            module: null,
             action: ['type' => 'invoke', 'field' => 'test', 'args' => [['type' => 'i32', 'value' => '0']]],
             text: 'uninitialized element',
             line: 1507,
@@ -3267,7 +3058,6 @@ final class TableInitTest extends SpecTestsuiteBase
     public function testAssertTrap306(): void
     {
         $this->runAssertTrapCommand(
-            module: null,
             action: ['type' => 'invoke', 'field' => 'test', 'args' => [['type' => 'i32', 'value' => '1']]],
             text: 'uninitialized element',
             line: 1508,
@@ -3278,7 +3068,6 @@ final class TableInitTest extends SpecTestsuiteBase
     public function testAssertTrap307(): void
     {
         $this->runAssertTrapCommand(
-            module: null,
             action: ['type' => 'invoke', 'field' => 'test', 'args' => [['type' => 'i32', 'value' => '2']]],
             text: 'uninitialized element',
             line: 1509,
@@ -3289,7 +3078,6 @@ final class TableInitTest extends SpecTestsuiteBase
     public function testAssertTrap308(): void
     {
         $this->runAssertTrapCommand(
-            module: null,
             action: ['type' => 'invoke', 'field' => 'test', 'args' => [['type' => 'i32', 'value' => '3']]],
             text: 'uninitialized element',
             line: 1510,
@@ -3300,7 +3088,6 @@ final class TableInitTest extends SpecTestsuiteBase
     public function testAssertTrap309(): void
     {
         $this->runAssertTrapCommand(
-            module: null,
             action: ['type' => 'invoke', 'field' => 'test', 'args' => [['type' => 'i32', 'value' => '4']]],
             text: 'uninitialized element',
             line: 1511,
@@ -3311,7 +3098,6 @@ final class TableInitTest extends SpecTestsuiteBase
     public function testAssertTrap310(): void
     {
         $this->runAssertTrapCommand(
-            module: null,
             action: ['type' => 'invoke', 'field' => 'test', 'args' => [['type' => 'i32', 'value' => '5']]],
             text: 'uninitialized element',
             line: 1512,
@@ -3322,7 +3108,6 @@ final class TableInitTest extends SpecTestsuiteBase
     public function testAssertTrap311(): void
     {
         $this->runAssertTrapCommand(
-            module: null,
             action: ['type' => 'invoke', 'field' => 'test', 'args' => [['type' => 'i32', 'value' => '6']]],
             text: 'uninitialized element',
             line: 1513,
@@ -3333,7 +3118,6 @@ final class TableInitTest extends SpecTestsuiteBase
     public function testAssertTrap312(): void
     {
         $this->runAssertTrapCommand(
-            module: null,
             action: ['type' => 'invoke', 'field' => 'test', 'args' => [['type' => 'i32', 'value' => '7']]],
             text: 'uninitialized element',
             line: 1514,
@@ -3344,7 +3128,6 @@ final class TableInitTest extends SpecTestsuiteBase
     public function testAssertTrap313(): void
     {
         $this->runAssertTrapCommand(
-            module: null,
             action: ['type' => 'invoke', 'field' => 'test', 'args' => [['type' => 'i32', 'value' => '8']]],
             text: 'uninitialized element',
             line: 1515,
@@ -3355,7 +3138,6 @@ final class TableInitTest extends SpecTestsuiteBase
     public function testAssertTrap314(): void
     {
         $this->runAssertTrapCommand(
-            module: null,
             action: ['type' => 'invoke', 'field' => 'test', 'args' => [['type' => 'i32', 'value' => '9']]],
             text: 'uninitialized element',
             line: 1516,
@@ -3366,7 +3148,6 @@ final class TableInitTest extends SpecTestsuiteBase
     public function testAssertTrap315(): void
     {
         $this->runAssertTrapCommand(
-            module: null,
             action: ['type' => 'invoke', 'field' => 'test', 'args' => [['type' => 'i32', 'value' => '10']]],
             text: 'uninitialized element',
             line: 1517,
@@ -3377,7 +3158,6 @@ final class TableInitTest extends SpecTestsuiteBase
     public function testAssertTrap316(): void
     {
         $this->runAssertTrapCommand(
-            module: null,
             action: ['type' => 'invoke', 'field' => 'test', 'args' => [['type' => 'i32', 'value' => '11']]],
             text: 'uninitialized element',
             line: 1518,
@@ -3388,7 +3168,6 @@ final class TableInitTest extends SpecTestsuiteBase
     public function testAssertTrap317(): void
     {
         $this->runAssertTrapCommand(
-            module: null,
             action: ['type' => 'invoke', 'field' => 'test', 'args' => [['type' => 'i32', 'value' => '12']]],
             text: 'uninitialized element',
             line: 1519,
@@ -3399,7 +3178,6 @@ final class TableInitTest extends SpecTestsuiteBase
     public function testAssertTrap318(): void
     {
         $this->runAssertTrapCommand(
-            module: null,
             action: ['type' => 'invoke', 'field' => 'test', 'args' => [['type' => 'i32', 'value' => '13']]],
             text: 'uninitialized element',
             line: 1520,
@@ -3410,7 +3188,6 @@ final class TableInitTest extends SpecTestsuiteBase
     public function testAssertTrap319(): void
     {
         $this->runAssertTrapCommand(
-            module: null,
             action: ['type' => 'invoke', 'field' => 'test', 'args' => [['type' => 'i32', 'value' => '14']]],
             text: 'uninitialized element',
             line: 1521,
@@ -3421,7 +3198,6 @@ final class TableInitTest extends SpecTestsuiteBase
     public function testAssertTrap320(): void
     {
         $this->runAssertTrapCommand(
-            module: null,
             action: ['type' => 'invoke', 'field' => 'test', 'args' => [['type' => 'i32', 'value' => '15']]],
             text: 'uninitialized element',
             line: 1522,
@@ -3432,7 +3208,6 @@ final class TableInitTest extends SpecTestsuiteBase
     public function testAssertTrap321(): void
     {
         $this->runAssertTrapCommand(
-            module: null,
             action: ['type' => 'invoke', 'field' => 'test', 'args' => [['type' => 'i32', 'value' => '16']]],
             text: 'uninitialized element',
             line: 1523,
@@ -3443,7 +3218,6 @@ final class TableInitTest extends SpecTestsuiteBase
     public function testAssertTrap322(): void
     {
         $this->runAssertTrapCommand(
-            module: null,
             action: ['type' => 'invoke', 'field' => 'test', 'args' => [['type' => 'i32', 'value' => '17']]],
             text: 'uninitialized element',
             line: 1524,
@@ -3454,7 +3228,6 @@ final class TableInitTest extends SpecTestsuiteBase
     public function testAssertTrap323(): void
     {
         $this->runAssertTrapCommand(
-            module: null,
             action: ['type' => 'invoke', 'field' => 'test', 'args' => [['type' => 'i32', 'value' => '18']]],
             text: 'uninitialized element',
             line: 1525,
@@ -3465,7 +3238,6 @@ final class TableInitTest extends SpecTestsuiteBase
     public function testAssertTrap324(): void
     {
         $this->runAssertTrapCommand(
-            module: null,
             action: ['type' => 'invoke', 'field' => 'test', 'args' => [['type' => 'i32', 'value' => '19']]],
             text: 'uninitialized element',
             line: 1526,
@@ -3476,7 +3248,6 @@ final class TableInitTest extends SpecTestsuiteBase
     public function testAssertTrap325(): void
     {
         $this->runAssertTrapCommand(
-            module: null,
             action: ['type' => 'invoke', 'field' => 'test', 'args' => [['type' => 'i32', 'value' => '20']]],
             text: 'uninitialized element',
             line: 1527,
@@ -3487,7 +3258,6 @@ final class TableInitTest extends SpecTestsuiteBase
     public function testAssertTrap326(): void
     {
         $this->runAssertTrapCommand(
-            module: null,
             action: ['type' => 'invoke', 'field' => 'test', 'args' => [['type' => 'i32', 'value' => '21']]],
             text: 'uninitialized element',
             line: 1528,
@@ -3498,7 +3268,6 @@ final class TableInitTest extends SpecTestsuiteBase
     public function testAssertTrap327(): void
     {
         $this->runAssertTrapCommand(
-            module: null,
             action: ['type' => 'invoke', 'field' => 'test', 'args' => [['type' => 'i32', 'value' => '22']]],
             text: 'uninitialized element',
             line: 1529,
@@ -3509,7 +3278,6 @@ final class TableInitTest extends SpecTestsuiteBase
     public function testAssertTrap328(): void
     {
         $this->runAssertTrapCommand(
-            module: null,
             action: ['type' => 'invoke', 'field' => 'test', 'args' => [['type' => 'i32', 'value' => '23']]],
             text: 'uninitialized element',
             line: 1530,
@@ -3520,7 +3288,6 @@ final class TableInitTest extends SpecTestsuiteBase
     public function testAssertTrap329(): void
     {
         $this->runAssertTrapCommand(
-            module: null,
             action: ['type' => 'invoke', 'field' => 'test', 'args' => [['type' => 'i32', 'value' => '24']]],
             text: 'uninitialized element',
             line: 1531,
@@ -3531,7 +3298,6 @@ final class TableInitTest extends SpecTestsuiteBase
     public function testAssertTrap330(): void
     {
         $this->runAssertTrapCommand(
-            module: null,
             action: ['type' => 'invoke', 'field' => 'test', 'args' => [['type' => 'i32', 'value' => '25']]],
             text: 'uninitialized element',
             line: 1532,
@@ -3542,7 +3308,6 @@ final class TableInitTest extends SpecTestsuiteBase
     public function testAssertTrap331(): void
     {
         $this->runAssertTrapCommand(
-            module: null,
             action: ['type' => 'invoke', 'field' => 'test', 'args' => [['type' => 'i32', 'value' => '26']]],
             text: 'uninitialized element',
             line: 1533,
@@ -3553,7 +3318,6 @@ final class TableInitTest extends SpecTestsuiteBase
     public function testAssertTrap332(): void
     {
         $this->runAssertTrapCommand(
-            module: null,
             action: ['type' => 'invoke', 'field' => 'test', 'args' => [['type' => 'i32', 'value' => '27']]],
             text: 'uninitialized element',
             line: 1534,
@@ -3564,7 +3328,6 @@ final class TableInitTest extends SpecTestsuiteBase
     public function testAssertTrap333(): void
     {
         $this->runAssertTrapCommand(
-            module: null,
             action: ['type' => 'invoke', 'field' => 'test', 'args' => [['type' => 'i32', 'value' => '28']]],
             text: 'uninitialized element',
             line: 1535,
@@ -3575,7 +3338,6 @@ final class TableInitTest extends SpecTestsuiteBase
     public function testAssertTrap334(): void
     {
         $this->runAssertTrapCommand(
-            module: null,
             action: ['type' => 'invoke', 'field' => 'test', 'args' => [['type' => 'i32', 'value' => '29']]],
             text: 'uninitialized element',
             line: 1536,
@@ -3586,7 +3348,6 @@ final class TableInitTest extends SpecTestsuiteBase
     public function testAssertTrap335(): void
     {
         $this->runAssertTrapCommand(
-            module: null,
             action: ['type' => 'invoke', 'field' => 'test', 'args' => [['type' => 'i32', 'value' => '30']]],
             text: 'uninitialized element',
             line: 1537,
@@ -3597,7 +3358,6 @@ final class TableInitTest extends SpecTestsuiteBase
     public function testAssertTrap336(): void
     {
         $this->runAssertTrapCommand(
-            module: null,
             action: ['type' => 'invoke', 'field' => 'test', 'args' => [['type' => 'i32', 'value' => '31']]],
             text: 'uninitialized element',
             line: 1538,
@@ -3618,7 +3378,6 @@ final class TableInitTest extends SpecTestsuiteBase
     public function testAssertTrap338(): void
     {
         $this->runAssertTrapCommand(
-            module: null,
             action: ['type' => 'invoke', 'field' => 'run', 'args' => [['type' => 'i32', 'value' => '25'], ['type' => 'i32', 'value' => '16']]],
             text: 'out of bounds table access',
             line: 1568,
@@ -3629,7 +3388,6 @@ final class TableInitTest extends SpecTestsuiteBase
     public function testAssertTrap339(): void
     {
         $this->runAssertTrapCommand(
-            module: null,
             action: ['type' => 'invoke', 'field' => 'test', 'args' => [['type' => 'i32', 'value' => '0']]],
             text: 'uninitialized element',
             line: 1569,
@@ -3640,7 +3398,6 @@ final class TableInitTest extends SpecTestsuiteBase
     public function testAssertTrap340(): void
     {
         $this->runAssertTrapCommand(
-            module: null,
             action: ['type' => 'invoke', 'field' => 'test', 'args' => [['type' => 'i32', 'value' => '1']]],
             text: 'uninitialized element',
             line: 1570,
@@ -3651,7 +3408,6 @@ final class TableInitTest extends SpecTestsuiteBase
     public function testAssertTrap341(): void
     {
         $this->runAssertTrapCommand(
-            module: null,
             action: ['type' => 'invoke', 'field' => 'test', 'args' => [['type' => 'i32', 'value' => '2']]],
             text: 'uninitialized element',
             line: 1571,
@@ -3662,7 +3418,6 @@ final class TableInitTest extends SpecTestsuiteBase
     public function testAssertTrap342(): void
     {
         $this->runAssertTrapCommand(
-            module: null,
             action: ['type' => 'invoke', 'field' => 'test', 'args' => [['type' => 'i32', 'value' => '3']]],
             text: 'uninitialized element',
             line: 1572,
@@ -3673,7 +3428,6 @@ final class TableInitTest extends SpecTestsuiteBase
     public function testAssertTrap343(): void
     {
         $this->runAssertTrapCommand(
-            module: null,
             action: ['type' => 'invoke', 'field' => 'test', 'args' => [['type' => 'i32', 'value' => '4']]],
             text: 'uninitialized element',
             line: 1573,
@@ -3684,7 +3438,6 @@ final class TableInitTest extends SpecTestsuiteBase
     public function testAssertTrap344(): void
     {
         $this->runAssertTrapCommand(
-            module: null,
             action: ['type' => 'invoke', 'field' => 'test', 'args' => [['type' => 'i32', 'value' => '5']]],
             text: 'uninitialized element',
             line: 1574,
@@ -3695,7 +3448,6 @@ final class TableInitTest extends SpecTestsuiteBase
     public function testAssertTrap345(): void
     {
         $this->runAssertTrapCommand(
-            module: null,
             action: ['type' => 'invoke', 'field' => 'test', 'args' => [['type' => 'i32', 'value' => '6']]],
             text: 'uninitialized element',
             line: 1575,
@@ -3706,7 +3458,6 @@ final class TableInitTest extends SpecTestsuiteBase
     public function testAssertTrap346(): void
     {
         $this->runAssertTrapCommand(
-            module: null,
             action: ['type' => 'invoke', 'field' => 'test', 'args' => [['type' => 'i32', 'value' => '7']]],
             text: 'uninitialized element',
             line: 1576,
@@ -3717,7 +3468,6 @@ final class TableInitTest extends SpecTestsuiteBase
     public function testAssertTrap347(): void
     {
         $this->runAssertTrapCommand(
-            module: null,
             action: ['type' => 'invoke', 'field' => 'test', 'args' => [['type' => 'i32', 'value' => '8']]],
             text: 'uninitialized element',
             line: 1577,
@@ -3728,7 +3478,6 @@ final class TableInitTest extends SpecTestsuiteBase
     public function testAssertTrap348(): void
     {
         $this->runAssertTrapCommand(
-            module: null,
             action: ['type' => 'invoke', 'field' => 'test', 'args' => [['type' => 'i32', 'value' => '9']]],
             text: 'uninitialized element',
             line: 1578,
@@ -3739,7 +3488,6 @@ final class TableInitTest extends SpecTestsuiteBase
     public function testAssertTrap349(): void
     {
         $this->runAssertTrapCommand(
-            module: null,
             action: ['type' => 'invoke', 'field' => 'test', 'args' => [['type' => 'i32', 'value' => '10']]],
             text: 'uninitialized element',
             line: 1579,
@@ -3750,7 +3498,6 @@ final class TableInitTest extends SpecTestsuiteBase
     public function testAssertTrap350(): void
     {
         $this->runAssertTrapCommand(
-            module: null,
             action: ['type' => 'invoke', 'field' => 'test', 'args' => [['type' => 'i32', 'value' => '11']]],
             text: 'uninitialized element',
             line: 1580,
@@ -3761,7 +3508,6 @@ final class TableInitTest extends SpecTestsuiteBase
     public function testAssertTrap351(): void
     {
         $this->runAssertTrapCommand(
-            module: null,
             action: ['type' => 'invoke', 'field' => 'test', 'args' => [['type' => 'i32', 'value' => '12']]],
             text: 'uninitialized element',
             line: 1581,
@@ -3772,7 +3518,6 @@ final class TableInitTest extends SpecTestsuiteBase
     public function testAssertTrap352(): void
     {
         $this->runAssertTrapCommand(
-            module: null,
             action: ['type' => 'invoke', 'field' => 'test', 'args' => [['type' => 'i32', 'value' => '13']]],
             text: 'uninitialized element',
             line: 1582,
@@ -3783,7 +3528,6 @@ final class TableInitTest extends SpecTestsuiteBase
     public function testAssertTrap353(): void
     {
         $this->runAssertTrapCommand(
-            module: null,
             action: ['type' => 'invoke', 'field' => 'test', 'args' => [['type' => 'i32', 'value' => '14']]],
             text: 'uninitialized element',
             line: 1583,
@@ -3794,7 +3538,6 @@ final class TableInitTest extends SpecTestsuiteBase
     public function testAssertTrap354(): void
     {
         $this->runAssertTrapCommand(
-            module: null,
             action: ['type' => 'invoke', 'field' => 'test', 'args' => [['type' => 'i32', 'value' => '15']]],
             text: 'uninitialized element',
             line: 1584,
@@ -3805,7 +3548,6 @@ final class TableInitTest extends SpecTestsuiteBase
     public function testAssertTrap355(): void
     {
         $this->runAssertTrapCommand(
-            module: null,
             action: ['type' => 'invoke', 'field' => 'test', 'args' => [['type' => 'i32', 'value' => '16']]],
             text: 'uninitialized element',
             line: 1585,
@@ -3816,7 +3558,6 @@ final class TableInitTest extends SpecTestsuiteBase
     public function testAssertTrap356(): void
     {
         $this->runAssertTrapCommand(
-            module: null,
             action: ['type' => 'invoke', 'field' => 'test', 'args' => [['type' => 'i32', 'value' => '17']]],
             text: 'uninitialized element',
             line: 1586,
@@ -3827,7 +3568,6 @@ final class TableInitTest extends SpecTestsuiteBase
     public function testAssertTrap357(): void
     {
         $this->runAssertTrapCommand(
-            module: null,
             action: ['type' => 'invoke', 'field' => 'test', 'args' => [['type' => 'i32', 'value' => '18']]],
             text: 'uninitialized element',
             line: 1587,
@@ -3838,7 +3578,6 @@ final class TableInitTest extends SpecTestsuiteBase
     public function testAssertTrap358(): void
     {
         $this->runAssertTrapCommand(
-            module: null,
             action: ['type' => 'invoke', 'field' => 'test', 'args' => [['type' => 'i32', 'value' => '19']]],
             text: 'uninitialized element',
             line: 1588,
@@ -3849,7 +3588,6 @@ final class TableInitTest extends SpecTestsuiteBase
     public function testAssertTrap359(): void
     {
         $this->runAssertTrapCommand(
-            module: null,
             action: ['type' => 'invoke', 'field' => 'test', 'args' => [['type' => 'i32', 'value' => '20']]],
             text: 'uninitialized element',
             line: 1589,
@@ -3860,7 +3598,6 @@ final class TableInitTest extends SpecTestsuiteBase
     public function testAssertTrap360(): void
     {
         $this->runAssertTrapCommand(
-            module: null,
             action: ['type' => 'invoke', 'field' => 'test', 'args' => [['type' => 'i32', 'value' => '21']]],
             text: 'uninitialized element',
             line: 1590,
@@ -3871,7 +3608,6 @@ final class TableInitTest extends SpecTestsuiteBase
     public function testAssertTrap361(): void
     {
         $this->runAssertTrapCommand(
-            module: null,
             action: ['type' => 'invoke', 'field' => 'test', 'args' => [['type' => 'i32', 'value' => '22']]],
             text: 'uninitialized element',
             line: 1591,
@@ -3882,7 +3618,6 @@ final class TableInitTest extends SpecTestsuiteBase
     public function testAssertTrap362(): void
     {
         $this->runAssertTrapCommand(
-            module: null,
             action: ['type' => 'invoke', 'field' => 'test', 'args' => [['type' => 'i32', 'value' => '23']]],
             text: 'uninitialized element',
             line: 1592,
@@ -3893,7 +3628,6 @@ final class TableInitTest extends SpecTestsuiteBase
     public function testAssertTrap363(): void
     {
         $this->runAssertTrapCommand(
-            module: null,
             action: ['type' => 'invoke', 'field' => 'test', 'args' => [['type' => 'i32', 'value' => '24']]],
             text: 'uninitialized element',
             line: 1593,
@@ -3904,7 +3638,6 @@ final class TableInitTest extends SpecTestsuiteBase
     public function testAssertTrap364(): void
     {
         $this->runAssertTrapCommand(
-            module: null,
             action: ['type' => 'invoke', 'field' => 'test', 'args' => [['type' => 'i32', 'value' => '25']]],
             text: 'uninitialized element',
             line: 1594,
@@ -3915,7 +3648,6 @@ final class TableInitTest extends SpecTestsuiteBase
     public function testAssertTrap365(): void
     {
         $this->runAssertTrapCommand(
-            module: null,
             action: ['type' => 'invoke', 'field' => 'test', 'args' => [['type' => 'i32', 'value' => '26']]],
             text: 'uninitialized element',
             line: 1595,
@@ -3926,7 +3658,6 @@ final class TableInitTest extends SpecTestsuiteBase
     public function testAssertTrap366(): void
     {
         $this->runAssertTrapCommand(
-            module: null,
             action: ['type' => 'invoke', 'field' => 'test', 'args' => [['type' => 'i32', 'value' => '27']]],
             text: 'uninitialized element',
             line: 1596,
@@ -3937,7 +3668,6 @@ final class TableInitTest extends SpecTestsuiteBase
     public function testAssertTrap367(): void
     {
         $this->runAssertTrapCommand(
-            module: null,
             action: ['type' => 'invoke', 'field' => 'test', 'args' => [['type' => 'i32', 'value' => '28']]],
             text: 'uninitialized element',
             line: 1597,
@@ -3948,7 +3678,6 @@ final class TableInitTest extends SpecTestsuiteBase
     public function testAssertTrap368(): void
     {
         $this->runAssertTrapCommand(
-            module: null,
             action: ['type' => 'invoke', 'field' => 'test', 'args' => [['type' => 'i32', 'value' => '29']]],
             text: 'uninitialized element',
             line: 1598,
@@ -3959,7 +3688,6 @@ final class TableInitTest extends SpecTestsuiteBase
     public function testAssertTrap369(): void
     {
         $this->runAssertTrapCommand(
-            module: null,
             action: ['type' => 'invoke', 'field' => 'test', 'args' => [['type' => 'i32', 'value' => '30']]],
             text: 'uninitialized element',
             line: 1599,
@@ -3970,7 +3698,6 @@ final class TableInitTest extends SpecTestsuiteBase
     public function testAssertTrap370(): void
     {
         $this->runAssertTrapCommand(
-            module: null,
             action: ['type' => 'invoke', 'field' => 'test', 'args' => [['type' => 'i32', 'value' => '31']]],
             text: 'uninitialized element',
             line: 1600,
@@ -3991,7 +3718,6 @@ final class TableInitTest extends SpecTestsuiteBase
     public function testAssertTrap372(): void
     {
         $this->runAssertTrapCommand(
-            module: null,
             action: ['type' => 'invoke', 'field' => 'run', 'args' => [['type' => 'i32', 'value' => '96'], ['type' => 'i32', 'value' => '32']]],
             text: 'out of bounds table access',
             line: 1630,
@@ -4002,7 +3728,6 @@ final class TableInitTest extends SpecTestsuiteBase
     public function testAssertTrap373(): void
     {
         $this->runAssertTrapCommand(
-            module: null,
             action: ['type' => 'invoke', 'field' => 'test', 'args' => [['type' => 'i32', 'value' => '0']]],
             text: 'uninitialized element',
             line: 1631,
@@ -4013,7 +3738,6 @@ final class TableInitTest extends SpecTestsuiteBase
     public function testAssertTrap374(): void
     {
         $this->runAssertTrapCommand(
-            module: null,
             action: ['type' => 'invoke', 'field' => 'test', 'args' => [['type' => 'i32', 'value' => '1']]],
             text: 'uninitialized element',
             line: 1632,
@@ -4024,7 +3748,6 @@ final class TableInitTest extends SpecTestsuiteBase
     public function testAssertTrap375(): void
     {
         $this->runAssertTrapCommand(
-            module: null,
             action: ['type' => 'invoke', 'field' => 'test', 'args' => [['type' => 'i32', 'value' => '2']]],
             text: 'uninitialized element',
             line: 1633,
@@ -4035,7 +3758,6 @@ final class TableInitTest extends SpecTestsuiteBase
     public function testAssertTrap376(): void
     {
         $this->runAssertTrapCommand(
-            module: null,
             action: ['type' => 'invoke', 'field' => 'test', 'args' => [['type' => 'i32', 'value' => '3']]],
             text: 'uninitialized element',
             line: 1634,
@@ -4046,7 +3768,6 @@ final class TableInitTest extends SpecTestsuiteBase
     public function testAssertTrap377(): void
     {
         $this->runAssertTrapCommand(
-            module: null,
             action: ['type' => 'invoke', 'field' => 'test', 'args' => [['type' => 'i32', 'value' => '4']]],
             text: 'uninitialized element',
             line: 1635,
@@ -4057,7 +3778,6 @@ final class TableInitTest extends SpecTestsuiteBase
     public function testAssertTrap378(): void
     {
         $this->runAssertTrapCommand(
-            module: null,
             action: ['type' => 'invoke', 'field' => 'test', 'args' => [['type' => 'i32', 'value' => '5']]],
             text: 'uninitialized element',
             line: 1636,
@@ -4068,7 +3788,6 @@ final class TableInitTest extends SpecTestsuiteBase
     public function testAssertTrap379(): void
     {
         $this->runAssertTrapCommand(
-            module: null,
             action: ['type' => 'invoke', 'field' => 'test', 'args' => [['type' => 'i32', 'value' => '6']]],
             text: 'uninitialized element',
             line: 1637,
@@ -4079,7 +3798,6 @@ final class TableInitTest extends SpecTestsuiteBase
     public function testAssertTrap380(): void
     {
         $this->runAssertTrapCommand(
-            module: null,
             action: ['type' => 'invoke', 'field' => 'test', 'args' => [['type' => 'i32', 'value' => '7']]],
             text: 'uninitialized element',
             line: 1638,
@@ -4090,7 +3808,6 @@ final class TableInitTest extends SpecTestsuiteBase
     public function testAssertTrap381(): void
     {
         $this->runAssertTrapCommand(
-            module: null,
             action: ['type' => 'invoke', 'field' => 'test', 'args' => [['type' => 'i32', 'value' => '8']]],
             text: 'uninitialized element',
             line: 1639,
@@ -4101,7 +3818,6 @@ final class TableInitTest extends SpecTestsuiteBase
     public function testAssertTrap382(): void
     {
         $this->runAssertTrapCommand(
-            module: null,
             action: ['type' => 'invoke', 'field' => 'test', 'args' => [['type' => 'i32', 'value' => '9']]],
             text: 'uninitialized element',
             line: 1640,
@@ -4112,7 +3828,6 @@ final class TableInitTest extends SpecTestsuiteBase
     public function testAssertTrap383(): void
     {
         $this->runAssertTrapCommand(
-            module: null,
             action: ['type' => 'invoke', 'field' => 'test', 'args' => [['type' => 'i32', 'value' => '10']]],
             text: 'uninitialized element',
             line: 1641,
@@ -4123,7 +3838,6 @@ final class TableInitTest extends SpecTestsuiteBase
     public function testAssertTrap384(): void
     {
         $this->runAssertTrapCommand(
-            module: null,
             action: ['type' => 'invoke', 'field' => 'test', 'args' => [['type' => 'i32', 'value' => '11']]],
             text: 'uninitialized element',
             line: 1642,
@@ -4134,7 +3848,6 @@ final class TableInitTest extends SpecTestsuiteBase
     public function testAssertTrap385(): void
     {
         $this->runAssertTrapCommand(
-            module: null,
             action: ['type' => 'invoke', 'field' => 'test', 'args' => [['type' => 'i32', 'value' => '12']]],
             text: 'uninitialized element',
             line: 1643,
@@ -4145,7 +3858,6 @@ final class TableInitTest extends SpecTestsuiteBase
     public function testAssertTrap386(): void
     {
         $this->runAssertTrapCommand(
-            module: null,
             action: ['type' => 'invoke', 'field' => 'test', 'args' => [['type' => 'i32', 'value' => '13']]],
             text: 'uninitialized element',
             line: 1644,
@@ -4156,7 +3868,6 @@ final class TableInitTest extends SpecTestsuiteBase
     public function testAssertTrap387(): void
     {
         $this->runAssertTrapCommand(
-            module: null,
             action: ['type' => 'invoke', 'field' => 'test', 'args' => [['type' => 'i32', 'value' => '14']]],
             text: 'uninitialized element',
             line: 1645,
@@ -4167,7 +3878,6 @@ final class TableInitTest extends SpecTestsuiteBase
     public function testAssertTrap388(): void
     {
         $this->runAssertTrapCommand(
-            module: null,
             action: ['type' => 'invoke', 'field' => 'test', 'args' => [['type' => 'i32', 'value' => '15']]],
             text: 'uninitialized element',
             line: 1646,
@@ -4178,7 +3888,6 @@ final class TableInitTest extends SpecTestsuiteBase
     public function testAssertTrap389(): void
     {
         $this->runAssertTrapCommand(
-            module: null,
             action: ['type' => 'invoke', 'field' => 'test', 'args' => [['type' => 'i32', 'value' => '16']]],
             text: 'uninitialized element',
             line: 1647,
@@ -4189,7 +3898,6 @@ final class TableInitTest extends SpecTestsuiteBase
     public function testAssertTrap390(): void
     {
         $this->runAssertTrapCommand(
-            module: null,
             action: ['type' => 'invoke', 'field' => 'test', 'args' => [['type' => 'i32', 'value' => '17']]],
             text: 'uninitialized element',
             line: 1648,
@@ -4200,7 +3908,6 @@ final class TableInitTest extends SpecTestsuiteBase
     public function testAssertTrap391(): void
     {
         $this->runAssertTrapCommand(
-            module: null,
             action: ['type' => 'invoke', 'field' => 'test', 'args' => [['type' => 'i32', 'value' => '18']]],
             text: 'uninitialized element',
             line: 1649,
@@ -4211,7 +3918,6 @@ final class TableInitTest extends SpecTestsuiteBase
     public function testAssertTrap392(): void
     {
         $this->runAssertTrapCommand(
-            module: null,
             action: ['type' => 'invoke', 'field' => 'test', 'args' => [['type' => 'i32', 'value' => '19']]],
             text: 'uninitialized element',
             line: 1650,
@@ -4222,7 +3928,6 @@ final class TableInitTest extends SpecTestsuiteBase
     public function testAssertTrap393(): void
     {
         $this->runAssertTrapCommand(
-            module: null,
             action: ['type' => 'invoke', 'field' => 'test', 'args' => [['type' => 'i32', 'value' => '20']]],
             text: 'uninitialized element',
             line: 1651,
@@ -4233,7 +3938,6 @@ final class TableInitTest extends SpecTestsuiteBase
     public function testAssertTrap394(): void
     {
         $this->runAssertTrapCommand(
-            module: null,
             action: ['type' => 'invoke', 'field' => 'test', 'args' => [['type' => 'i32', 'value' => '21']]],
             text: 'uninitialized element',
             line: 1652,
@@ -4244,7 +3948,6 @@ final class TableInitTest extends SpecTestsuiteBase
     public function testAssertTrap395(): void
     {
         $this->runAssertTrapCommand(
-            module: null,
             action: ['type' => 'invoke', 'field' => 'test', 'args' => [['type' => 'i32', 'value' => '22']]],
             text: 'uninitialized element',
             line: 1653,
@@ -4255,7 +3958,6 @@ final class TableInitTest extends SpecTestsuiteBase
     public function testAssertTrap396(): void
     {
         $this->runAssertTrapCommand(
-            module: null,
             action: ['type' => 'invoke', 'field' => 'test', 'args' => [['type' => 'i32', 'value' => '23']]],
             text: 'uninitialized element',
             line: 1654,
@@ -4266,7 +3968,6 @@ final class TableInitTest extends SpecTestsuiteBase
     public function testAssertTrap397(): void
     {
         $this->runAssertTrapCommand(
-            module: null,
             action: ['type' => 'invoke', 'field' => 'test', 'args' => [['type' => 'i32', 'value' => '24']]],
             text: 'uninitialized element',
             line: 1655,
@@ -4277,7 +3978,6 @@ final class TableInitTest extends SpecTestsuiteBase
     public function testAssertTrap398(): void
     {
         $this->runAssertTrapCommand(
-            module: null,
             action: ['type' => 'invoke', 'field' => 'test', 'args' => [['type' => 'i32', 'value' => '25']]],
             text: 'uninitialized element',
             line: 1656,
@@ -4288,7 +3988,6 @@ final class TableInitTest extends SpecTestsuiteBase
     public function testAssertTrap399(): void
     {
         $this->runAssertTrapCommand(
-            module: null,
             action: ['type' => 'invoke', 'field' => 'test', 'args' => [['type' => 'i32', 'value' => '26']]],
             text: 'uninitialized element',
             line: 1657,
@@ -4299,7 +3998,6 @@ final class TableInitTest extends SpecTestsuiteBase
     public function testAssertTrap400(): void
     {
         $this->runAssertTrapCommand(
-            module: null,
             action: ['type' => 'invoke', 'field' => 'test', 'args' => [['type' => 'i32', 'value' => '27']]],
             text: 'uninitialized element',
             line: 1658,
@@ -4310,7 +4008,6 @@ final class TableInitTest extends SpecTestsuiteBase
     public function testAssertTrap401(): void
     {
         $this->runAssertTrapCommand(
-            module: null,
             action: ['type' => 'invoke', 'field' => 'test', 'args' => [['type' => 'i32', 'value' => '28']]],
             text: 'uninitialized element',
             line: 1659,
@@ -4321,7 +4018,6 @@ final class TableInitTest extends SpecTestsuiteBase
     public function testAssertTrap402(): void
     {
         $this->runAssertTrapCommand(
-            module: null,
             action: ['type' => 'invoke', 'field' => 'test', 'args' => [['type' => 'i32', 'value' => '29']]],
             text: 'uninitialized element',
             line: 1660,
@@ -4332,7 +4028,6 @@ final class TableInitTest extends SpecTestsuiteBase
     public function testAssertTrap403(): void
     {
         $this->runAssertTrapCommand(
-            module: null,
             action: ['type' => 'invoke', 'field' => 'test', 'args' => [['type' => 'i32', 'value' => '30']]],
             text: 'uninitialized element',
             line: 1661,
@@ -4343,7 +4038,6 @@ final class TableInitTest extends SpecTestsuiteBase
     public function testAssertTrap404(): void
     {
         $this->runAssertTrapCommand(
-            module: null,
             action: ['type' => 'invoke', 'field' => 'test', 'args' => [['type' => 'i32', 'value' => '31']]],
             text: 'uninitialized element',
             line: 1662,
@@ -4354,7 +4048,6 @@ final class TableInitTest extends SpecTestsuiteBase
     public function testAssertTrap405(): void
     {
         $this->runAssertTrapCommand(
-            module: null,
             action: ['type' => 'invoke', 'field' => 'test', 'args' => [['type' => 'i32', 'value' => '32']]],
             text: 'uninitialized element',
             line: 1663,
@@ -4365,7 +4058,6 @@ final class TableInitTest extends SpecTestsuiteBase
     public function testAssertTrap406(): void
     {
         $this->runAssertTrapCommand(
-            module: null,
             action: ['type' => 'invoke', 'field' => 'test', 'args' => [['type' => 'i32', 'value' => '33']]],
             text: 'uninitialized element',
             line: 1664,
@@ -4376,7 +4068,6 @@ final class TableInitTest extends SpecTestsuiteBase
     public function testAssertTrap407(): void
     {
         $this->runAssertTrapCommand(
-            module: null,
             action: ['type' => 'invoke', 'field' => 'test', 'args' => [['type' => 'i32', 'value' => '34']]],
             text: 'uninitialized element',
             line: 1665,
@@ -4387,7 +4078,6 @@ final class TableInitTest extends SpecTestsuiteBase
     public function testAssertTrap408(): void
     {
         $this->runAssertTrapCommand(
-            module: null,
             action: ['type' => 'invoke', 'field' => 'test', 'args' => [['type' => 'i32', 'value' => '35']]],
             text: 'uninitialized element',
             line: 1666,
@@ -4398,7 +4088,6 @@ final class TableInitTest extends SpecTestsuiteBase
     public function testAssertTrap409(): void
     {
         $this->runAssertTrapCommand(
-            module: null,
             action: ['type' => 'invoke', 'field' => 'test', 'args' => [['type' => 'i32', 'value' => '36']]],
             text: 'uninitialized element',
             line: 1667,
@@ -4409,7 +4098,6 @@ final class TableInitTest extends SpecTestsuiteBase
     public function testAssertTrap410(): void
     {
         $this->runAssertTrapCommand(
-            module: null,
             action: ['type' => 'invoke', 'field' => 'test', 'args' => [['type' => 'i32', 'value' => '37']]],
             text: 'uninitialized element',
             line: 1668,
@@ -4420,7 +4108,6 @@ final class TableInitTest extends SpecTestsuiteBase
     public function testAssertTrap411(): void
     {
         $this->runAssertTrapCommand(
-            module: null,
             action: ['type' => 'invoke', 'field' => 'test', 'args' => [['type' => 'i32', 'value' => '38']]],
             text: 'uninitialized element',
             line: 1669,
@@ -4431,7 +4118,6 @@ final class TableInitTest extends SpecTestsuiteBase
     public function testAssertTrap412(): void
     {
         $this->runAssertTrapCommand(
-            module: null,
             action: ['type' => 'invoke', 'field' => 'test', 'args' => [['type' => 'i32', 'value' => '39']]],
             text: 'uninitialized element',
             line: 1670,
@@ -4442,7 +4128,6 @@ final class TableInitTest extends SpecTestsuiteBase
     public function testAssertTrap413(): void
     {
         $this->runAssertTrapCommand(
-            module: null,
             action: ['type' => 'invoke', 'field' => 'test', 'args' => [['type' => 'i32', 'value' => '40']]],
             text: 'uninitialized element',
             line: 1671,
@@ -4453,7 +4138,6 @@ final class TableInitTest extends SpecTestsuiteBase
     public function testAssertTrap414(): void
     {
         $this->runAssertTrapCommand(
-            module: null,
             action: ['type' => 'invoke', 'field' => 'test', 'args' => [['type' => 'i32', 'value' => '41']]],
             text: 'uninitialized element',
             line: 1672,
@@ -4464,7 +4148,6 @@ final class TableInitTest extends SpecTestsuiteBase
     public function testAssertTrap415(): void
     {
         $this->runAssertTrapCommand(
-            module: null,
             action: ['type' => 'invoke', 'field' => 'test', 'args' => [['type' => 'i32', 'value' => '42']]],
             text: 'uninitialized element',
             line: 1673,
@@ -4475,7 +4158,6 @@ final class TableInitTest extends SpecTestsuiteBase
     public function testAssertTrap416(): void
     {
         $this->runAssertTrapCommand(
-            module: null,
             action: ['type' => 'invoke', 'field' => 'test', 'args' => [['type' => 'i32', 'value' => '43']]],
             text: 'uninitialized element',
             line: 1674,
@@ -4486,7 +4168,6 @@ final class TableInitTest extends SpecTestsuiteBase
     public function testAssertTrap417(): void
     {
         $this->runAssertTrapCommand(
-            module: null,
             action: ['type' => 'invoke', 'field' => 'test', 'args' => [['type' => 'i32', 'value' => '44']]],
             text: 'uninitialized element',
             line: 1675,
@@ -4497,7 +4178,6 @@ final class TableInitTest extends SpecTestsuiteBase
     public function testAssertTrap418(): void
     {
         $this->runAssertTrapCommand(
-            module: null,
             action: ['type' => 'invoke', 'field' => 'test', 'args' => [['type' => 'i32', 'value' => '45']]],
             text: 'uninitialized element',
             line: 1676,
@@ -4508,7 +4188,6 @@ final class TableInitTest extends SpecTestsuiteBase
     public function testAssertTrap419(): void
     {
         $this->runAssertTrapCommand(
-            module: null,
             action: ['type' => 'invoke', 'field' => 'test', 'args' => [['type' => 'i32', 'value' => '46']]],
             text: 'uninitialized element',
             line: 1677,
@@ -4519,7 +4198,6 @@ final class TableInitTest extends SpecTestsuiteBase
     public function testAssertTrap420(): void
     {
         $this->runAssertTrapCommand(
-            module: null,
             action: ['type' => 'invoke', 'field' => 'test', 'args' => [['type' => 'i32', 'value' => '47']]],
             text: 'uninitialized element',
             line: 1678,
@@ -4530,7 +4208,6 @@ final class TableInitTest extends SpecTestsuiteBase
     public function testAssertTrap421(): void
     {
         $this->runAssertTrapCommand(
-            module: null,
             action: ['type' => 'invoke', 'field' => 'test', 'args' => [['type' => 'i32', 'value' => '48']]],
             text: 'uninitialized element',
             line: 1679,
@@ -4541,7 +4218,6 @@ final class TableInitTest extends SpecTestsuiteBase
     public function testAssertTrap422(): void
     {
         $this->runAssertTrapCommand(
-            module: null,
             action: ['type' => 'invoke', 'field' => 'test', 'args' => [['type' => 'i32', 'value' => '49']]],
             text: 'uninitialized element',
             line: 1680,
@@ -4552,7 +4228,6 @@ final class TableInitTest extends SpecTestsuiteBase
     public function testAssertTrap423(): void
     {
         $this->runAssertTrapCommand(
-            module: null,
             action: ['type' => 'invoke', 'field' => 'test', 'args' => [['type' => 'i32', 'value' => '50']]],
             text: 'uninitialized element',
             line: 1681,
@@ -4563,7 +4238,6 @@ final class TableInitTest extends SpecTestsuiteBase
     public function testAssertTrap424(): void
     {
         $this->runAssertTrapCommand(
-            module: null,
             action: ['type' => 'invoke', 'field' => 'test', 'args' => [['type' => 'i32', 'value' => '51']]],
             text: 'uninitialized element',
             line: 1682,
@@ -4574,7 +4248,6 @@ final class TableInitTest extends SpecTestsuiteBase
     public function testAssertTrap425(): void
     {
         $this->runAssertTrapCommand(
-            module: null,
             action: ['type' => 'invoke', 'field' => 'test', 'args' => [['type' => 'i32', 'value' => '52']]],
             text: 'uninitialized element',
             line: 1683,
@@ -4585,7 +4258,6 @@ final class TableInitTest extends SpecTestsuiteBase
     public function testAssertTrap426(): void
     {
         $this->runAssertTrapCommand(
-            module: null,
             action: ['type' => 'invoke', 'field' => 'test', 'args' => [['type' => 'i32', 'value' => '53']]],
             text: 'uninitialized element',
             line: 1684,
@@ -4596,7 +4268,6 @@ final class TableInitTest extends SpecTestsuiteBase
     public function testAssertTrap427(): void
     {
         $this->runAssertTrapCommand(
-            module: null,
             action: ['type' => 'invoke', 'field' => 'test', 'args' => [['type' => 'i32', 'value' => '54']]],
             text: 'uninitialized element',
             line: 1685,
@@ -4607,7 +4278,6 @@ final class TableInitTest extends SpecTestsuiteBase
     public function testAssertTrap428(): void
     {
         $this->runAssertTrapCommand(
-            module: null,
             action: ['type' => 'invoke', 'field' => 'test', 'args' => [['type' => 'i32', 'value' => '55']]],
             text: 'uninitialized element',
             line: 1686,
@@ -4618,7 +4288,6 @@ final class TableInitTest extends SpecTestsuiteBase
     public function testAssertTrap429(): void
     {
         $this->runAssertTrapCommand(
-            module: null,
             action: ['type' => 'invoke', 'field' => 'test', 'args' => [['type' => 'i32', 'value' => '56']]],
             text: 'uninitialized element',
             line: 1687,
@@ -4629,7 +4298,6 @@ final class TableInitTest extends SpecTestsuiteBase
     public function testAssertTrap430(): void
     {
         $this->runAssertTrapCommand(
-            module: null,
             action: ['type' => 'invoke', 'field' => 'test', 'args' => [['type' => 'i32', 'value' => '57']]],
             text: 'uninitialized element',
             line: 1688,
@@ -4640,7 +4308,6 @@ final class TableInitTest extends SpecTestsuiteBase
     public function testAssertTrap431(): void
     {
         $this->runAssertTrapCommand(
-            module: null,
             action: ['type' => 'invoke', 'field' => 'test', 'args' => [['type' => 'i32', 'value' => '58']]],
             text: 'uninitialized element',
             line: 1689,
@@ -4651,7 +4318,6 @@ final class TableInitTest extends SpecTestsuiteBase
     public function testAssertTrap432(): void
     {
         $this->runAssertTrapCommand(
-            module: null,
             action: ['type' => 'invoke', 'field' => 'test', 'args' => [['type' => 'i32', 'value' => '59']]],
             text: 'uninitialized element',
             line: 1690,
@@ -4662,7 +4328,6 @@ final class TableInitTest extends SpecTestsuiteBase
     public function testAssertTrap433(): void
     {
         $this->runAssertTrapCommand(
-            module: null,
             action: ['type' => 'invoke', 'field' => 'test', 'args' => [['type' => 'i32', 'value' => '60']]],
             text: 'uninitialized element',
             line: 1691,
@@ -4673,7 +4338,6 @@ final class TableInitTest extends SpecTestsuiteBase
     public function testAssertTrap434(): void
     {
         $this->runAssertTrapCommand(
-            module: null,
             action: ['type' => 'invoke', 'field' => 'test', 'args' => [['type' => 'i32', 'value' => '61']]],
             text: 'uninitialized element',
             line: 1692,
@@ -4684,7 +4348,6 @@ final class TableInitTest extends SpecTestsuiteBase
     public function testAssertTrap435(): void
     {
         $this->runAssertTrapCommand(
-            module: null,
             action: ['type' => 'invoke', 'field' => 'test', 'args' => [['type' => 'i32', 'value' => '62']]],
             text: 'uninitialized element',
             line: 1693,
@@ -4695,7 +4358,6 @@ final class TableInitTest extends SpecTestsuiteBase
     public function testAssertTrap436(): void
     {
         $this->runAssertTrapCommand(
-            module: null,
             action: ['type' => 'invoke', 'field' => 'test', 'args' => [['type' => 'i32', 'value' => '63']]],
             text: 'uninitialized element',
             line: 1694,
@@ -4706,7 +4368,6 @@ final class TableInitTest extends SpecTestsuiteBase
     public function testAssertTrap437(): void
     {
         $this->runAssertTrapCommand(
-            module: null,
             action: ['type' => 'invoke', 'field' => 'test', 'args' => [['type' => 'i32', 'value' => '64']]],
             text: 'uninitialized element',
             line: 1695,
@@ -4717,7 +4378,6 @@ final class TableInitTest extends SpecTestsuiteBase
     public function testAssertTrap438(): void
     {
         $this->runAssertTrapCommand(
-            module: null,
             action: ['type' => 'invoke', 'field' => 'test', 'args' => [['type' => 'i32', 'value' => '65']]],
             text: 'uninitialized element',
             line: 1696,
@@ -4728,7 +4388,6 @@ final class TableInitTest extends SpecTestsuiteBase
     public function testAssertTrap439(): void
     {
         $this->runAssertTrapCommand(
-            module: null,
             action: ['type' => 'invoke', 'field' => 'test', 'args' => [['type' => 'i32', 'value' => '66']]],
             text: 'uninitialized element',
             line: 1697,
@@ -4739,7 +4398,6 @@ final class TableInitTest extends SpecTestsuiteBase
     public function testAssertTrap440(): void
     {
         $this->runAssertTrapCommand(
-            module: null,
             action: ['type' => 'invoke', 'field' => 'test', 'args' => [['type' => 'i32', 'value' => '67']]],
             text: 'uninitialized element',
             line: 1698,
@@ -4750,7 +4408,6 @@ final class TableInitTest extends SpecTestsuiteBase
     public function testAssertTrap441(): void
     {
         $this->runAssertTrapCommand(
-            module: null,
             action: ['type' => 'invoke', 'field' => 'test', 'args' => [['type' => 'i32', 'value' => '68']]],
             text: 'uninitialized element',
             line: 1699,
@@ -4761,7 +4418,6 @@ final class TableInitTest extends SpecTestsuiteBase
     public function testAssertTrap442(): void
     {
         $this->runAssertTrapCommand(
-            module: null,
             action: ['type' => 'invoke', 'field' => 'test', 'args' => [['type' => 'i32', 'value' => '69']]],
             text: 'uninitialized element',
             line: 1700,
@@ -4772,7 +4428,6 @@ final class TableInitTest extends SpecTestsuiteBase
     public function testAssertTrap443(): void
     {
         $this->runAssertTrapCommand(
-            module: null,
             action: ['type' => 'invoke', 'field' => 'test', 'args' => [['type' => 'i32', 'value' => '70']]],
             text: 'uninitialized element',
             line: 1701,
@@ -4783,7 +4438,6 @@ final class TableInitTest extends SpecTestsuiteBase
     public function testAssertTrap444(): void
     {
         $this->runAssertTrapCommand(
-            module: null,
             action: ['type' => 'invoke', 'field' => 'test', 'args' => [['type' => 'i32', 'value' => '71']]],
             text: 'uninitialized element',
             line: 1702,
@@ -4794,7 +4448,6 @@ final class TableInitTest extends SpecTestsuiteBase
     public function testAssertTrap445(): void
     {
         $this->runAssertTrapCommand(
-            module: null,
             action: ['type' => 'invoke', 'field' => 'test', 'args' => [['type' => 'i32', 'value' => '72']]],
             text: 'uninitialized element',
             line: 1703,
@@ -4805,7 +4458,6 @@ final class TableInitTest extends SpecTestsuiteBase
     public function testAssertTrap446(): void
     {
         $this->runAssertTrapCommand(
-            module: null,
             action: ['type' => 'invoke', 'field' => 'test', 'args' => [['type' => 'i32', 'value' => '73']]],
             text: 'uninitialized element',
             line: 1704,
@@ -4816,7 +4468,6 @@ final class TableInitTest extends SpecTestsuiteBase
     public function testAssertTrap447(): void
     {
         $this->runAssertTrapCommand(
-            module: null,
             action: ['type' => 'invoke', 'field' => 'test', 'args' => [['type' => 'i32', 'value' => '74']]],
             text: 'uninitialized element',
             line: 1705,
@@ -4827,7 +4478,6 @@ final class TableInitTest extends SpecTestsuiteBase
     public function testAssertTrap448(): void
     {
         $this->runAssertTrapCommand(
-            module: null,
             action: ['type' => 'invoke', 'field' => 'test', 'args' => [['type' => 'i32', 'value' => '75']]],
             text: 'uninitialized element',
             line: 1706,
@@ -4838,7 +4488,6 @@ final class TableInitTest extends SpecTestsuiteBase
     public function testAssertTrap449(): void
     {
         $this->runAssertTrapCommand(
-            module: null,
             action: ['type' => 'invoke', 'field' => 'test', 'args' => [['type' => 'i32', 'value' => '76']]],
             text: 'uninitialized element',
             line: 1707,
@@ -4849,7 +4498,6 @@ final class TableInitTest extends SpecTestsuiteBase
     public function testAssertTrap450(): void
     {
         $this->runAssertTrapCommand(
-            module: null,
             action: ['type' => 'invoke', 'field' => 'test', 'args' => [['type' => 'i32', 'value' => '77']]],
             text: 'uninitialized element',
             line: 1708,
@@ -4860,7 +4508,6 @@ final class TableInitTest extends SpecTestsuiteBase
     public function testAssertTrap451(): void
     {
         $this->runAssertTrapCommand(
-            module: null,
             action: ['type' => 'invoke', 'field' => 'test', 'args' => [['type' => 'i32', 'value' => '78']]],
             text: 'uninitialized element',
             line: 1709,
@@ -4871,7 +4518,6 @@ final class TableInitTest extends SpecTestsuiteBase
     public function testAssertTrap452(): void
     {
         $this->runAssertTrapCommand(
-            module: null,
             action: ['type' => 'invoke', 'field' => 'test', 'args' => [['type' => 'i32', 'value' => '79']]],
             text: 'uninitialized element',
             line: 1710,
@@ -4882,7 +4528,6 @@ final class TableInitTest extends SpecTestsuiteBase
     public function testAssertTrap453(): void
     {
         $this->runAssertTrapCommand(
-            module: null,
             action: ['type' => 'invoke', 'field' => 'test', 'args' => [['type' => 'i32', 'value' => '80']]],
             text: 'uninitialized element',
             line: 1711,
@@ -4893,7 +4538,6 @@ final class TableInitTest extends SpecTestsuiteBase
     public function testAssertTrap454(): void
     {
         $this->runAssertTrapCommand(
-            module: null,
             action: ['type' => 'invoke', 'field' => 'test', 'args' => [['type' => 'i32', 'value' => '81']]],
             text: 'uninitialized element',
             line: 1712,
@@ -4904,7 +4548,6 @@ final class TableInitTest extends SpecTestsuiteBase
     public function testAssertTrap455(): void
     {
         $this->runAssertTrapCommand(
-            module: null,
             action: ['type' => 'invoke', 'field' => 'test', 'args' => [['type' => 'i32', 'value' => '82']]],
             text: 'uninitialized element',
             line: 1713,
@@ -4915,7 +4558,6 @@ final class TableInitTest extends SpecTestsuiteBase
     public function testAssertTrap456(): void
     {
         $this->runAssertTrapCommand(
-            module: null,
             action: ['type' => 'invoke', 'field' => 'test', 'args' => [['type' => 'i32', 'value' => '83']]],
             text: 'uninitialized element',
             line: 1714,
@@ -4926,7 +4568,6 @@ final class TableInitTest extends SpecTestsuiteBase
     public function testAssertTrap457(): void
     {
         $this->runAssertTrapCommand(
-            module: null,
             action: ['type' => 'invoke', 'field' => 'test', 'args' => [['type' => 'i32', 'value' => '84']]],
             text: 'uninitialized element',
             line: 1715,
@@ -4937,7 +4578,6 @@ final class TableInitTest extends SpecTestsuiteBase
     public function testAssertTrap458(): void
     {
         $this->runAssertTrapCommand(
-            module: null,
             action: ['type' => 'invoke', 'field' => 'test', 'args' => [['type' => 'i32', 'value' => '85']]],
             text: 'uninitialized element',
             line: 1716,
@@ -4948,7 +4588,6 @@ final class TableInitTest extends SpecTestsuiteBase
     public function testAssertTrap459(): void
     {
         $this->runAssertTrapCommand(
-            module: null,
             action: ['type' => 'invoke', 'field' => 'test', 'args' => [['type' => 'i32', 'value' => '86']]],
             text: 'uninitialized element',
             line: 1717,
@@ -4959,7 +4598,6 @@ final class TableInitTest extends SpecTestsuiteBase
     public function testAssertTrap460(): void
     {
         $this->runAssertTrapCommand(
-            module: null,
             action: ['type' => 'invoke', 'field' => 'test', 'args' => [['type' => 'i32', 'value' => '87']]],
             text: 'uninitialized element',
             line: 1718,
@@ -4970,7 +4608,6 @@ final class TableInitTest extends SpecTestsuiteBase
     public function testAssertTrap461(): void
     {
         $this->runAssertTrapCommand(
-            module: null,
             action: ['type' => 'invoke', 'field' => 'test', 'args' => [['type' => 'i32', 'value' => '88']]],
             text: 'uninitialized element',
             line: 1719,
@@ -4981,7 +4618,6 @@ final class TableInitTest extends SpecTestsuiteBase
     public function testAssertTrap462(): void
     {
         $this->runAssertTrapCommand(
-            module: null,
             action: ['type' => 'invoke', 'field' => 'test', 'args' => [['type' => 'i32', 'value' => '89']]],
             text: 'uninitialized element',
             line: 1720,
@@ -4992,7 +4628,6 @@ final class TableInitTest extends SpecTestsuiteBase
     public function testAssertTrap463(): void
     {
         $this->runAssertTrapCommand(
-            module: null,
             action: ['type' => 'invoke', 'field' => 'test', 'args' => [['type' => 'i32', 'value' => '90']]],
             text: 'uninitialized element',
             line: 1721,
@@ -5003,7 +4638,6 @@ final class TableInitTest extends SpecTestsuiteBase
     public function testAssertTrap464(): void
     {
         $this->runAssertTrapCommand(
-            module: null,
             action: ['type' => 'invoke', 'field' => 'test', 'args' => [['type' => 'i32', 'value' => '91']]],
             text: 'uninitialized element',
             line: 1722,
@@ -5014,7 +4648,6 @@ final class TableInitTest extends SpecTestsuiteBase
     public function testAssertTrap465(): void
     {
         $this->runAssertTrapCommand(
-            module: null,
             action: ['type' => 'invoke', 'field' => 'test', 'args' => [['type' => 'i32', 'value' => '92']]],
             text: 'uninitialized element',
             line: 1723,
@@ -5025,7 +4658,6 @@ final class TableInitTest extends SpecTestsuiteBase
     public function testAssertTrap466(): void
     {
         $this->runAssertTrapCommand(
-            module: null,
             action: ['type' => 'invoke', 'field' => 'test', 'args' => [['type' => 'i32', 'value' => '93']]],
             text: 'uninitialized element',
             line: 1724,
@@ -5036,7 +4668,6 @@ final class TableInitTest extends SpecTestsuiteBase
     public function testAssertTrap467(): void
     {
         $this->runAssertTrapCommand(
-            module: null,
             action: ['type' => 'invoke', 'field' => 'test', 'args' => [['type' => 'i32', 'value' => '94']]],
             text: 'uninitialized element',
             line: 1725,
@@ -5047,7 +4678,6 @@ final class TableInitTest extends SpecTestsuiteBase
     public function testAssertTrap468(): void
     {
         $this->runAssertTrapCommand(
-            module: null,
             action: ['type' => 'invoke', 'field' => 'test', 'args' => [['type' => 'i32', 'value' => '95']]],
             text: 'uninitialized element',
             line: 1726,
@@ -5058,7 +4688,6 @@ final class TableInitTest extends SpecTestsuiteBase
     public function testAssertTrap469(): void
     {
         $this->runAssertTrapCommand(
-            module: null,
             action: ['type' => 'invoke', 'field' => 'test', 'args' => [['type' => 'i32', 'value' => '96']]],
             text: 'uninitialized element',
             line: 1727,
@@ -5069,7 +4698,6 @@ final class TableInitTest extends SpecTestsuiteBase
     public function testAssertTrap470(): void
     {
         $this->runAssertTrapCommand(
-            module: null,
             action: ['type' => 'invoke', 'field' => 'test', 'args' => [['type' => 'i32', 'value' => '97']]],
             text: 'uninitialized element',
             line: 1728,
@@ -5080,7 +4708,6 @@ final class TableInitTest extends SpecTestsuiteBase
     public function testAssertTrap471(): void
     {
         $this->runAssertTrapCommand(
-            module: null,
             action: ['type' => 'invoke', 'field' => 'test', 'args' => [['type' => 'i32', 'value' => '98']]],
             text: 'uninitialized element',
             line: 1729,
@@ -5091,7 +4718,6 @@ final class TableInitTest extends SpecTestsuiteBase
     public function testAssertTrap472(): void
     {
         $this->runAssertTrapCommand(
-            module: null,
             action: ['type' => 'invoke', 'field' => 'test', 'args' => [['type' => 'i32', 'value' => '99']]],
             text: 'uninitialized element',
             line: 1730,
@@ -5102,7 +4728,6 @@ final class TableInitTest extends SpecTestsuiteBase
     public function testAssertTrap473(): void
     {
         $this->runAssertTrapCommand(
-            module: null,
             action: ['type' => 'invoke', 'field' => 'test', 'args' => [['type' => 'i32', 'value' => '100']]],
             text: 'uninitialized element',
             line: 1731,
@@ -5113,7 +4738,6 @@ final class TableInitTest extends SpecTestsuiteBase
     public function testAssertTrap474(): void
     {
         $this->runAssertTrapCommand(
-            module: null,
             action: ['type' => 'invoke', 'field' => 'test', 'args' => [['type' => 'i32', 'value' => '101']]],
             text: 'uninitialized element',
             line: 1732,
@@ -5124,7 +4748,6 @@ final class TableInitTest extends SpecTestsuiteBase
     public function testAssertTrap475(): void
     {
         $this->runAssertTrapCommand(
-            module: null,
             action: ['type' => 'invoke', 'field' => 'test', 'args' => [['type' => 'i32', 'value' => '102']]],
             text: 'uninitialized element',
             line: 1733,
@@ -5135,7 +4758,6 @@ final class TableInitTest extends SpecTestsuiteBase
     public function testAssertTrap476(): void
     {
         $this->runAssertTrapCommand(
-            module: null,
             action: ['type' => 'invoke', 'field' => 'test', 'args' => [['type' => 'i32', 'value' => '103']]],
             text: 'uninitialized element',
             line: 1734,
@@ -5146,7 +4768,6 @@ final class TableInitTest extends SpecTestsuiteBase
     public function testAssertTrap477(): void
     {
         $this->runAssertTrapCommand(
-            module: null,
             action: ['type' => 'invoke', 'field' => 'test', 'args' => [['type' => 'i32', 'value' => '104']]],
             text: 'uninitialized element',
             line: 1735,
@@ -5157,7 +4778,6 @@ final class TableInitTest extends SpecTestsuiteBase
     public function testAssertTrap478(): void
     {
         $this->runAssertTrapCommand(
-            module: null,
             action: ['type' => 'invoke', 'field' => 'test', 'args' => [['type' => 'i32', 'value' => '105']]],
             text: 'uninitialized element',
             line: 1736,
@@ -5168,7 +4788,6 @@ final class TableInitTest extends SpecTestsuiteBase
     public function testAssertTrap479(): void
     {
         $this->runAssertTrapCommand(
-            module: null,
             action: ['type' => 'invoke', 'field' => 'test', 'args' => [['type' => 'i32', 'value' => '106']]],
             text: 'uninitialized element',
             line: 1737,
@@ -5179,7 +4798,6 @@ final class TableInitTest extends SpecTestsuiteBase
     public function testAssertTrap480(): void
     {
         $this->runAssertTrapCommand(
-            module: null,
             action: ['type' => 'invoke', 'field' => 'test', 'args' => [['type' => 'i32', 'value' => '107']]],
             text: 'uninitialized element',
             line: 1738,
@@ -5190,7 +4808,6 @@ final class TableInitTest extends SpecTestsuiteBase
     public function testAssertTrap481(): void
     {
         $this->runAssertTrapCommand(
-            module: null,
             action: ['type' => 'invoke', 'field' => 'test', 'args' => [['type' => 'i32', 'value' => '108']]],
             text: 'uninitialized element',
             line: 1739,
@@ -5201,7 +4818,6 @@ final class TableInitTest extends SpecTestsuiteBase
     public function testAssertTrap482(): void
     {
         $this->runAssertTrapCommand(
-            module: null,
             action: ['type' => 'invoke', 'field' => 'test', 'args' => [['type' => 'i32', 'value' => '109']]],
             text: 'uninitialized element',
             line: 1740,
@@ -5212,7 +4828,6 @@ final class TableInitTest extends SpecTestsuiteBase
     public function testAssertTrap483(): void
     {
         $this->runAssertTrapCommand(
-            module: null,
             action: ['type' => 'invoke', 'field' => 'test', 'args' => [['type' => 'i32', 'value' => '110']]],
             text: 'uninitialized element',
             line: 1741,
@@ -5223,7 +4838,6 @@ final class TableInitTest extends SpecTestsuiteBase
     public function testAssertTrap484(): void
     {
         $this->runAssertTrapCommand(
-            module: null,
             action: ['type' => 'invoke', 'field' => 'test', 'args' => [['type' => 'i32', 'value' => '111']]],
             text: 'uninitialized element',
             line: 1742,
@@ -5234,7 +4848,6 @@ final class TableInitTest extends SpecTestsuiteBase
     public function testAssertTrap485(): void
     {
         $this->runAssertTrapCommand(
-            module: null,
             action: ['type' => 'invoke', 'field' => 'test', 'args' => [['type' => 'i32', 'value' => '112']]],
             text: 'uninitialized element',
             line: 1743,
@@ -5245,7 +4858,6 @@ final class TableInitTest extends SpecTestsuiteBase
     public function testAssertTrap486(): void
     {
         $this->runAssertTrapCommand(
-            module: null,
             action: ['type' => 'invoke', 'field' => 'test', 'args' => [['type' => 'i32', 'value' => '113']]],
             text: 'uninitialized element',
             line: 1744,
@@ -5256,7 +4868,6 @@ final class TableInitTest extends SpecTestsuiteBase
     public function testAssertTrap487(): void
     {
         $this->runAssertTrapCommand(
-            module: null,
             action: ['type' => 'invoke', 'field' => 'test', 'args' => [['type' => 'i32', 'value' => '114']]],
             text: 'uninitialized element',
             line: 1745,
@@ -5267,7 +4878,6 @@ final class TableInitTest extends SpecTestsuiteBase
     public function testAssertTrap488(): void
     {
         $this->runAssertTrapCommand(
-            module: null,
             action: ['type' => 'invoke', 'field' => 'test', 'args' => [['type' => 'i32', 'value' => '115']]],
             text: 'uninitialized element',
             line: 1746,
@@ -5278,7 +4888,6 @@ final class TableInitTest extends SpecTestsuiteBase
     public function testAssertTrap489(): void
     {
         $this->runAssertTrapCommand(
-            module: null,
             action: ['type' => 'invoke', 'field' => 'test', 'args' => [['type' => 'i32', 'value' => '116']]],
             text: 'uninitialized element',
             line: 1747,
@@ -5289,7 +4898,6 @@ final class TableInitTest extends SpecTestsuiteBase
     public function testAssertTrap490(): void
     {
         $this->runAssertTrapCommand(
-            module: null,
             action: ['type' => 'invoke', 'field' => 'test', 'args' => [['type' => 'i32', 'value' => '117']]],
             text: 'uninitialized element',
             line: 1748,
@@ -5300,7 +4908,6 @@ final class TableInitTest extends SpecTestsuiteBase
     public function testAssertTrap491(): void
     {
         $this->runAssertTrapCommand(
-            module: null,
             action: ['type' => 'invoke', 'field' => 'test', 'args' => [['type' => 'i32', 'value' => '118']]],
             text: 'uninitialized element',
             line: 1749,
@@ -5311,7 +4918,6 @@ final class TableInitTest extends SpecTestsuiteBase
     public function testAssertTrap492(): void
     {
         $this->runAssertTrapCommand(
-            module: null,
             action: ['type' => 'invoke', 'field' => 'test', 'args' => [['type' => 'i32', 'value' => '119']]],
             text: 'uninitialized element',
             line: 1750,
@@ -5322,7 +4928,6 @@ final class TableInitTest extends SpecTestsuiteBase
     public function testAssertTrap493(): void
     {
         $this->runAssertTrapCommand(
-            module: null,
             action: ['type' => 'invoke', 'field' => 'test', 'args' => [['type' => 'i32', 'value' => '120']]],
             text: 'uninitialized element',
             line: 1751,
@@ -5333,7 +4938,6 @@ final class TableInitTest extends SpecTestsuiteBase
     public function testAssertTrap494(): void
     {
         $this->runAssertTrapCommand(
-            module: null,
             action: ['type' => 'invoke', 'field' => 'test', 'args' => [['type' => 'i32', 'value' => '121']]],
             text: 'uninitialized element',
             line: 1752,
@@ -5344,7 +4948,6 @@ final class TableInitTest extends SpecTestsuiteBase
     public function testAssertTrap495(): void
     {
         $this->runAssertTrapCommand(
-            module: null,
             action: ['type' => 'invoke', 'field' => 'test', 'args' => [['type' => 'i32', 'value' => '122']]],
             text: 'uninitialized element',
             line: 1753,
@@ -5355,7 +4958,6 @@ final class TableInitTest extends SpecTestsuiteBase
     public function testAssertTrap496(): void
     {
         $this->runAssertTrapCommand(
-            module: null,
             action: ['type' => 'invoke', 'field' => 'test', 'args' => [['type' => 'i32', 'value' => '123']]],
             text: 'uninitialized element',
             line: 1754,
@@ -5366,7 +4968,6 @@ final class TableInitTest extends SpecTestsuiteBase
     public function testAssertTrap497(): void
     {
         $this->runAssertTrapCommand(
-            module: null,
             action: ['type' => 'invoke', 'field' => 'test', 'args' => [['type' => 'i32', 'value' => '124']]],
             text: 'uninitialized element',
             line: 1755,
@@ -5377,7 +4978,6 @@ final class TableInitTest extends SpecTestsuiteBase
     public function testAssertTrap498(): void
     {
         $this->runAssertTrapCommand(
-            module: null,
             action: ['type' => 'invoke', 'field' => 'test', 'args' => [['type' => 'i32', 'value' => '125']]],
             text: 'uninitialized element',
             line: 1756,
@@ -5388,7 +4988,6 @@ final class TableInitTest extends SpecTestsuiteBase
     public function testAssertTrap499(): void
     {
         $this->runAssertTrapCommand(
-            module: null,
             action: ['type' => 'invoke', 'field' => 'test', 'args' => [['type' => 'i32', 'value' => '126']]],
             text: 'uninitialized element',
             line: 1757,
@@ -5399,7 +4998,6 @@ final class TableInitTest extends SpecTestsuiteBase
     public function testAssertTrap500(): void
     {
         $this->runAssertTrapCommand(
-            module: null,
             action: ['type' => 'invoke', 'field' => 'test', 'args' => [['type' => 'i32', 'value' => '127']]],
             text: 'uninitialized element',
             line: 1758,
@@ -5410,7 +5008,6 @@ final class TableInitTest extends SpecTestsuiteBase
     public function testAssertTrap501(): void
     {
         $this->runAssertTrapCommand(
-            module: null,
             action: ['type' => 'invoke', 'field' => 'test', 'args' => [['type' => 'i32', 'value' => '128']]],
             text: 'uninitialized element',
             line: 1759,
@@ -5421,7 +5018,6 @@ final class TableInitTest extends SpecTestsuiteBase
     public function testAssertTrap502(): void
     {
         $this->runAssertTrapCommand(
-            module: null,
             action: ['type' => 'invoke', 'field' => 'test', 'args' => [['type' => 'i32', 'value' => '129']]],
             text: 'uninitialized element',
             line: 1760,
@@ -5432,7 +5028,6 @@ final class TableInitTest extends SpecTestsuiteBase
     public function testAssertTrap503(): void
     {
         $this->runAssertTrapCommand(
-            module: null,
             action: ['type' => 'invoke', 'field' => 'test', 'args' => [['type' => 'i32', 'value' => '130']]],
             text: 'uninitialized element',
             line: 1761,
@@ -5443,7 +5038,6 @@ final class TableInitTest extends SpecTestsuiteBase
     public function testAssertTrap504(): void
     {
         $this->runAssertTrapCommand(
-            module: null,
             action: ['type' => 'invoke', 'field' => 'test', 'args' => [['type' => 'i32', 'value' => '131']]],
             text: 'uninitialized element',
             line: 1762,
@@ -5454,7 +5048,6 @@ final class TableInitTest extends SpecTestsuiteBase
     public function testAssertTrap505(): void
     {
         $this->runAssertTrapCommand(
-            module: null,
             action: ['type' => 'invoke', 'field' => 'test', 'args' => [['type' => 'i32', 'value' => '132']]],
             text: 'uninitialized element',
             line: 1763,
@@ -5465,7 +5058,6 @@ final class TableInitTest extends SpecTestsuiteBase
     public function testAssertTrap506(): void
     {
         $this->runAssertTrapCommand(
-            module: null,
             action: ['type' => 'invoke', 'field' => 'test', 'args' => [['type' => 'i32', 'value' => '133']]],
             text: 'uninitialized element',
             line: 1764,
@@ -5476,7 +5068,6 @@ final class TableInitTest extends SpecTestsuiteBase
     public function testAssertTrap507(): void
     {
         $this->runAssertTrapCommand(
-            module: null,
             action: ['type' => 'invoke', 'field' => 'test', 'args' => [['type' => 'i32', 'value' => '134']]],
             text: 'uninitialized element',
             line: 1765,
@@ -5487,7 +5078,6 @@ final class TableInitTest extends SpecTestsuiteBase
     public function testAssertTrap508(): void
     {
         $this->runAssertTrapCommand(
-            module: null,
             action: ['type' => 'invoke', 'field' => 'test', 'args' => [['type' => 'i32', 'value' => '135']]],
             text: 'uninitialized element',
             line: 1766,
@@ -5498,7 +5088,6 @@ final class TableInitTest extends SpecTestsuiteBase
     public function testAssertTrap509(): void
     {
         $this->runAssertTrapCommand(
-            module: null,
             action: ['type' => 'invoke', 'field' => 'test', 'args' => [['type' => 'i32', 'value' => '136']]],
             text: 'uninitialized element',
             line: 1767,
@@ -5509,7 +5098,6 @@ final class TableInitTest extends SpecTestsuiteBase
     public function testAssertTrap510(): void
     {
         $this->runAssertTrapCommand(
-            module: null,
             action: ['type' => 'invoke', 'field' => 'test', 'args' => [['type' => 'i32', 'value' => '137']]],
             text: 'uninitialized element',
             line: 1768,
@@ -5520,7 +5108,6 @@ final class TableInitTest extends SpecTestsuiteBase
     public function testAssertTrap511(): void
     {
         $this->runAssertTrapCommand(
-            module: null,
             action: ['type' => 'invoke', 'field' => 'test', 'args' => [['type' => 'i32', 'value' => '138']]],
             text: 'uninitialized element',
             line: 1769,
@@ -5531,7 +5118,6 @@ final class TableInitTest extends SpecTestsuiteBase
     public function testAssertTrap512(): void
     {
         $this->runAssertTrapCommand(
-            module: null,
             action: ['type' => 'invoke', 'field' => 'test', 'args' => [['type' => 'i32', 'value' => '139']]],
             text: 'uninitialized element',
             line: 1770,
@@ -5542,7 +5128,6 @@ final class TableInitTest extends SpecTestsuiteBase
     public function testAssertTrap513(): void
     {
         $this->runAssertTrapCommand(
-            module: null,
             action: ['type' => 'invoke', 'field' => 'test', 'args' => [['type' => 'i32', 'value' => '140']]],
             text: 'uninitialized element',
             line: 1771,
@@ -5553,7 +5138,6 @@ final class TableInitTest extends SpecTestsuiteBase
     public function testAssertTrap514(): void
     {
         $this->runAssertTrapCommand(
-            module: null,
             action: ['type' => 'invoke', 'field' => 'test', 'args' => [['type' => 'i32', 'value' => '141']]],
             text: 'uninitialized element',
             line: 1772,
@@ -5564,7 +5148,6 @@ final class TableInitTest extends SpecTestsuiteBase
     public function testAssertTrap515(): void
     {
         $this->runAssertTrapCommand(
-            module: null,
             action: ['type' => 'invoke', 'field' => 'test', 'args' => [['type' => 'i32', 'value' => '142']]],
             text: 'uninitialized element',
             line: 1773,
@@ -5575,7 +5158,6 @@ final class TableInitTest extends SpecTestsuiteBase
     public function testAssertTrap516(): void
     {
         $this->runAssertTrapCommand(
-            module: null,
             action: ['type' => 'invoke', 'field' => 'test', 'args' => [['type' => 'i32', 'value' => '143']]],
             text: 'uninitialized element',
             line: 1774,
@@ -5586,7 +5168,6 @@ final class TableInitTest extends SpecTestsuiteBase
     public function testAssertTrap517(): void
     {
         $this->runAssertTrapCommand(
-            module: null,
             action: ['type' => 'invoke', 'field' => 'test', 'args' => [['type' => 'i32', 'value' => '144']]],
             text: 'uninitialized element',
             line: 1775,
@@ -5597,7 +5178,6 @@ final class TableInitTest extends SpecTestsuiteBase
     public function testAssertTrap518(): void
     {
         $this->runAssertTrapCommand(
-            module: null,
             action: ['type' => 'invoke', 'field' => 'test', 'args' => [['type' => 'i32', 'value' => '145']]],
             text: 'uninitialized element',
             line: 1776,
@@ -5608,7 +5188,6 @@ final class TableInitTest extends SpecTestsuiteBase
     public function testAssertTrap519(): void
     {
         $this->runAssertTrapCommand(
-            module: null,
             action: ['type' => 'invoke', 'field' => 'test', 'args' => [['type' => 'i32', 'value' => '146']]],
             text: 'uninitialized element',
             line: 1777,
@@ -5619,7 +5198,6 @@ final class TableInitTest extends SpecTestsuiteBase
     public function testAssertTrap520(): void
     {
         $this->runAssertTrapCommand(
-            module: null,
             action: ['type' => 'invoke', 'field' => 'test', 'args' => [['type' => 'i32', 'value' => '147']]],
             text: 'uninitialized element',
             line: 1778,
@@ -5630,7 +5208,6 @@ final class TableInitTest extends SpecTestsuiteBase
     public function testAssertTrap521(): void
     {
         $this->runAssertTrapCommand(
-            module: null,
             action: ['type' => 'invoke', 'field' => 'test', 'args' => [['type' => 'i32', 'value' => '148']]],
             text: 'uninitialized element',
             line: 1779,
@@ -5641,7 +5218,6 @@ final class TableInitTest extends SpecTestsuiteBase
     public function testAssertTrap522(): void
     {
         $this->runAssertTrapCommand(
-            module: null,
             action: ['type' => 'invoke', 'field' => 'test', 'args' => [['type' => 'i32', 'value' => '149']]],
             text: 'uninitialized element',
             line: 1780,
@@ -5652,7 +5228,6 @@ final class TableInitTest extends SpecTestsuiteBase
     public function testAssertTrap523(): void
     {
         $this->runAssertTrapCommand(
-            module: null,
             action: ['type' => 'invoke', 'field' => 'test', 'args' => [['type' => 'i32', 'value' => '150']]],
             text: 'uninitialized element',
             line: 1781,
@@ -5663,7 +5238,6 @@ final class TableInitTest extends SpecTestsuiteBase
     public function testAssertTrap524(): void
     {
         $this->runAssertTrapCommand(
-            module: null,
             action: ['type' => 'invoke', 'field' => 'test', 'args' => [['type' => 'i32', 'value' => '151']]],
             text: 'uninitialized element',
             line: 1782,
@@ -5674,7 +5248,6 @@ final class TableInitTest extends SpecTestsuiteBase
     public function testAssertTrap525(): void
     {
         $this->runAssertTrapCommand(
-            module: null,
             action: ['type' => 'invoke', 'field' => 'test', 'args' => [['type' => 'i32', 'value' => '152']]],
             text: 'uninitialized element',
             line: 1783,
@@ -5685,7 +5258,6 @@ final class TableInitTest extends SpecTestsuiteBase
     public function testAssertTrap526(): void
     {
         $this->runAssertTrapCommand(
-            module: null,
             action: ['type' => 'invoke', 'field' => 'test', 'args' => [['type' => 'i32', 'value' => '153']]],
             text: 'uninitialized element',
             line: 1784,
@@ -5696,7 +5268,6 @@ final class TableInitTest extends SpecTestsuiteBase
     public function testAssertTrap527(): void
     {
         $this->runAssertTrapCommand(
-            module: null,
             action: ['type' => 'invoke', 'field' => 'test', 'args' => [['type' => 'i32', 'value' => '154']]],
             text: 'uninitialized element',
             line: 1785,
@@ -5707,7 +5278,6 @@ final class TableInitTest extends SpecTestsuiteBase
     public function testAssertTrap528(): void
     {
         $this->runAssertTrapCommand(
-            module: null,
             action: ['type' => 'invoke', 'field' => 'test', 'args' => [['type' => 'i32', 'value' => '155']]],
             text: 'uninitialized element',
             line: 1786,
@@ -5718,7 +5288,6 @@ final class TableInitTest extends SpecTestsuiteBase
     public function testAssertTrap529(): void
     {
         $this->runAssertTrapCommand(
-            module: null,
             action: ['type' => 'invoke', 'field' => 'test', 'args' => [['type' => 'i32', 'value' => '156']]],
             text: 'uninitialized element',
             line: 1787,
@@ -5729,7 +5298,6 @@ final class TableInitTest extends SpecTestsuiteBase
     public function testAssertTrap530(): void
     {
         $this->runAssertTrapCommand(
-            module: null,
             action: ['type' => 'invoke', 'field' => 'test', 'args' => [['type' => 'i32', 'value' => '157']]],
             text: 'uninitialized element',
             line: 1788,
@@ -5740,7 +5308,6 @@ final class TableInitTest extends SpecTestsuiteBase
     public function testAssertTrap531(): void
     {
         $this->runAssertTrapCommand(
-            module: null,
             action: ['type' => 'invoke', 'field' => 'test', 'args' => [['type' => 'i32', 'value' => '158']]],
             text: 'uninitialized element',
             line: 1789,
@@ -5751,7 +5318,6 @@ final class TableInitTest extends SpecTestsuiteBase
     public function testAssertTrap532(): void
     {
         $this->runAssertTrapCommand(
-            module: null,
             action: ['type' => 'invoke', 'field' => 'test', 'args' => [['type' => 'i32', 'value' => '159']]],
             text: 'uninitialized element',
             line: 1790,
@@ -5772,7 +5338,6 @@ final class TableInitTest extends SpecTestsuiteBase
     public function testAssertTrap534(): void
     {
         $this->runAssertTrapCommand(
-            module: null,
             action: ['type' => 'invoke', 'field' => 'run', 'args' => [['type' => 'i32', 'value' => '97'], ['type' => 'i32', 'value' => '31']]],
             text: 'out of bounds table access',
             line: 1820,
@@ -5783,7 +5348,6 @@ final class TableInitTest extends SpecTestsuiteBase
     public function testAssertTrap535(): void
     {
         $this->runAssertTrapCommand(
-            module: null,
             action: ['type' => 'invoke', 'field' => 'test', 'args' => [['type' => 'i32', 'value' => '0']]],
             text: 'uninitialized element',
             line: 1821,
@@ -5794,7 +5358,6 @@ final class TableInitTest extends SpecTestsuiteBase
     public function testAssertTrap536(): void
     {
         $this->runAssertTrapCommand(
-            module: null,
             action: ['type' => 'invoke', 'field' => 'test', 'args' => [['type' => 'i32', 'value' => '1']]],
             text: 'uninitialized element',
             line: 1822,
@@ -5805,7 +5368,6 @@ final class TableInitTest extends SpecTestsuiteBase
     public function testAssertTrap537(): void
     {
         $this->runAssertTrapCommand(
-            module: null,
             action: ['type' => 'invoke', 'field' => 'test', 'args' => [['type' => 'i32', 'value' => '2']]],
             text: 'uninitialized element',
             line: 1823,
@@ -5816,7 +5378,6 @@ final class TableInitTest extends SpecTestsuiteBase
     public function testAssertTrap538(): void
     {
         $this->runAssertTrapCommand(
-            module: null,
             action: ['type' => 'invoke', 'field' => 'test', 'args' => [['type' => 'i32', 'value' => '3']]],
             text: 'uninitialized element',
             line: 1824,
@@ -5827,7 +5388,6 @@ final class TableInitTest extends SpecTestsuiteBase
     public function testAssertTrap539(): void
     {
         $this->runAssertTrapCommand(
-            module: null,
             action: ['type' => 'invoke', 'field' => 'test', 'args' => [['type' => 'i32', 'value' => '4']]],
             text: 'uninitialized element',
             line: 1825,
@@ -5838,7 +5398,6 @@ final class TableInitTest extends SpecTestsuiteBase
     public function testAssertTrap540(): void
     {
         $this->runAssertTrapCommand(
-            module: null,
             action: ['type' => 'invoke', 'field' => 'test', 'args' => [['type' => 'i32', 'value' => '5']]],
             text: 'uninitialized element',
             line: 1826,
@@ -5849,7 +5408,6 @@ final class TableInitTest extends SpecTestsuiteBase
     public function testAssertTrap541(): void
     {
         $this->runAssertTrapCommand(
-            module: null,
             action: ['type' => 'invoke', 'field' => 'test', 'args' => [['type' => 'i32', 'value' => '6']]],
             text: 'uninitialized element',
             line: 1827,
@@ -5860,7 +5418,6 @@ final class TableInitTest extends SpecTestsuiteBase
     public function testAssertTrap542(): void
     {
         $this->runAssertTrapCommand(
-            module: null,
             action: ['type' => 'invoke', 'field' => 'test', 'args' => [['type' => 'i32', 'value' => '7']]],
             text: 'uninitialized element',
             line: 1828,
@@ -5871,7 +5428,6 @@ final class TableInitTest extends SpecTestsuiteBase
     public function testAssertTrap543(): void
     {
         $this->runAssertTrapCommand(
-            module: null,
             action: ['type' => 'invoke', 'field' => 'test', 'args' => [['type' => 'i32', 'value' => '8']]],
             text: 'uninitialized element',
             line: 1829,
@@ -5882,7 +5438,6 @@ final class TableInitTest extends SpecTestsuiteBase
     public function testAssertTrap544(): void
     {
         $this->runAssertTrapCommand(
-            module: null,
             action: ['type' => 'invoke', 'field' => 'test', 'args' => [['type' => 'i32', 'value' => '9']]],
             text: 'uninitialized element',
             line: 1830,
@@ -5893,7 +5448,6 @@ final class TableInitTest extends SpecTestsuiteBase
     public function testAssertTrap545(): void
     {
         $this->runAssertTrapCommand(
-            module: null,
             action: ['type' => 'invoke', 'field' => 'test', 'args' => [['type' => 'i32', 'value' => '10']]],
             text: 'uninitialized element',
             line: 1831,
@@ -5904,7 +5458,6 @@ final class TableInitTest extends SpecTestsuiteBase
     public function testAssertTrap546(): void
     {
         $this->runAssertTrapCommand(
-            module: null,
             action: ['type' => 'invoke', 'field' => 'test', 'args' => [['type' => 'i32', 'value' => '11']]],
             text: 'uninitialized element',
             line: 1832,
@@ -5915,7 +5468,6 @@ final class TableInitTest extends SpecTestsuiteBase
     public function testAssertTrap547(): void
     {
         $this->runAssertTrapCommand(
-            module: null,
             action: ['type' => 'invoke', 'field' => 'test', 'args' => [['type' => 'i32', 'value' => '12']]],
             text: 'uninitialized element',
             line: 1833,
@@ -5926,7 +5478,6 @@ final class TableInitTest extends SpecTestsuiteBase
     public function testAssertTrap548(): void
     {
         $this->runAssertTrapCommand(
-            module: null,
             action: ['type' => 'invoke', 'field' => 'test', 'args' => [['type' => 'i32', 'value' => '13']]],
             text: 'uninitialized element',
             line: 1834,
@@ -5937,7 +5488,6 @@ final class TableInitTest extends SpecTestsuiteBase
     public function testAssertTrap549(): void
     {
         $this->runAssertTrapCommand(
-            module: null,
             action: ['type' => 'invoke', 'field' => 'test', 'args' => [['type' => 'i32', 'value' => '14']]],
             text: 'uninitialized element',
             line: 1835,
@@ -5948,7 +5498,6 @@ final class TableInitTest extends SpecTestsuiteBase
     public function testAssertTrap550(): void
     {
         $this->runAssertTrapCommand(
-            module: null,
             action: ['type' => 'invoke', 'field' => 'test', 'args' => [['type' => 'i32', 'value' => '15']]],
             text: 'uninitialized element',
             line: 1836,
@@ -5959,7 +5508,6 @@ final class TableInitTest extends SpecTestsuiteBase
     public function testAssertTrap551(): void
     {
         $this->runAssertTrapCommand(
-            module: null,
             action: ['type' => 'invoke', 'field' => 'test', 'args' => [['type' => 'i32', 'value' => '16']]],
             text: 'uninitialized element',
             line: 1837,
@@ -5970,7 +5518,6 @@ final class TableInitTest extends SpecTestsuiteBase
     public function testAssertTrap552(): void
     {
         $this->runAssertTrapCommand(
-            module: null,
             action: ['type' => 'invoke', 'field' => 'test', 'args' => [['type' => 'i32', 'value' => '17']]],
             text: 'uninitialized element',
             line: 1838,
@@ -5981,7 +5528,6 @@ final class TableInitTest extends SpecTestsuiteBase
     public function testAssertTrap553(): void
     {
         $this->runAssertTrapCommand(
-            module: null,
             action: ['type' => 'invoke', 'field' => 'test', 'args' => [['type' => 'i32', 'value' => '18']]],
             text: 'uninitialized element',
             line: 1839,
@@ -5992,7 +5538,6 @@ final class TableInitTest extends SpecTestsuiteBase
     public function testAssertTrap554(): void
     {
         $this->runAssertTrapCommand(
-            module: null,
             action: ['type' => 'invoke', 'field' => 'test', 'args' => [['type' => 'i32', 'value' => '19']]],
             text: 'uninitialized element',
             line: 1840,
@@ -6003,7 +5548,6 @@ final class TableInitTest extends SpecTestsuiteBase
     public function testAssertTrap555(): void
     {
         $this->runAssertTrapCommand(
-            module: null,
             action: ['type' => 'invoke', 'field' => 'test', 'args' => [['type' => 'i32', 'value' => '20']]],
             text: 'uninitialized element',
             line: 1841,
@@ -6014,7 +5558,6 @@ final class TableInitTest extends SpecTestsuiteBase
     public function testAssertTrap556(): void
     {
         $this->runAssertTrapCommand(
-            module: null,
             action: ['type' => 'invoke', 'field' => 'test', 'args' => [['type' => 'i32', 'value' => '21']]],
             text: 'uninitialized element',
             line: 1842,
@@ -6025,7 +5568,6 @@ final class TableInitTest extends SpecTestsuiteBase
     public function testAssertTrap557(): void
     {
         $this->runAssertTrapCommand(
-            module: null,
             action: ['type' => 'invoke', 'field' => 'test', 'args' => [['type' => 'i32', 'value' => '22']]],
             text: 'uninitialized element',
             line: 1843,
@@ -6036,7 +5578,6 @@ final class TableInitTest extends SpecTestsuiteBase
     public function testAssertTrap558(): void
     {
         $this->runAssertTrapCommand(
-            module: null,
             action: ['type' => 'invoke', 'field' => 'test', 'args' => [['type' => 'i32', 'value' => '23']]],
             text: 'uninitialized element',
             line: 1844,
@@ -6047,7 +5588,6 @@ final class TableInitTest extends SpecTestsuiteBase
     public function testAssertTrap559(): void
     {
         $this->runAssertTrapCommand(
-            module: null,
             action: ['type' => 'invoke', 'field' => 'test', 'args' => [['type' => 'i32', 'value' => '24']]],
             text: 'uninitialized element',
             line: 1845,
@@ -6058,7 +5598,6 @@ final class TableInitTest extends SpecTestsuiteBase
     public function testAssertTrap560(): void
     {
         $this->runAssertTrapCommand(
-            module: null,
             action: ['type' => 'invoke', 'field' => 'test', 'args' => [['type' => 'i32', 'value' => '25']]],
             text: 'uninitialized element',
             line: 1846,
@@ -6069,7 +5608,6 @@ final class TableInitTest extends SpecTestsuiteBase
     public function testAssertTrap561(): void
     {
         $this->runAssertTrapCommand(
-            module: null,
             action: ['type' => 'invoke', 'field' => 'test', 'args' => [['type' => 'i32', 'value' => '26']]],
             text: 'uninitialized element',
             line: 1847,
@@ -6080,7 +5618,6 @@ final class TableInitTest extends SpecTestsuiteBase
     public function testAssertTrap562(): void
     {
         $this->runAssertTrapCommand(
-            module: null,
             action: ['type' => 'invoke', 'field' => 'test', 'args' => [['type' => 'i32', 'value' => '27']]],
             text: 'uninitialized element',
             line: 1848,
@@ -6091,7 +5628,6 @@ final class TableInitTest extends SpecTestsuiteBase
     public function testAssertTrap563(): void
     {
         $this->runAssertTrapCommand(
-            module: null,
             action: ['type' => 'invoke', 'field' => 'test', 'args' => [['type' => 'i32', 'value' => '28']]],
             text: 'uninitialized element',
             line: 1849,
@@ -6102,7 +5638,6 @@ final class TableInitTest extends SpecTestsuiteBase
     public function testAssertTrap564(): void
     {
         $this->runAssertTrapCommand(
-            module: null,
             action: ['type' => 'invoke', 'field' => 'test', 'args' => [['type' => 'i32', 'value' => '29']]],
             text: 'uninitialized element',
             line: 1850,
@@ -6113,7 +5648,6 @@ final class TableInitTest extends SpecTestsuiteBase
     public function testAssertTrap565(): void
     {
         $this->runAssertTrapCommand(
-            module: null,
             action: ['type' => 'invoke', 'field' => 'test', 'args' => [['type' => 'i32', 'value' => '30']]],
             text: 'uninitialized element',
             line: 1851,
@@ -6124,7 +5658,6 @@ final class TableInitTest extends SpecTestsuiteBase
     public function testAssertTrap566(): void
     {
         $this->runAssertTrapCommand(
-            module: null,
             action: ['type' => 'invoke', 'field' => 'test', 'args' => [['type' => 'i32', 'value' => '31']]],
             text: 'uninitialized element',
             line: 1852,
@@ -6135,7 +5668,6 @@ final class TableInitTest extends SpecTestsuiteBase
     public function testAssertTrap567(): void
     {
         $this->runAssertTrapCommand(
-            module: null,
             action: ['type' => 'invoke', 'field' => 'test', 'args' => [['type' => 'i32', 'value' => '32']]],
             text: 'uninitialized element',
             line: 1853,
@@ -6146,7 +5678,6 @@ final class TableInitTest extends SpecTestsuiteBase
     public function testAssertTrap568(): void
     {
         $this->runAssertTrapCommand(
-            module: null,
             action: ['type' => 'invoke', 'field' => 'test', 'args' => [['type' => 'i32', 'value' => '33']]],
             text: 'uninitialized element',
             line: 1854,
@@ -6157,7 +5688,6 @@ final class TableInitTest extends SpecTestsuiteBase
     public function testAssertTrap569(): void
     {
         $this->runAssertTrapCommand(
-            module: null,
             action: ['type' => 'invoke', 'field' => 'test', 'args' => [['type' => 'i32', 'value' => '34']]],
             text: 'uninitialized element',
             line: 1855,
@@ -6168,7 +5698,6 @@ final class TableInitTest extends SpecTestsuiteBase
     public function testAssertTrap570(): void
     {
         $this->runAssertTrapCommand(
-            module: null,
             action: ['type' => 'invoke', 'field' => 'test', 'args' => [['type' => 'i32', 'value' => '35']]],
             text: 'uninitialized element',
             line: 1856,
@@ -6179,7 +5708,6 @@ final class TableInitTest extends SpecTestsuiteBase
     public function testAssertTrap571(): void
     {
         $this->runAssertTrapCommand(
-            module: null,
             action: ['type' => 'invoke', 'field' => 'test', 'args' => [['type' => 'i32', 'value' => '36']]],
             text: 'uninitialized element',
             line: 1857,
@@ -6190,7 +5718,6 @@ final class TableInitTest extends SpecTestsuiteBase
     public function testAssertTrap572(): void
     {
         $this->runAssertTrapCommand(
-            module: null,
             action: ['type' => 'invoke', 'field' => 'test', 'args' => [['type' => 'i32', 'value' => '37']]],
             text: 'uninitialized element',
             line: 1858,
@@ -6201,7 +5728,6 @@ final class TableInitTest extends SpecTestsuiteBase
     public function testAssertTrap573(): void
     {
         $this->runAssertTrapCommand(
-            module: null,
             action: ['type' => 'invoke', 'field' => 'test', 'args' => [['type' => 'i32', 'value' => '38']]],
             text: 'uninitialized element',
             line: 1859,
@@ -6212,7 +5738,6 @@ final class TableInitTest extends SpecTestsuiteBase
     public function testAssertTrap574(): void
     {
         $this->runAssertTrapCommand(
-            module: null,
             action: ['type' => 'invoke', 'field' => 'test', 'args' => [['type' => 'i32', 'value' => '39']]],
             text: 'uninitialized element',
             line: 1860,
@@ -6223,7 +5748,6 @@ final class TableInitTest extends SpecTestsuiteBase
     public function testAssertTrap575(): void
     {
         $this->runAssertTrapCommand(
-            module: null,
             action: ['type' => 'invoke', 'field' => 'test', 'args' => [['type' => 'i32', 'value' => '40']]],
             text: 'uninitialized element',
             line: 1861,
@@ -6234,7 +5758,6 @@ final class TableInitTest extends SpecTestsuiteBase
     public function testAssertTrap576(): void
     {
         $this->runAssertTrapCommand(
-            module: null,
             action: ['type' => 'invoke', 'field' => 'test', 'args' => [['type' => 'i32', 'value' => '41']]],
             text: 'uninitialized element',
             line: 1862,
@@ -6245,7 +5768,6 @@ final class TableInitTest extends SpecTestsuiteBase
     public function testAssertTrap577(): void
     {
         $this->runAssertTrapCommand(
-            module: null,
             action: ['type' => 'invoke', 'field' => 'test', 'args' => [['type' => 'i32', 'value' => '42']]],
             text: 'uninitialized element',
             line: 1863,
@@ -6256,7 +5778,6 @@ final class TableInitTest extends SpecTestsuiteBase
     public function testAssertTrap578(): void
     {
         $this->runAssertTrapCommand(
-            module: null,
             action: ['type' => 'invoke', 'field' => 'test', 'args' => [['type' => 'i32', 'value' => '43']]],
             text: 'uninitialized element',
             line: 1864,
@@ -6267,7 +5788,6 @@ final class TableInitTest extends SpecTestsuiteBase
     public function testAssertTrap579(): void
     {
         $this->runAssertTrapCommand(
-            module: null,
             action: ['type' => 'invoke', 'field' => 'test', 'args' => [['type' => 'i32', 'value' => '44']]],
             text: 'uninitialized element',
             line: 1865,
@@ -6278,7 +5798,6 @@ final class TableInitTest extends SpecTestsuiteBase
     public function testAssertTrap580(): void
     {
         $this->runAssertTrapCommand(
-            module: null,
             action: ['type' => 'invoke', 'field' => 'test', 'args' => [['type' => 'i32', 'value' => '45']]],
             text: 'uninitialized element',
             line: 1866,
@@ -6289,7 +5808,6 @@ final class TableInitTest extends SpecTestsuiteBase
     public function testAssertTrap581(): void
     {
         $this->runAssertTrapCommand(
-            module: null,
             action: ['type' => 'invoke', 'field' => 'test', 'args' => [['type' => 'i32', 'value' => '46']]],
             text: 'uninitialized element',
             line: 1867,
@@ -6300,7 +5818,6 @@ final class TableInitTest extends SpecTestsuiteBase
     public function testAssertTrap582(): void
     {
         $this->runAssertTrapCommand(
-            module: null,
             action: ['type' => 'invoke', 'field' => 'test', 'args' => [['type' => 'i32', 'value' => '47']]],
             text: 'uninitialized element',
             line: 1868,
@@ -6311,7 +5828,6 @@ final class TableInitTest extends SpecTestsuiteBase
     public function testAssertTrap583(): void
     {
         $this->runAssertTrapCommand(
-            module: null,
             action: ['type' => 'invoke', 'field' => 'test', 'args' => [['type' => 'i32', 'value' => '48']]],
             text: 'uninitialized element',
             line: 1869,
@@ -6322,7 +5838,6 @@ final class TableInitTest extends SpecTestsuiteBase
     public function testAssertTrap584(): void
     {
         $this->runAssertTrapCommand(
-            module: null,
             action: ['type' => 'invoke', 'field' => 'test', 'args' => [['type' => 'i32', 'value' => '49']]],
             text: 'uninitialized element',
             line: 1870,
@@ -6333,7 +5848,6 @@ final class TableInitTest extends SpecTestsuiteBase
     public function testAssertTrap585(): void
     {
         $this->runAssertTrapCommand(
-            module: null,
             action: ['type' => 'invoke', 'field' => 'test', 'args' => [['type' => 'i32', 'value' => '50']]],
             text: 'uninitialized element',
             line: 1871,
@@ -6344,7 +5858,6 @@ final class TableInitTest extends SpecTestsuiteBase
     public function testAssertTrap586(): void
     {
         $this->runAssertTrapCommand(
-            module: null,
             action: ['type' => 'invoke', 'field' => 'test', 'args' => [['type' => 'i32', 'value' => '51']]],
             text: 'uninitialized element',
             line: 1872,
@@ -6355,7 +5868,6 @@ final class TableInitTest extends SpecTestsuiteBase
     public function testAssertTrap587(): void
     {
         $this->runAssertTrapCommand(
-            module: null,
             action: ['type' => 'invoke', 'field' => 'test', 'args' => [['type' => 'i32', 'value' => '52']]],
             text: 'uninitialized element',
             line: 1873,
@@ -6366,7 +5878,6 @@ final class TableInitTest extends SpecTestsuiteBase
     public function testAssertTrap588(): void
     {
         $this->runAssertTrapCommand(
-            module: null,
             action: ['type' => 'invoke', 'field' => 'test', 'args' => [['type' => 'i32', 'value' => '53']]],
             text: 'uninitialized element',
             line: 1874,
@@ -6377,7 +5888,6 @@ final class TableInitTest extends SpecTestsuiteBase
     public function testAssertTrap589(): void
     {
         $this->runAssertTrapCommand(
-            module: null,
             action: ['type' => 'invoke', 'field' => 'test', 'args' => [['type' => 'i32', 'value' => '54']]],
             text: 'uninitialized element',
             line: 1875,
@@ -6388,7 +5898,6 @@ final class TableInitTest extends SpecTestsuiteBase
     public function testAssertTrap590(): void
     {
         $this->runAssertTrapCommand(
-            module: null,
             action: ['type' => 'invoke', 'field' => 'test', 'args' => [['type' => 'i32', 'value' => '55']]],
             text: 'uninitialized element',
             line: 1876,
@@ -6399,7 +5908,6 @@ final class TableInitTest extends SpecTestsuiteBase
     public function testAssertTrap591(): void
     {
         $this->runAssertTrapCommand(
-            module: null,
             action: ['type' => 'invoke', 'field' => 'test', 'args' => [['type' => 'i32', 'value' => '56']]],
             text: 'uninitialized element',
             line: 1877,
@@ -6410,7 +5918,6 @@ final class TableInitTest extends SpecTestsuiteBase
     public function testAssertTrap592(): void
     {
         $this->runAssertTrapCommand(
-            module: null,
             action: ['type' => 'invoke', 'field' => 'test', 'args' => [['type' => 'i32', 'value' => '57']]],
             text: 'uninitialized element',
             line: 1878,
@@ -6421,7 +5928,6 @@ final class TableInitTest extends SpecTestsuiteBase
     public function testAssertTrap593(): void
     {
         $this->runAssertTrapCommand(
-            module: null,
             action: ['type' => 'invoke', 'field' => 'test', 'args' => [['type' => 'i32', 'value' => '58']]],
             text: 'uninitialized element',
             line: 1879,
@@ -6432,7 +5938,6 @@ final class TableInitTest extends SpecTestsuiteBase
     public function testAssertTrap594(): void
     {
         $this->runAssertTrapCommand(
-            module: null,
             action: ['type' => 'invoke', 'field' => 'test', 'args' => [['type' => 'i32', 'value' => '59']]],
             text: 'uninitialized element',
             line: 1880,
@@ -6443,7 +5948,6 @@ final class TableInitTest extends SpecTestsuiteBase
     public function testAssertTrap595(): void
     {
         $this->runAssertTrapCommand(
-            module: null,
             action: ['type' => 'invoke', 'field' => 'test', 'args' => [['type' => 'i32', 'value' => '60']]],
             text: 'uninitialized element',
             line: 1881,
@@ -6454,7 +5958,6 @@ final class TableInitTest extends SpecTestsuiteBase
     public function testAssertTrap596(): void
     {
         $this->runAssertTrapCommand(
-            module: null,
             action: ['type' => 'invoke', 'field' => 'test', 'args' => [['type' => 'i32', 'value' => '61']]],
             text: 'uninitialized element',
             line: 1882,
@@ -6465,7 +5968,6 @@ final class TableInitTest extends SpecTestsuiteBase
     public function testAssertTrap597(): void
     {
         $this->runAssertTrapCommand(
-            module: null,
             action: ['type' => 'invoke', 'field' => 'test', 'args' => [['type' => 'i32', 'value' => '62']]],
             text: 'uninitialized element',
             line: 1883,
@@ -6476,7 +5978,6 @@ final class TableInitTest extends SpecTestsuiteBase
     public function testAssertTrap598(): void
     {
         $this->runAssertTrapCommand(
-            module: null,
             action: ['type' => 'invoke', 'field' => 'test', 'args' => [['type' => 'i32', 'value' => '63']]],
             text: 'uninitialized element',
             line: 1884,
@@ -6487,7 +5988,6 @@ final class TableInitTest extends SpecTestsuiteBase
     public function testAssertTrap599(): void
     {
         $this->runAssertTrapCommand(
-            module: null,
             action: ['type' => 'invoke', 'field' => 'test', 'args' => [['type' => 'i32', 'value' => '64']]],
             text: 'uninitialized element',
             line: 1885,
@@ -6498,7 +5998,6 @@ final class TableInitTest extends SpecTestsuiteBase
     public function testAssertTrap600(): void
     {
         $this->runAssertTrapCommand(
-            module: null,
             action: ['type' => 'invoke', 'field' => 'test', 'args' => [['type' => 'i32', 'value' => '65']]],
             text: 'uninitialized element',
             line: 1886,
@@ -6509,7 +6008,6 @@ final class TableInitTest extends SpecTestsuiteBase
     public function testAssertTrap601(): void
     {
         $this->runAssertTrapCommand(
-            module: null,
             action: ['type' => 'invoke', 'field' => 'test', 'args' => [['type' => 'i32', 'value' => '66']]],
             text: 'uninitialized element',
             line: 1887,
@@ -6520,7 +6018,6 @@ final class TableInitTest extends SpecTestsuiteBase
     public function testAssertTrap602(): void
     {
         $this->runAssertTrapCommand(
-            module: null,
             action: ['type' => 'invoke', 'field' => 'test', 'args' => [['type' => 'i32', 'value' => '67']]],
             text: 'uninitialized element',
             line: 1888,
@@ -6531,7 +6028,6 @@ final class TableInitTest extends SpecTestsuiteBase
     public function testAssertTrap603(): void
     {
         $this->runAssertTrapCommand(
-            module: null,
             action: ['type' => 'invoke', 'field' => 'test', 'args' => [['type' => 'i32', 'value' => '68']]],
             text: 'uninitialized element',
             line: 1889,
@@ -6542,7 +6038,6 @@ final class TableInitTest extends SpecTestsuiteBase
     public function testAssertTrap604(): void
     {
         $this->runAssertTrapCommand(
-            module: null,
             action: ['type' => 'invoke', 'field' => 'test', 'args' => [['type' => 'i32', 'value' => '69']]],
             text: 'uninitialized element',
             line: 1890,
@@ -6553,7 +6048,6 @@ final class TableInitTest extends SpecTestsuiteBase
     public function testAssertTrap605(): void
     {
         $this->runAssertTrapCommand(
-            module: null,
             action: ['type' => 'invoke', 'field' => 'test', 'args' => [['type' => 'i32', 'value' => '70']]],
             text: 'uninitialized element',
             line: 1891,
@@ -6564,7 +6058,6 @@ final class TableInitTest extends SpecTestsuiteBase
     public function testAssertTrap606(): void
     {
         $this->runAssertTrapCommand(
-            module: null,
             action: ['type' => 'invoke', 'field' => 'test', 'args' => [['type' => 'i32', 'value' => '71']]],
             text: 'uninitialized element',
             line: 1892,
@@ -6575,7 +6068,6 @@ final class TableInitTest extends SpecTestsuiteBase
     public function testAssertTrap607(): void
     {
         $this->runAssertTrapCommand(
-            module: null,
             action: ['type' => 'invoke', 'field' => 'test', 'args' => [['type' => 'i32', 'value' => '72']]],
             text: 'uninitialized element',
             line: 1893,
@@ -6586,7 +6078,6 @@ final class TableInitTest extends SpecTestsuiteBase
     public function testAssertTrap608(): void
     {
         $this->runAssertTrapCommand(
-            module: null,
             action: ['type' => 'invoke', 'field' => 'test', 'args' => [['type' => 'i32', 'value' => '73']]],
             text: 'uninitialized element',
             line: 1894,
@@ -6597,7 +6088,6 @@ final class TableInitTest extends SpecTestsuiteBase
     public function testAssertTrap609(): void
     {
         $this->runAssertTrapCommand(
-            module: null,
             action: ['type' => 'invoke', 'field' => 'test', 'args' => [['type' => 'i32', 'value' => '74']]],
             text: 'uninitialized element',
             line: 1895,
@@ -6608,7 +6098,6 @@ final class TableInitTest extends SpecTestsuiteBase
     public function testAssertTrap610(): void
     {
         $this->runAssertTrapCommand(
-            module: null,
             action: ['type' => 'invoke', 'field' => 'test', 'args' => [['type' => 'i32', 'value' => '75']]],
             text: 'uninitialized element',
             line: 1896,
@@ -6619,7 +6108,6 @@ final class TableInitTest extends SpecTestsuiteBase
     public function testAssertTrap611(): void
     {
         $this->runAssertTrapCommand(
-            module: null,
             action: ['type' => 'invoke', 'field' => 'test', 'args' => [['type' => 'i32', 'value' => '76']]],
             text: 'uninitialized element',
             line: 1897,
@@ -6630,7 +6118,6 @@ final class TableInitTest extends SpecTestsuiteBase
     public function testAssertTrap612(): void
     {
         $this->runAssertTrapCommand(
-            module: null,
             action: ['type' => 'invoke', 'field' => 'test', 'args' => [['type' => 'i32', 'value' => '77']]],
             text: 'uninitialized element',
             line: 1898,
@@ -6641,7 +6128,6 @@ final class TableInitTest extends SpecTestsuiteBase
     public function testAssertTrap613(): void
     {
         $this->runAssertTrapCommand(
-            module: null,
             action: ['type' => 'invoke', 'field' => 'test', 'args' => [['type' => 'i32', 'value' => '78']]],
             text: 'uninitialized element',
             line: 1899,
@@ -6652,7 +6138,6 @@ final class TableInitTest extends SpecTestsuiteBase
     public function testAssertTrap614(): void
     {
         $this->runAssertTrapCommand(
-            module: null,
             action: ['type' => 'invoke', 'field' => 'test', 'args' => [['type' => 'i32', 'value' => '79']]],
             text: 'uninitialized element',
             line: 1900,
@@ -6663,7 +6148,6 @@ final class TableInitTest extends SpecTestsuiteBase
     public function testAssertTrap615(): void
     {
         $this->runAssertTrapCommand(
-            module: null,
             action: ['type' => 'invoke', 'field' => 'test', 'args' => [['type' => 'i32', 'value' => '80']]],
             text: 'uninitialized element',
             line: 1901,
@@ -6674,7 +6158,6 @@ final class TableInitTest extends SpecTestsuiteBase
     public function testAssertTrap616(): void
     {
         $this->runAssertTrapCommand(
-            module: null,
             action: ['type' => 'invoke', 'field' => 'test', 'args' => [['type' => 'i32', 'value' => '81']]],
             text: 'uninitialized element',
             line: 1902,
@@ -6685,7 +6168,6 @@ final class TableInitTest extends SpecTestsuiteBase
     public function testAssertTrap617(): void
     {
         $this->runAssertTrapCommand(
-            module: null,
             action: ['type' => 'invoke', 'field' => 'test', 'args' => [['type' => 'i32', 'value' => '82']]],
             text: 'uninitialized element',
             line: 1903,
@@ -6696,7 +6178,6 @@ final class TableInitTest extends SpecTestsuiteBase
     public function testAssertTrap618(): void
     {
         $this->runAssertTrapCommand(
-            module: null,
             action: ['type' => 'invoke', 'field' => 'test', 'args' => [['type' => 'i32', 'value' => '83']]],
             text: 'uninitialized element',
             line: 1904,
@@ -6707,7 +6188,6 @@ final class TableInitTest extends SpecTestsuiteBase
     public function testAssertTrap619(): void
     {
         $this->runAssertTrapCommand(
-            module: null,
             action: ['type' => 'invoke', 'field' => 'test', 'args' => [['type' => 'i32', 'value' => '84']]],
             text: 'uninitialized element',
             line: 1905,
@@ -6718,7 +6198,6 @@ final class TableInitTest extends SpecTestsuiteBase
     public function testAssertTrap620(): void
     {
         $this->runAssertTrapCommand(
-            module: null,
             action: ['type' => 'invoke', 'field' => 'test', 'args' => [['type' => 'i32', 'value' => '85']]],
             text: 'uninitialized element',
             line: 1906,
@@ -6729,7 +6208,6 @@ final class TableInitTest extends SpecTestsuiteBase
     public function testAssertTrap621(): void
     {
         $this->runAssertTrapCommand(
-            module: null,
             action: ['type' => 'invoke', 'field' => 'test', 'args' => [['type' => 'i32', 'value' => '86']]],
             text: 'uninitialized element',
             line: 1907,
@@ -6740,7 +6218,6 @@ final class TableInitTest extends SpecTestsuiteBase
     public function testAssertTrap622(): void
     {
         $this->runAssertTrapCommand(
-            module: null,
             action: ['type' => 'invoke', 'field' => 'test', 'args' => [['type' => 'i32', 'value' => '87']]],
             text: 'uninitialized element',
             line: 1908,
@@ -6751,7 +6228,6 @@ final class TableInitTest extends SpecTestsuiteBase
     public function testAssertTrap623(): void
     {
         $this->runAssertTrapCommand(
-            module: null,
             action: ['type' => 'invoke', 'field' => 'test', 'args' => [['type' => 'i32', 'value' => '88']]],
             text: 'uninitialized element',
             line: 1909,
@@ -6762,7 +6238,6 @@ final class TableInitTest extends SpecTestsuiteBase
     public function testAssertTrap624(): void
     {
         $this->runAssertTrapCommand(
-            module: null,
             action: ['type' => 'invoke', 'field' => 'test', 'args' => [['type' => 'i32', 'value' => '89']]],
             text: 'uninitialized element',
             line: 1910,
@@ -6773,7 +6248,6 @@ final class TableInitTest extends SpecTestsuiteBase
     public function testAssertTrap625(): void
     {
         $this->runAssertTrapCommand(
-            module: null,
             action: ['type' => 'invoke', 'field' => 'test', 'args' => [['type' => 'i32', 'value' => '90']]],
             text: 'uninitialized element',
             line: 1911,
@@ -6784,7 +6258,6 @@ final class TableInitTest extends SpecTestsuiteBase
     public function testAssertTrap626(): void
     {
         $this->runAssertTrapCommand(
-            module: null,
             action: ['type' => 'invoke', 'field' => 'test', 'args' => [['type' => 'i32', 'value' => '91']]],
             text: 'uninitialized element',
             line: 1912,
@@ -6795,7 +6268,6 @@ final class TableInitTest extends SpecTestsuiteBase
     public function testAssertTrap627(): void
     {
         $this->runAssertTrapCommand(
-            module: null,
             action: ['type' => 'invoke', 'field' => 'test', 'args' => [['type' => 'i32', 'value' => '92']]],
             text: 'uninitialized element',
             line: 1913,
@@ -6806,7 +6278,6 @@ final class TableInitTest extends SpecTestsuiteBase
     public function testAssertTrap628(): void
     {
         $this->runAssertTrapCommand(
-            module: null,
             action: ['type' => 'invoke', 'field' => 'test', 'args' => [['type' => 'i32', 'value' => '93']]],
             text: 'uninitialized element',
             line: 1914,
@@ -6817,7 +6288,6 @@ final class TableInitTest extends SpecTestsuiteBase
     public function testAssertTrap629(): void
     {
         $this->runAssertTrapCommand(
-            module: null,
             action: ['type' => 'invoke', 'field' => 'test', 'args' => [['type' => 'i32', 'value' => '94']]],
             text: 'uninitialized element',
             line: 1915,
@@ -6828,7 +6298,6 @@ final class TableInitTest extends SpecTestsuiteBase
     public function testAssertTrap630(): void
     {
         $this->runAssertTrapCommand(
-            module: null,
             action: ['type' => 'invoke', 'field' => 'test', 'args' => [['type' => 'i32', 'value' => '95']]],
             text: 'uninitialized element',
             line: 1916,
@@ -6839,7 +6308,6 @@ final class TableInitTest extends SpecTestsuiteBase
     public function testAssertTrap631(): void
     {
         $this->runAssertTrapCommand(
-            module: null,
             action: ['type' => 'invoke', 'field' => 'test', 'args' => [['type' => 'i32', 'value' => '96']]],
             text: 'uninitialized element',
             line: 1917,
@@ -6850,7 +6318,6 @@ final class TableInitTest extends SpecTestsuiteBase
     public function testAssertTrap632(): void
     {
         $this->runAssertTrapCommand(
-            module: null,
             action: ['type' => 'invoke', 'field' => 'test', 'args' => [['type' => 'i32', 'value' => '97']]],
             text: 'uninitialized element',
             line: 1918,
@@ -6861,7 +6328,6 @@ final class TableInitTest extends SpecTestsuiteBase
     public function testAssertTrap633(): void
     {
         $this->runAssertTrapCommand(
-            module: null,
             action: ['type' => 'invoke', 'field' => 'test', 'args' => [['type' => 'i32', 'value' => '98']]],
             text: 'uninitialized element',
             line: 1919,
@@ -6872,7 +6338,6 @@ final class TableInitTest extends SpecTestsuiteBase
     public function testAssertTrap634(): void
     {
         $this->runAssertTrapCommand(
-            module: null,
             action: ['type' => 'invoke', 'field' => 'test', 'args' => [['type' => 'i32', 'value' => '99']]],
             text: 'uninitialized element',
             line: 1920,
@@ -6883,7 +6348,6 @@ final class TableInitTest extends SpecTestsuiteBase
     public function testAssertTrap635(): void
     {
         $this->runAssertTrapCommand(
-            module: null,
             action: ['type' => 'invoke', 'field' => 'test', 'args' => [['type' => 'i32', 'value' => '100']]],
             text: 'uninitialized element',
             line: 1921,
@@ -6894,7 +6358,6 @@ final class TableInitTest extends SpecTestsuiteBase
     public function testAssertTrap636(): void
     {
         $this->runAssertTrapCommand(
-            module: null,
             action: ['type' => 'invoke', 'field' => 'test', 'args' => [['type' => 'i32', 'value' => '101']]],
             text: 'uninitialized element',
             line: 1922,
@@ -6905,7 +6368,6 @@ final class TableInitTest extends SpecTestsuiteBase
     public function testAssertTrap637(): void
     {
         $this->runAssertTrapCommand(
-            module: null,
             action: ['type' => 'invoke', 'field' => 'test', 'args' => [['type' => 'i32', 'value' => '102']]],
             text: 'uninitialized element',
             line: 1923,
@@ -6916,7 +6378,6 @@ final class TableInitTest extends SpecTestsuiteBase
     public function testAssertTrap638(): void
     {
         $this->runAssertTrapCommand(
-            module: null,
             action: ['type' => 'invoke', 'field' => 'test', 'args' => [['type' => 'i32', 'value' => '103']]],
             text: 'uninitialized element',
             line: 1924,
@@ -6927,7 +6388,6 @@ final class TableInitTest extends SpecTestsuiteBase
     public function testAssertTrap639(): void
     {
         $this->runAssertTrapCommand(
-            module: null,
             action: ['type' => 'invoke', 'field' => 'test', 'args' => [['type' => 'i32', 'value' => '104']]],
             text: 'uninitialized element',
             line: 1925,
@@ -6938,7 +6398,6 @@ final class TableInitTest extends SpecTestsuiteBase
     public function testAssertTrap640(): void
     {
         $this->runAssertTrapCommand(
-            module: null,
             action: ['type' => 'invoke', 'field' => 'test', 'args' => [['type' => 'i32', 'value' => '105']]],
             text: 'uninitialized element',
             line: 1926,
@@ -6949,7 +6408,6 @@ final class TableInitTest extends SpecTestsuiteBase
     public function testAssertTrap641(): void
     {
         $this->runAssertTrapCommand(
-            module: null,
             action: ['type' => 'invoke', 'field' => 'test', 'args' => [['type' => 'i32', 'value' => '106']]],
             text: 'uninitialized element',
             line: 1927,
@@ -6960,7 +6418,6 @@ final class TableInitTest extends SpecTestsuiteBase
     public function testAssertTrap642(): void
     {
         $this->runAssertTrapCommand(
-            module: null,
             action: ['type' => 'invoke', 'field' => 'test', 'args' => [['type' => 'i32', 'value' => '107']]],
             text: 'uninitialized element',
             line: 1928,
@@ -6971,7 +6428,6 @@ final class TableInitTest extends SpecTestsuiteBase
     public function testAssertTrap643(): void
     {
         $this->runAssertTrapCommand(
-            module: null,
             action: ['type' => 'invoke', 'field' => 'test', 'args' => [['type' => 'i32', 'value' => '108']]],
             text: 'uninitialized element',
             line: 1929,
@@ -6982,7 +6438,6 @@ final class TableInitTest extends SpecTestsuiteBase
     public function testAssertTrap644(): void
     {
         $this->runAssertTrapCommand(
-            module: null,
             action: ['type' => 'invoke', 'field' => 'test', 'args' => [['type' => 'i32', 'value' => '109']]],
             text: 'uninitialized element',
             line: 1930,
@@ -6993,7 +6448,6 @@ final class TableInitTest extends SpecTestsuiteBase
     public function testAssertTrap645(): void
     {
         $this->runAssertTrapCommand(
-            module: null,
             action: ['type' => 'invoke', 'field' => 'test', 'args' => [['type' => 'i32', 'value' => '110']]],
             text: 'uninitialized element',
             line: 1931,
@@ -7004,7 +6458,6 @@ final class TableInitTest extends SpecTestsuiteBase
     public function testAssertTrap646(): void
     {
         $this->runAssertTrapCommand(
-            module: null,
             action: ['type' => 'invoke', 'field' => 'test', 'args' => [['type' => 'i32', 'value' => '111']]],
             text: 'uninitialized element',
             line: 1932,
@@ -7015,7 +6468,6 @@ final class TableInitTest extends SpecTestsuiteBase
     public function testAssertTrap647(): void
     {
         $this->runAssertTrapCommand(
-            module: null,
             action: ['type' => 'invoke', 'field' => 'test', 'args' => [['type' => 'i32', 'value' => '112']]],
             text: 'uninitialized element',
             line: 1933,
@@ -7026,7 +6478,6 @@ final class TableInitTest extends SpecTestsuiteBase
     public function testAssertTrap648(): void
     {
         $this->runAssertTrapCommand(
-            module: null,
             action: ['type' => 'invoke', 'field' => 'test', 'args' => [['type' => 'i32', 'value' => '113']]],
             text: 'uninitialized element',
             line: 1934,
@@ -7037,7 +6488,6 @@ final class TableInitTest extends SpecTestsuiteBase
     public function testAssertTrap649(): void
     {
         $this->runAssertTrapCommand(
-            module: null,
             action: ['type' => 'invoke', 'field' => 'test', 'args' => [['type' => 'i32', 'value' => '114']]],
             text: 'uninitialized element',
             line: 1935,
@@ -7048,7 +6498,6 @@ final class TableInitTest extends SpecTestsuiteBase
     public function testAssertTrap650(): void
     {
         $this->runAssertTrapCommand(
-            module: null,
             action: ['type' => 'invoke', 'field' => 'test', 'args' => [['type' => 'i32', 'value' => '115']]],
             text: 'uninitialized element',
             line: 1936,
@@ -7059,7 +6508,6 @@ final class TableInitTest extends SpecTestsuiteBase
     public function testAssertTrap651(): void
     {
         $this->runAssertTrapCommand(
-            module: null,
             action: ['type' => 'invoke', 'field' => 'test', 'args' => [['type' => 'i32', 'value' => '116']]],
             text: 'uninitialized element',
             line: 1937,
@@ -7070,7 +6518,6 @@ final class TableInitTest extends SpecTestsuiteBase
     public function testAssertTrap652(): void
     {
         $this->runAssertTrapCommand(
-            module: null,
             action: ['type' => 'invoke', 'field' => 'test', 'args' => [['type' => 'i32', 'value' => '117']]],
             text: 'uninitialized element',
             line: 1938,
@@ -7081,7 +6528,6 @@ final class TableInitTest extends SpecTestsuiteBase
     public function testAssertTrap653(): void
     {
         $this->runAssertTrapCommand(
-            module: null,
             action: ['type' => 'invoke', 'field' => 'test', 'args' => [['type' => 'i32', 'value' => '118']]],
             text: 'uninitialized element',
             line: 1939,
@@ -7092,7 +6538,6 @@ final class TableInitTest extends SpecTestsuiteBase
     public function testAssertTrap654(): void
     {
         $this->runAssertTrapCommand(
-            module: null,
             action: ['type' => 'invoke', 'field' => 'test', 'args' => [['type' => 'i32', 'value' => '119']]],
             text: 'uninitialized element',
             line: 1940,
@@ -7103,7 +6548,6 @@ final class TableInitTest extends SpecTestsuiteBase
     public function testAssertTrap655(): void
     {
         $this->runAssertTrapCommand(
-            module: null,
             action: ['type' => 'invoke', 'field' => 'test', 'args' => [['type' => 'i32', 'value' => '120']]],
             text: 'uninitialized element',
             line: 1941,
@@ -7114,7 +6558,6 @@ final class TableInitTest extends SpecTestsuiteBase
     public function testAssertTrap656(): void
     {
         $this->runAssertTrapCommand(
-            module: null,
             action: ['type' => 'invoke', 'field' => 'test', 'args' => [['type' => 'i32', 'value' => '121']]],
             text: 'uninitialized element',
             line: 1942,
@@ -7125,7 +6568,6 @@ final class TableInitTest extends SpecTestsuiteBase
     public function testAssertTrap657(): void
     {
         $this->runAssertTrapCommand(
-            module: null,
             action: ['type' => 'invoke', 'field' => 'test', 'args' => [['type' => 'i32', 'value' => '122']]],
             text: 'uninitialized element',
             line: 1943,
@@ -7136,7 +6578,6 @@ final class TableInitTest extends SpecTestsuiteBase
     public function testAssertTrap658(): void
     {
         $this->runAssertTrapCommand(
-            module: null,
             action: ['type' => 'invoke', 'field' => 'test', 'args' => [['type' => 'i32', 'value' => '123']]],
             text: 'uninitialized element',
             line: 1944,
@@ -7147,7 +6588,6 @@ final class TableInitTest extends SpecTestsuiteBase
     public function testAssertTrap659(): void
     {
         $this->runAssertTrapCommand(
-            module: null,
             action: ['type' => 'invoke', 'field' => 'test', 'args' => [['type' => 'i32', 'value' => '124']]],
             text: 'uninitialized element',
             line: 1945,
@@ -7158,7 +6598,6 @@ final class TableInitTest extends SpecTestsuiteBase
     public function testAssertTrap660(): void
     {
         $this->runAssertTrapCommand(
-            module: null,
             action: ['type' => 'invoke', 'field' => 'test', 'args' => [['type' => 'i32', 'value' => '125']]],
             text: 'uninitialized element',
             line: 1946,
@@ -7169,7 +6608,6 @@ final class TableInitTest extends SpecTestsuiteBase
     public function testAssertTrap661(): void
     {
         $this->runAssertTrapCommand(
-            module: null,
             action: ['type' => 'invoke', 'field' => 'test', 'args' => [['type' => 'i32', 'value' => '126']]],
             text: 'uninitialized element',
             line: 1947,
@@ -7180,7 +6618,6 @@ final class TableInitTest extends SpecTestsuiteBase
     public function testAssertTrap662(): void
     {
         $this->runAssertTrapCommand(
-            module: null,
             action: ['type' => 'invoke', 'field' => 'test', 'args' => [['type' => 'i32', 'value' => '127']]],
             text: 'uninitialized element',
             line: 1948,
@@ -7191,7 +6628,6 @@ final class TableInitTest extends SpecTestsuiteBase
     public function testAssertTrap663(): void
     {
         $this->runAssertTrapCommand(
-            module: null,
             action: ['type' => 'invoke', 'field' => 'test', 'args' => [['type' => 'i32', 'value' => '128']]],
             text: 'uninitialized element',
             line: 1949,
@@ -7202,7 +6638,6 @@ final class TableInitTest extends SpecTestsuiteBase
     public function testAssertTrap664(): void
     {
         $this->runAssertTrapCommand(
-            module: null,
             action: ['type' => 'invoke', 'field' => 'test', 'args' => [['type' => 'i32', 'value' => '129']]],
             text: 'uninitialized element',
             line: 1950,
@@ -7213,7 +6648,6 @@ final class TableInitTest extends SpecTestsuiteBase
     public function testAssertTrap665(): void
     {
         $this->runAssertTrapCommand(
-            module: null,
             action: ['type' => 'invoke', 'field' => 'test', 'args' => [['type' => 'i32', 'value' => '130']]],
             text: 'uninitialized element',
             line: 1951,
@@ -7224,7 +6658,6 @@ final class TableInitTest extends SpecTestsuiteBase
     public function testAssertTrap666(): void
     {
         $this->runAssertTrapCommand(
-            module: null,
             action: ['type' => 'invoke', 'field' => 'test', 'args' => [['type' => 'i32', 'value' => '131']]],
             text: 'uninitialized element',
             line: 1952,
@@ -7235,7 +6668,6 @@ final class TableInitTest extends SpecTestsuiteBase
     public function testAssertTrap667(): void
     {
         $this->runAssertTrapCommand(
-            module: null,
             action: ['type' => 'invoke', 'field' => 'test', 'args' => [['type' => 'i32', 'value' => '132']]],
             text: 'uninitialized element',
             line: 1953,
@@ -7246,7 +6678,6 @@ final class TableInitTest extends SpecTestsuiteBase
     public function testAssertTrap668(): void
     {
         $this->runAssertTrapCommand(
-            module: null,
             action: ['type' => 'invoke', 'field' => 'test', 'args' => [['type' => 'i32', 'value' => '133']]],
             text: 'uninitialized element',
             line: 1954,
@@ -7257,7 +6688,6 @@ final class TableInitTest extends SpecTestsuiteBase
     public function testAssertTrap669(): void
     {
         $this->runAssertTrapCommand(
-            module: null,
             action: ['type' => 'invoke', 'field' => 'test', 'args' => [['type' => 'i32', 'value' => '134']]],
             text: 'uninitialized element',
             line: 1955,
@@ -7268,7 +6698,6 @@ final class TableInitTest extends SpecTestsuiteBase
     public function testAssertTrap670(): void
     {
         $this->runAssertTrapCommand(
-            module: null,
             action: ['type' => 'invoke', 'field' => 'test', 'args' => [['type' => 'i32', 'value' => '135']]],
             text: 'uninitialized element',
             line: 1956,
@@ -7279,7 +6708,6 @@ final class TableInitTest extends SpecTestsuiteBase
     public function testAssertTrap671(): void
     {
         $this->runAssertTrapCommand(
-            module: null,
             action: ['type' => 'invoke', 'field' => 'test', 'args' => [['type' => 'i32', 'value' => '136']]],
             text: 'uninitialized element',
             line: 1957,
@@ -7290,7 +6718,6 @@ final class TableInitTest extends SpecTestsuiteBase
     public function testAssertTrap672(): void
     {
         $this->runAssertTrapCommand(
-            module: null,
             action: ['type' => 'invoke', 'field' => 'test', 'args' => [['type' => 'i32', 'value' => '137']]],
             text: 'uninitialized element',
             line: 1958,
@@ -7301,7 +6728,6 @@ final class TableInitTest extends SpecTestsuiteBase
     public function testAssertTrap673(): void
     {
         $this->runAssertTrapCommand(
-            module: null,
             action: ['type' => 'invoke', 'field' => 'test', 'args' => [['type' => 'i32', 'value' => '138']]],
             text: 'uninitialized element',
             line: 1959,
@@ -7312,7 +6738,6 @@ final class TableInitTest extends SpecTestsuiteBase
     public function testAssertTrap674(): void
     {
         $this->runAssertTrapCommand(
-            module: null,
             action: ['type' => 'invoke', 'field' => 'test', 'args' => [['type' => 'i32', 'value' => '139']]],
             text: 'uninitialized element',
             line: 1960,
@@ -7323,7 +6748,6 @@ final class TableInitTest extends SpecTestsuiteBase
     public function testAssertTrap675(): void
     {
         $this->runAssertTrapCommand(
-            module: null,
             action: ['type' => 'invoke', 'field' => 'test', 'args' => [['type' => 'i32', 'value' => '140']]],
             text: 'uninitialized element',
             line: 1961,
@@ -7334,7 +6758,6 @@ final class TableInitTest extends SpecTestsuiteBase
     public function testAssertTrap676(): void
     {
         $this->runAssertTrapCommand(
-            module: null,
             action: ['type' => 'invoke', 'field' => 'test', 'args' => [['type' => 'i32', 'value' => '141']]],
             text: 'uninitialized element',
             line: 1962,
@@ -7345,7 +6768,6 @@ final class TableInitTest extends SpecTestsuiteBase
     public function testAssertTrap677(): void
     {
         $this->runAssertTrapCommand(
-            module: null,
             action: ['type' => 'invoke', 'field' => 'test', 'args' => [['type' => 'i32', 'value' => '142']]],
             text: 'uninitialized element',
             line: 1963,
@@ -7356,7 +6778,6 @@ final class TableInitTest extends SpecTestsuiteBase
     public function testAssertTrap678(): void
     {
         $this->runAssertTrapCommand(
-            module: null,
             action: ['type' => 'invoke', 'field' => 'test', 'args' => [['type' => 'i32', 'value' => '143']]],
             text: 'uninitialized element',
             line: 1964,
@@ -7367,7 +6788,6 @@ final class TableInitTest extends SpecTestsuiteBase
     public function testAssertTrap679(): void
     {
         $this->runAssertTrapCommand(
-            module: null,
             action: ['type' => 'invoke', 'field' => 'test', 'args' => [['type' => 'i32', 'value' => '144']]],
             text: 'uninitialized element',
             line: 1965,
@@ -7378,7 +6798,6 @@ final class TableInitTest extends SpecTestsuiteBase
     public function testAssertTrap680(): void
     {
         $this->runAssertTrapCommand(
-            module: null,
             action: ['type' => 'invoke', 'field' => 'test', 'args' => [['type' => 'i32', 'value' => '145']]],
             text: 'uninitialized element',
             line: 1966,
@@ -7389,7 +6808,6 @@ final class TableInitTest extends SpecTestsuiteBase
     public function testAssertTrap681(): void
     {
         $this->runAssertTrapCommand(
-            module: null,
             action: ['type' => 'invoke', 'field' => 'test', 'args' => [['type' => 'i32', 'value' => '146']]],
             text: 'uninitialized element',
             line: 1967,
@@ -7400,7 +6818,6 @@ final class TableInitTest extends SpecTestsuiteBase
     public function testAssertTrap682(): void
     {
         $this->runAssertTrapCommand(
-            module: null,
             action: ['type' => 'invoke', 'field' => 'test', 'args' => [['type' => 'i32', 'value' => '147']]],
             text: 'uninitialized element',
             line: 1968,
@@ -7411,7 +6828,6 @@ final class TableInitTest extends SpecTestsuiteBase
     public function testAssertTrap683(): void
     {
         $this->runAssertTrapCommand(
-            module: null,
             action: ['type' => 'invoke', 'field' => 'test', 'args' => [['type' => 'i32', 'value' => '148']]],
             text: 'uninitialized element',
             line: 1969,
@@ -7422,7 +6838,6 @@ final class TableInitTest extends SpecTestsuiteBase
     public function testAssertTrap684(): void
     {
         $this->runAssertTrapCommand(
-            module: null,
             action: ['type' => 'invoke', 'field' => 'test', 'args' => [['type' => 'i32', 'value' => '149']]],
             text: 'uninitialized element',
             line: 1970,
@@ -7433,7 +6848,6 @@ final class TableInitTest extends SpecTestsuiteBase
     public function testAssertTrap685(): void
     {
         $this->runAssertTrapCommand(
-            module: null,
             action: ['type' => 'invoke', 'field' => 'test', 'args' => [['type' => 'i32', 'value' => '150']]],
             text: 'uninitialized element',
             line: 1971,
@@ -7444,7 +6858,6 @@ final class TableInitTest extends SpecTestsuiteBase
     public function testAssertTrap686(): void
     {
         $this->runAssertTrapCommand(
-            module: null,
             action: ['type' => 'invoke', 'field' => 'test', 'args' => [['type' => 'i32', 'value' => '151']]],
             text: 'uninitialized element',
             line: 1972,
@@ -7455,7 +6868,6 @@ final class TableInitTest extends SpecTestsuiteBase
     public function testAssertTrap687(): void
     {
         $this->runAssertTrapCommand(
-            module: null,
             action: ['type' => 'invoke', 'field' => 'test', 'args' => [['type' => 'i32', 'value' => '152']]],
             text: 'uninitialized element',
             line: 1973,
@@ -7466,7 +6878,6 @@ final class TableInitTest extends SpecTestsuiteBase
     public function testAssertTrap688(): void
     {
         $this->runAssertTrapCommand(
-            module: null,
             action: ['type' => 'invoke', 'field' => 'test', 'args' => [['type' => 'i32', 'value' => '153']]],
             text: 'uninitialized element',
             line: 1974,
@@ -7477,7 +6888,6 @@ final class TableInitTest extends SpecTestsuiteBase
     public function testAssertTrap689(): void
     {
         $this->runAssertTrapCommand(
-            module: null,
             action: ['type' => 'invoke', 'field' => 'test', 'args' => [['type' => 'i32', 'value' => '154']]],
             text: 'uninitialized element',
             line: 1975,
@@ -7488,7 +6898,6 @@ final class TableInitTest extends SpecTestsuiteBase
     public function testAssertTrap690(): void
     {
         $this->runAssertTrapCommand(
-            module: null,
             action: ['type' => 'invoke', 'field' => 'test', 'args' => [['type' => 'i32', 'value' => '155']]],
             text: 'uninitialized element',
             line: 1976,
@@ -7499,7 +6908,6 @@ final class TableInitTest extends SpecTestsuiteBase
     public function testAssertTrap691(): void
     {
         $this->runAssertTrapCommand(
-            module: null,
             action: ['type' => 'invoke', 'field' => 'test', 'args' => [['type' => 'i32', 'value' => '156']]],
             text: 'uninitialized element',
             line: 1977,
@@ -7510,7 +6918,6 @@ final class TableInitTest extends SpecTestsuiteBase
     public function testAssertTrap692(): void
     {
         $this->runAssertTrapCommand(
-            module: null,
             action: ['type' => 'invoke', 'field' => 'test', 'args' => [['type' => 'i32', 'value' => '157']]],
             text: 'uninitialized element',
             line: 1978,
@@ -7521,7 +6928,6 @@ final class TableInitTest extends SpecTestsuiteBase
     public function testAssertTrap693(): void
     {
         $this->runAssertTrapCommand(
-            module: null,
             action: ['type' => 'invoke', 'field' => 'test', 'args' => [['type' => 'i32', 'value' => '158']]],
             text: 'uninitialized element',
             line: 1979,
@@ -7532,7 +6938,6 @@ final class TableInitTest extends SpecTestsuiteBase
     public function testAssertTrap694(): void
     {
         $this->runAssertTrapCommand(
-            module: null,
             action: ['type' => 'invoke', 'field' => 'test', 'args' => [['type' => 'i32', 'value' => '159']]],
             text: 'uninitialized element',
             line: 1980,
@@ -7553,7 +6958,6 @@ final class TableInitTest extends SpecTestsuiteBase
     public function testAssertTrap696(): void
     {
         $this->runAssertTrapCommand(
-            module: null,
             action: ['type' => 'invoke', 'field' => 'run', 'args' => [['type' => 'i32', 'value' => '48'], ['type' => 'i32', 'value' => '4294967280']]],
             text: 'out of bounds table access',
             line: 2010,
@@ -7564,7 +6968,6 @@ final class TableInitTest extends SpecTestsuiteBase
     public function testAssertTrap697(): void
     {
         $this->runAssertTrapCommand(
-            module: null,
             action: ['type' => 'invoke', 'field' => 'test', 'args' => [['type' => 'i32', 'value' => '0']]],
             text: 'uninitialized element',
             line: 2011,
@@ -7575,7 +6978,6 @@ final class TableInitTest extends SpecTestsuiteBase
     public function testAssertTrap698(): void
     {
         $this->runAssertTrapCommand(
-            module: null,
             action: ['type' => 'invoke', 'field' => 'test', 'args' => [['type' => 'i32', 'value' => '1']]],
             text: 'uninitialized element',
             line: 2012,
@@ -7586,7 +6988,6 @@ final class TableInitTest extends SpecTestsuiteBase
     public function testAssertTrap699(): void
     {
         $this->runAssertTrapCommand(
-            module: null,
             action: ['type' => 'invoke', 'field' => 'test', 'args' => [['type' => 'i32', 'value' => '2']]],
             text: 'uninitialized element',
             line: 2013,
@@ -7597,7 +6998,6 @@ final class TableInitTest extends SpecTestsuiteBase
     public function testAssertTrap700(): void
     {
         $this->runAssertTrapCommand(
-            module: null,
             action: ['type' => 'invoke', 'field' => 'test', 'args' => [['type' => 'i32', 'value' => '3']]],
             text: 'uninitialized element',
             line: 2014,
@@ -7608,7 +7008,6 @@ final class TableInitTest extends SpecTestsuiteBase
     public function testAssertTrap701(): void
     {
         $this->runAssertTrapCommand(
-            module: null,
             action: ['type' => 'invoke', 'field' => 'test', 'args' => [['type' => 'i32', 'value' => '4']]],
             text: 'uninitialized element',
             line: 2015,
@@ -7619,7 +7018,6 @@ final class TableInitTest extends SpecTestsuiteBase
     public function testAssertTrap702(): void
     {
         $this->runAssertTrapCommand(
-            module: null,
             action: ['type' => 'invoke', 'field' => 'test', 'args' => [['type' => 'i32', 'value' => '5']]],
             text: 'uninitialized element',
             line: 2016,
@@ -7630,7 +7028,6 @@ final class TableInitTest extends SpecTestsuiteBase
     public function testAssertTrap703(): void
     {
         $this->runAssertTrapCommand(
-            module: null,
             action: ['type' => 'invoke', 'field' => 'test', 'args' => [['type' => 'i32', 'value' => '6']]],
             text: 'uninitialized element',
             line: 2017,
@@ -7641,7 +7038,6 @@ final class TableInitTest extends SpecTestsuiteBase
     public function testAssertTrap704(): void
     {
         $this->runAssertTrapCommand(
-            module: null,
             action: ['type' => 'invoke', 'field' => 'test', 'args' => [['type' => 'i32', 'value' => '7']]],
             text: 'uninitialized element',
             line: 2018,
@@ -7652,7 +7048,6 @@ final class TableInitTest extends SpecTestsuiteBase
     public function testAssertTrap705(): void
     {
         $this->runAssertTrapCommand(
-            module: null,
             action: ['type' => 'invoke', 'field' => 'test', 'args' => [['type' => 'i32', 'value' => '8']]],
             text: 'uninitialized element',
             line: 2019,
@@ -7663,7 +7058,6 @@ final class TableInitTest extends SpecTestsuiteBase
     public function testAssertTrap706(): void
     {
         $this->runAssertTrapCommand(
-            module: null,
             action: ['type' => 'invoke', 'field' => 'test', 'args' => [['type' => 'i32', 'value' => '9']]],
             text: 'uninitialized element',
             line: 2020,
@@ -7674,7 +7068,6 @@ final class TableInitTest extends SpecTestsuiteBase
     public function testAssertTrap707(): void
     {
         $this->runAssertTrapCommand(
-            module: null,
             action: ['type' => 'invoke', 'field' => 'test', 'args' => [['type' => 'i32', 'value' => '10']]],
             text: 'uninitialized element',
             line: 2021,
@@ -7685,7 +7078,6 @@ final class TableInitTest extends SpecTestsuiteBase
     public function testAssertTrap708(): void
     {
         $this->runAssertTrapCommand(
-            module: null,
             action: ['type' => 'invoke', 'field' => 'test', 'args' => [['type' => 'i32', 'value' => '11']]],
             text: 'uninitialized element',
             line: 2022,
@@ -7696,7 +7088,6 @@ final class TableInitTest extends SpecTestsuiteBase
     public function testAssertTrap709(): void
     {
         $this->runAssertTrapCommand(
-            module: null,
             action: ['type' => 'invoke', 'field' => 'test', 'args' => [['type' => 'i32', 'value' => '12']]],
             text: 'uninitialized element',
             line: 2023,
@@ -7707,7 +7098,6 @@ final class TableInitTest extends SpecTestsuiteBase
     public function testAssertTrap710(): void
     {
         $this->runAssertTrapCommand(
-            module: null,
             action: ['type' => 'invoke', 'field' => 'test', 'args' => [['type' => 'i32', 'value' => '13']]],
             text: 'uninitialized element',
             line: 2024,
@@ -7718,7 +7108,6 @@ final class TableInitTest extends SpecTestsuiteBase
     public function testAssertTrap711(): void
     {
         $this->runAssertTrapCommand(
-            module: null,
             action: ['type' => 'invoke', 'field' => 'test', 'args' => [['type' => 'i32', 'value' => '14']]],
             text: 'uninitialized element',
             line: 2025,
@@ -7729,7 +7118,6 @@ final class TableInitTest extends SpecTestsuiteBase
     public function testAssertTrap712(): void
     {
         $this->runAssertTrapCommand(
-            module: null,
             action: ['type' => 'invoke', 'field' => 'test', 'args' => [['type' => 'i32', 'value' => '15']]],
             text: 'uninitialized element',
             line: 2026,
@@ -7740,7 +7128,6 @@ final class TableInitTest extends SpecTestsuiteBase
     public function testAssertTrap713(): void
     {
         $this->runAssertTrapCommand(
-            module: null,
             action: ['type' => 'invoke', 'field' => 'test', 'args' => [['type' => 'i32', 'value' => '16']]],
             text: 'uninitialized element',
             line: 2027,
@@ -7751,7 +7138,6 @@ final class TableInitTest extends SpecTestsuiteBase
     public function testAssertTrap714(): void
     {
         $this->runAssertTrapCommand(
-            module: null,
             action: ['type' => 'invoke', 'field' => 'test', 'args' => [['type' => 'i32', 'value' => '17']]],
             text: 'uninitialized element',
             line: 2028,
@@ -7762,7 +7148,6 @@ final class TableInitTest extends SpecTestsuiteBase
     public function testAssertTrap715(): void
     {
         $this->runAssertTrapCommand(
-            module: null,
             action: ['type' => 'invoke', 'field' => 'test', 'args' => [['type' => 'i32', 'value' => '18']]],
             text: 'uninitialized element',
             line: 2029,
@@ -7773,7 +7158,6 @@ final class TableInitTest extends SpecTestsuiteBase
     public function testAssertTrap716(): void
     {
         $this->runAssertTrapCommand(
-            module: null,
             action: ['type' => 'invoke', 'field' => 'test', 'args' => [['type' => 'i32', 'value' => '19']]],
             text: 'uninitialized element',
             line: 2030,
@@ -7784,7 +7168,6 @@ final class TableInitTest extends SpecTestsuiteBase
     public function testAssertTrap717(): void
     {
         $this->runAssertTrapCommand(
-            module: null,
             action: ['type' => 'invoke', 'field' => 'test', 'args' => [['type' => 'i32', 'value' => '20']]],
             text: 'uninitialized element',
             line: 2031,
@@ -7795,7 +7178,6 @@ final class TableInitTest extends SpecTestsuiteBase
     public function testAssertTrap718(): void
     {
         $this->runAssertTrapCommand(
-            module: null,
             action: ['type' => 'invoke', 'field' => 'test', 'args' => [['type' => 'i32', 'value' => '21']]],
             text: 'uninitialized element',
             line: 2032,
@@ -7806,7 +7188,6 @@ final class TableInitTest extends SpecTestsuiteBase
     public function testAssertTrap719(): void
     {
         $this->runAssertTrapCommand(
-            module: null,
             action: ['type' => 'invoke', 'field' => 'test', 'args' => [['type' => 'i32', 'value' => '22']]],
             text: 'uninitialized element',
             line: 2033,
@@ -7817,7 +7198,6 @@ final class TableInitTest extends SpecTestsuiteBase
     public function testAssertTrap720(): void
     {
         $this->runAssertTrapCommand(
-            module: null,
             action: ['type' => 'invoke', 'field' => 'test', 'args' => [['type' => 'i32', 'value' => '23']]],
             text: 'uninitialized element',
             line: 2034,
@@ -7828,7 +7208,6 @@ final class TableInitTest extends SpecTestsuiteBase
     public function testAssertTrap721(): void
     {
         $this->runAssertTrapCommand(
-            module: null,
             action: ['type' => 'invoke', 'field' => 'test', 'args' => [['type' => 'i32', 'value' => '24']]],
             text: 'uninitialized element',
             line: 2035,
@@ -7839,7 +7218,6 @@ final class TableInitTest extends SpecTestsuiteBase
     public function testAssertTrap722(): void
     {
         $this->runAssertTrapCommand(
-            module: null,
             action: ['type' => 'invoke', 'field' => 'test', 'args' => [['type' => 'i32', 'value' => '25']]],
             text: 'uninitialized element',
             line: 2036,
@@ -7850,7 +7228,6 @@ final class TableInitTest extends SpecTestsuiteBase
     public function testAssertTrap723(): void
     {
         $this->runAssertTrapCommand(
-            module: null,
             action: ['type' => 'invoke', 'field' => 'test', 'args' => [['type' => 'i32', 'value' => '26']]],
             text: 'uninitialized element',
             line: 2037,
@@ -7861,7 +7238,6 @@ final class TableInitTest extends SpecTestsuiteBase
     public function testAssertTrap724(): void
     {
         $this->runAssertTrapCommand(
-            module: null,
             action: ['type' => 'invoke', 'field' => 'test', 'args' => [['type' => 'i32', 'value' => '27']]],
             text: 'uninitialized element',
             line: 2038,
@@ -7872,7 +7248,6 @@ final class TableInitTest extends SpecTestsuiteBase
     public function testAssertTrap725(): void
     {
         $this->runAssertTrapCommand(
-            module: null,
             action: ['type' => 'invoke', 'field' => 'test', 'args' => [['type' => 'i32', 'value' => '28']]],
             text: 'uninitialized element',
             line: 2039,
@@ -7883,7 +7258,6 @@ final class TableInitTest extends SpecTestsuiteBase
     public function testAssertTrap726(): void
     {
         $this->runAssertTrapCommand(
-            module: null,
             action: ['type' => 'invoke', 'field' => 'test', 'args' => [['type' => 'i32', 'value' => '29']]],
             text: 'uninitialized element',
             line: 2040,
@@ -7894,7 +7268,6 @@ final class TableInitTest extends SpecTestsuiteBase
     public function testAssertTrap727(): void
     {
         $this->runAssertTrapCommand(
-            module: null,
             action: ['type' => 'invoke', 'field' => 'test', 'args' => [['type' => 'i32', 'value' => '30']]],
             text: 'uninitialized element',
             line: 2041,
@@ -7905,7 +7278,6 @@ final class TableInitTest extends SpecTestsuiteBase
     public function testAssertTrap728(): void
     {
         $this->runAssertTrapCommand(
-            module: null,
             action: ['type' => 'invoke', 'field' => 'test', 'args' => [['type' => 'i32', 'value' => '31']]],
             text: 'uninitialized element',
             line: 2042,
@@ -7916,7 +7288,6 @@ final class TableInitTest extends SpecTestsuiteBase
     public function testAssertTrap729(): void
     {
         $this->runAssertTrapCommand(
-            module: null,
             action: ['type' => 'invoke', 'field' => 'test', 'args' => [['type' => 'i32', 'value' => '32']]],
             text: 'uninitialized element',
             line: 2043,
@@ -7927,7 +7298,6 @@ final class TableInitTest extends SpecTestsuiteBase
     public function testAssertTrap730(): void
     {
         $this->runAssertTrapCommand(
-            module: null,
             action: ['type' => 'invoke', 'field' => 'test', 'args' => [['type' => 'i32', 'value' => '33']]],
             text: 'uninitialized element',
             line: 2044,
@@ -7938,7 +7308,6 @@ final class TableInitTest extends SpecTestsuiteBase
     public function testAssertTrap731(): void
     {
         $this->runAssertTrapCommand(
-            module: null,
             action: ['type' => 'invoke', 'field' => 'test', 'args' => [['type' => 'i32', 'value' => '34']]],
             text: 'uninitialized element',
             line: 2045,
@@ -7949,7 +7318,6 @@ final class TableInitTest extends SpecTestsuiteBase
     public function testAssertTrap732(): void
     {
         $this->runAssertTrapCommand(
-            module: null,
             action: ['type' => 'invoke', 'field' => 'test', 'args' => [['type' => 'i32', 'value' => '35']]],
             text: 'uninitialized element',
             line: 2046,
@@ -7960,7 +7328,6 @@ final class TableInitTest extends SpecTestsuiteBase
     public function testAssertTrap733(): void
     {
         $this->runAssertTrapCommand(
-            module: null,
             action: ['type' => 'invoke', 'field' => 'test', 'args' => [['type' => 'i32', 'value' => '36']]],
             text: 'uninitialized element',
             line: 2047,
@@ -7971,7 +7338,6 @@ final class TableInitTest extends SpecTestsuiteBase
     public function testAssertTrap734(): void
     {
         $this->runAssertTrapCommand(
-            module: null,
             action: ['type' => 'invoke', 'field' => 'test', 'args' => [['type' => 'i32', 'value' => '37']]],
             text: 'uninitialized element',
             line: 2048,
@@ -7982,7 +7348,6 @@ final class TableInitTest extends SpecTestsuiteBase
     public function testAssertTrap735(): void
     {
         $this->runAssertTrapCommand(
-            module: null,
             action: ['type' => 'invoke', 'field' => 'test', 'args' => [['type' => 'i32', 'value' => '38']]],
             text: 'uninitialized element',
             line: 2049,
@@ -7993,7 +7358,6 @@ final class TableInitTest extends SpecTestsuiteBase
     public function testAssertTrap736(): void
     {
         $this->runAssertTrapCommand(
-            module: null,
             action: ['type' => 'invoke', 'field' => 'test', 'args' => [['type' => 'i32', 'value' => '39']]],
             text: 'uninitialized element',
             line: 2050,
@@ -8004,7 +7368,6 @@ final class TableInitTest extends SpecTestsuiteBase
     public function testAssertTrap737(): void
     {
         $this->runAssertTrapCommand(
-            module: null,
             action: ['type' => 'invoke', 'field' => 'test', 'args' => [['type' => 'i32', 'value' => '40']]],
             text: 'uninitialized element',
             line: 2051,
@@ -8015,7 +7378,6 @@ final class TableInitTest extends SpecTestsuiteBase
     public function testAssertTrap738(): void
     {
         $this->runAssertTrapCommand(
-            module: null,
             action: ['type' => 'invoke', 'field' => 'test', 'args' => [['type' => 'i32', 'value' => '41']]],
             text: 'uninitialized element',
             line: 2052,
@@ -8026,7 +7388,6 @@ final class TableInitTest extends SpecTestsuiteBase
     public function testAssertTrap739(): void
     {
         $this->runAssertTrapCommand(
-            module: null,
             action: ['type' => 'invoke', 'field' => 'test', 'args' => [['type' => 'i32', 'value' => '42']]],
             text: 'uninitialized element',
             line: 2053,
@@ -8037,7 +7398,6 @@ final class TableInitTest extends SpecTestsuiteBase
     public function testAssertTrap740(): void
     {
         $this->runAssertTrapCommand(
-            module: null,
             action: ['type' => 'invoke', 'field' => 'test', 'args' => [['type' => 'i32', 'value' => '43']]],
             text: 'uninitialized element',
             line: 2054,
@@ -8048,7 +7408,6 @@ final class TableInitTest extends SpecTestsuiteBase
     public function testAssertTrap741(): void
     {
         $this->runAssertTrapCommand(
-            module: null,
             action: ['type' => 'invoke', 'field' => 'test', 'args' => [['type' => 'i32', 'value' => '44']]],
             text: 'uninitialized element',
             line: 2055,
@@ -8059,7 +7418,6 @@ final class TableInitTest extends SpecTestsuiteBase
     public function testAssertTrap742(): void
     {
         $this->runAssertTrapCommand(
-            module: null,
             action: ['type' => 'invoke', 'field' => 'test', 'args' => [['type' => 'i32', 'value' => '45']]],
             text: 'uninitialized element',
             line: 2056,
@@ -8070,7 +7428,6 @@ final class TableInitTest extends SpecTestsuiteBase
     public function testAssertTrap743(): void
     {
         $this->runAssertTrapCommand(
-            module: null,
             action: ['type' => 'invoke', 'field' => 'test', 'args' => [['type' => 'i32', 'value' => '46']]],
             text: 'uninitialized element',
             line: 2057,
@@ -8081,7 +7438,6 @@ final class TableInitTest extends SpecTestsuiteBase
     public function testAssertTrap744(): void
     {
         $this->runAssertTrapCommand(
-            module: null,
             action: ['type' => 'invoke', 'field' => 'test', 'args' => [['type' => 'i32', 'value' => '47']]],
             text: 'uninitialized element',
             line: 2058,
@@ -8092,7 +7448,6 @@ final class TableInitTest extends SpecTestsuiteBase
     public function testAssertTrap745(): void
     {
         $this->runAssertTrapCommand(
-            module: null,
             action: ['type' => 'invoke', 'field' => 'test', 'args' => [['type' => 'i32', 'value' => '48']]],
             text: 'uninitialized element',
             line: 2059,
@@ -8103,7 +7458,6 @@ final class TableInitTest extends SpecTestsuiteBase
     public function testAssertTrap746(): void
     {
         $this->runAssertTrapCommand(
-            module: null,
             action: ['type' => 'invoke', 'field' => 'test', 'args' => [['type' => 'i32', 'value' => '49']]],
             text: 'uninitialized element',
             line: 2060,
@@ -8114,7 +7468,6 @@ final class TableInitTest extends SpecTestsuiteBase
     public function testAssertTrap747(): void
     {
         $this->runAssertTrapCommand(
-            module: null,
             action: ['type' => 'invoke', 'field' => 'test', 'args' => [['type' => 'i32', 'value' => '50']]],
             text: 'uninitialized element',
             line: 2061,
@@ -8125,7 +7478,6 @@ final class TableInitTest extends SpecTestsuiteBase
     public function testAssertTrap748(): void
     {
         $this->runAssertTrapCommand(
-            module: null,
             action: ['type' => 'invoke', 'field' => 'test', 'args' => [['type' => 'i32', 'value' => '51']]],
             text: 'uninitialized element',
             line: 2062,
@@ -8136,7 +7488,6 @@ final class TableInitTest extends SpecTestsuiteBase
     public function testAssertTrap749(): void
     {
         $this->runAssertTrapCommand(
-            module: null,
             action: ['type' => 'invoke', 'field' => 'test', 'args' => [['type' => 'i32', 'value' => '52']]],
             text: 'uninitialized element',
             line: 2063,
@@ -8147,7 +7498,6 @@ final class TableInitTest extends SpecTestsuiteBase
     public function testAssertTrap750(): void
     {
         $this->runAssertTrapCommand(
-            module: null,
             action: ['type' => 'invoke', 'field' => 'test', 'args' => [['type' => 'i32', 'value' => '53']]],
             text: 'uninitialized element',
             line: 2064,
@@ -8158,7 +7508,6 @@ final class TableInitTest extends SpecTestsuiteBase
     public function testAssertTrap751(): void
     {
         $this->runAssertTrapCommand(
-            module: null,
             action: ['type' => 'invoke', 'field' => 'test', 'args' => [['type' => 'i32', 'value' => '54']]],
             text: 'uninitialized element',
             line: 2065,
@@ -8169,7 +7518,6 @@ final class TableInitTest extends SpecTestsuiteBase
     public function testAssertTrap752(): void
     {
         $this->runAssertTrapCommand(
-            module: null,
             action: ['type' => 'invoke', 'field' => 'test', 'args' => [['type' => 'i32', 'value' => '55']]],
             text: 'uninitialized element',
             line: 2066,
@@ -8180,7 +7528,6 @@ final class TableInitTest extends SpecTestsuiteBase
     public function testAssertTrap753(): void
     {
         $this->runAssertTrapCommand(
-            module: null,
             action: ['type' => 'invoke', 'field' => 'test', 'args' => [['type' => 'i32', 'value' => '56']]],
             text: 'uninitialized element',
             line: 2067,
@@ -8191,7 +7538,6 @@ final class TableInitTest extends SpecTestsuiteBase
     public function testAssertTrap754(): void
     {
         $this->runAssertTrapCommand(
-            module: null,
             action: ['type' => 'invoke', 'field' => 'test', 'args' => [['type' => 'i32', 'value' => '57']]],
             text: 'uninitialized element',
             line: 2068,
@@ -8202,7 +7548,6 @@ final class TableInitTest extends SpecTestsuiteBase
     public function testAssertTrap755(): void
     {
         $this->runAssertTrapCommand(
-            module: null,
             action: ['type' => 'invoke', 'field' => 'test', 'args' => [['type' => 'i32', 'value' => '58']]],
             text: 'uninitialized element',
             line: 2069,
@@ -8213,7 +7558,6 @@ final class TableInitTest extends SpecTestsuiteBase
     public function testAssertTrap756(): void
     {
         $this->runAssertTrapCommand(
-            module: null,
             action: ['type' => 'invoke', 'field' => 'test', 'args' => [['type' => 'i32', 'value' => '59']]],
             text: 'uninitialized element',
             line: 2070,
@@ -8224,7 +7568,6 @@ final class TableInitTest extends SpecTestsuiteBase
     public function testAssertTrap757(): void
     {
         $this->runAssertTrapCommand(
-            module: null,
             action: ['type' => 'invoke', 'field' => 'test', 'args' => [['type' => 'i32', 'value' => '60']]],
             text: 'uninitialized element',
             line: 2071,
@@ -8235,7 +7578,6 @@ final class TableInitTest extends SpecTestsuiteBase
     public function testAssertTrap758(): void
     {
         $this->runAssertTrapCommand(
-            module: null,
             action: ['type' => 'invoke', 'field' => 'test', 'args' => [['type' => 'i32', 'value' => '61']]],
             text: 'uninitialized element',
             line: 2072,
@@ -8246,7 +7588,6 @@ final class TableInitTest extends SpecTestsuiteBase
     public function testAssertTrap759(): void
     {
         $this->runAssertTrapCommand(
-            module: null,
             action: ['type' => 'invoke', 'field' => 'test', 'args' => [['type' => 'i32', 'value' => '62']]],
             text: 'uninitialized element',
             line: 2073,
@@ -8257,7 +7598,6 @@ final class TableInitTest extends SpecTestsuiteBase
     public function testAssertTrap760(): void
     {
         $this->runAssertTrapCommand(
-            module: null,
             action: ['type' => 'invoke', 'field' => 'test', 'args' => [['type' => 'i32', 'value' => '63']]],
             text: 'uninitialized element',
             line: 2074,
@@ -8278,7 +7618,6 @@ final class TableInitTest extends SpecTestsuiteBase
     public function testAssertTrap762(): void
     {
         $this->runAssertTrapCommand(
-            module: null,
             action: ['type' => 'invoke', 'field' => 'run', 'args' => [['type' => 'i32', 'value' => '0'], ['type' => 'i32', 'value' => '4294967292']]],
             text: 'out of bounds table access',
             line: 2104,
@@ -8289,7 +7628,6 @@ final class TableInitTest extends SpecTestsuiteBase
     public function testAssertTrap763(): void
     {
         $this->runAssertTrapCommand(
-            module: null,
             action: ['type' => 'invoke', 'field' => 'test', 'args' => [['type' => 'i32', 'value' => '0']]],
             text: 'uninitialized element',
             line: 2105,
@@ -8300,7 +7638,6 @@ final class TableInitTest extends SpecTestsuiteBase
     public function testAssertTrap764(): void
     {
         $this->runAssertTrapCommand(
-            module: null,
             action: ['type' => 'invoke', 'field' => 'test', 'args' => [['type' => 'i32', 'value' => '1']]],
             text: 'uninitialized element',
             line: 2106,
@@ -8311,7 +7648,6 @@ final class TableInitTest extends SpecTestsuiteBase
     public function testAssertTrap765(): void
     {
         $this->runAssertTrapCommand(
-            module: null,
             action: ['type' => 'invoke', 'field' => 'test', 'args' => [['type' => 'i32', 'value' => '2']]],
             text: 'uninitialized element',
             line: 2107,
@@ -8322,7 +7658,6 @@ final class TableInitTest extends SpecTestsuiteBase
     public function testAssertTrap766(): void
     {
         $this->runAssertTrapCommand(
-            module: null,
             action: ['type' => 'invoke', 'field' => 'test', 'args' => [['type' => 'i32', 'value' => '3']]],
             text: 'uninitialized element',
             line: 2108,
@@ -8333,7 +7668,6 @@ final class TableInitTest extends SpecTestsuiteBase
     public function testAssertTrap767(): void
     {
         $this->runAssertTrapCommand(
-            module: null,
             action: ['type' => 'invoke', 'field' => 'test', 'args' => [['type' => 'i32', 'value' => '4']]],
             text: 'uninitialized element',
             line: 2109,
@@ -8344,7 +7678,6 @@ final class TableInitTest extends SpecTestsuiteBase
     public function testAssertTrap768(): void
     {
         $this->runAssertTrapCommand(
-            module: null,
             action: ['type' => 'invoke', 'field' => 'test', 'args' => [['type' => 'i32', 'value' => '5']]],
             text: 'uninitialized element',
             line: 2110,
@@ -8355,7 +7688,6 @@ final class TableInitTest extends SpecTestsuiteBase
     public function testAssertTrap769(): void
     {
         $this->runAssertTrapCommand(
-            module: null,
             action: ['type' => 'invoke', 'field' => 'test', 'args' => [['type' => 'i32', 'value' => '6']]],
             text: 'uninitialized element',
             line: 2111,
@@ -8366,7 +7698,6 @@ final class TableInitTest extends SpecTestsuiteBase
     public function testAssertTrap770(): void
     {
         $this->runAssertTrapCommand(
-            module: null,
             action: ['type' => 'invoke', 'field' => 'test', 'args' => [['type' => 'i32', 'value' => '7']]],
             text: 'uninitialized element',
             line: 2112,
@@ -8377,7 +7708,6 @@ final class TableInitTest extends SpecTestsuiteBase
     public function testAssertTrap771(): void
     {
         $this->runAssertTrapCommand(
-            module: null,
             action: ['type' => 'invoke', 'field' => 'test', 'args' => [['type' => 'i32', 'value' => '8']]],
             text: 'uninitialized element',
             line: 2113,
@@ -8388,7 +7718,6 @@ final class TableInitTest extends SpecTestsuiteBase
     public function testAssertTrap772(): void
     {
         $this->runAssertTrapCommand(
-            module: null,
             action: ['type' => 'invoke', 'field' => 'test', 'args' => [['type' => 'i32', 'value' => '9']]],
             text: 'uninitialized element',
             line: 2114,
@@ -8399,7 +7728,6 @@ final class TableInitTest extends SpecTestsuiteBase
     public function testAssertTrap773(): void
     {
         $this->runAssertTrapCommand(
-            module: null,
             action: ['type' => 'invoke', 'field' => 'test', 'args' => [['type' => 'i32', 'value' => '10']]],
             text: 'uninitialized element',
             line: 2115,
@@ -8410,7 +7738,6 @@ final class TableInitTest extends SpecTestsuiteBase
     public function testAssertTrap774(): void
     {
         $this->runAssertTrapCommand(
-            module: null,
             action: ['type' => 'invoke', 'field' => 'test', 'args' => [['type' => 'i32', 'value' => '11']]],
             text: 'uninitialized element',
             line: 2116,
@@ -8421,7 +7748,6 @@ final class TableInitTest extends SpecTestsuiteBase
     public function testAssertTrap775(): void
     {
         $this->runAssertTrapCommand(
-            module: null,
             action: ['type' => 'invoke', 'field' => 'test', 'args' => [['type' => 'i32', 'value' => '12']]],
             text: 'uninitialized element',
             line: 2117,
@@ -8432,7 +7758,6 @@ final class TableInitTest extends SpecTestsuiteBase
     public function testAssertTrap776(): void
     {
         $this->runAssertTrapCommand(
-            module: null,
             action: ['type' => 'invoke', 'field' => 'test', 'args' => [['type' => 'i32', 'value' => '13']]],
             text: 'uninitialized element',
             line: 2118,
@@ -8443,7 +7768,6 @@ final class TableInitTest extends SpecTestsuiteBase
     public function testAssertTrap777(): void
     {
         $this->runAssertTrapCommand(
-            module: null,
             action: ['type' => 'invoke', 'field' => 'test', 'args' => [['type' => 'i32', 'value' => '14']]],
             text: 'uninitialized element',
             line: 2119,
@@ -8454,7 +7778,6 @@ final class TableInitTest extends SpecTestsuiteBase
     public function testAssertTrap778(): void
     {
         $this->runAssertTrapCommand(
-            module: null,
             action: ['type' => 'invoke', 'field' => 'test', 'args' => [['type' => 'i32', 'value' => '15']]],
             text: 'uninitialized element',
             line: 2120,

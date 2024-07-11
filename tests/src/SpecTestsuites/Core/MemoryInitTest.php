@@ -23,7 +23,6 @@ final class MemoryInitTest extends SpecTestsuiteBase
     public function testAction1(): void
     {
         $this->runActionCommand(
-            module: null,
             action: ['type' => 'invoke', 'field' => 'test', 'args' => []],
             line: 17,
         );
@@ -33,7 +32,6 @@ final class MemoryInitTest extends SpecTestsuiteBase
     public function testAssertReturn2(): void
     {
         $this->runAssertReturnCommand(
-            module: null,
             action: ['type' => 'invoke', 'field' => 'load8_u', 'args' => [['type' => 'i32', 'value' => '0']]],
             expected: [['type' => 'i32', 'value' => '0']],
             line: 19,
@@ -44,7 +42,6 @@ final class MemoryInitTest extends SpecTestsuiteBase
     public function testAssertReturn3(): void
     {
         $this->runAssertReturnCommand(
-            module: null,
             action: ['type' => 'invoke', 'field' => 'load8_u', 'args' => [['type' => 'i32', 'value' => '1']]],
             expected: [['type' => 'i32', 'value' => '0']],
             line: 20,
@@ -55,7 +52,6 @@ final class MemoryInitTest extends SpecTestsuiteBase
     public function testAssertReturn4(): void
     {
         $this->runAssertReturnCommand(
-            module: null,
             action: ['type' => 'invoke', 'field' => 'load8_u', 'args' => [['type' => 'i32', 'value' => '2']]],
             expected: [['type' => 'i32', 'value' => '3']],
             line: 21,
@@ -66,7 +62,6 @@ final class MemoryInitTest extends SpecTestsuiteBase
     public function testAssertReturn5(): void
     {
         $this->runAssertReturnCommand(
-            module: null,
             action: ['type' => 'invoke', 'field' => 'load8_u', 'args' => [['type' => 'i32', 'value' => '3']]],
             expected: [['type' => 'i32', 'value' => '1']],
             line: 22,
@@ -77,7 +72,6 @@ final class MemoryInitTest extends SpecTestsuiteBase
     public function testAssertReturn6(): void
     {
         $this->runAssertReturnCommand(
-            module: null,
             action: ['type' => 'invoke', 'field' => 'load8_u', 'args' => [['type' => 'i32', 'value' => '4']]],
             expected: [['type' => 'i32', 'value' => '4']],
             line: 23,
@@ -88,7 +82,6 @@ final class MemoryInitTest extends SpecTestsuiteBase
     public function testAssertReturn7(): void
     {
         $this->runAssertReturnCommand(
-            module: null,
             action: ['type' => 'invoke', 'field' => 'load8_u', 'args' => [['type' => 'i32', 'value' => '5']]],
             expected: [['type' => 'i32', 'value' => '1']],
             line: 24,
@@ -99,7 +92,6 @@ final class MemoryInitTest extends SpecTestsuiteBase
     public function testAssertReturn8(): void
     {
         $this->runAssertReturnCommand(
-            module: null,
             action: ['type' => 'invoke', 'field' => 'load8_u', 'args' => [['type' => 'i32', 'value' => '6']]],
             expected: [['type' => 'i32', 'value' => '0']],
             line: 25,
@@ -110,7 +102,6 @@ final class MemoryInitTest extends SpecTestsuiteBase
     public function testAssertReturn9(): void
     {
         $this->runAssertReturnCommand(
-            module: null,
             action: ['type' => 'invoke', 'field' => 'load8_u', 'args' => [['type' => 'i32', 'value' => '7']]],
             expected: [['type' => 'i32', 'value' => '0']],
             line: 26,
@@ -121,7 +112,6 @@ final class MemoryInitTest extends SpecTestsuiteBase
     public function testAssertReturn10(): void
     {
         $this->runAssertReturnCommand(
-            module: null,
             action: ['type' => 'invoke', 'field' => 'load8_u', 'args' => [['type' => 'i32', 'value' => '8']]],
             expected: [['type' => 'i32', 'value' => '0']],
             line: 27,
@@ -132,7 +122,6 @@ final class MemoryInitTest extends SpecTestsuiteBase
     public function testAssertReturn11(): void
     {
         $this->runAssertReturnCommand(
-            module: null,
             action: ['type' => 'invoke', 'field' => 'load8_u', 'args' => [['type' => 'i32', 'value' => '9']]],
             expected: [['type' => 'i32', 'value' => '0']],
             line: 28,
@@ -143,7 +132,6 @@ final class MemoryInitTest extends SpecTestsuiteBase
     public function testAssertReturn12(): void
     {
         $this->runAssertReturnCommand(
-            module: null,
             action: ['type' => 'invoke', 'field' => 'load8_u', 'args' => [['type' => 'i32', 'value' => '10']]],
             expected: [['type' => 'i32', 'value' => '0']],
             line: 29,
@@ -154,7 +142,6 @@ final class MemoryInitTest extends SpecTestsuiteBase
     public function testAssertReturn13(): void
     {
         $this->runAssertReturnCommand(
-            module: null,
             action: ['type' => 'invoke', 'field' => 'load8_u', 'args' => [['type' => 'i32', 'value' => '11']]],
             expected: [['type' => 'i32', 'value' => '0']],
             line: 30,
@@ -165,7 +152,6 @@ final class MemoryInitTest extends SpecTestsuiteBase
     public function testAssertReturn14(): void
     {
         $this->runAssertReturnCommand(
-            module: null,
             action: ['type' => 'invoke', 'field' => 'load8_u', 'args' => [['type' => 'i32', 'value' => '12']]],
             expected: [['type' => 'i32', 'value' => '7']],
             line: 31,
@@ -176,7 +162,6 @@ final class MemoryInitTest extends SpecTestsuiteBase
     public function testAssertReturn15(): void
     {
         $this->runAssertReturnCommand(
-            module: null,
             action: ['type' => 'invoke', 'field' => 'load8_u', 'args' => [['type' => 'i32', 'value' => '13']]],
             expected: [['type' => 'i32', 'value' => '5']],
             line: 32,
@@ -187,7 +172,6 @@ final class MemoryInitTest extends SpecTestsuiteBase
     public function testAssertReturn16(): void
     {
         $this->runAssertReturnCommand(
-            module: null,
             action: ['type' => 'invoke', 'field' => 'load8_u', 'args' => [['type' => 'i32', 'value' => '14']]],
             expected: [['type' => 'i32', 'value' => '2']],
             line: 33,
@@ -198,7 +182,6 @@ final class MemoryInitTest extends SpecTestsuiteBase
     public function testAssertReturn17(): void
     {
         $this->runAssertReturnCommand(
-            module: null,
             action: ['type' => 'invoke', 'field' => 'load8_u', 'args' => [['type' => 'i32', 'value' => '15']]],
             expected: [['type' => 'i32', 'value' => '3']],
             line: 34,
@@ -209,7 +192,6 @@ final class MemoryInitTest extends SpecTestsuiteBase
     public function testAssertReturn18(): void
     {
         $this->runAssertReturnCommand(
-            module: null,
             action: ['type' => 'invoke', 'field' => 'load8_u', 'args' => [['type' => 'i32', 'value' => '16']]],
             expected: [['type' => 'i32', 'value' => '6']],
             line: 35,
@@ -220,7 +202,6 @@ final class MemoryInitTest extends SpecTestsuiteBase
     public function testAssertReturn19(): void
     {
         $this->runAssertReturnCommand(
-            module: null,
             action: ['type' => 'invoke', 'field' => 'load8_u', 'args' => [['type' => 'i32', 'value' => '17']]],
             expected: [['type' => 'i32', 'value' => '0']],
             line: 36,
@@ -231,7 +212,6 @@ final class MemoryInitTest extends SpecTestsuiteBase
     public function testAssertReturn20(): void
     {
         $this->runAssertReturnCommand(
-            module: null,
             action: ['type' => 'invoke', 'field' => 'load8_u', 'args' => [['type' => 'i32', 'value' => '18']]],
             expected: [['type' => 'i32', 'value' => '0']],
             line: 37,
@@ -242,7 +222,6 @@ final class MemoryInitTest extends SpecTestsuiteBase
     public function testAssertReturn21(): void
     {
         $this->runAssertReturnCommand(
-            module: null,
             action: ['type' => 'invoke', 'field' => 'load8_u', 'args' => [['type' => 'i32', 'value' => '19']]],
             expected: [['type' => 'i32', 'value' => '0']],
             line: 38,
@@ -253,7 +232,6 @@ final class MemoryInitTest extends SpecTestsuiteBase
     public function testAssertReturn22(): void
     {
         $this->runAssertReturnCommand(
-            module: null,
             action: ['type' => 'invoke', 'field' => 'load8_u', 'args' => [['type' => 'i32', 'value' => '20']]],
             expected: [['type' => 'i32', 'value' => '0']],
             line: 39,
@@ -264,7 +242,6 @@ final class MemoryInitTest extends SpecTestsuiteBase
     public function testAssertReturn23(): void
     {
         $this->runAssertReturnCommand(
-            module: null,
             action: ['type' => 'invoke', 'field' => 'load8_u', 'args' => [['type' => 'i32', 'value' => '21']]],
             expected: [['type' => 'i32', 'value' => '0']],
             line: 40,
@@ -275,7 +252,6 @@ final class MemoryInitTest extends SpecTestsuiteBase
     public function testAssertReturn24(): void
     {
         $this->runAssertReturnCommand(
-            module: null,
             action: ['type' => 'invoke', 'field' => 'load8_u', 'args' => [['type' => 'i32', 'value' => '22']]],
             expected: [['type' => 'i32', 'value' => '0']],
             line: 41,
@@ -286,7 +262,6 @@ final class MemoryInitTest extends SpecTestsuiteBase
     public function testAssertReturn25(): void
     {
         $this->runAssertReturnCommand(
-            module: null,
             action: ['type' => 'invoke', 'field' => 'load8_u', 'args' => [['type' => 'i32', 'value' => '23']]],
             expected: [['type' => 'i32', 'value' => '0']],
             line: 42,
@@ -297,7 +272,6 @@ final class MemoryInitTest extends SpecTestsuiteBase
     public function testAssertReturn26(): void
     {
         $this->runAssertReturnCommand(
-            module: null,
             action: ['type' => 'invoke', 'field' => 'load8_u', 'args' => [['type' => 'i32', 'value' => '24']]],
             expected: [['type' => 'i32', 'value' => '0']],
             line: 43,
@@ -308,7 +282,6 @@ final class MemoryInitTest extends SpecTestsuiteBase
     public function testAssertReturn27(): void
     {
         $this->runAssertReturnCommand(
-            module: null,
             action: ['type' => 'invoke', 'field' => 'load8_u', 'args' => [['type' => 'i32', 'value' => '25']]],
             expected: [['type' => 'i32', 'value' => '0']],
             line: 44,
@@ -319,7 +292,6 @@ final class MemoryInitTest extends SpecTestsuiteBase
     public function testAssertReturn28(): void
     {
         $this->runAssertReturnCommand(
-            module: null,
             action: ['type' => 'invoke', 'field' => 'load8_u', 'args' => [['type' => 'i32', 'value' => '26']]],
             expected: [['type' => 'i32', 'value' => '0']],
             line: 45,
@@ -330,7 +302,6 @@ final class MemoryInitTest extends SpecTestsuiteBase
     public function testAssertReturn29(): void
     {
         $this->runAssertReturnCommand(
-            module: null,
             action: ['type' => 'invoke', 'field' => 'load8_u', 'args' => [['type' => 'i32', 'value' => '27']]],
             expected: [['type' => 'i32', 'value' => '0']],
             line: 46,
@@ -341,7 +312,6 @@ final class MemoryInitTest extends SpecTestsuiteBase
     public function testAssertReturn30(): void
     {
         $this->runAssertReturnCommand(
-            module: null,
             action: ['type' => 'invoke', 'field' => 'load8_u', 'args' => [['type' => 'i32', 'value' => '28']]],
             expected: [['type' => 'i32', 'value' => '0']],
             line: 47,
@@ -352,7 +322,6 @@ final class MemoryInitTest extends SpecTestsuiteBase
     public function testAssertReturn31(): void
     {
         $this->runAssertReturnCommand(
-            module: null,
             action: ['type' => 'invoke', 'field' => 'load8_u', 'args' => [['type' => 'i32', 'value' => '29']]],
             expected: [['type' => 'i32', 'value' => '0']],
             line: 48,
@@ -373,7 +342,6 @@ final class MemoryInitTest extends SpecTestsuiteBase
     public function testAction33(): void
     {
         $this->runActionCommand(
-            module: null,
             action: ['type' => 'invoke', 'field' => 'test', 'args' => []],
             line: 61,
         );
@@ -383,7 +351,6 @@ final class MemoryInitTest extends SpecTestsuiteBase
     public function testAssertReturn34(): void
     {
         $this->runAssertReturnCommand(
-            module: null,
             action: ['type' => 'invoke', 'field' => 'load8_u', 'args' => [['type' => 'i32', 'value' => '0']]],
             expected: [['type' => 'i32', 'value' => '0']],
             line: 63,
@@ -394,7 +361,6 @@ final class MemoryInitTest extends SpecTestsuiteBase
     public function testAssertReturn35(): void
     {
         $this->runAssertReturnCommand(
-            module: null,
             action: ['type' => 'invoke', 'field' => 'load8_u', 'args' => [['type' => 'i32', 'value' => '1']]],
             expected: [['type' => 'i32', 'value' => '0']],
             line: 64,
@@ -405,7 +371,6 @@ final class MemoryInitTest extends SpecTestsuiteBase
     public function testAssertReturn36(): void
     {
         $this->runAssertReturnCommand(
-            module: null,
             action: ['type' => 'invoke', 'field' => 'load8_u', 'args' => [['type' => 'i32', 'value' => '2']]],
             expected: [['type' => 'i32', 'value' => '3']],
             line: 65,
@@ -416,7 +381,6 @@ final class MemoryInitTest extends SpecTestsuiteBase
     public function testAssertReturn37(): void
     {
         $this->runAssertReturnCommand(
-            module: null,
             action: ['type' => 'invoke', 'field' => 'load8_u', 'args' => [['type' => 'i32', 'value' => '3']]],
             expected: [['type' => 'i32', 'value' => '1']],
             line: 66,
@@ -427,7 +391,6 @@ final class MemoryInitTest extends SpecTestsuiteBase
     public function testAssertReturn38(): void
     {
         $this->runAssertReturnCommand(
-            module: null,
             action: ['type' => 'invoke', 'field' => 'load8_u', 'args' => [['type' => 'i32', 'value' => '4']]],
             expected: [['type' => 'i32', 'value' => '4']],
             line: 67,
@@ -438,7 +401,6 @@ final class MemoryInitTest extends SpecTestsuiteBase
     public function testAssertReturn39(): void
     {
         $this->runAssertReturnCommand(
-            module: null,
             action: ['type' => 'invoke', 'field' => 'load8_u', 'args' => [['type' => 'i32', 'value' => '5']]],
             expected: [['type' => 'i32', 'value' => '1']],
             line: 68,
@@ -449,7 +411,6 @@ final class MemoryInitTest extends SpecTestsuiteBase
     public function testAssertReturn40(): void
     {
         $this->runAssertReturnCommand(
-            module: null,
             action: ['type' => 'invoke', 'field' => 'load8_u', 'args' => [['type' => 'i32', 'value' => '6']]],
             expected: [['type' => 'i32', 'value' => '0']],
             line: 69,
@@ -460,7 +421,6 @@ final class MemoryInitTest extends SpecTestsuiteBase
     public function testAssertReturn41(): void
     {
         $this->runAssertReturnCommand(
-            module: null,
             action: ['type' => 'invoke', 'field' => 'load8_u', 'args' => [['type' => 'i32', 'value' => '7']]],
             expected: [['type' => 'i32', 'value' => '2']],
             line: 70,
@@ -471,7 +431,6 @@ final class MemoryInitTest extends SpecTestsuiteBase
     public function testAssertReturn42(): void
     {
         $this->runAssertReturnCommand(
-            module: null,
             action: ['type' => 'invoke', 'field' => 'load8_u', 'args' => [['type' => 'i32', 'value' => '8']]],
             expected: [['type' => 'i32', 'value' => '7']],
             line: 71,
@@ -482,7 +441,6 @@ final class MemoryInitTest extends SpecTestsuiteBase
     public function testAssertReturn43(): void
     {
         $this->runAssertReturnCommand(
-            module: null,
             action: ['type' => 'invoke', 'field' => 'load8_u', 'args' => [['type' => 'i32', 'value' => '9']]],
             expected: [['type' => 'i32', 'value' => '1']],
             line: 72,
@@ -493,7 +451,6 @@ final class MemoryInitTest extends SpecTestsuiteBase
     public function testAssertReturn44(): void
     {
         $this->runAssertReturnCommand(
-            module: null,
             action: ['type' => 'invoke', 'field' => 'load8_u', 'args' => [['type' => 'i32', 'value' => '10']]],
             expected: [['type' => 'i32', 'value' => '8']],
             line: 73,
@@ -504,7 +461,6 @@ final class MemoryInitTest extends SpecTestsuiteBase
     public function testAssertReturn45(): void
     {
         $this->runAssertReturnCommand(
-            module: null,
             action: ['type' => 'invoke', 'field' => 'load8_u', 'args' => [['type' => 'i32', 'value' => '11']]],
             expected: [['type' => 'i32', 'value' => '0']],
             line: 74,
@@ -515,7 +471,6 @@ final class MemoryInitTest extends SpecTestsuiteBase
     public function testAssertReturn46(): void
     {
         $this->runAssertReturnCommand(
-            module: null,
             action: ['type' => 'invoke', 'field' => 'load8_u', 'args' => [['type' => 'i32', 'value' => '12']]],
             expected: [['type' => 'i32', 'value' => '7']],
             line: 75,
@@ -526,7 +481,6 @@ final class MemoryInitTest extends SpecTestsuiteBase
     public function testAssertReturn47(): void
     {
         $this->runAssertReturnCommand(
-            module: null,
             action: ['type' => 'invoke', 'field' => 'load8_u', 'args' => [['type' => 'i32', 'value' => '13']]],
             expected: [['type' => 'i32', 'value' => '5']],
             line: 76,
@@ -537,7 +491,6 @@ final class MemoryInitTest extends SpecTestsuiteBase
     public function testAssertReturn48(): void
     {
         $this->runAssertReturnCommand(
-            module: null,
             action: ['type' => 'invoke', 'field' => 'load8_u', 'args' => [['type' => 'i32', 'value' => '14']]],
             expected: [['type' => 'i32', 'value' => '2']],
             line: 77,
@@ -548,7 +501,6 @@ final class MemoryInitTest extends SpecTestsuiteBase
     public function testAssertReturn49(): void
     {
         $this->runAssertReturnCommand(
-            module: null,
             action: ['type' => 'invoke', 'field' => 'load8_u', 'args' => [['type' => 'i32', 'value' => '15']]],
             expected: [['type' => 'i32', 'value' => '3']],
             line: 78,
@@ -559,7 +511,6 @@ final class MemoryInitTest extends SpecTestsuiteBase
     public function testAssertReturn50(): void
     {
         $this->runAssertReturnCommand(
-            module: null,
             action: ['type' => 'invoke', 'field' => 'load8_u', 'args' => [['type' => 'i32', 'value' => '16']]],
             expected: [['type' => 'i32', 'value' => '6']],
             line: 79,
@@ -570,7 +521,6 @@ final class MemoryInitTest extends SpecTestsuiteBase
     public function testAssertReturn51(): void
     {
         $this->runAssertReturnCommand(
-            module: null,
             action: ['type' => 'invoke', 'field' => 'load8_u', 'args' => [['type' => 'i32', 'value' => '17']]],
             expected: [['type' => 'i32', 'value' => '0']],
             line: 80,
@@ -581,7 +531,6 @@ final class MemoryInitTest extends SpecTestsuiteBase
     public function testAssertReturn52(): void
     {
         $this->runAssertReturnCommand(
-            module: null,
             action: ['type' => 'invoke', 'field' => 'load8_u', 'args' => [['type' => 'i32', 'value' => '18']]],
             expected: [['type' => 'i32', 'value' => '0']],
             line: 81,
@@ -592,7 +541,6 @@ final class MemoryInitTest extends SpecTestsuiteBase
     public function testAssertReturn53(): void
     {
         $this->runAssertReturnCommand(
-            module: null,
             action: ['type' => 'invoke', 'field' => 'load8_u', 'args' => [['type' => 'i32', 'value' => '19']]],
             expected: [['type' => 'i32', 'value' => '0']],
             line: 82,
@@ -603,7 +551,6 @@ final class MemoryInitTest extends SpecTestsuiteBase
     public function testAssertReturn54(): void
     {
         $this->runAssertReturnCommand(
-            module: null,
             action: ['type' => 'invoke', 'field' => 'load8_u', 'args' => [['type' => 'i32', 'value' => '20']]],
             expected: [['type' => 'i32', 'value' => '0']],
             line: 83,
@@ -614,7 +561,6 @@ final class MemoryInitTest extends SpecTestsuiteBase
     public function testAssertReturn55(): void
     {
         $this->runAssertReturnCommand(
-            module: null,
             action: ['type' => 'invoke', 'field' => 'load8_u', 'args' => [['type' => 'i32', 'value' => '21']]],
             expected: [['type' => 'i32', 'value' => '0']],
             line: 84,
@@ -625,7 +571,6 @@ final class MemoryInitTest extends SpecTestsuiteBase
     public function testAssertReturn56(): void
     {
         $this->runAssertReturnCommand(
-            module: null,
             action: ['type' => 'invoke', 'field' => 'load8_u', 'args' => [['type' => 'i32', 'value' => '22']]],
             expected: [['type' => 'i32', 'value' => '0']],
             line: 85,
@@ -636,7 +581,6 @@ final class MemoryInitTest extends SpecTestsuiteBase
     public function testAssertReturn57(): void
     {
         $this->runAssertReturnCommand(
-            module: null,
             action: ['type' => 'invoke', 'field' => 'load8_u', 'args' => [['type' => 'i32', 'value' => '23']]],
             expected: [['type' => 'i32', 'value' => '0']],
             line: 86,
@@ -647,7 +591,6 @@ final class MemoryInitTest extends SpecTestsuiteBase
     public function testAssertReturn58(): void
     {
         $this->runAssertReturnCommand(
-            module: null,
             action: ['type' => 'invoke', 'field' => 'load8_u', 'args' => [['type' => 'i32', 'value' => '24']]],
             expected: [['type' => 'i32', 'value' => '0']],
             line: 87,
@@ -658,7 +601,6 @@ final class MemoryInitTest extends SpecTestsuiteBase
     public function testAssertReturn59(): void
     {
         $this->runAssertReturnCommand(
-            module: null,
             action: ['type' => 'invoke', 'field' => 'load8_u', 'args' => [['type' => 'i32', 'value' => '25']]],
             expected: [['type' => 'i32', 'value' => '0']],
             line: 88,
@@ -669,7 +611,6 @@ final class MemoryInitTest extends SpecTestsuiteBase
     public function testAssertReturn60(): void
     {
         $this->runAssertReturnCommand(
-            module: null,
             action: ['type' => 'invoke', 'field' => 'load8_u', 'args' => [['type' => 'i32', 'value' => '26']]],
             expected: [['type' => 'i32', 'value' => '0']],
             line: 89,
@@ -680,7 +621,6 @@ final class MemoryInitTest extends SpecTestsuiteBase
     public function testAssertReturn61(): void
     {
         $this->runAssertReturnCommand(
-            module: null,
             action: ['type' => 'invoke', 'field' => 'load8_u', 'args' => [['type' => 'i32', 'value' => '27']]],
             expected: [['type' => 'i32', 'value' => '0']],
             line: 90,
@@ -691,7 +631,6 @@ final class MemoryInitTest extends SpecTestsuiteBase
     public function testAssertReturn62(): void
     {
         $this->runAssertReturnCommand(
-            module: null,
             action: ['type' => 'invoke', 'field' => 'load8_u', 'args' => [['type' => 'i32', 'value' => '28']]],
             expected: [['type' => 'i32', 'value' => '0']],
             line: 91,
@@ -702,7 +641,6 @@ final class MemoryInitTest extends SpecTestsuiteBase
     public function testAssertReturn63(): void
     {
         $this->runAssertReturnCommand(
-            module: null,
             action: ['type' => 'invoke', 'field' => 'load8_u', 'args' => [['type' => 'i32', 'value' => '29']]],
             expected: [['type' => 'i32', 'value' => '0']],
             line: 92,
@@ -723,7 +661,6 @@ final class MemoryInitTest extends SpecTestsuiteBase
     public function testAction65(): void
     {
         $this->runActionCommand(
-            module: null,
             action: ['type' => 'invoke', 'field' => 'test', 'args' => []],
             line: 105,
         );
@@ -733,7 +670,6 @@ final class MemoryInitTest extends SpecTestsuiteBase
     public function testAssertReturn66(): void
     {
         $this->runAssertReturnCommand(
-            module: null,
             action: ['type' => 'invoke', 'field' => 'load8_u', 'args' => [['type' => 'i32', 'value' => '0']]],
             expected: [['type' => 'i32', 'value' => '0']],
             line: 107,
@@ -744,7 +680,6 @@ final class MemoryInitTest extends SpecTestsuiteBase
     public function testAssertReturn67(): void
     {
         $this->runAssertReturnCommand(
-            module: null,
             action: ['type' => 'invoke', 'field' => 'load8_u', 'args' => [['type' => 'i32', 'value' => '1']]],
             expected: [['type' => 'i32', 'value' => '0']],
             line: 108,
@@ -755,7 +690,6 @@ final class MemoryInitTest extends SpecTestsuiteBase
     public function testAssertReturn68(): void
     {
         $this->runAssertReturnCommand(
-            module: null,
             action: ['type' => 'invoke', 'field' => 'load8_u', 'args' => [['type' => 'i32', 'value' => '2']]],
             expected: [['type' => 'i32', 'value' => '3']],
             line: 109,
@@ -766,7 +700,6 @@ final class MemoryInitTest extends SpecTestsuiteBase
     public function testAssertReturn69(): void
     {
         $this->runAssertReturnCommand(
-            module: null,
             action: ['type' => 'invoke', 'field' => 'load8_u', 'args' => [['type' => 'i32', 'value' => '3']]],
             expected: [['type' => 'i32', 'value' => '1']],
             line: 110,
@@ -777,7 +710,6 @@ final class MemoryInitTest extends SpecTestsuiteBase
     public function testAssertReturn70(): void
     {
         $this->runAssertReturnCommand(
-            module: null,
             action: ['type' => 'invoke', 'field' => 'load8_u', 'args' => [['type' => 'i32', 'value' => '4']]],
             expected: [['type' => 'i32', 'value' => '4']],
             line: 111,
@@ -788,7 +720,6 @@ final class MemoryInitTest extends SpecTestsuiteBase
     public function testAssertReturn71(): void
     {
         $this->runAssertReturnCommand(
-            module: null,
             action: ['type' => 'invoke', 'field' => 'load8_u', 'args' => [['type' => 'i32', 'value' => '5']]],
             expected: [['type' => 'i32', 'value' => '1']],
             line: 112,
@@ -799,7 +730,6 @@ final class MemoryInitTest extends SpecTestsuiteBase
     public function testAssertReturn72(): void
     {
         $this->runAssertReturnCommand(
-            module: null,
             action: ['type' => 'invoke', 'field' => 'load8_u', 'args' => [['type' => 'i32', 'value' => '6']]],
             expected: [['type' => 'i32', 'value' => '0']],
             line: 113,
@@ -810,7 +740,6 @@ final class MemoryInitTest extends SpecTestsuiteBase
     public function testAssertReturn73(): void
     {
         $this->runAssertReturnCommand(
-            module: null,
             action: ['type' => 'invoke', 'field' => 'load8_u', 'args' => [['type' => 'i32', 'value' => '7']]],
             expected: [['type' => 'i32', 'value' => '0']],
             line: 114,
@@ -821,7 +750,6 @@ final class MemoryInitTest extends SpecTestsuiteBase
     public function testAssertReturn74(): void
     {
         $this->runAssertReturnCommand(
-            module: null,
             action: ['type' => 'invoke', 'field' => 'load8_u', 'args' => [['type' => 'i32', 'value' => '8']]],
             expected: [['type' => 'i32', 'value' => '0']],
             line: 115,
@@ -832,7 +760,6 @@ final class MemoryInitTest extends SpecTestsuiteBase
     public function testAssertReturn75(): void
     {
         $this->runAssertReturnCommand(
-            module: null,
             action: ['type' => 'invoke', 'field' => 'load8_u', 'args' => [['type' => 'i32', 'value' => '9']]],
             expected: [['type' => 'i32', 'value' => '0']],
             line: 116,
@@ -843,7 +770,6 @@ final class MemoryInitTest extends SpecTestsuiteBase
     public function testAssertReturn76(): void
     {
         $this->runAssertReturnCommand(
-            module: null,
             action: ['type' => 'invoke', 'field' => 'load8_u', 'args' => [['type' => 'i32', 'value' => '10']]],
             expected: [['type' => 'i32', 'value' => '0']],
             line: 117,
@@ -854,7 +780,6 @@ final class MemoryInitTest extends SpecTestsuiteBase
     public function testAssertReturn77(): void
     {
         $this->runAssertReturnCommand(
-            module: null,
             action: ['type' => 'invoke', 'field' => 'load8_u', 'args' => [['type' => 'i32', 'value' => '11']]],
             expected: [['type' => 'i32', 'value' => '0']],
             line: 118,
@@ -865,7 +790,6 @@ final class MemoryInitTest extends SpecTestsuiteBase
     public function testAssertReturn78(): void
     {
         $this->runAssertReturnCommand(
-            module: null,
             action: ['type' => 'invoke', 'field' => 'load8_u', 'args' => [['type' => 'i32', 'value' => '12']]],
             expected: [['type' => 'i32', 'value' => '7']],
             line: 119,
@@ -876,7 +800,6 @@ final class MemoryInitTest extends SpecTestsuiteBase
     public function testAssertReturn79(): void
     {
         $this->runAssertReturnCommand(
-            module: null,
             action: ['type' => 'invoke', 'field' => 'load8_u', 'args' => [['type' => 'i32', 'value' => '13']]],
             expected: [['type' => 'i32', 'value' => '5']],
             line: 120,
@@ -887,7 +810,6 @@ final class MemoryInitTest extends SpecTestsuiteBase
     public function testAssertReturn80(): void
     {
         $this->runAssertReturnCommand(
-            module: null,
             action: ['type' => 'invoke', 'field' => 'load8_u', 'args' => [['type' => 'i32', 'value' => '14']]],
             expected: [['type' => 'i32', 'value' => '2']],
             line: 121,
@@ -898,7 +820,6 @@ final class MemoryInitTest extends SpecTestsuiteBase
     public function testAssertReturn81(): void
     {
         $this->runAssertReturnCommand(
-            module: null,
             action: ['type' => 'invoke', 'field' => 'load8_u', 'args' => [['type' => 'i32', 'value' => '15']]],
             expected: [['type' => 'i32', 'value' => '9']],
             line: 122,
@@ -909,7 +830,6 @@ final class MemoryInitTest extends SpecTestsuiteBase
     public function testAssertReturn82(): void
     {
         $this->runAssertReturnCommand(
-            module: null,
             action: ['type' => 'invoke', 'field' => 'load8_u', 'args' => [['type' => 'i32', 'value' => '16']]],
             expected: [['type' => 'i32', 'value' => '2']],
             line: 123,
@@ -920,7 +840,6 @@ final class MemoryInitTest extends SpecTestsuiteBase
     public function testAssertReturn83(): void
     {
         $this->runAssertReturnCommand(
-            module: null,
             action: ['type' => 'invoke', 'field' => 'load8_u', 'args' => [['type' => 'i32', 'value' => '17']]],
             expected: [['type' => 'i32', 'value' => '7']],
             line: 124,
@@ -931,7 +850,6 @@ final class MemoryInitTest extends SpecTestsuiteBase
     public function testAssertReturn84(): void
     {
         $this->runAssertReturnCommand(
-            module: null,
             action: ['type' => 'invoke', 'field' => 'load8_u', 'args' => [['type' => 'i32', 'value' => '18']]],
             expected: [['type' => 'i32', 'value' => '0']],
             line: 125,
@@ -942,7 +860,6 @@ final class MemoryInitTest extends SpecTestsuiteBase
     public function testAssertReturn85(): void
     {
         $this->runAssertReturnCommand(
-            module: null,
             action: ['type' => 'invoke', 'field' => 'load8_u', 'args' => [['type' => 'i32', 'value' => '19']]],
             expected: [['type' => 'i32', 'value' => '0']],
             line: 126,
@@ -953,7 +870,6 @@ final class MemoryInitTest extends SpecTestsuiteBase
     public function testAssertReturn86(): void
     {
         $this->runAssertReturnCommand(
-            module: null,
             action: ['type' => 'invoke', 'field' => 'load8_u', 'args' => [['type' => 'i32', 'value' => '20']]],
             expected: [['type' => 'i32', 'value' => '0']],
             line: 127,
@@ -964,7 +880,6 @@ final class MemoryInitTest extends SpecTestsuiteBase
     public function testAssertReturn87(): void
     {
         $this->runAssertReturnCommand(
-            module: null,
             action: ['type' => 'invoke', 'field' => 'load8_u', 'args' => [['type' => 'i32', 'value' => '21']]],
             expected: [['type' => 'i32', 'value' => '0']],
             line: 128,
@@ -975,7 +890,6 @@ final class MemoryInitTest extends SpecTestsuiteBase
     public function testAssertReturn88(): void
     {
         $this->runAssertReturnCommand(
-            module: null,
             action: ['type' => 'invoke', 'field' => 'load8_u', 'args' => [['type' => 'i32', 'value' => '22']]],
             expected: [['type' => 'i32', 'value' => '0']],
             line: 129,
@@ -986,7 +900,6 @@ final class MemoryInitTest extends SpecTestsuiteBase
     public function testAssertReturn89(): void
     {
         $this->runAssertReturnCommand(
-            module: null,
             action: ['type' => 'invoke', 'field' => 'load8_u', 'args' => [['type' => 'i32', 'value' => '23']]],
             expected: [['type' => 'i32', 'value' => '0']],
             line: 130,
@@ -997,7 +910,6 @@ final class MemoryInitTest extends SpecTestsuiteBase
     public function testAssertReturn90(): void
     {
         $this->runAssertReturnCommand(
-            module: null,
             action: ['type' => 'invoke', 'field' => 'load8_u', 'args' => [['type' => 'i32', 'value' => '24']]],
             expected: [['type' => 'i32', 'value' => '0']],
             line: 131,
@@ -1008,7 +920,6 @@ final class MemoryInitTest extends SpecTestsuiteBase
     public function testAssertReturn91(): void
     {
         $this->runAssertReturnCommand(
-            module: null,
             action: ['type' => 'invoke', 'field' => 'load8_u', 'args' => [['type' => 'i32', 'value' => '25']]],
             expected: [['type' => 'i32', 'value' => '0']],
             line: 132,
@@ -1019,7 +930,6 @@ final class MemoryInitTest extends SpecTestsuiteBase
     public function testAssertReturn92(): void
     {
         $this->runAssertReturnCommand(
-            module: null,
             action: ['type' => 'invoke', 'field' => 'load8_u', 'args' => [['type' => 'i32', 'value' => '26']]],
             expected: [['type' => 'i32', 'value' => '0']],
             line: 133,
@@ -1030,7 +940,6 @@ final class MemoryInitTest extends SpecTestsuiteBase
     public function testAssertReturn93(): void
     {
         $this->runAssertReturnCommand(
-            module: null,
             action: ['type' => 'invoke', 'field' => 'load8_u', 'args' => [['type' => 'i32', 'value' => '27']]],
             expected: [['type' => 'i32', 'value' => '0']],
             line: 134,
@@ -1041,7 +950,6 @@ final class MemoryInitTest extends SpecTestsuiteBase
     public function testAssertReturn94(): void
     {
         $this->runAssertReturnCommand(
-            module: null,
             action: ['type' => 'invoke', 'field' => 'load8_u', 'args' => [['type' => 'i32', 'value' => '28']]],
             expected: [['type' => 'i32', 'value' => '0']],
             line: 135,
@@ -1052,7 +960,6 @@ final class MemoryInitTest extends SpecTestsuiteBase
     public function testAssertReturn95(): void
     {
         $this->runAssertReturnCommand(
-            module: null,
             action: ['type' => 'invoke', 'field' => 'load8_u', 'args' => [['type' => 'i32', 'value' => '29']]],
             expected: [['type' => 'i32', 'value' => '0']],
             line: 136,
@@ -1073,7 +980,6 @@ final class MemoryInitTest extends SpecTestsuiteBase
     public function testAction97(): void
     {
         $this->runActionCommand(
-            module: null,
             action: ['type' => 'invoke', 'field' => 'test', 'args' => []],
             line: 157,
         );
@@ -1083,7 +989,6 @@ final class MemoryInitTest extends SpecTestsuiteBase
     public function testAssertReturn98(): void
     {
         $this->runAssertReturnCommand(
-            module: null,
             action: ['type' => 'invoke', 'field' => 'load8_u', 'args' => [['type' => 'i32', 'value' => '0']]],
             expected: [['type' => 'i32', 'value' => '0']],
             line: 159,
@@ -1094,7 +999,6 @@ final class MemoryInitTest extends SpecTestsuiteBase
     public function testAssertReturn99(): void
     {
         $this->runAssertReturnCommand(
-            module: null,
             action: ['type' => 'invoke', 'field' => 'load8_u', 'args' => [['type' => 'i32', 'value' => '1']]],
             expected: [['type' => 'i32', 'value' => '0']],
             line: 160,
@@ -1105,7 +1009,6 @@ final class MemoryInitTest extends SpecTestsuiteBase
     public function testAssertReturn100(): void
     {
         $this->runAssertReturnCommand(
-            module: null,
             action: ['type' => 'invoke', 'field' => 'load8_u', 'args' => [['type' => 'i32', 'value' => '2']]],
             expected: [['type' => 'i32', 'value' => '3']],
             line: 161,
@@ -1116,7 +1019,6 @@ final class MemoryInitTest extends SpecTestsuiteBase
     public function testAssertReturn101(): void
     {
         $this->runAssertReturnCommand(
-            module: null,
             action: ['type' => 'invoke', 'field' => 'load8_u', 'args' => [['type' => 'i32', 'value' => '3']]],
             expected: [['type' => 'i32', 'value' => '1']],
             line: 162,
@@ -1127,7 +1029,6 @@ final class MemoryInitTest extends SpecTestsuiteBase
     public function testAssertReturn102(): void
     {
         $this->runAssertReturnCommand(
-            module: null,
             action: ['type' => 'invoke', 'field' => 'load8_u', 'args' => [['type' => 'i32', 'value' => '4']]],
             expected: [['type' => 'i32', 'value' => '4']],
             line: 163,
@@ -1138,7 +1039,6 @@ final class MemoryInitTest extends SpecTestsuiteBase
     public function testAssertReturn103(): void
     {
         $this->runAssertReturnCommand(
-            module: null,
             action: ['type' => 'invoke', 'field' => 'load8_u', 'args' => [['type' => 'i32', 'value' => '5']]],
             expected: [['type' => 'i32', 'value' => '1']],
             line: 164,
@@ -1149,7 +1049,6 @@ final class MemoryInitTest extends SpecTestsuiteBase
     public function testAssertReturn104(): void
     {
         $this->runAssertReturnCommand(
-            module: null,
             action: ['type' => 'invoke', 'field' => 'load8_u', 'args' => [['type' => 'i32', 'value' => '6']]],
             expected: [['type' => 'i32', 'value' => '0']],
             line: 165,
@@ -1160,7 +1059,6 @@ final class MemoryInitTest extends SpecTestsuiteBase
     public function testAssertReturn105(): void
     {
         $this->runAssertReturnCommand(
-            module: null,
             action: ['type' => 'invoke', 'field' => 'load8_u', 'args' => [['type' => 'i32', 'value' => '7']]],
             expected: [['type' => 'i32', 'value' => '2']],
             line: 166,
@@ -1171,7 +1069,6 @@ final class MemoryInitTest extends SpecTestsuiteBase
     public function testAssertReturn106(): void
     {
         $this->runAssertReturnCommand(
-            module: null,
             action: ['type' => 'invoke', 'field' => 'load8_u', 'args' => [['type' => 'i32', 'value' => '8']]],
             expected: [['type' => 'i32', 'value' => '7']],
             line: 167,
@@ -1182,7 +1079,6 @@ final class MemoryInitTest extends SpecTestsuiteBase
     public function testAssertReturn107(): void
     {
         $this->runAssertReturnCommand(
-            module: null,
             action: ['type' => 'invoke', 'field' => 'load8_u', 'args' => [['type' => 'i32', 'value' => '9']]],
             expected: [['type' => 'i32', 'value' => '1']],
             line: 168,
@@ -1193,7 +1089,6 @@ final class MemoryInitTest extends SpecTestsuiteBase
     public function testAssertReturn108(): void
     {
         $this->runAssertReturnCommand(
-            module: null,
             action: ['type' => 'invoke', 'field' => 'load8_u', 'args' => [['type' => 'i32', 'value' => '10']]],
             expected: [['type' => 'i32', 'value' => '8']],
             line: 169,
@@ -1204,7 +1099,6 @@ final class MemoryInitTest extends SpecTestsuiteBase
     public function testAssertReturn109(): void
     {
         $this->runAssertReturnCommand(
-            module: null,
             action: ['type' => 'invoke', 'field' => 'load8_u', 'args' => [['type' => 'i32', 'value' => '11']]],
             expected: [['type' => 'i32', 'value' => '0']],
             line: 170,
@@ -1215,7 +1109,6 @@ final class MemoryInitTest extends SpecTestsuiteBase
     public function testAssertReturn110(): void
     {
         $this->runAssertReturnCommand(
-            module: null,
             action: ['type' => 'invoke', 'field' => 'load8_u', 'args' => [['type' => 'i32', 'value' => '12']]],
             expected: [['type' => 'i32', 'value' => '7']],
             line: 171,
@@ -1226,7 +1119,6 @@ final class MemoryInitTest extends SpecTestsuiteBase
     public function testAssertReturn111(): void
     {
         $this->runAssertReturnCommand(
-            module: null,
             action: ['type' => 'invoke', 'field' => 'load8_u', 'args' => [['type' => 'i32', 'value' => '13']]],
             expected: [['type' => 'i32', 'value' => '0']],
             line: 172,
@@ -1237,7 +1129,6 @@ final class MemoryInitTest extends SpecTestsuiteBase
     public function testAssertReturn112(): void
     {
         $this->runAssertReturnCommand(
-            module: null,
             action: ['type' => 'invoke', 'field' => 'load8_u', 'args' => [['type' => 'i32', 'value' => '14']]],
             expected: [['type' => 'i32', 'value' => '7']],
             line: 173,
@@ -1248,7 +1139,6 @@ final class MemoryInitTest extends SpecTestsuiteBase
     public function testAssertReturn113(): void
     {
         $this->runAssertReturnCommand(
-            module: null,
             action: ['type' => 'invoke', 'field' => 'load8_u', 'args' => [['type' => 'i32', 'value' => '15']]],
             expected: [['type' => 'i32', 'value' => '5']],
             line: 174,
@@ -1259,7 +1149,6 @@ final class MemoryInitTest extends SpecTestsuiteBase
     public function testAssertReturn114(): void
     {
         $this->runAssertReturnCommand(
-            module: null,
             action: ['type' => 'invoke', 'field' => 'load8_u', 'args' => [['type' => 'i32', 'value' => '16']]],
             expected: [['type' => 'i32', 'value' => '2']],
             line: 175,
@@ -1270,7 +1159,6 @@ final class MemoryInitTest extends SpecTestsuiteBase
     public function testAssertReturn115(): void
     {
         $this->runAssertReturnCommand(
-            module: null,
             action: ['type' => 'invoke', 'field' => 'load8_u', 'args' => [['type' => 'i32', 'value' => '17']]],
             expected: [['type' => 'i32', 'value' => '7']],
             line: 176,
@@ -1281,7 +1169,6 @@ final class MemoryInitTest extends SpecTestsuiteBase
     public function testAssertReturn116(): void
     {
         $this->runAssertReturnCommand(
-            module: null,
             action: ['type' => 'invoke', 'field' => 'load8_u', 'args' => [['type' => 'i32', 'value' => '18']]],
             expected: [['type' => 'i32', 'value' => '0']],
             line: 177,
@@ -1292,7 +1179,6 @@ final class MemoryInitTest extends SpecTestsuiteBase
     public function testAssertReturn117(): void
     {
         $this->runAssertReturnCommand(
-            module: null,
             action: ['type' => 'invoke', 'field' => 'load8_u', 'args' => [['type' => 'i32', 'value' => '19']]],
             expected: [['type' => 'i32', 'value' => '9']],
             line: 178,
@@ -1303,7 +1189,6 @@ final class MemoryInitTest extends SpecTestsuiteBase
     public function testAssertReturn118(): void
     {
         $this->runAssertReturnCommand(
-            module: null,
             action: ['type' => 'invoke', 'field' => 'load8_u', 'args' => [['type' => 'i32', 'value' => '20']]],
             expected: [['type' => 'i32', 'value' => '0']],
             line: 179,
@@ -1314,7 +1199,6 @@ final class MemoryInitTest extends SpecTestsuiteBase
     public function testAssertReturn119(): void
     {
         $this->runAssertReturnCommand(
-            module: null,
             action: ['type' => 'invoke', 'field' => 'load8_u', 'args' => [['type' => 'i32', 'value' => '21']]],
             expected: [['type' => 'i32', 'value' => '7']],
             line: 180,
@@ -1325,7 +1209,6 @@ final class MemoryInitTest extends SpecTestsuiteBase
     public function testAssertReturn120(): void
     {
         $this->runAssertReturnCommand(
-            module: null,
             action: ['type' => 'invoke', 'field' => 'load8_u', 'args' => [['type' => 'i32', 'value' => '22']]],
             expected: [['type' => 'i32', 'value' => '0']],
             line: 181,
@@ -1336,7 +1219,6 @@ final class MemoryInitTest extends SpecTestsuiteBase
     public function testAssertReturn121(): void
     {
         $this->runAssertReturnCommand(
-            module: null,
             action: ['type' => 'invoke', 'field' => 'load8_u', 'args' => [['type' => 'i32', 'value' => '23']]],
             expected: [['type' => 'i32', 'value' => '8']],
             line: 182,
@@ -1347,7 +1229,6 @@ final class MemoryInitTest extends SpecTestsuiteBase
     public function testAssertReturn122(): void
     {
         $this->runAssertReturnCommand(
-            module: null,
             action: ['type' => 'invoke', 'field' => 'load8_u', 'args' => [['type' => 'i32', 'value' => '24']]],
             expected: [['type' => 'i32', 'value' => '8']],
             line: 183,
@@ -1358,7 +1239,6 @@ final class MemoryInitTest extends SpecTestsuiteBase
     public function testAssertReturn123(): void
     {
         $this->runAssertReturnCommand(
-            module: null,
             action: ['type' => 'invoke', 'field' => 'load8_u', 'args' => [['type' => 'i32', 'value' => '25']]],
             expected: [['type' => 'i32', 'value' => '0']],
             line: 184,
@@ -1369,7 +1249,6 @@ final class MemoryInitTest extends SpecTestsuiteBase
     public function testAssertReturn124(): void
     {
         $this->runAssertReturnCommand(
-            module: null,
             action: ['type' => 'invoke', 'field' => 'load8_u', 'args' => [['type' => 'i32', 'value' => '26']]],
             expected: [['type' => 'i32', 'value' => '0']],
             line: 185,
@@ -1380,7 +1259,6 @@ final class MemoryInitTest extends SpecTestsuiteBase
     public function testAssertReturn125(): void
     {
         $this->runAssertReturnCommand(
-            module: null,
             action: ['type' => 'invoke', 'field' => 'load8_u', 'args' => [['type' => 'i32', 'value' => '27']]],
             expected: [['type' => 'i32', 'value' => '0']],
             line: 186,
@@ -1391,7 +1269,6 @@ final class MemoryInitTest extends SpecTestsuiteBase
     public function testAssertReturn126(): void
     {
         $this->runAssertReturnCommand(
-            module: null,
             action: ['type' => 'invoke', 'field' => 'load8_u', 'args' => [['type' => 'i32', 'value' => '28']]],
             expected: [['type' => 'i32', 'value' => '0']],
             line: 187,
@@ -1402,7 +1279,6 @@ final class MemoryInitTest extends SpecTestsuiteBase
     public function testAssertReturn127(): void
     {
         $this->runAssertReturnCommand(
-            module: null,
             action: ['type' => 'invoke', 'field' => 'load8_u', 'args' => [['type' => 'i32', 'value' => '29']]],
             expected: [['type' => 'i32', 'value' => '0']],
             line: 188,
@@ -1443,7 +1319,6 @@ final class MemoryInitTest extends SpecTestsuiteBase
     public function testAction131(): void
     {
         $this->runActionCommand(
-            module: null,
             action: ['type' => 'invoke', 'field' => 'test', 'args' => []],
             line: 209,
         );
@@ -1463,7 +1338,6 @@ final class MemoryInitTest extends SpecTestsuiteBase
     public function testAssertTrap133(): void
     {
         $this->runAssertTrapCommand(
-            module: null,
             action: ['type' => 'invoke', 'field' => 'test', 'args' => []],
             text: 'out of bounds memory access',
             line: 217,
@@ -1484,7 +1358,6 @@ final class MemoryInitTest extends SpecTestsuiteBase
     public function testAssertTrap135(): void
     {
         $this->runAssertTrapCommand(
-            module: null,
             action: ['type' => 'invoke', 'field' => 'test', 'args' => []],
             text: 'out of bounds memory access',
             line: 224,
@@ -1525,7 +1398,6 @@ final class MemoryInitTest extends SpecTestsuiteBase
     public function testAction139(): void
     {
         $this->runActionCommand(
-            module: null,
             action: ['type' => 'invoke', 'field' => 'test', 'args' => []],
             line: 246,
         );
@@ -1545,7 +1417,6 @@ final class MemoryInitTest extends SpecTestsuiteBase
     public function testAssertTrap141(): void
     {
         $this->runAssertTrapCommand(
-            module: null,
             action: ['type' => 'invoke', 'field' => 'test', 'args' => []],
             text: 'out of bounds memory access',
             line: 253,
@@ -1566,7 +1437,6 @@ final class MemoryInitTest extends SpecTestsuiteBase
     public function testAssertTrap143(): void
     {
         $this->runAssertTrapCommand(
-            module: null,
             action: ['type' => 'invoke', 'field' => 'test', 'args' => []],
             text: 'out of bounds memory access',
             line: 260,
@@ -1587,7 +1457,6 @@ final class MemoryInitTest extends SpecTestsuiteBase
     public function testAssertTrap145(): void
     {
         $this->runAssertTrapCommand(
-            module: null,
             action: ['type' => 'invoke', 'field' => 'test', 'args' => []],
             text: 'out of bounds memory access',
             line: 267,
@@ -1608,7 +1477,6 @@ final class MemoryInitTest extends SpecTestsuiteBase
     public function testAssertTrap147(): void
     {
         $this->runAssertTrapCommand(
-            module: null,
             action: ['type' => 'invoke', 'field' => 'test', 'args' => []],
             text: 'out of bounds memory access',
             line: 274,
@@ -1629,7 +1497,6 @@ final class MemoryInitTest extends SpecTestsuiteBase
     public function testAction149(): void
     {
         $this->runActionCommand(
-            module: null,
             action: ['type' => 'invoke', 'field' => 'test', 'args' => []],
             line: 281,
         );
@@ -1649,7 +1516,6 @@ final class MemoryInitTest extends SpecTestsuiteBase
     public function testAssertTrap151(): void
     {
         $this->runAssertTrapCommand(
-            module: null,
             action: ['type' => 'invoke', 'field' => 'test', 'args' => []],
             text: 'out of bounds memory access',
             line: 288,
@@ -1670,7 +1536,6 @@ final class MemoryInitTest extends SpecTestsuiteBase
     public function testAction153(): void
     {
         $this->runActionCommand(
-            module: null,
             action: ['type' => 'invoke', 'field' => 'test', 'args' => []],
             line: 295,
         );
@@ -1690,7 +1555,6 @@ final class MemoryInitTest extends SpecTestsuiteBase
     public function testAction155(): void
     {
         $this->runActionCommand(
-            module: null,
             action: ['type' => 'invoke', 'field' => 'test', 'args' => []],
             line: 302,
         );
@@ -1710,7 +1574,6 @@ final class MemoryInitTest extends SpecTestsuiteBase
     public function testAssertTrap157(): void
     {
         $this->runAssertTrapCommand(
-            module: null,
             action: ['type' => 'invoke', 'field' => 'test', 'args' => []],
             text: 'out of bounds memory access',
             line: 309,
@@ -2361,7 +2224,6 @@ final class MemoryInitTest extends SpecTestsuiteBase
     public function testAssertTrap222(): void
     {
         $this->runAssertTrapCommand(
-            module: null,
             action: ['type' => 'invoke', 'field' => 'run', 'args' => [['type' => 'i32', 'value' => '65528'], ['type' => 'i32', 'value' => '16']]],
             text: 'out of bounds memory access',
             line: 833,
@@ -2372,7 +2234,6 @@ final class MemoryInitTest extends SpecTestsuiteBase
     public function testAssertReturn223(): void
     {
         $this->runAssertReturnCommand(
-            module: null,
             action: ['type' => 'invoke', 'field' => 'checkRange', 'args' => [['type' => 'i32', 'value' => '0'], ['type' => 'i32', 'value' => '1'], ['type' => 'i32', 'value' => '0']]],
             expected: [['type' => 'i32', 'value' => '4294967295']],
             line: 836,
@@ -2393,7 +2254,6 @@ final class MemoryInitTest extends SpecTestsuiteBase
     public function testAssertTrap225(): void
     {
         $this->runAssertTrapCommand(
-            module: null,
             action: ['type' => 'invoke', 'field' => 'run', 'args' => [['type' => 'i32', 'value' => '65527'], ['type' => 'i32', 'value' => '16']]],
             text: 'out of bounds memory access',
             line: 856,
@@ -2404,7 +2264,6 @@ final class MemoryInitTest extends SpecTestsuiteBase
     public function testAssertReturn226(): void
     {
         $this->runAssertReturnCommand(
-            module: null,
             action: ['type' => 'invoke', 'field' => 'checkRange', 'args' => [['type' => 'i32', 'value' => '0'], ['type' => 'i32', 'value' => '1'], ['type' => 'i32', 'value' => '0']]],
             expected: [['type' => 'i32', 'value' => '4294967295']],
             line: 859,
@@ -2425,7 +2284,6 @@ final class MemoryInitTest extends SpecTestsuiteBase
     public function testAssertTrap228(): void
     {
         $this->runAssertTrapCommand(
-            module: null,
             action: ['type' => 'invoke', 'field' => 'run', 'args' => [['type' => 'i32', 'value' => '65472'], ['type' => 'i32', 'value' => '30']]],
             text: 'out of bounds memory access',
             line: 879,
@@ -2436,7 +2294,6 @@ final class MemoryInitTest extends SpecTestsuiteBase
     public function testAssertReturn229(): void
     {
         $this->runAssertReturnCommand(
-            module: null,
             action: ['type' => 'invoke', 'field' => 'checkRange', 'args' => [['type' => 'i32', 'value' => '0'], ['type' => 'i32', 'value' => '1'], ['type' => 'i32', 'value' => '0']]],
             expected: [['type' => 'i32', 'value' => '4294967295']],
             line: 882,
@@ -2457,7 +2314,6 @@ final class MemoryInitTest extends SpecTestsuiteBase
     public function testAssertTrap231(): void
     {
         $this->runAssertTrapCommand(
-            module: null,
             action: ['type' => 'invoke', 'field' => 'run', 'args' => [['type' => 'i32', 'value' => '65473'], ['type' => 'i32', 'value' => '31']]],
             text: 'out of bounds memory access',
             line: 902,
@@ -2468,7 +2324,6 @@ final class MemoryInitTest extends SpecTestsuiteBase
     public function testAssertReturn232(): void
     {
         $this->runAssertReturnCommand(
-            module: null,
             action: ['type' => 'invoke', 'field' => 'checkRange', 'args' => [['type' => 'i32', 'value' => '0'], ['type' => 'i32', 'value' => '1'], ['type' => 'i32', 'value' => '0']]],
             expected: [['type' => 'i32', 'value' => '4294967295']],
             line: 905,
@@ -2489,7 +2344,6 @@ final class MemoryInitTest extends SpecTestsuiteBase
     public function testAssertTrap234(): void
     {
         $this->runAssertTrapCommand(
-            module: null,
             action: ['type' => 'invoke', 'field' => 'run', 'args' => [['type' => 'i32', 'value' => '65528'], ['type' => 'i32', 'value' => '4294967040']]],
             text: 'out of bounds memory access',
             line: 925,
@@ -2500,7 +2354,6 @@ final class MemoryInitTest extends SpecTestsuiteBase
     public function testAssertReturn235(): void
     {
         $this->runAssertReturnCommand(
-            module: null,
             action: ['type' => 'invoke', 'field' => 'checkRange', 'args' => [['type' => 'i32', 'value' => '0'], ['type' => 'i32', 'value' => '1'], ['type' => 'i32', 'value' => '0']]],
             expected: [['type' => 'i32', 'value' => '4294967295']],
             line: 928,
@@ -2521,7 +2374,6 @@ final class MemoryInitTest extends SpecTestsuiteBase
     public function testAssertTrap237(): void
     {
         $this->runAssertTrapCommand(
-            module: null,
             action: ['type' => 'invoke', 'field' => 'run', 'args' => [['type' => 'i32', 'value' => '0'], ['type' => 'i32', 'value' => '4294967292']]],
             text: 'out of bounds memory access',
             line: 948,
@@ -2532,7 +2384,6 @@ final class MemoryInitTest extends SpecTestsuiteBase
     public function testAssertReturn238(): void
     {
         $this->runAssertReturnCommand(
-            module: null,
             action: ['type' => 'invoke', 'field' => 'checkRange', 'args' => [['type' => 'i32', 'value' => '0'], ['type' => 'i32', 'value' => '1'], ['type' => 'i32', 'value' => '0']]],
             expected: [['type' => 'i32', 'value' => '4294967295']],
             line: 951,

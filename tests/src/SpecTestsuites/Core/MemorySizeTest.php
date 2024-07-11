@@ -23,7 +23,6 @@ final class MemorySizeTest extends SpecTestsuiteBase
     public function testAssertReturn1(): void
     {
         $this->runAssertReturnCommand(
-            module: null,
             action: ['type' => 'invoke', 'field' => 'size', 'args' => []],
             expected: [['type' => 'i32', 'value' => '0']],
             line: 7,
@@ -34,7 +33,6 @@ final class MemorySizeTest extends SpecTestsuiteBase
     public function testAssertReturn2(): void
     {
         $this->runAssertReturnCommand(
-            module: null,
             action: ['type' => 'invoke', 'field' => 'grow', 'args' => [['type' => 'i32', 'value' => '1']]],
             expected: [],
             line: 8,
@@ -45,7 +43,6 @@ final class MemorySizeTest extends SpecTestsuiteBase
     public function testAssertReturn3(): void
     {
         $this->runAssertReturnCommand(
-            module: null,
             action: ['type' => 'invoke', 'field' => 'size', 'args' => []],
             expected: [['type' => 'i32', 'value' => '1']],
             line: 9,
@@ -56,7 +53,6 @@ final class MemorySizeTest extends SpecTestsuiteBase
     public function testAssertReturn4(): void
     {
         $this->runAssertReturnCommand(
-            module: null,
             action: ['type' => 'invoke', 'field' => 'grow', 'args' => [['type' => 'i32', 'value' => '4']]],
             expected: [],
             line: 10,
@@ -67,7 +63,6 @@ final class MemorySizeTest extends SpecTestsuiteBase
     public function testAssertReturn5(): void
     {
         $this->runAssertReturnCommand(
-            module: null,
             action: ['type' => 'invoke', 'field' => 'size', 'args' => []],
             expected: [['type' => 'i32', 'value' => '5']],
             line: 11,
@@ -78,7 +73,6 @@ final class MemorySizeTest extends SpecTestsuiteBase
     public function testAssertReturn6(): void
     {
         $this->runAssertReturnCommand(
-            module: null,
             action: ['type' => 'invoke', 'field' => 'grow', 'args' => [['type' => 'i32', 'value' => '0']]],
             expected: [],
             line: 12,
@@ -89,7 +83,6 @@ final class MemorySizeTest extends SpecTestsuiteBase
     public function testAssertReturn7(): void
     {
         $this->runAssertReturnCommand(
-            module: null,
             action: ['type' => 'invoke', 'field' => 'size', 'args' => []],
             expected: [['type' => 'i32', 'value' => '5']],
             line: 13,
@@ -110,7 +103,6 @@ final class MemorySizeTest extends SpecTestsuiteBase
     public function testAssertReturn9(): void
     {
         $this->runAssertReturnCommand(
-            module: null,
             action: ['type' => 'invoke', 'field' => 'size', 'args' => []],
             expected: [['type' => 'i32', 'value' => '1']],
             line: 21,
@@ -121,7 +113,6 @@ final class MemorySizeTest extends SpecTestsuiteBase
     public function testAssertReturn10(): void
     {
         $this->runAssertReturnCommand(
-            module: null,
             action: ['type' => 'invoke', 'field' => 'grow', 'args' => [['type' => 'i32', 'value' => '1']]],
             expected: [],
             line: 22,
@@ -132,7 +123,6 @@ final class MemorySizeTest extends SpecTestsuiteBase
     public function testAssertReturn11(): void
     {
         $this->runAssertReturnCommand(
-            module: null,
             action: ['type' => 'invoke', 'field' => 'size', 'args' => []],
             expected: [['type' => 'i32', 'value' => '2']],
             line: 23,
@@ -143,7 +133,6 @@ final class MemorySizeTest extends SpecTestsuiteBase
     public function testAssertReturn12(): void
     {
         $this->runAssertReturnCommand(
-            module: null,
             action: ['type' => 'invoke', 'field' => 'grow', 'args' => [['type' => 'i32', 'value' => '4']]],
             expected: [],
             line: 24,
@@ -154,7 +143,6 @@ final class MemorySizeTest extends SpecTestsuiteBase
     public function testAssertReturn13(): void
     {
         $this->runAssertReturnCommand(
-            module: null,
             action: ['type' => 'invoke', 'field' => 'size', 'args' => []],
             expected: [['type' => 'i32', 'value' => '6']],
             line: 25,
@@ -165,7 +153,6 @@ final class MemorySizeTest extends SpecTestsuiteBase
     public function testAssertReturn14(): void
     {
         $this->runAssertReturnCommand(
-            module: null,
             action: ['type' => 'invoke', 'field' => 'grow', 'args' => [['type' => 'i32', 'value' => '0']]],
             expected: [],
             line: 26,
@@ -176,7 +163,6 @@ final class MemorySizeTest extends SpecTestsuiteBase
     public function testAssertReturn15(): void
     {
         $this->runAssertReturnCommand(
-            module: null,
             action: ['type' => 'invoke', 'field' => 'size', 'args' => []],
             expected: [['type' => 'i32', 'value' => '6']],
             line: 27,
@@ -197,7 +183,6 @@ final class MemorySizeTest extends SpecTestsuiteBase
     public function testAssertReturn17(): void
     {
         $this->runAssertReturnCommand(
-            module: null,
             action: ['type' => 'invoke', 'field' => 'size', 'args' => []],
             expected: [['type' => 'i32', 'value' => '0']],
             line: 35,
@@ -208,7 +193,6 @@ final class MemorySizeTest extends SpecTestsuiteBase
     public function testAssertReturn18(): void
     {
         $this->runAssertReturnCommand(
-            module: null,
             action: ['type' => 'invoke', 'field' => 'grow', 'args' => [['type' => 'i32', 'value' => '3']]],
             expected: [],
             line: 36,
@@ -219,7 +203,6 @@ final class MemorySizeTest extends SpecTestsuiteBase
     public function testAssertReturn19(): void
     {
         $this->runAssertReturnCommand(
-            module: null,
             action: ['type' => 'invoke', 'field' => 'size', 'args' => []],
             expected: [['type' => 'i32', 'value' => '0']],
             line: 37,
@@ -230,7 +213,6 @@ final class MemorySizeTest extends SpecTestsuiteBase
     public function testAssertReturn20(): void
     {
         $this->runAssertReturnCommand(
-            module: null,
             action: ['type' => 'invoke', 'field' => 'grow', 'args' => [['type' => 'i32', 'value' => '1']]],
             expected: [],
             line: 38,
@@ -241,7 +223,6 @@ final class MemorySizeTest extends SpecTestsuiteBase
     public function testAssertReturn21(): void
     {
         $this->runAssertReturnCommand(
-            module: null,
             action: ['type' => 'invoke', 'field' => 'size', 'args' => []],
             expected: [['type' => 'i32', 'value' => '1']],
             line: 39,
@@ -252,7 +233,6 @@ final class MemorySizeTest extends SpecTestsuiteBase
     public function testAssertReturn22(): void
     {
         $this->runAssertReturnCommand(
-            module: null,
             action: ['type' => 'invoke', 'field' => 'grow', 'args' => [['type' => 'i32', 'value' => '0']]],
             expected: [],
             line: 40,
@@ -263,7 +243,6 @@ final class MemorySizeTest extends SpecTestsuiteBase
     public function testAssertReturn23(): void
     {
         $this->runAssertReturnCommand(
-            module: null,
             action: ['type' => 'invoke', 'field' => 'size', 'args' => []],
             expected: [['type' => 'i32', 'value' => '1']],
             line: 41,
@@ -274,7 +253,6 @@ final class MemorySizeTest extends SpecTestsuiteBase
     public function testAssertReturn24(): void
     {
         $this->runAssertReturnCommand(
-            module: null,
             action: ['type' => 'invoke', 'field' => 'grow', 'args' => [['type' => 'i32', 'value' => '4']]],
             expected: [],
             line: 42,
@@ -285,7 +263,6 @@ final class MemorySizeTest extends SpecTestsuiteBase
     public function testAssertReturn25(): void
     {
         $this->runAssertReturnCommand(
-            module: null,
             action: ['type' => 'invoke', 'field' => 'size', 'args' => []],
             expected: [['type' => 'i32', 'value' => '1']],
             line: 43,
@@ -296,7 +273,6 @@ final class MemorySizeTest extends SpecTestsuiteBase
     public function testAssertReturn26(): void
     {
         $this->runAssertReturnCommand(
-            module: null,
             action: ['type' => 'invoke', 'field' => 'grow', 'args' => [['type' => 'i32', 'value' => '1']]],
             expected: [],
             line: 44,
@@ -307,7 +283,6 @@ final class MemorySizeTest extends SpecTestsuiteBase
     public function testAssertReturn27(): void
     {
         $this->runAssertReturnCommand(
-            module: null,
             action: ['type' => 'invoke', 'field' => 'size', 'args' => []],
             expected: [['type' => 'i32', 'value' => '2']],
             line: 45,
@@ -328,7 +303,6 @@ final class MemorySizeTest extends SpecTestsuiteBase
     public function testAssertReturn29(): void
     {
         $this->runAssertReturnCommand(
-            module: null,
             action: ['type' => 'invoke', 'field' => 'size', 'args' => []],
             expected: [['type' => 'i32', 'value' => '3']],
             line: 53,
@@ -339,7 +313,6 @@ final class MemorySizeTest extends SpecTestsuiteBase
     public function testAssertReturn30(): void
     {
         $this->runAssertReturnCommand(
-            module: null,
             action: ['type' => 'invoke', 'field' => 'grow', 'args' => [['type' => 'i32', 'value' => '1']]],
             expected: [],
             line: 54,
@@ -350,7 +323,6 @@ final class MemorySizeTest extends SpecTestsuiteBase
     public function testAssertReturn31(): void
     {
         $this->runAssertReturnCommand(
-            module: null,
             action: ['type' => 'invoke', 'field' => 'size', 'args' => []],
             expected: [['type' => 'i32', 'value' => '4']],
             line: 55,
@@ -361,7 +333,6 @@ final class MemorySizeTest extends SpecTestsuiteBase
     public function testAssertReturn32(): void
     {
         $this->runAssertReturnCommand(
-            module: null,
             action: ['type' => 'invoke', 'field' => 'grow', 'args' => [['type' => 'i32', 'value' => '3']]],
             expected: [],
             line: 56,
@@ -372,7 +343,6 @@ final class MemorySizeTest extends SpecTestsuiteBase
     public function testAssertReturn33(): void
     {
         $this->runAssertReturnCommand(
-            module: null,
             action: ['type' => 'invoke', 'field' => 'size', 'args' => []],
             expected: [['type' => 'i32', 'value' => '7']],
             line: 57,
@@ -383,7 +353,6 @@ final class MemorySizeTest extends SpecTestsuiteBase
     public function testAssertReturn34(): void
     {
         $this->runAssertReturnCommand(
-            module: null,
             action: ['type' => 'invoke', 'field' => 'grow', 'args' => [['type' => 'i32', 'value' => '0']]],
             expected: [],
             line: 58,
@@ -394,7 +363,6 @@ final class MemorySizeTest extends SpecTestsuiteBase
     public function testAssertReturn35(): void
     {
         $this->runAssertReturnCommand(
-            module: null,
             action: ['type' => 'invoke', 'field' => 'size', 'args' => []],
             expected: [['type' => 'i32', 'value' => '7']],
             line: 59,
@@ -405,7 +373,6 @@ final class MemorySizeTest extends SpecTestsuiteBase
     public function testAssertReturn36(): void
     {
         $this->runAssertReturnCommand(
-            module: null,
             action: ['type' => 'invoke', 'field' => 'grow', 'args' => [['type' => 'i32', 'value' => '2']]],
             expected: [],
             line: 60,
@@ -416,7 +383,6 @@ final class MemorySizeTest extends SpecTestsuiteBase
     public function testAssertReturn37(): void
     {
         $this->runAssertReturnCommand(
-            module: null,
             action: ['type' => 'invoke', 'field' => 'size', 'args' => []],
             expected: [['type' => 'i32', 'value' => '7']],
             line: 61,
@@ -427,7 +393,6 @@ final class MemorySizeTest extends SpecTestsuiteBase
     public function testAssertReturn38(): void
     {
         $this->runAssertReturnCommand(
-            module: null,
             action: ['type' => 'invoke', 'field' => 'grow', 'args' => [['type' => 'i32', 'value' => '1']]],
             expected: [],
             line: 62,
@@ -438,7 +403,6 @@ final class MemorySizeTest extends SpecTestsuiteBase
     public function testAssertReturn39(): void
     {
         $this->runAssertReturnCommand(
-            module: null,
             action: ['type' => 'invoke', 'field' => 'size', 'args' => []],
             expected: [['type' => 'i32', 'value' => '8']],
             line: 63,

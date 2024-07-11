@@ -23,7 +23,6 @@ final class MemoryFillTest extends SpecTestsuiteBase
     public function testAction1(): void
     {
         $this->runActionCommand(
-            module: null,
             action: ['type' => 'invoke', 'field' => 'test', 'args' => []],
             line: 22,
         );
@@ -33,7 +32,6 @@ final class MemoryFillTest extends SpecTestsuiteBase
     public function testAssertReturn2(): void
     {
         $this->runAssertReturnCommand(
-            module: null,
             action: ['type' => 'invoke', 'field' => 'checkRange', 'args' => [['type' => 'i32', 'value' => '0'], ['type' => 'i32', 'value' => '65280'], ['type' => 'i32', 'value' => '0']]],
             expected: [['type' => 'i32', 'value' => '4294967295']],
             line: 24,
@@ -44,7 +42,6 @@ final class MemoryFillTest extends SpecTestsuiteBase
     public function testAssertReturn3(): void
     {
         $this->runAssertReturnCommand(
-            module: null,
             action: ['type' => 'invoke', 'field' => 'checkRange', 'args' => [['type' => 'i32', 'value' => '65280'], ['type' => 'i32', 'value' => '65536'], ['type' => 'i32', 'value' => '85']]],
             expected: [['type' => 'i32', 'value' => '4294967295']],
             line: 26,
@@ -65,7 +62,6 @@ final class MemoryFillTest extends SpecTestsuiteBase
     public function testAssertTrap5(): void
     {
         $this->runAssertTrapCommand(
-            module: null,
             action: ['type' => 'invoke', 'field' => 'test', 'args' => []],
             text: 'out of bounds memory access',
             line: 44,
@@ -86,7 +82,6 @@ final class MemoryFillTest extends SpecTestsuiteBase
     public function testAssertTrap7(): void
     {
         $this->runAssertTrapCommand(
-            module: null,
             action: ['type' => 'invoke', 'field' => 'test', 'args' => []],
             text: 'out of bounds memory access',
             line: 62,
@@ -107,7 +102,6 @@ final class MemoryFillTest extends SpecTestsuiteBase
     public function testAction9(): void
     {
         $this->runActionCommand(
-            module: null,
             action: ['type' => 'invoke', 'field' => 'test', 'args' => []],
             line: 80,
         );
@@ -117,7 +111,6 @@ final class MemoryFillTest extends SpecTestsuiteBase
     public function testAssertReturn10(): void
     {
         $this->runAssertReturnCommand(
-            module: null,
             action: ['type' => 'invoke', 'field' => 'checkRange', 'args' => [['type' => 'i32', 'value' => '0'], ['type' => 'i32', 'value' => '65536'], ['type' => 'i32', 'value' => '0']]],
             expected: [['type' => 'i32', 'value' => '4294967295']],
             line: 82,
@@ -138,7 +131,6 @@ final class MemoryFillTest extends SpecTestsuiteBase
     public function testAction12(): void
     {
         $this->runActionCommand(
-            module: null,
             action: ['type' => 'invoke', 'field' => 'test', 'args' => []],
             line: 100,
         );
@@ -158,7 +150,6 @@ final class MemoryFillTest extends SpecTestsuiteBase
     public function testAssertTrap14(): void
     {
         $this->runAssertTrapCommand(
-            module: null,
             action: ['type' => 'invoke', 'field' => 'test', 'args' => []],
             text: 'out of bounds memory access',
             line: 118,
@@ -179,7 +170,6 @@ final class MemoryFillTest extends SpecTestsuiteBase
     public function testAction16(): void
     {
         $this->runActionCommand(
-            module: null,
             action: ['type' => 'invoke', 'field' => 'test', 'args' => []],
             line: 136,
         );
@@ -189,7 +179,6 @@ final class MemoryFillTest extends SpecTestsuiteBase
     public function testAssertReturn17(): void
     {
         $this->runAssertReturnCommand(
-            module: null,
             action: ['type' => 'invoke', 'field' => 'checkRange', 'args' => [['type' => 'i32', 'value' => '0'], ['type' => 'i32', 'value' => '1'], ['type' => 'i32', 'value' => '0']]],
             expected: [['type' => 'i32', 'value' => '4294967295']],
             line: 138,
@@ -200,7 +189,6 @@ final class MemoryFillTest extends SpecTestsuiteBase
     public function testAssertReturn18(): void
     {
         $this->runAssertReturnCommand(
-            module: null,
             action: ['type' => 'invoke', 'field' => 'checkRange', 'args' => [['type' => 'i32', 'value' => '1'], ['type' => 'i32', 'value' => '65535'], ['type' => 'i32', 'value' => '170']]],
             expected: [['type' => 'i32', 'value' => '4294967295']],
             line: 140,
@@ -211,7 +199,6 @@ final class MemoryFillTest extends SpecTestsuiteBase
     public function testAssertReturn19(): void
     {
         $this->runAssertReturnCommand(
-            module: null,
             action: ['type' => 'invoke', 'field' => 'checkRange', 'args' => [['type' => 'i32', 'value' => '65535'], ['type' => 'i32', 'value' => '65536'], ['type' => 'i32', 'value' => '0']]],
             expected: [['type' => 'i32', 'value' => '4294967295']],
             line: 142,
@@ -232,7 +219,6 @@ final class MemoryFillTest extends SpecTestsuiteBase
     public function testAction21(): void
     {
         $this->runActionCommand(
-            module: null,
             action: ['type' => 'invoke', 'field' => 'test', 'args' => []],
             line: 162,
         );
@@ -242,7 +228,6 @@ final class MemoryFillTest extends SpecTestsuiteBase
     public function testAssertReturn22(): void
     {
         $this->runAssertReturnCommand(
-            module: null,
             action: ['type' => 'invoke', 'field' => 'checkRange', 'args' => [['type' => 'i32', 'value' => '0'], ['type' => 'i32', 'value' => '18'], ['type' => 'i32', 'value' => '0']]],
             expected: [['type' => 'i32', 'value' => '4294967295']],
             line: 164,
@@ -253,7 +238,6 @@ final class MemoryFillTest extends SpecTestsuiteBase
     public function testAssertReturn23(): void
     {
         $this->runAssertReturnCommand(
-            module: null,
             action: ['type' => 'invoke', 'field' => 'checkRange', 'args' => [['type' => 'i32', 'value' => '18'], ['type' => 'i32', 'value' => '21'], ['type' => 'i32', 'value' => '85']]],
             expected: [['type' => 'i32', 'value' => '4294967295']],
             line: 166,
@@ -264,7 +248,6 @@ final class MemoryFillTest extends SpecTestsuiteBase
     public function testAssertReturn24(): void
     {
         $this->runAssertReturnCommand(
-            module: null,
             action: ['type' => 'invoke', 'field' => 'checkRange', 'args' => [['type' => 'i32', 'value' => '21'], ['type' => 'i32', 'value' => '25'], ['type' => 'i32', 'value' => '170']]],
             expected: [['type' => 'i32', 'value' => '4294967295']],
             line: 168,
@@ -275,7 +258,6 @@ final class MemoryFillTest extends SpecTestsuiteBase
     public function testAssertReturn25(): void
     {
         $this->runAssertReturnCommand(
-            module: null,
             action: ['type' => 'invoke', 'field' => 'checkRange', 'args' => [['type' => 'i32', 'value' => '25'], ['type' => 'i32', 'value' => '28'], ['type' => 'i32', 'value' => '85']]],
             expected: [['type' => 'i32', 'value' => '4294967295']],
             line: 170,
@@ -286,7 +268,6 @@ final class MemoryFillTest extends SpecTestsuiteBase
     public function testAssertReturn26(): void
     {
         $this->runAssertReturnCommand(
-            module: null,
             action: ['type' => 'invoke', 'field' => 'checkRange', 'args' => [['type' => 'i32', 'value' => '28'], ['type' => 'i32', 'value' => '65536'], ['type' => 'i32', 'value' => '0']]],
             expected: [['type' => 'i32', 'value' => '4294967295']],
             line: 172,
@@ -947,7 +928,6 @@ final class MemoryFillTest extends SpecTestsuiteBase
     public function testAssertTrap92(): void
     {
         $this->runAssertTrapCommand(
-            module: null,
             action: ['type' => 'invoke', 'field' => 'run', 'args' => [['type' => 'i32', 'value' => '65280'], ['type' => 'i32', 'value' => '37'], ['type' => 'i32', 'value' => '512']]],
             text: 'out of bounds memory access',
             line: 638,
@@ -958,7 +938,6 @@ final class MemoryFillTest extends SpecTestsuiteBase
     public function testAssertReturn93(): void
     {
         $this->runAssertReturnCommand(
-            module: null,
             action: ['type' => 'invoke', 'field' => 'checkRange', 'args' => [['type' => 'i32', 'value' => '0'], ['type' => 'i32', 'value' => '1'], ['type' => 'i32', 'value' => '0']]],
             expected: [['type' => 'i32', 'value' => '4294967295']],
             line: 641,
@@ -979,7 +958,6 @@ final class MemoryFillTest extends SpecTestsuiteBase
     public function testAssertTrap95(): void
     {
         $this->runAssertTrapCommand(
-            module: null,
             action: ['type' => 'invoke', 'field' => 'run', 'args' => [['type' => 'i32', 'value' => '65279'], ['type' => 'i32', 'value' => '37'], ['type' => 'i32', 'value' => '514']]],
             text: 'out of bounds memory access',
             line: 660,
@@ -990,7 +968,6 @@ final class MemoryFillTest extends SpecTestsuiteBase
     public function testAssertReturn96(): void
     {
         $this->runAssertReturnCommand(
-            module: null,
             action: ['type' => 'invoke', 'field' => 'checkRange', 'args' => [['type' => 'i32', 'value' => '0'], ['type' => 'i32', 'value' => '1'], ['type' => 'i32', 'value' => '0']]],
             expected: [['type' => 'i32', 'value' => '4294967295']],
             line: 663,
@@ -1011,7 +988,6 @@ final class MemoryFillTest extends SpecTestsuiteBase
     public function testAssertTrap98(): void
     {
         $this->runAssertTrapCommand(
-            module: null,
             action: ['type' => 'invoke', 'field' => 'run', 'args' => [['type' => 'i32', 'value' => '65279'], ['type' => 'i32', 'value' => '37'], ['type' => 'i32', 'value' => '4294967295']]],
             text: 'out of bounds memory access',
             line: 682,
@@ -1022,7 +998,6 @@ final class MemoryFillTest extends SpecTestsuiteBase
     public function testAssertReturn99(): void
     {
         $this->runAssertReturnCommand(
-            module: null,
             action: ['type' => 'invoke', 'field' => 'checkRange', 'args' => [['type' => 'i32', 'value' => '0'], ['type' => 'i32', 'value' => '1'], ['type' => 'i32', 'value' => '0']]],
             expected: [['type' => 'i32', 'value' => '4294967295']],
             line: 685,

@@ -23,7 +23,6 @@ final class MemoryRedundancyTest extends SpecTestsuiteBase
     public function testAssertReturn1(): void
     {
         $this->runAssertReturnCommand(
-            module: null,
             action: ['type' => 'invoke', 'field' => 'test_store_to_load', 'args' => []],
             expected: [['type' => 'i32', 'value' => '128']],
             line: 59,
@@ -34,7 +33,6 @@ final class MemoryRedundancyTest extends SpecTestsuiteBase
     public function testAction2(): void
     {
         $this->runActionCommand(
-            module: null,
             action: ['type' => 'invoke', 'field' => 'zero_everything', 'args' => []],
             line: 60,
         );
@@ -44,7 +42,6 @@ final class MemoryRedundancyTest extends SpecTestsuiteBase
     public function testAssertReturn3(): void
     {
         $this->runAssertReturnCommand(
-            module: null,
             action: ['type' => 'invoke', 'field' => 'test_redundant_load', 'args' => []],
             expected: [['type' => 'i32', 'value' => '128']],
             line: 61,
@@ -55,7 +52,6 @@ final class MemoryRedundancyTest extends SpecTestsuiteBase
     public function testAction4(): void
     {
         $this->runActionCommand(
-            module: null,
             action: ['type' => 'invoke', 'field' => 'zero_everything', 'args' => []],
             line: 62,
         );
@@ -65,7 +61,6 @@ final class MemoryRedundancyTest extends SpecTestsuiteBase
     public function testAssertReturn5(): void
     {
         $this->runAssertReturnCommand(
-            module: null,
             action: ['type' => 'invoke', 'field' => 'test_dead_store', 'args' => []],
             expected: [['type' => 'f32', 'value' => '35']],
             line: 63,
@@ -76,7 +71,6 @@ final class MemoryRedundancyTest extends SpecTestsuiteBase
     public function testAction6(): void
     {
         $this->runActionCommand(
-            module: null,
             action: ['type' => 'invoke', 'field' => 'zero_everything', 'args' => []],
             line: 64,
         );
@@ -86,7 +80,6 @@ final class MemoryRedundancyTest extends SpecTestsuiteBase
     public function testAssertReturn7(): void
     {
         $this->runAssertReturnCommand(
-            module: null,
             action: ['type' => 'invoke', 'field' => 'malloc_aliasing', 'args' => []],
             expected: [['type' => 'i32', 'value' => '43']],
             line: 65,

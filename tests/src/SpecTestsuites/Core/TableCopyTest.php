@@ -43,7 +43,6 @@ final class TableCopyTest extends SpecTestsuiteBase
     public function testAction3(): void
     {
         $this->runActionCommand(
-            module: null,
             action: ['type' => 'invoke', 'field' => 'test', 'args' => []],
             line: 45,
         );
@@ -53,7 +52,6 @@ final class TableCopyTest extends SpecTestsuiteBase
     public function testAssertTrap4(): void
     {
         $this->runAssertTrapCommand(
-            module: null,
             action: ['type' => 'invoke', 'field' => 'check_t0', 'args' => [['type' => 'i32', 'value' => '0']]],
             text: 'uninitialized element',
             line: 46,
@@ -64,7 +62,6 @@ final class TableCopyTest extends SpecTestsuiteBase
     public function testAssertTrap5(): void
     {
         $this->runAssertTrapCommand(
-            module: null,
             action: ['type' => 'invoke', 'field' => 'check_t0', 'args' => [['type' => 'i32', 'value' => '1']]],
             text: 'uninitialized element',
             line: 47,
@@ -75,7 +72,6 @@ final class TableCopyTest extends SpecTestsuiteBase
     public function testAssertReturn6(): void
     {
         $this->runAssertReturnCommand(
-            module: null,
             action: ['type' => 'invoke', 'field' => 'check_t0', 'args' => [['type' => 'i32', 'value' => '2']]],
             expected: [['type' => 'i32', 'value' => '3']],
             line: 48,
@@ -86,7 +82,6 @@ final class TableCopyTest extends SpecTestsuiteBase
     public function testAssertReturn7(): void
     {
         $this->runAssertReturnCommand(
-            module: null,
             action: ['type' => 'invoke', 'field' => 'check_t0', 'args' => [['type' => 'i32', 'value' => '3']]],
             expected: [['type' => 'i32', 'value' => '1']],
             line: 49,
@@ -97,7 +92,6 @@ final class TableCopyTest extends SpecTestsuiteBase
     public function testAssertReturn8(): void
     {
         $this->runAssertReturnCommand(
-            module: null,
             action: ['type' => 'invoke', 'field' => 'check_t0', 'args' => [['type' => 'i32', 'value' => '4']]],
             expected: [['type' => 'i32', 'value' => '4']],
             line: 50,
@@ -108,7 +102,6 @@ final class TableCopyTest extends SpecTestsuiteBase
     public function testAssertReturn9(): void
     {
         $this->runAssertReturnCommand(
-            module: null,
             action: ['type' => 'invoke', 'field' => 'check_t0', 'args' => [['type' => 'i32', 'value' => '5']]],
             expected: [['type' => 'i32', 'value' => '1']],
             line: 51,
@@ -119,7 +112,6 @@ final class TableCopyTest extends SpecTestsuiteBase
     public function testAssertTrap10(): void
     {
         $this->runAssertTrapCommand(
-            module: null,
             action: ['type' => 'invoke', 'field' => 'check_t0', 'args' => [['type' => 'i32', 'value' => '6']]],
             text: 'uninitialized element',
             line: 52,
@@ -130,7 +122,6 @@ final class TableCopyTest extends SpecTestsuiteBase
     public function testAssertTrap11(): void
     {
         $this->runAssertTrapCommand(
-            module: null,
             action: ['type' => 'invoke', 'field' => 'check_t0', 'args' => [['type' => 'i32', 'value' => '7']]],
             text: 'uninitialized element',
             line: 53,
@@ -141,7 +132,6 @@ final class TableCopyTest extends SpecTestsuiteBase
     public function testAssertTrap12(): void
     {
         $this->runAssertTrapCommand(
-            module: null,
             action: ['type' => 'invoke', 'field' => 'check_t0', 'args' => [['type' => 'i32', 'value' => '8']]],
             text: 'uninitialized element',
             line: 54,
@@ -152,7 +142,6 @@ final class TableCopyTest extends SpecTestsuiteBase
     public function testAssertTrap13(): void
     {
         $this->runAssertTrapCommand(
-            module: null,
             action: ['type' => 'invoke', 'field' => 'check_t0', 'args' => [['type' => 'i32', 'value' => '9']]],
             text: 'uninitialized element',
             line: 55,
@@ -163,7 +152,6 @@ final class TableCopyTest extends SpecTestsuiteBase
     public function testAssertTrap14(): void
     {
         $this->runAssertTrapCommand(
-            module: null,
             action: ['type' => 'invoke', 'field' => 'check_t0', 'args' => [['type' => 'i32', 'value' => '10']]],
             text: 'uninitialized element',
             line: 56,
@@ -174,7 +162,6 @@ final class TableCopyTest extends SpecTestsuiteBase
     public function testAssertTrap15(): void
     {
         $this->runAssertTrapCommand(
-            module: null,
             action: ['type' => 'invoke', 'field' => 'check_t0', 'args' => [['type' => 'i32', 'value' => '11']]],
             text: 'uninitialized element',
             line: 57,
@@ -185,7 +172,6 @@ final class TableCopyTest extends SpecTestsuiteBase
     public function testAssertReturn16(): void
     {
         $this->runAssertReturnCommand(
-            module: null,
             action: ['type' => 'invoke', 'field' => 'check_t0', 'args' => [['type' => 'i32', 'value' => '12']]],
             expected: [['type' => 'i32', 'value' => '7']],
             line: 58,
@@ -196,7 +182,6 @@ final class TableCopyTest extends SpecTestsuiteBase
     public function testAssertReturn17(): void
     {
         $this->runAssertReturnCommand(
-            module: null,
             action: ['type' => 'invoke', 'field' => 'check_t0', 'args' => [['type' => 'i32', 'value' => '13']]],
             expected: [['type' => 'i32', 'value' => '5']],
             line: 59,
@@ -207,7 +192,6 @@ final class TableCopyTest extends SpecTestsuiteBase
     public function testAssertReturn18(): void
     {
         $this->runAssertReturnCommand(
-            module: null,
             action: ['type' => 'invoke', 'field' => 'check_t0', 'args' => [['type' => 'i32', 'value' => '14']]],
             expected: [['type' => 'i32', 'value' => '2']],
             line: 60,
@@ -218,7 +202,6 @@ final class TableCopyTest extends SpecTestsuiteBase
     public function testAssertReturn19(): void
     {
         $this->runAssertReturnCommand(
-            module: null,
             action: ['type' => 'invoke', 'field' => 'check_t0', 'args' => [['type' => 'i32', 'value' => '15']]],
             expected: [['type' => 'i32', 'value' => '3']],
             line: 61,
@@ -229,7 +212,6 @@ final class TableCopyTest extends SpecTestsuiteBase
     public function testAssertReturn20(): void
     {
         $this->runAssertReturnCommand(
-            module: null,
             action: ['type' => 'invoke', 'field' => 'check_t0', 'args' => [['type' => 'i32', 'value' => '16']]],
             expected: [['type' => 'i32', 'value' => '6']],
             line: 62,
@@ -240,7 +222,6 @@ final class TableCopyTest extends SpecTestsuiteBase
     public function testAssertTrap21(): void
     {
         $this->runAssertTrapCommand(
-            module: null,
             action: ['type' => 'invoke', 'field' => 'check_t0', 'args' => [['type' => 'i32', 'value' => '17']]],
             text: 'uninitialized element',
             line: 63,
@@ -251,7 +232,6 @@ final class TableCopyTest extends SpecTestsuiteBase
     public function testAssertTrap22(): void
     {
         $this->runAssertTrapCommand(
-            module: null,
             action: ['type' => 'invoke', 'field' => 'check_t0', 'args' => [['type' => 'i32', 'value' => '18']]],
             text: 'uninitialized element',
             line: 64,
@@ -262,7 +242,6 @@ final class TableCopyTest extends SpecTestsuiteBase
     public function testAssertTrap23(): void
     {
         $this->runAssertTrapCommand(
-            module: null,
             action: ['type' => 'invoke', 'field' => 'check_t0', 'args' => [['type' => 'i32', 'value' => '19']]],
             text: 'uninitialized element',
             line: 65,
@@ -273,7 +252,6 @@ final class TableCopyTest extends SpecTestsuiteBase
     public function testAssertTrap24(): void
     {
         $this->runAssertTrapCommand(
-            module: null,
             action: ['type' => 'invoke', 'field' => 'check_t0', 'args' => [['type' => 'i32', 'value' => '20']]],
             text: 'uninitialized element',
             line: 66,
@@ -284,7 +262,6 @@ final class TableCopyTest extends SpecTestsuiteBase
     public function testAssertTrap25(): void
     {
         $this->runAssertTrapCommand(
-            module: null,
             action: ['type' => 'invoke', 'field' => 'check_t0', 'args' => [['type' => 'i32', 'value' => '21']]],
             text: 'uninitialized element',
             line: 67,
@@ -295,7 +272,6 @@ final class TableCopyTest extends SpecTestsuiteBase
     public function testAssertTrap26(): void
     {
         $this->runAssertTrapCommand(
-            module: null,
             action: ['type' => 'invoke', 'field' => 'check_t0', 'args' => [['type' => 'i32', 'value' => '22']]],
             text: 'uninitialized element',
             line: 68,
@@ -306,7 +282,6 @@ final class TableCopyTest extends SpecTestsuiteBase
     public function testAssertTrap27(): void
     {
         $this->runAssertTrapCommand(
-            module: null,
             action: ['type' => 'invoke', 'field' => 'check_t0', 'args' => [['type' => 'i32', 'value' => '23']]],
             text: 'uninitialized element',
             line: 69,
@@ -317,7 +292,6 @@ final class TableCopyTest extends SpecTestsuiteBase
     public function testAssertTrap28(): void
     {
         $this->runAssertTrapCommand(
-            module: null,
             action: ['type' => 'invoke', 'field' => 'check_t0', 'args' => [['type' => 'i32', 'value' => '24']]],
             text: 'uninitialized element',
             line: 70,
@@ -328,7 +302,6 @@ final class TableCopyTest extends SpecTestsuiteBase
     public function testAssertTrap29(): void
     {
         $this->runAssertTrapCommand(
-            module: null,
             action: ['type' => 'invoke', 'field' => 'check_t0', 'args' => [['type' => 'i32', 'value' => '25']]],
             text: 'uninitialized element',
             line: 71,
@@ -339,7 +312,6 @@ final class TableCopyTest extends SpecTestsuiteBase
     public function testAssertTrap30(): void
     {
         $this->runAssertTrapCommand(
-            module: null,
             action: ['type' => 'invoke', 'field' => 'check_t0', 'args' => [['type' => 'i32', 'value' => '26']]],
             text: 'uninitialized element',
             line: 72,
@@ -350,7 +322,6 @@ final class TableCopyTest extends SpecTestsuiteBase
     public function testAssertTrap31(): void
     {
         $this->runAssertTrapCommand(
-            module: null,
             action: ['type' => 'invoke', 'field' => 'check_t0', 'args' => [['type' => 'i32', 'value' => '27']]],
             text: 'uninitialized element',
             line: 73,
@@ -361,7 +332,6 @@ final class TableCopyTest extends SpecTestsuiteBase
     public function testAssertTrap32(): void
     {
         $this->runAssertTrapCommand(
-            module: null,
             action: ['type' => 'invoke', 'field' => 'check_t0', 'args' => [['type' => 'i32', 'value' => '28']]],
             text: 'uninitialized element',
             line: 74,
@@ -372,7 +342,6 @@ final class TableCopyTest extends SpecTestsuiteBase
     public function testAssertTrap33(): void
     {
         $this->runAssertTrapCommand(
-            module: null,
             action: ['type' => 'invoke', 'field' => 'check_t0', 'args' => [['type' => 'i32', 'value' => '29']]],
             text: 'uninitialized element',
             line: 75,
@@ -383,7 +352,6 @@ final class TableCopyTest extends SpecTestsuiteBase
     public function testAssertTrap34(): void
     {
         $this->runAssertTrapCommand(
-            module: null,
             action: ['type' => 'invoke', 'field' => 'check_t1', 'args' => [['type' => 'i32', 'value' => '0']]],
             text: 'uninitialized element',
             line: 76,
@@ -394,7 +362,6 @@ final class TableCopyTest extends SpecTestsuiteBase
     public function testAssertTrap35(): void
     {
         $this->runAssertTrapCommand(
-            module: null,
             action: ['type' => 'invoke', 'field' => 'check_t1', 'args' => [['type' => 'i32', 'value' => '1']]],
             text: 'uninitialized element',
             line: 77,
@@ -405,7 +372,6 @@ final class TableCopyTest extends SpecTestsuiteBase
     public function testAssertTrap36(): void
     {
         $this->runAssertTrapCommand(
-            module: null,
             action: ['type' => 'invoke', 'field' => 'check_t1', 'args' => [['type' => 'i32', 'value' => '2']]],
             text: 'uninitialized element',
             line: 78,
@@ -416,7 +382,6 @@ final class TableCopyTest extends SpecTestsuiteBase
     public function testAssertReturn37(): void
     {
         $this->runAssertReturnCommand(
-            module: null,
             action: ['type' => 'invoke', 'field' => 'check_t1', 'args' => [['type' => 'i32', 'value' => '3']]],
             expected: [['type' => 'i32', 'value' => '1']],
             line: 79,
@@ -427,7 +392,6 @@ final class TableCopyTest extends SpecTestsuiteBase
     public function testAssertReturn38(): void
     {
         $this->runAssertReturnCommand(
-            module: null,
             action: ['type' => 'invoke', 'field' => 'check_t1', 'args' => [['type' => 'i32', 'value' => '4']]],
             expected: [['type' => 'i32', 'value' => '3']],
             line: 80,
@@ -438,7 +402,6 @@ final class TableCopyTest extends SpecTestsuiteBase
     public function testAssertReturn39(): void
     {
         $this->runAssertReturnCommand(
-            module: null,
             action: ['type' => 'invoke', 'field' => 'check_t1', 'args' => [['type' => 'i32', 'value' => '5']]],
             expected: [['type' => 'i32', 'value' => '1']],
             line: 81,
@@ -449,7 +412,6 @@ final class TableCopyTest extends SpecTestsuiteBase
     public function testAssertReturn40(): void
     {
         $this->runAssertReturnCommand(
-            module: null,
             action: ['type' => 'invoke', 'field' => 'check_t1', 'args' => [['type' => 'i32', 'value' => '6']]],
             expected: [['type' => 'i32', 'value' => '4']],
             line: 82,
@@ -460,7 +422,6 @@ final class TableCopyTest extends SpecTestsuiteBase
     public function testAssertTrap41(): void
     {
         $this->runAssertTrapCommand(
-            module: null,
             action: ['type' => 'invoke', 'field' => 'check_t1', 'args' => [['type' => 'i32', 'value' => '7']]],
             text: 'uninitialized element',
             line: 83,
@@ -471,7 +432,6 @@ final class TableCopyTest extends SpecTestsuiteBase
     public function testAssertTrap42(): void
     {
         $this->runAssertTrapCommand(
-            module: null,
             action: ['type' => 'invoke', 'field' => 'check_t1', 'args' => [['type' => 'i32', 'value' => '8']]],
             text: 'uninitialized element',
             line: 84,
@@ -482,7 +442,6 @@ final class TableCopyTest extends SpecTestsuiteBase
     public function testAssertTrap43(): void
     {
         $this->runAssertTrapCommand(
-            module: null,
             action: ['type' => 'invoke', 'field' => 'check_t1', 'args' => [['type' => 'i32', 'value' => '9']]],
             text: 'uninitialized element',
             line: 85,
@@ -493,7 +452,6 @@ final class TableCopyTest extends SpecTestsuiteBase
     public function testAssertTrap44(): void
     {
         $this->runAssertTrapCommand(
-            module: null,
             action: ['type' => 'invoke', 'field' => 'check_t1', 'args' => [['type' => 'i32', 'value' => '10']]],
             text: 'uninitialized element',
             line: 86,
@@ -504,7 +462,6 @@ final class TableCopyTest extends SpecTestsuiteBase
     public function testAssertReturn45(): void
     {
         $this->runAssertReturnCommand(
-            module: null,
             action: ['type' => 'invoke', 'field' => 'check_t1', 'args' => [['type' => 'i32', 'value' => '11']]],
             expected: [['type' => 'i32', 'value' => '6']],
             line: 87,
@@ -515,7 +472,6 @@ final class TableCopyTest extends SpecTestsuiteBase
     public function testAssertReturn46(): void
     {
         $this->runAssertReturnCommand(
-            module: null,
             action: ['type' => 'invoke', 'field' => 'check_t1', 'args' => [['type' => 'i32', 'value' => '12']]],
             expected: [['type' => 'i32', 'value' => '3']],
             line: 88,
@@ -526,7 +482,6 @@ final class TableCopyTest extends SpecTestsuiteBase
     public function testAssertReturn47(): void
     {
         $this->runAssertReturnCommand(
-            module: null,
             action: ['type' => 'invoke', 'field' => 'check_t1', 'args' => [['type' => 'i32', 'value' => '13']]],
             expected: [['type' => 'i32', 'value' => '2']],
             line: 89,
@@ -537,7 +492,6 @@ final class TableCopyTest extends SpecTestsuiteBase
     public function testAssertReturn48(): void
     {
         $this->runAssertReturnCommand(
-            module: null,
             action: ['type' => 'invoke', 'field' => 'check_t1', 'args' => [['type' => 'i32', 'value' => '14']]],
             expected: [['type' => 'i32', 'value' => '5']],
             line: 90,
@@ -548,7 +502,6 @@ final class TableCopyTest extends SpecTestsuiteBase
     public function testAssertReturn49(): void
     {
         $this->runAssertReturnCommand(
-            module: null,
             action: ['type' => 'invoke', 'field' => 'check_t1', 'args' => [['type' => 'i32', 'value' => '15']]],
             expected: [['type' => 'i32', 'value' => '7']],
             line: 91,
@@ -559,7 +512,6 @@ final class TableCopyTest extends SpecTestsuiteBase
     public function testAssertTrap50(): void
     {
         $this->runAssertTrapCommand(
-            module: null,
             action: ['type' => 'invoke', 'field' => 'check_t1', 'args' => [['type' => 'i32', 'value' => '16']]],
             text: 'uninitialized element',
             line: 92,
@@ -570,7 +522,6 @@ final class TableCopyTest extends SpecTestsuiteBase
     public function testAssertTrap51(): void
     {
         $this->runAssertTrapCommand(
-            module: null,
             action: ['type' => 'invoke', 'field' => 'check_t1', 'args' => [['type' => 'i32', 'value' => '17']]],
             text: 'uninitialized element',
             line: 93,
@@ -581,7 +532,6 @@ final class TableCopyTest extends SpecTestsuiteBase
     public function testAssertTrap52(): void
     {
         $this->runAssertTrapCommand(
-            module: null,
             action: ['type' => 'invoke', 'field' => 'check_t1', 'args' => [['type' => 'i32', 'value' => '18']]],
             text: 'uninitialized element',
             line: 94,
@@ -592,7 +542,6 @@ final class TableCopyTest extends SpecTestsuiteBase
     public function testAssertTrap53(): void
     {
         $this->runAssertTrapCommand(
-            module: null,
             action: ['type' => 'invoke', 'field' => 'check_t1', 'args' => [['type' => 'i32', 'value' => '19']]],
             text: 'uninitialized element',
             line: 95,
@@ -603,7 +552,6 @@ final class TableCopyTest extends SpecTestsuiteBase
     public function testAssertTrap54(): void
     {
         $this->runAssertTrapCommand(
-            module: null,
             action: ['type' => 'invoke', 'field' => 'check_t1', 'args' => [['type' => 'i32', 'value' => '20']]],
             text: 'uninitialized element',
             line: 96,
@@ -614,7 +562,6 @@ final class TableCopyTest extends SpecTestsuiteBase
     public function testAssertTrap55(): void
     {
         $this->runAssertTrapCommand(
-            module: null,
             action: ['type' => 'invoke', 'field' => 'check_t1', 'args' => [['type' => 'i32', 'value' => '21']]],
             text: 'uninitialized element',
             line: 97,
@@ -625,7 +572,6 @@ final class TableCopyTest extends SpecTestsuiteBase
     public function testAssertTrap56(): void
     {
         $this->runAssertTrapCommand(
-            module: null,
             action: ['type' => 'invoke', 'field' => 'check_t1', 'args' => [['type' => 'i32', 'value' => '22']]],
             text: 'uninitialized element',
             line: 98,
@@ -636,7 +582,6 @@ final class TableCopyTest extends SpecTestsuiteBase
     public function testAssertTrap57(): void
     {
         $this->runAssertTrapCommand(
-            module: null,
             action: ['type' => 'invoke', 'field' => 'check_t1', 'args' => [['type' => 'i32', 'value' => '23']]],
             text: 'uninitialized element',
             line: 99,
@@ -647,7 +592,6 @@ final class TableCopyTest extends SpecTestsuiteBase
     public function testAssertTrap58(): void
     {
         $this->runAssertTrapCommand(
-            module: null,
             action: ['type' => 'invoke', 'field' => 'check_t1', 'args' => [['type' => 'i32', 'value' => '24']]],
             text: 'uninitialized element',
             line: 100,
@@ -658,7 +602,6 @@ final class TableCopyTest extends SpecTestsuiteBase
     public function testAssertTrap59(): void
     {
         $this->runAssertTrapCommand(
-            module: null,
             action: ['type' => 'invoke', 'field' => 'check_t1', 'args' => [['type' => 'i32', 'value' => '25']]],
             text: 'uninitialized element',
             line: 101,
@@ -669,7 +612,6 @@ final class TableCopyTest extends SpecTestsuiteBase
     public function testAssertTrap60(): void
     {
         $this->runAssertTrapCommand(
-            module: null,
             action: ['type' => 'invoke', 'field' => 'check_t1', 'args' => [['type' => 'i32', 'value' => '26']]],
             text: 'uninitialized element',
             line: 102,
@@ -680,7 +622,6 @@ final class TableCopyTest extends SpecTestsuiteBase
     public function testAssertTrap61(): void
     {
         $this->runAssertTrapCommand(
-            module: null,
             action: ['type' => 'invoke', 'field' => 'check_t1', 'args' => [['type' => 'i32', 'value' => '27']]],
             text: 'uninitialized element',
             line: 103,
@@ -691,7 +632,6 @@ final class TableCopyTest extends SpecTestsuiteBase
     public function testAssertTrap62(): void
     {
         $this->runAssertTrapCommand(
-            module: null,
             action: ['type' => 'invoke', 'field' => 'check_t1', 'args' => [['type' => 'i32', 'value' => '28']]],
             text: 'uninitialized element',
             line: 104,
@@ -702,7 +642,6 @@ final class TableCopyTest extends SpecTestsuiteBase
     public function testAssertTrap63(): void
     {
         $this->runAssertTrapCommand(
-            module: null,
             action: ['type' => 'invoke', 'field' => 'check_t1', 'args' => [['type' => 'i32', 'value' => '29']]],
             text: 'uninitialized element',
             line: 105,
@@ -723,7 +662,6 @@ final class TableCopyTest extends SpecTestsuiteBase
     public function testAction65(): void
     {
         $this->runActionCommand(
-            module: null,
             action: ['type' => 'invoke', 'field' => 'test', 'args' => []],
             line: 137,
         );
@@ -733,7 +671,6 @@ final class TableCopyTest extends SpecTestsuiteBase
     public function testAssertTrap66(): void
     {
         $this->runAssertTrapCommand(
-            module: null,
             action: ['type' => 'invoke', 'field' => 'check_t0', 'args' => [['type' => 'i32', 'value' => '0']]],
             text: 'uninitialized element',
             line: 138,
@@ -744,7 +681,6 @@ final class TableCopyTest extends SpecTestsuiteBase
     public function testAssertTrap67(): void
     {
         $this->runAssertTrapCommand(
-            module: null,
             action: ['type' => 'invoke', 'field' => 'check_t0', 'args' => [['type' => 'i32', 'value' => '1']]],
             text: 'uninitialized element',
             line: 139,
@@ -755,7 +691,6 @@ final class TableCopyTest extends SpecTestsuiteBase
     public function testAssertReturn68(): void
     {
         $this->runAssertReturnCommand(
-            module: null,
             action: ['type' => 'invoke', 'field' => 'check_t0', 'args' => [['type' => 'i32', 'value' => '2']]],
             expected: [['type' => 'i32', 'value' => '3']],
             line: 140,
@@ -766,7 +701,6 @@ final class TableCopyTest extends SpecTestsuiteBase
     public function testAssertReturn69(): void
     {
         $this->runAssertReturnCommand(
-            module: null,
             action: ['type' => 'invoke', 'field' => 'check_t0', 'args' => [['type' => 'i32', 'value' => '3']]],
             expected: [['type' => 'i32', 'value' => '1']],
             line: 141,
@@ -777,7 +711,6 @@ final class TableCopyTest extends SpecTestsuiteBase
     public function testAssertReturn70(): void
     {
         $this->runAssertReturnCommand(
-            module: null,
             action: ['type' => 'invoke', 'field' => 'check_t0', 'args' => [['type' => 'i32', 'value' => '4']]],
             expected: [['type' => 'i32', 'value' => '4']],
             line: 142,
@@ -788,7 +721,6 @@ final class TableCopyTest extends SpecTestsuiteBase
     public function testAssertReturn71(): void
     {
         $this->runAssertReturnCommand(
-            module: null,
             action: ['type' => 'invoke', 'field' => 'check_t0', 'args' => [['type' => 'i32', 'value' => '5']]],
             expected: [['type' => 'i32', 'value' => '1']],
             line: 143,
@@ -799,7 +731,6 @@ final class TableCopyTest extends SpecTestsuiteBase
     public function testAssertTrap72(): void
     {
         $this->runAssertTrapCommand(
-            module: null,
             action: ['type' => 'invoke', 'field' => 'check_t0', 'args' => [['type' => 'i32', 'value' => '6']]],
             text: 'uninitialized element',
             line: 144,
@@ -810,7 +741,6 @@ final class TableCopyTest extends SpecTestsuiteBase
     public function testAssertTrap73(): void
     {
         $this->runAssertTrapCommand(
-            module: null,
             action: ['type' => 'invoke', 'field' => 'check_t0', 'args' => [['type' => 'i32', 'value' => '7']]],
             text: 'uninitialized element',
             line: 145,
@@ -821,7 +751,6 @@ final class TableCopyTest extends SpecTestsuiteBase
     public function testAssertTrap74(): void
     {
         $this->runAssertTrapCommand(
-            module: null,
             action: ['type' => 'invoke', 'field' => 'check_t0', 'args' => [['type' => 'i32', 'value' => '8']]],
             text: 'uninitialized element',
             line: 146,
@@ -832,7 +761,6 @@ final class TableCopyTest extends SpecTestsuiteBase
     public function testAssertTrap75(): void
     {
         $this->runAssertTrapCommand(
-            module: null,
             action: ['type' => 'invoke', 'field' => 'check_t0', 'args' => [['type' => 'i32', 'value' => '9']]],
             text: 'uninitialized element',
             line: 147,
@@ -843,7 +771,6 @@ final class TableCopyTest extends SpecTestsuiteBase
     public function testAssertTrap76(): void
     {
         $this->runAssertTrapCommand(
-            module: null,
             action: ['type' => 'invoke', 'field' => 'check_t0', 'args' => [['type' => 'i32', 'value' => '10']]],
             text: 'uninitialized element',
             line: 148,
@@ -854,7 +781,6 @@ final class TableCopyTest extends SpecTestsuiteBase
     public function testAssertTrap77(): void
     {
         $this->runAssertTrapCommand(
-            module: null,
             action: ['type' => 'invoke', 'field' => 'check_t0', 'args' => [['type' => 'i32', 'value' => '11']]],
             text: 'uninitialized element',
             line: 149,
@@ -865,7 +791,6 @@ final class TableCopyTest extends SpecTestsuiteBase
     public function testAssertReturn78(): void
     {
         $this->runAssertReturnCommand(
-            module: null,
             action: ['type' => 'invoke', 'field' => 'check_t0', 'args' => [['type' => 'i32', 'value' => '12']]],
             expected: [['type' => 'i32', 'value' => '7']],
             line: 150,
@@ -876,7 +801,6 @@ final class TableCopyTest extends SpecTestsuiteBase
     public function testAssertReturn79(): void
     {
         $this->runAssertReturnCommand(
-            module: null,
             action: ['type' => 'invoke', 'field' => 'check_t0', 'args' => [['type' => 'i32', 'value' => '13']]],
             expected: [['type' => 'i32', 'value' => '3']],
             line: 151,
@@ -887,7 +811,6 @@ final class TableCopyTest extends SpecTestsuiteBase
     public function testAssertReturn80(): void
     {
         $this->runAssertReturnCommand(
-            module: null,
             action: ['type' => 'invoke', 'field' => 'check_t0', 'args' => [['type' => 'i32', 'value' => '14']]],
             expected: [['type' => 'i32', 'value' => '1']],
             line: 152,
@@ -898,7 +821,6 @@ final class TableCopyTest extends SpecTestsuiteBase
     public function testAssertReturn81(): void
     {
         $this->runAssertReturnCommand(
-            module: null,
             action: ['type' => 'invoke', 'field' => 'check_t0', 'args' => [['type' => 'i32', 'value' => '15']]],
             expected: [['type' => 'i32', 'value' => '4']],
             line: 153,
@@ -909,7 +831,6 @@ final class TableCopyTest extends SpecTestsuiteBase
     public function testAssertReturn82(): void
     {
         $this->runAssertReturnCommand(
-            module: null,
             action: ['type' => 'invoke', 'field' => 'check_t0', 'args' => [['type' => 'i32', 'value' => '16']]],
             expected: [['type' => 'i32', 'value' => '6']],
             line: 154,
@@ -920,7 +841,6 @@ final class TableCopyTest extends SpecTestsuiteBase
     public function testAssertTrap83(): void
     {
         $this->runAssertTrapCommand(
-            module: null,
             action: ['type' => 'invoke', 'field' => 'check_t0', 'args' => [['type' => 'i32', 'value' => '17']]],
             text: 'uninitialized element',
             line: 155,
@@ -931,7 +851,6 @@ final class TableCopyTest extends SpecTestsuiteBase
     public function testAssertTrap84(): void
     {
         $this->runAssertTrapCommand(
-            module: null,
             action: ['type' => 'invoke', 'field' => 'check_t0', 'args' => [['type' => 'i32', 'value' => '18']]],
             text: 'uninitialized element',
             line: 156,
@@ -942,7 +861,6 @@ final class TableCopyTest extends SpecTestsuiteBase
     public function testAssertTrap85(): void
     {
         $this->runAssertTrapCommand(
-            module: null,
             action: ['type' => 'invoke', 'field' => 'check_t0', 'args' => [['type' => 'i32', 'value' => '19']]],
             text: 'uninitialized element',
             line: 157,
@@ -953,7 +871,6 @@ final class TableCopyTest extends SpecTestsuiteBase
     public function testAssertTrap86(): void
     {
         $this->runAssertTrapCommand(
-            module: null,
             action: ['type' => 'invoke', 'field' => 'check_t0', 'args' => [['type' => 'i32', 'value' => '20']]],
             text: 'uninitialized element',
             line: 158,
@@ -964,7 +881,6 @@ final class TableCopyTest extends SpecTestsuiteBase
     public function testAssertTrap87(): void
     {
         $this->runAssertTrapCommand(
-            module: null,
             action: ['type' => 'invoke', 'field' => 'check_t0', 'args' => [['type' => 'i32', 'value' => '21']]],
             text: 'uninitialized element',
             line: 159,
@@ -975,7 +891,6 @@ final class TableCopyTest extends SpecTestsuiteBase
     public function testAssertTrap88(): void
     {
         $this->runAssertTrapCommand(
-            module: null,
             action: ['type' => 'invoke', 'field' => 'check_t0', 'args' => [['type' => 'i32', 'value' => '22']]],
             text: 'uninitialized element',
             line: 160,
@@ -986,7 +901,6 @@ final class TableCopyTest extends SpecTestsuiteBase
     public function testAssertTrap89(): void
     {
         $this->runAssertTrapCommand(
-            module: null,
             action: ['type' => 'invoke', 'field' => 'check_t0', 'args' => [['type' => 'i32', 'value' => '23']]],
             text: 'uninitialized element',
             line: 161,
@@ -997,7 +911,6 @@ final class TableCopyTest extends SpecTestsuiteBase
     public function testAssertTrap90(): void
     {
         $this->runAssertTrapCommand(
-            module: null,
             action: ['type' => 'invoke', 'field' => 'check_t0', 'args' => [['type' => 'i32', 'value' => '24']]],
             text: 'uninitialized element',
             line: 162,
@@ -1008,7 +921,6 @@ final class TableCopyTest extends SpecTestsuiteBase
     public function testAssertTrap91(): void
     {
         $this->runAssertTrapCommand(
-            module: null,
             action: ['type' => 'invoke', 'field' => 'check_t0', 'args' => [['type' => 'i32', 'value' => '25']]],
             text: 'uninitialized element',
             line: 163,
@@ -1019,7 +931,6 @@ final class TableCopyTest extends SpecTestsuiteBase
     public function testAssertTrap92(): void
     {
         $this->runAssertTrapCommand(
-            module: null,
             action: ['type' => 'invoke', 'field' => 'check_t0', 'args' => [['type' => 'i32', 'value' => '26']]],
             text: 'uninitialized element',
             line: 164,
@@ -1030,7 +941,6 @@ final class TableCopyTest extends SpecTestsuiteBase
     public function testAssertTrap93(): void
     {
         $this->runAssertTrapCommand(
-            module: null,
             action: ['type' => 'invoke', 'field' => 'check_t0', 'args' => [['type' => 'i32', 'value' => '27']]],
             text: 'uninitialized element',
             line: 165,
@@ -1041,7 +951,6 @@ final class TableCopyTest extends SpecTestsuiteBase
     public function testAssertTrap94(): void
     {
         $this->runAssertTrapCommand(
-            module: null,
             action: ['type' => 'invoke', 'field' => 'check_t0', 'args' => [['type' => 'i32', 'value' => '28']]],
             text: 'uninitialized element',
             line: 166,
@@ -1052,7 +961,6 @@ final class TableCopyTest extends SpecTestsuiteBase
     public function testAssertTrap95(): void
     {
         $this->runAssertTrapCommand(
-            module: null,
             action: ['type' => 'invoke', 'field' => 'check_t0', 'args' => [['type' => 'i32', 'value' => '29']]],
             text: 'uninitialized element',
             line: 167,
@@ -1063,7 +971,6 @@ final class TableCopyTest extends SpecTestsuiteBase
     public function testAssertTrap96(): void
     {
         $this->runAssertTrapCommand(
-            module: null,
             action: ['type' => 'invoke', 'field' => 'check_t1', 'args' => [['type' => 'i32', 'value' => '0']]],
             text: 'uninitialized element',
             line: 168,
@@ -1074,7 +981,6 @@ final class TableCopyTest extends SpecTestsuiteBase
     public function testAssertTrap97(): void
     {
         $this->runAssertTrapCommand(
-            module: null,
             action: ['type' => 'invoke', 'field' => 'check_t1', 'args' => [['type' => 'i32', 'value' => '1']]],
             text: 'uninitialized element',
             line: 169,
@@ -1085,7 +991,6 @@ final class TableCopyTest extends SpecTestsuiteBase
     public function testAssertTrap98(): void
     {
         $this->runAssertTrapCommand(
-            module: null,
             action: ['type' => 'invoke', 'field' => 'check_t1', 'args' => [['type' => 'i32', 'value' => '2']]],
             text: 'uninitialized element',
             line: 170,
@@ -1096,7 +1001,6 @@ final class TableCopyTest extends SpecTestsuiteBase
     public function testAssertReturn99(): void
     {
         $this->runAssertReturnCommand(
-            module: null,
             action: ['type' => 'invoke', 'field' => 'check_t1', 'args' => [['type' => 'i32', 'value' => '3']]],
             expected: [['type' => 'i32', 'value' => '1']],
             line: 171,
@@ -1107,7 +1011,6 @@ final class TableCopyTest extends SpecTestsuiteBase
     public function testAssertReturn100(): void
     {
         $this->runAssertReturnCommand(
-            module: null,
             action: ['type' => 'invoke', 'field' => 'check_t1', 'args' => [['type' => 'i32', 'value' => '4']]],
             expected: [['type' => 'i32', 'value' => '3']],
             line: 172,
@@ -1118,7 +1021,6 @@ final class TableCopyTest extends SpecTestsuiteBase
     public function testAssertReturn101(): void
     {
         $this->runAssertReturnCommand(
-            module: null,
             action: ['type' => 'invoke', 'field' => 'check_t1', 'args' => [['type' => 'i32', 'value' => '5']]],
             expected: [['type' => 'i32', 'value' => '1']],
             line: 173,
@@ -1129,7 +1031,6 @@ final class TableCopyTest extends SpecTestsuiteBase
     public function testAssertReturn102(): void
     {
         $this->runAssertReturnCommand(
-            module: null,
             action: ['type' => 'invoke', 'field' => 'check_t1', 'args' => [['type' => 'i32', 'value' => '6']]],
             expected: [['type' => 'i32', 'value' => '4']],
             line: 174,
@@ -1140,7 +1041,6 @@ final class TableCopyTest extends SpecTestsuiteBase
     public function testAssertTrap103(): void
     {
         $this->runAssertTrapCommand(
-            module: null,
             action: ['type' => 'invoke', 'field' => 'check_t1', 'args' => [['type' => 'i32', 'value' => '7']]],
             text: 'uninitialized element',
             line: 175,
@@ -1151,7 +1051,6 @@ final class TableCopyTest extends SpecTestsuiteBase
     public function testAssertTrap104(): void
     {
         $this->runAssertTrapCommand(
-            module: null,
             action: ['type' => 'invoke', 'field' => 'check_t1', 'args' => [['type' => 'i32', 'value' => '8']]],
             text: 'uninitialized element',
             line: 176,
@@ -1162,7 +1061,6 @@ final class TableCopyTest extends SpecTestsuiteBase
     public function testAssertTrap105(): void
     {
         $this->runAssertTrapCommand(
-            module: null,
             action: ['type' => 'invoke', 'field' => 'check_t1', 'args' => [['type' => 'i32', 'value' => '9']]],
             text: 'uninitialized element',
             line: 177,
@@ -1173,7 +1071,6 @@ final class TableCopyTest extends SpecTestsuiteBase
     public function testAssertTrap106(): void
     {
         $this->runAssertTrapCommand(
-            module: null,
             action: ['type' => 'invoke', 'field' => 'check_t1', 'args' => [['type' => 'i32', 'value' => '10']]],
             text: 'uninitialized element',
             line: 178,
@@ -1184,7 +1081,6 @@ final class TableCopyTest extends SpecTestsuiteBase
     public function testAssertReturn107(): void
     {
         $this->runAssertReturnCommand(
-            module: null,
             action: ['type' => 'invoke', 'field' => 'check_t1', 'args' => [['type' => 'i32', 'value' => '11']]],
             expected: [['type' => 'i32', 'value' => '6']],
             line: 179,
@@ -1195,7 +1091,6 @@ final class TableCopyTest extends SpecTestsuiteBase
     public function testAssertReturn108(): void
     {
         $this->runAssertReturnCommand(
-            module: null,
             action: ['type' => 'invoke', 'field' => 'check_t1', 'args' => [['type' => 'i32', 'value' => '12']]],
             expected: [['type' => 'i32', 'value' => '3']],
             line: 180,
@@ -1206,7 +1101,6 @@ final class TableCopyTest extends SpecTestsuiteBase
     public function testAssertReturn109(): void
     {
         $this->runAssertReturnCommand(
-            module: null,
             action: ['type' => 'invoke', 'field' => 'check_t1', 'args' => [['type' => 'i32', 'value' => '13']]],
             expected: [['type' => 'i32', 'value' => '2']],
             line: 181,
@@ -1217,7 +1111,6 @@ final class TableCopyTest extends SpecTestsuiteBase
     public function testAssertReturn110(): void
     {
         $this->runAssertReturnCommand(
-            module: null,
             action: ['type' => 'invoke', 'field' => 'check_t1', 'args' => [['type' => 'i32', 'value' => '14']]],
             expected: [['type' => 'i32', 'value' => '5']],
             line: 182,
@@ -1228,7 +1121,6 @@ final class TableCopyTest extends SpecTestsuiteBase
     public function testAssertReturn111(): void
     {
         $this->runAssertReturnCommand(
-            module: null,
             action: ['type' => 'invoke', 'field' => 'check_t1', 'args' => [['type' => 'i32', 'value' => '15']]],
             expected: [['type' => 'i32', 'value' => '7']],
             line: 183,
@@ -1239,7 +1131,6 @@ final class TableCopyTest extends SpecTestsuiteBase
     public function testAssertTrap112(): void
     {
         $this->runAssertTrapCommand(
-            module: null,
             action: ['type' => 'invoke', 'field' => 'check_t1', 'args' => [['type' => 'i32', 'value' => '16']]],
             text: 'uninitialized element',
             line: 184,
@@ -1250,7 +1141,6 @@ final class TableCopyTest extends SpecTestsuiteBase
     public function testAssertTrap113(): void
     {
         $this->runAssertTrapCommand(
-            module: null,
             action: ['type' => 'invoke', 'field' => 'check_t1', 'args' => [['type' => 'i32', 'value' => '17']]],
             text: 'uninitialized element',
             line: 185,
@@ -1261,7 +1151,6 @@ final class TableCopyTest extends SpecTestsuiteBase
     public function testAssertTrap114(): void
     {
         $this->runAssertTrapCommand(
-            module: null,
             action: ['type' => 'invoke', 'field' => 'check_t1', 'args' => [['type' => 'i32', 'value' => '18']]],
             text: 'uninitialized element',
             line: 186,
@@ -1272,7 +1161,6 @@ final class TableCopyTest extends SpecTestsuiteBase
     public function testAssertTrap115(): void
     {
         $this->runAssertTrapCommand(
-            module: null,
             action: ['type' => 'invoke', 'field' => 'check_t1', 'args' => [['type' => 'i32', 'value' => '19']]],
             text: 'uninitialized element',
             line: 187,
@@ -1283,7 +1171,6 @@ final class TableCopyTest extends SpecTestsuiteBase
     public function testAssertTrap116(): void
     {
         $this->runAssertTrapCommand(
-            module: null,
             action: ['type' => 'invoke', 'field' => 'check_t1', 'args' => [['type' => 'i32', 'value' => '20']]],
             text: 'uninitialized element',
             line: 188,
@@ -1294,7 +1181,6 @@ final class TableCopyTest extends SpecTestsuiteBase
     public function testAssertTrap117(): void
     {
         $this->runAssertTrapCommand(
-            module: null,
             action: ['type' => 'invoke', 'field' => 'check_t1', 'args' => [['type' => 'i32', 'value' => '21']]],
             text: 'uninitialized element',
             line: 189,
@@ -1305,7 +1191,6 @@ final class TableCopyTest extends SpecTestsuiteBase
     public function testAssertTrap118(): void
     {
         $this->runAssertTrapCommand(
-            module: null,
             action: ['type' => 'invoke', 'field' => 'check_t1', 'args' => [['type' => 'i32', 'value' => '22']]],
             text: 'uninitialized element',
             line: 190,
@@ -1316,7 +1201,6 @@ final class TableCopyTest extends SpecTestsuiteBase
     public function testAssertTrap119(): void
     {
         $this->runAssertTrapCommand(
-            module: null,
             action: ['type' => 'invoke', 'field' => 'check_t1', 'args' => [['type' => 'i32', 'value' => '23']]],
             text: 'uninitialized element',
             line: 191,
@@ -1327,7 +1211,6 @@ final class TableCopyTest extends SpecTestsuiteBase
     public function testAssertTrap120(): void
     {
         $this->runAssertTrapCommand(
-            module: null,
             action: ['type' => 'invoke', 'field' => 'check_t1', 'args' => [['type' => 'i32', 'value' => '24']]],
             text: 'uninitialized element',
             line: 192,
@@ -1338,7 +1221,6 @@ final class TableCopyTest extends SpecTestsuiteBase
     public function testAssertTrap121(): void
     {
         $this->runAssertTrapCommand(
-            module: null,
             action: ['type' => 'invoke', 'field' => 'check_t1', 'args' => [['type' => 'i32', 'value' => '25']]],
             text: 'uninitialized element',
             line: 193,
@@ -1349,7 +1231,6 @@ final class TableCopyTest extends SpecTestsuiteBase
     public function testAssertTrap122(): void
     {
         $this->runAssertTrapCommand(
-            module: null,
             action: ['type' => 'invoke', 'field' => 'check_t1', 'args' => [['type' => 'i32', 'value' => '26']]],
             text: 'uninitialized element',
             line: 194,
@@ -1360,7 +1241,6 @@ final class TableCopyTest extends SpecTestsuiteBase
     public function testAssertTrap123(): void
     {
         $this->runAssertTrapCommand(
-            module: null,
             action: ['type' => 'invoke', 'field' => 'check_t1', 'args' => [['type' => 'i32', 'value' => '27']]],
             text: 'uninitialized element',
             line: 195,
@@ -1371,7 +1251,6 @@ final class TableCopyTest extends SpecTestsuiteBase
     public function testAssertTrap124(): void
     {
         $this->runAssertTrapCommand(
-            module: null,
             action: ['type' => 'invoke', 'field' => 'check_t1', 'args' => [['type' => 'i32', 'value' => '28']]],
             text: 'uninitialized element',
             line: 196,
@@ -1382,7 +1261,6 @@ final class TableCopyTest extends SpecTestsuiteBase
     public function testAssertTrap125(): void
     {
         $this->runAssertTrapCommand(
-            module: null,
             action: ['type' => 'invoke', 'field' => 'check_t1', 'args' => [['type' => 'i32', 'value' => '29']]],
             text: 'uninitialized element',
             line: 197,
@@ -1403,7 +1281,6 @@ final class TableCopyTest extends SpecTestsuiteBase
     public function testAction127(): void
     {
         $this->runActionCommand(
-            module: null,
             action: ['type' => 'invoke', 'field' => 'test', 'args' => []],
             line: 229,
         );
@@ -1413,7 +1290,6 @@ final class TableCopyTest extends SpecTestsuiteBase
     public function testAssertTrap128(): void
     {
         $this->runAssertTrapCommand(
-            module: null,
             action: ['type' => 'invoke', 'field' => 'check_t0', 'args' => [['type' => 'i32', 'value' => '0']]],
             text: 'uninitialized element',
             line: 230,
@@ -1424,7 +1300,6 @@ final class TableCopyTest extends SpecTestsuiteBase
     public function testAssertTrap129(): void
     {
         $this->runAssertTrapCommand(
-            module: null,
             action: ['type' => 'invoke', 'field' => 'check_t0', 'args' => [['type' => 'i32', 'value' => '1']]],
             text: 'uninitialized element',
             line: 231,
@@ -1435,7 +1310,6 @@ final class TableCopyTest extends SpecTestsuiteBase
     public function testAssertReturn130(): void
     {
         $this->runAssertReturnCommand(
-            module: null,
             action: ['type' => 'invoke', 'field' => 'check_t0', 'args' => [['type' => 'i32', 'value' => '2']]],
             expected: [['type' => 'i32', 'value' => '3']],
             line: 232,
@@ -1446,7 +1320,6 @@ final class TableCopyTest extends SpecTestsuiteBase
     public function testAssertReturn131(): void
     {
         $this->runAssertReturnCommand(
-            module: null,
             action: ['type' => 'invoke', 'field' => 'check_t0', 'args' => [['type' => 'i32', 'value' => '3']]],
             expected: [['type' => 'i32', 'value' => '1']],
             line: 233,
@@ -1457,7 +1330,6 @@ final class TableCopyTest extends SpecTestsuiteBase
     public function testAssertReturn132(): void
     {
         $this->runAssertReturnCommand(
-            module: null,
             action: ['type' => 'invoke', 'field' => 'check_t0', 'args' => [['type' => 'i32', 'value' => '4']]],
             expected: [['type' => 'i32', 'value' => '4']],
             line: 234,
@@ -1468,7 +1340,6 @@ final class TableCopyTest extends SpecTestsuiteBase
     public function testAssertReturn133(): void
     {
         $this->runAssertReturnCommand(
-            module: null,
             action: ['type' => 'invoke', 'field' => 'check_t0', 'args' => [['type' => 'i32', 'value' => '5']]],
             expected: [['type' => 'i32', 'value' => '1']],
             line: 235,
@@ -1479,7 +1350,6 @@ final class TableCopyTest extends SpecTestsuiteBase
     public function testAssertTrap134(): void
     {
         $this->runAssertTrapCommand(
-            module: null,
             action: ['type' => 'invoke', 'field' => 'check_t0', 'args' => [['type' => 'i32', 'value' => '6']]],
             text: 'uninitialized element',
             line: 236,
@@ -1490,7 +1360,6 @@ final class TableCopyTest extends SpecTestsuiteBase
     public function testAssertTrap135(): void
     {
         $this->runAssertTrapCommand(
-            module: null,
             action: ['type' => 'invoke', 'field' => 'check_t0', 'args' => [['type' => 'i32', 'value' => '7']]],
             text: 'uninitialized element',
             line: 237,
@@ -1501,7 +1370,6 @@ final class TableCopyTest extends SpecTestsuiteBase
     public function testAssertTrap136(): void
     {
         $this->runAssertTrapCommand(
-            module: null,
             action: ['type' => 'invoke', 'field' => 'check_t0', 'args' => [['type' => 'i32', 'value' => '8']]],
             text: 'uninitialized element',
             line: 238,
@@ -1512,7 +1380,6 @@ final class TableCopyTest extends SpecTestsuiteBase
     public function testAssertTrap137(): void
     {
         $this->runAssertTrapCommand(
-            module: null,
             action: ['type' => 'invoke', 'field' => 'check_t0', 'args' => [['type' => 'i32', 'value' => '9']]],
             text: 'uninitialized element',
             line: 239,
@@ -1523,7 +1390,6 @@ final class TableCopyTest extends SpecTestsuiteBase
     public function testAssertTrap138(): void
     {
         $this->runAssertTrapCommand(
-            module: null,
             action: ['type' => 'invoke', 'field' => 'check_t0', 'args' => [['type' => 'i32', 'value' => '10']]],
             text: 'uninitialized element',
             line: 240,
@@ -1534,7 +1400,6 @@ final class TableCopyTest extends SpecTestsuiteBase
     public function testAssertTrap139(): void
     {
         $this->runAssertTrapCommand(
-            module: null,
             action: ['type' => 'invoke', 'field' => 'check_t0', 'args' => [['type' => 'i32', 'value' => '11']]],
             text: 'uninitialized element',
             line: 241,
@@ -1545,7 +1410,6 @@ final class TableCopyTest extends SpecTestsuiteBase
     public function testAssertReturn140(): void
     {
         $this->runAssertReturnCommand(
-            module: null,
             action: ['type' => 'invoke', 'field' => 'check_t0', 'args' => [['type' => 'i32', 'value' => '12']]],
             expected: [['type' => 'i32', 'value' => '7']],
             line: 242,
@@ -1556,7 +1420,6 @@ final class TableCopyTest extends SpecTestsuiteBase
     public function testAssertReturn141(): void
     {
         $this->runAssertReturnCommand(
-            module: null,
             action: ['type' => 'invoke', 'field' => 'check_t0', 'args' => [['type' => 'i32', 'value' => '13']]],
             expected: [['type' => 'i32', 'value' => '5']],
             line: 243,
@@ -1567,7 +1430,6 @@ final class TableCopyTest extends SpecTestsuiteBase
     public function testAssertReturn142(): void
     {
         $this->runAssertReturnCommand(
-            module: null,
             action: ['type' => 'invoke', 'field' => 'check_t0', 'args' => [['type' => 'i32', 'value' => '14']]],
             expected: [['type' => 'i32', 'value' => '2']],
             line: 244,
@@ -1578,7 +1440,6 @@ final class TableCopyTest extends SpecTestsuiteBase
     public function testAssertReturn143(): void
     {
         $this->runAssertReturnCommand(
-            module: null,
             action: ['type' => 'invoke', 'field' => 'check_t0', 'args' => [['type' => 'i32', 'value' => '15']]],
             expected: [['type' => 'i32', 'value' => '3']],
             line: 245,
@@ -1589,7 +1450,6 @@ final class TableCopyTest extends SpecTestsuiteBase
     public function testAssertReturn144(): void
     {
         $this->runAssertReturnCommand(
-            module: null,
             action: ['type' => 'invoke', 'field' => 'check_t0', 'args' => [['type' => 'i32', 'value' => '16']]],
             expected: [['type' => 'i32', 'value' => '6']],
             line: 246,
@@ -1600,7 +1460,6 @@ final class TableCopyTest extends SpecTestsuiteBase
     public function testAssertTrap145(): void
     {
         $this->runAssertTrapCommand(
-            module: null,
             action: ['type' => 'invoke', 'field' => 'check_t0', 'args' => [['type' => 'i32', 'value' => '17']]],
             text: 'uninitialized element',
             line: 247,
@@ -1611,7 +1470,6 @@ final class TableCopyTest extends SpecTestsuiteBase
     public function testAssertTrap146(): void
     {
         $this->runAssertTrapCommand(
-            module: null,
             action: ['type' => 'invoke', 'field' => 'check_t0', 'args' => [['type' => 'i32', 'value' => '18']]],
             text: 'uninitialized element',
             line: 248,
@@ -1622,7 +1480,6 @@ final class TableCopyTest extends SpecTestsuiteBase
     public function testAssertTrap147(): void
     {
         $this->runAssertTrapCommand(
-            module: null,
             action: ['type' => 'invoke', 'field' => 'check_t0', 'args' => [['type' => 'i32', 'value' => '19']]],
             text: 'uninitialized element',
             line: 249,
@@ -1633,7 +1490,6 @@ final class TableCopyTest extends SpecTestsuiteBase
     public function testAssertTrap148(): void
     {
         $this->runAssertTrapCommand(
-            module: null,
             action: ['type' => 'invoke', 'field' => 'check_t0', 'args' => [['type' => 'i32', 'value' => '20']]],
             text: 'uninitialized element',
             line: 250,
@@ -1644,7 +1500,6 @@ final class TableCopyTest extends SpecTestsuiteBase
     public function testAssertTrap149(): void
     {
         $this->runAssertTrapCommand(
-            module: null,
             action: ['type' => 'invoke', 'field' => 'check_t0', 'args' => [['type' => 'i32', 'value' => '21']]],
             text: 'uninitialized element',
             line: 251,
@@ -1655,7 +1510,6 @@ final class TableCopyTest extends SpecTestsuiteBase
     public function testAssertTrap150(): void
     {
         $this->runAssertTrapCommand(
-            module: null,
             action: ['type' => 'invoke', 'field' => 'check_t0', 'args' => [['type' => 'i32', 'value' => '22']]],
             text: 'uninitialized element',
             line: 252,
@@ -1666,7 +1520,6 @@ final class TableCopyTest extends SpecTestsuiteBase
     public function testAssertTrap151(): void
     {
         $this->runAssertTrapCommand(
-            module: null,
             action: ['type' => 'invoke', 'field' => 'check_t0', 'args' => [['type' => 'i32', 'value' => '23']]],
             text: 'uninitialized element',
             line: 253,
@@ -1677,7 +1530,6 @@ final class TableCopyTest extends SpecTestsuiteBase
     public function testAssertTrap152(): void
     {
         $this->runAssertTrapCommand(
-            module: null,
             action: ['type' => 'invoke', 'field' => 'check_t0', 'args' => [['type' => 'i32', 'value' => '24']]],
             text: 'uninitialized element',
             line: 254,
@@ -1688,7 +1540,6 @@ final class TableCopyTest extends SpecTestsuiteBase
     public function testAssertReturn153(): void
     {
         $this->runAssertReturnCommand(
-            module: null,
             action: ['type' => 'invoke', 'field' => 'check_t0', 'args' => [['type' => 'i32', 'value' => '25']]],
             expected: [['type' => 'i32', 'value' => '3']],
             line: 255,
@@ -1699,7 +1550,6 @@ final class TableCopyTest extends SpecTestsuiteBase
     public function testAssertReturn154(): void
     {
         $this->runAssertReturnCommand(
-            module: null,
             action: ['type' => 'invoke', 'field' => 'check_t0', 'args' => [['type' => 'i32', 'value' => '26']]],
             expected: [['type' => 'i32', 'value' => '6']],
             line: 256,
@@ -1710,7 +1560,6 @@ final class TableCopyTest extends SpecTestsuiteBase
     public function testAssertTrap155(): void
     {
         $this->runAssertTrapCommand(
-            module: null,
             action: ['type' => 'invoke', 'field' => 'check_t0', 'args' => [['type' => 'i32', 'value' => '27']]],
             text: 'uninitialized element',
             line: 257,
@@ -1721,7 +1570,6 @@ final class TableCopyTest extends SpecTestsuiteBase
     public function testAssertTrap156(): void
     {
         $this->runAssertTrapCommand(
-            module: null,
             action: ['type' => 'invoke', 'field' => 'check_t0', 'args' => [['type' => 'i32', 'value' => '28']]],
             text: 'uninitialized element',
             line: 258,
@@ -1732,7 +1580,6 @@ final class TableCopyTest extends SpecTestsuiteBase
     public function testAssertTrap157(): void
     {
         $this->runAssertTrapCommand(
-            module: null,
             action: ['type' => 'invoke', 'field' => 'check_t0', 'args' => [['type' => 'i32', 'value' => '29']]],
             text: 'uninitialized element',
             line: 259,
@@ -1743,7 +1590,6 @@ final class TableCopyTest extends SpecTestsuiteBase
     public function testAssertTrap158(): void
     {
         $this->runAssertTrapCommand(
-            module: null,
             action: ['type' => 'invoke', 'field' => 'check_t1', 'args' => [['type' => 'i32', 'value' => '0']]],
             text: 'uninitialized element',
             line: 260,
@@ -1754,7 +1600,6 @@ final class TableCopyTest extends SpecTestsuiteBase
     public function testAssertTrap159(): void
     {
         $this->runAssertTrapCommand(
-            module: null,
             action: ['type' => 'invoke', 'field' => 'check_t1', 'args' => [['type' => 'i32', 'value' => '1']]],
             text: 'uninitialized element',
             line: 261,
@@ -1765,7 +1610,6 @@ final class TableCopyTest extends SpecTestsuiteBase
     public function testAssertTrap160(): void
     {
         $this->runAssertTrapCommand(
-            module: null,
             action: ['type' => 'invoke', 'field' => 'check_t1', 'args' => [['type' => 'i32', 'value' => '2']]],
             text: 'uninitialized element',
             line: 262,
@@ -1776,7 +1620,6 @@ final class TableCopyTest extends SpecTestsuiteBase
     public function testAssertReturn161(): void
     {
         $this->runAssertReturnCommand(
-            module: null,
             action: ['type' => 'invoke', 'field' => 'check_t1', 'args' => [['type' => 'i32', 'value' => '3']]],
             expected: [['type' => 'i32', 'value' => '1']],
             line: 263,
@@ -1787,7 +1630,6 @@ final class TableCopyTest extends SpecTestsuiteBase
     public function testAssertReturn162(): void
     {
         $this->runAssertReturnCommand(
-            module: null,
             action: ['type' => 'invoke', 'field' => 'check_t1', 'args' => [['type' => 'i32', 'value' => '4']]],
             expected: [['type' => 'i32', 'value' => '3']],
             line: 264,
@@ -1798,7 +1640,6 @@ final class TableCopyTest extends SpecTestsuiteBase
     public function testAssertReturn163(): void
     {
         $this->runAssertReturnCommand(
-            module: null,
             action: ['type' => 'invoke', 'field' => 'check_t1', 'args' => [['type' => 'i32', 'value' => '5']]],
             expected: [['type' => 'i32', 'value' => '1']],
             line: 265,
@@ -1809,7 +1650,6 @@ final class TableCopyTest extends SpecTestsuiteBase
     public function testAssertReturn164(): void
     {
         $this->runAssertReturnCommand(
-            module: null,
             action: ['type' => 'invoke', 'field' => 'check_t1', 'args' => [['type' => 'i32', 'value' => '6']]],
             expected: [['type' => 'i32', 'value' => '4']],
             line: 266,
@@ -1820,7 +1660,6 @@ final class TableCopyTest extends SpecTestsuiteBase
     public function testAssertTrap165(): void
     {
         $this->runAssertTrapCommand(
-            module: null,
             action: ['type' => 'invoke', 'field' => 'check_t1', 'args' => [['type' => 'i32', 'value' => '7']]],
             text: 'uninitialized element',
             line: 267,
@@ -1831,7 +1670,6 @@ final class TableCopyTest extends SpecTestsuiteBase
     public function testAssertTrap166(): void
     {
         $this->runAssertTrapCommand(
-            module: null,
             action: ['type' => 'invoke', 'field' => 'check_t1', 'args' => [['type' => 'i32', 'value' => '8']]],
             text: 'uninitialized element',
             line: 268,
@@ -1842,7 +1680,6 @@ final class TableCopyTest extends SpecTestsuiteBase
     public function testAssertTrap167(): void
     {
         $this->runAssertTrapCommand(
-            module: null,
             action: ['type' => 'invoke', 'field' => 'check_t1', 'args' => [['type' => 'i32', 'value' => '9']]],
             text: 'uninitialized element',
             line: 269,
@@ -1853,7 +1690,6 @@ final class TableCopyTest extends SpecTestsuiteBase
     public function testAssertTrap168(): void
     {
         $this->runAssertTrapCommand(
-            module: null,
             action: ['type' => 'invoke', 'field' => 'check_t1', 'args' => [['type' => 'i32', 'value' => '10']]],
             text: 'uninitialized element',
             line: 270,
@@ -1864,7 +1700,6 @@ final class TableCopyTest extends SpecTestsuiteBase
     public function testAssertReturn169(): void
     {
         $this->runAssertReturnCommand(
-            module: null,
             action: ['type' => 'invoke', 'field' => 'check_t1', 'args' => [['type' => 'i32', 'value' => '11']]],
             expected: [['type' => 'i32', 'value' => '6']],
             line: 271,
@@ -1875,7 +1710,6 @@ final class TableCopyTest extends SpecTestsuiteBase
     public function testAssertReturn170(): void
     {
         $this->runAssertReturnCommand(
-            module: null,
             action: ['type' => 'invoke', 'field' => 'check_t1', 'args' => [['type' => 'i32', 'value' => '12']]],
             expected: [['type' => 'i32', 'value' => '3']],
             line: 272,
@@ -1886,7 +1720,6 @@ final class TableCopyTest extends SpecTestsuiteBase
     public function testAssertReturn171(): void
     {
         $this->runAssertReturnCommand(
-            module: null,
             action: ['type' => 'invoke', 'field' => 'check_t1', 'args' => [['type' => 'i32', 'value' => '13']]],
             expected: [['type' => 'i32', 'value' => '2']],
             line: 273,
@@ -1897,7 +1730,6 @@ final class TableCopyTest extends SpecTestsuiteBase
     public function testAssertReturn172(): void
     {
         $this->runAssertReturnCommand(
-            module: null,
             action: ['type' => 'invoke', 'field' => 'check_t1', 'args' => [['type' => 'i32', 'value' => '14']]],
             expected: [['type' => 'i32', 'value' => '5']],
             line: 274,
@@ -1908,7 +1740,6 @@ final class TableCopyTest extends SpecTestsuiteBase
     public function testAssertReturn173(): void
     {
         $this->runAssertReturnCommand(
-            module: null,
             action: ['type' => 'invoke', 'field' => 'check_t1', 'args' => [['type' => 'i32', 'value' => '15']]],
             expected: [['type' => 'i32', 'value' => '7']],
             line: 275,
@@ -1919,7 +1750,6 @@ final class TableCopyTest extends SpecTestsuiteBase
     public function testAssertTrap174(): void
     {
         $this->runAssertTrapCommand(
-            module: null,
             action: ['type' => 'invoke', 'field' => 'check_t1', 'args' => [['type' => 'i32', 'value' => '16']]],
             text: 'uninitialized element',
             line: 276,
@@ -1930,7 +1760,6 @@ final class TableCopyTest extends SpecTestsuiteBase
     public function testAssertTrap175(): void
     {
         $this->runAssertTrapCommand(
-            module: null,
             action: ['type' => 'invoke', 'field' => 'check_t1', 'args' => [['type' => 'i32', 'value' => '17']]],
             text: 'uninitialized element',
             line: 277,
@@ -1941,7 +1770,6 @@ final class TableCopyTest extends SpecTestsuiteBase
     public function testAssertTrap176(): void
     {
         $this->runAssertTrapCommand(
-            module: null,
             action: ['type' => 'invoke', 'field' => 'check_t1', 'args' => [['type' => 'i32', 'value' => '18']]],
             text: 'uninitialized element',
             line: 278,
@@ -1952,7 +1780,6 @@ final class TableCopyTest extends SpecTestsuiteBase
     public function testAssertTrap177(): void
     {
         $this->runAssertTrapCommand(
-            module: null,
             action: ['type' => 'invoke', 'field' => 'check_t1', 'args' => [['type' => 'i32', 'value' => '19']]],
             text: 'uninitialized element',
             line: 279,
@@ -1963,7 +1790,6 @@ final class TableCopyTest extends SpecTestsuiteBase
     public function testAssertTrap178(): void
     {
         $this->runAssertTrapCommand(
-            module: null,
             action: ['type' => 'invoke', 'field' => 'check_t1', 'args' => [['type' => 'i32', 'value' => '20']]],
             text: 'uninitialized element',
             line: 280,
@@ -1974,7 +1800,6 @@ final class TableCopyTest extends SpecTestsuiteBase
     public function testAssertTrap179(): void
     {
         $this->runAssertTrapCommand(
-            module: null,
             action: ['type' => 'invoke', 'field' => 'check_t1', 'args' => [['type' => 'i32', 'value' => '21']]],
             text: 'uninitialized element',
             line: 281,
@@ -1985,7 +1810,6 @@ final class TableCopyTest extends SpecTestsuiteBase
     public function testAssertTrap180(): void
     {
         $this->runAssertTrapCommand(
-            module: null,
             action: ['type' => 'invoke', 'field' => 'check_t1', 'args' => [['type' => 'i32', 'value' => '22']]],
             text: 'uninitialized element',
             line: 282,
@@ -1996,7 +1820,6 @@ final class TableCopyTest extends SpecTestsuiteBase
     public function testAssertTrap181(): void
     {
         $this->runAssertTrapCommand(
-            module: null,
             action: ['type' => 'invoke', 'field' => 'check_t1', 'args' => [['type' => 'i32', 'value' => '23']]],
             text: 'uninitialized element',
             line: 283,
@@ -2007,7 +1830,6 @@ final class TableCopyTest extends SpecTestsuiteBase
     public function testAssertTrap182(): void
     {
         $this->runAssertTrapCommand(
-            module: null,
             action: ['type' => 'invoke', 'field' => 'check_t1', 'args' => [['type' => 'i32', 'value' => '24']]],
             text: 'uninitialized element',
             line: 284,
@@ -2018,7 +1840,6 @@ final class TableCopyTest extends SpecTestsuiteBase
     public function testAssertTrap183(): void
     {
         $this->runAssertTrapCommand(
-            module: null,
             action: ['type' => 'invoke', 'field' => 'check_t1', 'args' => [['type' => 'i32', 'value' => '25']]],
             text: 'uninitialized element',
             line: 285,
@@ -2029,7 +1850,6 @@ final class TableCopyTest extends SpecTestsuiteBase
     public function testAssertTrap184(): void
     {
         $this->runAssertTrapCommand(
-            module: null,
             action: ['type' => 'invoke', 'field' => 'check_t1', 'args' => [['type' => 'i32', 'value' => '26']]],
             text: 'uninitialized element',
             line: 286,
@@ -2040,7 +1860,6 @@ final class TableCopyTest extends SpecTestsuiteBase
     public function testAssertTrap185(): void
     {
         $this->runAssertTrapCommand(
-            module: null,
             action: ['type' => 'invoke', 'field' => 'check_t1', 'args' => [['type' => 'i32', 'value' => '27']]],
             text: 'uninitialized element',
             line: 287,
@@ -2051,7 +1870,6 @@ final class TableCopyTest extends SpecTestsuiteBase
     public function testAssertTrap186(): void
     {
         $this->runAssertTrapCommand(
-            module: null,
             action: ['type' => 'invoke', 'field' => 'check_t1', 'args' => [['type' => 'i32', 'value' => '28']]],
             text: 'uninitialized element',
             line: 288,
@@ -2062,7 +1880,6 @@ final class TableCopyTest extends SpecTestsuiteBase
     public function testAssertTrap187(): void
     {
         $this->runAssertTrapCommand(
-            module: null,
             action: ['type' => 'invoke', 'field' => 'check_t1', 'args' => [['type' => 'i32', 'value' => '29']]],
             text: 'uninitialized element',
             line: 289,
@@ -2083,7 +1900,6 @@ final class TableCopyTest extends SpecTestsuiteBase
     public function testAction189(): void
     {
         $this->runActionCommand(
-            module: null,
             action: ['type' => 'invoke', 'field' => 'test', 'args' => []],
             line: 321,
         );
@@ -2093,7 +1909,6 @@ final class TableCopyTest extends SpecTestsuiteBase
     public function testAssertTrap190(): void
     {
         $this->runAssertTrapCommand(
-            module: null,
             action: ['type' => 'invoke', 'field' => 'check_t0', 'args' => [['type' => 'i32', 'value' => '0']]],
             text: 'uninitialized element',
             line: 322,
@@ -2104,7 +1919,6 @@ final class TableCopyTest extends SpecTestsuiteBase
     public function testAssertTrap191(): void
     {
         $this->runAssertTrapCommand(
-            module: null,
             action: ['type' => 'invoke', 'field' => 'check_t0', 'args' => [['type' => 'i32', 'value' => '1']]],
             text: 'uninitialized element',
             line: 323,
@@ -2115,7 +1929,6 @@ final class TableCopyTest extends SpecTestsuiteBase
     public function testAssertReturn192(): void
     {
         $this->runAssertReturnCommand(
-            module: null,
             action: ['type' => 'invoke', 'field' => 'check_t0', 'args' => [['type' => 'i32', 'value' => '2']]],
             expected: [['type' => 'i32', 'value' => '3']],
             line: 324,
@@ -2126,7 +1939,6 @@ final class TableCopyTest extends SpecTestsuiteBase
     public function testAssertReturn193(): void
     {
         $this->runAssertReturnCommand(
-            module: null,
             action: ['type' => 'invoke', 'field' => 'check_t0', 'args' => [['type' => 'i32', 'value' => '3']]],
             expected: [['type' => 'i32', 'value' => '1']],
             line: 325,
@@ -2137,7 +1949,6 @@ final class TableCopyTest extends SpecTestsuiteBase
     public function testAssertReturn194(): void
     {
         $this->runAssertReturnCommand(
-            module: null,
             action: ['type' => 'invoke', 'field' => 'check_t0', 'args' => [['type' => 'i32', 'value' => '4']]],
             expected: [['type' => 'i32', 'value' => '4']],
             line: 326,
@@ -2148,7 +1959,6 @@ final class TableCopyTest extends SpecTestsuiteBase
     public function testAssertReturn195(): void
     {
         $this->runAssertReturnCommand(
-            module: null,
             action: ['type' => 'invoke', 'field' => 'check_t0', 'args' => [['type' => 'i32', 'value' => '5']]],
             expected: [['type' => 'i32', 'value' => '1']],
             line: 327,
@@ -2159,7 +1969,6 @@ final class TableCopyTest extends SpecTestsuiteBase
     public function testAssertTrap196(): void
     {
         $this->runAssertTrapCommand(
-            module: null,
             action: ['type' => 'invoke', 'field' => 'check_t0', 'args' => [['type' => 'i32', 'value' => '6']]],
             text: 'uninitialized element',
             line: 328,
@@ -2170,7 +1979,6 @@ final class TableCopyTest extends SpecTestsuiteBase
     public function testAssertTrap197(): void
     {
         $this->runAssertTrapCommand(
-            module: null,
             action: ['type' => 'invoke', 'field' => 'check_t0', 'args' => [['type' => 'i32', 'value' => '7']]],
             text: 'uninitialized element',
             line: 329,
@@ -2181,7 +1989,6 @@ final class TableCopyTest extends SpecTestsuiteBase
     public function testAssertTrap198(): void
     {
         $this->runAssertTrapCommand(
-            module: null,
             action: ['type' => 'invoke', 'field' => 'check_t0', 'args' => [['type' => 'i32', 'value' => '8']]],
             text: 'uninitialized element',
             line: 330,
@@ -2192,7 +1999,6 @@ final class TableCopyTest extends SpecTestsuiteBase
     public function testAssertTrap199(): void
     {
         $this->runAssertTrapCommand(
-            module: null,
             action: ['type' => 'invoke', 'field' => 'check_t0', 'args' => [['type' => 'i32', 'value' => '9']]],
             text: 'uninitialized element',
             line: 331,
@@ -2203,7 +2009,6 @@ final class TableCopyTest extends SpecTestsuiteBase
     public function testAssertTrap200(): void
     {
         $this->runAssertTrapCommand(
-            module: null,
             action: ['type' => 'invoke', 'field' => 'check_t0', 'args' => [['type' => 'i32', 'value' => '10']]],
             text: 'uninitialized element',
             line: 332,
@@ -2214,7 +2019,6 @@ final class TableCopyTest extends SpecTestsuiteBase
     public function testAssertTrap201(): void
     {
         $this->runAssertTrapCommand(
-            module: null,
             action: ['type' => 'invoke', 'field' => 'check_t0', 'args' => [['type' => 'i32', 'value' => '11']]],
             text: 'uninitialized element',
             line: 333,
@@ -2225,7 +2029,6 @@ final class TableCopyTest extends SpecTestsuiteBase
     public function testAssertReturn202(): void
     {
         $this->runAssertReturnCommand(
-            module: null,
             action: ['type' => 'invoke', 'field' => 'check_t0', 'args' => [['type' => 'i32', 'value' => '12']]],
             expected: [['type' => 'i32', 'value' => '7']],
             line: 334,
@@ -2236,7 +2039,6 @@ final class TableCopyTest extends SpecTestsuiteBase
     public function testAssertTrap203(): void
     {
         $this->runAssertTrapCommand(
-            module: null,
             action: ['type' => 'invoke', 'field' => 'check_t0', 'args' => [['type' => 'i32', 'value' => '13']]],
             text: 'uninitialized element',
             line: 335,
@@ -2247,7 +2049,6 @@ final class TableCopyTest extends SpecTestsuiteBase
     public function testAssertTrap204(): void
     {
         $this->runAssertTrapCommand(
-            module: null,
             action: ['type' => 'invoke', 'field' => 'check_t0', 'args' => [['type' => 'i32', 'value' => '14']]],
             text: 'uninitialized element',
             line: 336,
@@ -2258,7 +2059,6 @@ final class TableCopyTest extends SpecTestsuiteBase
     public function testAssertTrap205(): void
     {
         $this->runAssertTrapCommand(
-            module: null,
             action: ['type' => 'invoke', 'field' => 'check_t0', 'args' => [['type' => 'i32', 'value' => '15']]],
             text: 'uninitialized element',
             line: 337,
@@ -2269,7 +2069,6 @@ final class TableCopyTest extends SpecTestsuiteBase
     public function testAssertReturn206(): void
     {
         $this->runAssertReturnCommand(
-            module: null,
             action: ['type' => 'invoke', 'field' => 'check_t0', 'args' => [['type' => 'i32', 'value' => '16']]],
             expected: [['type' => 'i32', 'value' => '6']],
             line: 338,
@@ -2280,7 +2079,6 @@ final class TableCopyTest extends SpecTestsuiteBase
     public function testAssertTrap207(): void
     {
         $this->runAssertTrapCommand(
-            module: null,
             action: ['type' => 'invoke', 'field' => 'check_t0', 'args' => [['type' => 'i32', 'value' => '17']]],
             text: 'uninitialized element',
             line: 339,
@@ -2291,7 +2089,6 @@ final class TableCopyTest extends SpecTestsuiteBase
     public function testAssertTrap208(): void
     {
         $this->runAssertTrapCommand(
-            module: null,
             action: ['type' => 'invoke', 'field' => 'check_t0', 'args' => [['type' => 'i32', 'value' => '18']]],
             text: 'uninitialized element',
             line: 340,
@@ -2302,7 +2099,6 @@ final class TableCopyTest extends SpecTestsuiteBase
     public function testAssertTrap209(): void
     {
         $this->runAssertTrapCommand(
-            module: null,
             action: ['type' => 'invoke', 'field' => 'check_t0', 'args' => [['type' => 'i32', 'value' => '19']]],
             text: 'uninitialized element',
             line: 341,
@@ -2313,7 +2109,6 @@ final class TableCopyTest extends SpecTestsuiteBase
     public function testAssertTrap210(): void
     {
         $this->runAssertTrapCommand(
-            module: null,
             action: ['type' => 'invoke', 'field' => 'check_t0', 'args' => [['type' => 'i32', 'value' => '20']]],
             text: 'uninitialized element',
             line: 342,
@@ -2324,7 +2119,6 @@ final class TableCopyTest extends SpecTestsuiteBase
     public function testAssertTrap211(): void
     {
         $this->runAssertTrapCommand(
-            module: null,
             action: ['type' => 'invoke', 'field' => 'check_t0', 'args' => [['type' => 'i32', 'value' => '21']]],
             text: 'uninitialized element',
             line: 343,
@@ -2335,7 +2129,6 @@ final class TableCopyTest extends SpecTestsuiteBase
     public function testAssertTrap212(): void
     {
         $this->runAssertTrapCommand(
-            module: null,
             action: ['type' => 'invoke', 'field' => 'check_t0', 'args' => [['type' => 'i32', 'value' => '22']]],
             text: 'uninitialized element',
             line: 344,
@@ -2346,7 +2139,6 @@ final class TableCopyTest extends SpecTestsuiteBase
     public function testAssertTrap213(): void
     {
         $this->runAssertTrapCommand(
-            module: null,
             action: ['type' => 'invoke', 'field' => 'check_t0', 'args' => [['type' => 'i32', 'value' => '23']]],
             text: 'uninitialized element',
             line: 345,
@@ -2357,7 +2149,6 @@ final class TableCopyTest extends SpecTestsuiteBase
     public function testAssertTrap214(): void
     {
         $this->runAssertTrapCommand(
-            module: null,
             action: ['type' => 'invoke', 'field' => 'check_t0', 'args' => [['type' => 'i32', 'value' => '24']]],
             text: 'uninitialized element',
             line: 346,
@@ -2368,7 +2159,6 @@ final class TableCopyTest extends SpecTestsuiteBase
     public function testAssertTrap215(): void
     {
         $this->runAssertTrapCommand(
-            module: null,
             action: ['type' => 'invoke', 'field' => 'check_t0', 'args' => [['type' => 'i32', 'value' => '25']]],
             text: 'uninitialized element',
             line: 347,
@@ -2379,7 +2169,6 @@ final class TableCopyTest extends SpecTestsuiteBase
     public function testAssertTrap216(): void
     {
         $this->runAssertTrapCommand(
-            module: null,
             action: ['type' => 'invoke', 'field' => 'check_t0', 'args' => [['type' => 'i32', 'value' => '26']]],
             text: 'uninitialized element',
             line: 348,
@@ -2390,7 +2179,6 @@ final class TableCopyTest extends SpecTestsuiteBase
     public function testAssertTrap217(): void
     {
         $this->runAssertTrapCommand(
-            module: null,
             action: ['type' => 'invoke', 'field' => 'check_t0', 'args' => [['type' => 'i32', 'value' => '27']]],
             text: 'uninitialized element',
             line: 349,
@@ -2401,7 +2189,6 @@ final class TableCopyTest extends SpecTestsuiteBase
     public function testAssertTrap218(): void
     {
         $this->runAssertTrapCommand(
-            module: null,
             action: ['type' => 'invoke', 'field' => 'check_t0', 'args' => [['type' => 'i32', 'value' => '28']]],
             text: 'uninitialized element',
             line: 350,
@@ -2412,7 +2199,6 @@ final class TableCopyTest extends SpecTestsuiteBase
     public function testAssertTrap219(): void
     {
         $this->runAssertTrapCommand(
-            module: null,
             action: ['type' => 'invoke', 'field' => 'check_t0', 'args' => [['type' => 'i32', 'value' => '29']]],
             text: 'uninitialized element',
             line: 351,
@@ -2423,7 +2209,6 @@ final class TableCopyTest extends SpecTestsuiteBase
     public function testAssertTrap220(): void
     {
         $this->runAssertTrapCommand(
-            module: null,
             action: ['type' => 'invoke', 'field' => 'check_t1', 'args' => [['type' => 'i32', 'value' => '0']]],
             text: 'uninitialized element',
             line: 352,
@@ -2434,7 +2219,6 @@ final class TableCopyTest extends SpecTestsuiteBase
     public function testAssertTrap221(): void
     {
         $this->runAssertTrapCommand(
-            module: null,
             action: ['type' => 'invoke', 'field' => 'check_t1', 'args' => [['type' => 'i32', 'value' => '1']]],
             text: 'uninitialized element',
             line: 353,
@@ -2445,7 +2229,6 @@ final class TableCopyTest extends SpecTestsuiteBase
     public function testAssertTrap222(): void
     {
         $this->runAssertTrapCommand(
-            module: null,
             action: ['type' => 'invoke', 'field' => 'check_t1', 'args' => [['type' => 'i32', 'value' => '2']]],
             text: 'uninitialized element',
             line: 354,
@@ -2456,7 +2239,6 @@ final class TableCopyTest extends SpecTestsuiteBase
     public function testAssertReturn223(): void
     {
         $this->runAssertReturnCommand(
-            module: null,
             action: ['type' => 'invoke', 'field' => 'check_t1', 'args' => [['type' => 'i32', 'value' => '3']]],
             expected: [['type' => 'i32', 'value' => '1']],
             line: 355,
@@ -2467,7 +2249,6 @@ final class TableCopyTest extends SpecTestsuiteBase
     public function testAssertReturn224(): void
     {
         $this->runAssertReturnCommand(
-            module: null,
             action: ['type' => 'invoke', 'field' => 'check_t1', 'args' => [['type' => 'i32', 'value' => '4']]],
             expected: [['type' => 'i32', 'value' => '3']],
             line: 356,
@@ -2478,7 +2259,6 @@ final class TableCopyTest extends SpecTestsuiteBase
     public function testAssertReturn225(): void
     {
         $this->runAssertReturnCommand(
-            module: null,
             action: ['type' => 'invoke', 'field' => 'check_t1', 'args' => [['type' => 'i32', 'value' => '5']]],
             expected: [['type' => 'i32', 'value' => '1']],
             line: 357,
@@ -2489,7 +2269,6 @@ final class TableCopyTest extends SpecTestsuiteBase
     public function testAssertReturn226(): void
     {
         $this->runAssertReturnCommand(
-            module: null,
             action: ['type' => 'invoke', 'field' => 'check_t1', 'args' => [['type' => 'i32', 'value' => '6']]],
             expected: [['type' => 'i32', 'value' => '4']],
             line: 358,
@@ -2500,7 +2279,6 @@ final class TableCopyTest extends SpecTestsuiteBase
     public function testAssertTrap227(): void
     {
         $this->runAssertTrapCommand(
-            module: null,
             action: ['type' => 'invoke', 'field' => 'check_t1', 'args' => [['type' => 'i32', 'value' => '7']]],
             text: 'uninitialized element',
             line: 359,
@@ -2511,7 +2289,6 @@ final class TableCopyTest extends SpecTestsuiteBase
     public function testAssertTrap228(): void
     {
         $this->runAssertTrapCommand(
-            module: null,
             action: ['type' => 'invoke', 'field' => 'check_t1', 'args' => [['type' => 'i32', 'value' => '8']]],
             text: 'uninitialized element',
             line: 360,
@@ -2522,7 +2299,6 @@ final class TableCopyTest extends SpecTestsuiteBase
     public function testAssertTrap229(): void
     {
         $this->runAssertTrapCommand(
-            module: null,
             action: ['type' => 'invoke', 'field' => 'check_t1', 'args' => [['type' => 'i32', 'value' => '9']]],
             text: 'uninitialized element',
             line: 361,
@@ -2533,7 +2309,6 @@ final class TableCopyTest extends SpecTestsuiteBase
     public function testAssertTrap230(): void
     {
         $this->runAssertTrapCommand(
-            module: null,
             action: ['type' => 'invoke', 'field' => 'check_t1', 'args' => [['type' => 'i32', 'value' => '10']]],
             text: 'uninitialized element',
             line: 362,
@@ -2544,7 +2319,6 @@ final class TableCopyTest extends SpecTestsuiteBase
     public function testAssertReturn231(): void
     {
         $this->runAssertReturnCommand(
-            module: null,
             action: ['type' => 'invoke', 'field' => 'check_t1', 'args' => [['type' => 'i32', 'value' => '11']]],
             expected: [['type' => 'i32', 'value' => '6']],
             line: 363,
@@ -2555,7 +2329,6 @@ final class TableCopyTest extends SpecTestsuiteBase
     public function testAssertReturn232(): void
     {
         $this->runAssertReturnCommand(
-            module: null,
             action: ['type' => 'invoke', 'field' => 'check_t1', 'args' => [['type' => 'i32', 'value' => '12']]],
             expected: [['type' => 'i32', 'value' => '3']],
             line: 364,
@@ -2566,7 +2339,6 @@ final class TableCopyTest extends SpecTestsuiteBase
     public function testAssertReturn233(): void
     {
         $this->runAssertReturnCommand(
-            module: null,
             action: ['type' => 'invoke', 'field' => 'check_t1', 'args' => [['type' => 'i32', 'value' => '13']]],
             expected: [['type' => 'i32', 'value' => '2']],
             line: 365,
@@ -2577,7 +2349,6 @@ final class TableCopyTest extends SpecTestsuiteBase
     public function testAssertReturn234(): void
     {
         $this->runAssertReturnCommand(
-            module: null,
             action: ['type' => 'invoke', 'field' => 'check_t1', 'args' => [['type' => 'i32', 'value' => '14']]],
             expected: [['type' => 'i32', 'value' => '5']],
             line: 366,
@@ -2588,7 +2359,6 @@ final class TableCopyTest extends SpecTestsuiteBase
     public function testAssertReturn235(): void
     {
         $this->runAssertReturnCommand(
-            module: null,
             action: ['type' => 'invoke', 'field' => 'check_t1', 'args' => [['type' => 'i32', 'value' => '15']]],
             expected: [['type' => 'i32', 'value' => '7']],
             line: 367,
@@ -2599,7 +2369,6 @@ final class TableCopyTest extends SpecTestsuiteBase
     public function testAssertTrap236(): void
     {
         $this->runAssertTrapCommand(
-            module: null,
             action: ['type' => 'invoke', 'field' => 'check_t1', 'args' => [['type' => 'i32', 'value' => '16']]],
             text: 'uninitialized element',
             line: 368,
@@ -2610,7 +2379,6 @@ final class TableCopyTest extends SpecTestsuiteBase
     public function testAssertTrap237(): void
     {
         $this->runAssertTrapCommand(
-            module: null,
             action: ['type' => 'invoke', 'field' => 'check_t1', 'args' => [['type' => 'i32', 'value' => '17']]],
             text: 'uninitialized element',
             line: 369,
@@ -2621,7 +2389,6 @@ final class TableCopyTest extends SpecTestsuiteBase
     public function testAssertTrap238(): void
     {
         $this->runAssertTrapCommand(
-            module: null,
             action: ['type' => 'invoke', 'field' => 'check_t1', 'args' => [['type' => 'i32', 'value' => '18']]],
             text: 'uninitialized element',
             line: 370,
@@ -2632,7 +2399,6 @@ final class TableCopyTest extends SpecTestsuiteBase
     public function testAssertTrap239(): void
     {
         $this->runAssertTrapCommand(
-            module: null,
             action: ['type' => 'invoke', 'field' => 'check_t1', 'args' => [['type' => 'i32', 'value' => '19']]],
             text: 'uninitialized element',
             line: 371,
@@ -2643,7 +2409,6 @@ final class TableCopyTest extends SpecTestsuiteBase
     public function testAssertTrap240(): void
     {
         $this->runAssertTrapCommand(
-            module: null,
             action: ['type' => 'invoke', 'field' => 'check_t1', 'args' => [['type' => 'i32', 'value' => '20']]],
             text: 'uninitialized element',
             line: 372,
@@ -2654,7 +2419,6 @@ final class TableCopyTest extends SpecTestsuiteBase
     public function testAssertTrap241(): void
     {
         $this->runAssertTrapCommand(
-            module: null,
             action: ['type' => 'invoke', 'field' => 'check_t1', 'args' => [['type' => 'i32', 'value' => '21']]],
             text: 'uninitialized element',
             line: 373,
@@ -2665,7 +2429,6 @@ final class TableCopyTest extends SpecTestsuiteBase
     public function testAssertTrap242(): void
     {
         $this->runAssertTrapCommand(
-            module: null,
             action: ['type' => 'invoke', 'field' => 'check_t1', 'args' => [['type' => 'i32', 'value' => '22']]],
             text: 'uninitialized element',
             line: 374,
@@ -2676,7 +2439,6 @@ final class TableCopyTest extends SpecTestsuiteBase
     public function testAssertTrap243(): void
     {
         $this->runAssertTrapCommand(
-            module: null,
             action: ['type' => 'invoke', 'field' => 'check_t1', 'args' => [['type' => 'i32', 'value' => '23']]],
             text: 'uninitialized element',
             line: 375,
@@ -2687,7 +2449,6 @@ final class TableCopyTest extends SpecTestsuiteBase
     public function testAssertTrap244(): void
     {
         $this->runAssertTrapCommand(
-            module: null,
             action: ['type' => 'invoke', 'field' => 'check_t1', 'args' => [['type' => 'i32', 'value' => '24']]],
             text: 'uninitialized element',
             line: 376,
@@ -2698,7 +2459,6 @@ final class TableCopyTest extends SpecTestsuiteBase
     public function testAssertTrap245(): void
     {
         $this->runAssertTrapCommand(
-            module: null,
             action: ['type' => 'invoke', 'field' => 'check_t1', 'args' => [['type' => 'i32', 'value' => '25']]],
             text: 'uninitialized element',
             line: 377,
@@ -2709,7 +2469,6 @@ final class TableCopyTest extends SpecTestsuiteBase
     public function testAssertTrap246(): void
     {
         $this->runAssertTrapCommand(
-            module: null,
             action: ['type' => 'invoke', 'field' => 'check_t1', 'args' => [['type' => 'i32', 'value' => '26']]],
             text: 'uninitialized element',
             line: 378,
@@ -2720,7 +2479,6 @@ final class TableCopyTest extends SpecTestsuiteBase
     public function testAssertTrap247(): void
     {
         $this->runAssertTrapCommand(
-            module: null,
             action: ['type' => 'invoke', 'field' => 'check_t1', 'args' => [['type' => 'i32', 'value' => '27']]],
             text: 'uninitialized element',
             line: 379,
@@ -2731,7 +2489,6 @@ final class TableCopyTest extends SpecTestsuiteBase
     public function testAssertTrap248(): void
     {
         $this->runAssertTrapCommand(
-            module: null,
             action: ['type' => 'invoke', 'field' => 'check_t1', 'args' => [['type' => 'i32', 'value' => '28']]],
             text: 'uninitialized element',
             line: 380,
@@ -2742,7 +2499,6 @@ final class TableCopyTest extends SpecTestsuiteBase
     public function testAssertTrap249(): void
     {
         $this->runAssertTrapCommand(
-            module: null,
             action: ['type' => 'invoke', 'field' => 'check_t1', 'args' => [['type' => 'i32', 'value' => '29']]],
             text: 'uninitialized element',
             line: 381,
@@ -2763,7 +2519,6 @@ final class TableCopyTest extends SpecTestsuiteBase
     public function testAction251(): void
     {
         $this->runActionCommand(
-            module: null,
             action: ['type' => 'invoke', 'field' => 'test', 'args' => []],
             line: 413,
         );
@@ -2773,7 +2528,6 @@ final class TableCopyTest extends SpecTestsuiteBase
     public function testAssertTrap252(): void
     {
         $this->runAssertTrapCommand(
-            module: null,
             action: ['type' => 'invoke', 'field' => 'check_t0', 'args' => [['type' => 'i32', 'value' => '0']]],
             text: 'uninitialized element',
             line: 414,
@@ -2784,7 +2538,6 @@ final class TableCopyTest extends SpecTestsuiteBase
     public function testAssertTrap253(): void
     {
         $this->runAssertTrapCommand(
-            module: null,
             action: ['type' => 'invoke', 'field' => 'check_t0', 'args' => [['type' => 'i32', 'value' => '1']]],
             text: 'uninitialized element',
             line: 415,
@@ -2795,7 +2548,6 @@ final class TableCopyTest extends SpecTestsuiteBase
     public function testAssertReturn254(): void
     {
         $this->runAssertReturnCommand(
-            module: null,
             action: ['type' => 'invoke', 'field' => 'check_t0', 'args' => [['type' => 'i32', 'value' => '2']]],
             expected: [['type' => 'i32', 'value' => '3']],
             line: 416,
@@ -2806,7 +2558,6 @@ final class TableCopyTest extends SpecTestsuiteBase
     public function testAssertReturn255(): void
     {
         $this->runAssertReturnCommand(
-            module: null,
             action: ['type' => 'invoke', 'field' => 'check_t0', 'args' => [['type' => 'i32', 'value' => '3']]],
             expected: [['type' => 'i32', 'value' => '1']],
             line: 417,
@@ -2817,7 +2568,6 @@ final class TableCopyTest extends SpecTestsuiteBase
     public function testAssertReturn256(): void
     {
         $this->runAssertReturnCommand(
-            module: null,
             action: ['type' => 'invoke', 'field' => 'check_t0', 'args' => [['type' => 'i32', 'value' => '4']]],
             expected: [['type' => 'i32', 'value' => '4']],
             line: 418,
@@ -2828,7 +2578,6 @@ final class TableCopyTest extends SpecTestsuiteBase
     public function testAssertReturn257(): void
     {
         $this->runAssertReturnCommand(
-            module: null,
             action: ['type' => 'invoke', 'field' => 'check_t0', 'args' => [['type' => 'i32', 'value' => '5']]],
             expected: [['type' => 'i32', 'value' => '1']],
             line: 419,
@@ -2839,7 +2588,6 @@ final class TableCopyTest extends SpecTestsuiteBase
     public function testAssertTrap258(): void
     {
         $this->runAssertTrapCommand(
-            module: null,
             action: ['type' => 'invoke', 'field' => 'check_t0', 'args' => [['type' => 'i32', 'value' => '6']]],
             text: 'uninitialized element',
             line: 420,
@@ -2850,7 +2598,6 @@ final class TableCopyTest extends SpecTestsuiteBase
     public function testAssertTrap259(): void
     {
         $this->runAssertTrapCommand(
-            module: null,
             action: ['type' => 'invoke', 'field' => 'check_t0', 'args' => [['type' => 'i32', 'value' => '7']]],
             text: 'uninitialized element',
             line: 421,
@@ -2861,7 +2608,6 @@ final class TableCopyTest extends SpecTestsuiteBase
     public function testAssertTrap260(): void
     {
         $this->runAssertTrapCommand(
-            module: null,
             action: ['type' => 'invoke', 'field' => 'check_t0', 'args' => [['type' => 'i32', 'value' => '8']]],
             text: 'uninitialized element',
             line: 422,
@@ -2872,7 +2618,6 @@ final class TableCopyTest extends SpecTestsuiteBase
     public function testAssertTrap261(): void
     {
         $this->runAssertTrapCommand(
-            module: null,
             action: ['type' => 'invoke', 'field' => 'check_t0', 'args' => [['type' => 'i32', 'value' => '9']]],
             text: 'uninitialized element',
             line: 423,
@@ -2883,7 +2628,6 @@ final class TableCopyTest extends SpecTestsuiteBase
     public function testAssertTrap262(): void
     {
         $this->runAssertTrapCommand(
-            module: null,
             action: ['type' => 'invoke', 'field' => 'check_t0', 'args' => [['type' => 'i32', 'value' => '10']]],
             text: 'uninitialized element',
             line: 424,
@@ -2894,7 +2638,6 @@ final class TableCopyTest extends SpecTestsuiteBase
     public function testAssertTrap263(): void
     {
         $this->runAssertTrapCommand(
-            module: null,
             action: ['type' => 'invoke', 'field' => 'check_t0', 'args' => [['type' => 'i32', 'value' => '11']]],
             text: 'uninitialized element',
             line: 425,
@@ -2905,7 +2648,6 @@ final class TableCopyTest extends SpecTestsuiteBase
     public function testAssertReturn264(): void
     {
         $this->runAssertReturnCommand(
-            module: null,
             action: ['type' => 'invoke', 'field' => 'check_t0', 'args' => [['type' => 'i32', 'value' => '12']]],
             expected: [['type' => 'i32', 'value' => '7']],
             line: 426,
@@ -2916,7 +2658,6 @@ final class TableCopyTest extends SpecTestsuiteBase
     public function testAssertReturn265(): void
     {
         $this->runAssertReturnCommand(
-            module: null,
             action: ['type' => 'invoke', 'field' => 'check_t0', 'args' => [['type' => 'i32', 'value' => '13']]],
             expected: [['type' => 'i32', 'value' => '5']],
             line: 427,
@@ -2927,7 +2668,6 @@ final class TableCopyTest extends SpecTestsuiteBase
     public function testAssertReturn266(): void
     {
         $this->runAssertReturnCommand(
-            module: null,
             action: ['type' => 'invoke', 'field' => 'check_t0', 'args' => [['type' => 'i32', 'value' => '14']]],
             expected: [['type' => 'i32', 'value' => '2']],
             line: 428,
@@ -2938,7 +2678,6 @@ final class TableCopyTest extends SpecTestsuiteBase
     public function testAssertReturn267(): void
     {
         $this->runAssertReturnCommand(
-            module: null,
             action: ['type' => 'invoke', 'field' => 'check_t0', 'args' => [['type' => 'i32', 'value' => '15']]],
             expected: [['type' => 'i32', 'value' => '3']],
             line: 429,
@@ -2949,7 +2688,6 @@ final class TableCopyTest extends SpecTestsuiteBase
     public function testAssertReturn268(): void
     {
         $this->runAssertReturnCommand(
-            module: null,
             action: ['type' => 'invoke', 'field' => 'check_t0', 'args' => [['type' => 'i32', 'value' => '16']]],
             expected: [['type' => 'i32', 'value' => '6']],
             line: 430,
@@ -2960,7 +2698,6 @@ final class TableCopyTest extends SpecTestsuiteBase
     public function testAssertTrap269(): void
     {
         $this->runAssertTrapCommand(
-            module: null,
             action: ['type' => 'invoke', 'field' => 'check_t0', 'args' => [['type' => 'i32', 'value' => '17']]],
             text: 'uninitialized element',
             line: 431,
@@ -2971,7 +2708,6 @@ final class TableCopyTest extends SpecTestsuiteBase
     public function testAssertTrap270(): void
     {
         $this->runAssertTrapCommand(
-            module: null,
             action: ['type' => 'invoke', 'field' => 'check_t0', 'args' => [['type' => 'i32', 'value' => '18']]],
             text: 'uninitialized element',
             line: 432,
@@ -2982,7 +2718,6 @@ final class TableCopyTest extends SpecTestsuiteBase
     public function testAssertTrap271(): void
     {
         $this->runAssertTrapCommand(
-            module: null,
             action: ['type' => 'invoke', 'field' => 'check_t0', 'args' => [['type' => 'i32', 'value' => '19']]],
             text: 'uninitialized element',
             line: 433,
@@ -2993,7 +2728,6 @@ final class TableCopyTest extends SpecTestsuiteBase
     public function testAssertTrap272(): void
     {
         $this->runAssertTrapCommand(
-            module: null,
             action: ['type' => 'invoke', 'field' => 'check_t0', 'args' => [['type' => 'i32', 'value' => '20']]],
             text: 'uninitialized element',
             line: 434,
@@ -3004,7 +2738,6 @@ final class TableCopyTest extends SpecTestsuiteBase
     public function testAssertTrap273(): void
     {
         $this->runAssertTrapCommand(
-            module: null,
             action: ['type' => 'invoke', 'field' => 'check_t0', 'args' => [['type' => 'i32', 'value' => '21']]],
             text: 'uninitialized element',
             line: 435,
@@ -3015,7 +2748,6 @@ final class TableCopyTest extends SpecTestsuiteBase
     public function testAssertTrap274(): void
     {
         $this->runAssertTrapCommand(
-            module: null,
             action: ['type' => 'invoke', 'field' => 'check_t0', 'args' => [['type' => 'i32', 'value' => '22']]],
             text: 'uninitialized element',
             line: 436,
@@ -3026,7 +2758,6 @@ final class TableCopyTest extends SpecTestsuiteBase
     public function testAssertTrap275(): void
     {
         $this->runAssertTrapCommand(
-            module: null,
             action: ['type' => 'invoke', 'field' => 'check_t0', 'args' => [['type' => 'i32', 'value' => '23']]],
             text: 'uninitialized element',
             line: 437,
@@ -3037,7 +2768,6 @@ final class TableCopyTest extends SpecTestsuiteBase
     public function testAssertTrap276(): void
     {
         $this->runAssertTrapCommand(
-            module: null,
             action: ['type' => 'invoke', 'field' => 'check_t0', 'args' => [['type' => 'i32', 'value' => '24']]],
             text: 'uninitialized element',
             line: 438,
@@ -3048,7 +2778,6 @@ final class TableCopyTest extends SpecTestsuiteBase
     public function testAssertTrap277(): void
     {
         $this->runAssertTrapCommand(
-            module: null,
             action: ['type' => 'invoke', 'field' => 'check_t0', 'args' => [['type' => 'i32', 'value' => '25']]],
             text: 'uninitialized element',
             line: 439,
@@ -3059,7 +2788,6 @@ final class TableCopyTest extends SpecTestsuiteBase
     public function testAssertTrap278(): void
     {
         $this->runAssertTrapCommand(
-            module: null,
             action: ['type' => 'invoke', 'field' => 'check_t0', 'args' => [['type' => 'i32', 'value' => '26']]],
             text: 'uninitialized element',
             line: 440,
@@ -3070,7 +2798,6 @@ final class TableCopyTest extends SpecTestsuiteBase
     public function testAssertTrap279(): void
     {
         $this->runAssertTrapCommand(
-            module: null,
             action: ['type' => 'invoke', 'field' => 'check_t0', 'args' => [['type' => 'i32', 'value' => '27']]],
             text: 'uninitialized element',
             line: 441,
@@ -3081,7 +2808,6 @@ final class TableCopyTest extends SpecTestsuiteBase
     public function testAssertTrap280(): void
     {
         $this->runAssertTrapCommand(
-            module: null,
             action: ['type' => 'invoke', 'field' => 'check_t0', 'args' => [['type' => 'i32', 'value' => '28']]],
             text: 'uninitialized element',
             line: 442,
@@ -3092,7 +2818,6 @@ final class TableCopyTest extends SpecTestsuiteBase
     public function testAssertTrap281(): void
     {
         $this->runAssertTrapCommand(
-            module: null,
             action: ['type' => 'invoke', 'field' => 'check_t0', 'args' => [['type' => 'i32', 'value' => '29']]],
             text: 'uninitialized element',
             line: 443,
@@ -3103,7 +2828,6 @@ final class TableCopyTest extends SpecTestsuiteBase
     public function testAssertTrap282(): void
     {
         $this->runAssertTrapCommand(
-            module: null,
             action: ['type' => 'invoke', 'field' => 'check_t1', 'args' => [['type' => 'i32', 'value' => '0']]],
             text: 'uninitialized element',
             line: 444,
@@ -3114,7 +2838,6 @@ final class TableCopyTest extends SpecTestsuiteBase
     public function testAssertTrap283(): void
     {
         $this->runAssertTrapCommand(
-            module: null,
             action: ['type' => 'invoke', 'field' => 'check_t1', 'args' => [['type' => 'i32', 'value' => '1']]],
             text: 'uninitialized element',
             line: 445,
@@ -3125,7 +2848,6 @@ final class TableCopyTest extends SpecTestsuiteBase
     public function testAssertTrap284(): void
     {
         $this->runAssertTrapCommand(
-            module: null,
             action: ['type' => 'invoke', 'field' => 'check_t1', 'args' => [['type' => 'i32', 'value' => '2']]],
             text: 'uninitialized element',
             line: 446,
@@ -3136,7 +2858,6 @@ final class TableCopyTest extends SpecTestsuiteBase
     public function testAssertReturn285(): void
     {
         $this->runAssertReturnCommand(
-            module: null,
             action: ['type' => 'invoke', 'field' => 'check_t1', 'args' => [['type' => 'i32', 'value' => '3']]],
             expected: [['type' => 'i32', 'value' => '1']],
             line: 447,
@@ -3147,7 +2868,6 @@ final class TableCopyTest extends SpecTestsuiteBase
     public function testAssertReturn286(): void
     {
         $this->runAssertReturnCommand(
-            module: null,
             action: ['type' => 'invoke', 'field' => 'check_t1', 'args' => [['type' => 'i32', 'value' => '4']]],
             expected: [['type' => 'i32', 'value' => '3']],
             line: 448,
@@ -3158,7 +2878,6 @@ final class TableCopyTest extends SpecTestsuiteBase
     public function testAssertReturn287(): void
     {
         $this->runAssertReturnCommand(
-            module: null,
             action: ['type' => 'invoke', 'field' => 'check_t1', 'args' => [['type' => 'i32', 'value' => '5']]],
             expected: [['type' => 'i32', 'value' => '1']],
             line: 449,
@@ -3169,7 +2888,6 @@ final class TableCopyTest extends SpecTestsuiteBase
     public function testAssertReturn288(): void
     {
         $this->runAssertReturnCommand(
-            module: null,
             action: ['type' => 'invoke', 'field' => 'check_t1', 'args' => [['type' => 'i32', 'value' => '6']]],
             expected: [['type' => 'i32', 'value' => '4']],
             line: 450,
@@ -3180,7 +2898,6 @@ final class TableCopyTest extends SpecTestsuiteBase
     public function testAssertTrap289(): void
     {
         $this->runAssertTrapCommand(
-            module: null,
             action: ['type' => 'invoke', 'field' => 'check_t1', 'args' => [['type' => 'i32', 'value' => '7']]],
             text: 'uninitialized element',
             line: 451,
@@ -3191,7 +2908,6 @@ final class TableCopyTest extends SpecTestsuiteBase
     public function testAssertTrap290(): void
     {
         $this->runAssertTrapCommand(
-            module: null,
             action: ['type' => 'invoke', 'field' => 'check_t1', 'args' => [['type' => 'i32', 'value' => '8']]],
             text: 'uninitialized element',
             line: 452,
@@ -3202,7 +2918,6 @@ final class TableCopyTest extends SpecTestsuiteBase
     public function testAssertTrap291(): void
     {
         $this->runAssertTrapCommand(
-            module: null,
             action: ['type' => 'invoke', 'field' => 'check_t1', 'args' => [['type' => 'i32', 'value' => '9']]],
             text: 'uninitialized element',
             line: 453,
@@ -3213,7 +2928,6 @@ final class TableCopyTest extends SpecTestsuiteBase
     public function testAssertTrap292(): void
     {
         $this->runAssertTrapCommand(
-            module: null,
             action: ['type' => 'invoke', 'field' => 'check_t1', 'args' => [['type' => 'i32', 'value' => '10']]],
             text: 'uninitialized element',
             line: 454,
@@ -3224,7 +2938,6 @@ final class TableCopyTest extends SpecTestsuiteBase
     public function testAssertReturn293(): void
     {
         $this->runAssertReturnCommand(
-            module: null,
             action: ['type' => 'invoke', 'field' => 'check_t1', 'args' => [['type' => 'i32', 'value' => '11']]],
             expected: [['type' => 'i32', 'value' => '6']],
             line: 455,
@@ -3235,7 +2948,6 @@ final class TableCopyTest extends SpecTestsuiteBase
     public function testAssertReturn294(): void
     {
         $this->runAssertReturnCommand(
-            module: null,
             action: ['type' => 'invoke', 'field' => 'check_t1', 'args' => [['type' => 'i32', 'value' => '12']]],
             expected: [['type' => 'i32', 'value' => '3']],
             line: 456,
@@ -3246,7 +2958,6 @@ final class TableCopyTest extends SpecTestsuiteBase
     public function testAssertReturn295(): void
     {
         $this->runAssertReturnCommand(
-            module: null,
             action: ['type' => 'invoke', 'field' => 'check_t1', 'args' => [['type' => 'i32', 'value' => '13']]],
             expected: [['type' => 'i32', 'value' => '2']],
             line: 457,
@@ -3257,7 +2968,6 @@ final class TableCopyTest extends SpecTestsuiteBase
     public function testAssertReturn296(): void
     {
         $this->runAssertReturnCommand(
-            module: null,
             action: ['type' => 'invoke', 'field' => 'check_t1', 'args' => [['type' => 'i32', 'value' => '14']]],
             expected: [['type' => 'i32', 'value' => '5']],
             line: 458,
@@ -3268,7 +2978,6 @@ final class TableCopyTest extends SpecTestsuiteBase
     public function testAssertReturn297(): void
     {
         $this->runAssertReturnCommand(
-            module: null,
             action: ['type' => 'invoke', 'field' => 'check_t1', 'args' => [['type' => 'i32', 'value' => '15']]],
             expected: [['type' => 'i32', 'value' => '7']],
             line: 459,
@@ -3279,7 +2988,6 @@ final class TableCopyTest extends SpecTestsuiteBase
     public function testAssertTrap298(): void
     {
         $this->runAssertTrapCommand(
-            module: null,
             action: ['type' => 'invoke', 'field' => 'check_t1', 'args' => [['type' => 'i32', 'value' => '16']]],
             text: 'uninitialized element',
             line: 460,
@@ -3290,7 +2998,6 @@ final class TableCopyTest extends SpecTestsuiteBase
     public function testAssertTrap299(): void
     {
         $this->runAssertTrapCommand(
-            module: null,
             action: ['type' => 'invoke', 'field' => 'check_t1', 'args' => [['type' => 'i32', 'value' => '17']]],
             text: 'uninitialized element',
             line: 461,
@@ -3301,7 +3008,6 @@ final class TableCopyTest extends SpecTestsuiteBase
     public function testAssertTrap300(): void
     {
         $this->runAssertTrapCommand(
-            module: null,
             action: ['type' => 'invoke', 'field' => 'check_t1', 'args' => [['type' => 'i32', 'value' => '18']]],
             text: 'uninitialized element',
             line: 462,
@@ -3312,7 +3018,6 @@ final class TableCopyTest extends SpecTestsuiteBase
     public function testAssertTrap301(): void
     {
         $this->runAssertTrapCommand(
-            module: null,
             action: ['type' => 'invoke', 'field' => 'check_t1', 'args' => [['type' => 'i32', 'value' => '19']]],
             text: 'uninitialized element',
             line: 463,
@@ -3323,7 +3028,6 @@ final class TableCopyTest extends SpecTestsuiteBase
     public function testAssertTrap302(): void
     {
         $this->runAssertTrapCommand(
-            module: null,
             action: ['type' => 'invoke', 'field' => 'check_t1', 'args' => [['type' => 'i32', 'value' => '20']]],
             text: 'uninitialized element',
             line: 464,
@@ -3334,7 +3038,6 @@ final class TableCopyTest extends SpecTestsuiteBase
     public function testAssertTrap303(): void
     {
         $this->runAssertTrapCommand(
-            module: null,
             action: ['type' => 'invoke', 'field' => 'check_t1', 'args' => [['type' => 'i32', 'value' => '21']]],
             text: 'uninitialized element',
             line: 465,
@@ -3345,7 +3048,6 @@ final class TableCopyTest extends SpecTestsuiteBase
     public function testAssertTrap304(): void
     {
         $this->runAssertTrapCommand(
-            module: null,
             action: ['type' => 'invoke', 'field' => 'check_t1', 'args' => [['type' => 'i32', 'value' => '22']]],
             text: 'uninitialized element',
             line: 466,
@@ -3356,7 +3058,6 @@ final class TableCopyTest extends SpecTestsuiteBase
     public function testAssertTrap305(): void
     {
         $this->runAssertTrapCommand(
-            module: null,
             action: ['type' => 'invoke', 'field' => 'check_t1', 'args' => [['type' => 'i32', 'value' => '23']]],
             text: 'uninitialized element',
             line: 467,
@@ -3367,7 +3068,6 @@ final class TableCopyTest extends SpecTestsuiteBase
     public function testAssertTrap306(): void
     {
         $this->runAssertTrapCommand(
-            module: null,
             action: ['type' => 'invoke', 'field' => 'check_t1', 'args' => [['type' => 'i32', 'value' => '24']]],
             text: 'uninitialized element',
             line: 468,
@@ -3378,7 +3078,6 @@ final class TableCopyTest extends SpecTestsuiteBase
     public function testAssertTrap307(): void
     {
         $this->runAssertTrapCommand(
-            module: null,
             action: ['type' => 'invoke', 'field' => 'check_t1', 'args' => [['type' => 'i32', 'value' => '25']]],
             text: 'uninitialized element',
             line: 469,
@@ -3389,7 +3088,6 @@ final class TableCopyTest extends SpecTestsuiteBase
     public function testAssertTrap308(): void
     {
         $this->runAssertTrapCommand(
-            module: null,
             action: ['type' => 'invoke', 'field' => 'check_t1', 'args' => [['type' => 'i32', 'value' => '26']]],
             text: 'uninitialized element',
             line: 470,
@@ -3400,7 +3098,6 @@ final class TableCopyTest extends SpecTestsuiteBase
     public function testAssertTrap309(): void
     {
         $this->runAssertTrapCommand(
-            module: null,
             action: ['type' => 'invoke', 'field' => 'check_t1', 'args' => [['type' => 'i32', 'value' => '27']]],
             text: 'uninitialized element',
             line: 471,
@@ -3411,7 +3108,6 @@ final class TableCopyTest extends SpecTestsuiteBase
     public function testAssertTrap310(): void
     {
         $this->runAssertTrapCommand(
-            module: null,
             action: ['type' => 'invoke', 'field' => 'check_t1', 'args' => [['type' => 'i32', 'value' => '28']]],
             text: 'uninitialized element',
             line: 472,
@@ -3422,7 +3118,6 @@ final class TableCopyTest extends SpecTestsuiteBase
     public function testAssertTrap311(): void
     {
         $this->runAssertTrapCommand(
-            module: null,
             action: ['type' => 'invoke', 'field' => 'check_t1', 'args' => [['type' => 'i32', 'value' => '29']]],
             text: 'uninitialized element',
             line: 473,
@@ -3443,7 +3138,6 @@ final class TableCopyTest extends SpecTestsuiteBase
     public function testAction313(): void
     {
         $this->runActionCommand(
-            module: null,
             action: ['type' => 'invoke', 'field' => 'test', 'args' => []],
             line: 505,
         );
@@ -3453,7 +3147,6 @@ final class TableCopyTest extends SpecTestsuiteBase
     public function testAssertTrap314(): void
     {
         $this->runAssertTrapCommand(
-            module: null,
             action: ['type' => 'invoke', 'field' => 'check_t0', 'args' => [['type' => 'i32', 'value' => '0']]],
             text: 'uninitialized element',
             line: 506,
@@ -3464,7 +3157,6 @@ final class TableCopyTest extends SpecTestsuiteBase
     public function testAssertTrap315(): void
     {
         $this->runAssertTrapCommand(
-            module: null,
             action: ['type' => 'invoke', 'field' => 'check_t0', 'args' => [['type' => 'i32', 'value' => '1']]],
             text: 'uninitialized element',
             line: 507,
@@ -3475,7 +3167,6 @@ final class TableCopyTest extends SpecTestsuiteBase
     public function testAssertReturn316(): void
     {
         $this->runAssertReturnCommand(
-            module: null,
             action: ['type' => 'invoke', 'field' => 'check_t0', 'args' => [['type' => 'i32', 'value' => '2']]],
             expected: [['type' => 'i32', 'value' => '3']],
             line: 508,
@@ -3486,7 +3177,6 @@ final class TableCopyTest extends SpecTestsuiteBase
     public function testAssertReturn317(): void
     {
         $this->runAssertReturnCommand(
-            module: null,
             action: ['type' => 'invoke', 'field' => 'check_t0', 'args' => [['type' => 'i32', 'value' => '3']]],
             expected: [['type' => 'i32', 'value' => '1']],
             line: 509,
@@ -3497,7 +3187,6 @@ final class TableCopyTest extends SpecTestsuiteBase
     public function testAssertReturn318(): void
     {
         $this->runAssertReturnCommand(
-            module: null,
             action: ['type' => 'invoke', 'field' => 'check_t0', 'args' => [['type' => 'i32', 'value' => '4']]],
             expected: [['type' => 'i32', 'value' => '4']],
             line: 510,
@@ -3508,7 +3197,6 @@ final class TableCopyTest extends SpecTestsuiteBase
     public function testAssertReturn319(): void
     {
         $this->runAssertReturnCommand(
-            module: null,
             action: ['type' => 'invoke', 'field' => 'check_t0', 'args' => [['type' => 'i32', 'value' => '5']]],
             expected: [['type' => 'i32', 'value' => '1']],
             line: 511,
@@ -3519,7 +3207,6 @@ final class TableCopyTest extends SpecTestsuiteBase
     public function testAssertTrap320(): void
     {
         $this->runAssertTrapCommand(
-            module: null,
             action: ['type' => 'invoke', 'field' => 'check_t0', 'args' => [['type' => 'i32', 'value' => '6']]],
             text: 'uninitialized element',
             line: 512,
@@ -3530,7 +3217,6 @@ final class TableCopyTest extends SpecTestsuiteBase
     public function testAssertTrap321(): void
     {
         $this->runAssertTrapCommand(
-            module: null,
             action: ['type' => 'invoke', 'field' => 'check_t0', 'args' => [['type' => 'i32', 'value' => '7']]],
             text: 'uninitialized element',
             line: 513,
@@ -3541,7 +3227,6 @@ final class TableCopyTest extends SpecTestsuiteBase
     public function testAssertTrap322(): void
     {
         $this->runAssertTrapCommand(
-            module: null,
             action: ['type' => 'invoke', 'field' => 'check_t0', 'args' => [['type' => 'i32', 'value' => '8']]],
             text: 'uninitialized element',
             line: 514,
@@ -3552,7 +3237,6 @@ final class TableCopyTest extends SpecTestsuiteBase
     public function testAssertTrap323(): void
     {
         $this->runAssertTrapCommand(
-            module: null,
             action: ['type' => 'invoke', 'field' => 'check_t0', 'args' => [['type' => 'i32', 'value' => '9']]],
             text: 'uninitialized element',
             line: 515,
@@ -3563,7 +3247,6 @@ final class TableCopyTest extends SpecTestsuiteBase
     public function testAssertTrap324(): void
     {
         $this->runAssertTrapCommand(
-            module: null,
             action: ['type' => 'invoke', 'field' => 'check_t0', 'args' => [['type' => 'i32', 'value' => '10']]],
             text: 'uninitialized element',
             line: 516,
@@ -3574,7 +3257,6 @@ final class TableCopyTest extends SpecTestsuiteBase
     public function testAssertTrap325(): void
     {
         $this->runAssertTrapCommand(
-            module: null,
             action: ['type' => 'invoke', 'field' => 'check_t0', 'args' => [['type' => 'i32', 'value' => '11']]],
             text: 'uninitialized element',
             line: 517,
@@ -3585,7 +3267,6 @@ final class TableCopyTest extends SpecTestsuiteBase
     public function testAssertReturn326(): void
     {
         $this->runAssertReturnCommand(
-            module: null,
             action: ['type' => 'invoke', 'field' => 'check_t0', 'args' => [['type' => 'i32', 'value' => '12']]],
             expected: [['type' => 'i32', 'value' => '7']],
             line: 518,
@@ -3596,7 +3277,6 @@ final class TableCopyTest extends SpecTestsuiteBase
     public function testAssertReturn327(): void
     {
         $this->runAssertReturnCommand(
-            module: null,
             action: ['type' => 'invoke', 'field' => 'check_t0', 'args' => [['type' => 'i32', 'value' => '13']]],
             expected: [['type' => 'i32', 'value' => '5']],
             line: 519,
@@ -3607,7 +3287,6 @@ final class TableCopyTest extends SpecTestsuiteBase
     public function testAssertReturn328(): void
     {
         $this->runAssertReturnCommand(
-            module: null,
             action: ['type' => 'invoke', 'field' => 'check_t0', 'args' => [['type' => 'i32', 'value' => '14']]],
             expected: [['type' => 'i32', 'value' => '2']],
             line: 520,
@@ -3618,7 +3297,6 @@ final class TableCopyTest extends SpecTestsuiteBase
     public function testAssertReturn329(): void
     {
         $this->runAssertReturnCommand(
-            module: null,
             action: ['type' => 'invoke', 'field' => 'check_t0', 'args' => [['type' => 'i32', 'value' => '15']]],
             expected: [['type' => 'i32', 'value' => '3']],
             line: 521,
@@ -3629,7 +3307,6 @@ final class TableCopyTest extends SpecTestsuiteBase
     public function testAssertReturn330(): void
     {
         $this->runAssertReturnCommand(
-            module: null,
             action: ['type' => 'invoke', 'field' => 'check_t0', 'args' => [['type' => 'i32', 'value' => '16']]],
             expected: [['type' => 'i32', 'value' => '6']],
             line: 522,
@@ -3640,7 +3317,6 @@ final class TableCopyTest extends SpecTestsuiteBase
     public function testAssertTrap331(): void
     {
         $this->runAssertTrapCommand(
-            module: null,
             action: ['type' => 'invoke', 'field' => 'check_t0', 'args' => [['type' => 'i32', 'value' => '17']]],
             text: 'uninitialized element',
             line: 523,
@@ -3651,7 +3327,6 @@ final class TableCopyTest extends SpecTestsuiteBase
     public function testAssertTrap332(): void
     {
         $this->runAssertTrapCommand(
-            module: null,
             action: ['type' => 'invoke', 'field' => 'check_t0', 'args' => [['type' => 'i32', 'value' => '18']]],
             text: 'uninitialized element',
             line: 524,
@@ -3662,7 +3337,6 @@ final class TableCopyTest extends SpecTestsuiteBase
     public function testAssertTrap333(): void
     {
         $this->runAssertTrapCommand(
-            module: null,
             action: ['type' => 'invoke', 'field' => 'check_t0', 'args' => [['type' => 'i32', 'value' => '19']]],
             text: 'uninitialized element',
             line: 525,
@@ -3673,7 +3347,6 @@ final class TableCopyTest extends SpecTestsuiteBase
     public function testAssertTrap334(): void
     {
         $this->runAssertTrapCommand(
-            module: null,
             action: ['type' => 'invoke', 'field' => 'check_t0', 'args' => [['type' => 'i32', 'value' => '20']]],
             text: 'uninitialized element',
             line: 526,
@@ -3684,7 +3357,6 @@ final class TableCopyTest extends SpecTestsuiteBase
     public function testAssertTrap335(): void
     {
         $this->runAssertTrapCommand(
-            module: null,
             action: ['type' => 'invoke', 'field' => 'check_t0', 'args' => [['type' => 'i32', 'value' => '21']]],
             text: 'uninitialized element',
             line: 527,
@@ -3695,7 +3367,6 @@ final class TableCopyTest extends SpecTestsuiteBase
     public function testAssertTrap336(): void
     {
         $this->runAssertTrapCommand(
-            module: null,
             action: ['type' => 'invoke', 'field' => 'check_t0', 'args' => [['type' => 'i32', 'value' => '22']]],
             text: 'uninitialized element',
             line: 528,
@@ -3706,7 +3377,6 @@ final class TableCopyTest extends SpecTestsuiteBase
     public function testAssertTrap337(): void
     {
         $this->runAssertTrapCommand(
-            module: null,
             action: ['type' => 'invoke', 'field' => 'check_t0', 'args' => [['type' => 'i32', 'value' => '23']]],
             text: 'uninitialized element',
             line: 529,
@@ -3717,7 +3387,6 @@ final class TableCopyTest extends SpecTestsuiteBase
     public function testAssertTrap338(): void
     {
         $this->runAssertTrapCommand(
-            module: null,
             action: ['type' => 'invoke', 'field' => 'check_t0', 'args' => [['type' => 'i32', 'value' => '24']]],
             text: 'uninitialized element',
             line: 530,
@@ -3728,7 +3397,6 @@ final class TableCopyTest extends SpecTestsuiteBase
     public function testAssertTrap339(): void
     {
         $this->runAssertTrapCommand(
-            module: null,
             action: ['type' => 'invoke', 'field' => 'check_t0', 'args' => [['type' => 'i32', 'value' => '25']]],
             text: 'uninitialized element',
             line: 531,
@@ -3739,7 +3407,6 @@ final class TableCopyTest extends SpecTestsuiteBase
     public function testAssertReturn340(): void
     {
         $this->runAssertReturnCommand(
-            module: null,
             action: ['type' => 'invoke', 'field' => 'check_t0', 'args' => [['type' => 'i32', 'value' => '26']]],
             expected: [['type' => 'i32', 'value' => '3']],
             line: 532,
@@ -3750,7 +3417,6 @@ final class TableCopyTest extends SpecTestsuiteBase
     public function testAssertReturn341(): void
     {
         $this->runAssertReturnCommand(
-            module: null,
             action: ['type' => 'invoke', 'field' => 'check_t0', 'args' => [['type' => 'i32', 'value' => '27']]],
             expected: [['type' => 'i32', 'value' => '1']],
             line: 533,
@@ -3761,7 +3427,6 @@ final class TableCopyTest extends SpecTestsuiteBase
     public function testAssertTrap342(): void
     {
         $this->runAssertTrapCommand(
-            module: null,
             action: ['type' => 'invoke', 'field' => 'check_t0', 'args' => [['type' => 'i32', 'value' => '28']]],
             text: 'uninitialized element',
             line: 534,
@@ -3772,7 +3437,6 @@ final class TableCopyTest extends SpecTestsuiteBase
     public function testAssertTrap343(): void
     {
         $this->runAssertTrapCommand(
-            module: null,
             action: ['type' => 'invoke', 'field' => 'check_t0', 'args' => [['type' => 'i32', 'value' => '29']]],
             text: 'uninitialized element',
             line: 535,
@@ -3783,7 +3447,6 @@ final class TableCopyTest extends SpecTestsuiteBase
     public function testAssertTrap344(): void
     {
         $this->runAssertTrapCommand(
-            module: null,
             action: ['type' => 'invoke', 'field' => 'check_t1', 'args' => [['type' => 'i32', 'value' => '0']]],
             text: 'uninitialized element',
             line: 536,
@@ -3794,7 +3457,6 @@ final class TableCopyTest extends SpecTestsuiteBase
     public function testAssertTrap345(): void
     {
         $this->runAssertTrapCommand(
-            module: null,
             action: ['type' => 'invoke', 'field' => 'check_t1', 'args' => [['type' => 'i32', 'value' => '1']]],
             text: 'uninitialized element',
             line: 537,
@@ -3805,7 +3467,6 @@ final class TableCopyTest extends SpecTestsuiteBase
     public function testAssertTrap346(): void
     {
         $this->runAssertTrapCommand(
-            module: null,
             action: ['type' => 'invoke', 'field' => 'check_t1', 'args' => [['type' => 'i32', 'value' => '2']]],
             text: 'uninitialized element',
             line: 538,
@@ -3816,7 +3477,6 @@ final class TableCopyTest extends SpecTestsuiteBase
     public function testAssertReturn347(): void
     {
         $this->runAssertReturnCommand(
-            module: null,
             action: ['type' => 'invoke', 'field' => 'check_t1', 'args' => [['type' => 'i32', 'value' => '3']]],
             expected: [['type' => 'i32', 'value' => '1']],
             line: 539,
@@ -3827,7 +3487,6 @@ final class TableCopyTest extends SpecTestsuiteBase
     public function testAssertReturn348(): void
     {
         $this->runAssertReturnCommand(
-            module: null,
             action: ['type' => 'invoke', 'field' => 'check_t1', 'args' => [['type' => 'i32', 'value' => '4']]],
             expected: [['type' => 'i32', 'value' => '3']],
             line: 540,
@@ -3838,7 +3497,6 @@ final class TableCopyTest extends SpecTestsuiteBase
     public function testAssertReturn349(): void
     {
         $this->runAssertReturnCommand(
-            module: null,
             action: ['type' => 'invoke', 'field' => 'check_t1', 'args' => [['type' => 'i32', 'value' => '5']]],
             expected: [['type' => 'i32', 'value' => '1']],
             line: 541,
@@ -3849,7 +3507,6 @@ final class TableCopyTest extends SpecTestsuiteBase
     public function testAssertReturn350(): void
     {
         $this->runAssertReturnCommand(
-            module: null,
             action: ['type' => 'invoke', 'field' => 'check_t1', 'args' => [['type' => 'i32', 'value' => '6']]],
             expected: [['type' => 'i32', 'value' => '4']],
             line: 542,
@@ -3860,7 +3517,6 @@ final class TableCopyTest extends SpecTestsuiteBase
     public function testAssertTrap351(): void
     {
         $this->runAssertTrapCommand(
-            module: null,
             action: ['type' => 'invoke', 'field' => 'check_t1', 'args' => [['type' => 'i32', 'value' => '7']]],
             text: 'uninitialized element',
             line: 543,
@@ -3871,7 +3527,6 @@ final class TableCopyTest extends SpecTestsuiteBase
     public function testAssertTrap352(): void
     {
         $this->runAssertTrapCommand(
-            module: null,
             action: ['type' => 'invoke', 'field' => 'check_t1', 'args' => [['type' => 'i32', 'value' => '8']]],
             text: 'uninitialized element',
             line: 544,
@@ -3882,7 +3537,6 @@ final class TableCopyTest extends SpecTestsuiteBase
     public function testAssertTrap353(): void
     {
         $this->runAssertTrapCommand(
-            module: null,
             action: ['type' => 'invoke', 'field' => 'check_t1', 'args' => [['type' => 'i32', 'value' => '9']]],
             text: 'uninitialized element',
             line: 545,
@@ -3893,7 +3547,6 @@ final class TableCopyTest extends SpecTestsuiteBase
     public function testAssertTrap354(): void
     {
         $this->runAssertTrapCommand(
-            module: null,
             action: ['type' => 'invoke', 'field' => 'check_t1', 'args' => [['type' => 'i32', 'value' => '10']]],
             text: 'uninitialized element',
             line: 546,
@@ -3904,7 +3557,6 @@ final class TableCopyTest extends SpecTestsuiteBase
     public function testAssertReturn355(): void
     {
         $this->runAssertReturnCommand(
-            module: null,
             action: ['type' => 'invoke', 'field' => 'check_t1', 'args' => [['type' => 'i32', 'value' => '11']]],
             expected: [['type' => 'i32', 'value' => '6']],
             line: 547,
@@ -3915,7 +3567,6 @@ final class TableCopyTest extends SpecTestsuiteBase
     public function testAssertReturn356(): void
     {
         $this->runAssertReturnCommand(
-            module: null,
             action: ['type' => 'invoke', 'field' => 'check_t1', 'args' => [['type' => 'i32', 'value' => '12']]],
             expected: [['type' => 'i32', 'value' => '3']],
             line: 548,
@@ -3926,7 +3577,6 @@ final class TableCopyTest extends SpecTestsuiteBase
     public function testAssertReturn357(): void
     {
         $this->runAssertReturnCommand(
-            module: null,
             action: ['type' => 'invoke', 'field' => 'check_t1', 'args' => [['type' => 'i32', 'value' => '13']]],
             expected: [['type' => 'i32', 'value' => '2']],
             line: 549,
@@ -3937,7 +3587,6 @@ final class TableCopyTest extends SpecTestsuiteBase
     public function testAssertReturn358(): void
     {
         $this->runAssertReturnCommand(
-            module: null,
             action: ['type' => 'invoke', 'field' => 'check_t1', 'args' => [['type' => 'i32', 'value' => '14']]],
             expected: [['type' => 'i32', 'value' => '5']],
             line: 550,
@@ -3948,7 +3597,6 @@ final class TableCopyTest extends SpecTestsuiteBase
     public function testAssertReturn359(): void
     {
         $this->runAssertReturnCommand(
-            module: null,
             action: ['type' => 'invoke', 'field' => 'check_t1', 'args' => [['type' => 'i32', 'value' => '15']]],
             expected: [['type' => 'i32', 'value' => '7']],
             line: 551,
@@ -3959,7 +3607,6 @@ final class TableCopyTest extends SpecTestsuiteBase
     public function testAssertTrap360(): void
     {
         $this->runAssertTrapCommand(
-            module: null,
             action: ['type' => 'invoke', 'field' => 'check_t1', 'args' => [['type' => 'i32', 'value' => '16']]],
             text: 'uninitialized element',
             line: 552,
@@ -3970,7 +3617,6 @@ final class TableCopyTest extends SpecTestsuiteBase
     public function testAssertTrap361(): void
     {
         $this->runAssertTrapCommand(
-            module: null,
             action: ['type' => 'invoke', 'field' => 'check_t1', 'args' => [['type' => 'i32', 'value' => '17']]],
             text: 'uninitialized element',
             line: 553,
@@ -3981,7 +3627,6 @@ final class TableCopyTest extends SpecTestsuiteBase
     public function testAssertTrap362(): void
     {
         $this->runAssertTrapCommand(
-            module: null,
             action: ['type' => 'invoke', 'field' => 'check_t1', 'args' => [['type' => 'i32', 'value' => '18']]],
             text: 'uninitialized element',
             line: 554,
@@ -3992,7 +3637,6 @@ final class TableCopyTest extends SpecTestsuiteBase
     public function testAssertTrap363(): void
     {
         $this->runAssertTrapCommand(
-            module: null,
             action: ['type' => 'invoke', 'field' => 'check_t1', 'args' => [['type' => 'i32', 'value' => '19']]],
             text: 'uninitialized element',
             line: 555,
@@ -4003,7 +3647,6 @@ final class TableCopyTest extends SpecTestsuiteBase
     public function testAssertTrap364(): void
     {
         $this->runAssertTrapCommand(
-            module: null,
             action: ['type' => 'invoke', 'field' => 'check_t1', 'args' => [['type' => 'i32', 'value' => '20']]],
             text: 'uninitialized element',
             line: 556,
@@ -4014,7 +3657,6 @@ final class TableCopyTest extends SpecTestsuiteBase
     public function testAssertTrap365(): void
     {
         $this->runAssertTrapCommand(
-            module: null,
             action: ['type' => 'invoke', 'field' => 'check_t1', 'args' => [['type' => 'i32', 'value' => '21']]],
             text: 'uninitialized element',
             line: 557,
@@ -4025,7 +3667,6 @@ final class TableCopyTest extends SpecTestsuiteBase
     public function testAssertTrap366(): void
     {
         $this->runAssertTrapCommand(
-            module: null,
             action: ['type' => 'invoke', 'field' => 'check_t1', 'args' => [['type' => 'i32', 'value' => '22']]],
             text: 'uninitialized element',
             line: 558,
@@ -4036,7 +3677,6 @@ final class TableCopyTest extends SpecTestsuiteBase
     public function testAssertTrap367(): void
     {
         $this->runAssertTrapCommand(
-            module: null,
             action: ['type' => 'invoke', 'field' => 'check_t1', 'args' => [['type' => 'i32', 'value' => '23']]],
             text: 'uninitialized element',
             line: 559,
@@ -4047,7 +3687,6 @@ final class TableCopyTest extends SpecTestsuiteBase
     public function testAssertTrap368(): void
     {
         $this->runAssertTrapCommand(
-            module: null,
             action: ['type' => 'invoke', 'field' => 'check_t1', 'args' => [['type' => 'i32', 'value' => '24']]],
             text: 'uninitialized element',
             line: 560,
@@ -4058,7 +3697,6 @@ final class TableCopyTest extends SpecTestsuiteBase
     public function testAssertTrap369(): void
     {
         $this->runAssertTrapCommand(
-            module: null,
             action: ['type' => 'invoke', 'field' => 'check_t1', 'args' => [['type' => 'i32', 'value' => '25']]],
             text: 'uninitialized element',
             line: 561,
@@ -4069,7 +3707,6 @@ final class TableCopyTest extends SpecTestsuiteBase
     public function testAssertTrap370(): void
     {
         $this->runAssertTrapCommand(
-            module: null,
             action: ['type' => 'invoke', 'field' => 'check_t1', 'args' => [['type' => 'i32', 'value' => '26']]],
             text: 'uninitialized element',
             line: 562,
@@ -4080,7 +3717,6 @@ final class TableCopyTest extends SpecTestsuiteBase
     public function testAssertTrap371(): void
     {
         $this->runAssertTrapCommand(
-            module: null,
             action: ['type' => 'invoke', 'field' => 'check_t1', 'args' => [['type' => 'i32', 'value' => '27']]],
             text: 'uninitialized element',
             line: 563,
@@ -4091,7 +3727,6 @@ final class TableCopyTest extends SpecTestsuiteBase
     public function testAssertTrap372(): void
     {
         $this->runAssertTrapCommand(
-            module: null,
             action: ['type' => 'invoke', 'field' => 'check_t1', 'args' => [['type' => 'i32', 'value' => '28']]],
             text: 'uninitialized element',
             line: 564,
@@ -4102,7 +3737,6 @@ final class TableCopyTest extends SpecTestsuiteBase
     public function testAssertTrap373(): void
     {
         $this->runAssertTrapCommand(
-            module: null,
             action: ['type' => 'invoke', 'field' => 'check_t1', 'args' => [['type' => 'i32', 'value' => '29']]],
             text: 'uninitialized element',
             line: 565,
@@ -4123,7 +3757,6 @@ final class TableCopyTest extends SpecTestsuiteBase
     public function testAction375(): void
     {
         $this->runActionCommand(
-            module: null,
             action: ['type' => 'invoke', 'field' => 'test', 'args' => []],
             line: 597,
         );
@@ -4133,7 +3766,6 @@ final class TableCopyTest extends SpecTestsuiteBase
     public function testAssertTrap376(): void
     {
         $this->runAssertTrapCommand(
-            module: null,
             action: ['type' => 'invoke', 'field' => 'check_t0', 'args' => [['type' => 'i32', 'value' => '0']]],
             text: 'uninitialized element',
             line: 598,
@@ -4144,7 +3776,6 @@ final class TableCopyTest extends SpecTestsuiteBase
     public function testAssertTrap377(): void
     {
         $this->runAssertTrapCommand(
-            module: null,
             action: ['type' => 'invoke', 'field' => 'check_t0', 'args' => [['type' => 'i32', 'value' => '1']]],
             text: 'uninitialized element',
             line: 599,
@@ -4155,7 +3786,6 @@ final class TableCopyTest extends SpecTestsuiteBase
     public function testAssertReturn378(): void
     {
         $this->runAssertReturnCommand(
-            module: null,
             action: ['type' => 'invoke', 'field' => 'check_t0', 'args' => [['type' => 'i32', 'value' => '2']]],
             expected: [['type' => 'i32', 'value' => '3']],
             line: 600,
@@ -4166,7 +3796,6 @@ final class TableCopyTest extends SpecTestsuiteBase
     public function testAssertReturn379(): void
     {
         $this->runAssertReturnCommand(
-            module: null,
             action: ['type' => 'invoke', 'field' => 'check_t0', 'args' => [['type' => 'i32', 'value' => '3']]],
             expected: [['type' => 'i32', 'value' => '1']],
             line: 601,
@@ -4177,7 +3806,6 @@ final class TableCopyTest extends SpecTestsuiteBase
     public function testAssertReturn380(): void
     {
         $this->runAssertReturnCommand(
-            module: null,
             action: ['type' => 'invoke', 'field' => 'check_t0', 'args' => [['type' => 'i32', 'value' => '4']]],
             expected: [['type' => 'i32', 'value' => '4']],
             line: 602,
@@ -4188,7 +3816,6 @@ final class TableCopyTest extends SpecTestsuiteBase
     public function testAssertReturn381(): void
     {
         $this->runAssertReturnCommand(
-            module: null,
             action: ['type' => 'invoke', 'field' => 'check_t0', 'args' => [['type' => 'i32', 'value' => '5']]],
             expected: [['type' => 'i32', 'value' => '1']],
             line: 603,
@@ -4199,7 +3826,6 @@ final class TableCopyTest extends SpecTestsuiteBase
     public function testAssertTrap382(): void
     {
         $this->runAssertTrapCommand(
-            module: null,
             action: ['type' => 'invoke', 'field' => 'check_t0', 'args' => [['type' => 'i32', 'value' => '6']]],
             text: 'uninitialized element',
             line: 604,
@@ -4210,7 +3836,6 @@ final class TableCopyTest extends SpecTestsuiteBase
     public function testAssertTrap383(): void
     {
         $this->runAssertTrapCommand(
-            module: null,
             action: ['type' => 'invoke', 'field' => 'check_t0', 'args' => [['type' => 'i32', 'value' => '7']]],
             text: 'uninitialized element',
             line: 605,
@@ -4221,7 +3846,6 @@ final class TableCopyTest extends SpecTestsuiteBase
     public function testAssertTrap384(): void
     {
         $this->runAssertTrapCommand(
-            module: null,
             action: ['type' => 'invoke', 'field' => 'check_t0', 'args' => [['type' => 'i32', 'value' => '8']]],
             text: 'uninitialized element',
             line: 606,
@@ -4232,7 +3856,6 @@ final class TableCopyTest extends SpecTestsuiteBase
     public function testAssertTrap385(): void
     {
         $this->runAssertTrapCommand(
-            module: null,
             action: ['type' => 'invoke', 'field' => 'check_t0', 'args' => [['type' => 'i32', 'value' => '9']]],
             text: 'uninitialized element',
             line: 607,
@@ -4243,7 +3866,6 @@ final class TableCopyTest extends SpecTestsuiteBase
     public function testAssertReturn386(): void
     {
         $this->runAssertReturnCommand(
-            module: null,
             action: ['type' => 'invoke', 'field' => 'check_t0', 'args' => [['type' => 'i32', 'value' => '10']]],
             expected: [['type' => 'i32', 'value' => '7']],
             line: 608,
@@ -4254,7 +3876,6 @@ final class TableCopyTest extends SpecTestsuiteBase
     public function testAssertReturn387(): void
     {
         $this->runAssertReturnCommand(
-            module: null,
             action: ['type' => 'invoke', 'field' => 'check_t0', 'args' => [['type' => 'i32', 'value' => '11']]],
             expected: [['type' => 'i32', 'value' => '5']],
             line: 609,
@@ -4265,7 +3886,6 @@ final class TableCopyTest extends SpecTestsuiteBase
     public function testAssertReturn388(): void
     {
         $this->runAssertReturnCommand(
-            module: null,
             action: ['type' => 'invoke', 'field' => 'check_t0', 'args' => [['type' => 'i32', 'value' => '12']]],
             expected: [['type' => 'i32', 'value' => '2']],
             line: 610,
@@ -4276,7 +3896,6 @@ final class TableCopyTest extends SpecTestsuiteBase
     public function testAssertReturn389(): void
     {
         $this->runAssertReturnCommand(
-            module: null,
             action: ['type' => 'invoke', 'field' => 'check_t0', 'args' => [['type' => 'i32', 'value' => '13']]],
             expected: [['type' => 'i32', 'value' => '3']],
             line: 611,
@@ -4287,7 +3906,6 @@ final class TableCopyTest extends SpecTestsuiteBase
     public function testAssertReturn390(): void
     {
         $this->runAssertReturnCommand(
-            module: null,
             action: ['type' => 'invoke', 'field' => 'check_t0', 'args' => [['type' => 'i32', 'value' => '14']]],
             expected: [['type' => 'i32', 'value' => '6']],
             line: 612,
@@ -4298,7 +3916,6 @@ final class TableCopyTest extends SpecTestsuiteBase
     public function testAssertTrap391(): void
     {
         $this->runAssertTrapCommand(
-            module: null,
             action: ['type' => 'invoke', 'field' => 'check_t0', 'args' => [['type' => 'i32', 'value' => '15']]],
             text: 'uninitialized element',
             line: 613,
@@ -4309,7 +3926,6 @@ final class TableCopyTest extends SpecTestsuiteBase
     public function testAssertTrap392(): void
     {
         $this->runAssertTrapCommand(
-            module: null,
             action: ['type' => 'invoke', 'field' => 'check_t0', 'args' => [['type' => 'i32', 'value' => '16']]],
             text: 'uninitialized element',
             line: 614,
@@ -4320,7 +3936,6 @@ final class TableCopyTest extends SpecTestsuiteBase
     public function testAssertTrap393(): void
     {
         $this->runAssertTrapCommand(
-            module: null,
             action: ['type' => 'invoke', 'field' => 'check_t0', 'args' => [['type' => 'i32', 'value' => '17']]],
             text: 'uninitialized element',
             line: 615,
@@ -4331,7 +3946,6 @@ final class TableCopyTest extends SpecTestsuiteBase
     public function testAssertTrap394(): void
     {
         $this->runAssertTrapCommand(
-            module: null,
             action: ['type' => 'invoke', 'field' => 'check_t0', 'args' => [['type' => 'i32', 'value' => '18']]],
             text: 'uninitialized element',
             line: 616,
@@ -4342,7 +3956,6 @@ final class TableCopyTest extends SpecTestsuiteBase
     public function testAssertTrap395(): void
     {
         $this->runAssertTrapCommand(
-            module: null,
             action: ['type' => 'invoke', 'field' => 'check_t0', 'args' => [['type' => 'i32', 'value' => '19']]],
             text: 'uninitialized element',
             line: 617,
@@ -4353,7 +3966,6 @@ final class TableCopyTest extends SpecTestsuiteBase
     public function testAssertTrap396(): void
     {
         $this->runAssertTrapCommand(
-            module: null,
             action: ['type' => 'invoke', 'field' => 'check_t0', 'args' => [['type' => 'i32', 'value' => '20']]],
             text: 'uninitialized element',
             line: 618,
@@ -4364,7 +3976,6 @@ final class TableCopyTest extends SpecTestsuiteBase
     public function testAssertTrap397(): void
     {
         $this->runAssertTrapCommand(
-            module: null,
             action: ['type' => 'invoke', 'field' => 'check_t0', 'args' => [['type' => 'i32', 'value' => '21']]],
             text: 'uninitialized element',
             line: 619,
@@ -4375,7 +3986,6 @@ final class TableCopyTest extends SpecTestsuiteBase
     public function testAssertTrap398(): void
     {
         $this->runAssertTrapCommand(
-            module: null,
             action: ['type' => 'invoke', 'field' => 'check_t0', 'args' => [['type' => 'i32', 'value' => '22']]],
             text: 'uninitialized element',
             line: 620,
@@ -4386,7 +3996,6 @@ final class TableCopyTest extends SpecTestsuiteBase
     public function testAssertTrap399(): void
     {
         $this->runAssertTrapCommand(
-            module: null,
             action: ['type' => 'invoke', 'field' => 'check_t0', 'args' => [['type' => 'i32', 'value' => '23']]],
             text: 'uninitialized element',
             line: 621,
@@ -4397,7 +4006,6 @@ final class TableCopyTest extends SpecTestsuiteBase
     public function testAssertTrap400(): void
     {
         $this->runAssertTrapCommand(
-            module: null,
             action: ['type' => 'invoke', 'field' => 'check_t0', 'args' => [['type' => 'i32', 'value' => '24']]],
             text: 'uninitialized element',
             line: 622,
@@ -4408,7 +4016,6 @@ final class TableCopyTest extends SpecTestsuiteBase
     public function testAssertTrap401(): void
     {
         $this->runAssertTrapCommand(
-            module: null,
             action: ['type' => 'invoke', 'field' => 'check_t0', 'args' => [['type' => 'i32', 'value' => '25']]],
             text: 'uninitialized element',
             line: 623,
@@ -4419,7 +4026,6 @@ final class TableCopyTest extends SpecTestsuiteBase
     public function testAssertTrap402(): void
     {
         $this->runAssertTrapCommand(
-            module: null,
             action: ['type' => 'invoke', 'field' => 'check_t0', 'args' => [['type' => 'i32', 'value' => '26']]],
             text: 'uninitialized element',
             line: 624,
@@ -4430,7 +4036,6 @@ final class TableCopyTest extends SpecTestsuiteBase
     public function testAssertTrap403(): void
     {
         $this->runAssertTrapCommand(
-            module: null,
             action: ['type' => 'invoke', 'field' => 'check_t0', 'args' => [['type' => 'i32', 'value' => '27']]],
             text: 'uninitialized element',
             line: 625,
@@ -4441,7 +4046,6 @@ final class TableCopyTest extends SpecTestsuiteBase
     public function testAssertTrap404(): void
     {
         $this->runAssertTrapCommand(
-            module: null,
             action: ['type' => 'invoke', 'field' => 'check_t0', 'args' => [['type' => 'i32', 'value' => '28']]],
             text: 'uninitialized element',
             line: 626,
@@ -4452,7 +4056,6 @@ final class TableCopyTest extends SpecTestsuiteBase
     public function testAssertTrap405(): void
     {
         $this->runAssertTrapCommand(
-            module: null,
             action: ['type' => 'invoke', 'field' => 'check_t0', 'args' => [['type' => 'i32', 'value' => '29']]],
             text: 'uninitialized element',
             line: 627,
@@ -4463,7 +4066,6 @@ final class TableCopyTest extends SpecTestsuiteBase
     public function testAssertTrap406(): void
     {
         $this->runAssertTrapCommand(
-            module: null,
             action: ['type' => 'invoke', 'field' => 'check_t1', 'args' => [['type' => 'i32', 'value' => '0']]],
             text: 'uninitialized element',
             line: 628,
@@ -4474,7 +4076,6 @@ final class TableCopyTest extends SpecTestsuiteBase
     public function testAssertTrap407(): void
     {
         $this->runAssertTrapCommand(
-            module: null,
             action: ['type' => 'invoke', 'field' => 'check_t1', 'args' => [['type' => 'i32', 'value' => '1']]],
             text: 'uninitialized element',
             line: 629,
@@ -4485,7 +4086,6 @@ final class TableCopyTest extends SpecTestsuiteBase
     public function testAssertTrap408(): void
     {
         $this->runAssertTrapCommand(
-            module: null,
             action: ['type' => 'invoke', 'field' => 'check_t1', 'args' => [['type' => 'i32', 'value' => '2']]],
             text: 'uninitialized element',
             line: 630,
@@ -4496,7 +4096,6 @@ final class TableCopyTest extends SpecTestsuiteBase
     public function testAssertReturn409(): void
     {
         $this->runAssertReturnCommand(
-            module: null,
             action: ['type' => 'invoke', 'field' => 'check_t1', 'args' => [['type' => 'i32', 'value' => '3']]],
             expected: [['type' => 'i32', 'value' => '1']],
             line: 631,
@@ -4507,7 +4106,6 @@ final class TableCopyTest extends SpecTestsuiteBase
     public function testAssertReturn410(): void
     {
         $this->runAssertReturnCommand(
-            module: null,
             action: ['type' => 'invoke', 'field' => 'check_t1', 'args' => [['type' => 'i32', 'value' => '4']]],
             expected: [['type' => 'i32', 'value' => '3']],
             line: 632,
@@ -4518,7 +4116,6 @@ final class TableCopyTest extends SpecTestsuiteBase
     public function testAssertReturn411(): void
     {
         $this->runAssertReturnCommand(
-            module: null,
             action: ['type' => 'invoke', 'field' => 'check_t1', 'args' => [['type' => 'i32', 'value' => '5']]],
             expected: [['type' => 'i32', 'value' => '1']],
             line: 633,
@@ -4529,7 +4126,6 @@ final class TableCopyTest extends SpecTestsuiteBase
     public function testAssertReturn412(): void
     {
         $this->runAssertReturnCommand(
-            module: null,
             action: ['type' => 'invoke', 'field' => 'check_t1', 'args' => [['type' => 'i32', 'value' => '6']]],
             expected: [['type' => 'i32', 'value' => '4']],
             line: 634,
@@ -4540,7 +4136,6 @@ final class TableCopyTest extends SpecTestsuiteBase
     public function testAssertTrap413(): void
     {
         $this->runAssertTrapCommand(
-            module: null,
             action: ['type' => 'invoke', 'field' => 'check_t1', 'args' => [['type' => 'i32', 'value' => '7']]],
             text: 'uninitialized element',
             line: 635,
@@ -4551,7 +4146,6 @@ final class TableCopyTest extends SpecTestsuiteBase
     public function testAssertTrap414(): void
     {
         $this->runAssertTrapCommand(
-            module: null,
             action: ['type' => 'invoke', 'field' => 'check_t1', 'args' => [['type' => 'i32', 'value' => '8']]],
             text: 'uninitialized element',
             line: 636,
@@ -4562,7 +4156,6 @@ final class TableCopyTest extends SpecTestsuiteBase
     public function testAssertTrap415(): void
     {
         $this->runAssertTrapCommand(
-            module: null,
             action: ['type' => 'invoke', 'field' => 'check_t1', 'args' => [['type' => 'i32', 'value' => '9']]],
             text: 'uninitialized element',
             line: 637,
@@ -4573,7 +4166,6 @@ final class TableCopyTest extends SpecTestsuiteBase
     public function testAssertTrap416(): void
     {
         $this->runAssertTrapCommand(
-            module: null,
             action: ['type' => 'invoke', 'field' => 'check_t1', 'args' => [['type' => 'i32', 'value' => '10']]],
             text: 'uninitialized element',
             line: 638,
@@ -4584,7 +4176,6 @@ final class TableCopyTest extends SpecTestsuiteBase
     public function testAssertReturn417(): void
     {
         $this->runAssertReturnCommand(
-            module: null,
             action: ['type' => 'invoke', 'field' => 'check_t1', 'args' => [['type' => 'i32', 'value' => '11']]],
             expected: [['type' => 'i32', 'value' => '6']],
             line: 639,
@@ -4595,7 +4186,6 @@ final class TableCopyTest extends SpecTestsuiteBase
     public function testAssertReturn418(): void
     {
         $this->runAssertReturnCommand(
-            module: null,
             action: ['type' => 'invoke', 'field' => 'check_t1', 'args' => [['type' => 'i32', 'value' => '12']]],
             expected: [['type' => 'i32', 'value' => '3']],
             line: 640,
@@ -4606,7 +4196,6 @@ final class TableCopyTest extends SpecTestsuiteBase
     public function testAssertReturn419(): void
     {
         $this->runAssertReturnCommand(
-            module: null,
             action: ['type' => 'invoke', 'field' => 'check_t1', 'args' => [['type' => 'i32', 'value' => '13']]],
             expected: [['type' => 'i32', 'value' => '2']],
             line: 641,
@@ -4617,7 +4206,6 @@ final class TableCopyTest extends SpecTestsuiteBase
     public function testAssertReturn420(): void
     {
         $this->runAssertReturnCommand(
-            module: null,
             action: ['type' => 'invoke', 'field' => 'check_t1', 'args' => [['type' => 'i32', 'value' => '14']]],
             expected: [['type' => 'i32', 'value' => '5']],
             line: 642,
@@ -4628,7 +4216,6 @@ final class TableCopyTest extends SpecTestsuiteBase
     public function testAssertReturn421(): void
     {
         $this->runAssertReturnCommand(
-            module: null,
             action: ['type' => 'invoke', 'field' => 'check_t1', 'args' => [['type' => 'i32', 'value' => '15']]],
             expected: [['type' => 'i32', 'value' => '7']],
             line: 643,
@@ -4639,7 +4226,6 @@ final class TableCopyTest extends SpecTestsuiteBase
     public function testAssertTrap422(): void
     {
         $this->runAssertTrapCommand(
-            module: null,
             action: ['type' => 'invoke', 'field' => 'check_t1', 'args' => [['type' => 'i32', 'value' => '16']]],
             text: 'uninitialized element',
             line: 644,
@@ -4650,7 +4236,6 @@ final class TableCopyTest extends SpecTestsuiteBase
     public function testAssertTrap423(): void
     {
         $this->runAssertTrapCommand(
-            module: null,
             action: ['type' => 'invoke', 'field' => 'check_t1', 'args' => [['type' => 'i32', 'value' => '17']]],
             text: 'uninitialized element',
             line: 645,
@@ -4661,7 +4246,6 @@ final class TableCopyTest extends SpecTestsuiteBase
     public function testAssertTrap424(): void
     {
         $this->runAssertTrapCommand(
-            module: null,
             action: ['type' => 'invoke', 'field' => 'check_t1', 'args' => [['type' => 'i32', 'value' => '18']]],
             text: 'uninitialized element',
             line: 646,
@@ -4672,7 +4256,6 @@ final class TableCopyTest extends SpecTestsuiteBase
     public function testAssertTrap425(): void
     {
         $this->runAssertTrapCommand(
-            module: null,
             action: ['type' => 'invoke', 'field' => 'check_t1', 'args' => [['type' => 'i32', 'value' => '19']]],
             text: 'uninitialized element',
             line: 647,
@@ -4683,7 +4266,6 @@ final class TableCopyTest extends SpecTestsuiteBase
     public function testAssertTrap426(): void
     {
         $this->runAssertTrapCommand(
-            module: null,
             action: ['type' => 'invoke', 'field' => 'check_t1', 'args' => [['type' => 'i32', 'value' => '20']]],
             text: 'uninitialized element',
             line: 648,
@@ -4694,7 +4276,6 @@ final class TableCopyTest extends SpecTestsuiteBase
     public function testAssertTrap427(): void
     {
         $this->runAssertTrapCommand(
-            module: null,
             action: ['type' => 'invoke', 'field' => 'check_t1', 'args' => [['type' => 'i32', 'value' => '21']]],
             text: 'uninitialized element',
             line: 649,
@@ -4705,7 +4286,6 @@ final class TableCopyTest extends SpecTestsuiteBase
     public function testAssertTrap428(): void
     {
         $this->runAssertTrapCommand(
-            module: null,
             action: ['type' => 'invoke', 'field' => 'check_t1', 'args' => [['type' => 'i32', 'value' => '22']]],
             text: 'uninitialized element',
             line: 650,
@@ -4716,7 +4296,6 @@ final class TableCopyTest extends SpecTestsuiteBase
     public function testAssertTrap429(): void
     {
         $this->runAssertTrapCommand(
-            module: null,
             action: ['type' => 'invoke', 'field' => 'check_t1', 'args' => [['type' => 'i32', 'value' => '23']]],
             text: 'uninitialized element',
             line: 651,
@@ -4727,7 +4306,6 @@ final class TableCopyTest extends SpecTestsuiteBase
     public function testAssertTrap430(): void
     {
         $this->runAssertTrapCommand(
-            module: null,
             action: ['type' => 'invoke', 'field' => 'check_t1', 'args' => [['type' => 'i32', 'value' => '24']]],
             text: 'uninitialized element',
             line: 652,
@@ -4738,7 +4316,6 @@ final class TableCopyTest extends SpecTestsuiteBase
     public function testAssertTrap431(): void
     {
         $this->runAssertTrapCommand(
-            module: null,
             action: ['type' => 'invoke', 'field' => 'check_t1', 'args' => [['type' => 'i32', 'value' => '25']]],
             text: 'uninitialized element',
             line: 653,
@@ -4749,7 +4326,6 @@ final class TableCopyTest extends SpecTestsuiteBase
     public function testAssertTrap432(): void
     {
         $this->runAssertTrapCommand(
-            module: null,
             action: ['type' => 'invoke', 'field' => 'check_t1', 'args' => [['type' => 'i32', 'value' => '26']]],
             text: 'uninitialized element',
             line: 654,
@@ -4760,7 +4336,6 @@ final class TableCopyTest extends SpecTestsuiteBase
     public function testAssertTrap433(): void
     {
         $this->runAssertTrapCommand(
-            module: null,
             action: ['type' => 'invoke', 'field' => 'check_t1', 'args' => [['type' => 'i32', 'value' => '27']]],
             text: 'uninitialized element',
             line: 655,
@@ -4771,7 +4346,6 @@ final class TableCopyTest extends SpecTestsuiteBase
     public function testAssertTrap434(): void
     {
         $this->runAssertTrapCommand(
-            module: null,
             action: ['type' => 'invoke', 'field' => 'check_t1', 'args' => [['type' => 'i32', 'value' => '28']]],
             text: 'uninitialized element',
             line: 656,
@@ -4782,7 +4356,6 @@ final class TableCopyTest extends SpecTestsuiteBase
     public function testAssertTrap435(): void
     {
         $this->runAssertTrapCommand(
-            module: null,
             action: ['type' => 'invoke', 'field' => 'check_t1', 'args' => [['type' => 'i32', 'value' => '29']]],
             text: 'uninitialized element',
             line: 657,
@@ -4803,7 +4376,6 @@ final class TableCopyTest extends SpecTestsuiteBase
     public function testAction437(): void
     {
         $this->runActionCommand(
-            module: null,
             action: ['type' => 'invoke', 'field' => 'test', 'args' => []],
             line: 689,
         );
@@ -4813,7 +4385,6 @@ final class TableCopyTest extends SpecTestsuiteBase
     public function testAssertTrap438(): void
     {
         $this->runAssertTrapCommand(
-            module: null,
             action: ['type' => 'invoke', 'field' => 'check_t0', 'args' => [['type' => 'i32', 'value' => '0']]],
             text: 'uninitialized element',
             line: 690,
@@ -4824,7 +4395,6 @@ final class TableCopyTest extends SpecTestsuiteBase
     public function testAssertTrap439(): void
     {
         $this->runAssertTrapCommand(
-            module: null,
             action: ['type' => 'invoke', 'field' => 'check_t0', 'args' => [['type' => 'i32', 'value' => '1']]],
             text: 'uninitialized element',
             line: 691,
@@ -4835,7 +4405,6 @@ final class TableCopyTest extends SpecTestsuiteBase
     public function testAssertReturn440(): void
     {
         $this->runAssertReturnCommand(
-            module: null,
             action: ['type' => 'invoke', 'field' => 'check_t0', 'args' => [['type' => 'i32', 'value' => '2']]],
             expected: [['type' => 'i32', 'value' => '3']],
             line: 692,
@@ -4846,7 +4415,6 @@ final class TableCopyTest extends SpecTestsuiteBase
     public function testAssertReturn441(): void
     {
         $this->runAssertReturnCommand(
-            module: null,
             action: ['type' => 'invoke', 'field' => 'check_t0', 'args' => [['type' => 'i32', 'value' => '3']]],
             expected: [['type' => 'i32', 'value' => '1']],
             line: 693,
@@ -4857,7 +4425,6 @@ final class TableCopyTest extends SpecTestsuiteBase
     public function testAssertReturn442(): void
     {
         $this->runAssertReturnCommand(
-            module: null,
             action: ['type' => 'invoke', 'field' => 'check_t0', 'args' => [['type' => 'i32', 'value' => '4']]],
             expected: [['type' => 'i32', 'value' => '4']],
             line: 694,
@@ -4868,7 +4435,6 @@ final class TableCopyTest extends SpecTestsuiteBase
     public function testAssertReturn443(): void
     {
         $this->runAssertReturnCommand(
-            module: null,
             action: ['type' => 'invoke', 'field' => 'check_t0', 'args' => [['type' => 'i32', 'value' => '5']]],
             expected: [['type' => 'i32', 'value' => '1']],
             line: 695,
@@ -4879,7 +4445,6 @@ final class TableCopyTest extends SpecTestsuiteBase
     public function testAssertTrap444(): void
     {
         $this->runAssertTrapCommand(
-            module: null,
             action: ['type' => 'invoke', 'field' => 'check_t0', 'args' => [['type' => 'i32', 'value' => '6']]],
             text: 'uninitialized element',
             line: 696,
@@ -4890,7 +4455,6 @@ final class TableCopyTest extends SpecTestsuiteBase
     public function testAssertTrap445(): void
     {
         $this->runAssertTrapCommand(
-            module: null,
             action: ['type' => 'invoke', 'field' => 'check_t0', 'args' => [['type' => 'i32', 'value' => '7']]],
             text: 'uninitialized element',
             line: 697,
@@ -4901,7 +4465,6 @@ final class TableCopyTest extends SpecTestsuiteBase
     public function testAssertTrap446(): void
     {
         $this->runAssertTrapCommand(
-            module: null,
             action: ['type' => 'invoke', 'field' => 'check_t0', 'args' => [['type' => 'i32', 'value' => '8']]],
             text: 'uninitialized element',
             line: 698,
@@ -4912,7 +4475,6 @@ final class TableCopyTest extends SpecTestsuiteBase
     public function testAssertTrap447(): void
     {
         $this->runAssertTrapCommand(
-            module: null,
             action: ['type' => 'invoke', 'field' => 'check_t0', 'args' => [['type' => 'i32', 'value' => '9']]],
             text: 'uninitialized element',
             line: 699,
@@ -4923,7 +4485,6 @@ final class TableCopyTest extends SpecTestsuiteBase
     public function testAssertTrap448(): void
     {
         $this->runAssertTrapCommand(
-            module: null,
             action: ['type' => 'invoke', 'field' => 'check_t0', 'args' => [['type' => 'i32', 'value' => '10']]],
             text: 'uninitialized element',
             line: 700,
@@ -4934,7 +4495,6 @@ final class TableCopyTest extends SpecTestsuiteBase
     public function testAssertTrap449(): void
     {
         $this->runAssertTrapCommand(
-            module: null,
             action: ['type' => 'invoke', 'field' => 'check_t0', 'args' => [['type' => 'i32', 'value' => '11']]],
             text: 'uninitialized element',
             line: 701,
@@ -4945,7 +4505,6 @@ final class TableCopyTest extends SpecTestsuiteBase
     public function testAssertTrap450(): void
     {
         $this->runAssertTrapCommand(
-            module: null,
             action: ['type' => 'invoke', 'field' => 'check_t0', 'args' => [['type' => 'i32', 'value' => '12']]],
             text: 'uninitialized element',
             line: 702,
@@ -4956,7 +4515,6 @@ final class TableCopyTest extends SpecTestsuiteBase
     public function testAssertTrap451(): void
     {
         $this->runAssertTrapCommand(
-            module: null,
             action: ['type' => 'invoke', 'field' => 'check_t0', 'args' => [['type' => 'i32', 'value' => '13']]],
             text: 'uninitialized element',
             line: 703,
@@ -4967,7 +4525,6 @@ final class TableCopyTest extends SpecTestsuiteBase
     public function testAssertReturn452(): void
     {
         $this->runAssertReturnCommand(
-            module: null,
             action: ['type' => 'invoke', 'field' => 'check_t0', 'args' => [['type' => 'i32', 'value' => '14']]],
             expected: [['type' => 'i32', 'value' => '7']],
             line: 704,
@@ -4978,7 +4535,6 @@ final class TableCopyTest extends SpecTestsuiteBase
     public function testAssertReturn453(): void
     {
         $this->runAssertReturnCommand(
-            module: null,
             action: ['type' => 'invoke', 'field' => 'check_t0', 'args' => [['type' => 'i32', 'value' => '15']]],
             expected: [['type' => 'i32', 'value' => '5']],
             line: 705,
@@ -4989,7 +4545,6 @@ final class TableCopyTest extends SpecTestsuiteBase
     public function testAssertReturn454(): void
     {
         $this->runAssertReturnCommand(
-            module: null,
             action: ['type' => 'invoke', 'field' => 'check_t0', 'args' => [['type' => 'i32', 'value' => '16']]],
             expected: [['type' => 'i32', 'value' => '2']],
             line: 706,
@@ -5000,7 +4555,6 @@ final class TableCopyTest extends SpecTestsuiteBase
     public function testAssertReturn455(): void
     {
         $this->runAssertReturnCommand(
-            module: null,
             action: ['type' => 'invoke', 'field' => 'check_t0', 'args' => [['type' => 'i32', 'value' => '17']]],
             expected: [['type' => 'i32', 'value' => '3']],
             line: 707,
@@ -5011,7 +4565,6 @@ final class TableCopyTest extends SpecTestsuiteBase
     public function testAssertReturn456(): void
     {
         $this->runAssertReturnCommand(
-            module: null,
             action: ['type' => 'invoke', 'field' => 'check_t0', 'args' => [['type' => 'i32', 'value' => '18']]],
             expected: [['type' => 'i32', 'value' => '6']],
             line: 708,
@@ -5022,7 +4575,6 @@ final class TableCopyTest extends SpecTestsuiteBase
     public function testAssertTrap457(): void
     {
         $this->runAssertTrapCommand(
-            module: null,
             action: ['type' => 'invoke', 'field' => 'check_t0', 'args' => [['type' => 'i32', 'value' => '19']]],
             text: 'uninitialized element',
             line: 709,
@@ -5033,7 +4585,6 @@ final class TableCopyTest extends SpecTestsuiteBase
     public function testAssertTrap458(): void
     {
         $this->runAssertTrapCommand(
-            module: null,
             action: ['type' => 'invoke', 'field' => 'check_t0', 'args' => [['type' => 'i32', 'value' => '20']]],
             text: 'uninitialized element',
             line: 710,
@@ -5044,7 +4595,6 @@ final class TableCopyTest extends SpecTestsuiteBase
     public function testAssertTrap459(): void
     {
         $this->runAssertTrapCommand(
-            module: null,
             action: ['type' => 'invoke', 'field' => 'check_t0', 'args' => [['type' => 'i32', 'value' => '21']]],
             text: 'uninitialized element',
             line: 711,
@@ -5055,7 +4605,6 @@ final class TableCopyTest extends SpecTestsuiteBase
     public function testAssertTrap460(): void
     {
         $this->runAssertTrapCommand(
-            module: null,
             action: ['type' => 'invoke', 'field' => 'check_t0', 'args' => [['type' => 'i32', 'value' => '22']]],
             text: 'uninitialized element',
             line: 712,
@@ -5066,7 +4615,6 @@ final class TableCopyTest extends SpecTestsuiteBase
     public function testAssertTrap461(): void
     {
         $this->runAssertTrapCommand(
-            module: null,
             action: ['type' => 'invoke', 'field' => 'check_t0', 'args' => [['type' => 'i32', 'value' => '23']]],
             text: 'uninitialized element',
             line: 713,
@@ -5077,7 +4625,6 @@ final class TableCopyTest extends SpecTestsuiteBase
     public function testAssertTrap462(): void
     {
         $this->runAssertTrapCommand(
-            module: null,
             action: ['type' => 'invoke', 'field' => 'check_t0', 'args' => [['type' => 'i32', 'value' => '24']]],
             text: 'uninitialized element',
             line: 714,
@@ -5088,7 +4635,6 @@ final class TableCopyTest extends SpecTestsuiteBase
     public function testAssertTrap463(): void
     {
         $this->runAssertTrapCommand(
-            module: null,
             action: ['type' => 'invoke', 'field' => 'check_t0', 'args' => [['type' => 'i32', 'value' => '25']]],
             text: 'uninitialized element',
             line: 715,
@@ -5099,7 +4645,6 @@ final class TableCopyTest extends SpecTestsuiteBase
     public function testAssertTrap464(): void
     {
         $this->runAssertTrapCommand(
-            module: null,
             action: ['type' => 'invoke', 'field' => 'check_t0', 'args' => [['type' => 'i32', 'value' => '26']]],
             text: 'uninitialized element',
             line: 716,
@@ -5110,7 +4655,6 @@ final class TableCopyTest extends SpecTestsuiteBase
     public function testAssertTrap465(): void
     {
         $this->runAssertTrapCommand(
-            module: null,
             action: ['type' => 'invoke', 'field' => 'check_t0', 'args' => [['type' => 'i32', 'value' => '27']]],
             text: 'uninitialized element',
             line: 717,
@@ -5121,7 +4665,6 @@ final class TableCopyTest extends SpecTestsuiteBase
     public function testAssertTrap466(): void
     {
         $this->runAssertTrapCommand(
-            module: null,
             action: ['type' => 'invoke', 'field' => 'check_t0', 'args' => [['type' => 'i32', 'value' => '28']]],
             text: 'uninitialized element',
             line: 718,
@@ -5132,7 +4675,6 @@ final class TableCopyTest extends SpecTestsuiteBase
     public function testAssertTrap467(): void
     {
         $this->runAssertTrapCommand(
-            module: null,
             action: ['type' => 'invoke', 'field' => 'check_t0', 'args' => [['type' => 'i32', 'value' => '29']]],
             text: 'uninitialized element',
             line: 719,
@@ -5143,7 +4685,6 @@ final class TableCopyTest extends SpecTestsuiteBase
     public function testAssertTrap468(): void
     {
         $this->runAssertTrapCommand(
-            module: null,
             action: ['type' => 'invoke', 'field' => 'check_t1', 'args' => [['type' => 'i32', 'value' => '0']]],
             text: 'uninitialized element',
             line: 720,
@@ -5154,7 +4695,6 @@ final class TableCopyTest extends SpecTestsuiteBase
     public function testAssertTrap469(): void
     {
         $this->runAssertTrapCommand(
-            module: null,
             action: ['type' => 'invoke', 'field' => 'check_t1', 'args' => [['type' => 'i32', 'value' => '1']]],
             text: 'uninitialized element',
             line: 721,
@@ -5165,7 +4705,6 @@ final class TableCopyTest extends SpecTestsuiteBase
     public function testAssertTrap470(): void
     {
         $this->runAssertTrapCommand(
-            module: null,
             action: ['type' => 'invoke', 'field' => 'check_t1', 'args' => [['type' => 'i32', 'value' => '2']]],
             text: 'uninitialized element',
             line: 722,
@@ -5176,7 +4715,6 @@ final class TableCopyTest extends SpecTestsuiteBase
     public function testAssertReturn471(): void
     {
         $this->runAssertReturnCommand(
-            module: null,
             action: ['type' => 'invoke', 'field' => 'check_t1', 'args' => [['type' => 'i32', 'value' => '3']]],
             expected: [['type' => 'i32', 'value' => '1']],
             line: 723,
@@ -5187,7 +4725,6 @@ final class TableCopyTest extends SpecTestsuiteBase
     public function testAssertReturn472(): void
     {
         $this->runAssertReturnCommand(
-            module: null,
             action: ['type' => 'invoke', 'field' => 'check_t1', 'args' => [['type' => 'i32', 'value' => '4']]],
             expected: [['type' => 'i32', 'value' => '3']],
             line: 724,
@@ -5198,7 +4735,6 @@ final class TableCopyTest extends SpecTestsuiteBase
     public function testAssertReturn473(): void
     {
         $this->runAssertReturnCommand(
-            module: null,
             action: ['type' => 'invoke', 'field' => 'check_t1', 'args' => [['type' => 'i32', 'value' => '5']]],
             expected: [['type' => 'i32', 'value' => '1']],
             line: 725,
@@ -5209,7 +4745,6 @@ final class TableCopyTest extends SpecTestsuiteBase
     public function testAssertReturn474(): void
     {
         $this->runAssertReturnCommand(
-            module: null,
             action: ['type' => 'invoke', 'field' => 'check_t1', 'args' => [['type' => 'i32', 'value' => '6']]],
             expected: [['type' => 'i32', 'value' => '4']],
             line: 726,
@@ -5220,7 +4755,6 @@ final class TableCopyTest extends SpecTestsuiteBase
     public function testAssertTrap475(): void
     {
         $this->runAssertTrapCommand(
-            module: null,
             action: ['type' => 'invoke', 'field' => 'check_t1', 'args' => [['type' => 'i32', 'value' => '7']]],
             text: 'uninitialized element',
             line: 727,
@@ -5231,7 +4765,6 @@ final class TableCopyTest extends SpecTestsuiteBase
     public function testAssertTrap476(): void
     {
         $this->runAssertTrapCommand(
-            module: null,
             action: ['type' => 'invoke', 'field' => 'check_t1', 'args' => [['type' => 'i32', 'value' => '8']]],
             text: 'uninitialized element',
             line: 728,
@@ -5242,7 +4775,6 @@ final class TableCopyTest extends SpecTestsuiteBase
     public function testAssertTrap477(): void
     {
         $this->runAssertTrapCommand(
-            module: null,
             action: ['type' => 'invoke', 'field' => 'check_t1', 'args' => [['type' => 'i32', 'value' => '9']]],
             text: 'uninitialized element',
             line: 729,
@@ -5253,7 +4785,6 @@ final class TableCopyTest extends SpecTestsuiteBase
     public function testAssertTrap478(): void
     {
         $this->runAssertTrapCommand(
-            module: null,
             action: ['type' => 'invoke', 'field' => 'check_t1', 'args' => [['type' => 'i32', 'value' => '10']]],
             text: 'uninitialized element',
             line: 730,
@@ -5264,7 +4795,6 @@ final class TableCopyTest extends SpecTestsuiteBase
     public function testAssertReturn479(): void
     {
         $this->runAssertReturnCommand(
-            module: null,
             action: ['type' => 'invoke', 'field' => 'check_t1', 'args' => [['type' => 'i32', 'value' => '11']]],
             expected: [['type' => 'i32', 'value' => '6']],
             line: 731,
@@ -5275,7 +4805,6 @@ final class TableCopyTest extends SpecTestsuiteBase
     public function testAssertReturn480(): void
     {
         $this->runAssertReturnCommand(
-            module: null,
             action: ['type' => 'invoke', 'field' => 'check_t1', 'args' => [['type' => 'i32', 'value' => '12']]],
             expected: [['type' => 'i32', 'value' => '3']],
             line: 732,
@@ -5286,7 +4815,6 @@ final class TableCopyTest extends SpecTestsuiteBase
     public function testAssertReturn481(): void
     {
         $this->runAssertReturnCommand(
-            module: null,
             action: ['type' => 'invoke', 'field' => 'check_t1', 'args' => [['type' => 'i32', 'value' => '13']]],
             expected: [['type' => 'i32', 'value' => '2']],
             line: 733,
@@ -5297,7 +4825,6 @@ final class TableCopyTest extends SpecTestsuiteBase
     public function testAssertReturn482(): void
     {
         $this->runAssertReturnCommand(
-            module: null,
             action: ['type' => 'invoke', 'field' => 'check_t1', 'args' => [['type' => 'i32', 'value' => '14']]],
             expected: [['type' => 'i32', 'value' => '5']],
             line: 734,
@@ -5308,7 +4835,6 @@ final class TableCopyTest extends SpecTestsuiteBase
     public function testAssertReturn483(): void
     {
         $this->runAssertReturnCommand(
-            module: null,
             action: ['type' => 'invoke', 'field' => 'check_t1', 'args' => [['type' => 'i32', 'value' => '15']]],
             expected: [['type' => 'i32', 'value' => '7']],
             line: 735,
@@ -5319,7 +4845,6 @@ final class TableCopyTest extends SpecTestsuiteBase
     public function testAssertTrap484(): void
     {
         $this->runAssertTrapCommand(
-            module: null,
             action: ['type' => 'invoke', 'field' => 'check_t1', 'args' => [['type' => 'i32', 'value' => '16']]],
             text: 'uninitialized element',
             line: 736,
@@ -5330,7 +4855,6 @@ final class TableCopyTest extends SpecTestsuiteBase
     public function testAssertTrap485(): void
     {
         $this->runAssertTrapCommand(
-            module: null,
             action: ['type' => 'invoke', 'field' => 'check_t1', 'args' => [['type' => 'i32', 'value' => '17']]],
             text: 'uninitialized element',
             line: 737,
@@ -5341,7 +4865,6 @@ final class TableCopyTest extends SpecTestsuiteBase
     public function testAssertTrap486(): void
     {
         $this->runAssertTrapCommand(
-            module: null,
             action: ['type' => 'invoke', 'field' => 'check_t1', 'args' => [['type' => 'i32', 'value' => '18']]],
             text: 'uninitialized element',
             line: 738,
@@ -5352,7 +4875,6 @@ final class TableCopyTest extends SpecTestsuiteBase
     public function testAssertTrap487(): void
     {
         $this->runAssertTrapCommand(
-            module: null,
             action: ['type' => 'invoke', 'field' => 'check_t1', 'args' => [['type' => 'i32', 'value' => '19']]],
             text: 'uninitialized element',
             line: 739,
@@ -5363,7 +4885,6 @@ final class TableCopyTest extends SpecTestsuiteBase
     public function testAssertTrap488(): void
     {
         $this->runAssertTrapCommand(
-            module: null,
             action: ['type' => 'invoke', 'field' => 'check_t1', 'args' => [['type' => 'i32', 'value' => '20']]],
             text: 'uninitialized element',
             line: 740,
@@ -5374,7 +4895,6 @@ final class TableCopyTest extends SpecTestsuiteBase
     public function testAssertTrap489(): void
     {
         $this->runAssertTrapCommand(
-            module: null,
             action: ['type' => 'invoke', 'field' => 'check_t1', 'args' => [['type' => 'i32', 'value' => '21']]],
             text: 'uninitialized element',
             line: 741,
@@ -5385,7 +4905,6 @@ final class TableCopyTest extends SpecTestsuiteBase
     public function testAssertTrap490(): void
     {
         $this->runAssertTrapCommand(
-            module: null,
             action: ['type' => 'invoke', 'field' => 'check_t1', 'args' => [['type' => 'i32', 'value' => '22']]],
             text: 'uninitialized element',
             line: 742,
@@ -5396,7 +4915,6 @@ final class TableCopyTest extends SpecTestsuiteBase
     public function testAssertTrap491(): void
     {
         $this->runAssertTrapCommand(
-            module: null,
             action: ['type' => 'invoke', 'field' => 'check_t1', 'args' => [['type' => 'i32', 'value' => '23']]],
             text: 'uninitialized element',
             line: 743,
@@ -5407,7 +4925,6 @@ final class TableCopyTest extends SpecTestsuiteBase
     public function testAssertTrap492(): void
     {
         $this->runAssertTrapCommand(
-            module: null,
             action: ['type' => 'invoke', 'field' => 'check_t1', 'args' => [['type' => 'i32', 'value' => '24']]],
             text: 'uninitialized element',
             line: 744,
@@ -5418,7 +4935,6 @@ final class TableCopyTest extends SpecTestsuiteBase
     public function testAssertTrap493(): void
     {
         $this->runAssertTrapCommand(
-            module: null,
             action: ['type' => 'invoke', 'field' => 'check_t1', 'args' => [['type' => 'i32', 'value' => '25']]],
             text: 'uninitialized element',
             line: 745,
@@ -5429,7 +4945,6 @@ final class TableCopyTest extends SpecTestsuiteBase
     public function testAssertTrap494(): void
     {
         $this->runAssertTrapCommand(
-            module: null,
             action: ['type' => 'invoke', 'field' => 'check_t1', 'args' => [['type' => 'i32', 'value' => '26']]],
             text: 'uninitialized element',
             line: 746,
@@ -5440,7 +4955,6 @@ final class TableCopyTest extends SpecTestsuiteBase
     public function testAssertTrap495(): void
     {
         $this->runAssertTrapCommand(
-            module: null,
             action: ['type' => 'invoke', 'field' => 'check_t1', 'args' => [['type' => 'i32', 'value' => '27']]],
             text: 'uninitialized element',
             line: 747,
@@ -5451,7 +4965,6 @@ final class TableCopyTest extends SpecTestsuiteBase
     public function testAssertTrap496(): void
     {
         $this->runAssertTrapCommand(
-            module: null,
             action: ['type' => 'invoke', 'field' => 'check_t1', 'args' => [['type' => 'i32', 'value' => '28']]],
             text: 'uninitialized element',
             line: 748,
@@ -5462,7 +4975,6 @@ final class TableCopyTest extends SpecTestsuiteBase
     public function testAssertTrap497(): void
     {
         $this->runAssertTrapCommand(
-            module: null,
             action: ['type' => 'invoke', 'field' => 'check_t1', 'args' => [['type' => 'i32', 'value' => '29']]],
             text: 'uninitialized element',
             line: 749,
@@ -5483,7 +4995,6 @@ final class TableCopyTest extends SpecTestsuiteBase
     public function testAction499(): void
     {
         $this->runActionCommand(
-            module: null,
             action: ['type' => 'invoke', 'field' => 'test', 'args' => []],
             line: 781,
         );
@@ -5493,7 +5004,6 @@ final class TableCopyTest extends SpecTestsuiteBase
     public function testAssertTrap500(): void
     {
         $this->runAssertTrapCommand(
-            module: null,
             action: ['type' => 'invoke', 'field' => 'check_t0', 'args' => [['type' => 'i32', 'value' => '0']]],
             text: 'uninitialized element',
             line: 782,
@@ -5504,7 +5014,6 @@ final class TableCopyTest extends SpecTestsuiteBase
     public function testAssertTrap501(): void
     {
         $this->runAssertTrapCommand(
-            module: null,
             action: ['type' => 'invoke', 'field' => 'check_t0', 'args' => [['type' => 'i32', 'value' => '1']]],
             text: 'uninitialized element',
             line: 783,
@@ -5515,7 +5024,6 @@ final class TableCopyTest extends SpecTestsuiteBase
     public function testAssertReturn502(): void
     {
         $this->runAssertReturnCommand(
-            module: null,
             action: ['type' => 'invoke', 'field' => 'check_t0', 'args' => [['type' => 'i32', 'value' => '2']]],
             expected: [['type' => 'i32', 'value' => '3']],
             line: 784,
@@ -5526,7 +5034,6 @@ final class TableCopyTest extends SpecTestsuiteBase
     public function testAssertReturn503(): void
     {
         $this->runAssertReturnCommand(
-            module: null,
             action: ['type' => 'invoke', 'field' => 'check_t0', 'args' => [['type' => 'i32', 'value' => '3']]],
             expected: [['type' => 'i32', 'value' => '1']],
             line: 785,
@@ -5537,7 +5044,6 @@ final class TableCopyTest extends SpecTestsuiteBase
     public function testAssertReturn504(): void
     {
         $this->runAssertReturnCommand(
-            module: null,
             action: ['type' => 'invoke', 'field' => 'check_t0', 'args' => [['type' => 'i32', 'value' => '4']]],
             expected: [['type' => 'i32', 'value' => '4']],
             line: 786,
@@ -5548,7 +5054,6 @@ final class TableCopyTest extends SpecTestsuiteBase
     public function testAssertReturn505(): void
     {
         $this->runAssertReturnCommand(
-            module: null,
             action: ['type' => 'invoke', 'field' => 'check_t0', 'args' => [['type' => 'i32', 'value' => '5']]],
             expected: [['type' => 'i32', 'value' => '1']],
             line: 787,
@@ -5559,7 +5064,6 @@ final class TableCopyTest extends SpecTestsuiteBase
     public function testAssertTrap506(): void
     {
         $this->runAssertTrapCommand(
-            module: null,
             action: ['type' => 'invoke', 'field' => 'check_t0', 'args' => [['type' => 'i32', 'value' => '6']]],
             text: 'uninitialized element',
             line: 788,
@@ -5570,7 +5074,6 @@ final class TableCopyTest extends SpecTestsuiteBase
     public function testAssertTrap507(): void
     {
         $this->runAssertTrapCommand(
-            module: null,
             action: ['type' => 'invoke', 'field' => 'check_t0', 'args' => [['type' => 'i32', 'value' => '7']]],
             text: 'uninitialized element',
             line: 789,
@@ -5581,7 +5084,6 @@ final class TableCopyTest extends SpecTestsuiteBase
     public function testAssertTrap508(): void
     {
         $this->runAssertTrapCommand(
-            module: null,
             action: ['type' => 'invoke', 'field' => 'check_t0', 'args' => [['type' => 'i32', 'value' => '8']]],
             text: 'uninitialized element',
             line: 790,
@@ -5592,7 +5094,6 @@ final class TableCopyTest extends SpecTestsuiteBase
     public function testAssertTrap509(): void
     {
         $this->runAssertTrapCommand(
-            module: null,
             action: ['type' => 'invoke', 'field' => 'check_t0', 'args' => [['type' => 'i32', 'value' => '9']]],
             text: 'uninitialized element',
             line: 791,
@@ -5603,7 +5104,6 @@ final class TableCopyTest extends SpecTestsuiteBase
     public function testAssertTrap510(): void
     {
         $this->runAssertTrapCommand(
-            module: null,
             action: ['type' => 'invoke', 'field' => 'check_t0', 'args' => [['type' => 'i32', 'value' => '10']]],
             text: 'uninitialized element',
             line: 792,
@@ -5614,7 +5114,6 @@ final class TableCopyTest extends SpecTestsuiteBase
     public function testAssertTrap511(): void
     {
         $this->runAssertTrapCommand(
-            module: null,
             action: ['type' => 'invoke', 'field' => 'check_t0', 'args' => [['type' => 'i32', 'value' => '11']]],
             text: 'uninitialized element',
             line: 793,
@@ -5625,7 +5124,6 @@ final class TableCopyTest extends SpecTestsuiteBase
     public function testAssertReturn512(): void
     {
         $this->runAssertReturnCommand(
-            module: null,
             action: ['type' => 'invoke', 'field' => 'check_t0', 'args' => [['type' => 'i32', 'value' => '12']]],
             expected: [['type' => 'i32', 'value' => '7']],
             line: 794,
@@ -5636,7 +5134,6 @@ final class TableCopyTest extends SpecTestsuiteBase
     public function testAssertReturn513(): void
     {
         $this->runAssertReturnCommand(
-            module: null,
             action: ['type' => 'invoke', 'field' => 'check_t0', 'args' => [['type' => 'i32', 'value' => '13']]],
             expected: [['type' => 'i32', 'value' => '5']],
             line: 795,
@@ -5647,7 +5144,6 @@ final class TableCopyTest extends SpecTestsuiteBase
     public function testAssertReturn514(): void
     {
         $this->runAssertReturnCommand(
-            module: null,
             action: ['type' => 'invoke', 'field' => 'check_t0', 'args' => [['type' => 'i32', 'value' => '14']]],
             expected: [['type' => 'i32', 'value' => '2']],
             line: 796,
@@ -5658,7 +5154,6 @@ final class TableCopyTest extends SpecTestsuiteBase
     public function testAssertReturn515(): void
     {
         $this->runAssertReturnCommand(
-            module: null,
             action: ['type' => 'invoke', 'field' => 'check_t0', 'args' => [['type' => 'i32', 'value' => '15']]],
             expected: [['type' => 'i32', 'value' => '3']],
             line: 797,
@@ -5669,7 +5164,6 @@ final class TableCopyTest extends SpecTestsuiteBase
     public function testAssertReturn516(): void
     {
         $this->runAssertReturnCommand(
-            module: null,
             action: ['type' => 'invoke', 'field' => 'check_t0', 'args' => [['type' => 'i32', 'value' => '16']]],
             expected: [['type' => 'i32', 'value' => '6']],
             line: 798,
@@ -5680,7 +5174,6 @@ final class TableCopyTest extends SpecTestsuiteBase
     public function testAssertTrap517(): void
     {
         $this->runAssertTrapCommand(
-            module: null,
             action: ['type' => 'invoke', 'field' => 'check_t0', 'args' => [['type' => 'i32', 'value' => '17']]],
             text: 'uninitialized element',
             line: 799,
@@ -5691,7 +5184,6 @@ final class TableCopyTest extends SpecTestsuiteBase
     public function testAssertTrap518(): void
     {
         $this->runAssertTrapCommand(
-            module: null,
             action: ['type' => 'invoke', 'field' => 'check_t0', 'args' => [['type' => 'i32', 'value' => '18']]],
             text: 'uninitialized element',
             line: 800,
@@ -5702,7 +5194,6 @@ final class TableCopyTest extends SpecTestsuiteBase
     public function testAssertTrap519(): void
     {
         $this->runAssertTrapCommand(
-            module: null,
             action: ['type' => 'invoke', 'field' => 'check_t0', 'args' => [['type' => 'i32', 'value' => '19']]],
             text: 'uninitialized element',
             line: 801,
@@ -5713,7 +5204,6 @@ final class TableCopyTest extends SpecTestsuiteBase
     public function testAssertTrap520(): void
     {
         $this->runAssertTrapCommand(
-            module: null,
             action: ['type' => 'invoke', 'field' => 'check_t0', 'args' => [['type' => 'i32', 'value' => '20']]],
             text: 'uninitialized element',
             line: 802,
@@ -5724,7 +5214,6 @@ final class TableCopyTest extends SpecTestsuiteBase
     public function testAssertTrap521(): void
     {
         $this->runAssertTrapCommand(
-            module: null,
             action: ['type' => 'invoke', 'field' => 'check_t0', 'args' => [['type' => 'i32', 'value' => '21']]],
             text: 'uninitialized element',
             line: 803,
@@ -5735,7 +5224,6 @@ final class TableCopyTest extends SpecTestsuiteBase
     public function testAssertTrap522(): void
     {
         $this->runAssertTrapCommand(
-            module: null,
             action: ['type' => 'invoke', 'field' => 'check_t0', 'args' => [['type' => 'i32', 'value' => '22']]],
             text: 'uninitialized element',
             line: 804,
@@ -5746,7 +5234,6 @@ final class TableCopyTest extends SpecTestsuiteBase
     public function testAssertTrap523(): void
     {
         $this->runAssertTrapCommand(
-            module: null,
             action: ['type' => 'invoke', 'field' => 'check_t0', 'args' => [['type' => 'i32', 'value' => '23']]],
             text: 'uninitialized element',
             line: 805,
@@ -5757,7 +5244,6 @@ final class TableCopyTest extends SpecTestsuiteBase
     public function testAssertTrap524(): void
     {
         $this->runAssertTrapCommand(
-            module: null,
             action: ['type' => 'invoke', 'field' => 'check_t0', 'args' => [['type' => 'i32', 'value' => '24']]],
             text: 'uninitialized element',
             line: 806,
@@ -5768,7 +5254,6 @@ final class TableCopyTest extends SpecTestsuiteBase
     public function testAssertTrap525(): void
     {
         $this->runAssertTrapCommand(
-            module: null,
             action: ['type' => 'invoke', 'field' => 'check_t0', 'args' => [['type' => 'i32', 'value' => '25']]],
             text: 'uninitialized element',
             line: 807,
@@ -5779,7 +5264,6 @@ final class TableCopyTest extends SpecTestsuiteBase
     public function testAssertTrap526(): void
     {
         $this->runAssertTrapCommand(
-            module: null,
             action: ['type' => 'invoke', 'field' => 'check_t0', 'args' => [['type' => 'i32', 'value' => '26']]],
             text: 'uninitialized element',
             line: 808,
@@ -5790,7 +5274,6 @@ final class TableCopyTest extends SpecTestsuiteBase
     public function testAssertTrap527(): void
     {
         $this->runAssertTrapCommand(
-            module: null,
             action: ['type' => 'invoke', 'field' => 'check_t0', 'args' => [['type' => 'i32', 'value' => '27']]],
             text: 'uninitialized element',
             line: 809,
@@ -5801,7 +5284,6 @@ final class TableCopyTest extends SpecTestsuiteBase
     public function testAssertTrap528(): void
     {
         $this->runAssertTrapCommand(
-            module: null,
             action: ['type' => 'invoke', 'field' => 'check_t0', 'args' => [['type' => 'i32', 'value' => '28']]],
             text: 'uninitialized element',
             line: 810,
@@ -5812,7 +5294,6 @@ final class TableCopyTest extends SpecTestsuiteBase
     public function testAssertTrap529(): void
     {
         $this->runAssertTrapCommand(
-            module: null,
             action: ['type' => 'invoke', 'field' => 'check_t0', 'args' => [['type' => 'i32', 'value' => '29']]],
             text: 'uninitialized element',
             line: 811,
@@ -5823,7 +5304,6 @@ final class TableCopyTest extends SpecTestsuiteBase
     public function testAssertTrap530(): void
     {
         $this->runAssertTrapCommand(
-            module: null,
             action: ['type' => 'invoke', 'field' => 'check_t1', 'args' => [['type' => 'i32', 'value' => '0']]],
             text: 'uninitialized element',
             line: 812,
@@ -5834,7 +5314,6 @@ final class TableCopyTest extends SpecTestsuiteBase
     public function testAssertTrap531(): void
     {
         $this->runAssertTrapCommand(
-            module: null,
             action: ['type' => 'invoke', 'field' => 'check_t1', 'args' => [['type' => 'i32', 'value' => '1']]],
             text: 'uninitialized element',
             line: 813,
@@ -5845,7 +5324,6 @@ final class TableCopyTest extends SpecTestsuiteBase
     public function testAssertTrap532(): void
     {
         $this->runAssertTrapCommand(
-            module: null,
             action: ['type' => 'invoke', 'field' => 'check_t1', 'args' => [['type' => 'i32', 'value' => '2']]],
             text: 'uninitialized element',
             line: 814,
@@ -5856,7 +5334,6 @@ final class TableCopyTest extends SpecTestsuiteBase
     public function testAssertReturn533(): void
     {
         $this->runAssertReturnCommand(
-            module: null,
             action: ['type' => 'invoke', 'field' => 'check_t1', 'args' => [['type' => 'i32', 'value' => '3']]],
             expected: [['type' => 'i32', 'value' => '1']],
             line: 815,
@@ -5867,7 +5344,6 @@ final class TableCopyTest extends SpecTestsuiteBase
     public function testAssertReturn534(): void
     {
         $this->runAssertReturnCommand(
-            module: null,
             action: ['type' => 'invoke', 'field' => 'check_t1', 'args' => [['type' => 'i32', 'value' => '4']]],
             expected: [['type' => 'i32', 'value' => '3']],
             line: 816,
@@ -5878,7 +5354,6 @@ final class TableCopyTest extends SpecTestsuiteBase
     public function testAssertReturn535(): void
     {
         $this->runAssertReturnCommand(
-            module: null,
             action: ['type' => 'invoke', 'field' => 'check_t1', 'args' => [['type' => 'i32', 'value' => '5']]],
             expected: [['type' => 'i32', 'value' => '1']],
             line: 817,
@@ -5889,7 +5364,6 @@ final class TableCopyTest extends SpecTestsuiteBase
     public function testAssertReturn536(): void
     {
         $this->runAssertReturnCommand(
-            module: null,
             action: ['type' => 'invoke', 'field' => 'check_t1', 'args' => [['type' => 'i32', 'value' => '6']]],
             expected: [['type' => 'i32', 'value' => '4']],
             line: 818,
@@ -5900,7 +5374,6 @@ final class TableCopyTest extends SpecTestsuiteBase
     public function testAssertTrap537(): void
     {
         $this->runAssertTrapCommand(
-            module: null,
             action: ['type' => 'invoke', 'field' => 'check_t1', 'args' => [['type' => 'i32', 'value' => '7']]],
             text: 'uninitialized element',
             line: 819,
@@ -5911,7 +5384,6 @@ final class TableCopyTest extends SpecTestsuiteBase
     public function testAssertTrap538(): void
     {
         $this->runAssertTrapCommand(
-            module: null,
             action: ['type' => 'invoke', 'field' => 'check_t1', 'args' => [['type' => 'i32', 'value' => '8']]],
             text: 'uninitialized element',
             line: 820,
@@ -5922,7 +5394,6 @@ final class TableCopyTest extends SpecTestsuiteBase
     public function testAssertTrap539(): void
     {
         $this->runAssertTrapCommand(
-            module: null,
             action: ['type' => 'invoke', 'field' => 'check_t1', 'args' => [['type' => 'i32', 'value' => '9']]],
             text: 'uninitialized element',
             line: 821,
@@ -5933,7 +5404,6 @@ final class TableCopyTest extends SpecTestsuiteBase
     public function testAssertTrap540(): void
     {
         $this->runAssertTrapCommand(
-            module: null,
             action: ['type' => 'invoke', 'field' => 'check_t1', 'args' => [['type' => 'i32', 'value' => '10']]],
             text: 'uninitialized element',
             line: 822,
@@ -5944,7 +5414,6 @@ final class TableCopyTest extends SpecTestsuiteBase
     public function testAssertTrap541(): void
     {
         $this->runAssertTrapCommand(
-            module: null,
             action: ['type' => 'invoke', 'field' => 'check_t1', 'args' => [['type' => 'i32', 'value' => '11']]],
             text: 'uninitialized element',
             line: 823,
@@ -5955,7 +5424,6 @@ final class TableCopyTest extends SpecTestsuiteBase
     public function testAssertReturn542(): void
     {
         $this->runAssertReturnCommand(
-            module: null,
             action: ['type' => 'invoke', 'field' => 'check_t1', 'args' => [['type' => 'i32', 'value' => '12']]],
             expected: [['type' => 'i32', 'value' => '3']],
             line: 824,
@@ -5966,7 +5434,6 @@ final class TableCopyTest extends SpecTestsuiteBase
     public function testAssertReturn543(): void
     {
         $this->runAssertReturnCommand(
-            module: null,
             action: ['type' => 'invoke', 'field' => 'check_t1', 'args' => [['type' => 'i32', 'value' => '13']]],
             expected: [['type' => 'i32', 'value' => '1']],
             line: 825,
@@ -5977,7 +5444,6 @@ final class TableCopyTest extends SpecTestsuiteBase
     public function testAssertReturn544(): void
     {
         $this->runAssertReturnCommand(
-            module: null,
             action: ['type' => 'invoke', 'field' => 'check_t1', 'args' => [['type' => 'i32', 'value' => '14']]],
             expected: [['type' => 'i32', 'value' => '4']],
             line: 826,
@@ -5988,7 +5454,6 @@ final class TableCopyTest extends SpecTestsuiteBase
     public function testAssertReturn545(): void
     {
         $this->runAssertReturnCommand(
-            module: null,
             action: ['type' => 'invoke', 'field' => 'check_t1', 'args' => [['type' => 'i32', 'value' => '15']]],
             expected: [['type' => 'i32', 'value' => '1']],
             line: 827,
@@ -5999,7 +5464,6 @@ final class TableCopyTest extends SpecTestsuiteBase
     public function testAssertTrap546(): void
     {
         $this->runAssertTrapCommand(
-            module: null,
             action: ['type' => 'invoke', 'field' => 'check_t1', 'args' => [['type' => 'i32', 'value' => '16']]],
             text: 'uninitialized element',
             line: 828,
@@ -6010,7 +5474,6 @@ final class TableCopyTest extends SpecTestsuiteBase
     public function testAssertTrap547(): void
     {
         $this->runAssertTrapCommand(
-            module: null,
             action: ['type' => 'invoke', 'field' => 'check_t1', 'args' => [['type' => 'i32', 'value' => '17']]],
             text: 'uninitialized element',
             line: 829,
@@ -6021,7 +5484,6 @@ final class TableCopyTest extends SpecTestsuiteBase
     public function testAssertTrap548(): void
     {
         $this->runAssertTrapCommand(
-            module: null,
             action: ['type' => 'invoke', 'field' => 'check_t1', 'args' => [['type' => 'i32', 'value' => '18']]],
             text: 'uninitialized element',
             line: 830,
@@ -6032,7 +5494,6 @@ final class TableCopyTest extends SpecTestsuiteBase
     public function testAssertTrap549(): void
     {
         $this->runAssertTrapCommand(
-            module: null,
             action: ['type' => 'invoke', 'field' => 'check_t1', 'args' => [['type' => 'i32', 'value' => '19']]],
             text: 'uninitialized element',
             line: 831,
@@ -6043,7 +5504,6 @@ final class TableCopyTest extends SpecTestsuiteBase
     public function testAssertTrap550(): void
     {
         $this->runAssertTrapCommand(
-            module: null,
             action: ['type' => 'invoke', 'field' => 'check_t1', 'args' => [['type' => 'i32', 'value' => '20']]],
             text: 'uninitialized element',
             line: 832,
@@ -6054,7 +5514,6 @@ final class TableCopyTest extends SpecTestsuiteBase
     public function testAssertTrap551(): void
     {
         $this->runAssertTrapCommand(
-            module: null,
             action: ['type' => 'invoke', 'field' => 'check_t1', 'args' => [['type' => 'i32', 'value' => '21']]],
             text: 'uninitialized element',
             line: 833,
@@ -6065,7 +5524,6 @@ final class TableCopyTest extends SpecTestsuiteBase
     public function testAssertReturn552(): void
     {
         $this->runAssertReturnCommand(
-            module: null,
             action: ['type' => 'invoke', 'field' => 'check_t1', 'args' => [['type' => 'i32', 'value' => '22']]],
             expected: [['type' => 'i32', 'value' => '7']],
             line: 834,
@@ -6076,7 +5534,6 @@ final class TableCopyTest extends SpecTestsuiteBase
     public function testAssertReturn553(): void
     {
         $this->runAssertReturnCommand(
-            module: null,
             action: ['type' => 'invoke', 'field' => 'check_t1', 'args' => [['type' => 'i32', 'value' => '23']]],
             expected: [['type' => 'i32', 'value' => '5']],
             line: 835,
@@ -6087,7 +5544,6 @@ final class TableCopyTest extends SpecTestsuiteBase
     public function testAssertReturn554(): void
     {
         $this->runAssertReturnCommand(
-            module: null,
             action: ['type' => 'invoke', 'field' => 'check_t1', 'args' => [['type' => 'i32', 'value' => '24']]],
             expected: [['type' => 'i32', 'value' => '2']],
             line: 836,
@@ -6098,7 +5554,6 @@ final class TableCopyTest extends SpecTestsuiteBase
     public function testAssertReturn555(): void
     {
         $this->runAssertReturnCommand(
-            module: null,
             action: ['type' => 'invoke', 'field' => 'check_t1', 'args' => [['type' => 'i32', 'value' => '25']]],
             expected: [['type' => 'i32', 'value' => '3']],
             line: 837,
@@ -6109,7 +5564,6 @@ final class TableCopyTest extends SpecTestsuiteBase
     public function testAssertReturn556(): void
     {
         $this->runAssertReturnCommand(
-            module: null,
             action: ['type' => 'invoke', 'field' => 'check_t1', 'args' => [['type' => 'i32', 'value' => '26']]],
             expected: [['type' => 'i32', 'value' => '6']],
             line: 838,
@@ -6120,7 +5574,6 @@ final class TableCopyTest extends SpecTestsuiteBase
     public function testAssertTrap557(): void
     {
         $this->runAssertTrapCommand(
-            module: null,
             action: ['type' => 'invoke', 'field' => 'check_t1', 'args' => [['type' => 'i32', 'value' => '27']]],
             text: 'uninitialized element',
             line: 839,
@@ -6131,7 +5584,6 @@ final class TableCopyTest extends SpecTestsuiteBase
     public function testAssertTrap558(): void
     {
         $this->runAssertTrapCommand(
-            module: null,
             action: ['type' => 'invoke', 'field' => 'check_t1', 'args' => [['type' => 'i32', 'value' => '28']]],
             text: 'uninitialized element',
             line: 840,
@@ -6142,7 +5594,6 @@ final class TableCopyTest extends SpecTestsuiteBase
     public function testAssertTrap559(): void
     {
         $this->runAssertTrapCommand(
-            module: null,
             action: ['type' => 'invoke', 'field' => 'check_t1', 'args' => [['type' => 'i32', 'value' => '29']]],
             text: 'uninitialized element',
             line: 841,
@@ -6163,7 +5614,6 @@ final class TableCopyTest extends SpecTestsuiteBase
     public function testAction561(): void
     {
         $this->runActionCommand(
-            module: null,
             action: ['type' => 'invoke', 'field' => 'test', 'args' => []],
             line: 873,
         );
@@ -6173,7 +5623,6 @@ final class TableCopyTest extends SpecTestsuiteBase
     public function testAssertTrap562(): void
     {
         $this->runAssertTrapCommand(
-            module: null,
             action: ['type' => 'invoke', 'field' => 'check_t0', 'args' => [['type' => 'i32', 'value' => '0']]],
             text: 'uninitialized element',
             line: 874,
@@ -6184,7 +5633,6 @@ final class TableCopyTest extends SpecTestsuiteBase
     public function testAssertTrap563(): void
     {
         $this->runAssertTrapCommand(
-            module: null,
             action: ['type' => 'invoke', 'field' => 'check_t0', 'args' => [['type' => 'i32', 'value' => '1']]],
             text: 'uninitialized element',
             line: 875,
@@ -6195,7 +5643,6 @@ final class TableCopyTest extends SpecTestsuiteBase
     public function testAssertReturn564(): void
     {
         $this->runAssertReturnCommand(
-            module: null,
             action: ['type' => 'invoke', 'field' => 'check_t0', 'args' => [['type' => 'i32', 'value' => '2']]],
             expected: [['type' => 'i32', 'value' => '3']],
             line: 876,
@@ -6206,7 +5653,6 @@ final class TableCopyTest extends SpecTestsuiteBase
     public function testAssertReturn565(): void
     {
         $this->runAssertReturnCommand(
-            module: null,
             action: ['type' => 'invoke', 'field' => 'check_t0', 'args' => [['type' => 'i32', 'value' => '3']]],
             expected: [['type' => 'i32', 'value' => '1']],
             line: 877,
@@ -6217,7 +5663,6 @@ final class TableCopyTest extends SpecTestsuiteBase
     public function testAssertReturn566(): void
     {
         $this->runAssertReturnCommand(
-            module: null,
             action: ['type' => 'invoke', 'field' => 'check_t0', 'args' => [['type' => 'i32', 'value' => '4']]],
             expected: [['type' => 'i32', 'value' => '4']],
             line: 878,
@@ -6228,7 +5673,6 @@ final class TableCopyTest extends SpecTestsuiteBase
     public function testAssertReturn567(): void
     {
         $this->runAssertReturnCommand(
-            module: null,
             action: ['type' => 'invoke', 'field' => 'check_t0', 'args' => [['type' => 'i32', 'value' => '5']]],
             expected: [['type' => 'i32', 'value' => '1']],
             line: 879,
@@ -6239,7 +5683,6 @@ final class TableCopyTest extends SpecTestsuiteBase
     public function testAssertTrap568(): void
     {
         $this->runAssertTrapCommand(
-            module: null,
             action: ['type' => 'invoke', 'field' => 'check_t0', 'args' => [['type' => 'i32', 'value' => '6']]],
             text: 'uninitialized element',
             line: 880,
@@ -6250,7 +5693,6 @@ final class TableCopyTest extends SpecTestsuiteBase
     public function testAssertTrap569(): void
     {
         $this->runAssertTrapCommand(
-            module: null,
             action: ['type' => 'invoke', 'field' => 'check_t0', 'args' => [['type' => 'i32', 'value' => '7']]],
             text: 'uninitialized element',
             line: 881,
@@ -6261,7 +5703,6 @@ final class TableCopyTest extends SpecTestsuiteBase
     public function testAssertTrap570(): void
     {
         $this->runAssertTrapCommand(
-            module: null,
             action: ['type' => 'invoke', 'field' => 'check_t0', 'args' => [['type' => 'i32', 'value' => '8']]],
             text: 'uninitialized element',
             line: 882,
@@ -6272,7 +5713,6 @@ final class TableCopyTest extends SpecTestsuiteBase
     public function testAssertTrap571(): void
     {
         $this->runAssertTrapCommand(
-            module: null,
             action: ['type' => 'invoke', 'field' => 'check_t0', 'args' => [['type' => 'i32', 'value' => '9']]],
             text: 'uninitialized element',
             line: 883,
@@ -6283,7 +5723,6 @@ final class TableCopyTest extends SpecTestsuiteBase
     public function testAssertTrap572(): void
     {
         $this->runAssertTrapCommand(
-            module: null,
             action: ['type' => 'invoke', 'field' => 'check_t0', 'args' => [['type' => 'i32', 'value' => '10']]],
             text: 'uninitialized element',
             line: 884,
@@ -6294,7 +5733,6 @@ final class TableCopyTest extends SpecTestsuiteBase
     public function testAssertTrap573(): void
     {
         $this->runAssertTrapCommand(
-            module: null,
             action: ['type' => 'invoke', 'field' => 'check_t0', 'args' => [['type' => 'i32', 'value' => '11']]],
             text: 'uninitialized element',
             line: 885,
@@ -6305,7 +5743,6 @@ final class TableCopyTest extends SpecTestsuiteBase
     public function testAssertReturn574(): void
     {
         $this->runAssertReturnCommand(
-            module: null,
             action: ['type' => 'invoke', 'field' => 'check_t0', 'args' => [['type' => 'i32', 'value' => '12']]],
             expected: [['type' => 'i32', 'value' => '7']],
             line: 886,
@@ -6316,7 +5753,6 @@ final class TableCopyTest extends SpecTestsuiteBase
     public function testAssertReturn575(): void
     {
         $this->runAssertReturnCommand(
-            module: null,
             action: ['type' => 'invoke', 'field' => 'check_t0', 'args' => [['type' => 'i32', 'value' => '13']]],
             expected: [['type' => 'i32', 'value' => '5']],
             line: 887,
@@ -6327,7 +5763,6 @@ final class TableCopyTest extends SpecTestsuiteBase
     public function testAssertReturn576(): void
     {
         $this->runAssertReturnCommand(
-            module: null,
             action: ['type' => 'invoke', 'field' => 'check_t0', 'args' => [['type' => 'i32', 'value' => '14']]],
             expected: [['type' => 'i32', 'value' => '2']],
             line: 888,
@@ -6338,7 +5773,6 @@ final class TableCopyTest extends SpecTestsuiteBase
     public function testAssertReturn577(): void
     {
         $this->runAssertReturnCommand(
-            module: null,
             action: ['type' => 'invoke', 'field' => 'check_t0', 'args' => [['type' => 'i32', 'value' => '15']]],
             expected: [['type' => 'i32', 'value' => '3']],
             line: 889,
@@ -6349,7 +5783,6 @@ final class TableCopyTest extends SpecTestsuiteBase
     public function testAssertReturn578(): void
     {
         $this->runAssertReturnCommand(
-            module: null,
             action: ['type' => 'invoke', 'field' => 'check_t0', 'args' => [['type' => 'i32', 'value' => '16']]],
             expected: [['type' => 'i32', 'value' => '6']],
             line: 890,
@@ -6360,7 +5793,6 @@ final class TableCopyTest extends SpecTestsuiteBase
     public function testAssertTrap579(): void
     {
         $this->runAssertTrapCommand(
-            module: null,
             action: ['type' => 'invoke', 'field' => 'check_t0', 'args' => [['type' => 'i32', 'value' => '17']]],
             text: 'uninitialized element',
             line: 891,
@@ -6371,7 +5803,6 @@ final class TableCopyTest extends SpecTestsuiteBase
     public function testAssertTrap580(): void
     {
         $this->runAssertTrapCommand(
-            module: null,
             action: ['type' => 'invoke', 'field' => 'check_t0', 'args' => [['type' => 'i32', 'value' => '18']]],
             text: 'uninitialized element',
             line: 892,
@@ -6382,7 +5813,6 @@ final class TableCopyTest extends SpecTestsuiteBase
     public function testAssertTrap581(): void
     {
         $this->runAssertTrapCommand(
-            module: null,
             action: ['type' => 'invoke', 'field' => 'check_t0', 'args' => [['type' => 'i32', 'value' => '19']]],
             text: 'uninitialized element',
             line: 893,
@@ -6393,7 +5823,6 @@ final class TableCopyTest extends SpecTestsuiteBase
     public function testAssertTrap582(): void
     {
         $this->runAssertTrapCommand(
-            module: null,
             action: ['type' => 'invoke', 'field' => 'check_t0', 'args' => [['type' => 'i32', 'value' => '20']]],
             text: 'uninitialized element',
             line: 894,
@@ -6404,7 +5833,6 @@ final class TableCopyTest extends SpecTestsuiteBase
     public function testAssertTrap583(): void
     {
         $this->runAssertTrapCommand(
-            module: null,
             action: ['type' => 'invoke', 'field' => 'check_t0', 'args' => [['type' => 'i32', 'value' => '21']]],
             text: 'uninitialized element',
             line: 895,
@@ -6415,7 +5843,6 @@ final class TableCopyTest extends SpecTestsuiteBase
     public function testAssertTrap584(): void
     {
         $this->runAssertTrapCommand(
-            module: null,
             action: ['type' => 'invoke', 'field' => 'check_t0', 'args' => [['type' => 'i32', 'value' => '22']]],
             text: 'uninitialized element',
             line: 896,
@@ -6426,7 +5853,6 @@ final class TableCopyTest extends SpecTestsuiteBase
     public function testAssertTrap585(): void
     {
         $this->runAssertTrapCommand(
-            module: null,
             action: ['type' => 'invoke', 'field' => 'check_t0', 'args' => [['type' => 'i32', 'value' => '23']]],
             text: 'uninitialized element',
             line: 897,
@@ -6437,7 +5863,6 @@ final class TableCopyTest extends SpecTestsuiteBase
     public function testAssertTrap586(): void
     {
         $this->runAssertTrapCommand(
-            module: null,
             action: ['type' => 'invoke', 'field' => 'check_t0', 'args' => [['type' => 'i32', 'value' => '24']]],
             text: 'uninitialized element',
             line: 898,
@@ -6448,7 +5873,6 @@ final class TableCopyTest extends SpecTestsuiteBase
     public function testAssertTrap587(): void
     {
         $this->runAssertTrapCommand(
-            module: null,
             action: ['type' => 'invoke', 'field' => 'check_t0', 'args' => [['type' => 'i32', 'value' => '25']]],
             text: 'uninitialized element',
             line: 899,
@@ -6459,7 +5883,6 @@ final class TableCopyTest extends SpecTestsuiteBase
     public function testAssertTrap588(): void
     {
         $this->runAssertTrapCommand(
-            module: null,
             action: ['type' => 'invoke', 'field' => 'check_t0', 'args' => [['type' => 'i32', 'value' => '26']]],
             text: 'uninitialized element',
             line: 900,
@@ -6470,7 +5893,6 @@ final class TableCopyTest extends SpecTestsuiteBase
     public function testAssertTrap589(): void
     {
         $this->runAssertTrapCommand(
-            module: null,
             action: ['type' => 'invoke', 'field' => 'check_t0', 'args' => [['type' => 'i32', 'value' => '27']]],
             text: 'uninitialized element',
             line: 901,
@@ -6481,7 +5903,6 @@ final class TableCopyTest extends SpecTestsuiteBase
     public function testAssertTrap590(): void
     {
         $this->runAssertTrapCommand(
-            module: null,
             action: ['type' => 'invoke', 'field' => 'check_t0', 'args' => [['type' => 'i32', 'value' => '28']]],
             text: 'uninitialized element',
             line: 902,
@@ -6492,7 +5913,6 @@ final class TableCopyTest extends SpecTestsuiteBase
     public function testAssertTrap591(): void
     {
         $this->runAssertTrapCommand(
-            module: null,
             action: ['type' => 'invoke', 'field' => 'check_t0', 'args' => [['type' => 'i32', 'value' => '29']]],
             text: 'uninitialized element',
             line: 903,
@@ -6503,7 +5923,6 @@ final class TableCopyTest extends SpecTestsuiteBase
     public function testAssertTrap592(): void
     {
         $this->runAssertTrapCommand(
-            module: null,
             action: ['type' => 'invoke', 'field' => 'check_t1', 'args' => [['type' => 'i32', 'value' => '0']]],
             text: 'uninitialized element',
             line: 904,
@@ -6514,7 +5933,6 @@ final class TableCopyTest extends SpecTestsuiteBase
     public function testAssertTrap593(): void
     {
         $this->runAssertTrapCommand(
-            module: null,
             action: ['type' => 'invoke', 'field' => 'check_t1', 'args' => [['type' => 'i32', 'value' => '1']]],
             text: 'uninitialized element',
             line: 905,
@@ -6525,7 +5943,6 @@ final class TableCopyTest extends SpecTestsuiteBase
     public function testAssertTrap594(): void
     {
         $this->runAssertTrapCommand(
-            module: null,
             action: ['type' => 'invoke', 'field' => 'check_t1', 'args' => [['type' => 'i32', 'value' => '2']]],
             text: 'uninitialized element',
             line: 906,
@@ -6536,7 +5953,6 @@ final class TableCopyTest extends SpecTestsuiteBase
     public function testAssertReturn595(): void
     {
         $this->runAssertReturnCommand(
-            module: null,
             action: ['type' => 'invoke', 'field' => 'check_t1', 'args' => [['type' => 'i32', 'value' => '3']]],
             expected: [['type' => 'i32', 'value' => '1']],
             line: 907,
@@ -6547,7 +5963,6 @@ final class TableCopyTest extends SpecTestsuiteBase
     public function testAssertReturn596(): void
     {
         $this->runAssertReturnCommand(
-            module: null,
             action: ['type' => 'invoke', 'field' => 'check_t1', 'args' => [['type' => 'i32', 'value' => '4']]],
             expected: [['type' => 'i32', 'value' => '3']],
             line: 908,
@@ -6558,7 +5973,6 @@ final class TableCopyTest extends SpecTestsuiteBase
     public function testAssertReturn597(): void
     {
         $this->runAssertReturnCommand(
-            module: null,
             action: ['type' => 'invoke', 'field' => 'check_t1', 'args' => [['type' => 'i32', 'value' => '5']]],
             expected: [['type' => 'i32', 'value' => '1']],
             line: 909,
@@ -6569,7 +5983,6 @@ final class TableCopyTest extends SpecTestsuiteBase
     public function testAssertReturn598(): void
     {
         $this->runAssertReturnCommand(
-            module: null,
             action: ['type' => 'invoke', 'field' => 'check_t1', 'args' => [['type' => 'i32', 'value' => '6']]],
             expected: [['type' => 'i32', 'value' => '4']],
             line: 910,
@@ -6580,7 +5993,6 @@ final class TableCopyTest extends SpecTestsuiteBase
     public function testAssertTrap599(): void
     {
         $this->runAssertTrapCommand(
-            module: null,
             action: ['type' => 'invoke', 'field' => 'check_t1', 'args' => [['type' => 'i32', 'value' => '7']]],
             text: 'uninitialized element',
             line: 911,
@@ -6591,7 +6003,6 @@ final class TableCopyTest extends SpecTestsuiteBase
     public function testAssertTrap600(): void
     {
         $this->runAssertTrapCommand(
-            module: null,
             action: ['type' => 'invoke', 'field' => 'check_t1', 'args' => [['type' => 'i32', 'value' => '8']]],
             text: 'uninitialized element',
             line: 912,
@@ -6602,7 +6013,6 @@ final class TableCopyTest extends SpecTestsuiteBase
     public function testAssertTrap601(): void
     {
         $this->runAssertTrapCommand(
-            module: null,
             action: ['type' => 'invoke', 'field' => 'check_t1', 'args' => [['type' => 'i32', 'value' => '9']]],
             text: 'uninitialized element',
             line: 913,
@@ -6613,7 +6023,6 @@ final class TableCopyTest extends SpecTestsuiteBase
     public function testAssertTrap602(): void
     {
         $this->runAssertTrapCommand(
-            module: null,
             action: ['type' => 'invoke', 'field' => 'check_t1', 'args' => [['type' => 'i32', 'value' => '10']]],
             text: 'uninitialized element',
             line: 914,
@@ -6624,7 +6033,6 @@ final class TableCopyTest extends SpecTestsuiteBase
     public function testAssertReturn603(): void
     {
         $this->runAssertReturnCommand(
-            module: null,
             action: ['type' => 'invoke', 'field' => 'check_t1', 'args' => [['type' => 'i32', 'value' => '11']]],
             expected: [['type' => 'i32', 'value' => '6']],
             line: 915,
@@ -6635,7 +6043,6 @@ final class TableCopyTest extends SpecTestsuiteBase
     public function testAssertReturn604(): void
     {
         $this->runAssertReturnCommand(
-            module: null,
             action: ['type' => 'invoke', 'field' => 'check_t1', 'args' => [['type' => 'i32', 'value' => '12']]],
             expected: [['type' => 'i32', 'value' => '3']],
             line: 916,
@@ -6646,7 +6053,6 @@ final class TableCopyTest extends SpecTestsuiteBase
     public function testAssertReturn605(): void
     {
         $this->runAssertReturnCommand(
-            module: null,
             action: ['type' => 'invoke', 'field' => 'check_t1', 'args' => [['type' => 'i32', 'value' => '13']]],
             expected: [['type' => 'i32', 'value' => '2']],
             line: 917,
@@ -6657,7 +6063,6 @@ final class TableCopyTest extends SpecTestsuiteBase
     public function testAssertReturn606(): void
     {
         $this->runAssertReturnCommand(
-            module: null,
             action: ['type' => 'invoke', 'field' => 'check_t1', 'args' => [['type' => 'i32', 'value' => '14']]],
             expected: [['type' => 'i32', 'value' => '5']],
             line: 918,
@@ -6668,7 +6073,6 @@ final class TableCopyTest extends SpecTestsuiteBase
     public function testAssertReturn607(): void
     {
         $this->runAssertReturnCommand(
-            module: null,
             action: ['type' => 'invoke', 'field' => 'check_t1', 'args' => [['type' => 'i32', 'value' => '15']]],
             expected: [['type' => 'i32', 'value' => '7']],
             line: 919,
@@ -6679,7 +6083,6 @@ final class TableCopyTest extends SpecTestsuiteBase
     public function testAssertTrap608(): void
     {
         $this->runAssertTrapCommand(
-            module: null,
             action: ['type' => 'invoke', 'field' => 'check_t1', 'args' => [['type' => 'i32', 'value' => '16']]],
             text: 'uninitialized element',
             line: 920,
@@ -6690,7 +6093,6 @@ final class TableCopyTest extends SpecTestsuiteBase
     public function testAssertTrap609(): void
     {
         $this->runAssertTrapCommand(
-            module: null,
             action: ['type' => 'invoke', 'field' => 'check_t1', 'args' => [['type' => 'i32', 'value' => '17']]],
             text: 'uninitialized element',
             line: 921,
@@ -6701,7 +6103,6 @@ final class TableCopyTest extends SpecTestsuiteBase
     public function testAssertTrap610(): void
     {
         $this->runAssertTrapCommand(
-            module: null,
             action: ['type' => 'invoke', 'field' => 'check_t1', 'args' => [['type' => 'i32', 'value' => '18']]],
             text: 'uninitialized element',
             line: 922,
@@ -6712,7 +6113,6 @@ final class TableCopyTest extends SpecTestsuiteBase
     public function testAssertTrap611(): void
     {
         $this->runAssertTrapCommand(
-            module: null,
             action: ['type' => 'invoke', 'field' => 'check_t1', 'args' => [['type' => 'i32', 'value' => '19']]],
             text: 'uninitialized element',
             line: 923,
@@ -6723,7 +6123,6 @@ final class TableCopyTest extends SpecTestsuiteBase
     public function testAssertTrap612(): void
     {
         $this->runAssertTrapCommand(
-            module: null,
             action: ['type' => 'invoke', 'field' => 'check_t1', 'args' => [['type' => 'i32', 'value' => '20']]],
             text: 'uninitialized element',
             line: 924,
@@ -6734,7 +6133,6 @@ final class TableCopyTest extends SpecTestsuiteBase
     public function testAssertTrap613(): void
     {
         $this->runAssertTrapCommand(
-            module: null,
             action: ['type' => 'invoke', 'field' => 'check_t1', 'args' => [['type' => 'i32', 'value' => '21']]],
             text: 'uninitialized element',
             line: 925,
@@ -6745,7 +6143,6 @@ final class TableCopyTest extends SpecTestsuiteBase
     public function testAssertTrap614(): void
     {
         $this->runAssertTrapCommand(
-            module: null,
             action: ['type' => 'invoke', 'field' => 'check_t1', 'args' => [['type' => 'i32', 'value' => '22']]],
             text: 'uninitialized element',
             line: 926,
@@ -6756,7 +6153,6 @@ final class TableCopyTest extends SpecTestsuiteBase
     public function testAssertTrap615(): void
     {
         $this->runAssertTrapCommand(
-            module: null,
             action: ['type' => 'invoke', 'field' => 'check_t1', 'args' => [['type' => 'i32', 'value' => '23']]],
             text: 'uninitialized element',
             line: 927,
@@ -6767,7 +6163,6 @@ final class TableCopyTest extends SpecTestsuiteBase
     public function testAssertTrap616(): void
     {
         $this->runAssertTrapCommand(
-            module: null,
             action: ['type' => 'invoke', 'field' => 'check_t1', 'args' => [['type' => 'i32', 'value' => '24']]],
             text: 'uninitialized element',
             line: 928,
@@ -6778,7 +6173,6 @@ final class TableCopyTest extends SpecTestsuiteBase
     public function testAssertTrap617(): void
     {
         $this->runAssertTrapCommand(
-            module: null,
             action: ['type' => 'invoke', 'field' => 'check_t1', 'args' => [['type' => 'i32', 'value' => '25']]],
             text: 'uninitialized element',
             line: 929,
@@ -6789,7 +6183,6 @@ final class TableCopyTest extends SpecTestsuiteBase
     public function testAssertTrap618(): void
     {
         $this->runAssertTrapCommand(
-            module: null,
             action: ['type' => 'invoke', 'field' => 'check_t1', 'args' => [['type' => 'i32', 'value' => '26']]],
             text: 'uninitialized element',
             line: 930,
@@ -6800,7 +6193,6 @@ final class TableCopyTest extends SpecTestsuiteBase
     public function testAssertTrap619(): void
     {
         $this->runAssertTrapCommand(
-            module: null,
             action: ['type' => 'invoke', 'field' => 'check_t1', 'args' => [['type' => 'i32', 'value' => '27']]],
             text: 'uninitialized element',
             line: 931,
@@ -6811,7 +6203,6 @@ final class TableCopyTest extends SpecTestsuiteBase
     public function testAssertTrap620(): void
     {
         $this->runAssertTrapCommand(
-            module: null,
             action: ['type' => 'invoke', 'field' => 'check_t1', 'args' => [['type' => 'i32', 'value' => '28']]],
             text: 'uninitialized element',
             line: 932,
@@ -6822,7 +6213,6 @@ final class TableCopyTest extends SpecTestsuiteBase
     public function testAssertTrap621(): void
     {
         $this->runAssertTrapCommand(
-            module: null,
             action: ['type' => 'invoke', 'field' => 'check_t1', 'args' => [['type' => 'i32', 'value' => '29']]],
             text: 'uninitialized element',
             line: 933,
@@ -6843,7 +6233,6 @@ final class TableCopyTest extends SpecTestsuiteBase
     public function testAction623(): void
     {
         $this->runActionCommand(
-            module: null,
             action: ['type' => 'invoke', 'field' => 'test', 'args' => []],
             line: 965,
         );
@@ -6853,7 +6242,6 @@ final class TableCopyTest extends SpecTestsuiteBase
     public function testAssertTrap624(): void
     {
         $this->runAssertTrapCommand(
-            module: null,
             action: ['type' => 'invoke', 'field' => 'check_t0', 'args' => [['type' => 'i32', 'value' => '0']]],
             text: 'uninitialized element',
             line: 966,
@@ -6864,7 +6252,6 @@ final class TableCopyTest extends SpecTestsuiteBase
     public function testAssertTrap625(): void
     {
         $this->runAssertTrapCommand(
-            module: null,
             action: ['type' => 'invoke', 'field' => 'check_t0', 'args' => [['type' => 'i32', 'value' => '1']]],
             text: 'uninitialized element',
             line: 967,
@@ -6875,7 +6262,6 @@ final class TableCopyTest extends SpecTestsuiteBase
     public function testAssertReturn626(): void
     {
         $this->runAssertReturnCommand(
-            module: null,
             action: ['type' => 'invoke', 'field' => 'check_t0', 'args' => [['type' => 'i32', 'value' => '2']]],
             expected: [['type' => 'i32', 'value' => '3']],
             line: 968,
@@ -6886,7 +6272,6 @@ final class TableCopyTest extends SpecTestsuiteBase
     public function testAssertReturn627(): void
     {
         $this->runAssertReturnCommand(
-            module: null,
             action: ['type' => 'invoke', 'field' => 'check_t0', 'args' => [['type' => 'i32', 'value' => '3']]],
             expected: [['type' => 'i32', 'value' => '1']],
             line: 969,
@@ -6897,7 +6282,6 @@ final class TableCopyTest extends SpecTestsuiteBase
     public function testAssertReturn628(): void
     {
         $this->runAssertReturnCommand(
-            module: null,
             action: ['type' => 'invoke', 'field' => 'check_t0', 'args' => [['type' => 'i32', 'value' => '4']]],
             expected: [['type' => 'i32', 'value' => '4']],
             line: 970,
@@ -6908,7 +6292,6 @@ final class TableCopyTest extends SpecTestsuiteBase
     public function testAssertReturn629(): void
     {
         $this->runAssertReturnCommand(
-            module: null,
             action: ['type' => 'invoke', 'field' => 'check_t0', 'args' => [['type' => 'i32', 'value' => '5']]],
             expected: [['type' => 'i32', 'value' => '1']],
             line: 971,
@@ -6919,7 +6302,6 @@ final class TableCopyTest extends SpecTestsuiteBase
     public function testAssertTrap630(): void
     {
         $this->runAssertTrapCommand(
-            module: null,
             action: ['type' => 'invoke', 'field' => 'check_t0', 'args' => [['type' => 'i32', 'value' => '6']]],
             text: 'uninitialized element',
             line: 972,
@@ -6930,7 +6312,6 @@ final class TableCopyTest extends SpecTestsuiteBase
     public function testAssertTrap631(): void
     {
         $this->runAssertTrapCommand(
-            module: null,
             action: ['type' => 'invoke', 'field' => 'check_t0', 'args' => [['type' => 'i32', 'value' => '7']]],
             text: 'uninitialized element',
             line: 973,
@@ -6941,7 +6322,6 @@ final class TableCopyTest extends SpecTestsuiteBase
     public function testAssertTrap632(): void
     {
         $this->runAssertTrapCommand(
-            module: null,
             action: ['type' => 'invoke', 'field' => 'check_t0', 'args' => [['type' => 'i32', 'value' => '8']]],
             text: 'uninitialized element',
             line: 974,
@@ -6952,7 +6332,6 @@ final class TableCopyTest extends SpecTestsuiteBase
     public function testAssertTrap633(): void
     {
         $this->runAssertTrapCommand(
-            module: null,
             action: ['type' => 'invoke', 'field' => 'check_t0', 'args' => [['type' => 'i32', 'value' => '9']]],
             text: 'uninitialized element',
             line: 975,
@@ -6963,7 +6342,6 @@ final class TableCopyTest extends SpecTestsuiteBase
     public function testAssertTrap634(): void
     {
         $this->runAssertTrapCommand(
-            module: null,
             action: ['type' => 'invoke', 'field' => 'check_t0', 'args' => [['type' => 'i32', 'value' => '10']]],
             text: 'uninitialized element',
             line: 976,
@@ -6974,7 +6352,6 @@ final class TableCopyTest extends SpecTestsuiteBase
     public function testAssertTrap635(): void
     {
         $this->runAssertTrapCommand(
-            module: null,
             action: ['type' => 'invoke', 'field' => 'check_t0', 'args' => [['type' => 'i32', 'value' => '11']]],
             text: 'uninitialized element',
             line: 977,
@@ -6985,7 +6362,6 @@ final class TableCopyTest extends SpecTestsuiteBase
     public function testAssertReturn636(): void
     {
         $this->runAssertReturnCommand(
-            module: null,
             action: ['type' => 'invoke', 'field' => 'check_t0', 'args' => [['type' => 'i32', 'value' => '12']]],
             expected: [['type' => 'i32', 'value' => '7']],
             line: 978,
@@ -6996,7 +6372,6 @@ final class TableCopyTest extends SpecTestsuiteBase
     public function testAssertReturn637(): void
     {
         $this->runAssertReturnCommand(
-            module: null,
             action: ['type' => 'invoke', 'field' => 'check_t0', 'args' => [['type' => 'i32', 'value' => '13']]],
             expected: [['type' => 'i32', 'value' => '3']],
             line: 979,
@@ -7007,7 +6382,6 @@ final class TableCopyTest extends SpecTestsuiteBase
     public function testAssertReturn638(): void
     {
         $this->runAssertReturnCommand(
-            module: null,
             action: ['type' => 'invoke', 'field' => 'check_t0', 'args' => [['type' => 'i32', 'value' => '14']]],
             expected: [['type' => 'i32', 'value' => '1']],
             line: 980,
@@ -7018,7 +6392,6 @@ final class TableCopyTest extends SpecTestsuiteBase
     public function testAssertReturn639(): void
     {
         $this->runAssertReturnCommand(
-            module: null,
             action: ['type' => 'invoke', 'field' => 'check_t0', 'args' => [['type' => 'i32', 'value' => '15']]],
             expected: [['type' => 'i32', 'value' => '4']],
             line: 981,
@@ -7029,7 +6402,6 @@ final class TableCopyTest extends SpecTestsuiteBase
     public function testAssertReturn640(): void
     {
         $this->runAssertReturnCommand(
-            module: null,
             action: ['type' => 'invoke', 'field' => 'check_t0', 'args' => [['type' => 'i32', 'value' => '16']]],
             expected: [['type' => 'i32', 'value' => '6']],
             line: 982,
@@ -7040,7 +6412,6 @@ final class TableCopyTest extends SpecTestsuiteBase
     public function testAssertTrap641(): void
     {
         $this->runAssertTrapCommand(
-            module: null,
             action: ['type' => 'invoke', 'field' => 'check_t0', 'args' => [['type' => 'i32', 'value' => '17']]],
             text: 'uninitialized element',
             line: 983,
@@ -7051,7 +6422,6 @@ final class TableCopyTest extends SpecTestsuiteBase
     public function testAssertTrap642(): void
     {
         $this->runAssertTrapCommand(
-            module: null,
             action: ['type' => 'invoke', 'field' => 'check_t0', 'args' => [['type' => 'i32', 'value' => '18']]],
             text: 'uninitialized element',
             line: 984,
@@ -7062,7 +6432,6 @@ final class TableCopyTest extends SpecTestsuiteBase
     public function testAssertTrap643(): void
     {
         $this->runAssertTrapCommand(
-            module: null,
             action: ['type' => 'invoke', 'field' => 'check_t0', 'args' => [['type' => 'i32', 'value' => '19']]],
             text: 'uninitialized element',
             line: 985,
@@ -7073,7 +6442,6 @@ final class TableCopyTest extends SpecTestsuiteBase
     public function testAssertTrap644(): void
     {
         $this->runAssertTrapCommand(
-            module: null,
             action: ['type' => 'invoke', 'field' => 'check_t0', 'args' => [['type' => 'i32', 'value' => '20']]],
             text: 'uninitialized element',
             line: 986,
@@ -7084,7 +6452,6 @@ final class TableCopyTest extends SpecTestsuiteBase
     public function testAssertTrap645(): void
     {
         $this->runAssertTrapCommand(
-            module: null,
             action: ['type' => 'invoke', 'field' => 'check_t0', 'args' => [['type' => 'i32', 'value' => '21']]],
             text: 'uninitialized element',
             line: 987,
@@ -7095,7 +6462,6 @@ final class TableCopyTest extends SpecTestsuiteBase
     public function testAssertTrap646(): void
     {
         $this->runAssertTrapCommand(
-            module: null,
             action: ['type' => 'invoke', 'field' => 'check_t0', 'args' => [['type' => 'i32', 'value' => '22']]],
             text: 'uninitialized element',
             line: 988,
@@ -7106,7 +6472,6 @@ final class TableCopyTest extends SpecTestsuiteBase
     public function testAssertTrap647(): void
     {
         $this->runAssertTrapCommand(
-            module: null,
             action: ['type' => 'invoke', 'field' => 'check_t0', 'args' => [['type' => 'i32', 'value' => '23']]],
             text: 'uninitialized element',
             line: 989,
@@ -7117,7 +6482,6 @@ final class TableCopyTest extends SpecTestsuiteBase
     public function testAssertTrap648(): void
     {
         $this->runAssertTrapCommand(
-            module: null,
             action: ['type' => 'invoke', 'field' => 'check_t0', 'args' => [['type' => 'i32', 'value' => '24']]],
             text: 'uninitialized element',
             line: 990,
@@ -7128,7 +6492,6 @@ final class TableCopyTest extends SpecTestsuiteBase
     public function testAssertTrap649(): void
     {
         $this->runAssertTrapCommand(
-            module: null,
             action: ['type' => 'invoke', 'field' => 'check_t0', 'args' => [['type' => 'i32', 'value' => '25']]],
             text: 'uninitialized element',
             line: 991,
@@ -7139,7 +6502,6 @@ final class TableCopyTest extends SpecTestsuiteBase
     public function testAssertTrap650(): void
     {
         $this->runAssertTrapCommand(
-            module: null,
             action: ['type' => 'invoke', 'field' => 'check_t0', 'args' => [['type' => 'i32', 'value' => '26']]],
             text: 'uninitialized element',
             line: 992,
@@ -7150,7 +6512,6 @@ final class TableCopyTest extends SpecTestsuiteBase
     public function testAssertTrap651(): void
     {
         $this->runAssertTrapCommand(
-            module: null,
             action: ['type' => 'invoke', 'field' => 'check_t0', 'args' => [['type' => 'i32', 'value' => '27']]],
             text: 'uninitialized element',
             line: 993,
@@ -7161,7 +6522,6 @@ final class TableCopyTest extends SpecTestsuiteBase
     public function testAssertTrap652(): void
     {
         $this->runAssertTrapCommand(
-            module: null,
             action: ['type' => 'invoke', 'field' => 'check_t0', 'args' => [['type' => 'i32', 'value' => '28']]],
             text: 'uninitialized element',
             line: 994,
@@ -7172,7 +6532,6 @@ final class TableCopyTest extends SpecTestsuiteBase
     public function testAssertTrap653(): void
     {
         $this->runAssertTrapCommand(
-            module: null,
             action: ['type' => 'invoke', 'field' => 'check_t0', 'args' => [['type' => 'i32', 'value' => '29']]],
             text: 'uninitialized element',
             line: 995,
@@ -7183,7 +6542,6 @@ final class TableCopyTest extends SpecTestsuiteBase
     public function testAssertTrap654(): void
     {
         $this->runAssertTrapCommand(
-            module: null,
             action: ['type' => 'invoke', 'field' => 'check_t1', 'args' => [['type' => 'i32', 'value' => '0']]],
             text: 'uninitialized element',
             line: 996,
@@ -7194,7 +6552,6 @@ final class TableCopyTest extends SpecTestsuiteBase
     public function testAssertTrap655(): void
     {
         $this->runAssertTrapCommand(
-            module: null,
             action: ['type' => 'invoke', 'field' => 'check_t1', 'args' => [['type' => 'i32', 'value' => '1']]],
             text: 'uninitialized element',
             line: 997,
@@ -7205,7 +6562,6 @@ final class TableCopyTest extends SpecTestsuiteBase
     public function testAssertTrap656(): void
     {
         $this->runAssertTrapCommand(
-            module: null,
             action: ['type' => 'invoke', 'field' => 'check_t1', 'args' => [['type' => 'i32', 'value' => '2']]],
             text: 'uninitialized element',
             line: 998,
@@ -7216,7 +6572,6 @@ final class TableCopyTest extends SpecTestsuiteBase
     public function testAssertReturn657(): void
     {
         $this->runAssertReturnCommand(
-            module: null,
             action: ['type' => 'invoke', 'field' => 'check_t1', 'args' => [['type' => 'i32', 'value' => '3']]],
             expected: [['type' => 'i32', 'value' => '1']],
             line: 999,
@@ -7227,7 +6582,6 @@ final class TableCopyTest extends SpecTestsuiteBase
     public function testAssertReturn658(): void
     {
         $this->runAssertReturnCommand(
-            module: null,
             action: ['type' => 'invoke', 'field' => 'check_t1', 'args' => [['type' => 'i32', 'value' => '4']]],
             expected: [['type' => 'i32', 'value' => '3']],
             line: 1000,
@@ -7238,7 +6592,6 @@ final class TableCopyTest extends SpecTestsuiteBase
     public function testAssertReturn659(): void
     {
         $this->runAssertReturnCommand(
-            module: null,
             action: ['type' => 'invoke', 'field' => 'check_t1', 'args' => [['type' => 'i32', 'value' => '5']]],
             expected: [['type' => 'i32', 'value' => '1']],
             line: 1001,
@@ -7249,7 +6602,6 @@ final class TableCopyTest extends SpecTestsuiteBase
     public function testAssertReturn660(): void
     {
         $this->runAssertReturnCommand(
-            module: null,
             action: ['type' => 'invoke', 'field' => 'check_t1', 'args' => [['type' => 'i32', 'value' => '6']]],
             expected: [['type' => 'i32', 'value' => '4']],
             line: 1002,
@@ -7260,7 +6612,6 @@ final class TableCopyTest extends SpecTestsuiteBase
     public function testAssertTrap661(): void
     {
         $this->runAssertTrapCommand(
-            module: null,
             action: ['type' => 'invoke', 'field' => 'check_t1', 'args' => [['type' => 'i32', 'value' => '7']]],
             text: 'uninitialized element',
             line: 1003,
@@ -7271,7 +6622,6 @@ final class TableCopyTest extends SpecTestsuiteBase
     public function testAssertTrap662(): void
     {
         $this->runAssertTrapCommand(
-            module: null,
             action: ['type' => 'invoke', 'field' => 'check_t1', 'args' => [['type' => 'i32', 'value' => '8']]],
             text: 'uninitialized element',
             line: 1004,
@@ -7282,7 +6632,6 @@ final class TableCopyTest extends SpecTestsuiteBase
     public function testAssertTrap663(): void
     {
         $this->runAssertTrapCommand(
-            module: null,
             action: ['type' => 'invoke', 'field' => 'check_t1', 'args' => [['type' => 'i32', 'value' => '9']]],
             text: 'uninitialized element',
             line: 1005,
@@ -7293,7 +6642,6 @@ final class TableCopyTest extends SpecTestsuiteBase
     public function testAssertTrap664(): void
     {
         $this->runAssertTrapCommand(
-            module: null,
             action: ['type' => 'invoke', 'field' => 'check_t1', 'args' => [['type' => 'i32', 'value' => '10']]],
             text: 'uninitialized element',
             line: 1006,
@@ -7304,7 +6652,6 @@ final class TableCopyTest extends SpecTestsuiteBase
     public function testAssertReturn665(): void
     {
         $this->runAssertReturnCommand(
-            module: null,
             action: ['type' => 'invoke', 'field' => 'check_t1', 'args' => [['type' => 'i32', 'value' => '11']]],
             expected: [['type' => 'i32', 'value' => '6']],
             line: 1007,
@@ -7315,7 +6662,6 @@ final class TableCopyTest extends SpecTestsuiteBase
     public function testAssertReturn666(): void
     {
         $this->runAssertReturnCommand(
-            module: null,
             action: ['type' => 'invoke', 'field' => 'check_t1', 'args' => [['type' => 'i32', 'value' => '12']]],
             expected: [['type' => 'i32', 'value' => '3']],
             line: 1008,
@@ -7326,7 +6672,6 @@ final class TableCopyTest extends SpecTestsuiteBase
     public function testAssertReturn667(): void
     {
         $this->runAssertReturnCommand(
-            module: null,
             action: ['type' => 'invoke', 'field' => 'check_t1', 'args' => [['type' => 'i32', 'value' => '13']]],
             expected: [['type' => 'i32', 'value' => '2']],
             line: 1009,
@@ -7337,7 +6682,6 @@ final class TableCopyTest extends SpecTestsuiteBase
     public function testAssertReturn668(): void
     {
         $this->runAssertReturnCommand(
-            module: null,
             action: ['type' => 'invoke', 'field' => 'check_t1', 'args' => [['type' => 'i32', 'value' => '14']]],
             expected: [['type' => 'i32', 'value' => '5']],
             line: 1010,
@@ -7348,7 +6692,6 @@ final class TableCopyTest extends SpecTestsuiteBase
     public function testAssertReturn669(): void
     {
         $this->runAssertReturnCommand(
-            module: null,
             action: ['type' => 'invoke', 'field' => 'check_t1', 'args' => [['type' => 'i32', 'value' => '15']]],
             expected: [['type' => 'i32', 'value' => '7']],
             line: 1011,
@@ -7359,7 +6702,6 @@ final class TableCopyTest extends SpecTestsuiteBase
     public function testAssertTrap670(): void
     {
         $this->runAssertTrapCommand(
-            module: null,
             action: ['type' => 'invoke', 'field' => 'check_t1', 'args' => [['type' => 'i32', 'value' => '16']]],
             text: 'uninitialized element',
             line: 1012,
@@ -7370,7 +6712,6 @@ final class TableCopyTest extends SpecTestsuiteBase
     public function testAssertTrap671(): void
     {
         $this->runAssertTrapCommand(
-            module: null,
             action: ['type' => 'invoke', 'field' => 'check_t1', 'args' => [['type' => 'i32', 'value' => '17']]],
             text: 'uninitialized element',
             line: 1013,
@@ -7381,7 +6722,6 @@ final class TableCopyTest extends SpecTestsuiteBase
     public function testAssertTrap672(): void
     {
         $this->runAssertTrapCommand(
-            module: null,
             action: ['type' => 'invoke', 'field' => 'check_t1', 'args' => [['type' => 'i32', 'value' => '18']]],
             text: 'uninitialized element',
             line: 1014,
@@ -7392,7 +6732,6 @@ final class TableCopyTest extends SpecTestsuiteBase
     public function testAssertTrap673(): void
     {
         $this->runAssertTrapCommand(
-            module: null,
             action: ['type' => 'invoke', 'field' => 'check_t1', 'args' => [['type' => 'i32', 'value' => '19']]],
             text: 'uninitialized element',
             line: 1015,
@@ -7403,7 +6742,6 @@ final class TableCopyTest extends SpecTestsuiteBase
     public function testAssertTrap674(): void
     {
         $this->runAssertTrapCommand(
-            module: null,
             action: ['type' => 'invoke', 'field' => 'check_t1', 'args' => [['type' => 'i32', 'value' => '20']]],
             text: 'uninitialized element',
             line: 1016,
@@ -7414,7 +6752,6 @@ final class TableCopyTest extends SpecTestsuiteBase
     public function testAssertTrap675(): void
     {
         $this->runAssertTrapCommand(
-            module: null,
             action: ['type' => 'invoke', 'field' => 'check_t1', 'args' => [['type' => 'i32', 'value' => '21']]],
             text: 'uninitialized element',
             line: 1017,
@@ -7425,7 +6762,6 @@ final class TableCopyTest extends SpecTestsuiteBase
     public function testAssertTrap676(): void
     {
         $this->runAssertTrapCommand(
-            module: null,
             action: ['type' => 'invoke', 'field' => 'check_t1', 'args' => [['type' => 'i32', 'value' => '22']]],
             text: 'uninitialized element',
             line: 1018,
@@ -7436,7 +6772,6 @@ final class TableCopyTest extends SpecTestsuiteBase
     public function testAssertTrap677(): void
     {
         $this->runAssertTrapCommand(
-            module: null,
             action: ['type' => 'invoke', 'field' => 'check_t1', 'args' => [['type' => 'i32', 'value' => '23']]],
             text: 'uninitialized element',
             line: 1019,
@@ -7447,7 +6782,6 @@ final class TableCopyTest extends SpecTestsuiteBase
     public function testAssertTrap678(): void
     {
         $this->runAssertTrapCommand(
-            module: null,
             action: ['type' => 'invoke', 'field' => 'check_t1', 'args' => [['type' => 'i32', 'value' => '24']]],
             text: 'uninitialized element',
             line: 1020,
@@ -7458,7 +6792,6 @@ final class TableCopyTest extends SpecTestsuiteBase
     public function testAssertTrap679(): void
     {
         $this->runAssertTrapCommand(
-            module: null,
             action: ['type' => 'invoke', 'field' => 'check_t1', 'args' => [['type' => 'i32', 'value' => '25']]],
             text: 'uninitialized element',
             line: 1021,
@@ -7469,7 +6802,6 @@ final class TableCopyTest extends SpecTestsuiteBase
     public function testAssertTrap680(): void
     {
         $this->runAssertTrapCommand(
-            module: null,
             action: ['type' => 'invoke', 'field' => 'check_t1', 'args' => [['type' => 'i32', 'value' => '26']]],
             text: 'uninitialized element',
             line: 1022,
@@ -7480,7 +6812,6 @@ final class TableCopyTest extends SpecTestsuiteBase
     public function testAssertTrap681(): void
     {
         $this->runAssertTrapCommand(
-            module: null,
             action: ['type' => 'invoke', 'field' => 'check_t1', 'args' => [['type' => 'i32', 'value' => '27']]],
             text: 'uninitialized element',
             line: 1023,
@@ -7491,7 +6822,6 @@ final class TableCopyTest extends SpecTestsuiteBase
     public function testAssertTrap682(): void
     {
         $this->runAssertTrapCommand(
-            module: null,
             action: ['type' => 'invoke', 'field' => 'check_t1', 'args' => [['type' => 'i32', 'value' => '28']]],
             text: 'uninitialized element',
             line: 1024,
@@ -7502,7 +6832,6 @@ final class TableCopyTest extends SpecTestsuiteBase
     public function testAssertTrap683(): void
     {
         $this->runAssertTrapCommand(
-            module: null,
             action: ['type' => 'invoke', 'field' => 'check_t1', 'args' => [['type' => 'i32', 'value' => '29']]],
             text: 'uninitialized element',
             line: 1025,
@@ -7523,7 +6852,6 @@ final class TableCopyTest extends SpecTestsuiteBase
     public function testAction685(): void
     {
         $this->runActionCommand(
-            module: null,
             action: ['type' => 'invoke', 'field' => 'test', 'args' => []],
             line: 1057,
         );
@@ -7533,7 +6861,6 @@ final class TableCopyTest extends SpecTestsuiteBase
     public function testAssertTrap686(): void
     {
         $this->runAssertTrapCommand(
-            module: null,
             action: ['type' => 'invoke', 'field' => 'check_t0', 'args' => [['type' => 'i32', 'value' => '0']]],
             text: 'uninitialized element',
             line: 1058,
@@ -7544,7 +6871,6 @@ final class TableCopyTest extends SpecTestsuiteBase
     public function testAssertTrap687(): void
     {
         $this->runAssertTrapCommand(
-            module: null,
             action: ['type' => 'invoke', 'field' => 'check_t0', 'args' => [['type' => 'i32', 'value' => '1']]],
             text: 'uninitialized element',
             line: 1059,
@@ -7555,7 +6881,6 @@ final class TableCopyTest extends SpecTestsuiteBase
     public function testAssertReturn688(): void
     {
         $this->runAssertReturnCommand(
-            module: null,
             action: ['type' => 'invoke', 'field' => 'check_t0', 'args' => [['type' => 'i32', 'value' => '2']]],
             expected: [['type' => 'i32', 'value' => '3']],
             line: 1060,
@@ -7566,7 +6891,6 @@ final class TableCopyTest extends SpecTestsuiteBase
     public function testAssertReturn689(): void
     {
         $this->runAssertReturnCommand(
-            module: null,
             action: ['type' => 'invoke', 'field' => 'check_t0', 'args' => [['type' => 'i32', 'value' => '3']]],
             expected: [['type' => 'i32', 'value' => '1']],
             line: 1061,
@@ -7577,7 +6901,6 @@ final class TableCopyTest extends SpecTestsuiteBase
     public function testAssertReturn690(): void
     {
         $this->runAssertReturnCommand(
-            module: null,
             action: ['type' => 'invoke', 'field' => 'check_t0', 'args' => [['type' => 'i32', 'value' => '4']]],
             expected: [['type' => 'i32', 'value' => '4']],
             line: 1062,
@@ -7588,7 +6911,6 @@ final class TableCopyTest extends SpecTestsuiteBase
     public function testAssertReturn691(): void
     {
         $this->runAssertReturnCommand(
-            module: null,
             action: ['type' => 'invoke', 'field' => 'check_t0', 'args' => [['type' => 'i32', 'value' => '5']]],
             expected: [['type' => 'i32', 'value' => '1']],
             line: 1063,
@@ -7599,7 +6921,6 @@ final class TableCopyTest extends SpecTestsuiteBase
     public function testAssertTrap692(): void
     {
         $this->runAssertTrapCommand(
-            module: null,
             action: ['type' => 'invoke', 'field' => 'check_t0', 'args' => [['type' => 'i32', 'value' => '6']]],
             text: 'uninitialized element',
             line: 1064,
@@ -7610,7 +6931,6 @@ final class TableCopyTest extends SpecTestsuiteBase
     public function testAssertTrap693(): void
     {
         $this->runAssertTrapCommand(
-            module: null,
             action: ['type' => 'invoke', 'field' => 'check_t0', 'args' => [['type' => 'i32', 'value' => '7']]],
             text: 'uninitialized element',
             line: 1065,
@@ -7621,7 +6941,6 @@ final class TableCopyTest extends SpecTestsuiteBase
     public function testAssertTrap694(): void
     {
         $this->runAssertTrapCommand(
-            module: null,
             action: ['type' => 'invoke', 'field' => 'check_t0', 'args' => [['type' => 'i32', 'value' => '8']]],
             text: 'uninitialized element',
             line: 1066,
@@ -7632,7 +6951,6 @@ final class TableCopyTest extends SpecTestsuiteBase
     public function testAssertTrap695(): void
     {
         $this->runAssertTrapCommand(
-            module: null,
             action: ['type' => 'invoke', 'field' => 'check_t0', 'args' => [['type' => 'i32', 'value' => '9']]],
             text: 'uninitialized element',
             line: 1067,
@@ -7643,7 +6961,6 @@ final class TableCopyTest extends SpecTestsuiteBase
     public function testAssertTrap696(): void
     {
         $this->runAssertTrapCommand(
-            module: null,
             action: ['type' => 'invoke', 'field' => 'check_t0', 'args' => [['type' => 'i32', 'value' => '10']]],
             text: 'uninitialized element',
             line: 1068,
@@ -7654,7 +6971,6 @@ final class TableCopyTest extends SpecTestsuiteBase
     public function testAssertTrap697(): void
     {
         $this->runAssertTrapCommand(
-            module: null,
             action: ['type' => 'invoke', 'field' => 'check_t0', 'args' => [['type' => 'i32', 'value' => '11']]],
             text: 'uninitialized element',
             line: 1069,
@@ -7665,7 +6981,6 @@ final class TableCopyTest extends SpecTestsuiteBase
     public function testAssertReturn698(): void
     {
         $this->runAssertReturnCommand(
-            module: null,
             action: ['type' => 'invoke', 'field' => 'check_t0', 'args' => [['type' => 'i32', 'value' => '12']]],
             expected: [['type' => 'i32', 'value' => '7']],
             line: 1070,
@@ -7676,7 +6991,6 @@ final class TableCopyTest extends SpecTestsuiteBase
     public function testAssertReturn699(): void
     {
         $this->runAssertReturnCommand(
-            module: null,
             action: ['type' => 'invoke', 'field' => 'check_t0', 'args' => [['type' => 'i32', 'value' => '13']]],
             expected: [['type' => 'i32', 'value' => '5']],
             line: 1071,
@@ -7687,7 +7001,6 @@ final class TableCopyTest extends SpecTestsuiteBase
     public function testAssertReturn700(): void
     {
         $this->runAssertReturnCommand(
-            module: null,
             action: ['type' => 'invoke', 'field' => 'check_t0', 'args' => [['type' => 'i32', 'value' => '14']]],
             expected: [['type' => 'i32', 'value' => '2']],
             line: 1072,
@@ -7698,7 +7011,6 @@ final class TableCopyTest extends SpecTestsuiteBase
     public function testAssertReturn701(): void
     {
         $this->runAssertReturnCommand(
-            module: null,
             action: ['type' => 'invoke', 'field' => 'check_t0', 'args' => [['type' => 'i32', 'value' => '15']]],
             expected: [['type' => 'i32', 'value' => '3']],
             line: 1073,
@@ -7709,7 +7021,6 @@ final class TableCopyTest extends SpecTestsuiteBase
     public function testAssertReturn702(): void
     {
         $this->runAssertReturnCommand(
-            module: null,
             action: ['type' => 'invoke', 'field' => 'check_t0', 'args' => [['type' => 'i32', 'value' => '16']]],
             expected: [['type' => 'i32', 'value' => '6']],
             line: 1074,
@@ -7720,7 +7031,6 @@ final class TableCopyTest extends SpecTestsuiteBase
     public function testAssertTrap703(): void
     {
         $this->runAssertTrapCommand(
-            module: null,
             action: ['type' => 'invoke', 'field' => 'check_t0', 'args' => [['type' => 'i32', 'value' => '17']]],
             text: 'uninitialized element',
             line: 1075,
@@ -7731,7 +7041,6 @@ final class TableCopyTest extends SpecTestsuiteBase
     public function testAssertTrap704(): void
     {
         $this->runAssertTrapCommand(
-            module: null,
             action: ['type' => 'invoke', 'field' => 'check_t0', 'args' => [['type' => 'i32', 'value' => '18']]],
             text: 'uninitialized element',
             line: 1076,
@@ -7742,7 +7051,6 @@ final class TableCopyTest extends SpecTestsuiteBase
     public function testAssertTrap705(): void
     {
         $this->runAssertTrapCommand(
-            module: null,
             action: ['type' => 'invoke', 'field' => 'check_t0', 'args' => [['type' => 'i32', 'value' => '19']]],
             text: 'uninitialized element',
             line: 1077,
@@ -7753,7 +7061,6 @@ final class TableCopyTest extends SpecTestsuiteBase
     public function testAssertTrap706(): void
     {
         $this->runAssertTrapCommand(
-            module: null,
             action: ['type' => 'invoke', 'field' => 'check_t0', 'args' => [['type' => 'i32', 'value' => '20']]],
             text: 'uninitialized element',
             line: 1078,
@@ -7764,7 +7071,6 @@ final class TableCopyTest extends SpecTestsuiteBase
     public function testAssertTrap707(): void
     {
         $this->runAssertTrapCommand(
-            module: null,
             action: ['type' => 'invoke', 'field' => 'check_t0', 'args' => [['type' => 'i32', 'value' => '21']]],
             text: 'uninitialized element',
             line: 1079,
@@ -7775,7 +7081,6 @@ final class TableCopyTest extends SpecTestsuiteBase
     public function testAssertTrap708(): void
     {
         $this->runAssertTrapCommand(
-            module: null,
             action: ['type' => 'invoke', 'field' => 'check_t0', 'args' => [['type' => 'i32', 'value' => '22']]],
             text: 'uninitialized element',
             line: 1080,
@@ -7786,7 +7091,6 @@ final class TableCopyTest extends SpecTestsuiteBase
     public function testAssertTrap709(): void
     {
         $this->runAssertTrapCommand(
-            module: null,
             action: ['type' => 'invoke', 'field' => 'check_t0', 'args' => [['type' => 'i32', 'value' => '23']]],
             text: 'uninitialized element',
             line: 1081,
@@ -7797,7 +7101,6 @@ final class TableCopyTest extends SpecTestsuiteBase
     public function testAssertTrap710(): void
     {
         $this->runAssertTrapCommand(
-            module: null,
             action: ['type' => 'invoke', 'field' => 'check_t0', 'args' => [['type' => 'i32', 'value' => '24']]],
             text: 'uninitialized element',
             line: 1082,
@@ -7808,7 +7111,6 @@ final class TableCopyTest extends SpecTestsuiteBase
     public function testAssertReturn711(): void
     {
         $this->runAssertReturnCommand(
-            module: null,
             action: ['type' => 'invoke', 'field' => 'check_t0', 'args' => [['type' => 'i32', 'value' => '25']]],
             expected: [['type' => 'i32', 'value' => '3']],
             line: 1083,
@@ -7819,7 +7121,6 @@ final class TableCopyTest extends SpecTestsuiteBase
     public function testAssertReturn712(): void
     {
         $this->runAssertReturnCommand(
-            module: null,
             action: ['type' => 'invoke', 'field' => 'check_t0', 'args' => [['type' => 'i32', 'value' => '26']]],
             expected: [['type' => 'i32', 'value' => '6']],
             line: 1084,
@@ -7830,7 +7131,6 @@ final class TableCopyTest extends SpecTestsuiteBase
     public function testAssertTrap713(): void
     {
         $this->runAssertTrapCommand(
-            module: null,
             action: ['type' => 'invoke', 'field' => 'check_t0', 'args' => [['type' => 'i32', 'value' => '27']]],
             text: 'uninitialized element',
             line: 1085,
@@ -7841,7 +7141,6 @@ final class TableCopyTest extends SpecTestsuiteBase
     public function testAssertTrap714(): void
     {
         $this->runAssertTrapCommand(
-            module: null,
             action: ['type' => 'invoke', 'field' => 'check_t0', 'args' => [['type' => 'i32', 'value' => '28']]],
             text: 'uninitialized element',
             line: 1086,
@@ -7852,7 +7151,6 @@ final class TableCopyTest extends SpecTestsuiteBase
     public function testAssertTrap715(): void
     {
         $this->runAssertTrapCommand(
-            module: null,
             action: ['type' => 'invoke', 'field' => 'check_t0', 'args' => [['type' => 'i32', 'value' => '29']]],
             text: 'uninitialized element',
             line: 1087,
@@ -7863,7 +7161,6 @@ final class TableCopyTest extends SpecTestsuiteBase
     public function testAssertTrap716(): void
     {
         $this->runAssertTrapCommand(
-            module: null,
             action: ['type' => 'invoke', 'field' => 'check_t1', 'args' => [['type' => 'i32', 'value' => '0']]],
             text: 'uninitialized element',
             line: 1088,
@@ -7874,7 +7171,6 @@ final class TableCopyTest extends SpecTestsuiteBase
     public function testAssertTrap717(): void
     {
         $this->runAssertTrapCommand(
-            module: null,
             action: ['type' => 'invoke', 'field' => 'check_t1', 'args' => [['type' => 'i32', 'value' => '1']]],
             text: 'uninitialized element',
             line: 1089,
@@ -7885,7 +7181,6 @@ final class TableCopyTest extends SpecTestsuiteBase
     public function testAssertTrap718(): void
     {
         $this->runAssertTrapCommand(
-            module: null,
             action: ['type' => 'invoke', 'field' => 'check_t1', 'args' => [['type' => 'i32', 'value' => '2']]],
             text: 'uninitialized element',
             line: 1090,
@@ -7896,7 +7191,6 @@ final class TableCopyTest extends SpecTestsuiteBase
     public function testAssertReturn719(): void
     {
         $this->runAssertReturnCommand(
-            module: null,
             action: ['type' => 'invoke', 'field' => 'check_t1', 'args' => [['type' => 'i32', 'value' => '3']]],
             expected: [['type' => 'i32', 'value' => '1']],
             line: 1091,
@@ -7907,7 +7201,6 @@ final class TableCopyTest extends SpecTestsuiteBase
     public function testAssertReturn720(): void
     {
         $this->runAssertReturnCommand(
-            module: null,
             action: ['type' => 'invoke', 'field' => 'check_t1', 'args' => [['type' => 'i32', 'value' => '4']]],
             expected: [['type' => 'i32', 'value' => '3']],
             line: 1092,
@@ -7918,7 +7211,6 @@ final class TableCopyTest extends SpecTestsuiteBase
     public function testAssertReturn721(): void
     {
         $this->runAssertReturnCommand(
-            module: null,
             action: ['type' => 'invoke', 'field' => 'check_t1', 'args' => [['type' => 'i32', 'value' => '5']]],
             expected: [['type' => 'i32', 'value' => '1']],
             line: 1093,
@@ -7929,7 +7221,6 @@ final class TableCopyTest extends SpecTestsuiteBase
     public function testAssertReturn722(): void
     {
         $this->runAssertReturnCommand(
-            module: null,
             action: ['type' => 'invoke', 'field' => 'check_t1', 'args' => [['type' => 'i32', 'value' => '6']]],
             expected: [['type' => 'i32', 'value' => '4']],
             line: 1094,
@@ -7940,7 +7231,6 @@ final class TableCopyTest extends SpecTestsuiteBase
     public function testAssertTrap723(): void
     {
         $this->runAssertTrapCommand(
-            module: null,
             action: ['type' => 'invoke', 'field' => 'check_t1', 'args' => [['type' => 'i32', 'value' => '7']]],
             text: 'uninitialized element',
             line: 1095,
@@ -7951,7 +7241,6 @@ final class TableCopyTest extends SpecTestsuiteBase
     public function testAssertTrap724(): void
     {
         $this->runAssertTrapCommand(
-            module: null,
             action: ['type' => 'invoke', 'field' => 'check_t1', 'args' => [['type' => 'i32', 'value' => '8']]],
             text: 'uninitialized element',
             line: 1096,
@@ -7962,7 +7251,6 @@ final class TableCopyTest extends SpecTestsuiteBase
     public function testAssertTrap725(): void
     {
         $this->runAssertTrapCommand(
-            module: null,
             action: ['type' => 'invoke', 'field' => 'check_t1', 'args' => [['type' => 'i32', 'value' => '9']]],
             text: 'uninitialized element',
             line: 1097,
@@ -7973,7 +7261,6 @@ final class TableCopyTest extends SpecTestsuiteBase
     public function testAssertTrap726(): void
     {
         $this->runAssertTrapCommand(
-            module: null,
             action: ['type' => 'invoke', 'field' => 'check_t1', 'args' => [['type' => 'i32', 'value' => '10']]],
             text: 'uninitialized element',
             line: 1098,
@@ -7984,7 +7271,6 @@ final class TableCopyTest extends SpecTestsuiteBase
     public function testAssertReturn727(): void
     {
         $this->runAssertReturnCommand(
-            module: null,
             action: ['type' => 'invoke', 'field' => 'check_t1', 'args' => [['type' => 'i32', 'value' => '11']]],
             expected: [['type' => 'i32', 'value' => '6']],
             line: 1099,
@@ -7995,7 +7281,6 @@ final class TableCopyTest extends SpecTestsuiteBase
     public function testAssertReturn728(): void
     {
         $this->runAssertReturnCommand(
-            module: null,
             action: ['type' => 'invoke', 'field' => 'check_t1', 'args' => [['type' => 'i32', 'value' => '12']]],
             expected: [['type' => 'i32', 'value' => '3']],
             line: 1100,
@@ -8006,7 +7291,6 @@ final class TableCopyTest extends SpecTestsuiteBase
     public function testAssertReturn729(): void
     {
         $this->runAssertReturnCommand(
-            module: null,
             action: ['type' => 'invoke', 'field' => 'check_t1', 'args' => [['type' => 'i32', 'value' => '13']]],
             expected: [['type' => 'i32', 'value' => '2']],
             line: 1101,
@@ -8017,7 +7301,6 @@ final class TableCopyTest extends SpecTestsuiteBase
     public function testAssertReturn730(): void
     {
         $this->runAssertReturnCommand(
-            module: null,
             action: ['type' => 'invoke', 'field' => 'check_t1', 'args' => [['type' => 'i32', 'value' => '14']]],
             expected: [['type' => 'i32', 'value' => '5']],
             line: 1102,
@@ -8028,7 +7311,6 @@ final class TableCopyTest extends SpecTestsuiteBase
     public function testAssertReturn731(): void
     {
         $this->runAssertReturnCommand(
-            module: null,
             action: ['type' => 'invoke', 'field' => 'check_t1', 'args' => [['type' => 'i32', 'value' => '15']]],
             expected: [['type' => 'i32', 'value' => '7']],
             line: 1103,
@@ -8039,7 +7321,6 @@ final class TableCopyTest extends SpecTestsuiteBase
     public function testAssertTrap732(): void
     {
         $this->runAssertTrapCommand(
-            module: null,
             action: ['type' => 'invoke', 'field' => 'check_t1', 'args' => [['type' => 'i32', 'value' => '16']]],
             text: 'uninitialized element',
             line: 1104,
@@ -8050,7 +7331,6 @@ final class TableCopyTest extends SpecTestsuiteBase
     public function testAssertTrap733(): void
     {
         $this->runAssertTrapCommand(
-            module: null,
             action: ['type' => 'invoke', 'field' => 'check_t1', 'args' => [['type' => 'i32', 'value' => '17']]],
             text: 'uninitialized element',
             line: 1105,
@@ -8061,7 +7341,6 @@ final class TableCopyTest extends SpecTestsuiteBase
     public function testAssertTrap734(): void
     {
         $this->runAssertTrapCommand(
-            module: null,
             action: ['type' => 'invoke', 'field' => 'check_t1', 'args' => [['type' => 'i32', 'value' => '18']]],
             text: 'uninitialized element',
             line: 1106,
@@ -8072,7 +7351,6 @@ final class TableCopyTest extends SpecTestsuiteBase
     public function testAssertTrap735(): void
     {
         $this->runAssertTrapCommand(
-            module: null,
             action: ['type' => 'invoke', 'field' => 'check_t1', 'args' => [['type' => 'i32', 'value' => '19']]],
             text: 'uninitialized element',
             line: 1107,
@@ -8083,7 +7361,6 @@ final class TableCopyTest extends SpecTestsuiteBase
     public function testAssertTrap736(): void
     {
         $this->runAssertTrapCommand(
-            module: null,
             action: ['type' => 'invoke', 'field' => 'check_t1', 'args' => [['type' => 'i32', 'value' => '20']]],
             text: 'uninitialized element',
             line: 1108,
@@ -8094,7 +7371,6 @@ final class TableCopyTest extends SpecTestsuiteBase
     public function testAssertTrap737(): void
     {
         $this->runAssertTrapCommand(
-            module: null,
             action: ['type' => 'invoke', 'field' => 'check_t1', 'args' => [['type' => 'i32', 'value' => '21']]],
             text: 'uninitialized element',
             line: 1109,
@@ -8105,7 +7381,6 @@ final class TableCopyTest extends SpecTestsuiteBase
     public function testAssertTrap738(): void
     {
         $this->runAssertTrapCommand(
-            module: null,
             action: ['type' => 'invoke', 'field' => 'check_t1', 'args' => [['type' => 'i32', 'value' => '22']]],
             text: 'uninitialized element',
             line: 1110,
@@ -8116,7 +7391,6 @@ final class TableCopyTest extends SpecTestsuiteBase
     public function testAssertTrap739(): void
     {
         $this->runAssertTrapCommand(
-            module: null,
             action: ['type' => 'invoke', 'field' => 'check_t1', 'args' => [['type' => 'i32', 'value' => '23']]],
             text: 'uninitialized element',
             line: 1111,
@@ -8127,7 +7401,6 @@ final class TableCopyTest extends SpecTestsuiteBase
     public function testAssertTrap740(): void
     {
         $this->runAssertTrapCommand(
-            module: null,
             action: ['type' => 'invoke', 'field' => 'check_t1', 'args' => [['type' => 'i32', 'value' => '24']]],
             text: 'uninitialized element',
             line: 1112,
@@ -8138,7 +7411,6 @@ final class TableCopyTest extends SpecTestsuiteBase
     public function testAssertTrap741(): void
     {
         $this->runAssertTrapCommand(
-            module: null,
             action: ['type' => 'invoke', 'field' => 'check_t1', 'args' => [['type' => 'i32', 'value' => '25']]],
             text: 'uninitialized element',
             line: 1113,
@@ -8149,7 +7421,6 @@ final class TableCopyTest extends SpecTestsuiteBase
     public function testAssertTrap742(): void
     {
         $this->runAssertTrapCommand(
-            module: null,
             action: ['type' => 'invoke', 'field' => 'check_t1', 'args' => [['type' => 'i32', 'value' => '26']]],
             text: 'uninitialized element',
             line: 1114,
@@ -8160,7 +7431,6 @@ final class TableCopyTest extends SpecTestsuiteBase
     public function testAssertTrap743(): void
     {
         $this->runAssertTrapCommand(
-            module: null,
             action: ['type' => 'invoke', 'field' => 'check_t1', 'args' => [['type' => 'i32', 'value' => '27']]],
             text: 'uninitialized element',
             line: 1115,
@@ -8171,7 +7441,6 @@ final class TableCopyTest extends SpecTestsuiteBase
     public function testAssertTrap744(): void
     {
         $this->runAssertTrapCommand(
-            module: null,
             action: ['type' => 'invoke', 'field' => 'check_t1', 'args' => [['type' => 'i32', 'value' => '28']]],
             text: 'uninitialized element',
             line: 1116,
@@ -8182,7 +7451,6 @@ final class TableCopyTest extends SpecTestsuiteBase
     public function testAssertTrap745(): void
     {
         $this->runAssertTrapCommand(
-            module: null,
             action: ['type' => 'invoke', 'field' => 'check_t1', 'args' => [['type' => 'i32', 'value' => '29']]],
             text: 'uninitialized element',
             line: 1117,
@@ -8203,7 +7471,6 @@ final class TableCopyTest extends SpecTestsuiteBase
     public function testAction747(): void
     {
         $this->runActionCommand(
-            module: null,
             action: ['type' => 'invoke', 'field' => 'test', 'args' => []],
             line: 1149,
         );
@@ -8213,7 +7480,6 @@ final class TableCopyTest extends SpecTestsuiteBase
     public function testAssertTrap748(): void
     {
         $this->runAssertTrapCommand(
-            module: null,
             action: ['type' => 'invoke', 'field' => 'check_t0', 'args' => [['type' => 'i32', 'value' => '0']]],
             text: 'uninitialized element',
             line: 1150,
@@ -8224,7 +7490,6 @@ final class TableCopyTest extends SpecTestsuiteBase
     public function testAssertTrap749(): void
     {
         $this->runAssertTrapCommand(
-            module: null,
             action: ['type' => 'invoke', 'field' => 'check_t0', 'args' => [['type' => 'i32', 'value' => '1']]],
             text: 'uninitialized element',
             line: 1151,
@@ -8235,7 +7500,6 @@ final class TableCopyTest extends SpecTestsuiteBase
     public function testAssertReturn750(): void
     {
         $this->runAssertReturnCommand(
-            module: null,
             action: ['type' => 'invoke', 'field' => 'check_t0', 'args' => [['type' => 'i32', 'value' => '2']]],
             expected: [['type' => 'i32', 'value' => '3']],
             line: 1152,
@@ -8246,7 +7510,6 @@ final class TableCopyTest extends SpecTestsuiteBase
     public function testAssertReturn751(): void
     {
         $this->runAssertReturnCommand(
-            module: null,
             action: ['type' => 'invoke', 'field' => 'check_t0', 'args' => [['type' => 'i32', 'value' => '3']]],
             expected: [['type' => 'i32', 'value' => '1']],
             line: 1153,
@@ -8257,7 +7520,6 @@ final class TableCopyTest extends SpecTestsuiteBase
     public function testAssertReturn752(): void
     {
         $this->runAssertReturnCommand(
-            module: null,
             action: ['type' => 'invoke', 'field' => 'check_t0', 'args' => [['type' => 'i32', 'value' => '4']]],
             expected: [['type' => 'i32', 'value' => '4']],
             line: 1154,
@@ -8268,7 +7530,6 @@ final class TableCopyTest extends SpecTestsuiteBase
     public function testAssertReturn753(): void
     {
         $this->runAssertReturnCommand(
-            module: null,
             action: ['type' => 'invoke', 'field' => 'check_t0', 'args' => [['type' => 'i32', 'value' => '5']]],
             expected: [['type' => 'i32', 'value' => '1']],
             line: 1155,
@@ -8279,7 +7540,6 @@ final class TableCopyTest extends SpecTestsuiteBase
     public function testAssertTrap754(): void
     {
         $this->runAssertTrapCommand(
-            module: null,
             action: ['type' => 'invoke', 'field' => 'check_t0', 'args' => [['type' => 'i32', 'value' => '6']]],
             text: 'uninitialized element',
             line: 1156,
@@ -8290,7 +7550,6 @@ final class TableCopyTest extends SpecTestsuiteBase
     public function testAssertTrap755(): void
     {
         $this->runAssertTrapCommand(
-            module: null,
             action: ['type' => 'invoke', 'field' => 'check_t0', 'args' => [['type' => 'i32', 'value' => '7']]],
             text: 'uninitialized element',
             line: 1157,
@@ -8301,7 +7560,6 @@ final class TableCopyTest extends SpecTestsuiteBase
     public function testAssertTrap756(): void
     {
         $this->runAssertTrapCommand(
-            module: null,
             action: ['type' => 'invoke', 'field' => 'check_t0', 'args' => [['type' => 'i32', 'value' => '8']]],
             text: 'uninitialized element',
             line: 1158,
@@ -8312,7 +7570,6 @@ final class TableCopyTest extends SpecTestsuiteBase
     public function testAssertTrap757(): void
     {
         $this->runAssertTrapCommand(
-            module: null,
             action: ['type' => 'invoke', 'field' => 'check_t0', 'args' => [['type' => 'i32', 'value' => '9']]],
             text: 'uninitialized element',
             line: 1159,
@@ -8323,7 +7580,6 @@ final class TableCopyTest extends SpecTestsuiteBase
     public function testAssertTrap758(): void
     {
         $this->runAssertTrapCommand(
-            module: null,
             action: ['type' => 'invoke', 'field' => 'check_t0', 'args' => [['type' => 'i32', 'value' => '10']]],
             text: 'uninitialized element',
             line: 1160,
@@ -8334,7 +7590,6 @@ final class TableCopyTest extends SpecTestsuiteBase
     public function testAssertTrap759(): void
     {
         $this->runAssertTrapCommand(
-            module: null,
             action: ['type' => 'invoke', 'field' => 'check_t0', 'args' => [['type' => 'i32', 'value' => '11']]],
             text: 'uninitialized element',
             line: 1161,
@@ -8345,7 +7600,6 @@ final class TableCopyTest extends SpecTestsuiteBase
     public function testAssertReturn760(): void
     {
         $this->runAssertReturnCommand(
-            module: null,
             action: ['type' => 'invoke', 'field' => 'check_t0', 'args' => [['type' => 'i32', 'value' => '12']]],
             expected: [['type' => 'i32', 'value' => '7']],
             line: 1162,
@@ -8356,7 +7610,6 @@ final class TableCopyTest extends SpecTestsuiteBase
     public function testAssertTrap761(): void
     {
         $this->runAssertTrapCommand(
-            module: null,
             action: ['type' => 'invoke', 'field' => 'check_t0', 'args' => [['type' => 'i32', 'value' => '13']]],
             text: 'uninitialized element',
             line: 1163,
@@ -8367,7 +7620,6 @@ final class TableCopyTest extends SpecTestsuiteBase
     public function testAssertTrap762(): void
     {
         $this->runAssertTrapCommand(
-            module: null,
             action: ['type' => 'invoke', 'field' => 'check_t0', 'args' => [['type' => 'i32', 'value' => '14']]],
             text: 'uninitialized element',
             line: 1164,
@@ -8378,7 +7630,6 @@ final class TableCopyTest extends SpecTestsuiteBase
     public function testAssertTrap763(): void
     {
         $this->runAssertTrapCommand(
-            module: null,
             action: ['type' => 'invoke', 'field' => 'check_t0', 'args' => [['type' => 'i32', 'value' => '15']]],
             text: 'uninitialized element',
             line: 1165,
@@ -8389,7 +7640,6 @@ final class TableCopyTest extends SpecTestsuiteBase
     public function testAssertReturn764(): void
     {
         $this->runAssertReturnCommand(
-            module: null,
             action: ['type' => 'invoke', 'field' => 'check_t0', 'args' => [['type' => 'i32', 'value' => '16']]],
             expected: [['type' => 'i32', 'value' => '6']],
             line: 1166,
@@ -8400,7 +7650,6 @@ final class TableCopyTest extends SpecTestsuiteBase
     public function testAssertTrap765(): void
     {
         $this->runAssertTrapCommand(
-            module: null,
             action: ['type' => 'invoke', 'field' => 'check_t0', 'args' => [['type' => 'i32', 'value' => '17']]],
             text: 'uninitialized element',
             line: 1167,
@@ -8411,7 +7660,6 @@ final class TableCopyTest extends SpecTestsuiteBase
     public function testAssertTrap766(): void
     {
         $this->runAssertTrapCommand(
-            module: null,
             action: ['type' => 'invoke', 'field' => 'check_t0', 'args' => [['type' => 'i32', 'value' => '18']]],
             text: 'uninitialized element',
             line: 1168,
@@ -8422,7 +7670,6 @@ final class TableCopyTest extends SpecTestsuiteBase
     public function testAssertTrap767(): void
     {
         $this->runAssertTrapCommand(
-            module: null,
             action: ['type' => 'invoke', 'field' => 'check_t0', 'args' => [['type' => 'i32', 'value' => '19']]],
             text: 'uninitialized element',
             line: 1169,
@@ -8433,7 +7680,6 @@ final class TableCopyTest extends SpecTestsuiteBase
     public function testAssertTrap768(): void
     {
         $this->runAssertTrapCommand(
-            module: null,
             action: ['type' => 'invoke', 'field' => 'check_t0', 'args' => [['type' => 'i32', 'value' => '20']]],
             text: 'uninitialized element',
             line: 1170,
@@ -8444,7 +7690,6 @@ final class TableCopyTest extends SpecTestsuiteBase
     public function testAssertTrap769(): void
     {
         $this->runAssertTrapCommand(
-            module: null,
             action: ['type' => 'invoke', 'field' => 'check_t0', 'args' => [['type' => 'i32', 'value' => '21']]],
             text: 'uninitialized element',
             line: 1171,
@@ -8455,7 +7700,6 @@ final class TableCopyTest extends SpecTestsuiteBase
     public function testAssertTrap770(): void
     {
         $this->runAssertTrapCommand(
-            module: null,
             action: ['type' => 'invoke', 'field' => 'check_t0', 'args' => [['type' => 'i32', 'value' => '22']]],
             text: 'uninitialized element',
             line: 1172,
@@ -8466,7 +7710,6 @@ final class TableCopyTest extends SpecTestsuiteBase
     public function testAssertTrap771(): void
     {
         $this->runAssertTrapCommand(
-            module: null,
             action: ['type' => 'invoke', 'field' => 'check_t0', 'args' => [['type' => 'i32', 'value' => '23']]],
             text: 'uninitialized element',
             line: 1173,
@@ -8477,7 +7720,6 @@ final class TableCopyTest extends SpecTestsuiteBase
     public function testAssertTrap772(): void
     {
         $this->runAssertTrapCommand(
-            module: null,
             action: ['type' => 'invoke', 'field' => 'check_t0', 'args' => [['type' => 'i32', 'value' => '24']]],
             text: 'uninitialized element',
             line: 1174,
@@ -8488,7 +7730,6 @@ final class TableCopyTest extends SpecTestsuiteBase
     public function testAssertTrap773(): void
     {
         $this->runAssertTrapCommand(
-            module: null,
             action: ['type' => 'invoke', 'field' => 'check_t0', 'args' => [['type' => 'i32', 'value' => '25']]],
             text: 'uninitialized element',
             line: 1175,
@@ -8499,7 +7740,6 @@ final class TableCopyTest extends SpecTestsuiteBase
     public function testAssertTrap774(): void
     {
         $this->runAssertTrapCommand(
-            module: null,
             action: ['type' => 'invoke', 'field' => 'check_t0', 'args' => [['type' => 'i32', 'value' => '26']]],
             text: 'uninitialized element',
             line: 1176,
@@ -8510,7 +7750,6 @@ final class TableCopyTest extends SpecTestsuiteBase
     public function testAssertTrap775(): void
     {
         $this->runAssertTrapCommand(
-            module: null,
             action: ['type' => 'invoke', 'field' => 'check_t0', 'args' => [['type' => 'i32', 'value' => '27']]],
             text: 'uninitialized element',
             line: 1177,
@@ -8521,7 +7760,6 @@ final class TableCopyTest extends SpecTestsuiteBase
     public function testAssertTrap776(): void
     {
         $this->runAssertTrapCommand(
-            module: null,
             action: ['type' => 'invoke', 'field' => 'check_t0', 'args' => [['type' => 'i32', 'value' => '28']]],
             text: 'uninitialized element',
             line: 1178,
@@ -8532,7 +7770,6 @@ final class TableCopyTest extends SpecTestsuiteBase
     public function testAssertTrap777(): void
     {
         $this->runAssertTrapCommand(
-            module: null,
             action: ['type' => 'invoke', 'field' => 'check_t0', 'args' => [['type' => 'i32', 'value' => '29']]],
             text: 'uninitialized element',
             line: 1179,
@@ -8543,7 +7780,6 @@ final class TableCopyTest extends SpecTestsuiteBase
     public function testAssertTrap778(): void
     {
         $this->runAssertTrapCommand(
-            module: null,
             action: ['type' => 'invoke', 'field' => 'check_t1', 'args' => [['type' => 'i32', 'value' => '0']]],
             text: 'uninitialized element',
             line: 1180,
@@ -8554,7 +7790,6 @@ final class TableCopyTest extends SpecTestsuiteBase
     public function testAssertTrap779(): void
     {
         $this->runAssertTrapCommand(
-            module: null,
             action: ['type' => 'invoke', 'field' => 'check_t1', 'args' => [['type' => 'i32', 'value' => '1']]],
             text: 'uninitialized element',
             line: 1181,
@@ -8565,7 +7800,6 @@ final class TableCopyTest extends SpecTestsuiteBase
     public function testAssertTrap780(): void
     {
         $this->runAssertTrapCommand(
-            module: null,
             action: ['type' => 'invoke', 'field' => 'check_t1', 'args' => [['type' => 'i32', 'value' => '2']]],
             text: 'uninitialized element',
             line: 1182,
@@ -8576,7 +7810,6 @@ final class TableCopyTest extends SpecTestsuiteBase
     public function testAssertReturn781(): void
     {
         $this->runAssertReturnCommand(
-            module: null,
             action: ['type' => 'invoke', 'field' => 'check_t1', 'args' => [['type' => 'i32', 'value' => '3']]],
             expected: [['type' => 'i32', 'value' => '1']],
             line: 1183,
@@ -8587,7 +7820,6 @@ final class TableCopyTest extends SpecTestsuiteBase
     public function testAssertReturn782(): void
     {
         $this->runAssertReturnCommand(
-            module: null,
             action: ['type' => 'invoke', 'field' => 'check_t1', 'args' => [['type' => 'i32', 'value' => '4']]],
             expected: [['type' => 'i32', 'value' => '3']],
             line: 1184,
@@ -8598,7 +7830,6 @@ final class TableCopyTest extends SpecTestsuiteBase
     public function testAssertReturn783(): void
     {
         $this->runAssertReturnCommand(
-            module: null,
             action: ['type' => 'invoke', 'field' => 'check_t1', 'args' => [['type' => 'i32', 'value' => '5']]],
             expected: [['type' => 'i32', 'value' => '1']],
             line: 1185,
@@ -8609,7 +7840,6 @@ final class TableCopyTest extends SpecTestsuiteBase
     public function testAssertReturn784(): void
     {
         $this->runAssertReturnCommand(
-            module: null,
             action: ['type' => 'invoke', 'field' => 'check_t1', 'args' => [['type' => 'i32', 'value' => '6']]],
             expected: [['type' => 'i32', 'value' => '4']],
             line: 1186,
@@ -8620,7 +7850,6 @@ final class TableCopyTest extends SpecTestsuiteBase
     public function testAssertTrap785(): void
     {
         $this->runAssertTrapCommand(
-            module: null,
             action: ['type' => 'invoke', 'field' => 'check_t1', 'args' => [['type' => 'i32', 'value' => '7']]],
             text: 'uninitialized element',
             line: 1187,
@@ -8631,7 +7860,6 @@ final class TableCopyTest extends SpecTestsuiteBase
     public function testAssertTrap786(): void
     {
         $this->runAssertTrapCommand(
-            module: null,
             action: ['type' => 'invoke', 'field' => 'check_t1', 'args' => [['type' => 'i32', 'value' => '8']]],
             text: 'uninitialized element',
             line: 1188,
@@ -8642,7 +7870,6 @@ final class TableCopyTest extends SpecTestsuiteBase
     public function testAssertTrap787(): void
     {
         $this->runAssertTrapCommand(
-            module: null,
             action: ['type' => 'invoke', 'field' => 'check_t1', 'args' => [['type' => 'i32', 'value' => '9']]],
             text: 'uninitialized element',
             line: 1189,
@@ -8653,7 +7880,6 @@ final class TableCopyTest extends SpecTestsuiteBase
     public function testAssertTrap788(): void
     {
         $this->runAssertTrapCommand(
-            module: null,
             action: ['type' => 'invoke', 'field' => 'check_t1', 'args' => [['type' => 'i32', 'value' => '10']]],
             text: 'uninitialized element',
             line: 1190,
@@ -8664,7 +7890,6 @@ final class TableCopyTest extends SpecTestsuiteBase
     public function testAssertReturn789(): void
     {
         $this->runAssertReturnCommand(
-            module: null,
             action: ['type' => 'invoke', 'field' => 'check_t1', 'args' => [['type' => 'i32', 'value' => '11']]],
             expected: [['type' => 'i32', 'value' => '6']],
             line: 1191,
@@ -8675,7 +7900,6 @@ final class TableCopyTest extends SpecTestsuiteBase
     public function testAssertReturn790(): void
     {
         $this->runAssertReturnCommand(
-            module: null,
             action: ['type' => 'invoke', 'field' => 'check_t1', 'args' => [['type' => 'i32', 'value' => '12']]],
             expected: [['type' => 'i32', 'value' => '3']],
             line: 1192,
@@ -8686,7 +7910,6 @@ final class TableCopyTest extends SpecTestsuiteBase
     public function testAssertReturn791(): void
     {
         $this->runAssertReturnCommand(
-            module: null,
             action: ['type' => 'invoke', 'field' => 'check_t1', 'args' => [['type' => 'i32', 'value' => '13']]],
             expected: [['type' => 'i32', 'value' => '2']],
             line: 1193,
@@ -8697,7 +7920,6 @@ final class TableCopyTest extends SpecTestsuiteBase
     public function testAssertReturn792(): void
     {
         $this->runAssertReturnCommand(
-            module: null,
             action: ['type' => 'invoke', 'field' => 'check_t1', 'args' => [['type' => 'i32', 'value' => '14']]],
             expected: [['type' => 'i32', 'value' => '5']],
             line: 1194,
@@ -8708,7 +7930,6 @@ final class TableCopyTest extends SpecTestsuiteBase
     public function testAssertReturn793(): void
     {
         $this->runAssertReturnCommand(
-            module: null,
             action: ['type' => 'invoke', 'field' => 'check_t1', 'args' => [['type' => 'i32', 'value' => '15']]],
             expected: [['type' => 'i32', 'value' => '7']],
             line: 1195,
@@ -8719,7 +7940,6 @@ final class TableCopyTest extends SpecTestsuiteBase
     public function testAssertTrap794(): void
     {
         $this->runAssertTrapCommand(
-            module: null,
             action: ['type' => 'invoke', 'field' => 'check_t1', 'args' => [['type' => 'i32', 'value' => '16']]],
             text: 'uninitialized element',
             line: 1196,
@@ -8730,7 +7950,6 @@ final class TableCopyTest extends SpecTestsuiteBase
     public function testAssertTrap795(): void
     {
         $this->runAssertTrapCommand(
-            module: null,
             action: ['type' => 'invoke', 'field' => 'check_t1', 'args' => [['type' => 'i32', 'value' => '17']]],
             text: 'uninitialized element',
             line: 1197,
@@ -8741,7 +7960,6 @@ final class TableCopyTest extends SpecTestsuiteBase
     public function testAssertTrap796(): void
     {
         $this->runAssertTrapCommand(
-            module: null,
             action: ['type' => 'invoke', 'field' => 'check_t1', 'args' => [['type' => 'i32', 'value' => '18']]],
             text: 'uninitialized element',
             line: 1198,
@@ -8752,7 +7970,6 @@ final class TableCopyTest extends SpecTestsuiteBase
     public function testAssertTrap797(): void
     {
         $this->runAssertTrapCommand(
-            module: null,
             action: ['type' => 'invoke', 'field' => 'check_t1', 'args' => [['type' => 'i32', 'value' => '19']]],
             text: 'uninitialized element',
             line: 1199,
@@ -8763,7 +7980,6 @@ final class TableCopyTest extends SpecTestsuiteBase
     public function testAssertTrap798(): void
     {
         $this->runAssertTrapCommand(
-            module: null,
             action: ['type' => 'invoke', 'field' => 'check_t1', 'args' => [['type' => 'i32', 'value' => '20']]],
             text: 'uninitialized element',
             line: 1200,
@@ -8774,7 +7990,6 @@ final class TableCopyTest extends SpecTestsuiteBase
     public function testAssertTrap799(): void
     {
         $this->runAssertTrapCommand(
-            module: null,
             action: ['type' => 'invoke', 'field' => 'check_t1', 'args' => [['type' => 'i32', 'value' => '21']]],
             text: 'uninitialized element',
             line: 1201,
@@ -8785,7 +8000,6 @@ final class TableCopyTest extends SpecTestsuiteBase
     public function testAssertTrap800(): void
     {
         $this->runAssertTrapCommand(
-            module: null,
             action: ['type' => 'invoke', 'field' => 'check_t1', 'args' => [['type' => 'i32', 'value' => '22']]],
             text: 'uninitialized element',
             line: 1202,
@@ -8796,7 +8010,6 @@ final class TableCopyTest extends SpecTestsuiteBase
     public function testAssertTrap801(): void
     {
         $this->runAssertTrapCommand(
-            module: null,
             action: ['type' => 'invoke', 'field' => 'check_t1', 'args' => [['type' => 'i32', 'value' => '23']]],
             text: 'uninitialized element',
             line: 1203,
@@ -8807,7 +8020,6 @@ final class TableCopyTest extends SpecTestsuiteBase
     public function testAssertTrap802(): void
     {
         $this->runAssertTrapCommand(
-            module: null,
             action: ['type' => 'invoke', 'field' => 'check_t1', 'args' => [['type' => 'i32', 'value' => '24']]],
             text: 'uninitialized element',
             line: 1204,
@@ -8818,7 +8030,6 @@ final class TableCopyTest extends SpecTestsuiteBase
     public function testAssertTrap803(): void
     {
         $this->runAssertTrapCommand(
-            module: null,
             action: ['type' => 'invoke', 'field' => 'check_t1', 'args' => [['type' => 'i32', 'value' => '25']]],
             text: 'uninitialized element',
             line: 1205,
@@ -8829,7 +8040,6 @@ final class TableCopyTest extends SpecTestsuiteBase
     public function testAssertTrap804(): void
     {
         $this->runAssertTrapCommand(
-            module: null,
             action: ['type' => 'invoke', 'field' => 'check_t1', 'args' => [['type' => 'i32', 'value' => '26']]],
             text: 'uninitialized element',
             line: 1206,
@@ -8840,7 +8050,6 @@ final class TableCopyTest extends SpecTestsuiteBase
     public function testAssertTrap805(): void
     {
         $this->runAssertTrapCommand(
-            module: null,
             action: ['type' => 'invoke', 'field' => 'check_t1', 'args' => [['type' => 'i32', 'value' => '27']]],
             text: 'uninitialized element',
             line: 1207,
@@ -8851,7 +8060,6 @@ final class TableCopyTest extends SpecTestsuiteBase
     public function testAssertTrap806(): void
     {
         $this->runAssertTrapCommand(
-            module: null,
             action: ['type' => 'invoke', 'field' => 'check_t1', 'args' => [['type' => 'i32', 'value' => '28']]],
             text: 'uninitialized element',
             line: 1208,
@@ -8862,7 +8070,6 @@ final class TableCopyTest extends SpecTestsuiteBase
     public function testAssertTrap807(): void
     {
         $this->runAssertTrapCommand(
-            module: null,
             action: ['type' => 'invoke', 'field' => 'check_t1', 'args' => [['type' => 'i32', 'value' => '29']]],
             text: 'uninitialized element',
             line: 1209,
@@ -8883,7 +8090,6 @@ final class TableCopyTest extends SpecTestsuiteBase
     public function testAction809(): void
     {
         $this->runActionCommand(
-            module: null,
             action: ['type' => 'invoke', 'field' => 'test', 'args' => []],
             line: 1241,
         );
@@ -8893,7 +8099,6 @@ final class TableCopyTest extends SpecTestsuiteBase
     public function testAssertTrap810(): void
     {
         $this->runAssertTrapCommand(
-            module: null,
             action: ['type' => 'invoke', 'field' => 'check_t0', 'args' => [['type' => 'i32', 'value' => '0']]],
             text: 'uninitialized element',
             line: 1242,
@@ -8904,7 +8109,6 @@ final class TableCopyTest extends SpecTestsuiteBase
     public function testAssertTrap811(): void
     {
         $this->runAssertTrapCommand(
-            module: null,
             action: ['type' => 'invoke', 'field' => 'check_t0', 'args' => [['type' => 'i32', 'value' => '1']]],
             text: 'uninitialized element',
             line: 1243,
@@ -8915,7 +8119,6 @@ final class TableCopyTest extends SpecTestsuiteBase
     public function testAssertReturn812(): void
     {
         $this->runAssertReturnCommand(
-            module: null,
             action: ['type' => 'invoke', 'field' => 'check_t0', 'args' => [['type' => 'i32', 'value' => '2']]],
             expected: [['type' => 'i32', 'value' => '3']],
             line: 1244,
@@ -8926,7 +8129,6 @@ final class TableCopyTest extends SpecTestsuiteBase
     public function testAssertReturn813(): void
     {
         $this->runAssertReturnCommand(
-            module: null,
             action: ['type' => 'invoke', 'field' => 'check_t0', 'args' => [['type' => 'i32', 'value' => '3']]],
             expected: [['type' => 'i32', 'value' => '1']],
             line: 1245,
@@ -8937,7 +8139,6 @@ final class TableCopyTest extends SpecTestsuiteBase
     public function testAssertReturn814(): void
     {
         $this->runAssertReturnCommand(
-            module: null,
             action: ['type' => 'invoke', 'field' => 'check_t0', 'args' => [['type' => 'i32', 'value' => '4']]],
             expected: [['type' => 'i32', 'value' => '4']],
             line: 1246,
@@ -8948,7 +8149,6 @@ final class TableCopyTest extends SpecTestsuiteBase
     public function testAssertReturn815(): void
     {
         $this->runAssertReturnCommand(
-            module: null,
             action: ['type' => 'invoke', 'field' => 'check_t0', 'args' => [['type' => 'i32', 'value' => '5']]],
             expected: [['type' => 'i32', 'value' => '1']],
             line: 1247,
@@ -8959,7 +8159,6 @@ final class TableCopyTest extends SpecTestsuiteBase
     public function testAssertTrap816(): void
     {
         $this->runAssertTrapCommand(
-            module: null,
             action: ['type' => 'invoke', 'field' => 'check_t0', 'args' => [['type' => 'i32', 'value' => '6']]],
             text: 'uninitialized element',
             line: 1248,
@@ -8970,7 +8169,6 @@ final class TableCopyTest extends SpecTestsuiteBase
     public function testAssertTrap817(): void
     {
         $this->runAssertTrapCommand(
-            module: null,
             action: ['type' => 'invoke', 'field' => 'check_t0', 'args' => [['type' => 'i32', 'value' => '7']]],
             text: 'uninitialized element',
             line: 1249,
@@ -8981,7 +8179,6 @@ final class TableCopyTest extends SpecTestsuiteBase
     public function testAssertTrap818(): void
     {
         $this->runAssertTrapCommand(
-            module: null,
             action: ['type' => 'invoke', 'field' => 'check_t0', 'args' => [['type' => 'i32', 'value' => '8']]],
             text: 'uninitialized element',
             line: 1250,
@@ -8992,7 +8189,6 @@ final class TableCopyTest extends SpecTestsuiteBase
     public function testAssertTrap819(): void
     {
         $this->runAssertTrapCommand(
-            module: null,
             action: ['type' => 'invoke', 'field' => 'check_t0', 'args' => [['type' => 'i32', 'value' => '9']]],
             text: 'uninitialized element',
             line: 1251,
@@ -9003,7 +8199,6 @@ final class TableCopyTest extends SpecTestsuiteBase
     public function testAssertTrap820(): void
     {
         $this->runAssertTrapCommand(
-            module: null,
             action: ['type' => 'invoke', 'field' => 'check_t0', 'args' => [['type' => 'i32', 'value' => '10']]],
             text: 'uninitialized element',
             line: 1252,
@@ -9014,7 +8209,6 @@ final class TableCopyTest extends SpecTestsuiteBase
     public function testAssertTrap821(): void
     {
         $this->runAssertTrapCommand(
-            module: null,
             action: ['type' => 'invoke', 'field' => 'check_t0', 'args' => [['type' => 'i32', 'value' => '11']]],
             text: 'uninitialized element',
             line: 1253,
@@ -9025,7 +8219,6 @@ final class TableCopyTest extends SpecTestsuiteBase
     public function testAssertReturn822(): void
     {
         $this->runAssertReturnCommand(
-            module: null,
             action: ['type' => 'invoke', 'field' => 'check_t0', 'args' => [['type' => 'i32', 'value' => '12']]],
             expected: [['type' => 'i32', 'value' => '7']],
             line: 1254,
@@ -9036,7 +8229,6 @@ final class TableCopyTest extends SpecTestsuiteBase
     public function testAssertReturn823(): void
     {
         $this->runAssertReturnCommand(
-            module: null,
             action: ['type' => 'invoke', 'field' => 'check_t0', 'args' => [['type' => 'i32', 'value' => '13']]],
             expected: [['type' => 'i32', 'value' => '5']],
             line: 1255,
@@ -9047,7 +8239,6 @@ final class TableCopyTest extends SpecTestsuiteBase
     public function testAssertReturn824(): void
     {
         $this->runAssertReturnCommand(
-            module: null,
             action: ['type' => 'invoke', 'field' => 'check_t0', 'args' => [['type' => 'i32', 'value' => '14']]],
             expected: [['type' => 'i32', 'value' => '2']],
             line: 1256,
@@ -9058,7 +8249,6 @@ final class TableCopyTest extends SpecTestsuiteBase
     public function testAssertReturn825(): void
     {
         $this->runAssertReturnCommand(
-            module: null,
             action: ['type' => 'invoke', 'field' => 'check_t0', 'args' => [['type' => 'i32', 'value' => '15']]],
             expected: [['type' => 'i32', 'value' => '3']],
             line: 1257,
@@ -9069,7 +8259,6 @@ final class TableCopyTest extends SpecTestsuiteBase
     public function testAssertReturn826(): void
     {
         $this->runAssertReturnCommand(
-            module: null,
             action: ['type' => 'invoke', 'field' => 'check_t0', 'args' => [['type' => 'i32', 'value' => '16']]],
             expected: [['type' => 'i32', 'value' => '6']],
             line: 1258,
@@ -9080,7 +8269,6 @@ final class TableCopyTest extends SpecTestsuiteBase
     public function testAssertTrap827(): void
     {
         $this->runAssertTrapCommand(
-            module: null,
             action: ['type' => 'invoke', 'field' => 'check_t0', 'args' => [['type' => 'i32', 'value' => '17']]],
             text: 'uninitialized element',
             line: 1259,
@@ -9091,7 +8279,6 @@ final class TableCopyTest extends SpecTestsuiteBase
     public function testAssertTrap828(): void
     {
         $this->runAssertTrapCommand(
-            module: null,
             action: ['type' => 'invoke', 'field' => 'check_t0', 'args' => [['type' => 'i32', 'value' => '18']]],
             text: 'uninitialized element',
             line: 1260,
@@ -9102,7 +8289,6 @@ final class TableCopyTest extends SpecTestsuiteBase
     public function testAssertTrap829(): void
     {
         $this->runAssertTrapCommand(
-            module: null,
             action: ['type' => 'invoke', 'field' => 'check_t0', 'args' => [['type' => 'i32', 'value' => '19']]],
             text: 'uninitialized element',
             line: 1261,
@@ -9113,7 +8299,6 @@ final class TableCopyTest extends SpecTestsuiteBase
     public function testAssertTrap830(): void
     {
         $this->runAssertTrapCommand(
-            module: null,
             action: ['type' => 'invoke', 'field' => 'check_t0', 'args' => [['type' => 'i32', 'value' => '20']]],
             text: 'uninitialized element',
             line: 1262,
@@ -9124,7 +8309,6 @@ final class TableCopyTest extends SpecTestsuiteBase
     public function testAssertTrap831(): void
     {
         $this->runAssertTrapCommand(
-            module: null,
             action: ['type' => 'invoke', 'field' => 'check_t0', 'args' => [['type' => 'i32', 'value' => '21']]],
             text: 'uninitialized element',
             line: 1263,
@@ -9135,7 +8319,6 @@ final class TableCopyTest extends SpecTestsuiteBase
     public function testAssertTrap832(): void
     {
         $this->runAssertTrapCommand(
-            module: null,
             action: ['type' => 'invoke', 'field' => 'check_t0', 'args' => [['type' => 'i32', 'value' => '22']]],
             text: 'uninitialized element',
             line: 1264,
@@ -9146,7 +8329,6 @@ final class TableCopyTest extends SpecTestsuiteBase
     public function testAssertTrap833(): void
     {
         $this->runAssertTrapCommand(
-            module: null,
             action: ['type' => 'invoke', 'field' => 'check_t0', 'args' => [['type' => 'i32', 'value' => '23']]],
             text: 'uninitialized element',
             line: 1265,
@@ -9157,7 +8339,6 @@ final class TableCopyTest extends SpecTestsuiteBase
     public function testAssertTrap834(): void
     {
         $this->runAssertTrapCommand(
-            module: null,
             action: ['type' => 'invoke', 'field' => 'check_t0', 'args' => [['type' => 'i32', 'value' => '24']]],
             text: 'uninitialized element',
             line: 1266,
@@ -9168,7 +8349,6 @@ final class TableCopyTest extends SpecTestsuiteBase
     public function testAssertTrap835(): void
     {
         $this->runAssertTrapCommand(
-            module: null,
             action: ['type' => 'invoke', 'field' => 'check_t0', 'args' => [['type' => 'i32', 'value' => '25']]],
             text: 'uninitialized element',
             line: 1267,
@@ -9179,7 +8359,6 @@ final class TableCopyTest extends SpecTestsuiteBase
     public function testAssertTrap836(): void
     {
         $this->runAssertTrapCommand(
-            module: null,
             action: ['type' => 'invoke', 'field' => 'check_t0', 'args' => [['type' => 'i32', 'value' => '26']]],
             text: 'uninitialized element',
             line: 1268,
@@ -9190,7 +8369,6 @@ final class TableCopyTest extends SpecTestsuiteBase
     public function testAssertTrap837(): void
     {
         $this->runAssertTrapCommand(
-            module: null,
             action: ['type' => 'invoke', 'field' => 'check_t0', 'args' => [['type' => 'i32', 'value' => '27']]],
             text: 'uninitialized element',
             line: 1269,
@@ -9201,7 +8379,6 @@ final class TableCopyTest extends SpecTestsuiteBase
     public function testAssertTrap838(): void
     {
         $this->runAssertTrapCommand(
-            module: null,
             action: ['type' => 'invoke', 'field' => 'check_t0', 'args' => [['type' => 'i32', 'value' => '28']]],
             text: 'uninitialized element',
             line: 1270,
@@ -9212,7 +8389,6 @@ final class TableCopyTest extends SpecTestsuiteBase
     public function testAssertTrap839(): void
     {
         $this->runAssertTrapCommand(
-            module: null,
             action: ['type' => 'invoke', 'field' => 'check_t0', 'args' => [['type' => 'i32', 'value' => '29']]],
             text: 'uninitialized element',
             line: 1271,
@@ -9223,7 +8399,6 @@ final class TableCopyTest extends SpecTestsuiteBase
     public function testAssertTrap840(): void
     {
         $this->runAssertTrapCommand(
-            module: null,
             action: ['type' => 'invoke', 'field' => 'check_t1', 'args' => [['type' => 'i32', 'value' => '0']]],
             text: 'uninitialized element',
             line: 1272,
@@ -9234,7 +8409,6 @@ final class TableCopyTest extends SpecTestsuiteBase
     public function testAssertTrap841(): void
     {
         $this->runAssertTrapCommand(
-            module: null,
             action: ['type' => 'invoke', 'field' => 'check_t1', 'args' => [['type' => 'i32', 'value' => '1']]],
             text: 'uninitialized element',
             line: 1273,
@@ -9245,7 +8419,6 @@ final class TableCopyTest extends SpecTestsuiteBase
     public function testAssertTrap842(): void
     {
         $this->runAssertTrapCommand(
-            module: null,
             action: ['type' => 'invoke', 'field' => 'check_t1', 'args' => [['type' => 'i32', 'value' => '2']]],
             text: 'uninitialized element',
             line: 1274,
@@ -9256,7 +8429,6 @@ final class TableCopyTest extends SpecTestsuiteBase
     public function testAssertReturn843(): void
     {
         $this->runAssertReturnCommand(
-            module: null,
             action: ['type' => 'invoke', 'field' => 'check_t1', 'args' => [['type' => 'i32', 'value' => '3']]],
             expected: [['type' => 'i32', 'value' => '1']],
             line: 1275,
@@ -9267,7 +8439,6 @@ final class TableCopyTest extends SpecTestsuiteBase
     public function testAssertReturn844(): void
     {
         $this->runAssertReturnCommand(
-            module: null,
             action: ['type' => 'invoke', 'field' => 'check_t1', 'args' => [['type' => 'i32', 'value' => '4']]],
             expected: [['type' => 'i32', 'value' => '3']],
             line: 1276,
@@ -9278,7 +8449,6 @@ final class TableCopyTest extends SpecTestsuiteBase
     public function testAssertReturn845(): void
     {
         $this->runAssertReturnCommand(
-            module: null,
             action: ['type' => 'invoke', 'field' => 'check_t1', 'args' => [['type' => 'i32', 'value' => '5']]],
             expected: [['type' => 'i32', 'value' => '1']],
             line: 1277,
@@ -9289,7 +8459,6 @@ final class TableCopyTest extends SpecTestsuiteBase
     public function testAssertReturn846(): void
     {
         $this->runAssertReturnCommand(
-            module: null,
             action: ['type' => 'invoke', 'field' => 'check_t1', 'args' => [['type' => 'i32', 'value' => '6']]],
             expected: [['type' => 'i32', 'value' => '4']],
             line: 1278,
@@ -9300,7 +8469,6 @@ final class TableCopyTest extends SpecTestsuiteBase
     public function testAssertTrap847(): void
     {
         $this->runAssertTrapCommand(
-            module: null,
             action: ['type' => 'invoke', 'field' => 'check_t1', 'args' => [['type' => 'i32', 'value' => '7']]],
             text: 'uninitialized element',
             line: 1279,
@@ -9311,7 +8479,6 @@ final class TableCopyTest extends SpecTestsuiteBase
     public function testAssertTrap848(): void
     {
         $this->runAssertTrapCommand(
-            module: null,
             action: ['type' => 'invoke', 'field' => 'check_t1', 'args' => [['type' => 'i32', 'value' => '8']]],
             text: 'uninitialized element',
             line: 1280,
@@ -9322,7 +8489,6 @@ final class TableCopyTest extends SpecTestsuiteBase
     public function testAssertTrap849(): void
     {
         $this->runAssertTrapCommand(
-            module: null,
             action: ['type' => 'invoke', 'field' => 'check_t1', 'args' => [['type' => 'i32', 'value' => '9']]],
             text: 'uninitialized element',
             line: 1281,
@@ -9333,7 +8499,6 @@ final class TableCopyTest extends SpecTestsuiteBase
     public function testAssertTrap850(): void
     {
         $this->runAssertTrapCommand(
-            module: null,
             action: ['type' => 'invoke', 'field' => 'check_t1', 'args' => [['type' => 'i32', 'value' => '10']]],
             text: 'uninitialized element',
             line: 1282,
@@ -9344,7 +8509,6 @@ final class TableCopyTest extends SpecTestsuiteBase
     public function testAssertReturn851(): void
     {
         $this->runAssertReturnCommand(
-            module: null,
             action: ['type' => 'invoke', 'field' => 'check_t1', 'args' => [['type' => 'i32', 'value' => '11']]],
             expected: [['type' => 'i32', 'value' => '6']],
             line: 1283,
@@ -9355,7 +8519,6 @@ final class TableCopyTest extends SpecTestsuiteBase
     public function testAssertReturn852(): void
     {
         $this->runAssertReturnCommand(
-            module: null,
             action: ['type' => 'invoke', 'field' => 'check_t1', 'args' => [['type' => 'i32', 'value' => '12']]],
             expected: [['type' => 'i32', 'value' => '3']],
             line: 1284,
@@ -9366,7 +8529,6 @@ final class TableCopyTest extends SpecTestsuiteBase
     public function testAssertReturn853(): void
     {
         $this->runAssertReturnCommand(
-            module: null,
             action: ['type' => 'invoke', 'field' => 'check_t1', 'args' => [['type' => 'i32', 'value' => '13']]],
             expected: [['type' => 'i32', 'value' => '2']],
             line: 1285,
@@ -9377,7 +8539,6 @@ final class TableCopyTest extends SpecTestsuiteBase
     public function testAssertReturn854(): void
     {
         $this->runAssertReturnCommand(
-            module: null,
             action: ['type' => 'invoke', 'field' => 'check_t1', 'args' => [['type' => 'i32', 'value' => '14']]],
             expected: [['type' => 'i32', 'value' => '5']],
             line: 1286,
@@ -9388,7 +8549,6 @@ final class TableCopyTest extends SpecTestsuiteBase
     public function testAssertReturn855(): void
     {
         $this->runAssertReturnCommand(
-            module: null,
             action: ['type' => 'invoke', 'field' => 'check_t1', 'args' => [['type' => 'i32', 'value' => '15']]],
             expected: [['type' => 'i32', 'value' => '7']],
             line: 1287,
@@ -9399,7 +8559,6 @@ final class TableCopyTest extends SpecTestsuiteBase
     public function testAssertTrap856(): void
     {
         $this->runAssertTrapCommand(
-            module: null,
             action: ['type' => 'invoke', 'field' => 'check_t1', 'args' => [['type' => 'i32', 'value' => '16']]],
             text: 'uninitialized element',
             line: 1288,
@@ -9410,7 +8569,6 @@ final class TableCopyTest extends SpecTestsuiteBase
     public function testAssertTrap857(): void
     {
         $this->runAssertTrapCommand(
-            module: null,
             action: ['type' => 'invoke', 'field' => 'check_t1', 'args' => [['type' => 'i32', 'value' => '17']]],
             text: 'uninitialized element',
             line: 1289,
@@ -9421,7 +8579,6 @@ final class TableCopyTest extends SpecTestsuiteBase
     public function testAssertTrap858(): void
     {
         $this->runAssertTrapCommand(
-            module: null,
             action: ['type' => 'invoke', 'field' => 'check_t1', 'args' => [['type' => 'i32', 'value' => '18']]],
             text: 'uninitialized element',
             line: 1290,
@@ -9432,7 +8589,6 @@ final class TableCopyTest extends SpecTestsuiteBase
     public function testAssertTrap859(): void
     {
         $this->runAssertTrapCommand(
-            module: null,
             action: ['type' => 'invoke', 'field' => 'check_t1', 'args' => [['type' => 'i32', 'value' => '19']]],
             text: 'uninitialized element',
             line: 1291,
@@ -9443,7 +8599,6 @@ final class TableCopyTest extends SpecTestsuiteBase
     public function testAssertTrap860(): void
     {
         $this->runAssertTrapCommand(
-            module: null,
             action: ['type' => 'invoke', 'field' => 'check_t1', 'args' => [['type' => 'i32', 'value' => '20']]],
             text: 'uninitialized element',
             line: 1292,
@@ -9454,7 +8609,6 @@ final class TableCopyTest extends SpecTestsuiteBase
     public function testAssertTrap861(): void
     {
         $this->runAssertTrapCommand(
-            module: null,
             action: ['type' => 'invoke', 'field' => 'check_t1', 'args' => [['type' => 'i32', 'value' => '21']]],
             text: 'uninitialized element',
             line: 1293,
@@ -9465,7 +8619,6 @@ final class TableCopyTest extends SpecTestsuiteBase
     public function testAssertTrap862(): void
     {
         $this->runAssertTrapCommand(
-            module: null,
             action: ['type' => 'invoke', 'field' => 'check_t1', 'args' => [['type' => 'i32', 'value' => '22']]],
             text: 'uninitialized element',
             line: 1294,
@@ -9476,7 +8629,6 @@ final class TableCopyTest extends SpecTestsuiteBase
     public function testAssertTrap863(): void
     {
         $this->runAssertTrapCommand(
-            module: null,
             action: ['type' => 'invoke', 'field' => 'check_t1', 'args' => [['type' => 'i32', 'value' => '23']]],
             text: 'uninitialized element',
             line: 1295,
@@ -9487,7 +8639,6 @@ final class TableCopyTest extends SpecTestsuiteBase
     public function testAssertTrap864(): void
     {
         $this->runAssertTrapCommand(
-            module: null,
             action: ['type' => 'invoke', 'field' => 'check_t1', 'args' => [['type' => 'i32', 'value' => '24']]],
             text: 'uninitialized element',
             line: 1296,
@@ -9498,7 +8649,6 @@ final class TableCopyTest extends SpecTestsuiteBase
     public function testAssertTrap865(): void
     {
         $this->runAssertTrapCommand(
-            module: null,
             action: ['type' => 'invoke', 'field' => 'check_t1', 'args' => [['type' => 'i32', 'value' => '25']]],
             text: 'uninitialized element',
             line: 1297,
@@ -9509,7 +8659,6 @@ final class TableCopyTest extends SpecTestsuiteBase
     public function testAssertTrap866(): void
     {
         $this->runAssertTrapCommand(
-            module: null,
             action: ['type' => 'invoke', 'field' => 'check_t1', 'args' => [['type' => 'i32', 'value' => '26']]],
             text: 'uninitialized element',
             line: 1298,
@@ -9520,7 +8669,6 @@ final class TableCopyTest extends SpecTestsuiteBase
     public function testAssertTrap867(): void
     {
         $this->runAssertTrapCommand(
-            module: null,
             action: ['type' => 'invoke', 'field' => 'check_t1', 'args' => [['type' => 'i32', 'value' => '27']]],
             text: 'uninitialized element',
             line: 1299,
@@ -9531,7 +8679,6 @@ final class TableCopyTest extends SpecTestsuiteBase
     public function testAssertTrap868(): void
     {
         $this->runAssertTrapCommand(
-            module: null,
             action: ['type' => 'invoke', 'field' => 'check_t1', 'args' => [['type' => 'i32', 'value' => '28']]],
             text: 'uninitialized element',
             line: 1300,
@@ -9542,7 +8689,6 @@ final class TableCopyTest extends SpecTestsuiteBase
     public function testAssertTrap869(): void
     {
         $this->runAssertTrapCommand(
-            module: null,
             action: ['type' => 'invoke', 'field' => 'check_t1', 'args' => [['type' => 'i32', 'value' => '29']]],
             text: 'uninitialized element',
             line: 1301,
@@ -9563,7 +8709,6 @@ final class TableCopyTest extends SpecTestsuiteBase
     public function testAction871(): void
     {
         $this->runActionCommand(
-            module: null,
             action: ['type' => 'invoke', 'field' => 'test', 'args' => []],
             line: 1333,
         );
@@ -9573,7 +8718,6 @@ final class TableCopyTest extends SpecTestsuiteBase
     public function testAssertTrap872(): void
     {
         $this->runAssertTrapCommand(
-            module: null,
             action: ['type' => 'invoke', 'field' => 'check_t0', 'args' => [['type' => 'i32', 'value' => '0']]],
             text: 'uninitialized element',
             line: 1334,
@@ -9584,7 +8728,6 @@ final class TableCopyTest extends SpecTestsuiteBase
     public function testAssertTrap873(): void
     {
         $this->runAssertTrapCommand(
-            module: null,
             action: ['type' => 'invoke', 'field' => 'check_t0', 'args' => [['type' => 'i32', 'value' => '1']]],
             text: 'uninitialized element',
             line: 1335,
@@ -9595,7 +8738,6 @@ final class TableCopyTest extends SpecTestsuiteBase
     public function testAssertReturn874(): void
     {
         $this->runAssertReturnCommand(
-            module: null,
             action: ['type' => 'invoke', 'field' => 'check_t0', 'args' => [['type' => 'i32', 'value' => '2']]],
             expected: [['type' => 'i32', 'value' => '3']],
             line: 1336,
@@ -9606,7 +8748,6 @@ final class TableCopyTest extends SpecTestsuiteBase
     public function testAssertReturn875(): void
     {
         $this->runAssertReturnCommand(
-            module: null,
             action: ['type' => 'invoke', 'field' => 'check_t0', 'args' => [['type' => 'i32', 'value' => '3']]],
             expected: [['type' => 'i32', 'value' => '1']],
             line: 1337,
@@ -9617,7 +8758,6 @@ final class TableCopyTest extends SpecTestsuiteBase
     public function testAssertReturn876(): void
     {
         $this->runAssertReturnCommand(
-            module: null,
             action: ['type' => 'invoke', 'field' => 'check_t0', 'args' => [['type' => 'i32', 'value' => '4']]],
             expected: [['type' => 'i32', 'value' => '4']],
             line: 1338,
@@ -9628,7 +8768,6 @@ final class TableCopyTest extends SpecTestsuiteBase
     public function testAssertReturn877(): void
     {
         $this->runAssertReturnCommand(
-            module: null,
             action: ['type' => 'invoke', 'field' => 'check_t0', 'args' => [['type' => 'i32', 'value' => '5']]],
             expected: [['type' => 'i32', 'value' => '1']],
             line: 1339,
@@ -9639,7 +8778,6 @@ final class TableCopyTest extends SpecTestsuiteBase
     public function testAssertTrap878(): void
     {
         $this->runAssertTrapCommand(
-            module: null,
             action: ['type' => 'invoke', 'field' => 'check_t0', 'args' => [['type' => 'i32', 'value' => '6']]],
             text: 'uninitialized element',
             line: 1340,
@@ -9650,7 +8788,6 @@ final class TableCopyTest extends SpecTestsuiteBase
     public function testAssertTrap879(): void
     {
         $this->runAssertTrapCommand(
-            module: null,
             action: ['type' => 'invoke', 'field' => 'check_t0', 'args' => [['type' => 'i32', 'value' => '7']]],
             text: 'uninitialized element',
             line: 1341,
@@ -9661,7 +8798,6 @@ final class TableCopyTest extends SpecTestsuiteBase
     public function testAssertTrap880(): void
     {
         $this->runAssertTrapCommand(
-            module: null,
             action: ['type' => 'invoke', 'field' => 'check_t0', 'args' => [['type' => 'i32', 'value' => '8']]],
             text: 'uninitialized element',
             line: 1342,
@@ -9672,7 +8808,6 @@ final class TableCopyTest extends SpecTestsuiteBase
     public function testAssertTrap881(): void
     {
         $this->runAssertTrapCommand(
-            module: null,
             action: ['type' => 'invoke', 'field' => 'check_t0', 'args' => [['type' => 'i32', 'value' => '9']]],
             text: 'uninitialized element',
             line: 1343,
@@ -9683,7 +8818,6 @@ final class TableCopyTest extends SpecTestsuiteBase
     public function testAssertTrap882(): void
     {
         $this->runAssertTrapCommand(
-            module: null,
             action: ['type' => 'invoke', 'field' => 'check_t0', 'args' => [['type' => 'i32', 'value' => '10']]],
             text: 'uninitialized element',
             line: 1344,
@@ -9694,7 +8828,6 @@ final class TableCopyTest extends SpecTestsuiteBase
     public function testAssertTrap883(): void
     {
         $this->runAssertTrapCommand(
-            module: null,
             action: ['type' => 'invoke', 'field' => 'check_t0', 'args' => [['type' => 'i32', 'value' => '11']]],
             text: 'uninitialized element',
             line: 1345,
@@ -9705,7 +8838,6 @@ final class TableCopyTest extends SpecTestsuiteBase
     public function testAssertReturn884(): void
     {
         $this->runAssertReturnCommand(
-            module: null,
             action: ['type' => 'invoke', 'field' => 'check_t0', 'args' => [['type' => 'i32', 'value' => '12']]],
             expected: [['type' => 'i32', 'value' => '7']],
             line: 1346,
@@ -9716,7 +8848,6 @@ final class TableCopyTest extends SpecTestsuiteBase
     public function testAssertReturn885(): void
     {
         $this->runAssertReturnCommand(
-            module: null,
             action: ['type' => 'invoke', 'field' => 'check_t0', 'args' => [['type' => 'i32', 'value' => '13']]],
             expected: [['type' => 'i32', 'value' => '5']],
             line: 1347,
@@ -9727,7 +8858,6 @@ final class TableCopyTest extends SpecTestsuiteBase
     public function testAssertReturn886(): void
     {
         $this->runAssertReturnCommand(
-            module: null,
             action: ['type' => 'invoke', 'field' => 'check_t0', 'args' => [['type' => 'i32', 'value' => '14']]],
             expected: [['type' => 'i32', 'value' => '2']],
             line: 1348,
@@ -9738,7 +8868,6 @@ final class TableCopyTest extends SpecTestsuiteBase
     public function testAssertReturn887(): void
     {
         $this->runAssertReturnCommand(
-            module: null,
             action: ['type' => 'invoke', 'field' => 'check_t0', 'args' => [['type' => 'i32', 'value' => '15']]],
             expected: [['type' => 'i32', 'value' => '3']],
             line: 1349,
@@ -9749,7 +8878,6 @@ final class TableCopyTest extends SpecTestsuiteBase
     public function testAssertReturn888(): void
     {
         $this->runAssertReturnCommand(
-            module: null,
             action: ['type' => 'invoke', 'field' => 'check_t0', 'args' => [['type' => 'i32', 'value' => '16']]],
             expected: [['type' => 'i32', 'value' => '6']],
             line: 1350,
@@ -9760,7 +8888,6 @@ final class TableCopyTest extends SpecTestsuiteBase
     public function testAssertTrap889(): void
     {
         $this->runAssertTrapCommand(
-            module: null,
             action: ['type' => 'invoke', 'field' => 'check_t0', 'args' => [['type' => 'i32', 'value' => '17']]],
             text: 'uninitialized element',
             line: 1351,
@@ -9771,7 +8898,6 @@ final class TableCopyTest extends SpecTestsuiteBase
     public function testAssertTrap890(): void
     {
         $this->runAssertTrapCommand(
-            module: null,
             action: ['type' => 'invoke', 'field' => 'check_t0', 'args' => [['type' => 'i32', 'value' => '18']]],
             text: 'uninitialized element',
             line: 1352,
@@ -9782,7 +8908,6 @@ final class TableCopyTest extends SpecTestsuiteBase
     public function testAssertTrap891(): void
     {
         $this->runAssertTrapCommand(
-            module: null,
             action: ['type' => 'invoke', 'field' => 'check_t0', 'args' => [['type' => 'i32', 'value' => '19']]],
             text: 'uninitialized element',
             line: 1353,
@@ -9793,7 +8918,6 @@ final class TableCopyTest extends SpecTestsuiteBase
     public function testAssertTrap892(): void
     {
         $this->runAssertTrapCommand(
-            module: null,
             action: ['type' => 'invoke', 'field' => 'check_t0', 'args' => [['type' => 'i32', 'value' => '20']]],
             text: 'uninitialized element',
             line: 1354,
@@ -9804,7 +8928,6 @@ final class TableCopyTest extends SpecTestsuiteBase
     public function testAssertTrap893(): void
     {
         $this->runAssertTrapCommand(
-            module: null,
             action: ['type' => 'invoke', 'field' => 'check_t0', 'args' => [['type' => 'i32', 'value' => '21']]],
             text: 'uninitialized element',
             line: 1355,
@@ -9815,7 +8938,6 @@ final class TableCopyTest extends SpecTestsuiteBase
     public function testAssertTrap894(): void
     {
         $this->runAssertTrapCommand(
-            module: null,
             action: ['type' => 'invoke', 'field' => 'check_t0', 'args' => [['type' => 'i32', 'value' => '22']]],
             text: 'uninitialized element',
             line: 1356,
@@ -9826,7 +8948,6 @@ final class TableCopyTest extends SpecTestsuiteBase
     public function testAssertTrap895(): void
     {
         $this->runAssertTrapCommand(
-            module: null,
             action: ['type' => 'invoke', 'field' => 'check_t0', 'args' => [['type' => 'i32', 'value' => '23']]],
             text: 'uninitialized element',
             line: 1357,
@@ -9837,7 +8958,6 @@ final class TableCopyTest extends SpecTestsuiteBase
     public function testAssertTrap896(): void
     {
         $this->runAssertTrapCommand(
-            module: null,
             action: ['type' => 'invoke', 'field' => 'check_t0', 'args' => [['type' => 'i32', 'value' => '24']]],
             text: 'uninitialized element',
             line: 1358,
@@ -9848,7 +8968,6 @@ final class TableCopyTest extends SpecTestsuiteBase
     public function testAssertTrap897(): void
     {
         $this->runAssertTrapCommand(
-            module: null,
             action: ['type' => 'invoke', 'field' => 'check_t0', 'args' => [['type' => 'i32', 'value' => '25']]],
             text: 'uninitialized element',
             line: 1359,
@@ -9859,7 +8978,6 @@ final class TableCopyTest extends SpecTestsuiteBase
     public function testAssertReturn898(): void
     {
         $this->runAssertReturnCommand(
-            module: null,
             action: ['type' => 'invoke', 'field' => 'check_t0', 'args' => [['type' => 'i32', 'value' => '26']]],
             expected: [['type' => 'i32', 'value' => '3']],
             line: 1360,
@@ -9870,7 +8988,6 @@ final class TableCopyTest extends SpecTestsuiteBase
     public function testAssertReturn899(): void
     {
         $this->runAssertReturnCommand(
-            module: null,
             action: ['type' => 'invoke', 'field' => 'check_t0', 'args' => [['type' => 'i32', 'value' => '27']]],
             expected: [['type' => 'i32', 'value' => '1']],
             line: 1361,
@@ -9881,7 +8998,6 @@ final class TableCopyTest extends SpecTestsuiteBase
     public function testAssertTrap900(): void
     {
         $this->runAssertTrapCommand(
-            module: null,
             action: ['type' => 'invoke', 'field' => 'check_t0', 'args' => [['type' => 'i32', 'value' => '28']]],
             text: 'uninitialized element',
             line: 1362,
@@ -9892,7 +9008,6 @@ final class TableCopyTest extends SpecTestsuiteBase
     public function testAssertTrap901(): void
     {
         $this->runAssertTrapCommand(
-            module: null,
             action: ['type' => 'invoke', 'field' => 'check_t0', 'args' => [['type' => 'i32', 'value' => '29']]],
             text: 'uninitialized element',
             line: 1363,
@@ -9903,7 +9018,6 @@ final class TableCopyTest extends SpecTestsuiteBase
     public function testAssertTrap902(): void
     {
         $this->runAssertTrapCommand(
-            module: null,
             action: ['type' => 'invoke', 'field' => 'check_t1', 'args' => [['type' => 'i32', 'value' => '0']]],
             text: 'uninitialized element',
             line: 1364,
@@ -9914,7 +9028,6 @@ final class TableCopyTest extends SpecTestsuiteBase
     public function testAssertTrap903(): void
     {
         $this->runAssertTrapCommand(
-            module: null,
             action: ['type' => 'invoke', 'field' => 'check_t1', 'args' => [['type' => 'i32', 'value' => '1']]],
             text: 'uninitialized element',
             line: 1365,
@@ -9925,7 +9038,6 @@ final class TableCopyTest extends SpecTestsuiteBase
     public function testAssertTrap904(): void
     {
         $this->runAssertTrapCommand(
-            module: null,
             action: ['type' => 'invoke', 'field' => 'check_t1', 'args' => [['type' => 'i32', 'value' => '2']]],
             text: 'uninitialized element',
             line: 1366,
@@ -9936,7 +9048,6 @@ final class TableCopyTest extends SpecTestsuiteBase
     public function testAssertReturn905(): void
     {
         $this->runAssertReturnCommand(
-            module: null,
             action: ['type' => 'invoke', 'field' => 'check_t1', 'args' => [['type' => 'i32', 'value' => '3']]],
             expected: [['type' => 'i32', 'value' => '1']],
             line: 1367,
@@ -9947,7 +9058,6 @@ final class TableCopyTest extends SpecTestsuiteBase
     public function testAssertReturn906(): void
     {
         $this->runAssertReturnCommand(
-            module: null,
             action: ['type' => 'invoke', 'field' => 'check_t1', 'args' => [['type' => 'i32', 'value' => '4']]],
             expected: [['type' => 'i32', 'value' => '3']],
             line: 1368,
@@ -9958,7 +9068,6 @@ final class TableCopyTest extends SpecTestsuiteBase
     public function testAssertReturn907(): void
     {
         $this->runAssertReturnCommand(
-            module: null,
             action: ['type' => 'invoke', 'field' => 'check_t1', 'args' => [['type' => 'i32', 'value' => '5']]],
             expected: [['type' => 'i32', 'value' => '1']],
             line: 1369,
@@ -9969,7 +9078,6 @@ final class TableCopyTest extends SpecTestsuiteBase
     public function testAssertReturn908(): void
     {
         $this->runAssertReturnCommand(
-            module: null,
             action: ['type' => 'invoke', 'field' => 'check_t1', 'args' => [['type' => 'i32', 'value' => '6']]],
             expected: [['type' => 'i32', 'value' => '4']],
             line: 1370,
@@ -9980,7 +9088,6 @@ final class TableCopyTest extends SpecTestsuiteBase
     public function testAssertTrap909(): void
     {
         $this->runAssertTrapCommand(
-            module: null,
             action: ['type' => 'invoke', 'field' => 'check_t1', 'args' => [['type' => 'i32', 'value' => '7']]],
             text: 'uninitialized element',
             line: 1371,
@@ -9991,7 +9098,6 @@ final class TableCopyTest extends SpecTestsuiteBase
     public function testAssertTrap910(): void
     {
         $this->runAssertTrapCommand(
-            module: null,
             action: ['type' => 'invoke', 'field' => 'check_t1', 'args' => [['type' => 'i32', 'value' => '8']]],
             text: 'uninitialized element',
             line: 1372,
@@ -10002,7 +9108,6 @@ final class TableCopyTest extends SpecTestsuiteBase
     public function testAssertTrap911(): void
     {
         $this->runAssertTrapCommand(
-            module: null,
             action: ['type' => 'invoke', 'field' => 'check_t1', 'args' => [['type' => 'i32', 'value' => '9']]],
             text: 'uninitialized element',
             line: 1373,
@@ -10013,7 +9118,6 @@ final class TableCopyTest extends SpecTestsuiteBase
     public function testAssertTrap912(): void
     {
         $this->runAssertTrapCommand(
-            module: null,
             action: ['type' => 'invoke', 'field' => 'check_t1', 'args' => [['type' => 'i32', 'value' => '10']]],
             text: 'uninitialized element',
             line: 1374,
@@ -10024,7 +9128,6 @@ final class TableCopyTest extends SpecTestsuiteBase
     public function testAssertReturn913(): void
     {
         $this->runAssertReturnCommand(
-            module: null,
             action: ['type' => 'invoke', 'field' => 'check_t1', 'args' => [['type' => 'i32', 'value' => '11']]],
             expected: [['type' => 'i32', 'value' => '6']],
             line: 1375,
@@ -10035,7 +9138,6 @@ final class TableCopyTest extends SpecTestsuiteBase
     public function testAssertReturn914(): void
     {
         $this->runAssertReturnCommand(
-            module: null,
             action: ['type' => 'invoke', 'field' => 'check_t1', 'args' => [['type' => 'i32', 'value' => '12']]],
             expected: [['type' => 'i32', 'value' => '3']],
             line: 1376,
@@ -10046,7 +9148,6 @@ final class TableCopyTest extends SpecTestsuiteBase
     public function testAssertReturn915(): void
     {
         $this->runAssertReturnCommand(
-            module: null,
             action: ['type' => 'invoke', 'field' => 'check_t1', 'args' => [['type' => 'i32', 'value' => '13']]],
             expected: [['type' => 'i32', 'value' => '2']],
             line: 1377,
@@ -10057,7 +9158,6 @@ final class TableCopyTest extends SpecTestsuiteBase
     public function testAssertReturn916(): void
     {
         $this->runAssertReturnCommand(
-            module: null,
             action: ['type' => 'invoke', 'field' => 'check_t1', 'args' => [['type' => 'i32', 'value' => '14']]],
             expected: [['type' => 'i32', 'value' => '5']],
             line: 1378,
@@ -10068,7 +9168,6 @@ final class TableCopyTest extends SpecTestsuiteBase
     public function testAssertReturn917(): void
     {
         $this->runAssertReturnCommand(
-            module: null,
             action: ['type' => 'invoke', 'field' => 'check_t1', 'args' => [['type' => 'i32', 'value' => '15']]],
             expected: [['type' => 'i32', 'value' => '7']],
             line: 1379,
@@ -10079,7 +9178,6 @@ final class TableCopyTest extends SpecTestsuiteBase
     public function testAssertTrap918(): void
     {
         $this->runAssertTrapCommand(
-            module: null,
             action: ['type' => 'invoke', 'field' => 'check_t1', 'args' => [['type' => 'i32', 'value' => '16']]],
             text: 'uninitialized element',
             line: 1380,
@@ -10090,7 +9188,6 @@ final class TableCopyTest extends SpecTestsuiteBase
     public function testAssertTrap919(): void
     {
         $this->runAssertTrapCommand(
-            module: null,
             action: ['type' => 'invoke', 'field' => 'check_t1', 'args' => [['type' => 'i32', 'value' => '17']]],
             text: 'uninitialized element',
             line: 1381,
@@ -10101,7 +9198,6 @@ final class TableCopyTest extends SpecTestsuiteBase
     public function testAssertTrap920(): void
     {
         $this->runAssertTrapCommand(
-            module: null,
             action: ['type' => 'invoke', 'field' => 'check_t1', 'args' => [['type' => 'i32', 'value' => '18']]],
             text: 'uninitialized element',
             line: 1382,
@@ -10112,7 +9208,6 @@ final class TableCopyTest extends SpecTestsuiteBase
     public function testAssertTrap921(): void
     {
         $this->runAssertTrapCommand(
-            module: null,
             action: ['type' => 'invoke', 'field' => 'check_t1', 'args' => [['type' => 'i32', 'value' => '19']]],
             text: 'uninitialized element',
             line: 1383,
@@ -10123,7 +9218,6 @@ final class TableCopyTest extends SpecTestsuiteBase
     public function testAssertTrap922(): void
     {
         $this->runAssertTrapCommand(
-            module: null,
             action: ['type' => 'invoke', 'field' => 'check_t1', 'args' => [['type' => 'i32', 'value' => '20']]],
             text: 'uninitialized element',
             line: 1384,
@@ -10134,7 +9228,6 @@ final class TableCopyTest extends SpecTestsuiteBase
     public function testAssertTrap923(): void
     {
         $this->runAssertTrapCommand(
-            module: null,
             action: ['type' => 'invoke', 'field' => 'check_t1', 'args' => [['type' => 'i32', 'value' => '21']]],
             text: 'uninitialized element',
             line: 1385,
@@ -10145,7 +9238,6 @@ final class TableCopyTest extends SpecTestsuiteBase
     public function testAssertTrap924(): void
     {
         $this->runAssertTrapCommand(
-            module: null,
             action: ['type' => 'invoke', 'field' => 'check_t1', 'args' => [['type' => 'i32', 'value' => '22']]],
             text: 'uninitialized element',
             line: 1386,
@@ -10156,7 +9248,6 @@ final class TableCopyTest extends SpecTestsuiteBase
     public function testAssertTrap925(): void
     {
         $this->runAssertTrapCommand(
-            module: null,
             action: ['type' => 'invoke', 'field' => 'check_t1', 'args' => [['type' => 'i32', 'value' => '23']]],
             text: 'uninitialized element',
             line: 1387,
@@ -10167,7 +9258,6 @@ final class TableCopyTest extends SpecTestsuiteBase
     public function testAssertTrap926(): void
     {
         $this->runAssertTrapCommand(
-            module: null,
             action: ['type' => 'invoke', 'field' => 'check_t1', 'args' => [['type' => 'i32', 'value' => '24']]],
             text: 'uninitialized element',
             line: 1388,
@@ -10178,7 +9268,6 @@ final class TableCopyTest extends SpecTestsuiteBase
     public function testAssertTrap927(): void
     {
         $this->runAssertTrapCommand(
-            module: null,
             action: ['type' => 'invoke', 'field' => 'check_t1', 'args' => [['type' => 'i32', 'value' => '25']]],
             text: 'uninitialized element',
             line: 1389,
@@ -10189,7 +9278,6 @@ final class TableCopyTest extends SpecTestsuiteBase
     public function testAssertTrap928(): void
     {
         $this->runAssertTrapCommand(
-            module: null,
             action: ['type' => 'invoke', 'field' => 'check_t1', 'args' => [['type' => 'i32', 'value' => '26']]],
             text: 'uninitialized element',
             line: 1390,
@@ -10200,7 +9288,6 @@ final class TableCopyTest extends SpecTestsuiteBase
     public function testAssertTrap929(): void
     {
         $this->runAssertTrapCommand(
-            module: null,
             action: ['type' => 'invoke', 'field' => 'check_t1', 'args' => [['type' => 'i32', 'value' => '27']]],
             text: 'uninitialized element',
             line: 1391,
@@ -10211,7 +9298,6 @@ final class TableCopyTest extends SpecTestsuiteBase
     public function testAssertTrap930(): void
     {
         $this->runAssertTrapCommand(
-            module: null,
             action: ['type' => 'invoke', 'field' => 'check_t1', 'args' => [['type' => 'i32', 'value' => '28']]],
             text: 'uninitialized element',
             line: 1392,
@@ -10222,7 +9308,6 @@ final class TableCopyTest extends SpecTestsuiteBase
     public function testAssertTrap931(): void
     {
         $this->runAssertTrapCommand(
-            module: null,
             action: ['type' => 'invoke', 'field' => 'check_t1', 'args' => [['type' => 'i32', 'value' => '29']]],
             text: 'uninitialized element',
             line: 1393,
@@ -10243,7 +9328,6 @@ final class TableCopyTest extends SpecTestsuiteBase
     public function testAction933(): void
     {
         $this->runActionCommand(
-            module: null,
             action: ['type' => 'invoke', 'field' => 'test', 'args' => []],
             line: 1425,
         );
@@ -10253,7 +9337,6 @@ final class TableCopyTest extends SpecTestsuiteBase
     public function testAssertTrap934(): void
     {
         $this->runAssertTrapCommand(
-            module: null,
             action: ['type' => 'invoke', 'field' => 'check_t0', 'args' => [['type' => 'i32', 'value' => '0']]],
             text: 'uninitialized element',
             line: 1426,
@@ -10264,7 +9347,6 @@ final class TableCopyTest extends SpecTestsuiteBase
     public function testAssertTrap935(): void
     {
         $this->runAssertTrapCommand(
-            module: null,
             action: ['type' => 'invoke', 'field' => 'check_t0', 'args' => [['type' => 'i32', 'value' => '1']]],
             text: 'uninitialized element',
             line: 1427,
@@ -10275,7 +9357,6 @@ final class TableCopyTest extends SpecTestsuiteBase
     public function testAssertReturn936(): void
     {
         $this->runAssertReturnCommand(
-            module: null,
             action: ['type' => 'invoke', 'field' => 'check_t0', 'args' => [['type' => 'i32', 'value' => '2']]],
             expected: [['type' => 'i32', 'value' => '3']],
             line: 1428,
@@ -10286,7 +9367,6 @@ final class TableCopyTest extends SpecTestsuiteBase
     public function testAssertReturn937(): void
     {
         $this->runAssertReturnCommand(
-            module: null,
             action: ['type' => 'invoke', 'field' => 'check_t0', 'args' => [['type' => 'i32', 'value' => '3']]],
             expected: [['type' => 'i32', 'value' => '1']],
             line: 1429,
@@ -10297,7 +9377,6 @@ final class TableCopyTest extends SpecTestsuiteBase
     public function testAssertReturn938(): void
     {
         $this->runAssertReturnCommand(
-            module: null,
             action: ['type' => 'invoke', 'field' => 'check_t0', 'args' => [['type' => 'i32', 'value' => '4']]],
             expected: [['type' => 'i32', 'value' => '4']],
             line: 1430,
@@ -10308,7 +9387,6 @@ final class TableCopyTest extends SpecTestsuiteBase
     public function testAssertReturn939(): void
     {
         $this->runAssertReturnCommand(
-            module: null,
             action: ['type' => 'invoke', 'field' => 'check_t0', 'args' => [['type' => 'i32', 'value' => '5']]],
             expected: [['type' => 'i32', 'value' => '1']],
             line: 1431,
@@ -10319,7 +9397,6 @@ final class TableCopyTest extends SpecTestsuiteBase
     public function testAssertTrap940(): void
     {
         $this->runAssertTrapCommand(
-            module: null,
             action: ['type' => 'invoke', 'field' => 'check_t0', 'args' => [['type' => 'i32', 'value' => '6']]],
             text: 'uninitialized element',
             line: 1432,
@@ -10330,7 +9407,6 @@ final class TableCopyTest extends SpecTestsuiteBase
     public function testAssertTrap941(): void
     {
         $this->runAssertTrapCommand(
-            module: null,
             action: ['type' => 'invoke', 'field' => 'check_t0', 'args' => [['type' => 'i32', 'value' => '7']]],
             text: 'uninitialized element',
             line: 1433,
@@ -10341,7 +9417,6 @@ final class TableCopyTest extends SpecTestsuiteBase
     public function testAssertTrap942(): void
     {
         $this->runAssertTrapCommand(
-            module: null,
             action: ['type' => 'invoke', 'field' => 'check_t0', 'args' => [['type' => 'i32', 'value' => '8']]],
             text: 'uninitialized element',
             line: 1434,
@@ -10352,7 +9427,6 @@ final class TableCopyTest extends SpecTestsuiteBase
     public function testAssertTrap943(): void
     {
         $this->runAssertTrapCommand(
-            module: null,
             action: ['type' => 'invoke', 'field' => 'check_t0', 'args' => [['type' => 'i32', 'value' => '9']]],
             text: 'uninitialized element',
             line: 1435,
@@ -10363,7 +9437,6 @@ final class TableCopyTest extends SpecTestsuiteBase
     public function testAssertReturn944(): void
     {
         $this->runAssertReturnCommand(
-            module: null,
             action: ['type' => 'invoke', 'field' => 'check_t0', 'args' => [['type' => 'i32', 'value' => '10']]],
             expected: [['type' => 'i32', 'value' => '7']],
             line: 1436,
@@ -10374,7 +9447,6 @@ final class TableCopyTest extends SpecTestsuiteBase
     public function testAssertReturn945(): void
     {
         $this->runAssertReturnCommand(
-            module: null,
             action: ['type' => 'invoke', 'field' => 'check_t0', 'args' => [['type' => 'i32', 'value' => '11']]],
             expected: [['type' => 'i32', 'value' => '5']],
             line: 1437,
@@ -10385,7 +9457,6 @@ final class TableCopyTest extends SpecTestsuiteBase
     public function testAssertReturn946(): void
     {
         $this->runAssertReturnCommand(
-            module: null,
             action: ['type' => 'invoke', 'field' => 'check_t0', 'args' => [['type' => 'i32', 'value' => '12']]],
             expected: [['type' => 'i32', 'value' => '2']],
             line: 1438,
@@ -10396,7 +9467,6 @@ final class TableCopyTest extends SpecTestsuiteBase
     public function testAssertReturn947(): void
     {
         $this->runAssertReturnCommand(
-            module: null,
             action: ['type' => 'invoke', 'field' => 'check_t0', 'args' => [['type' => 'i32', 'value' => '13']]],
             expected: [['type' => 'i32', 'value' => '3']],
             line: 1439,
@@ -10407,7 +9477,6 @@ final class TableCopyTest extends SpecTestsuiteBase
     public function testAssertReturn948(): void
     {
         $this->runAssertReturnCommand(
-            module: null,
             action: ['type' => 'invoke', 'field' => 'check_t0', 'args' => [['type' => 'i32', 'value' => '14']]],
             expected: [['type' => 'i32', 'value' => '6']],
             line: 1440,
@@ -10418,7 +9487,6 @@ final class TableCopyTest extends SpecTestsuiteBase
     public function testAssertTrap949(): void
     {
         $this->runAssertTrapCommand(
-            module: null,
             action: ['type' => 'invoke', 'field' => 'check_t0', 'args' => [['type' => 'i32', 'value' => '15']]],
             text: 'uninitialized element',
             line: 1441,
@@ -10429,7 +9497,6 @@ final class TableCopyTest extends SpecTestsuiteBase
     public function testAssertTrap950(): void
     {
         $this->runAssertTrapCommand(
-            module: null,
             action: ['type' => 'invoke', 'field' => 'check_t0', 'args' => [['type' => 'i32', 'value' => '16']]],
             text: 'uninitialized element',
             line: 1442,
@@ -10440,7 +9507,6 @@ final class TableCopyTest extends SpecTestsuiteBase
     public function testAssertTrap951(): void
     {
         $this->runAssertTrapCommand(
-            module: null,
             action: ['type' => 'invoke', 'field' => 'check_t0', 'args' => [['type' => 'i32', 'value' => '17']]],
             text: 'uninitialized element',
             line: 1443,
@@ -10451,7 +9517,6 @@ final class TableCopyTest extends SpecTestsuiteBase
     public function testAssertTrap952(): void
     {
         $this->runAssertTrapCommand(
-            module: null,
             action: ['type' => 'invoke', 'field' => 'check_t0', 'args' => [['type' => 'i32', 'value' => '18']]],
             text: 'uninitialized element',
             line: 1444,
@@ -10462,7 +9527,6 @@ final class TableCopyTest extends SpecTestsuiteBase
     public function testAssertTrap953(): void
     {
         $this->runAssertTrapCommand(
-            module: null,
             action: ['type' => 'invoke', 'field' => 'check_t0', 'args' => [['type' => 'i32', 'value' => '19']]],
             text: 'uninitialized element',
             line: 1445,
@@ -10473,7 +9537,6 @@ final class TableCopyTest extends SpecTestsuiteBase
     public function testAssertTrap954(): void
     {
         $this->runAssertTrapCommand(
-            module: null,
             action: ['type' => 'invoke', 'field' => 'check_t0', 'args' => [['type' => 'i32', 'value' => '20']]],
             text: 'uninitialized element',
             line: 1446,
@@ -10484,7 +9547,6 @@ final class TableCopyTest extends SpecTestsuiteBase
     public function testAssertTrap955(): void
     {
         $this->runAssertTrapCommand(
-            module: null,
             action: ['type' => 'invoke', 'field' => 'check_t0', 'args' => [['type' => 'i32', 'value' => '21']]],
             text: 'uninitialized element',
             line: 1447,
@@ -10495,7 +9557,6 @@ final class TableCopyTest extends SpecTestsuiteBase
     public function testAssertTrap956(): void
     {
         $this->runAssertTrapCommand(
-            module: null,
             action: ['type' => 'invoke', 'field' => 'check_t0', 'args' => [['type' => 'i32', 'value' => '22']]],
             text: 'uninitialized element',
             line: 1448,
@@ -10506,7 +9567,6 @@ final class TableCopyTest extends SpecTestsuiteBase
     public function testAssertTrap957(): void
     {
         $this->runAssertTrapCommand(
-            module: null,
             action: ['type' => 'invoke', 'field' => 'check_t0', 'args' => [['type' => 'i32', 'value' => '23']]],
             text: 'uninitialized element',
             line: 1449,
@@ -10517,7 +9577,6 @@ final class TableCopyTest extends SpecTestsuiteBase
     public function testAssertTrap958(): void
     {
         $this->runAssertTrapCommand(
-            module: null,
             action: ['type' => 'invoke', 'field' => 'check_t0', 'args' => [['type' => 'i32', 'value' => '24']]],
             text: 'uninitialized element',
             line: 1450,
@@ -10528,7 +9587,6 @@ final class TableCopyTest extends SpecTestsuiteBase
     public function testAssertTrap959(): void
     {
         $this->runAssertTrapCommand(
-            module: null,
             action: ['type' => 'invoke', 'field' => 'check_t0', 'args' => [['type' => 'i32', 'value' => '25']]],
             text: 'uninitialized element',
             line: 1451,
@@ -10539,7 +9597,6 @@ final class TableCopyTest extends SpecTestsuiteBase
     public function testAssertTrap960(): void
     {
         $this->runAssertTrapCommand(
-            module: null,
             action: ['type' => 'invoke', 'field' => 'check_t0', 'args' => [['type' => 'i32', 'value' => '26']]],
             text: 'uninitialized element',
             line: 1452,
@@ -10550,7 +9607,6 @@ final class TableCopyTest extends SpecTestsuiteBase
     public function testAssertTrap961(): void
     {
         $this->runAssertTrapCommand(
-            module: null,
             action: ['type' => 'invoke', 'field' => 'check_t0', 'args' => [['type' => 'i32', 'value' => '27']]],
             text: 'uninitialized element',
             line: 1453,
@@ -10561,7 +9617,6 @@ final class TableCopyTest extends SpecTestsuiteBase
     public function testAssertTrap962(): void
     {
         $this->runAssertTrapCommand(
-            module: null,
             action: ['type' => 'invoke', 'field' => 'check_t0', 'args' => [['type' => 'i32', 'value' => '28']]],
             text: 'uninitialized element',
             line: 1454,
@@ -10572,7 +9627,6 @@ final class TableCopyTest extends SpecTestsuiteBase
     public function testAssertTrap963(): void
     {
         $this->runAssertTrapCommand(
-            module: null,
             action: ['type' => 'invoke', 'field' => 'check_t0', 'args' => [['type' => 'i32', 'value' => '29']]],
             text: 'uninitialized element',
             line: 1455,
@@ -10583,7 +9637,6 @@ final class TableCopyTest extends SpecTestsuiteBase
     public function testAssertTrap964(): void
     {
         $this->runAssertTrapCommand(
-            module: null,
             action: ['type' => 'invoke', 'field' => 'check_t1', 'args' => [['type' => 'i32', 'value' => '0']]],
             text: 'uninitialized element',
             line: 1456,
@@ -10594,7 +9647,6 @@ final class TableCopyTest extends SpecTestsuiteBase
     public function testAssertTrap965(): void
     {
         $this->runAssertTrapCommand(
-            module: null,
             action: ['type' => 'invoke', 'field' => 'check_t1', 'args' => [['type' => 'i32', 'value' => '1']]],
             text: 'uninitialized element',
             line: 1457,
@@ -10605,7 +9657,6 @@ final class TableCopyTest extends SpecTestsuiteBase
     public function testAssertTrap966(): void
     {
         $this->runAssertTrapCommand(
-            module: null,
             action: ['type' => 'invoke', 'field' => 'check_t1', 'args' => [['type' => 'i32', 'value' => '2']]],
             text: 'uninitialized element',
             line: 1458,
@@ -10616,7 +9667,6 @@ final class TableCopyTest extends SpecTestsuiteBase
     public function testAssertReturn967(): void
     {
         $this->runAssertReturnCommand(
-            module: null,
             action: ['type' => 'invoke', 'field' => 'check_t1', 'args' => [['type' => 'i32', 'value' => '3']]],
             expected: [['type' => 'i32', 'value' => '1']],
             line: 1459,
@@ -10627,7 +9677,6 @@ final class TableCopyTest extends SpecTestsuiteBase
     public function testAssertReturn968(): void
     {
         $this->runAssertReturnCommand(
-            module: null,
             action: ['type' => 'invoke', 'field' => 'check_t1', 'args' => [['type' => 'i32', 'value' => '4']]],
             expected: [['type' => 'i32', 'value' => '3']],
             line: 1460,
@@ -10638,7 +9687,6 @@ final class TableCopyTest extends SpecTestsuiteBase
     public function testAssertReturn969(): void
     {
         $this->runAssertReturnCommand(
-            module: null,
             action: ['type' => 'invoke', 'field' => 'check_t1', 'args' => [['type' => 'i32', 'value' => '5']]],
             expected: [['type' => 'i32', 'value' => '1']],
             line: 1461,
@@ -10649,7 +9697,6 @@ final class TableCopyTest extends SpecTestsuiteBase
     public function testAssertReturn970(): void
     {
         $this->runAssertReturnCommand(
-            module: null,
             action: ['type' => 'invoke', 'field' => 'check_t1', 'args' => [['type' => 'i32', 'value' => '6']]],
             expected: [['type' => 'i32', 'value' => '4']],
             line: 1462,
@@ -10660,7 +9707,6 @@ final class TableCopyTest extends SpecTestsuiteBase
     public function testAssertTrap971(): void
     {
         $this->runAssertTrapCommand(
-            module: null,
             action: ['type' => 'invoke', 'field' => 'check_t1', 'args' => [['type' => 'i32', 'value' => '7']]],
             text: 'uninitialized element',
             line: 1463,
@@ -10671,7 +9717,6 @@ final class TableCopyTest extends SpecTestsuiteBase
     public function testAssertTrap972(): void
     {
         $this->runAssertTrapCommand(
-            module: null,
             action: ['type' => 'invoke', 'field' => 'check_t1', 'args' => [['type' => 'i32', 'value' => '8']]],
             text: 'uninitialized element',
             line: 1464,
@@ -10682,7 +9727,6 @@ final class TableCopyTest extends SpecTestsuiteBase
     public function testAssertTrap973(): void
     {
         $this->runAssertTrapCommand(
-            module: null,
             action: ['type' => 'invoke', 'field' => 'check_t1', 'args' => [['type' => 'i32', 'value' => '9']]],
             text: 'uninitialized element',
             line: 1465,
@@ -10693,7 +9737,6 @@ final class TableCopyTest extends SpecTestsuiteBase
     public function testAssertTrap974(): void
     {
         $this->runAssertTrapCommand(
-            module: null,
             action: ['type' => 'invoke', 'field' => 'check_t1', 'args' => [['type' => 'i32', 'value' => '10']]],
             text: 'uninitialized element',
             line: 1466,
@@ -10704,7 +9747,6 @@ final class TableCopyTest extends SpecTestsuiteBase
     public function testAssertReturn975(): void
     {
         $this->runAssertReturnCommand(
-            module: null,
             action: ['type' => 'invoke', 'field' => 'check_t1', 'args' => [['type' => 'i32', 'value' => '11']]],
             expected: [['type' => 'i32', 'value' => '6']],
             line: 1467,
@@ -10715,7 +9757,6 @@ final class TableCopyTest extends SpecTestsuiteBase
     public function testAssertReturn976(): void
     {
         $this->runAssertReturnCommand(
-            module: null,
             action: ['type' => 'invoke', 'field' => 'check_t1', 'args' => [['type' => 'i32', 'value' => '12']]],
             expected: [['type' => 'i32', 'value' => '3']],
             line: 1468,
@@ -10726,7 +9767,6 @@ final class TableCopyTest extends SpecTestsuiteBase
     public function testAssertReturn977(): void
     {
         $this->runAssertReturnCommand(
-            module: null,
             action: ['type' => 'invoke', 'field' => 'check_t1', 'args' => [['type' => 'i32', 'value' => '13']]],
             expected: [['type' => 'i32', 'value' => '2']],
             line: 1469,
@@ -10737,7 +9777,6 @@ final class TableCopyTest extends SpecTestsuiteBase
     public function testAssertReturn978(): void
     {
         $this->runAssertReturnCommand(
-            module: null,
             action: ['type' => 'invoke', 'field' => 'check_t1', 'args' => [['type' => 'i32', 'value' => '14']]],
             expected: [['type' => 'i32', 'value' => '5']],
             line: 1470,
@@ -10748,7 +9787,6 @@ final class TableCopyTest extends SpecTestsuiteBase
     public function testAssertReturn979(): void
     {
         $this->runAssertReturnCommand(
-            module: null,
             action: ['type' => 'invoke', 'field' => 'check_t1', 'args' => [['type' => 'i32', 'value' => '15']]],
             expected: [['type' => 'i32', 'value' => '7']],
             line: 1471,
@@ -10759,7 +9797,6 @@ final class TableCopyTest extends SpecTestsuiteBase
     public function testAssertTrap980(): void
     {
         $this->runAssertTrapCommand(
-            module: null,
             action: ['type' => 'invoke', 'field' => 'check_t1', 'args' => [['type' => 'i32', 'value' => '16']]],
             text: 'uninitialized element',
             line: 1472,
@@ -10770,7 +9807,6 @@ final class TableCopyTest extends SpecTestsuiteBase
     public function testAssertTrap981(): void
     {
         $this->runAssertTrapCommand(
-            module: null,
             action: ['type' => 'invoke', 'field' => 'check_t1', 'args' => [['type' => 'i32', 'value' => '17']]],
             text: 'uninitialized element',
             line: 1473,
@@ -10781,7 +9817,6 @@ final class TableCopyTest extends SpecTestsuiteBase
     public function testAssertTrap982(): void
     {
         $this->runAssertTrapCommand(
-            module: null,
             action: ['type' => 'invoke', 'field' => 'check_t1', 'args' => [['type' => 'i32', 'value' => '18']]],
             text: 'uninitialized element',
             line: 1474,
@@ -10792,7 +9827,6 @@ final class TableCopyTest extends SpecTestsuiteBase
     public function testAssertTrap983(): void
     {
         $this->runAssertTrapCommand(
-            module: null,
             action: ['type' => 'invoke', 'field' => 'check_t1', 'args' => [['type' => 'i32', 'value' => '19']]],
             text: 'uninitialized element',
             line: 1475,
@@ -10803,7 +9837,6 @@ final class TableCopyTest extends SpecTestsuiteBase
     public function testAssertTrap984(): void
     {
         $this->runAssertTrapCommand(
-            module: null,
             action: ['type' => 'invoke', 'field' => 'check_t1', 'args' => [['type' => 'i32', 'value' => '20']]],
             text: 'uninitialized element',
             line: 1476,
@@ -10814,7 +9847,6 @@ final class TableCopyTest extends SpecTestsuiteBase
     public function testAssertTrap985(): void
     {
         $this->runAssertTrapCommand(
-            module: null,
             action: ['type' => 'invoke', 'field' => 'check_t1', 'args' => [['type' => 'i32', 'value' => '21']]],
             text: 'uninitialized element',
             line: 1477,
@@ -10825,7 +9857,6 @@ final class TableCopyTest extends SpecTestsuiteBase
     public function testAssertTrap986(): void
     {
         $this->runAssertTrapCommand(
-            module: null,
             action: ['type' => 'invoke', 'field' => 'check_t1', 'args' => [['type' => 'i32', 'value' => '22']]],
             text: 'uninitialized element',
             line: 1478,
@@ -10836,7 +9867,6 @@ final class TableCopyTest extends SpecTestsuiteBase
     public function testAssertTrap987(): void
     {
         $this->runAssertTrapCommand(
-            module: null,
             action: ['type' => 'invoke', 'field' => 'check_t1', 'args' => [['type' => 'i32', 'value' => '23']]],
             text: 'uninitialized element',
             line: 1479,
@@ -10847,7 +9877,6 @@ final class TableCopyTest extends SpecTestsuiteBase
     public function testAssertTrap988(): void
     {
         $this->runAssertTrapCommand(
-            module: null,
             action: ['type' => 'invoke', 'field' => 'check_t1', 'args' => [['type' => 'i32', 'value' => '24']]],
             text: 'uninitialized element',
             line: 1480,
@@ -10858,7 +9887,6 @@ final class TableCopyTest extends SpecTestsuiteBase
     public function testAssertTrap989(): void
     {
         $this->runAssertTrapCommand(
-            module: null,
             action: ['type' => 'invoke', 'field' => 'check_t1', 'args' => [['type' => 'i32', 'value' => '25']]],
             text: 'uninitialized element',
             line: 1481,
@@ -10869,7 +9897,6 @@ final class TableCopyTest extends SpecTestsuiteBase
     public function testAssertTrap990(): void
     {
         $this->runAssertTrapCommand(
-            module: null,
             action: ['type' => 'invoke', 'field' => 'check_t1', 'args' => [['type' => 'i32', 'value' => '26']]],
             text: 'uninitialized element',
             line: 1482,
@@ -10880,7 +9907,6 @@ final class TableCopyTest extends SpecTestsuiteBase
     public function testAssertTrap991(): void
     {
         $this->runAssertTrapCommand(
-            module: null,
             action: ['type' => 'invoke', 'field' => 'check_t1', 'args' => [['type' => 'i32', 'value' => '27']]],
             text: 'uninitialized element',
             line: 1483,
@@ -10891,7 +9917,6 @@ final class TableCopyTest extends SpecTestsuiteBase
     public function testAssertTrap992(): void
     {
         $this->runAssertTrapCommand(
-            module: null,
             action: ['type' => 'invoke', 'field' => 'check_t1', 'args' => [['type' => 'i32', 'value' => '28']]],
             text: 'uninitialized element',
             line: 1484,
@@ -10902,7 +9927,6 @@ final class TableCopyTest extends SpecTestsuiteBase
     public function testAssertTrap993(): void
     {
         $this->runAssertTrapCommand(
-            module: null,
             action: ['type' => 'invoke', 'field' => 'check_t1', 'args' => [['type' => 'i32', 'value' => '29']]],
             text: 'uninitialized element',
             line: 1485,
@@ -10923,7 +9947,6 @@ final class TableCopyTest extends SpecTestsuiteBase
     public function testAction995(): void
     {
         $this->runActionCommand(
-            module: null,
             action: ['type' => 'invoke', 'field' => 'test', 'args' => []],
             line: 1517,
         );
@@ -10933,7 +9956,6 @@ final class TableCopyTest extends SpecTestsuiteBase
     public function testAssertTrap996(): void
     {
         $this->runAssertTrapCommand(
-            module: null,
             action: ['type' => 'invoke', 'field' => 'check_t0', 'args' => [['type' => 'i32', 'value' => '0']]],
             text: 'uninitialized element',
             line: 1518,
@@ -10944,7 +9966,6 @@ final class TableCopyTest extends SpecTestsuiteBase
     public function testAssertTrap997(): void
     {
         $this->runAssertTrapCommand(
-            module: null,
             action: ['type' => 'invoke', 'field' => 'check_t0', 'args' => [['type' => 'i32', 'value' => '1']]],
             text: 'uninitialized element',
             line: 1519,
@@ -10955,7 +9976,6 @@ final class TableCopyTest extends SpecTestsuiteBase
     public function testAssertReturn998(): void
     {
         $this->runAssertReturnCommand(
-            module: null,
             action: ['type' => 'invoke', 'field' => 'check_t0', 'args' => [['type' => 'i32', 'value' => '2']]],
             expected: [['type' => 'i32', 'value' => '3']],
             line: 1520,
@@ -10966,7 +9986,6 @@ final class TableCopyTest extends SpecTestsuiteBase
     public function testAssertReturn999(): void
     {
         $this->runAssertReturnCommand(
-            module: null,
             action: ['type' => 'invoke', 'field' => 'check_t0', 'args' => [['type' => 'i32', 'value' => '3']]],
             expected: [['type' => 'i32', 'value' => '1']],
             line: 1521,
@@ -10977,7 +9996,6 @@ final class TableCopyTest extends SpecTestsuiteBase
     public function testAssertReturn1000(): void
     {
         $this->runAssertReturnCommand(
-            module: null,
             action: ['type' => 'invoke', 'field' => 'check_t0', 'args' => [['type' => 'i32', 'value' => '4']]],
             expected: [['type' => 'i32', 'value' => '4']],
             line: 1522,
@@ -10988,7 +10006,6 @@ final class TableCopyTest extends SpecTestsuiteBase
     public function testAssertReturn1001(): void
     {
         $this->runAssertReturnCommand(
-            module: null,
             action: ['type' => 'invoke', 'field' => 'check_t0', 'args' => [['type' => 'i32', 'value' => '5']]],
             expected: [['type' => 'i32', 'value' => '1']],
             line: 1523,
@@ -10999,7 +10016,6 @@ final class TableCopyTest extends SpecTestsuiteBase
     public function testAssertTrap1002(): void
     {
         $this->runAssertTrapCommand(
-            module: null,
             action: ['type' => 'invoke', 'field' => 'check_t0', 'args' => [['type' => 'i32', 'value' => '6']]],
             text: 'uninitialized element',
             line: 1524,
@@ -11010,7 +10026,6 @@ final class TableCopyTest extends SpecTestsuiteBase
     public function testAssertTrap1003(): void
     {
         $this->runAssertTrapCommand(
-            module: null,
             action: ['type' => 'invoke', 'field' => 'check_t0', 'args' => [['type' => 'i32', 'value' => '7']]],
             text: 'uninitialized element',
             line: 1525,
@@ -11021,7 +10036,6 @@ final class TableCopyTest extends SpecTestsuiteBase
     public function testAssertTrap1004(): void
     {
         $this->runAssertTrapCommand(
-            module: null,
             action: ['type' => 'invoke', 'field' => 'check_t0', 'args' => [['type' => 'i32', 'value' => '8']]],
             text: 'uninitialized element',
             line: 1526,
@@ -11032,7 +10046,6 @@ final class TableCopyTest extends SpecTestsuiteBase
     public function testAssertTrap1005(): void
     {
         $this->runAssertTrapCommand(
-            module: null,
             action: ['type' => 'invoke', 'field' => 'check_t0', 'args' => [['type' => 'i32', 'value' => '9']]],
             text: 'uninitialized element',
             line: 1527,
@@ -11043,7 +10056,6 @@ final class TableCopyTest extends SpecTestsuiteBase
     public function testAssertTrap1006(): void
     {
         $this->runAssertTrapCommand(
-            module: null,
             action: ['type' => 'invoke', 'field' => 'check_t0', 'args' => [['type' => 'i32', 'value' => '10']]],
             text: 'uninitialized element',
             line: 1528,
@@ -11054,7 +10066,6 @@ final class TableCopyTest extends SpecTestsuiteBase
     public function testAssertTrap1007(): void
     {
         $this->runAssertTrapCommand(
-            module: null,
             action: ['type' => 'invoke', 'field' => 'check_t0', 'args' => [['type' => 'i32', 'value' => '11']]],
             text: 'uninitialized element',
             line: 1529,
@@ -11065,7 +10076,6 @@ final class TableCopyTest extends SpecTestsuiteBase
     public function testAssertTrap1008(): void
     {
         $this->runAssertTrapCommand(
-            module: null,
             action: ['type' => 'invoke', 'field' => 'check_t0', 'args' => [['type' => 'i32', 'value' => '12']]],
             text: 'uninitialized element',
             line: 1530,
@@ -11076,7 +10086,6 @@ final class TableCopyTest extends SpecTestsuiteBase
     public function testAssertTrap1009(): void
     {
         $this->runAssertTrapCommand(
-            module: null,
             action: ['type' => 'invoke', 'field' => 'check_t0', 'args' => [['type' => 'i32', 'value' => '13']]],
             text: 'uninitialized element',
             line: 1531,
@@ -11087,7 +10096,6 @@ final class TableCopyTest extends SpecTestsuiteBase
     public function testAssertReturn1010(): void
     {
         $this->runAssertReturnCommand(
-            module: null,
             action: ['type' => 'invoke', 'field' => 'check_t0', 'args' => [['type' => 'i32', 'value' => '14']]],
             expected: [['type' => 'i32', 'value' => '7']],
             line: 1532,
@@ -11098,7 +10106,6 @@ final class TableCopyTest extends SpecTestsuiteBase
     public function testAssertReturn1011(): void
     {
         $this->runAssertReturnCommand(
-            module: null,
             action: ['type' => 'invoke', 'field' => 'check_t0', 'args' => [['type' => 'i32', 'value' => '15']]],
             expected: [['type' => 'i32', 'value' => '5']],
             line: 1533,
@@ -11109,7 +10116,6 @@ final class TableCopyTest extends SpecTestsuiteBase
     public function testAssertReturn1012(): void
     {
         $this->runAssertReturnCommand(
-            module: null,
             action: ['type' => 'invoke', 'field' => 'check_t0', 'args' => [['type' => 'i32', 'value' => '16']]],
             expected: [['type' => 'i32', 'value' => '2']],
             line: 1534,
@@ -11120,7 +10126,6 @@ final class TableCopyTest extends SpecTestsuiteBase
     public function testAssertReturn1013(): void
     {
         $this->runAssertReturnCommand(
-            module: null,
             action: ['type' => 'invoke', 'field' => 'check_t0', 'args' => [['type' => 'i32', 'value' => '17']]],
             expected: [['type' => 'i32', 'value' => '3']],
             line: 1535,
@@ -11131,7 +10136,6 @@ final class TableCopyTest extends SpecTestsuiteBase
     public function testAssertReturn1014(): void
     {
         $this->runAssertReturnCommand(
-            module: null,
             action: ['type' => 'invoke', 'field' => 'check_t0', 'args' => [['type' => 'i32', 'value' => '18']]],
             expected: [['type' => 'i32', 'value' => '6']],
             line: 1536,
@@ -11142,7 +10146,6 @@ final class TableCopyTest extends SpecTestsuiteBase
     public function testAssertTrap1015(): void
     {
         $this->runAssertTrapCommand(
-            module: null,
             action: ['type' => 'invoke', 'field' => 'check_t0', 'args' => [['type' => 'i32', 'value' => '19']]],
             text: 'uninitialized element',
             line: 1537,
@@ -11153,7 +10156,6 @@ final class TableCopyTest extends SpecTestsuiteBase
     public function testAssertTrap1016(): void
     {
         $this->runAssertTrapCommand(
-            module: null,
             action: ['type' => 'invoke', 'field' => 'check_t0', 'args' => [['type' => 'i32', 'value' => '20']]],
             text: 'uninitialized element',
             line: 1538,
@@ -11164,7 +10166,6 @@ final class TableCopyTest extends SpecTestsuiteBase
     public function testAssertTrap1017(): void
     {
         $this->runAssertTrapCommand(
-            module: null,
             action: ['type' => 'invoke', 'field' => 'check_t0', 'args' => [['type' => 'i32', 'value' => '21']]],
             text: 'uninitialized element',
             line: 1539,
@@ -11175,7 +10176,6 @@ final class TableCopyTest extends SpecTestsuiteBase
     public function testAssertTrap1018(): void
     {
         $this->runAssertTrapCommand(
-            module: null,
             action: ['type' => 'invoke', 'field' => 'check_t0', 'args' => [['type' => 'i32', 'value' => '22']]],
             text: 'uninitialized element',
             line: 1540,
@@ -11186,7 +10186,6 @@ final class TableCopyTest extends SpecTestsuiteBase
     public function testAssertTrap1019(): void
     {
         $this->runAssertTrapCommand(
-            module: null,
             action: ['type' => 'invoke', 'field' => 'check_t0', 'args' => [['type' => 'i32', 'value' => '23']]],
             text: 'uninitialized element',
             line: 1541,
@@ -11197,7 +10196,6 @@ final class TableCopyTest extends SpecTestsuiteBase
     public function testAssertTrap1020(): void
     {
         $this->runAssertTrapCommand(
-            module: null,
             action: ['type' => 'invoke', 'field' => 'check_t0', 'args' => [['type' => 'i32', 'value' => '24']]],
             text: 'uninitialized element',
             line: 1542,
@@ -11208,7 +10206,6 @@ final class TableCopyTest extends SpecTestsuiteBase
     public function testAssertTrap1021(): void
     {
         $this->runAssertTrapCommand(
-            module: null,
             action: ['type' => 'invoke', 'field' => 'check_t0', 'args' => [['type' => 'i32', 'value' => '25']]],
             text: 'uninitialized element',
             line: 1543,
@@ -11219,7 +10216,6 @@ final class TableCopyTest extends SpecTestsuiteBase
     public function testAssertTrap1022(): void
     {
         $this->runAssertTrapCommand(
-            module: null,
             action: ['type' => 'invoke', 'field' => 'check_t0', 'args' => [['type' => 'i32', 'value' => '26']]],
             text: 'uninitialized element',
             line: 1544,
@@ -11230,7 +10226,6 @@ final class TableCopyTest extends SpecTestsuiteBase
     public function testAssertTrap1023(): void
     {
         $this->runAssertTrapCommand(
-            module: null,
             action: ['type' => 'invoke', 'field' => 'check_t0', 'args' => [['type' => 'i32', 'value' => '27']]],
             text: 'uninitialized element',
             line: 1545,
@@ -11241,7 +10236,6 @@ final class TableCopyTest extends SpecTestsuiteBase
     public function testAssertTrap1024(): void
     {
         $this->runAssertTrapCommand(
-            module: null,
             action: ['type' => 'invoke', 'field' => 'check_t0', 'args' => [['type' => 'i32', 'value' => '28']]],
             text: 'uninitialized element',
             line: 1546,
@@ -11252,7 +10246,6 @@ final class TableCopyTest extends SpecTestsuiteBase
     public function testAssertTrap1025(): void
     {
         $this->runAssertTrapCommand(
-            module: null,
             action: ['type' => 'invoke', 'field' => 'check_t0', 'args' => [['type' => 'i32', 'value' => '29']]],
             text: 'uninitialized element',
             line: 1547,
@@ -11263,7 +10256,6 @@ final class TableCopyTest extends SpecTestsuiteBase
     public function testAssertTrap1026(): void
     {
         $this->runAssertTrapCommand(
-            module: null,
             action: ['type' => 'invoke', 'field' => 'check_t1', 'args' => [['type' => 'i32', 'value' => '0']]],
             text: 'uninitialized element',
             line: 1548,
@@ -11274,7 +10266,6 @@ final class TableCopyTest extends SpecTestsuiteBase
     public function testAssertTrap1027(): void
     {
         $this->runAssertTrapCommand(
-            module: null,
             action: ['type' => 'invoke', 'field' => 'check_t1', 'args' => [['type' => 'i32', 'value' => '1']]],
             text: 'uninitialized element',
             line: 1549,
@@ -11285,7 +10276,6 @@ final class TableCopyTest extends SpecTestsuiteBase
     public function testAssertTrap1028(): void
     {
         $this->runAssertTrapCommand(
-            module: null,
             action: ['type' => 'invoke', 'field' => 'check_t1', 'args' => [['type' => 'i32', 'value' => '2']]],
             text: 'uninitialized element',
             line: 1550,
@@ -11296,7 +10286,6 @@ final class TableCopyTest extends SpecTestsuiteBase
     public function testAssertReturn1029(): void
     {
         $this->runAssertReturnCommand(
-            module: null,
             action: ['type' => 'invoke', 'field' => 'check_t1', 'args' => [['type' => 'i32', 'value' => '3']]],
             expected: [['type' => 'i32', 'value' => '1']],
             line: 1551,
@@ -11307,7 +10296,6 @@ final class TableCopyTest extends SpecTestsuiteBase
     public function testAssertReturn1030(): void
     {
         $this->runAssertReturnCommand(
-            module: null,
             action: ['type' => 'invoke', 'field' => 'check_t1', 'args' => [['type' => 'i32', 'value' => '4']]],
             expected: [['type' => 'i32', 'value' => '3']],
             line: 1552,
@@ -11318,7 +10306,6 @@ final class TableCopyTest extends SpecTestsuiteBase
     public function testAssertReturn1031(): void
     {
         $this->runAssertReturnCommand(
-            module: null,
             action: ['type' => 'invoke', 'field' => 'check_t1', 'args' => [['type' => 'i32', 'value' => '5']]],
             expected: [['type' => 'i32', 'value' => '1']],
             line: 1553,
@@ -11329,7 +10316,6 @@ final class TableCopyTest extends SpecTestsuiteBase
     public function testAssertReturn1032(): void
     {
         $this->runAssertReturnCommand(
-            module: null,
             action: ['type' => 'invoke', 'field' => 'check_t1', 'args' => [['type' => 'i32', 'value' => '6']]],
             expected: [['type' => 'i32', 'value' => '4']],
             line: 1554,
@@ -11340,7 +10326,6 @@ final class TableCopyTest extends SpecTestsuiteBase
     public function testAssertTrap1033(): void
     {
         $this->runAssertTrapCommand(
-            module: null,
             action: ['type' => 'invoke', 'field' => 'check_t1', 'args' => [['type' => 'i32', 'value' => '7']]],
             text: 'uninitialized element',
             line: 1555,
@@ -11351,7 +10336,6 @@ final class TableCopyTest extends SpecTestsuiteBase
     public function testAssertTrap1034(): void
     {
         $this->runAssertTrapCommand(
-            module: null,
             action: ['type' => 'invoke', 'field' => 'check_t1', 'args' => [['type' => 'i32', 'value' => '8']]],
             text: 'uninitialized element',
             line: 1556,
@@ -11362,7 +10346,6 @@ final class TableCopyTest extends SpecTestsuiteBase
     public function testAssertTrap1035(): void
     {
         $this->runAssertTrapCommand(
-            module: null,
             action: ['type' => 'invoke', 'field' => 'check_t1', 'args' => [['type' => 'i32', 'value' => '9']]],
             text: 'uninitialized element',
             line: 1557,
@@ -11373,7 +10356,6 @@ final class TableCopyTest extends SpecTestsuiteBase
     public function testAssertTrap1036(): void
     {
         $this->runAssertTrapCommand(
-            module: null,
             action: ['type' => 'invoke', 'field' => 'check_t1', 'args' => [['type' => 'i32', 'value' => '10']]],
             text: 'uninitialized element',
             line: 1558,
@@ -11384,7 +10366,6 @@ final class TableCopyTest extends SpecTestsuiteBase
     public function testAssertReturn1037(): void
     {
         $this->runAssertReturnCommand(
-            module: null,
             action: ['type' => 'invoke', 'field' => 'check_t1', 'args' => [['type' => 'i32', 'value' => '11']]],
             expected: [['type' => 'i32', 'value' => '6']],
             line: 1559,
@@ -11395,7 +10376,6 @@ final class TableCopyTest extends SpecTestsuiteBase
     public function testAssertReturn1038(): void
     {
         $this->runAssertReturnCommand(
-            module: null,
             action: ['type' => 'invoke', 'field' => 'check_t1', 'args' => [['type' => 'i32', 'value' => '12']]],
             expected: [['type' => 'i32', 'value' => '3']],
             line: 1560,
@@ -11406,7 +10386,6 @@ final class TableCopyTest extends SpecTestsuiteBase
     public function testAssertReturn1039(): void
     {
         $this->runAssertReturnCommand(
-            module: null,
             action: ['type' => 'invoke', 'field' => 'check_t1', 'args' => [['type' => 'i32', 'value' => '13']]],
             expected: [['type' => 'i32', 'value' => '2']],
             line: 1561,
@@ -11417,7 +10396,6 @@ final class TableCopyTest extends SpecTestsuiteBase
     public function testAssertReturn1040(): void
     {
         $this->runAssertReturnCommand(
-            module: null,
             action: ['type' => 'invoke', 'field' => 'check_t1', 'args' => [['type' => 'i32', 'value' => '14']]],
             expected: [['type' => 'i32', 'value' => '5']],
             line: 1562,
@@ -11428,7 +10406,6 @@ final class TableCopyTest extends SpecTestsuiteBase
     public function testAssertReturn1041(): void
     {
         $this->runAssertReturnCommand(
-            module: null,
             action: ['type' => 'invoke', 'field' => 'check_t1', 'args' => [['type' => 'i32', 'value' => '15']]],
             expected: [['type' => 'i32', 'value' => '7']],
             line: 1563,
@@ -11439,7 +10416,6 @@ final class TableCopyTest extends SpecTestsuiteBase
     public function testAssertTrap1042(): void
     {
         $this->runAssertTrapCommand(
-            module: null,
             action: ['type' => 'invoke', 'field' => 'check_t1', 'args' => [['type' => 'i32', 'value' => '16']]],
             text: 'uninitialized element',
             line: 1564,
@@ -11450,7 +10426,6 @@ final class TableCopyTest extends SpecTestsuiteBase
     public function testAssertTrap1043(): void
     {
         $this->runAssertTrapCommand(
-            module: null,
             action: ['type' => 'invoke', 'field' => 'check_t1', 'args' => [['type' => 'i32', 'value' => '17']]],
             text: 'uninitialized element',
             line: 1565,
@@ -11461,7 +10436,6 @@ final class TableCopyTest extends SpecTestsuiteBase
     public function testAssertTrap1044(): void
     {
         $this->runAssertTrapCommand(
-            module: null,
             action: ['type' => 'invoke', 'field' => 'check_t1', 'args' => [['type' => 'i32', 'value' => '18']]],
             text: 'uninitialized element',
             line: 1566,
@@ -11472,7 +10446,6 @@ final class TableCopyTest extends SpecTestsuiteBase
     public function testAssertTrap1045(): void
     {
         $this->runAssertTrapCommand(
-            module: null,
             action: ['type' => 'invoke', 'field' => 'check_t1', 'args' => [['type' => 'i32', 'value' => '19']]],
             text: 'uninitialized element',
             line: 1567,
@@ -11483,7 +10456,6 @@ final class TableCopyTest extends SpecTestsuiteBase
     public function testAssertTrap1046(): void
     {
         $this->runAssertTrapCommand(
-            module: null,
             action: ['type' => 'invoke', 'field' => 'check_t1', 'args' => [['type' => 'i32', 'value' => '20']]],
             text: 'uninitialized element',
             line: 1568,
@@ -11494,7 +10466,6 @@ final class TableCopyTest extends SpecTestsuiteBase
     public function testAssertTrap1047(): void
     {
         $this->runAssertTrapCommand(
-            module: null,
             action: ['type' => 'invoke', 'field' => 'check_t1', 'args' => [['type' => 'i32', 'value' => '21']]],
             text: 'uninitialized element',
             line: 1569,
@@ -11505,7 +10476,6 @@ final class TableCopyTest extends SpecTestsuiteBase
     public function testAssertTrap1048(): void
     {
         $this->runAssertTrapCommand(
-            module: null,
             action: ['type' => 'invoke', 'field' => 'check_t1', 'args' => [['type' => 'i32', 'value' => '22']]],
             text: 'uninitialized element',
             line: 1570,
@@ -11516,7 +10486,6 @@ final class TableCopyTest extends SpecTestsuiteBase
     public function testAssertTrap1049(): void
     {
         $this->runAssertTrapCommand(
-            module: null,
             action: ['type' => 'invoke', 'field' => 'check_t1', 'args' => [['type' => 'i32', 'value' => '23']]],
             text: 'uninitialized element',
             line: 1571,
@@ -11527,7 +10496,6 @@ final class TableCopyTest extends SpecTestsuiteBase
     public function testAssertTrap1050(): void
     {
         $this->runAssertTrapCommand(
-            module: null,
             action: ['type' => 'invoke', 'field' => 'check_t1', 'args' => [['type' => 'i32', 'value' => '24']]],
             text: 'uninitialized element',
             line: 1572,
@@ -11538,7 +10506,6 @@ final class TableCopyTest extends SpecTestsuiteBase
     public function testAssertTrap1051(): void
     {
         $this->runAssertTrapCommand(
-            module: null,
             action: ['type' => 'invoke', 'field' => 'check_t1', 'args' => [['type' => 'i32', 'value' => '25']]],
             text: 'uninitialized element',
             line: 1573,
@@ -11549,7 +10516,6 @@ final class TableCopyTest extends SpecTestsuiteBase
     public function testAssertTrap1052(): void
     {
         $this->runAssertTrapCommand(
-            module: null,
             action: ['type' => 'invoke', 'field' => 'check_t1', 'args' => [['type' => 'i32', 'value' => '26']]],
             text: 'uninitialized element',
             line: 1574,
@@ -11560,7 +10526,6 @@ final class TableCopyTest extends SpecTestsuiteBase
     public function testAssertTrap1053(): void
     {
         $this->runAssertTrapCommand(
-            module: null,
             action: ['type' => 'invoke', 'field' => 'check_t1', 'args' => [['type' => 'i32', 'value' => '27']]],
             text: 'uninitialized element',
             line: 1575,
@@ -11571,7 +10536,6 @@ final class TableCopyTest extends SpecTestsuiteBase
     public function testAssertTrap1054(): void
     {
         $this->runAssertTrapCommand(
-            module: null,
             action: ['type' => 'invoke', 'field' => 'check_t1', 'args' => [['type' => 'i32', 'value' => '28']]],
             text: 'uninitialized element',
             line: 1576,
@@ -11582,7 +10546,6 @@ final class TableCopyTest extends SpecTestsuiteBase
     public function testAssertTrap1055(): void
     {
         $this->runAssertTrapCommand(
-            module: null,
             action: ['type' => 'invoke', 'field' => 'check_t1', 'args' => [['type' => 'i32', 'value' => '29']]],
             text: 'uninitialized element',
             line: 1577,
@@ -11603,7 +10566,6 @@ final class TableCopyTest extends SpecTestsuiteBase
     public function testAction1057(): void
     {
         $this->runActionCommand(
-            module: null,
             action: ['type' => 'invoke', 'field' => 'test', 'args' => []],
             line: 1609,
         );
@@ -11613,7 +10575,6 @@ final class TableCopyTest extends SpecTestsuiteBase
     public function testAssertTrap1058(): void
     {
         $this->runAssertTrapCommand(
-            module: null,
             action: ['type' => 'invoke', 'field' => 'check_t0', 'args' => [['type' => 'i32', 'value' => '0']]],
             text: 'uninitialized element',
             line: 1610,
@@ -11624,7 +10585,6 @@ final class TableCopyTest extends SpecTestsuiteBase
     public function testAssertTrap1059(): void
     {
         $this->runAssertTrapCommand(
-            module: null,
             action: ['type' => 'invoke', 'field' => 'check_t0', 'args' => [['type' => 'i32', 'value' => '1']]],
             text: 'uninitialized element',
             line: 1611,
@@ -11635,7 +10595,6 @@ final class TableCopyTest extends SpecTestsuiteBase
     public function testAssertReturn1060(): void
     {
         $this->runAssertReturnCommand(
-            module: null,
             action: ['type' => 'invoke', 'field' => 'check_t0', 'args' => [['type' => 'i32', 'value' => '2']]],
             expected: [['type' => 'i32', 'value' => '3']],
             line: 1612,
@@ -11646,7 +10605,6 @@ final class TableCopyTest extends SpecTestsuiteBase
     public function testAssertReturn1061(): void
     {
         $this->runAssertReturnCommand(
-            module: null,
             action: ['type' => 'invoke', 'field' => 'check_t0', 'args' => [['type' => 'i32', 'value' => '3']]],
             expected: [['type' => 'i32', 'value' => '1']],
             line: 1613,
@@ -11657,7 +10615,6 @@ final class TableCopyTest extends SpecTestsuiteBase
     public function testAssertReturn1062(): void
     {
         $this->runAssertReturnCommand(
-            module: null,
             action: ['type' => 'invoke', 'field' => 'check_t0', 'args' => [['type' => 'i32', 'value' => '4']]],
             expected: [['type' => 'i32', 'value' => '4']],
             line: 1614,
@@ -11668,7 +10625,6 @@ final class TableCopyTest extends SpecTestsuiteBase
     public function testAssertReturn1063(): void
     {
         $this->runAssertReturnCommand(
-            module: null,
             action: ['type' => 'invoke', 'field' => 'check_t0', 'args' => [['type' => 'i32', 'value' => '5']]],
             expected: [['type' => 'i32', 'value' => '1']],
             line: 1615,
@@ -11679,7 +10635,6 @@ final class TableCopyTest extends SpecTestsuiteBase
     public function testAssertTrap1064(): void
     {
         $this->runAssertTrapCommand(
-            module: null,
             action: ['type' => 'invoke', 'field' => 'check_t0', 'args' => [['type' => 'i32', 'value' => '6']]],
             text: 'uninitialized element',
             line: 1616,
@@ -11690,7 +10645,6 @@ final class TableCopyTest extends SpecTestsuiteBase
     public function testAssertTrap1065(): void
     {
         $this->runAssertTrapCommand(
-            module: null,
             action: ['type' => 'invoke', 'field' => 'check_t0', 'args' => [['type' => 'i32', 'value' => '7']]],
             text: 'uninitialized element',
             line: 1617,
@@ -11701,7 +10655,6 @@ final class TableCopyTest extends SpecTestsuiteBase
     public function testAssertTrap1066(): void
     {
         $this->runAssertTrapCommand(
-            module: null,
             action: ['type' => 'invoke', 'field' => 'check_t0', 'args' => [['type' => 'i32', 'value' => '8']]],
             text: 'uninitialized element',
             line: 1618,
@@ -11712,7 +10665,6 @@ final class TableCopyTest extends SpecTestsuiteBase
     public function testAssertTrap1067(): void
     {
         $this->runAssertTrapCommand(
-            module: null,
             action: ['type' => 'invoke', 'field' => 'check_t0', 'args' => [['type' => 'i32', 'value' => '9']]],
             text: 'uninitialized element',
             line: 1619,
@@ -11723,7 +10675,6 @@ final class TableCopyTest extends SpecTestsuiteBase
     public function testAssertTrap1068(): void
     {
         $this->runAssertTrapCommand(
-            module: null,
             action: ['type' => 'invoke', 'field' => 'check_t0', 'args' => [['type' => 'i32', 'value' => '10']]],
             text: 'uninitialized element',
             line: 1620,
@@ -11734,7 +10685,6 @@ final class TableCopyTest extends SpecTestsuiteBase
     public function testAssertTrap1069(): void
     {
         $this->runAssertTrapCommand(
-            module: null,
             action: ['type' => 'invoke', 'field' => 'check_t0', 'args' => [['type' => 'i32', 'value' => '11']]],
             text: 'uninitialized element',
             line: 1621,
@@ -11745,7 +10695,6 @@ final class TableCopyTest extends SpecTestsuiteBase
     public function testAssertReturn1070(): void
     {
         $this->runAssertReturnCommand(
-            module: null,
             action: ['type' => 'invoke', 'field' => 'check_t0', 'args' => [['type' => 'i32', 'value' => '12']]],
             expected: [['type' => 'i32', 'value' => '7']],
             line: 1622,
@@ -11756,7 +10705,6 @@ final class TableCopyTest extends SpecTestsuiteBase
     public function testAssertReturn1071(): void
     {
         $this->runAssertReturnCommand(
-            module: null,
             action: ['type' => 'invoke', 'field' => 'check_t0', 'args' => [['type' => 'i32', 'value' => '13']]],
             expected: [['type' => 'i32', 'value' => '5']],
             line: 1623,
@@ -11767,7 +10715,6 @@ final class TableCopyTest extends SpecTestsuiteBase
     public function testAssertReturn1072(): void
     {
         $this->runAssertReturnCommand(
-            module: null,
             action: ['type' => 'invoke', 'field' => 'check_t0', 'args' => [['type' => 'i32', 'value' => '14']]],
             expected: [['type' => 'i32', 'value' => '2']],
             line: 1624,
@@ -11778,7 +10725,6 @@ final class TableCopyTest extends SpecTestsuiteBase
     public function testAssertReturn1073(): void
     {
         $this->runAssertReturnCommand(
-            module: null,
             action: ['type' => 'invoke', 'field' => 'check_t0', 'args' => [['type' => 'i32', 'value' => '15']]],
             expected: [['type' => 'i32', 'value' => '3']],
             line: 1625,
@@ -11789,7 +10735,6 @@ final class TableCopyTest extends SpecTestsuiteBase
     public function testAssertReturn1074(): void
     {
         $this->runAssertReturnCommand(
-            module: null,
             action: ['type' => 'invoke', 'field' => 'check_t0', 'args' => [['type' => 'i32', 'value' => '16']]],
             expected: [['type' => 'i32', 'value' => '6']],
             line: 1626,
@@ -11800,7 +10745,6 @@ final class TableCopyTest extends SpecTestsuiteBase
     public function testAssertTrap1075(): void
     {
         $this->runAssertTrapCommand(
-            module: null,
             action: ['type' => 'invoke', 'field' => 'check_t0', 'args' => [['type' => 'i32', 'value' => '17']]],
             text: 'uninitialized element',
             line: 1627,
@@ -11811,7 +10755,6 @@ final class TableCopyTest extends SpecTestsuiteBase
     public function testAssertTrap1076(): void
     {
         $this->runAssertTrapCommand(
-            module: null,
             action: ['type' => 'invoke', 'field' => 'check_t0', 'args' => [['type' => 'i32', 'value' => '18']]],
             text: 'uninitialized element',
             line: 1628,
@@ -11822,7 +10765,6 @@ final class TableCopyTest extends SpecTestsuiteBase
     public function testAssertTrap1077(): void
     {
         $this->runAssertTrapCommand(
-            module: null,
             action: ['type' => 'invoke', 'field' => 'check_t0', 'args' => [['type' => 'i32', 'value' => '19']]],
             text: 'uninitialized element',
             line: 1629,
@@ -11833,7 +10775,6 @@ final class TableCopyTest extends SpecTestsuiteBase
     public function testAssertTrap1078(): void
     {
         $this->runAssertTrapCommand(
-            module: null,
             action: ['type' => 'invoke', 'field' => 'check_t0', 'args' => [['type' => 'i32', 'value' => '20']]],
             text: 'uninitialized element',
             line: 1630,
@@ -11844,7 +10785,6 @@ final class TableCopyTest extends SpecTestsuiteBase
     public function testAssertTrap1079(): void
     {
         $this->runAssertTrapCommand(
-            module: null,
             action: ['type' => 'invoke', 'field' => 'check_t0', 'args' => [['type' => 'i32', 'value' => '21']]],
             text: 'uninitialized element',
             line: 1631,
@@ -11855,7 +10795,6 @@ final class TableCopyTest extends SpecTestsuiteBase
     public function testAssertTrap1080(): void
     {
         $this->runAssertTrapCommand(
-            module: null,
             action: ['type' => 'invoke', 'field' => 'check_t0', 'args' => [['type' => 'i32', 'value' => '22']]],
             text: 'uninitialized element',
             line: 1632,
@@ -11866,7 +10805,6 @@ final class TableCopyTest extends SpecTestsuiteBase
     public function testAssertTrap1081(): void
     {
         $this->runAssertTrapCommand(
-            module: null,
             action: ['type' => 'invoke', 'field' => 'check_t0', 'args' => [['type' => 'i32', 'value' => '23']]],
             text: 'uninitialized element',
             line: 1633,
@@ -11877,7 +10815,6 @@ final class TableCopyTest extends SpecTestsuiteBase
     public function testAssertTrap1082(): void
     {
         $this->runAssertTrapCommand(
-            module: null,
             action: ['type' => 'invoke', 'field' => 'check_t0', 'args' => [['type' => 'i32', 'value' => '24']]],
             text: 'uninitialized element',
             line: 1634,
@@ -11888,7 +10825,6 @@ final class TableCopyTest extends SpecTestsuiteBase
     public function testAssertTrap1083(): void
     {
         $this->runAssertTrapCommand(
-            module: null,
             action: ['type' => 'invoke', 'field' => 'check_t0', 'args' => [['type' => 'i32', 'value' => '25']]],
             text: 'uninitialized element',
             line: 1635,
@@ -11899,7 +10835,6 @@ final class TableCopyTest extends SpecTestsuiteBase
     public function testAssertTrap1084(): void
     {
         $this->runAssertTrapCommand(
-            module: null,
             action: ['type' => 'invoke', 'field' => 'check_t0', 'args' => [['type' => 'i32', 'value' => '26']]],
             text: 'uninitialized element',
             line: 1636,
@@ -11910,7 +10845,6 @@ final class TableCopyTest extends SpecTestsuiteBase
     public function testAssertTrap1085(): void
     {
         $this->runAssertTrapCommand(
-            module: null,
             action: ['type' => 'invoke', 'field' => 'check_t0', 'args' => [['type' => 'i32', 'value' => '27']]],
             text: 'uninitialized element',
             line: 1637,
@@ -11921,7 +10855,6 @@ final class TableCopyTest extends SpecTestsuiteBase
     public function testAssertTrap1086(): void
     {
         $this->runAssertTrapCommand(
-            module: null,
             action: ['type' => 'invoke', 'field' => 'check_t0', 'args' => [['type' => 'i32', 'value' => '28']]],
             text: 'uninitialized element',
             line: 1638,
@@ -11932,7 +10865,6 @@ final class TableCopyTest extends SpecTestsuiteBase
     public function testAssertTrap1087(): void
     {
         $this->runAssertTrapCommand(
-            module: null,
             action: ['type' => 'invoke', 'field' => 'check_t0', 'args' => [['type' => 'i32', 'value' => '29']]],
             text: 'uninitialized element',
             line: 1639,
@@ -11943,7 +10875,6 @@ final class TableCopyTest extends SpecTestsuiteBase
     public function testAssertTrap1088(): void
     {
         $this->runAssertTrapCommand(
-            module: null,
             action: ['type' => 'invoke', 'field' => 'check_t1', 'args' => [['type' => 'i32', 'value' => '0']]],
             text: 'uninitialized element',
             line: 1640,
@@ -11954,7 +10885,6 @@ final class TableCopyTest extends SpecTestsuiteBase
     public function testAssertTrap1089(): void
     {
         $this->runAssertTrapCommand(
-            module: null,
             action: ['type' => 'invoke', 'field' => 'check_t1', 'args' => [['type' => 'i32', 'value' => '1']]],
             text: 'uninitialized element',
             line: 1641,
@@ -11965,7 +10895,6 @@ final class TableCopyTest extends SpecTestsuiteBase
     public function testAssertTrap1090(): void
     {
         $this->runAssertTrapCommand(
-            module: null,
             action: ['type' => 'invoke', 'field' => 'check_t1', 'args' => [['type' => 'i32', 'value' => '2']]],
             text: 'uninitialized element',
             line: 1642,
@@ -11976,7 +10905,6 @@ final class TableCopyTest extends SpecTestsuiteBase
     public function testAssertReturn1091(): void
     {
         $this->runAssertReturnCommand(
-            module: null,
             action: ['type' => 'invoke', 'field' => 'check_t1', 'args' => [['type' => 'i32', 'value' => '3']]],
             expected: [['type' => 'i32', 'value' => '1']],
             line: 1643,
@@ -11987,7 +10915,6 @@ final class TableCopyTest extends SpecTestsuiteBase
     public function testAssertReturn1092(): void
     {
         $this->runAssertReturnCommand(
-            module: null,
             action: ['type' => 'invoke', 'field' => 'check_t1', 'args' => [['type' => 'i32', 'value' => '4']]],
             expected: [['type' => 'i32', 'value' => '3']],
             line: 1644,
@@ -11998,7 +10925,6 @@ final class TableCopyTest extends SpecTestsuiteBase
     public function testAssertReturn1093(): void
     {
         $this->runAssertReturnCommand(
-            module: null,
             action: ['type' => 'invoke', 'field' => 'check_t1', 'args' => [['type' => 'i32', 'value' => '5']]],
             expected: [['type' => 'i32', 'value' => '1']],
             line: 1645,
@@ -12009,7 +10935,6 @@ final class TableCopyTest extends SpecTestsuiteBase
     public function testAssertReturn1094(): void
     {
         $this->runAssertReturnCommand(
-            module: null,
             action: ['type' => 'invoke', 'field' => 'check_t1', 'args' => [['type' => 'i32', 'value' => '6']]],
             expected: [['type' => 'i32', 'value' => '4']],
             line: 1646,
@@ -12020,7 +10945,6 @@ final class TableCopyTest extends SpecTestsuiteBase
     public function testAssertTrap1095(): void
     {
         $this->runAssertTrapCommand(
-            module: null,
             action: ['type' => 'invoke', 'field' => 'check_t1', 'args' => [['type' => 'i32', 'value' => '7']]],
             text: 'uninitialized element',
             line: 1647,
@@ -12031,7 +10955,6 @@ final class TableCopyTest extends SpecTestsuiteBase
     public function testAssertTrap1096(): void
     {
         $this->runAssertTrapCommand(
-            module: null,
             action: ['type' => 'invoke', 'field' => 'check_t1', 'args' => [['type' => 'i32', 'value' => '8']]],
             text: 'uninitialized element',
             line: 1648,
@@ -12042,7 +10965,6 @@ final class TableCopyTest extends SpecTestsuiteBase
     public function testAssertTrap1097(): void
     {
         $this->runAssertTrapCommand(
-            module: null,
             action: ['type' => 'invoke', 'field' => 'check_t1', 'args' => [['type' => 'i32', 'value' => '9']]],
             text: 'uninitialized element',
             line: 1649,
@@ -12053,7 +10975,6 @@ final class TableCopyTest extends SpecTestsuiteBase
     public function testAssertTrap1098(): void
     {
         $this->runAssertTrapCommand(
-            module: null,
             action: ['type' => 'invoke', 'field' => 'check_t1', 'args' => [['type' => 'i32', 'value' => '10']]],
             text: 'uninitialized element',
             line: 1650,
@@ -12064,7 +10985,6 @@ final class TableCopyTest extends SpecTestsuiteBase
     public function testAssertTrap1099(): void
     {
         $this->runAssertTrapCommand(
-            module: null,
             action: ['type' => 'invoke', 'field' => 'check_t1', 'args' => [['type' => 'i32', 'value' => '11']]],
             text: 'uninitialized element',
             line: 1651,
@@ -12075,7 +10995,6 @@ final class TableCopyTest extends SpecTestsuiteBase
     public function testAssertReturn1100(): void
     {
         $this->runAssertReturnCommand(
-            module: null,
             action: ['type' => 'invoke', 'field' => 'check_t1', 'args' => [['type' => 'i32', 'value' => '12']]],
             expected: [['type' => 'i32', 'value' => '3']],
             line: 1652,
@@ -12086,7 +11005,6 @@ final class TableCopyTest extends SpecTestsuiteBase
     public function testAssertReturn1101(): void
     {
         $this->runAssertReturnCommand(
-            module: null,
             action: ['type' => 'invoke', 'field' => 'check_t1', 'args' => [['type' => 'i32', 'value' => '13']]],
             expected: [['type' => 'i32', 'value' => '1']],
             line: 1653,
@@ -12097,7 +11015,6 @@ final class TableCopyTest extends SpecTestsuiteBase
     public function testAssertReturn1102(): void
     {
         $this->runAssertReturnCommand(
-            module: null,
             action: ['type' => 'invoke', 'field' => 'check_t1', 'args' => [['type' => 'i32', 'value' => '14']]],
             expected: [['type' => 'i32', 'value' => '4']],
             line: 1654,
@@ -12108,7 +11025,6 @@ final class TableCopyTest extends SpecTestsuiteBase
     public function testAssertReturn1103(): void
     {
         $this->runAssertReturnCommand(
-            module: null,
             action: ['type' => 'invoke', 'field' => 'check_t1', 'args' => [['type' => 'i32', 'value' => '15']]],
             expected: [['type' => 'i32', 'value' => '1']],
             line: 1655,
@@ -12119,7 +11035,6 @@ final class TableCopyTest extends SpecTestsuiteBase
     public function testAssertTrap1104(): void
     {
         $this->runAssertTrapCommand(
-            module: null,
             action: ['type' => 'invoke', 'field' => 'check_t1', 'args' => [['type' => 'i32', 'value' => '16']]],
             text: 'uninitialized element',
             line: 1656,
@@ -12130,7 +11045,6 @@ final class TableCopyTest extends SpecTestsuiteBase
     public function testAssertTrap1105(): void
     {
         $this->runAssertTrapCommand(
-            module: null,
             action: ['type' => 'invoke', 'field' => 'check_t1', 'args' => [['type' => 'i32', 'value' => '17']]],
             text: 'uninitialized element',
             line: 1657,
@@ -12141,7 +11055,6 @@ final class TableCopyTest extends SpecTestsuiteBase
     public function testAssertTrap1106(): void
     {
         $this->runAssertTrapCommand(
-            module: null,
             action: ['type' => 'invoke', 'field' => 'check_t1', 'args' => [['type' => 'i32', 'value' => '18']]],
             text: 'uninitialized element',
             line: 1658,
@@ -12152,7 +11065,6 @@ final class TableCopyTest extends SpecTestsuiteBase
     public function testAssertTrap1107(): void
     {
         $this->runAssertTrapCommand(
-            module: null,
             action: ['type' => 'invoke', 'field' => 'check_t1', 'args' => [['type' => 'i32', 'value' => '19']]],
             text: 'uninitialized element',
             line: 1659,
@@ -12163,7 +11075,6 @@ final class TableCopyTest extends SpecTestsuiteBase
     public function testAssertTrap1108(): void
     {
         $this->runAssertTrapCommand(
-            module: null,
             action: ['type' => 'invoke', 'field' => 'check_t1', 'args' => [['type' => 'i32', 'value' => '20']]],
             text: 'uninitialized element',
             line: 1660,
@@ -12174,7 +11085,6 @@ final class TableCopyTest extends SpecTestsuiteBase
     public function testAssertTrap1109(): void
     {
         $this->runAssertTrapCommand(
-            module: null,
             action: ['type' => 'invoke', 'field' => 'check_t1', 'args' => [['type' => 'i32', 'value' => '21']]],
             text: 'uninitialized element',
             line: 1661,
@@ -12185,7 +11095,6 @@ final class TableCopyTest extends SpecTestsuiteBase
     public function testAssertReturn1110(): void
     {
         $this->runAssertReturnCommand(
-            module: null,
             action: ['type' => 'invoke', 'field' => 'check_t1', 'args' => [['type' => 'i32', 'value' => '22']]],
             expected: [['type' => 'i32', 'value' => '7']],
             line: 1662,
@@ -12196,7 +11105,6 @@ final class TableCopyTest extends SpecTestsuiteBase
     public function testAssertReturn1111(): void
     {
         $this->runAssertReturnCommand(
-            module: null,
             action: ['type' => 'invoke', 'field' => 'check_t1', 'args' => [['type' => 'i32', 'value' => '23']]],
             expected: [['type' => 'i32', 'value' => '5']],
             line: 1663,
@@ -12207,7 +11115,6 @@ final class TableCopyTest extends SpecTestsuiteBase
     public function testAssertReturn1112(): void
     {
         $this->runAssertReturnCommand(
-            module: null,
             action: ['type' => 'invoke', 'field' => 'check_t1', 'args' => [['type' => 'i32', 'value' => '24']]],
             expected: [['type' => 'i32', 'value' => '2']],
             line: 1664,
@@ -12218,7 +11125,6 @@ final class TableCopyTest extends SpecTestsuiteBase
     public function testAssertReturn1113(): void
     {
         $this->runAssertReturnCommand(
-            module: null,
             action: ['type' => 'invoke', 'field' => 'check_t1', 'args' => [['type' => 'i32', 'value' => '25']]],
             expected: [['type' => 'i32', 'value' => '3']],
             line: 1665,
@@ -12229,7 +11135,6 @@ final class TableCopyTest extends SpecTestsuiteBase
     public function testAssertReturn1114(): void
     {
         $this->runAssertReturnCommand(
-            module: null,
             action: ['type' => 'invoke', 'field' => 'check_t1', 'args' => [['type' => 'i32', 'value' => '26']]],
             expected: [['type' => 'i32', 'value' => '6']],
             line: 1666,
@@ -12240,7 +11145,6 @@ final class TableCopyTest extends SpecTestsuiteBase
     public function testAssertTrap1115(): void
     {
         $this->runAssertTrapCommand(
-            module: null,
             action: ['type' => 'invoke', 'field' => 'check_t1', 'args' => [['type' => 'i32', 'value' => '27']]],
             text: 'uninitialized element',
             line: 1667,
@@ -12251,7 +11155,6 @@ final class TableCopyTest extends SpecTestsuiteBase
     public function testAssertTrap1116(): void
     {
         $this->runAssertTrapCommand(
-            module: null,
             action: ['type' => 'invoke', 'field' => 'check_t1', 'args' => [['type' => 'i32', 'value' => '28']]],
             text: 'uninitialized element',
             line: 1668,
@@ -12262,7 +11165,6 @@ final class TableCopyTest extends SpecTestsuiteBase
     public function testAssertTrap1117(): void
     {
         $this->runAssertTrapCommand(
-            module: null,
             action: ['type' => 'invoke', 'field' => 'check_t1', 'args' => [['type' => 'i32', 'value' => '29']]],
             text: 'uninitialized element',
             line: 1669,
@@ -12283,7 +11185,6 @@ final class TableCopyTest extends SpecTestsuiteBase
     public function testAssertTrap1119(): void
     {
         $this->runAssertTrapCommand(
-            module: null,
             action: ['type' => 'invoke', 'field' => 'test', 'args' => []],
             text: 'out of bounds table access',
             line: 1694,
@@ -12304,7 +11205,6 @@ final class TableCopyTest extends SpecTestsuiteBase
     public function testAssertTrap1121(): void
     {
         $this->runAssertTrapCommand(
-            module: null,
             action: ['type' => 'invoke', 'field' => 'test', 'args' => []],
             text: 'out of bounds table access',
             line: 1719,
@@ -12325,7 +11225,6 @@ final class TableCopyTest extends SpecTestsuiteBase
     public function testAssertTrap1123(): void
     {
         $this->runAssertTrapCommand(
-            module: null,
             action: ['type' => 'invoke', 'field' => 'test', 'args' => []],
             text: 'out of bounds table access',
             line: 1744,
@@ -12346,7 +11245,6 @@ final class TableCopyTest extends SpecTestsuiteBase
     public function testAssertTrap1125(): void
     {
         $this->runAssertTrapCommand(
-            module: null,
             action: ['type' => 'invoke', 'field' => 'test', 'args' => []],
             text: 'out of bounds table access',
             line: 1769,
@@ -12367,7 +11265,6 @@ final class TableCopyTest extends SpecTestsuiteBase
     public function testAction1127(): void
     {
         $this->runActionCommand(
-            module: null,
             action: ['type' => 'invoke', 'field' => 'test', 'args' => []],
             line: 1794,
         );
@@ -12387,7 +11284,6 @@ final class TableCopyTest extends SpecTestsuiteBase
     public function testAction1129(): void
     {
         $this->runActionCommand(
-            module: null,
             action: ['type' => 'invoke', 'field' => 'test', 'args' => []],
             line: 1819,
         );
@@ -12407,7 +11303,6 @@ final class TableCopyTest extends SpecTestsuiteBase
     public function testAssertTrap1131(): void
     {
         $this->runAssertTrapCommand(
-            module: null,
             action: ['type' => 'invoke', 'field' => 'test', 'args' => []],
             text: 'out of bounds table access',
             line: 1844,
@@ -12428,7 +11323,6 @@ final class TableCopyTest extends SpecTestsuiteBase
     public function testAction1133(): void
     {
         $this->runActionCommand(
-            module: null,
             action: ['type' => 'invoke', 'field' => 'test', 'args' => []],
             line: 1869,
         );
@@ -12448,7 +11342,6 @@ final class TableCopyTest extends SpecTestsuiteBase
     public function testAssertTrap1135(): void
     {
         $this->runAssertTrapCommand(
-            module: null,
             action: ['type' => 'invoke', 'field' => 'test', 'args' => []],
             text: 'out of bounds table access',
             line: 1894,
@@ -12469,7 +11362,6 @@ final class TableCopyTest extends SpecTestsuiteBase
     public function testAction1137(): void
     {
         $this->runActionCommand(
-            module: null,
             action: ['type' => 'invoke', 'field' => 'test', 'args' => []],
             line: 1919,
         );
@@ -12489,7 +11381,6 @@ final class TableCopyTest extends SpecTestsuiteBase
     public function testAssertTrap1139(): void
     {
         $this->runAssertTrapCommand(
-            module: null,
             action: ['type' => 'invoke', 'field' => 'test', 'args' => []],
             text: 'out of bounds table access',
             line: 1944,
@@ -12510,7 +11401,6 @@ final class TableCopyTest extends SpecTestsuiteBase
     public function testAssertTrap1141(): void
     {
         $this->runAssertTrapCommand(
-            module: null,
             action: ['type' => 'invoke', 'field' => 'test', 'args' => []],
             text: 'out of bounds table access',
             line: 1969,
@@ -12531,7 +11421,6 @@ final class TableCopyTest extends SpecTestsuiteBase
     public function testAssertTrap1143(): void
     {
         $this->runAssertTrapCommand(
-            module: null,
             action: ['type' => 'invoke', 'field' => 'test', 'args' => []],
             text: 'out of bounds table access',
             line: 1994,
@@ -12552,7 +11441,6 @@ final class TableCopyTest extends SpecTestsuiteBase
     public function testAssertTrap1145(): void
     {
         $this->runAssertTrapCommand(
-            module: null,
             action: ['type' => 'invoke', 'field' => 'test', 'args' => []],
             text: 'out of bounds table access',
             line: 2019,
@@ -12573,7 +11461,6 @@ final class TableCopyTest extends SpecTestsuiteBase
     public function testAssertTrap1147(): void
     {
         $this->runAssertTrapCommand(
-            module: null,
             action: ['type' => 'invoke', 'field' => 'test', 'args' => []],
             text: 'out of bounds table access',
             line: 2044,
@@ -12594,7 +11481,6 @@ final class TableCopyTest extends SpecTestsuiteBase
     public function testAction1149(): void
     {
         $this->runActionCommand(
-            module: null,
             action: ['type' => 'invoke', 'field' => 'test', 'args' => []],
             line: 2069,
         );
@@ -12614,7 +11500,6 @@ final class TableCopyTest extends SpecTestsuiteBase
     public function testAction1151(): void
     {
         $this->runActionCommand(
-            module: null,
             action: ['type' => 'invoke', 'field' => 'test', 'args' => []],
             line: 2094,
         );
@@ -12634,7 +11519,6 @@ final class TableCopyTest extends SpecTestsuiteBase
     public function testAssertTrap1153(): void
     {
         $this->runAssertTrapCommand(
-            module: null,
             action: ['type' => 'invoke', 'field' => 'test', 'args' => []],
             text: 'out of bounds table access',
             line: 2119,
@@ -12655,7 +11539,6 @@ final class TableCopyTest extends SpecTestsuiteBase
     public function testAction1155(): void
     {
         $this->runActionCommand(
-            module: null,
             action: ['type' => 'invoke', 'field' => 'test', 'args' => []],
             line: 2144,
         );
@@ -12675,7 +11558,6 @@ final class TableCopyTest extends SpecTestsuiteBase
     public function testAssertTrap1157(): void
     {
         $this->runAssertTrapCommand(
-            module: null,
             action: ['type' => 'invoke', 'field' => 'test', 'args' => []],
             text: 'out of bounds table access',
             line: 2169,
@@ -12696,7 +11578,6 @@ final class TableCopyTest extends SpecTestsuiteBase
     public function testAction1159(): void
     {
         $this->runActionCommand(
-            module: null,
             action: ['type' => 'invoke', 'field' => 'test', 'args' => []],
             line: 2194,
         );
@@ -12716,7 +11597,6 @@ final class TableCopyTest extends SpecTestsuiteBase
     public function testAssertTrap1161(): void
     {
         $this->runAssertTrapCommand(
-            module: null,
             action: ['type' => 'invoke', 'field' => 'test', 'args' => []],
             text: 'out of bounds table access',
             line: 2219,
@@ -12737,7 +11617,6 @@ final class TableCopyTest extends SpecTestsuiteBase
     public function testAssertTrap1163(): void
     {
         $this->runAssertTrapCommand(
-            module: null,
             action: ['type' => 'invoke', 'field' => 'run', 'args' => [['type' => 'i32', 'value' => '24'], ['type' => 'i32', 'value' => '0'], ['type' => 'i32', 'value' => '16']]],
             text: 'out of bounds table access',
             line: 2247,
@@ -12748,7 +11627,6 @@ final class TableCopyTest extends SpecTestsuiteBase
     public function testAssertReturn1164(): void
     {
         $this->runAssertReturnCommand(
-            module: null,
             action: ['type' => 'invoke', 'field' => 'test', 'args' => [['type' => 'i32', 'value' => '0']]],
             expected: [['type' => 'i32', 'value' => '0']],
             line: 2249,
@@ -12759,7 +11637,6 @@ final class TableCopyTest extends SpecTestsuiteBase
     public function testAssertReturn1165(): void
     {
         $this->runAssertReturnCommand(
-            module: null,
             action: ['type' => 'invoke', 'field' => 'test', 'args' => [['type' => 'i32', 'value' => '1']]],
             expected: [['type' => 'i32', 'value' => '1']],
             line: 2250,
@@ -12770,7 +11647,6 @@ final class TableCopyTest extends SpecTestsuiteBase
     public function testAssertReturn1166(): void
     {
         $this->runAssertReturnCommand(
-            module: null,
             action: ['type' => 'invoke', 'field' => 'test', 'args' => [['type' => 'i32', 'value' => '2']]],
             expected: [['type' => 'i32', 'value' => '2']],
             line: 2251,
@@ -12781,7 +11657,6 @@ final class TableCopyTest extends SpecTestsuiteBase
     public function testAssertReturn1167(): void
     {
         $this->runAssertReturnCommand(
-            module: null,
             action: ['type' => 'invoke', 'field' => 'test', 'args' => [['type' => 'i32', 'value' => '3']]],
             expected: [['type' => 'i32', 'value' => '3']],
             line: 2252,
@@ -12792,7 +11667,6 @@ final class TableCopyTest extends SpecTestsuiteBase
     public function testAssertReturn1168(): void
     {
         $this->runAssertReturnCommand(
-            module: null,
             action: ['type' => 'invoke', 'field' => 'test', 'args' => [['type' => 'i32', 'value' => '4']]],
             expected: [['type' => 'i32', 'value' => '4']],
             line: 2253,
@@ -12803,7 +11677,6 @@ final class TableCopyTest extends SpecTestsuiteBase
     public function testAssertReturn1169(): void
     {
         $this->runAssertReturnCommand(
-            module: null,
             action: ['type' => 'invoke', 'field' => 'test', 'args' => [['type' => 'i32', 'value' => '5']]],
             expected: [['type' => 'i32', 'value' => '5']],
             line: 2254,
@@ -12814,7 +11687,6 @@ final class TableCopyTest extends SpecTestsuiteBase
     public function testAssertReturn1170(): void
     {
         $this->runAssertReturnCommand(
-            module: null,
             action: ['type' => 'invoke', 'field' => 'test', 'args' => [['type' => 'i32', 'value' => '6']]],
             expected: [['type' => 'i32', 'value' => '6']],
             line: 2255,
@@ -12825,7 +11697,6 @@ final class TableCopyTest extends SpecTestsuiteBase
     public function testAssertReturn1171(): void
     {
         $this->runAssertReturnCommand(
-            module: null,
             action: ['type' => 'invoke', 'field' => 'test', 'args' => [['type' => 'i32', 'value' => '7']]],
             expected: [['type' => 'i32', 'value' => '7']],
             line: 2256,
@@ -12836,7 +11707,6 @@ final class TableCopyTest extends SpecTestsuiteBase
     public function testAssertTrap1172(): void
     {
         $this->runAssertTrapCommand(
-            module: null,
             action: ['type' => 'invoke', 'field' => 'test', 'args' => [['type' => 'i32', 'value' => '8']]],
             text: 'uninitialized element',
             line: 2257,
@@ -12847,7 +11717,6 @@ final class TableCopyTest extends SpecTestsuiteBase
     public function testAssertTrap1173(): void
     {
         $this->runAssertTrapCommand(
-            module: null,
             action: ['type' => 'invoke', 'field' => 'test', 'args' => [['type' => 'i32', 'value' => '9']]],
             text: 'uninitialized element',
             line: 2258,
@@ -12858,7 +11727,6 @@ final class TableCopyTest extends SpecTestsuiteBase
     public function testAssertTrap1174(): void
     {
         $this->runAssertTrapCommand(
-            module: null,
             action: ['type' => 'invoke', 'field' => 'test', 'args' => [['type' => 'i32', 'value' => '10']]],
             text: 'uninitialized element',
             line: 2259,
@@ -12869,7 +11737,6 @@ final class TableCopyTest extends SpecTestsuiteBase
     public function testAssertTrap1175(): void
     {
         $this->runAssertTrapCommand(
-            module: null,
             action: ['type' => 'invoke', 'field' => 'test', 'args' => [['type' => 'i32', 'value' => '11']]],
             text: 'uninitialized element',
             line: 2260,
@@ -12880,7 +11747,6 @@ final class TableCopyTest extends SpecTestsuiteBase
     public function testAssertTrap1176(): void
     {
         $this->runAssertTrapCommand(
-            module: null,
             action: ['type' => 'invoke', 'field' => 'test', 'args' => [['type' => 'i32', 'value' => '12']]],
             text: 'uninitialized element',
             line: 2261,
@@ -12891,7 +11757,6 @@ final class TableCopyTest extends SpecTestsuiteBase
     public function testAssertTrap1177(): void
     {
         $this->runAssertTrapCommand(
-            module: null,
             action: ['type' => 'invoke', 'field' => 'test', 'args' => [['type' => 'i32', 'value' => '13']]],
             text: 'uninitialized element',
             line: 2262,
@@ -12902,7 +11767,6 @@ final class TableCopyTest extends SpecTestsuiteBase
     public function testAssertTrap1178(): void
     {
         $this->runAssertTrapCommand(
-            module: null,
             action: ['type' => 'invoke', 'field' => 'test', 'args' => [['type' => 'i32', 'value' => '14']]],
             text: 'uninitialized element',
             line: 2263,
@@ -12913,7 +11777,6 @@ final class TableCopyTest extends SpecTestsuiteBase
     public function testAssertTrap1179(): void
     {
         $this->runAssertTrapCommand(
-            module: null,
             action: ['type' => 'invoke', 'field' => 'test', 'args' => [['type' => 'i32', 'value' => '15']]],
             text: 'uninitialized element',
             line: 2264,
@@ -12924,7 +11787,6 @@ final class TableCopyTest extends SpecTestsuiteBase
     public function testAssertTrap1180(): void
     {
         $this->runAssertTrapCommand(
-            module: null,
             action: ['type' => 'invoke', 'field' => 'test', 'args' => [['type' => 'i32', 'value' => '16']]],
             text: 'uninitialized element',
             line: 2265,
@@ -12935,7 +11797,6 @@ final class TableCopyTest extends SpecTestsuiteBase
     public function testAssertTrap1181(): void
     {
         $this->runAssertTrapCommand(
-            module: null,
             action: ['type' => 'invoke', 'field' => 'test', 'args' => [['type' => 'i32', 'value' => '17']]],
             text: 'uninitialized element',
             line: 2266,
@@ -12946,7 +11807,6 @@ final class TableCopyTest extends SpecTestsuiteBase
     public function testAssertTrap1182(): void
     {
         $this->runAssertTrapCommand(
-            module: null,
             action: ['type' => 'invoke', 'field' => 'test', 'args' => [['type' => 'i32', 'value' => '18']]],
             text: 'uninitialized element',
             line: 2267,
@@ -12957,7 +11817,6 @@ final class TableCopyTest extends SpecTestsuiteBase
     public function testAssertTrap1183(): void
     {
         $this->runAssertTrapCommand(
-            module: null,
             action: ['type' => 'invoke', 'field' => 'test', 'args' => [['type' => 'i32', 'value' => '19']]],
             text: 'uninitialized element',
             line: 2268,
@@ -12968,7 +11827,6 @@ final class TableCopyTest extends SpecTestsuiteBase
     public function testAssertTrap1184(): void
     {
         $this->runAssertTrapCommand(
-            module: null,
             action: ['type' => 'invoke', 'field' => 'test', 'args' => [['type' => 'i32', 'value' => '20']]],
             text: 'uninitialized element',
             line: 2269,
@@ -12979,7 +11837,6 @@ final class TableCopyTest extends SpecTestsuiteBase
     public function testAssertTrap1185(): void
     {
         $this->runAssertTrapCommand(
-            module: null,
             action: ['type' => 'invoke', 'field' => 'test', 'args' => [['type' => 'i32', 'value' => '21']]],
             text: 'uninitialized element',
             line: 2270,
@@ -12990,7 +11847,6 @@ final class TableCopyTest extends SpecTestsuiteBase
     public function testAssertTrap1186(): void
     {
         $this->runAssertTrapCommand(
-            module: null,
             action: ['type' => 'invoke', 'field' => 'test', 'args' => [['type' => 'i32', 'value' => '22']]],
             text: 'uninitialized element',
             line: 2271,
@@ -13001,7 +11857,6 @@ final class TableCopyTest extends SpecTestsuiteBase
     public function testAssertTrap1187(): void
     {
         $this->runAssertTrapCommand(
-            module: null,
             action: ['type' => 'invoke', 'field' => 'test', 'args' => [['type' => 'i32', 'value' => '23']]],
             text: 'uninitialized element',
             line: 2272,
@@ -13012,7 +11867,6 @@ final class TableCopyTest extends SpecTestsuiteBase
     public function testAssertTrap1188(): void
     {
         $this->runAssertTrapCommand(
-            module: null,
             action: ['type' => 'invoke', 'field' => 'test', 'args' => [['type' => 'i32', 'value' => '24']]],
             text: 'uninitialized element',
             line: 2273,
@@ -13023,7 +11877,6 @@ final class TableCopyTest extends SpecTestsuiteBase
     public function testAssertTrap1189(): void
     {
         $this->runAssertTrapCommand(
-            module: null,
             action: ['type' => 'invoke', 'field' => 'test', 'args' => [['type' => 'i32', 'value' => '25']]],
             text: 'uninitialized element',
             line: 2274,
@@ -13034,7 +11887,6 @@ final class TableCopyTest extends SpecTestsuiteBase
     public function testAssertTrap1190(): void
     {
         $this->runAssertTrapCommand(
-            module: null,
             action: ['type' => 'invoke', 'field' => 'test', 'args' => [['type' => 'i32', 'value' => '26']]],
             text: 'uninitialized element',
             line: 2275,
@@ -13045,7 +11897,6 @@ final class TableCopyTest extends SpecTestsuiteBase
     public function testAssertTrap1191(): void
     {
         $this->runAssertTrapCommand(
-            module: null,
             action: ['type' => 'invoke', 'field' => 'test', 'args' => [['type' => 'i32', 'value' => '27']]],
             text: 'uninitialized element',
             line: 2276,
@@ -13056,7 +11907,6 @@ final class TableCopyTest extends SpecTestsuiteBase
     public function testAssertTrap1192(): void
     {
         $this->runAssertTrapCommand(
-            module: null,
             action: ['type' => 'invoke', 'field' => 'test', 'args' => [['type' => 'i32', 'value' => '28']]],
             text: 'uninitialized element',
             line: 2277,
@@ -13067,7 +11917,6 @@ final class TableCopyTest extends SpecTestsuiteBase
     public function testAssertTrap1193(): void
     {
         $this->runAssertTrapCommand(
-            module: null,
             action: ['type' => 'invoke', 'field' => 'test', 'args' => [['type' => 'i32', 'value' => '29']]],
             text: 'uninitialized element',
             line: 2278,
@@ -13078,7 +11927,6 @@ final class TableCopyTest extends SpecTestsuiteBase
     public function testAssertTrap1194(): void
     {
         $this->runAssertTrapCommand(
-            module: null,
             action: ['type' => 'invoke', 'field' => 'test', 'args' => [['type' => 'i32', 'value' => '30']]],
             text: 'uninitialized element',
             line: 2279,
@@ -13089,7 +11937,6 @@ final class TableCopyTest extends SpecTestsuiteBase
     public function testAssertTrap1195(): void
     {
         $this->runAssertTrapCommand(
-            module: null,
             action: ['type' => 'invoke', 'field' => 'test', 'args' => [['type' => 'i32', 'value' => '31']]],
             text: 'uninitialized element',
             line: 2280,
@@ -13110,7 +11957,6 @@ final class TableCopyTest extends SpecTestsuiteBase
     public function testAssertTrap1197(): void
     {
         $this->runAssertTrapCommand(
-            module: null,
             action: ['type' => 'invoke', 'field' => 'run', 'args' => [['type' => 'i32', 'value' => '23'], ['type' => 'i32', 'value' => '0'], ['type' => 'i32', 'value' => '15']]],
             text: 'out of bounds table access',
             line: 2308,
@@ -13121,7 +11967,6 @@ final class TableCopyTest extends SpecTestsuiteBase
     public function testAssertReturn1198(): void
     {
         $this->runAssertReturnCommand(
-            module: null,
             action: ['type' => 'invoke', 'field' => 'test', 'args' => [['type' => 'i32', 'value' => '0']]],
             expected: [['type' => 'i32', 'value' => '0']],
             line: 2310,
@@ -13132,7 +11977,6 @@ final class TableCopyTest extends SpecTestsuiteBase
     public function testAssertReturn1199(): void
     {
         $this->runAssertReturnCommand(
-            module: null,
             action: ['type' => 'invoke', 'field' => 'test', 'args' => [['type' => 'i32', 'value' => '1']]],
             expected: [['type' => 'i32', 'value' => '1']],
             line: 2311,
@@ -13143,7 +11987,6 @@ final class TableCopyTest extends SpecTestsuiteBase
     public function testAssertReturn1200(): void
     {
         $this->runAssertReturnCommand(
-            module: null,
             action: ['type' => 'invoke', 'field' => 'test', 'args' => [['type' => 'i32', 'value' => '2']]],
             expected: [['type' => 'i32', 'value' => '2']],
             line: 2312,
@@ -13154,7 +11997,6 @@ final class TableCopyTest extends SpecTestsuiteBase
     public function testAssertReturn1201(): void
     {
         $this->runAssertReturnCommand(
-            module: null,
             action: ['type' => 'invoke', 'field' => 'test', 'args' => [['type' => 'i32', 'value' => '3']]],
             expected: [['type' => 'i32', 'value' => '3']],
             line: 2313,
@@ -13165,7 +12007,6 @@ final class TableCopyTest extends SpecTestsuiteBase
     public function testAssertReturn1202(): void
     {
         $this->runAssertReturnCommand(
-            module: null,
             action: ['type' => 'invoke', 'field' => 'test', 'args' => [['type' => 'i32', 'value' => '4']]],
             expected: [['type' => 'i32', 'value' => '4']],
             line: 2314,
@@ -13176,7 +12017,6 @@ final class TableCopyTest extends SpecTestsuiteBase
     public function testAssertReturn1203(): void
     {
         $this->runAssertReturnCommand(
-            module: null,
             action: ['type' => 'invoke', 'field' => 'test', 'args' => [['type' => 'i32', 'value' => '5']]],
             expected: [['type' => 'i32', 'value' => '5']],
             line: 2315,
@@ -13187,7 +12027,6 @@ final class TableCopyTest extends SpecTestsuiteBase
     public function testAssertReturn1204(): void
     {
         $this->runAssertReturnCommand(
-            module: null,
             action: ['type' => 'invoke', 'field' => 'test', 'args' => [['type' => 'i32', 'value' => '6']]],
             expected: [['type' => 'i32', 'value' => '6']],
             line: 2316,
@@ -13198,7 +12037,6 @@ final class TableCopyTest extends SpecTestsuiteBase
     public function testAssertReturn1205(): void
     {
         $this->runAssertReturnCommand(
-            module: null,
             action: ['type' => 'invoke', 'field' => 'test', 'args' => [['type' => 'i32', 'value' => '7']]],
             expected: [['type' => 'i32', 'value' => '7']],
             line: 2317,
@@ -13209,7 +12047,6 @@ final class TableCopyTest extends SpecTestsuiteBase
     public function testAssertReturn1206(): void
     {
         $this->runAssertReturnCommand(
-            module: null,
             action: ['type' => 'invoke', 'field' => 'test', 'args' => [['type' => 'i32', 'value' => '8']]],
             expected: [['type' => 'i32', 'value' => '8']],
             line: 2318,
@@ -13220,7 +12057,6 @@ final class TableCopyTest extends SpecTestsuiteBase
     public function testAssertTrap1207(): void
     {
         $this->runAssertTrapCommand(
-            module: null,
             action: ['type' => 'invoke', 'field' => 'test', 'args' => [['type' => 'i32', 'value' => '9']]],
             text: 'uninitialized element',
             line: 2319,
@@ -13231,7 +12067,6 @@ final class TableCopyTest extends SpecTestsuiteBase
     public function testAssertTrap1208(): void
     {
         $this->runAssertTrapCommand(
-            module: null,
             action: ['type' => 'invoke', 'field' => 'test', 'args' => [['type' => 'i32', 'value' => '10']]],
             text: 'uninitialized element',
             line: 2320,
@@ -13242,7 +12077,6 @@ final class TableCopyTest extends SpecTestsuiteBase
     public function testAssertTrap1209(): void
     {
         $this->runAssertTrapCommand(
-            module: null,
             action: ['type' => 'invoke', 'field' => 'test', 'args' => [['type' => 'i32', 'value' => '11']]],
             text: 'uninitialized element',
             line: 2321,
@@ -13253,7 +12087,6 @@ final class TableCopyTest extends SpecTestsuiteBase
     public function testAssertTrap1210(): void
     {
         $this->runAssertTrapCommand(
-            module: null,
             action: ['type' => 'invoke', 'field' => 'test', 'args' => [['type' => 'i32', 'value' => '12']]],
             text: 'uninitialized element',
             line: 2322,
@@ -13264,7 +12097,6 @@ final class TableCopyTest extends SpecTestsuiteBase
     public function testAssertTrap1211(): void
     {
         $this->runAssertTrapCommand(
-            module: null,
             action: ['type' => 'invoke', 'field' => 'test', 'args' => [['type' => 'i32', 'value' => '13']]],
             text: 'uninitialized element',
             line: 2323,
@@ -13275,7 +12107,6 @@ final class TableCopyTest extends SpecTestsuiteBase
     public function testAssertTrap1212(): void
     {
         $this->runAssertTrapCommand(
-            module: null,
             action: ['type' => 'invoke', 'field' => 'test', 'args' => [['type' => 'i32', 'value' => '14']]],
             text: 'uninitialized element',
             line: 2324,
@@ -13286,7 +12117,6 @@ final class TableCopyTest extends SpecTestsuiteBase
     public function testAssertTrap1213(): void
     {
         $this->runAssertTrapCommand(
-            module: null,
             action: ['type' => 'invoke', 'field' => 'test', 'args' => [['type' => 'i32', 'value' => '15']]],
             text: 'uninitialized element',
             line: 2325,
@@ -13297,7 +12127,6 @@ final class TableCopyTest extends SpecTestsuiteBase
     public function testAssertTrap1214(): void
     {
         $this->runAssertTrapCommand(
-            module: null,
             action: ['type' => 'invoke', 'field' => 'test', 'args' => [['type' => 'i32', 'value' => '16']]],
             text: 'uninitialized element',
             line: 2326,
@@ -13308,7 +12137,6 @@ final class TableCopyTest extends SpecTestsuiteBase
     public function testAssertTrap1215(): void
     {
         $this->runAssertTrapCommand(
-            module: null,
             action: ['type' => 'invoke', 'field' => 'test', 'args' => [['type' => 'i32', 'value' => '17']]],
             text: 'uninitialized element',
             line: 2327,
@@ -13319,7 +12147,6 @@ final class TableCopyTest extends SpecTestsuiteBase
     public function testAssertTrap1216(): void
     {
         $this->runAssertTrapCommand(
-            module: null,
             action: ['type' => 'invoke', 'field' => 'test', 'args' => [['type' => 'i32', 'value' => '18']]],
             text: 'uninitialized element',
             line: 2328,
@@ -13330,7 +12157,6 @@ final class TableCopyTest extends SpecTestsuiteBase
     public function testAssertTrap1217(): void
     {
         $this->runAssertTrapCommand(
-            module: null,
             action: ['type' => 'invoke', 'field' => 'test', 'args' => [['type' => 'i32', 'value' => '19']]],
             text: 'uninitialized element',
             line: 2329,
@@ -13341,7 +12167,6 @@ final class TableCopyTest extends SpecTestsuiteBase
     public function testAssertTrap1218(): void
     {
         $this->runAssertTrapCommand(
-            module: null,
             action: ['type' => 'invoke', 'field' => 'test', 'args' => [['type' => 'i32', 'value' => '20']]],
             text: 'uninitialized element',
             line: 2330,
@@ -13352,7 +12177,6 @@ final class TableCopyTest extends SpecTestsuiteBase
     public function testAssertTrap1219(): void
     {
         $this->runAssertTrapCommand(
-            module: null,
             action: ['type' => 'invoke', 'field' => 'test', 'args' => [['type' => 'i32', 'value' => '21']]],
             text: 'uninitialized element',
             line: 2331,
@@ -13363,7 +12187,6 @@ final class TableCopyTest extends SpecTestsuiteBase
     public function testAssertTrap1220(): void
     {
         $this->runAssertTrapCommand(
-            module: null,
             action: ['type' => 'invoke', 'field' => 'test', 'args' => [['type' => 'i32', 'value' => '22']]],
             text: 'uninitialized element',
             line: 2332,
@@ -13374,7 +12197,6 @@ final class TableCopyTest extends SpecTestsuiteBase
     public function testAssertTrap1221(): void
     {
         $this->runAssertTrapCommand(
-            module: null,
             action: ['type' => 'invoke', 'field' => 'test', 'args' => [['type' => 'i32', 'value' => '23']]],
             text: 'uninitialized element',
             line: 2333,
@@ -13385,7 +12207,6 @@ final class TableCopyTest extends SpecTestsuiteBase
     public function testAssertTrap1222(): void
     {
         $this->runAssertTrapCommand(
-            module: null,
             action: ['type' => 'invoke', 'field' => 'test', 'args' => [['type' => 'i32', 'value' => '24']]],
             text: 'uninitialized element',
             line: 2334,
@@ -13396,7 +12217,6 @@ final class TableCopyTest extends SpecTestsuiteBase
     public function testAssertTrap1223(): void
     {
         $this->runAssertTrapCommand(
-            module: null,
             action: ['type' => 'invoke', 'field' => 'test', 'args' => [['type' => 'i32', 'value' => '25']]],
             text: 'uninitialized element',
             line: 2335,
@@ -13407,7 +12227,6 @@ final class TableCopyTest extends SpecTestsuiteBase
     public function testAssertTrap1224(): void
     {
         $this->runAssertTrapCommand(
-            module: null,
             action: ['type' => 'invoke', 'field' => 'test', 'args' => [['type' => 'i32', 'value' => '26']]],
             text: 'uninitialized element',
             line: 2336,
@@ -13418,7 +12237,6 @@ final class TableCopyTest extends SpecTestsuiteBase
     public function testAssertTrap1225(): void
     {
         $this->runAssertTrapCommand(
-            module: null,
             action: ['type' => 'invoke', 'field' => 'test', 'args' => [['type' => 'i32', 'value' => '27']]],
             text: 'uninitialized element',
             line: 2337,
@@ -13429,7 +12247,6 @@ final class TableCopyTest extends SpecTestsuiteBase
     public function testAssertTrap1226(): void
     {
         $this->runAssertTrapCommand(
-            module: null,
             action: ['type' => 'invoke', 'field' => 'test', 'args' => [['type' => 'i32', 'value' => '28']]],
             text: 'uninitialized element',
             line: 2338,
@@ -13440,7 +12257,6 @@ final class TableCopyTest extends SpecTestsuiteBase
     public function testAssertTrap1227(): void
     {
         $this->runAssertTrapCommand(
-            module: null,
             action: ['type' => 'invoke', 'field' => 'test', 'args' => [['type' => 'i32', 'value' => '29']]],
             text: 'uninitialized element',
             line: 2339,
@@ -13451,7 +12267,6 @@ final class TableCopyTest extends SpecTestsuiteBase
     public function testAssertTrap1228(): void
     {
         $this->runAssertTrapCommand(
-            module: null,
             action: ['type' => 'invoke', 'field' => 'test', 'args' => [['type' => 'i32', 'value' => '30']]],
             text: 'uninitialized element',
             line: 2340,
@@ -13462,7 +12277,6 @@ final class TableCopyTest extends SpecTestsuiteBase
     public function testAssertTrap1229(): void
     {
         $this->runAssertTrapCommand(
-            module: null,
             action: ['type' => 'invoke', 'field' => 'test', 'args' => [['type' => 'i32', 'value' => '31']]],
             text: 'uninitialized element',
             line: 2341,
@@ -13483,7 +12297,6 @@ final class TableCopyTest extends SpecTestsuiteBase
     public function testAssertTrap1231(): void
     {
         $this->runAssertTrapCommand(
-            module: null,
             action: ['type' => 'invoke', 'field' => 'run', 'args' => [['type' => 'i32', 'value' => '0'], ['type' => 'i32', 'value' => '24'], ['type' => 'i32', 'value' => '16']]],
             text: 'out of bounds table access',
             line: 2369,
@@ -13494,7 +12307,6 @@ final class TableCopyTest extends SpecTestsuiteBase
     public function testAssertTrap1232(): void
     {
         $this->runAssertTrapCommand(
-            module: null,
             action: ['type' => 'invoke', 'field' => 'test', 'args' => [['type' => 'i32', 'value' => '0']]],
             text: 'uninitialized element',
             line: 2371,
@@ -13505,7 +12317,6 @@ final class TableCopyTest extends SpecTestsuiteBase
     public function testAssertTrap1233(): void
     {
         $this->runAssertTrapCommand(
-            module: null,
             action: ['type' => 'invoke', 'field' => 'test', 'args' => [['type' => 'i32', 'value' => '1']]],
             text: 'uninitialized element',
             line: 2372,
@@ -13516,7 +12327,6 @@ final class TableCopyTest extends SpecTestsuiteBase
     public function testAssertTrap1234(): void
     {
         $this->runAssertTrapCommand(
-            module: null,
             action: ['type' => 'invoke', 'field' => 'test', 'args' => [['type' => 'i32', 'value' => '2']]],
             text: 'uninitialized element',
             line: 2373,
@@ -13527,7 +12337,6 @@ final class TableCopyTest extends SpecTestsuiteBase
     public function testAssertTrap1235(): void
     {
         $this->runAssertTrapCommand(
-            module: null,
             action: ['type' => 'invoke', 'field' => 'test', 'args' => [['type' => 'i32', 'value' => '3']]],
             text: 'uninitialized element',
             line: 2374,
@@ -13538,7 +12347,6 @@ final class TableCopyTest extends SpecTestsuiteBase
     public function testAssertTrap1236(): void
     {
         $this->runAssertTrapCommand(
-            module: null,
             action: ['type' => 'invoke', 'field' => 'test', 'args' => [['type' => 'i32', 'value' => '4']]],
             text: 'uninitialized element',
             line: 2375,
@@ -13549,7 +12357,6 @@ final class TableCopyTest extends SpecTestsuiteBase
     public function testAssertTrap1237(): void
     {
         $this->runAssertTrapCommand(
-            module: null,
             action: ['type' => 'invoke', 'field' => 'test', 'args' => [['type' => 'i32', 'value' => '5']]],
             text: 'uninitialized element',
             line: 2376,
@@ -13560,7 +12367,6 @@ final class TableCopyTest extends SpecTestsuiteBase
     public function testAssertTrap1238(): void
     {
         $this->runAssertTrapCommand(
-            module: null,
             action: ['type' => 'invoke', 'field' => 'test', 'args' => [['type' => 'i32', 'value' => '6']]],
             text: 'uninitialized element',
             line: 2377,
@@ -13571,7 +12377,6 @@ final class TableCopyTest extends SpecTestsuiteBase
     public function testAssertTrap1239(): void
     {
         $this->runAssertTrapCommand(
-            module: null,
             action: ['type' => 'invoke', 'field' => 'test', 'args' => [['type' => 'i32', 'value' => '7']]],
             text: 'uninitialized element',
             line: 2378,
@@ -13582,7 +12387,6 @@ final class TableCopyTest extends SpecTestsuiteBase
     public function testAssertTrap1240(): void
     {
         $this->runAssertTrapCommand(
-            module: null,
             action: ['type' => 'invoke', 'field' => 'test', 'args' => [['type' => 'i32', 'value' => '8']]],
             text: 'uninitialized element',
             line: 2379,
@@ -13593,7 +12397,6 @@ final class TableCopyTest extends SpecTestsuiteBase
     public function testAssertTrap1241(): void
     {
         $this->runAssertTrapCommand(
-            module: null,
             action: ['type' => 'invoke', 'field' => 'test', 'args' => [['type' => 'i32', 'value' => '9']]],
             text: 'uninitialized element',
             line: 2380,
@@ -13604,7 +12407,6 @@ final class TableCopyTest extends SpecTestsuiteBase
     public function testAssertTrap1242(): void
     {
         $this->runAssertTrapCommand(
-            module: null,
             action: ['type' => 'invoke', 'field' => 'test', 'args' => [['type' => 'i32', 'value' => '10']]],
             text: 'uninitialized element',
             line: 2381,
@@ -13615,7 +12417,6 @@ final class TableCopyTest extends SpecTestsuiteBase
     public function testAssertTrap1243(): void
     {
         $this->runAssertTrapCommand(
-            module: null,
             action: ['type' => 'invoke', 'field' => 'test', 'args' => [['type' => 'i32', 'value' => '11']]],
             text: 'uninitialized element',
             line: 2382,
@@ -13626,7 +12427,6 @@ final class TableCopyTest extends SpecTestsuiteBase
     public function testAssertTrap1244(): void
     {
         $this->runAssertTrapCommand(
-            module: null,
             action: ['type' => 'invoke', 'field' => 'test', 'args' => [['type' => 'i32', 'value' => '12']]],
             text: 'uninitialized element',
             line: 2383,
@@ -13637,7 +12437,6 @@ final class TableCopyTest extends SpecTestsuiteBase
     public function testAssertTrap1245(): void
     {
         $this->runAssertTrapCommand(
-            module: null,
             action: ['type' => 'invoke', 'field' => 'test', 'args' => [['type' => 'i32', 'value' => '13']]],
             text: 'uninitialized element',
             line: 2384,
@@ -13648,7 +12447,6 @@ final class TableCopyTest extends SpecTestsuiteBase
     public function testAssertTrap1246(): void
     {
         $this->runAssertTrapCommand(
-            module: null,
             action: ['type' => 'invoke', 'field' => 'test', 'args' => [['type' => 'i32', 'value' => '14']]],
             text: 'uninitialized element',
             line: 2385,
@@ -13659,7 +12457,6 @@ final class TableCopyTest extends SpecTestsuiteBase
     public function testAssertTrap1247(): void
     {
         $this->runAssertTrapCommand(
-            module: null,
             action: ['type' => 'invoke', 'field' => 'test', 'args' => [['type' => 'i32', 'value' => '15']]],
             text: 'uninitialized element',
             line: 2386,
@@ -13670,7 +12467,6 @@ final class TableCopyTest extends SpecTestsuiteBase
     public function testAssertTrap1248(): void
     {
         $this->runAssertTrapCommand(
-            module: null,
             action: ['type' => 'invoke', 'field' => 'test', 'args' => [['type' => 'i32', 'value' => '16']]],
             text: 'uninitialized element',
             line: 2387,
@@ -13681,7 +12477,6 @@ final class TableCopyTest extends SpecTestsuiteBase
     public function testAssertTrap1249(): void
     {
         $this->runAssertTrapCommand(
-            module: null,
             action: ['type' => 'invoke', 'field' => 'test', 'args' => [['type' => 'i32', 'value' => '17']]],
             text: 'uninitialized element',
             line: 2388,
@@ -13692,7 +12487,6 @@ final class TableCopyTest extends SpecTestsuiteBase
     public function testAssertTrap1250(): void
     {
         $this->runAssertTrapCommand(
-            module: null,
             action: ['type' => 'invoke', 'field' => 'test', 'args' => [['type' => 'i32', 'value' => '18']]],
             text: 'uninitialized element',
             line: 2389,
@@ -13703,7 +12497,6 @@ final class TableCopyTest extends SpecTestsuiteBase
     public function testAssertTrap1251(): void
     {
         $this->runAssertTrapCommand(
-            module: null,
             action: ['type' => 'invoke', 'field' => 'test', 'args' => [['type' => 'i32', 'value' => '19']]],
             text: 'uninitialized element',
             line: 2390,
@@ -13714,7 +12507,6 @@ final class TableCopyTest extends SpecTestsuiteBase
     public function testAssertTrap1252(): void
     {
         $this->runAssertTrapCommand(
-            module: null,
             action: ['type' => 'invoke', 'field' => 'test', 'args' => [['type' => 'i32', 'value' => '20']]],
             text: 'uninitialized element',
             line: 2391,
@@ -13725,7 +12517,6 @@ final class TableCopyTest extends SpecTestsuiteBase
     public function testAssertTrap1253(): void
     {
         $this->runAssertTrapCommand(
-            module: null,
             action: ['type' => 'invoke', 'field' => 'test', 'args' => [['type' => 'i32', 'value' => '21']]],
             text: 'uninitialized element',
             line: 2392,
@@ -13736,7 +12527,6 @@ final class TableCopyTest extends SpecTestsuiteBase
     public function testAssertTrap1254(): void
     {
         $this->runAssertTrapCommand(
-            module: null,
             action: ['type' => 'invoke', 'field' => 'test', 'args' => [['type' => 'i32', 'value' => '22']]],
             text: 'uninitialized element',
             line: 2393,
@@ -13747,7 +12537,6 @@ final class TableCopyTest extends SpecTestsuiteBase
     public function testAssertTrap1255(): void
     {
         $this->runAssertTrapCommand(
-            module: null,
             action: ['type' => 'invoke', 'field' => 'test', 'args' => [['type' => 'i32', 'value' => '23']]],
             text: 'uninitialized element',
             line: 2394,
@@ -13758,7 +12547,6 @@ final class TableCopyTest extends SpecTestsuiteBase
     public function testAssertReturn1256(): void
     {
         $this->runAssertReturnCommand(
-            module: null,
             action: ['type' => 'invoke', 'field' => 'test', 'args' => [['type' => 'i32', 'value' => '24']]],
             expected: [['type' => 'i32', 'value' => '0']],
             line: 2395,
@@ -13769,7 +12557,6 @@ final class TableCopyTest extends SpecTestsuiteBase
     public function testAssertReturn1257(): void
     {
         $this->runAssertReturnCommand(
-            module: null,
             action: ['type' => 'invoke', 'field' => 'test', 'args' => [['type' => 'i32', 'value' => '25']]],
             expected: [['type' => 'i32', 'value' => '1']],
             line: 2396,
@@ -13780,7 +12567,6 @@ final class TableCopyTest extends SpecTestsuiteBase
     public function testAssertReturn1258(): void
     {
         $this->runAssertReturnCommand(
-            module: null,
             action: ['type' => 'invoke', 'field' => 'test', 'args' => [['type' => 'i32', 'value' => '26']]],
             expected: [['type' => 'i32', 'value' => '2']],
             line: 2397,
@@ -13791,7 +12577,6 @@ final class TableCopyTest extends SpecTestsuiteBase
     public function testAssertReturn1259(): void
     {
         $this->runAssertReturnCommand(
-            module: null,
             action: ['type' => 'invoke', 'field' => 'test', 'args' => [['type' => 'i32', 'value' => '27']]],
             expected: [['type' => 'i32', 'value' => '3']],
             line: 2398,
@@ -13802,7 +12587,6 @@ final class TableCopyTest extends SpecTestsuiteBase
     public function testAssertReturn1260(): void
     {
         $this->runAssertReturnCommand(
-            module: null,
             action: ['type' => 'invoke', 'field' => 'test', 'args' => [['type' => 'i32', 'value' => '28']]],
             expected: [['type' => 'i32', 'value' => '4']],
             line: 2399,
@@ -13813,7 +12597,6 @@ final class TableCopyTest extends SpecTestsuiteBase
     public function testAssertReturn1261(): void
     {
         $this->runAssertReturnCommand(
-            module: null,
             action: ['type' => 'invoke', 'field' => 'test', 'args' => [['type' => 'i32', 'value' => '29']]],
             expected: [['type' => 'i32', 'value' => '5']],
             line: 2400,
@@ -13824,7 +12607,6 @@ final class TableCopyTest extends SpecTestsuiteBase
     public function testAssertReturn1262(): void
     {
         $this->runAssertReturnCommand(
-            module: null,
             action: ['type' => 'invoke', 'field' => 'test', 'args' => [['type' => 'i32', 'value' => '30']]],
             expected: [['type' => 'i32', 'value' => '6']],
             line: 2401,
@@ -13835,7 +12617,6 @@ final class TableCopyTest extends SpecTestsuiteBase
     public function testAssertReturn1263(): void
     {
         $this->runAssertReturnCommand(
-            module: null,
             action: ['type' => 'invoke', 'field' => 'test', 'args' => [['type' => 'i32', 'value' => '31']]],
             expected: [['type' => 'i32', 'value' => '7']],
             line: 2402,
@@ -13856,7 +12637,6 @@ final class TableCopyTest extends SpecTestsuiteBase
     public function testAssertTrap1265(): void
     {
         $this->runAssertTrapCommand(
-            module: null,
             action: ['type' => 'invoke', 'field' => 'run', 'args' => [['type' => 'i32', 'value' => '0'], ['type' => 'i32', 'value' => '23'], ['type' => 'i32', 'value' => '15']]],
             text: 'out of bounds table access',
             line: 2430,
@@ -13867,7 +12647,6 @@ final class TableCopyTest extends SpecTestsuiteBase
     public function testAssertTrap1266(): void
     {
         $this->runAssertTrapCommand(
-            module: null,
             action: ['type' => 'invoke', 'field' => 'test', 'args' => [['type' => 'i32', 'value' => '0']]],
             text: 'uninitialized element',
             line: 2432,
@@ -13878,7 +12657,6 @@ final class TableCopyTest extends SpecTestsuiteBase
     public function testAssertTrap1267(): void
     {
         $this->runAssertTrapCommand(
-            module: null,
             action: ['type' => 'invoke', 'field' => 'test', 'args' => [['type' => 'i32', 'value' => '1']]],
             text: 'uninitialized element',
             line: 2433,
@@ -13889,7 +12667,6 @@ final class TableCopyTest extends SpecTestsuiteBase
     public function testAssertTrap1268(): void
     {
         $this->runAssertTrapCommand(
-            module: null,
             action: ['type' => 'invoke', 'field' => 'test', 'args' => [['type' => 'i32', 'value' => '2']]],
             text: 'uninitialized element',
             line: 2434,
@@ -13900,7 +12677,6 @@ final class TableCopyTest extends SpecTestsuiteBase
     public function testAssertTrap1269(): void
     {
         $this->runAssertTrapCommand(
-            module: null,
             action: ['type' => 'invoke', 'field' => 'test', 'args' => [['type' => 'i32', 'value' => '3']]],
             text: 'uninitialized element',
             line: 2435,
@@ -13911,7 +12687,6 @@ final class TableCopyTest extends SpecTestsuiteBase
     public function testAssertTrap1270(): void
     {
         $this->runAssertTrapCommand(
-            module: null,
             action: ['type' => 'invoke', 'field' => 'test', 'args' => [['type' => 'i32', 'value' => '4']]],
             text: 'uninitialized element',
             line: 2436,
@@ -13922,7 +12697,6 @@ final class TableCopyTest extends SpecTestsuiteBase
     public function testAssertTrap1271(): void
     {
         $this->runAssertTrapCommand(
-            module: null,
             action: ['type' => 'invoke', 'field' => 'test', 'args' => [['type' => 'i32', 'value' => '5']]],
             text: 'uninitialized element',
             line: 2437,
@@ -13933,7 +12707,6 @@ final class TableCopyTest extends SpecTestsuiteBase
     public function testAssertTrap1272(): void
     {
         $this->runAssertTrapCommand(
-            module: null,
             action: ['type' => 'invoke', 'field' => 'test', 'args' => [['type' => 'i32', 'value' => '6']]],
             text: 'uninitialized element',
             line: 2438,
@@ -13944,7 +12717,6 @@ final class TableCopyTest extends SpecTestsuiteBase
     public function testAssertTrap1273(): void
     {
         $this->runAssertTrapCommand(
-            module: null,
             action: ['type' => 'invoke', 'field' => 'test', 'args' => [['type' => 'i32', 'value' => '7']]],
             text: 'uninitialized element',
             line: 2439,
@@ -13955,7 +12727,6 @@ final class TableCopyTest extends SpecTestsuiteBase
     public function testAssertTrap1274(): void
     {
         $this->runAssertTrapCommand(
-            module: null,
             action: ['type' => 'invoke', 'field' => 'test', 'args' => [['type' => 'i32', 'value' => '8']]],
             text: 'uninitialized element',
             line: 2440,
@@ -13966,7 +12737,6 @@ final class TableCopyTest extends SpecTestsuiteBase
     public function testAssertTrap1275(): void
     {
         $this->runAssertTrapCommand(
-            module: null,
             action: ['type' => 'invoke', 'field' => 'test', 'args' => [['type' => 'i32', 'value' => '9']]],
             text: 'uninitialized element',
             line: 2441,
@@ -13977,7 +12747,6 @@ final class TableCopyTest extends SpecTestsuiteBase
     public function testAssertTrap1276(): void
     {
         $this->runAssertTrapCommand(
-            module: null,
             action: ['type' => 'invoke', 'field' => 'test', 'args' => [['type' => 'i32', 'value' => '10']]],
             text: 'uninitialized element',
             line: 2442,
@@ -13988,7 +12757,6 @@ final class TableCopyTest extends SpecTestsuiteBase
     public function testAssertTrap1277(): void
     {
         $this->runAssertTrapCommand(
-            module: null,
             action: ['type' => 'invoke', 'field' => 'test', 'args' => [['type' => 'i32', 'value' => '11']]],
             text: 'uninitialized element',
             line: 2443,
@@ -13999,7 +12767,6 @@ final class TableCopyTest extends SpecTestsuiteBase
     public function testAssertTrap1278(): void
     {
         $this->runAssertTrapCommand(
-            module: null,
             action: ['type' => 'invoke', 'field' => 'test', 'args' => [['type' => 'i32', 'value' => '12']]],
             text: 'uninitialized element',
             line: 2444,
@@ -14010,7 +12777,6 @@ final class TableCopyTest extends SpecTestsuiteBase
     public function testAssertTrap1279(): void
     {
         $this->runAssertTrapCommand(
-            module: null,
             action: ['type' => 'invoke', 'field' => 'test', 'args' => [['type' => 'i32', 'value' => '13']]],
             text: 'uninitialized element',
             line: 2445,
@@ -14021,7 +12787,6 @@ final class TableCopyTest extends SpecTestsuiteBase
     public function testAssertTrap1280(): void
     {
         $this->runAssertTrapCommand(
-            module: null,
             action: ['type' => 'invoke', 'field' => 'test', 'args' => [['type' => 'i32', 'value' => '14']]],
             text: 'uninitialized element',
             line: 2446,
@@ -14032,7 +12797,6 @@ final class TableCopyTest extends SpecTestsuiteBase
     public function testAssertTrap1281(): void
     {
         $this->runAssertTrapCommand(
-            module: null,
             action: ['type' => 'invoke', 'field' => 'test', 'args' => [['type' => 'i32', 'value' => '15']]],
             text: 'uninitialized element',
             line: 2447,
@@ -14043,7 +12807,6 @@ final class TableCopyTest extends SpecTestsuiteBase
     public function testAssertTrap1282(): void
     {
         $this->runAssertTrapCommand(
-            module: null,
             action: ['type' => 'invoke', 'field' => 'test', 'args' => [['type' => 'i32', 'value' => '16']]],
             text: 'uninitialized element',
             line: 2448,
@@ -14054,7 +12817,6 @@ final class TableCopyTest extends SpecTestsuiteBase
     public function testAssertTrap1283(): void
     {
         $this->runAssertTrapCommand(
-            module: null,
             action: ['type' => 'invoke', 'field' => 'test', 'args' => [['type' => 'i32', 'value' => '17']]],
             text: 'uninitialized element',
             line: 2449,
@@ -14065,7 +12827,6 @@ final class TableCopyTest extends SpecTestsuiteBase
     public function testAssertTrap1284(): void
     {
         $this->runAssertTrapCommand(
-            module: null,
             action: ['type' => 'invoke', 'field' => 'test', 'args' => [['type' => 'i32', 'value' => '18']]],
             text: 'uninitialized element',
             line: 2450,
@@ -14076,7 +12837,6 @@ final class TableCopyTest extends SpecTestsuiteBase
     public function testAssertTrap1285(): void
     {
         $this->runAssertTrapCommand(
-            module: null,
             action: ['type' => 'invoke', 'field' => 'test', 'args' => [['type' => 'i32', 'value' => '19']]],
             text: 'uninitialized element',
             line: 2451,
@@ -14087,7 +12847,6 @@ final class TableCopyTest extends SpecTestsuiteBase
     public function testAssertTrap1286(): void
     {
         $this->runAssertTrapCommand(
-            module: null,
             action: ['type' => 'invoke', 'field' => 'test', 'args' => [['type' => 'i32', 'value' => '20']]],
             text: 'uninitialized element',
             line: 2452,
@@ -14098,7 +12857,6 @@ final class TableCopyTest extends SpecTestsuiteBase
     public function testAssertTrap1287(): void
     {
         $this->runAssertTrapCommand(
-            module: null,
             action: ['type' => 'invoke', 'field' => 'test', 'args' => [['type' => 'i32', 'value' => '21']]],
             text: 'uninitialized element',
             line: 2453,
@@ -14109,7 +12867,6 @@ final class TableCopyTest extends SpecTestsuiteBase
     public function testAssertTrap1288(): void
     {
         $this->runAssertTrapCommand(
-            module: null,
             action: ['type' => 'invoke', 'field' => 'test', 'args' => [['type' => 'i32', 'value' => '22']]],
             text: 'uninitialized element',
             line: 2454,
@@ -14120,7 +12877,6 @@ final class TableCopyTest extends SpecTestsuiteBase
     public function testAssertReturn1289(): void
     {
         $this->runAssertReturnCommand(
-            module: null,
             action: ['type' => 'invoke', 'field' => 'test', 'args' => [['type' => 'i32', 'value' => '23']]],
             expected: [['type' => 'i32', 'value' => '0']],
             line: 2455,
@@ -14131,7 +12887,6 @@ final class TableCopyTest extends SpecTestsuiteBase
     public function testAssertReturn1290(): void
     {
         $this->runAssertReturnCommand(
-            module: null,
             action: ['type' => 'invoke', 'field' => 'test', 'args' => [['type' => 'i32', 'value' => '24']]],
             expected: [['type' => 'i32', 'value' => '1']],
             line: 2456,
@@ -14142,7 +12897,6 @@ final class TableCopyTest extends SpecTestsuiteBase
     public function testAssertReturn1291(): void
     {
         $this->runAssertReturnCommand(
-            module: null,
             action: ['type' => 'invoke', 'field' => 'test', 'args' => [['type' => 'i32', 'value' => '25']]],
             expected: [['type' => 'i32', 'value' => '2']],
             line: 2457,
@@ -14153,7 +12907,6 @@ final class TableCopyTest extends SpecTestsuiteBase
     public function testAssertReturn1292(): void
     {
         $this->runAssertReturnCommand(
-            module: null,
             action: ['type' => 'invoke', 'field' => 'test', 'args' => [['type' => 'i32', 'value' => '26']]],
             expected: [['type' => 'i32', 'value' => '3']],
             line: 2458,
@@ -14164,7 +12917,6 @@ final class TableCopyTest extends SpecTestsuiteBase
     public function testAssertReturn1293(): void
     {
         $this->runAssertReturnCommand(
-            module: null,
             action: ['type' => 'invoke', 'field' => 'test', 'args' => [['type' => 'i32', 'value' => '27']]],
             expected: [['type' => 'i32', 'value' => '4']],
             line: 2459,
@@ -14175,7 +12927,6 @@ final class TableCopyTest extends SpecTestsuiteBase
     public function testAssertReturn1294(): void
     {
         $this->runAssertReturnCommand(
-            module: null,
             action: ['type' => 'invoke', 'field' => 'test', 'args' => [['type' => 'i32', 'value' => '28']]],
             expected: [['type' => 'i32', 'value' => '5']],
             line: 2460,
@@ -14186,7 +12937,6 @@ final class TableCopyTest extends SpecTestsuiteBase
     public function testAssertReturn1295(): void
     {
         $this->runAssertReturnCommand(
-            module: null,
             action: ['type' => 'invoke', 'field' => 'test', 'args' => [['type' => 'i32', 'value' => '29']]],
             expected: [['type' => 'i32', 'value' => '6']],
             line: 2461,
@@ -14197,7 +12947,6 @@ final class TableCopyTest extends SpecTestsuiteBase
     public function testAssertReturn1296(): void
     {
         $this->runAssertReturnCommand(
-            module: null,
             action: ['type' => 'invoke', 'field' => 'test', 'args' => [['type' => 'i32', 'value' => '30']]],
             expected: [['type' => 'i32', 'value' => '7']],
             line: 2462,
@@ -14208,7 +12957,6 @@ final class TableCopyTest extends SpecTestsuiteBase
     public function testAssertReturn1297(): void
     {
         $this->runAssertReturnCommand(
-            module: null,
             action: ['type' => 'invoke', 'field' => 'test', 'args' => [['type' => 'i32', 'value' => '31']]],
             expected: [['type' => 'i32', 'value' => '8']],
             line: 2463,
@@ -14229,7 +12977,6 @@ final class TableCopyTest extends SpecTestsuiteBase
     public function testAssertTrap1299(): void
     {
         $this->runAssertTrapCommand(
-            module: null,
             action: ['type' => 'invoke', 'field' => 'run', 'args' => [['type' => 'i32', 'value' => '24'], ['type' => 'i32', 'value' => '11'], ['type' => 'i32', 'value' => '16']]],
             text: 'out of bounds table access',
             line: 2491,
@@ -14240,7 +12987,6 @@ final class TableCopyTest extends SpecTestsuiteBase
     public function testAssertTrap1300(): void
     {
         $this->runAssertTrapCommand(
-            module: null,
             action: ['type' => 'invoke', 'field' => 'test', 'args' => [['type' => 'i32', 'value' => '0']]],
             text: 'uninitialized element',
             line: 2493,
@@ -14251,7 +12997,6 @@ final class TableCopyTest extends SpecTestsuiteBase
     public function testAssertTrap1301(): void
     {
         $this->runAssertTrapCommand(
-            module: null,
             action: ['type' => 'invoke', 'field' => 'test', 'args' => [['type' => 'i32', 'value' => '1']]],
             text: 'uninitialized element',
             line: 2494,
@@ -14262,7 +13007,6 @@ final class TableCopyTest extends SpecTestsuiteBase
     public function testAssertTrap1302(): void
     {
         $this->runAssertTrapCommand(
-            module: null,
             action: ['type' => 'invoke', 'field' => 'test', 'args' => [['type' => 'i32', 'value' => '2']]],
             text: 'uninitialized element',
             line: 2495,
@@ -14273,7 +13017,6 @@ final class TableCopyTest extends SpecTestsuiteBase
     public function testAssertTrap1303(): void
     {
         $this->runAssertTrapCommand(
-            module: null,
             action: ['type' => 'invoke', 'field' => 'test', 'args' => [['type' => 'i32', 'value' => '3']]],
             text: 'uninitialized element',
             line: 2496,
@@ -14284,7 +13027,6 @@ final class TableCopyTest extends SpecTestsuiteBase
     public function testAssertTrap1304(): void
     {
         $this->runAssertTrapCommand(
-            module: null,
             action: ['type' => 'invoke', 'field' => 'test', 'args' => [['type' => 'i32', 'value' => '4']]],
             text: 'uninitialized element',
             line: 2497,
@@ -14295,7 +13037,6 @@ final class TableCopyTest extends SpecTestsuiteBase
     public function testAssertTrap1305(): void
     {
         $this->runAssertTrapCommand(
-            module: null,
             action: ['type' => 'invoke', 'field' => 'test', 'args' => [['type' => 'i32', 'value' => '5']]],
             text: 'uninitialized element',
             line: 2498,
@@ -14306,7 +13047,6 @@ final class TableCopyTest extends SpecTestsuiteBase
     public function testAssertTrap1306(): void
     {
         $this->runAssertTrapCommand(
-            module: null,
             action: ['type' => 'invoke', 'field' => 'test', 'args' => [['type' => 'i32', 'value' => '6']]],
             text: 'uninitialized element',
             line: 2499,
@@ -14317,7 +13057,6 @@ final class TableCopyTest extends SpecTestsuiteBase
     public function testAssertTrap1307(): void
     {
         $this->runAssertTrapCommand(
-            module: null,
             action: ['type' => 'invoke', 'field' => 'test', 'args' => [['type' => 'i32', 'value' => '7']]],
             text: 'uninitialized element',
             line: 2500,
@@ -14328,7 +13067,6 @@ final class TableCopyTest extends SpecTestsuiteBase
     public function testAssertTrap1308(): void
     {
         $this->runAssertTrapCommand(
-            module: null,
             action: ['type' => 'invoke', 'field' => 'test', 'args' => [['type' => 'i32', 'value' => '8']]],
             text: 'uninitialized element',
             line: 2501,
@@ -14339,7 +13077,6 @@ final class TableCopyTest extends SpecTestsuiteBase
     public function testAssertTrap1309(): void
     {
         $this->runAssertTrapCommand(
-            module: null,
             action: ['type' => 'invoke', 'field' => 'test', 'args' => [['type' => 'i32', 'value' => '9']]],
             text: 'uninitialized element',
             line: 2502,
@@ -14350,7 +13087,6 @@ final class TableCopyTest extends SpecTestsuiteBase
     public function testAssertTrap1310(): void
     {
         $this->runAssertTrapCommand(
-            module: null,
             action: ['type' => 'invoke', 'field' => 'test', 'args' => [['type' => 'i32', 'value' => '10']]],
             text: 'uninitialized element',
             line: 2503,
@@ -14361,7 +13097,6 @@ final class TableCopyTest extends SpecTestsuiteBase
     public function testAssertReturn1311(): void
     {
         $this->runAssertReturnCommand(
-            module: null,
             action: ['type' => 'invoke', 'field' => 'test', 'args' => [['type' => 'i32', 'value' => '11']]],
             expected: [['type' => 'i32', 'value' => '0']],
             line: 2504,
@@ -14372,7 +13107,6 @@ final class TableCopyTest extends SpecTestsuiteBase
     public function testAssertReturn1312(): void
     {
         $this->runAssertReturnCommand(
-            module: null,
             action: ['type' => 'invoke', 'field' => 'test', 'args' => [['type' => 'i32', 'value' => '12']]],
             expected: [['type' => 'i32', 'value' => '1']],
             line: 2505,
@@ -14383,7 +13117,6 @@ final class TableCopyTest extends SpecTestsuiteBase
     public function testAssertReturn1313(): void
     {
         $this->runAssertReturnCommand(
-            module: null,
             action: ['type' => 'invoke', 'field' => 'test', 'args' => [['type' => 'i32', 'value' => '13']]],
             expected: [['type' => 'i32', 'value' => '2']],
             line: 2506,
@@ -14394,7 +13127,6 @@ final class TableCopyTest extends SpecTestsuiteBase
     public function testAssertReturn1314(): void
     {
         $this->runAssertReturnCommand(
-            module: null,
             action: ['type' => 'invoke', 'field' => 'test', 'args' => [['type' => 'i32', 'value' => '14']]],
             expected: [['type' => 'i32', 'value' => '3']],
             line: 2507,
@@ -14405,7 +13137,6 @@ final class TableCopyTest extends SpecTestsuiteBase
     public function testAssertReturn1315(): void
     {
         $this->runAssertReturnCommand(
-            module: null,
             action: ['type' => 'invoke', 'field' => 'test', 'args' => [['type' => 'i32', 'value' => '15']]],
             expected: [['type' => 'i32', 'value' => '4']],
             line: 2508,
@@ -14416,7 +13147,6 @@ final class TableCopyTest extends SpecTestsuiteBase
     public function testAssertReturn1316(): void
     {
         $this->runAssertReturnCommand(
-            module: null,
             action: ['type' => 'invoke', 'field' => 'test', 'args' => [['type' => 'i32', 'value' => '16']]],
             expected: [['type' => 'i32', 'value' => '5']],
             line: 2509,
@@ -14427,7 +13157,6 @@ final class TableCopyTest extends SpecTestsuiteBase
     public function testAssertReturn1317(): void
     {
         $this->runAssertReturnCommand(
-            module: null,
             action: ['type' => 'invoke', 'field' => 'test', 'args' => [['type' => 'i32', 'value' => '17']]],
             expected: [['type' => 'i32', 'value' => '6']],
             line: 2510,
@@ -14438,7 +13167,6 @@ final class TableCopyTest extends SpecTestsuiteBase
     public function testAssertReturn1318(): void
     {
         $this->runAssertReturnCommand(
-            module: null,
             action: ['type' => 'invoke', 'field' => 'test', 'args' => [['type' => 'i32', 'value' => '18']]],
             expected: [['type' => 'i32', 'value' => '7']],
             line: 2511,
@@ -14449,7 +13177,6 @@ final class TableCopyTest extends SpecTestsuiteBase
     public function testAssertTrap1319(): void
     {
         $this->runAssertTrapCommand(
-            module: null,
             action: ['type' => 'invoke', 'field' => 'test', 'args' => [['type' => 'i32', 'value' => '19']]],
             text: 'uninitialized element',
             line: 2512,
@@ -14460,7 +13187,6 @@ final class TableCopyTest extends SpecTestsuiteBase
     public function testAssertTrap1320(): void
     {
         $this->runAssertTrapCommand(
-            module: null,
             action: ['type' => 'invoke', 'field' => 'test', 'args' => [['type' => 'i32', 'value' => '20']]],
             text: 'uninitialized element',
             line: 2513,
@@ -14471,7 +13197,6 @@ final class TableCopyTest extends SpecTestsuiteBase
     public function testAssertTrap1321(): void
     {
         $this->runAssertTrapCommand(
-            module: null,
             action: ['type' => 'invoke', 'field' => 'test', 'args' => [['type' => 'i32', 'value' => '21']]],
             text: 'uninitialized element',
             line: 2514,
@@ -14482,7 +13207,6 @@ final class TableCopyTest extends SpecTestsuiteBase
     public function testAssertTrap1322(): void
     {
         $this->runAssertTrapCommand(
-            module: null,
             action: ['type' => 'invoke', 'field' => 'test', 'args' => [['type' => 'i32', 'value' => '22']]],
             text: 'uninitialized element',
             line: 2515,
@@ -14493,7 +13217,6 @@ final class TableCopyTest extends SpecTestsuiteBase
     public function testAssertTrap1323(): void
     {
         $this->runAssertTrapCommand(
-            module: null,
             action: ['type' => 'invoke', 'field' => 'test', 'args' => [['type' => 'i32', 'value' => '23']]],
             text: 'uninitialized element',
             line: 2516,
@@ -14504,7 +13227,6 @@ final class TableCopyTest extends SpecTestsuiteBase
     public function testAssertTrap1324(): void
     {
         $this->runAssertTrapCommand(
-            module: null,
             action: ['type' => 'invoke', 'field' => 'test', 'args' => [['type' => 'i32', 'value' => '24']]],
             text: 'uninitialized element',
             line: 2517,
@@ -14515,7 +13237,6 @@ final class TableCopyTest extends SpecTestsuiteBase
     public function testAssertTrap1325(): void
     {
         $this->runAssertTrapCommand(
-            module: null,
             action: ['type' => 'invoke', 'field' => 'test', 'args' => [['type' => 'i32', 'value' => '25']]],
             text: 'uninitialized element',
             line: 2518,
@@ -14526,7 +13247,6 @@ final class TableCopyTest extends SpecTestsuiteBase
     public function testAssertTrap1326(): void
     {
         $this->runAssertTrapCommand(
-            module: null,
             action: ['type' => 'invoke', 'field' => 'test', 'args' => [['type' => 'i32', 'value' => '26']]],
             text: 'uninitialized element',
             line: 2519,
@@ -14537,7 +13257,6 @@ final class TableCopyTest extends SpecTestsuiteBase
     public function testAssertTrap1327(): void
     {
         $this->runAssertTrapCommand(
-            module: null,
             action: ['type' => 'invoke', 'field' => 'test', 'args' => [['type' => 'i32', 'value' => '27']]],
             text: 'uninitialized element',
             line: 2520,
@@ -14548,7 +13267,6 @@ final class TableCopyTest extends SpecTestsuiteBase
     public function testAssertTrap1328(): void
     {
         $this->runAssertTrapCommand(
-            module: null,
             action: ['type' => 'invoke', 'field' => 'test', 'args' => [['type' => 'i32', 'value' => '28']]],
             text: 'uninitialized element',
             line: 2521,
@@ -14559,7 +13277,6 @@ final class TableCopyTest extends SpecTestsuiteBase
     public function testAssertTrap1329(): void
     {
         $this->runAssertTrapCommand(
-            module: null,
             action: ['type' => 'invoke', 'field' => 'test', 'args' => [['type' => 'i32', 'value' => '29']]],
             text: 'uninitialized element',
             line: 2522,
@@ -14570,7 +13287,6 @@ final class TableCopyTest extends SpecTestsuiteBase
     public function testAssertTrap1330(): void
     {
         $this->runAssertTrapCommand(
-            module: null,
             action: ['type' => 'invoke', 'field' => 'test', 'args' => [['type' => 'i32', 'value' => '30']]],
             text: 'uninitialized element',
             line: 2523,
@@ -14581,7 +13297,6 @@ final class TableCopyTest extends SpecTestsuiteBase
     public function testAssertTrap1331(): void
     {
         $this->runAssertTrapCommand(
-            module: null,
             action: ['type' => 'invoke', 'field' => 'test', 'args' => [['type' => 'i32', 'value' => '31']]],
             text: 'uninitialized element',
             line: 2524,
@@ -14602,7 +13317,6 @@ final class TableCopyTest extends SpecTestsuiteBase
     public function testAssertTrap1333(): void
     {
         $this->runAssertTrapCommand(
-            module: null,
             action: ['type' => 'invoke', 'field' => 'run', 'args' => [['type' => 'i32', 'value' => '11'], ['type' => 'i32', 'value' => '24'], ['type' => 'i32', 'value' => '16']]],
             text: 'out of bounds table access',
             line: 2552,
@@ -14613,7 +13327,6 @@ final class TableCopyTest extends SpecTestsuiteBase
     public function testAssertTrap1334(): void
     {
         $this->runAssertTrapCommand(
-            module: null,
             action: ['type' => 'invoke', 'field' => 'test', 'args' => [['type' => 'i32', 'value' => '0']]],
             text: 'uninitialized element',
             line: 2554,
@@ -14624,7 +13337,6 @@ final class TableCopyTest extends SpecTestsuiteBase
     public function testAssertTrap1335(): void
     {
         $this->runAssertTrapCommand(
-            module: null,
             action: ['type' => 'invoke', 'field' => 'test', 'args' => [['type' => 'i32', 'value' => '1']]],
             text: 'uninitialized element',
             line: 2555,
@@ -14635,7 +13347,6 @@ final class TableCopyTest extends SpecTestsuiteBase
     public function testAssertTrap1336(): void
     {
         $this->runAssertTrapCommand(
-            module: null,
             action: ['type' => 'invoke', 'field' => 'test', 'args' => [['type' => 'i32', 'value' => '2']]],
             text: 'uninitialized element',
             line: 2556,
@@ -14646,7 +13357,6 @@ final class TableCopyTest extends SpecTestsuiteBase
     public function testAssertTrap1337(): void
     {
         $this->runAssertTrapCommand(
-            module: null,
             action: ['type' => 'invoke', 'field' => 'test', 'args' => [['type' => 'i32', 'value' => '3']]],
             text: 'uninitialized element',
             line: 2557,
@@ -14657,7 +13367,6 @@ final class TableCopyTest extends SpecTestsuiteBase
     public function testAssertTrap1338(): void
     {
         $this->runAssertTrapCommand(
-            module: null,
             action: ['type' => 'invoke', 'field' => 'test', 'args' => [['type' => 'i32', 'value' => '4']]],
             text: 'uninitialized element',
             line: 2558,
@@ -14668,7 +13377,6 @@ final class TableCopyTest extends SpecTestsuiteBase
     public function testAssertTrap1339(): void
     {
         $this->runAssertTrapCommand(
-            module: null,
             action: ['type' => 'invoke', 'field' => 'test', 'args' => [['type' => 'i32', 'value' => '5']]],
             text: 'uninitialized element',
             line: 2559,
@@ -14679,7 +13387,6 @@ final class TableCopyTest extends SpecTestsuiteBase
     public function testAssertTrap1340(): void
     {
         $this->runAssertTrapCommand(
-            module: null,
             action: ['type' => 'invoke', 'field' => 'test', 'args' => [['type' => 'i32', 'value' => '6']]],
             text: 'uninitialized element',
             line: 2560,
@@ -14690,7 +13397,6 @@ final class TableCopyTest extends SpecTestsuiteBase
     public function testAssertTrap1341(): void
     {
         $this->runAssertTrapCommand(
-            module: null,
             action: ['type' => 'invoke', 'field' => 'test', 'args' => [['type' => 'i32', 'value' => '7']]],
             text: 'uninitialized element',
             line: 2561,
@@ -14701,7 +13407,6 @@ final class TableCopyTest extends SpecTestsuiteBase
     public function testAssertTrap1342(): void
     {
         $this->runAssertTrapCommand(
-            module: null,
             action: ['type' => 'invoke', 'field' => 'test', 'args' => [['type' => 'i32', 'value' => '8']]],
             text: 'uninitialized element',
             line: 2562,
@@ -14712,7 +13417,6 @@ final class TableCopyTest extends SpecTestsuiteBase
     public function testAssertTrap1343(): void
     {
         $this->runAssertTrapCommand(
-            module: null,
             action: ['type' => 'invoke', 'field' => 'test', 'args' => [['type' => 'i32', 'value' => '9']]],
             text: 'uninitialized element',
             line: 2563,
@@ -14723,7 +13427,6 @@ final class TableCopyTest extends SpecTestsuiteBase
     public function testAssertTrap1344(): void
     {
         $this->runAssertTrapCommand(
-            module: null,
             action: ['type' => 'invoke', 'field' => 'test', 'args' => [['type' => 'i32', 'value' => '10']]],
             text: 'uninitialized element',
             line: 2564,
@@ -14734,7 +13437,6 @@ final class TableCopyTest extends SpecTestsuiteBase
     public function testAssertTrap1345(): void
     {
         $this->runAssertTrapCommand(
-            module: null,
             action: ['type' => 'invoke', 'field' => 'test', 'args' => [['type' => 'i32', 'value' => '11']]],
             text: 'uninitialized element',
             line: 2565,
@@ -14745,7 +13447,6 @@ final class TableCopyTest extends SpecTestsuiteBase
     public function testAssertTrap1346(): void
     {
         $this->runAssertTrapCommand(
-            module: null,
             action: ['type' => 'invoke', 'field' => 'test', 'args' => [['type' => 'i32', 'value' => '12']]],
             text: 'uninitialized element',
             line: 2566,
@@ -14756,7 +13457,6 @@ final class TableCopyTest extends SpecTestsuiteBase
     public function testAssertTrap1347(): void
     {
         $this->runAssertTrapCommand(
-            module: null,
             action: ['type' => 'invoke', 'field' => 'test', 'args' => [['type' => 'i32', 'value' => '13']]],
             text: 'uninitialized element',
             line: 2567,
@@ -14767,7 +13467,6 @@ final class TableCopyTest extends SpecTestsuiteBase
     public function testAssertTrap1348(): void
     {
         $this->runAssertTrapCommand(
-            module: null,
             action: ['type' => 'invoke', 'field' => 'test', 'args' => [['type' => 'i32', 'value' => '14']]],
             text: 'uninitialized element',
             line: 2568,
@@ -14778,7 +13477,6 @@ final class TableCopyTest extends SpecTestsuiteBase
     public function testAssertTrap1349(): void
     {
         $this->runAssertTrapCommand(
-            module: null,
             action: ['type' => 'invoke', 'field' => 'test', 'args' => [['type' => 'i32', 'value' => '15']]],
             text: 'uninitialized element',
             line: 2569,
@@ -14789,7 +13487,6 @@ final class TableCopyTest extends SpecTestsuiteBase
     public function testAssertTrap1350(): void
     {
         $this->runAssertTrapCommand(
-            module: null,
             action: ['type' => 'invoke', 'field' => 'test', 'args' => [['type' => 'i32', 'value' => '16']]],
             text: 'uninitialized element',
             line: 2570,
@@ -14800,7 +13497,6 @@ final class TableCopyTest extends SpecTestsuiteBase
     public function testAssertTrap1351(): void
     {
         $this->runAssertTrapCommand(
-            module: null,
             action: ['type' => 'invoke', 'field' => 'test', 'args' => [['type' => 'i32', 'value' => '17']]],
             text: 'uninitialized element',
             line: 2571,
@@ -14811,7 +13507,6 @@ final class TableCopyTest extends SpecTestsuiteBase
     public function testAssertTrap1352(): void
     {
         $this->runAssertTrapCommand(
-            module: null,
             action: ['type' => 'invoke', 'field' => 'test', 'args' => [['type' => 'i32', 'value' => '18']]],
             text: 'uninitialized element',
             line: 2572,
@@ -14822,7 +13517,6 @@ final class TableCopyTest extends SpecTestsuiteBase
     public function testAssertTrap1353(): void
     {
         $this->runAssertTrapCommand(
-            module: null,
             action: ['type' => 'invoke', 'field' => 'test', 'args' => [['type' => 'i32', 'value' => '19']]],
             text: 'uninitialized element',
             line: 2573,
@@ -14833,7 +13527,6 @@ final class TableCopyTest extends SpecTestsuiteBase
     public function testAssertTrap1354(): void
     {
         $this->runAssertTrapCommand(
-            module: null,
             action: ['type' => 'invoke', 'field' => 'test', 'args' => [['type' => 'i32', 'value' => '20']]],
             text: 'uninitialized element',
             line: 2574,
@@ -14844,7 +13537,6 @@ final class TableCopyTest extends SpecTestsuiteBase
     public function testAssertTrap1355(): void
     {
         $this->runAssertTrapCommand(
-            module: null,
             action: ['type' => 'invoke', 'field' => 'test', 'args' => [['type' => 'i32', 'value' => '21']]],
             text: 'uninitialized element',
             line: 2575,
@@ -14855,7 +13547,6 @@ final class TableCopyTest extends SpecTestsuiteBase
     public function testAssertTrap1356(): void
     {
         $this->runAssertTrapCommand(
-            module: null,
             action: ['type' => 'invoke', 'field' => 'test', 'args' => [['type' => 'i32', 'value' => '22']]],
             text: 'uninitialized element',
             line: 2576,
@@ -14866,7 +13557,6 @@ final class TableCopyTest extends SpecTestsuiteBase
     public function testAssertTrap1357(): void
     {
         $this->runAssertTrapCommand(
-            module: null,
             action: ['type' => 'invoke', 'field' => 'test', 'args' => [['type' => 'i32', 'value' => '23']]],
             text: 'uninitialized element',
             line: 2577,
@@ -14877,7 +13567,6 @@ final class TableCopyTest extends SpecTestsuiteBase
     public function testAssertReturn1358(): void
     {
         $this->runAssertReturnCommand(
-            module: null,
             action: ['type' => 'invoke', 'field' => 'test', 'args' => [['type' => 'i32', 'value' => '24']]],
             expected: [['type' => 'i32', 'value' => '0']],
             line: 2578,
@@ -14888,7 +13577,6 @@ final class TableCopyTest extends SpecTestsuiteBase
     public function testAssertReturn1359(): void
     {
         $this->runAssertReturnCommand(
-            module: null,
             action: ['type' => 'invoke', 'field' => 'test', 'args' => [['type' => 'i32', 'value' => '25']]],
             expected: [['type' => 'i32', 'value' => '1']],
             line: 2579,
@@ -14899,7 +13587,6 @@ final class TableCopyTest extends SpecTestsuiteBase
     public function testAssertReturn1360(): void
     {
         $this->runAssertReturnCommand(
-            module: null,
             action: ['type' => 'invoke', 'field' => 'test', 'args' => [['type' => 'i32', 'value' => '26']]],
             expected: [['type' => 'i32', 'value' => '2']],
             line: 2580,
@@ -14910,7 +13597,6 @@ final class TableCopyTest extends SpecTestsuiteBase
     public function testAssertReturn1361(): void
     {
         $this->runAssertReturnCommand(
-            module: null,
             action: ['type' => 'invoke', 'field' => 'test', 'args' => [['type' => 'i32', 'value' => '27']]],
             expected: [['type' => 'i32', 'value' => '3']],
             line: 2581,
@@ -14921,7 +13607,6 @@ final class TableCopyTest extends SpecTestsuiteBase
     public function testAssertReturn1362(): void
     {
         $this->runAssertReturnCommand(
-            module: null,
             action: ['type' => 'invoke', 'field' => 'test', 'args' => [['type' => 'i32', 'value' => '28']]],
             expected: [['type' => 'i32', 'value' => '4']],
             line: 2582,
@@ -14932,7 +13617,6 @@ final class TableCopyTest extends SpecTestsuiteBase
     public function testAssertReturn1363(): void
     {
         $this->runAssertReturnCommand(
-            module: null,
             action: ['type' => 'invoke', 'field' => 'test', 'args' => [['type' => 'i32', 'value' => '29']]],
             expected: [['type' => 'i32', 'value' => '5']],
             line: 2583,
@@ -14943,7 +13627,6 @@ final class TableCopyTest extends SpecTestsuiteBase
     public function testAssertReturn1364(): void
     {
         $this->runAssertReturnCommand(
-            module: null,
             action: ['type' => 'invoke', 'field' => 'test', 'args' => [['type' => 'i32', 'value' => '30']]],
             expected: [['type' => 'i32', 'value' => '6']],
             line: 2584,
@@ -14954,7 +13637,6 @@ final class TableCopyTest extends SpecTestsuiteBase
     public function testAssertReturn1365(): void
     {
         $this->runAssertReturnCommand(
-            module: null,
             action: ['type' => 'invoke', 'field' => 'test', 'args' => [['type' => 'i32', 'value' => '31']]],
             expected: [['type' => 'i32', 'value' => '7']],
             line: 2585,
@@ -14975,7 +13657,6 @@ final class TableCopyTest extends SpecTestsuiteBase
     public function testAssertTrap1367(): void
     {
         $this->runAssertTrapCommand(
-            module: null,
             action: ['type' => 'invoke', 'field' => 'run', 'args' => [['type' => 'i32', 'value' => '24'], ['type' => 'i32', 'value' => '21'], ['type' => 'i32', 'value' => '16']]],
             text: 'out of bounds table access',
             line: 2613,
@@ -14986,7 +13667,6 @@ final class TableCopyTest extends SpecTestsuiteBase
     public function testAssertTrap1368(): void
     {
         $this->runAssertTrapCommand(
-            module: null,
             action: ['type' => 'invoke', 'field' => 'test', 'args' => [['type' => 'i32', 'value' => '0']]],
             text: 'uninitialized element',
             line: 2615,
@@ -14997,7 +13677,6 @@ final class TableCopyTest extends SpecTestsuiteBase
     public function testAssertTrap1369(): void
     {
         $this->runAssertTrapCommand(
-            module: null,
             action: ['type' => 'invoke', 'field' => 'test', 'args' => [['type' => 'i32', 'value' => '1']]],
             text: 'uninitialized element',
             line: 2616,
@@ -15008,7 +13687,6 @@ final class TableCopyTest extends SpecTestsuiteBase
     public function testAssertTrap1370(): void
     {
         $this->runAssertTrapCommand(
-            module: null,
             action: ['type' => 'invoke', 'field' => 'test', 'args' => [['type' => 'i32', 'value' => '2']]],
             text: 'uninitialized element',
             line: 2617,
@@ -15019,7 +13697,6 @@ final class TableCopyTest extends SpecTestsuiteBase
     public function testAssertTrap1371(): void
     {
         $this->runAssertTrapCommand(
-            module: null,
             action: ['type' => 'invoke', 'field' => 'test', 'args' => [['type' => 'i32', 'value' => '3']]],
             text: 'uninitialized element',
             line: 2618,
@@ -15030,7 +13707,6 @@ final class TableCopyTest extends SpecTestsuiteBase
     public function testAssertTrap1372(): void
     {
         $this->runAssertTrapCommand(
-            module: null,
             action: ['type' => 'invoke', 'field' => 'test', 'args' => [['type' => 'i32', 'value' => '4']]],
             text: 'uninitialized element',
             line: 2619,
@@ -15041,7 +13717,6 @@ final class TableCopyTest extends SpecTestsuiteBase
     public function testAssertTrap1373(): void
     {
         $this->runAssertTrapCommand(
-            module: null,
             action: ['type' => 'invoke', 'field' => 'test', 'args' => [['type' => 'i32', 'value' => '5']]],
             text: 'uninitialized element',
             line: 2620,
@@ -15052,7 +13727,6 @@ final class TableCopyTest extends SpecTestsuiteBase
     public function testAssertTrap1374(): void
     {
         $this->runAssertTrapCommand(
-            module: null,
             action: ['type' => 'invoke', 'field' => 'test', 'args' => [['type' => 'i32', 'value' => '6']]],
             text: 'uninitialized element',
             line: 2621,
@@ -15063,7 +13737,6 @@ final class TableCopyTest extends SpecTestsuiteBase
     public function testAssertTrap1375(): void
     {
         $this->runAssertTrapCommand(
-            module: null,
             action: ['type' => 'invoke', 'field' => 'test', 'args' => [['type' => 'i32', 'value' => '7']]],
             text: 'uninitialized element',
             line: 2622,
@@ -15074,7 +13747,6 @@ final class TableCopyTest extends SpecTestsuiteBase
     public function testAssertTrap1376(): void
     {
         $this->runAssertTrapCommand(
-            module: null,
             action: ['type' => 'invoke', 'field' => 'test', 'args' => [['type' => 'i32', 'value' => '8']]],
             text: 'uninitialized element',
             line: 2623,
@@ -15085,7 +13757,6 @@ final class TableCopyTest extends SpecTestsuiteBase
     public function testAssertTrap1377(): void
     {
         $this->runAssertTrapCommand(
-            module: null,
             action: ['type' => 'invoke', 'field' => 'test', 'args' => [['type' => 'i32', 'value' => '9']]],
             text: 'uninitialized element',
             line: 2624,
@@ -15096,7 +13767,6 @@ final class TableCopyTest extends SpecTestsuiteBase
     public function testAssertTrap1378(): void
     {
         $this->runAssertTrapCommand(
-            module: null,
             action: ['type' => 'invoke', 'field' => 'test', 'args' => [['type' => 'i32', 'value' => '10']]],
             text: 'uninitialized element',
             line: 2625,
@@ -15107,7 +13777,6 @@ final class TableCopyTest extends SpecTestsuiteBase
     public function testAssertTrap1379(): void
     {
         $this->runAssertTrapCommand(
-            module: null,
             action: ['type' => 'invoke', 'field' => 'test', 'args' => [['type' => 'i32', 'value' => '11']]],
             text: 'uninitialized element',
             line: 2626,
@@ -15118,7 +13787,6 @@ final class TableCopyTest extends SpecTestsuiteBase
     public function testAssertTrap1380(): void
     {
         $this->runAssertTrapCommand(
-            module: null,
             action: ['type' => 'invoke', 'field' => 'test', 'args' => [['type' => 'i32', 'value' => '12']]],
             text: 'uninitialized element',
             line: 2627,
@@ -15129,7 +13797,6 @@ final class TableCopyTest extends SpecTestsuiteBase
     public function testAssertTrap1381(): void
     {
         $this->runAssertTrapCommand(
-            module: null,
             action: ['type' => 'invoke', 'field' => 'test', 'args' => [['type' => 'i32', 'value' => '13']]],
             text: 'uninitialized element',
             line: 2628,
@@ -15140,7 +13807,6 @@ final class TableCopyTest extends SpecTestsuiteBase
     public function testAssertTrap1382(): void
     {
         $this->runAssertTrapCommand(
-            module: null,
             action: ['type' => 'invoke', 'field' => 'test', 'args' => [['type' => 'i32', 'value' => '14']]],
             text: 'uninitialized element',
             line: 2629,
@@ -15151,7 +13817,6 @@ final class TableCopyTest extends SpecTestsuiteBase
     public function testAssertTrap1383(): void
     {
         $this->runAssertTrapCommand(
-            module: null,
             action: ['type' => 'invoke', 'field' => 'test', 'args' => [['type' => 'i32', 'value' => '15']]],
             text: 'uninitialized element',
             line: 2630,
@@ -15162,7 +13827,6 @@ final class TableCopyTest extends SpecTestsuiteBase
     public function testAssertTrap1384(): void
     {
         $this->runAssertTrapCommand(
-            module: null,
             action: ['type' => 'invoke', 'field' => 'test', 'args' => [['type' => 'i32', 'value' => '16']]],
             text: 'uninitialized element',
             line: 2631,
@@ -15173,7 +13837,6 @@ final class TableCopyTest extends SpecTestsuiteBase
     public function testAssertTrap1385(): void
     {
         $this->runAssertTrapCommand(
-            module: null,
             action: ['type' => 'invoke', 'field' => 'test', 'args' => [['type' => 'i32', 'value' => '17']]],
             text: 'uninitialized element',
             line: 2632,
@@ -15184,7 +13847,6 @@ final class TableCopyTest extends SpecTestsuiteBase
     public function testAssertTrap1386(): void
     {
         $this->runAssertTrapCommand(
-            module: null,
             action: ['type' => 'invoke', 'field' => 'test', 'args' => [['type' => 'i32', 'value' => '18']]],
             text: 'uninitialized element',
             line: 2633,
@@ -15195,7 +13857,6 @@ final class TableCopyTest extends SpecTestsuiteBase
     public function testAssertTrap1387(): void
     {
         $this->runAssertTrapCommand(
-            module: null,
             action: ['type' => 'invoke', 'field' => 'test', 'args' => [['type' => 'i32', 'value' => '19']]],
             text: 'uninitialized element',
             line: 2634,
@@ -15206,7 +13867,6 @@ final class TableCopyTest extends SpecTestsuiteBase
     public function testAssertTrap1388(): void
     {
         $this->runAssertTrapCommand(
-            module: null,
             action: ['type' => 'invoke', 'field' => 'test', 'args' => [['type' => 'i32', 'value' => '20']]],
             text: 'uninitialized element',
             line: 2635,
@@ -15217,7 +13877,6 @@ final class TableCopyTest extends SpecTestsuiteBase
     public function testAssertReturn1389(): void
     {
         $this->runAssertReturnCommand(
-            module: null,
             action: ['type' => 'invoke', 'field' => 'test', 'args' => [['type' => 'i32', 'value' => '21']]],
             expected: [['type' => 'i32', 'value' => '0']],
             line: 2636,
@@ -15228,7 +13887,6 @@ final class TableCopyTest extends SpecTestsuiteBase
     public function testAssertReturn1390(): void
     {
         $this->runAssertReturnCommand(
-            module: null,
             action: ['type' => 'invoke', 'field' => 'test', 'args' => [['type' => 'i32', 'value' => '22']]],
             expected: [['type' => 'i32', 'value' => '1']],
             line: 2637,
@@ -15239,7 +13897,6 @@ final class TableCopyTest extends SpecTestsuiteBase
     public function testAssertReturn1391(): void
     {
         $this->runAssertReturnCommand(
-            module: null,
             action: ['type' => 'invoke', 'field' => 'test', 'args' => [['type' => 'i32', 'value' => '23']]],
             expected: [['type' => 'i32', 'value' => '2']],
             line: 2638,
@@ -15250,7 +13907,6 @@ final class TableCopyTest extends SpecTestsuiteBase
     public function testAssertReturn1392(): void
     {
         $this->runAssertReturnCommand(
-            module: null,
             action: ['type' => 'invoke', 'field' => 'test', 'args' => [['type' => 'i32', 'value' => '24']]],
             expected: [['type' => 'i32', 'value' => '3']],
             line: 2639,
@@ -15261,7 +13917,6 @@ final class TableCopyTest extends SpecTestsuiteBase
     public function testAssertReturn1393(): void
     {
         $this->runAssertReturnCommand(
-            module: null,
             action: ['type' => 'invoke', 'field' => 'test', 'args' => [['type' => 'i32', 'value' => '25']]],
             expected: [['type' => 'i32', 'value' => '4']],
             line: 2640,
@@ -15272,7 +13927,6 @@ final class TableCopyTest extends SpecTestsuiteBase
     public function testAssertReturn1394(): void
     {
         $this->runAssertReturnCommand(
-            module: null,
             action: ['type' => 'invoke', 'field' => 'test', 'args' => [['type' => 'i32', 'value' => '26']]],
             expected: [['type' => 'i32', 'value' => '5']],
             line: 2641,
@@ -15283,7 +13937,6 @@ final class TableCopyTest extends SpecTestsuiteBase
     public function testAssertReturn1395(): void
     {
         $this->runAssertReturnCommand(
-            module: null,
             action: ['type' => 'invoke', 'field' => 'test', 'args' => [['type' => 'i32', 'value' => '27']]],
             expected: [['type' => 'i32', 'value' => '6']],
             line: 2642,
@@ -15294,7 +13947,6 @@ final class TableCopyTest extends SpecTestsuiteBase
     public function testAssertReturn1396(): void
     {
         $this->runAssertReturnCommand(
-            module: null,
             action: ['type' => 'invoke', 'field' => 'test', 'args' => [['type' => 'i32', 'value' => '28']]],
             expected: [['type' => 'i32', 'value' => '7']],
             line: 2643,
@@ -15305,7 +13957,6 @@ final class TableCopyTest extends SpecTestsuiteBase
     public function testAssertTrap1397(): void
     {
         $this->runAssertTrapCommand(
-            module: null,
             action: ['type' => 'invoke', 'field' => 'test', 'args' => [['type' => 'i32', 'value' => '29']]],
             text: 'uninitialized element',
             line: 2644,
@@ -15316,7 +13967,6 @@ final class TableCopyTest extends SpecTestsuiteBase
     public function testAssertTrap1398(): void
     {
         $this->runAssertTrapCommand(
-            module: null,
             action: ['type' => 'invoke', 'field' => 'test', 'args' => [['type' => 'i32', 'value' => '30']]],
             text: 'uninitialized element',
             line: 2645,
@@ -15327,7 +13977,6 @@ final class TableCopyTest extends SpecTestsuiteBase
     public function testAssertTrap1399(): void
     {
         $this->runAssertTrapCommand(
-            module: null,
             action: ['type' => 'invoke', 'field' => 'test', 'args' => [['type' => 'i32', 'value' => '31']]],
             text: 'uninitialized element',
             line: 2646,
@@ -15348,7 +13997,6 @@ final class TableCopyTest extends SpecTestsuiteBase
     public function testAssertTrap1401(): void
     {
         $this->runAssertTrapCommand(
-            module: null,
             action: ['type' => 'invoke', 'field' => 'run', 'args' => [['type' => 'i32', 'value' => '21'], ['type' => 'i32', 'value' => '24'], ['type' => 'i32', 'value' => '16']]],
             text: 'out of bounds table access',
             line: 2674,
@@ -15359,7 +14007,6 @@ final class TableCopyTest extends SpecTestsuiteBase
     public function testAssertTrap1402(): void
     {
         $this->runAssertTrapCommand(
-            module: null,
             action: ['type' => 'invoke', 'field' => 'test', 'args' => [['type' => 'i32', 'value' => '0']]],
             text: 'uninitialized element',
             line: 2676,
@@ -15370,7 +14017,6 @@ final class TableCopyTest extends SpecTestsuiteBase
     public function testAssertTrap1403(): void
     {
         $this->runAssertTrapCommand(
-            module: null,
             action: ['type' => 'invoke', 'field' => 'test', 'args' => [['type' => 'i32', 'value' => '1']]],
             text: 'uninitialized element',
             line: 2677,
@@ -15381,7 +14027,6 @@ final class TableCopyTest extends SpecTestsuiteBase
     public function testAssertTrap1404(): void
     {
         $this->runAssertTrapCommand(
-            module: null,
             action: ['type' => 'invoke', 'field' => 'test', 'args' => [['type' => 'i32', 'value' => '2']]],
             text: 'uninitialized element',
             line: 2678,
@@ -15392,7 +14037,6 @@ final class TableCopyTest extends SpecTestsuiteBase
     public function testAssertTrap1405(): void
     {
         $this->runAssertTrapCommand(
-            module: null,
             action: ['type' => 'invoke', 'field' => 'test', 'args' => [['type' => 'i32', 'value' => '3']]],
             text: 'uninitialized element',
             line: 2679,
@@ -15403,7 +14047,6 @@ final class TableCopyTest extends SpecTestsuiteBase
     public function testAssertTrap1406(): void
     {
         $this->runAssertTrapCommand(
-            module: null,
             action: ['type' => 'invoke', 'field' => 'test', 'args' => [['type' => 'i32', 'value' => '4']]],
             text: 'uninitialized element',
             line: 2680,
@@ -15414,7 +14057,6 @@ final class TableCopyTest extends SpecTestsuiteBase
     public function testAssertTrap1407(): void
     {
         $this->runAssertTrapCommand(
-            module: null,
             action: ['type' => 'invoke', 'field' => 'test', 'args' => [['type' => 'i32', 'value' => '5']]],
             text: 'uninitialized element',
             line: 2681,
@@ -15425,7 +14067,6 @@ final class TableCopyTest extends SpecTestsuiteBase
     public function testAssertTrap1408(): void
     {
         $this->runAssertTrapCommand(
-            module: null,
             action: ['type' => 'invoke', 'field' => 'test', 'args' => [['type' => 'i32', 'value' => '6']]],
             text: 'uninitialized element',
             line: 2682,
@@ -15436,7 +14077,6 @@ final class TableCopyTest extends SpecTestsuiteBase
     public function testAssertTrap1409(): void
     {
         $this->runAssertTrapCommand(
-            module: null,
             action: ['type' => 'invoke', 'field' => 'test', 'args' => [['type' => 'i32', 'value' => '7']]],
             text: 'uninitialized element',
             line: 2683,
@@ -15447,7 +14087,6 @@ final class TableCopyTest extends SpecTestsuiteBase
     public function testAssertTrap1410(): void
     {
         $this->runAssertTrapCommand(
-            module: null,
             action: ['type' => 'invoke', 'field' => 'test', 'args' => [['type' => 'i32', 'value' => '8']]],
             text: 'uninitialized element',
             line: 2684,
@@ -15458,7 +14097,6 @@ final class TableCopyTest extends SpecTestsuiteBase
     public function testAssertTrap1411(): void
     {
         $this->runAssertTrapCommand(
-            module: null,
             action: ['type' => 'invoke', 'field' => 'test', 'args' => [['type' => 'i32', 'value' => '9']]],
             text: 'uninitialized element',
             line: 2685,
@@ -15469,7 +14107,6 @@ final class TableCopyTest extends SpecTestsuiteBase
     public function testAssertTrap1412(): void
     {
         $this->runAssertTrapCommand(
-            module: null,
             action: ['type' => 'invoke', 'field' => 'test', 'args' => [['type' => 'i32', 'value' => '10']]],
             text: 'uninitialized element',
             line: 2686,
@@ -15480,7 +14117,6 @@ final class TableCopyTest extends SpecTestsuiteBase
     public function testAssertTrap1413(): void
     {
         $this->runAssertTrapCommand(
-            module: null,
             action: ['type' => 'invoke', 'field' => 'test', 'args' => [['type' => 'i32', 'value' => '11']]],
             text: 'uninitialized element',
             line: 2687,
@@ -15491,7 +14127,6 @@ final class TableCopyTest extends SpecTestsuiteBase
     public function testAssertTrap1414(): void
     {
         $this->runAssertTrapCommand(
-            module: null,
             action: ['type' => 'invoke', 'field' => 'test', 'args' => [['type' => 'i32', 'value' => '12']]],
             text: 'uninitialized element',
             line: 2688,
@@ -15502,7 +14137,6 @@ final class TableCopyTest extends SpecTestsuiteBase
     public function testAssertTrap1415(): void
     {
         $this->runAssertTrapCommand(
-            module: null,
             action: ['type' => 'invoke', 'field' => 'test', 'args' => [['type' => 'i32', 'value' => '13']]],
             text: 'uninitialized element',
             line: 2689,
@@ -15513,7 +14147,6 @@ final class TableCopyTest extends SpecTestsuiteBase
     public function testAssertTrap1416(): void
     {
         $this->runAssertTrapCommand(
-            module: null,
             action: ['type' => 'invoke', 'field' => 'test', 'args' => [['type' => 'i32', 'value' => '14']]],
             text: 'uninitialized element',
             line: 2690,
@@ -15524,7 +14157,6 @@ final class TableCopyTest extends SpecTestsuiteBase
     public function testAssertTrap1417(): void
     {
         $this->runAssertTrapCommand(
-            module: null,
             action: ['type' => 'invoke', 'field' => 'test', 'args' => [['type' => 'i32', 'value' => '15']]],
             text: 'uninitialized element',
             line: 2691,
@@ -15535,7 +14167,6 @@ final class TableCopyTest extends SpecTestsuiteBase
     public function testAssertTrap1418(): void
     {
         $this->runAssertTrapCommand(
-            module: null,
             action: ['type' => 'invoke', 'field' => 'test', 'args' => [['type' => 'i32', 'value' => '16']]],
             text: 'uninitialized element',
             line: 2692,
@@ -15546,7 +14177,6 @@ final class TableCopyTest extends SpecTestsuiteBase
     public function testAssertTrap1419(): void
     {
         $this->runAssertTrapCommand(
-            module: null,
             action: ['type' => 'invoke', 'field' => 'test', 'args' => [['type' => 'i32', 'value' => '17']]],
             text: 'uninitialized element',
             line: 2693,
@@ -15557,7 +14187,6 @@ final class TableCopyTest extends SpecTestsuiteBase
     public function testAssertTrap1420(): void
     {
         $this->runAssertTrapCommand(
-            module: null,
             action: ['type' => 'invoke', 'field' => 'test', 'args' => [['type' => 'i32', 'value' => '18']]],
             text: 'uninitialized element',
             line: 2694,
@@ -15568,7 +14197,6 @@ final class TableCopyTest extends SpecTestsuiteBase
     public function testAssertTrap1421(): void
     {
         $this->runAssertTrapCommand(
-            module: null,
             action: ['type' => 'invoke', 'field' => 'test', 'args' => [['type' => 'i32', 'value' => '19']]],
             text: 'uninitialized element',
             line: 2695,
@@ -15579,7 +14207,6 @@ final class TableCopyTest extends SpecTestsuiteBase
     public function testAssertTrap1422(): void
     {
         $this->runAssertTrapCommand(
-            module: null,
             action: ['type' => 'invoke', 'field' => 'test', 'args' => [['type' => 'i32', 'value' => '20']]],
             text: 'uninitialized element',
             line: 2696,
@@ -15590,7 +14217,6 @@ final class TableCopyTest extends SpecTestsuiteBase
     public function testAssertTrap1423(): void
     {
         $this->runAssertTrapCommand(
-            module: null,
             action: ['type' => 'invoke', 'field' => 'test', 'args' => [['type' => 'i32', 'value' => '21']]],
             text: 'uninitialized element',
             line: 2697,
@@ -15601,7 +14227,6 @@ final class TableCopyTest extends SpecTestsuiteBase
     public function testAssertTrap1424(): void
     {
         $this->runAssertTrapCommand(
-            module: null,
             action: ['type' => 'invoke', 'field' => 'test', 'args' => [['type' => 'i32', 'value' => '22']]],
             text: 'uninitialized element',
             line: 2698,
@@ -15612,7 +14237,6 @@ final class TableCopyTest extends SpecTestsuiteBase
     public function testAssertTrap1425(): void
     {
         $this->runAssertTrapCommand(
-            module: null,
             action: ['type' => 'invoke', 'field' => 'test', 'args' => [['type' => 'i32', 'value' => '23']]],
             text: 'uninitialized element',
             line: 2699,
@@ -15623,7 +14247,6 @@ final class TableCopyTest extends SpecTestsuiteBase
     public function testAssertReturn1426(): void
     {
         $this->runAssertReturnCommand(
-            module: null,
             action: ['type' => 'invoke', 'field' => 'test', 'args' => [['type' => 'i32', 'value' => '24']]],
             expected: [['type' => 'i32', 'value' => '0']],
             line: 2700,
@@ -15634,7 +14257,6 @@ final class TableCopyTest extends SpecTestsuiteBase
     public function testAssertReturn1427(): void
     {
         $this->runAssertReturnCommand(
-            module: null,
             action: ['type' => 'invoke', 'field' => 'test', 'args' => [['type' => 'i32', 'value' => '25']]],
             expected: [['type' => 'i32', 'value' => '1']],
             line: 2701,
@@ -15645,7 +14267,6 @@ final class TableCopyTest extends SpecTestsuiteBase
     public function testAssertReturn1428(): void
     {
         $this->runAssertReturnCommand(
-            module: null,
             action: ['type' => 'invoke', 'field' => 'test', 'args' => [['type' => 'i32', 'value' => '26']]],
             expected: [['type' => 'i32', 'value' => '2']],
             line: 2702,
@@ -15656,7 +14277,6 @@ final class TableCopyTest extends SpecTestsuiteBase
     public function testAssertReturn1429(): void
     {
         $this->runAssertReturnCommand(
-            module: null,
             action: ['type' => 'invoke', 'field' => 'test', 'args' => [['type' => 'i32', 'value' => '27']]],
             expected: [['type' => 'i32', 'value' => '3']],
             line: 2703,
@@ -15667,7 +14287,6 @@ final class TableCopyTest extends SpecTestsuiteBase
     public function testAssertReturn1430(): void
     {
         $this->runAssertReturnCommand(
-            module: null,
             action: ['type' => 'invoke', 'field' => 'test', 'args' => [['type' => 'i32', 'value' => '28']]],
             expected: [['type' => 'i32', 'value' => '4']],
             line: 2704,
@@ -15678,7 +14297,6 @@ final class TableCopyTest extends SpecTestsuiteBase
     public function testAssertReturn1431(): void
     {
         $this->runAssertReturnCommand(
-            module: null,
             action: ['type' => 'invoke', 'field' => 'test', 'args' => [['type' => 'i32', 'value' => '29']]],
             expected: [['type' => 'i32', 'value' => '5']],
             line: 2705,
@@ -15689,7 +14307,6 @@ final class TableCopyTest extends SpecTestsuiteBase
     public function testAssertReturn1432(): void
     {
         $this->runAssertReturnCommand(
-            module: null,
             action: ['type' => 'invoke', 'field' => 'test', 'args' => [['type' => 'i32', 'value' => '30']]],
             expected: [['type' => 'i32', 'value' => '6']],
             line: 2706,
@@ -15700,7 +14317,6 @@ final class TableCopyTest extends SpecTestsuiteBase
     public function testAssertReturn1433(): void
     {
         $this->runAssertReturnCommand(
-            module: null,
             action: ['type' => 'invoke', 'field' => 'test', 'args' => [['type' => 'i32', 'value' => '31']]],
             expected: [['type' => 'i32', 'value' => '7']],
             line: 2707,
@@ -15721,7 +14337,6 @@ final class TableCopyTest extends SpecTestsuiteBase
     public function testAssertTrap1435(): void
     {
         $this->runAssertTrapCommand(
-            module: null,
             action: ['type' => 'invoke', 'field' => 'run', 'args' => [['type' => 'i32', 'value' => '21'], ['type' => 'i32', 'value' => '21'], ['type' => 'i32', 'value' => '16']]],
             text: 'out of bounds table access',
             line: 2735,
@@ -15732,7 +14347,6 @@ final class TableCopyTest extends SpecTestsuiteBase
     public function testAssertTrap1436(): void
     {
         $this->runAssertTrapCommand(
-            module: null,
             action: ['type' => 'invoke', 'field' => 'test', 'args' => [['type' => 'i32', 'value' => '0']]],
             text: 'uninitialized element',
             line: 2737,
@@ -15743,7 +14357,6 @@ final class TableCopyTest extends SpecTestsuiteBase
     public function testAssertTrap1437(): void
     {
         $this->runAssertTrapCommand(
-            module: null,
             action: ['type' => 'invoke', 'field' => 'test', 'args' => [['type' => 'i32', 'value' => '1']]],
             text: 'uninitialized element',
             line: 2738,
@@ -15754,7 +14367,6 @@ final class TableCopyTest extends SpecTestsuiteBase
     public function testAssertTrap1438(): void
     {
         $this->runAssertTrapCommand(
-            module: null,
             action: ['type' => 'invoke', 'field' => 'test', 'args' => [['type' => 'i32', 'value' => '2']]],
             text: 'uninitialized element',
             line: 2739,
@@ -15765,7 +14377,6 @@ final class TableCopyTest extends SpecTestsuiteBase
     public function testAssertTrap1439(): void
     {
         $this->runAssertTrapCommand(
-            module: null,
             action: ['type' => 'invoke', 'field' => 'test', 'args' => [['type' => 'i32', 'value' => '3']]],
             text: 'uninitialized element',
             line: 2740,
@@ -15776,7 +14387,6 @@ final class TableCopyTest extends SpecTestsuiteBase
     public function testAssertTrap1440(): void
     {
         $this->runAssertTrapCommand(
-            module: null,
             action: ['type' => 'invoke', 'field' => 'test', 'args' => [['type' => 'i32', 'value' => '4']]],
             text: 'uninitialized element',
             line: 2741,
@@ -15787,7 +14397,6 @@ final class TableCopyTest extends SpecTestsuiteBase
     public function testAssertTrap1441(): void
     {
         $this->runAssertTrapCommand(
-            module: null,
             action: ['type' => 'invoke', 'field' => 'test', 'args' => [['type' => 'i32', 'value' => '5']]],
             text: 'uninitialized element',
             line: 2742,
@@ -15798,7 +14407,6 @@ final class TableCopyTest extends SpecTestsuiteBase
     public function testAssertTrap1442(): void
     {
         $this->runAssertTrapCommand(
-            module: null,
             action: ['type' => 'invoke', 'field' => 'test', 'args' => [['type' => 'i32', 'value' => '6']]],
             text: 'uninitialized element',
             line: 2743,
@@ -15809,7 +14417,6 @@ final class TableCopyTest extends SpecTestsuiteBase
     public function testAssertTrap1443(): void
     {
         $this->runAssertTrapCommand(
-            module: null,
             action: ['type' => 'invoke', 'field' => 'test', 'args' => [['type' => 'i32', 'value' => '7']]],
             text: 'uninitialized element',
             line: 2744,
@@ -15820,7 +14427,6 @@ final class TableCopyTest extends SpecTestsuiteBase
     public function testAssertTrap1444(): void
     {
         $this->runAssertTrapCommand(
-            module: null,
             action: ['type' => 'invoke', 'field' => 'test', 'args' => [['type' => 'i32', 'value' => '8']]],
             text: 'uninitialized element',
             line: 2745,
@@ -15831,7 +14437,6 @@ final class TableCopyTest extends SpecTestsuiteBase
     public function testAssertTrap1445(): void
     {
         $this->runAssertTrapCommand(
-            module: null,
             action: ['type' => 'invoke', 'field' => 'test', 'args' => [['type' => 'i32', 'value' => '9']]],
             text: 'uninitialized element',
             line: 2746,
@@ -15842,7 +14447,6 @@ final class TableCopyTest extends SpecTestsuiteBase
     public function testAssertTrap1446(): void
     {
         $this->runAssertTrapCommand(
-            module: null,
             action: ['type' => 'invoke', 'field' => 'test', 'args' => [['type' => 'i32', 'value' => '10']]],
             text: 'uninitialized element',
             line: 2747,
@@ -15853,7 +14457,6 @@ final class TableCopyTest extends SpecTestsuiteBase
     public function testAssertTrap1447(): void
     {
         $this->runAssertTrapCommand(
-            module: null,
             action: ['type' => 'invoke', 'field' => 'test', 'args' => [['type' => 'i32', 'value' => '11']]],
             text: 'uninitialized element',
             line: 2748,
@@ -15864,7 +14467,6 @@ final class TableCopyTest extends SpecTestsuiteBase
     public function testAssertTrap1448(): void
     {
         $this->runAssertTrapCommand(
-            module: null,
             action: ['type' => 'invoke', 'field' => 'test', 'args' => [['type' => 'i32', 'value' => '12']]],
             text: 'uninitialized element',
             line: 2749,
@@ -15875,7 +14477,6 @@ final class TableCopyTest extends SpecTestsuiteBase
     public function testAssertTrap1449(): void
     {
         $this->runAssertTrapCommand(
-            module: null,
             action: ['type' => 'invoke', 'field' => 'test', 'args' => [['type' => 'i32', 'value' => '13']]],
             text: 'uninitialized element',
             line: 2750,
@@ -15886,7 +14487,6 @@ final class TableCopyTest extends SpecTestsuiteBase
     public function testAssertTrap1450(): void
     {
         $this->runAssertTrapCommand(
-            module: null,
             action: ['type' => 'invoke', 'field' => 'test', 'args' => [['type' => 'i32', 'value' => '14']]],
             text: 'uninitialized element',
             line: 2751,
@@ -15897,7 +14497,6 @@ final class TableCopyTest extends SpecTestsuiteBase
     public function testAssertTrap1451(): void
     {
         $this->runAssertTrapCommand(
-            module: null,
             action: ['type' => 'invoke', 'field' => 'test', 'args' => [['type' => 'i32', 'value' => '15']]],
             text: 'uninitialized element',
             line: 2752,
@@ -15908,7 +14507,6 @@ final class TableCopyTest extends SpecTestsuiteBase
     public function testAssertTrap1452(): void
     {
         $this->runAssertTrapCommand(
-            module: null,
             action: ['type' => 'invoke', 'field' => 'test', 'args' => [['type' => 'i32', 'value' => '16']]],
             text: 'uninitialized element',
             line: 2753,
@@ -15919,7 +14517,6 @@ final class TableCopyTest extends SpecTestsuiteBase
     public function testAssertTrap1453(): void
     {
         $this->runAssertTrapCommand(
-            module: null,
             action: ['type' => 'invoke', 'field' => 'test', 'args' => [['type' => 'i32', 'value' => '17']]],
             text: 'uninitialized element',
             line: 2754,
@@ -15930,7 +14527,6 @@ final class TableCopyTest extends SpecTestsuiteBase
     public function testAssertTrap1454(): void
     {
         $this->runAssertTrapCommand(
-            module: null,
             action: ['type' => 'invoke', 'field' => 'test', 'args' => [['type' => 'i32', 'value' => '18']]],
             text: 'uninitialized element',
             line: 2755,
@@ -15941,7 +14537,6 @@ final class TableCopyTest extends SpecTestsuiteBase
     public function testAssertTrap1455(): void
     {
         $this->runAssertTrapCommand(
-            module: null,
             action: ['type' => 'invoke', 'field' => 'test', 'args' => [['type' => 'i32', 'value' => '19']]],
             text: 'uninitialized element',
             line: 2756,
@@ -15952,7 +14547,6 @@ final class TableCopyTest extends SpecTestsuiteBase
     public function testAssertTrap1456(): void
     {
         $this->runAssertTrapCommand(
-            module: null,
             action: ['type' => 'invoke', 'field' => 'test', 'args' => [['type' => 'i32', 'value' => '20']]],
             text: 'uninitialized element',
             line: 2757,
@@ -15963,7 +14557,6 @@ final class TableCopyTest extends SpecTestsuiteBase
     public function testAssertReturn1457(): void
     {
         $this->runAssertReturnCommand(
-            module: null,
             action: ['type' => 'invoke', 'field' => 'test', 'args' => [['type' => 'i32', 'value' => '21']]],
             expected: [['type' => 'i32', 'value' => '0']],
             line: 2758,
@@ -15974,7 +14567,6 @@ final class TableCopyTest extends SpecTestsuiteBase
     public function testAssertReturn1458(): void
     {
         $this->runAssertReturnCommand(
-            module: null,
             action: ['type' => 'invoke', 'field' => 'test', 'args' => [['type' => 'i32', 'value' => '22']]],
             expected: [['type' => 'i32', 'value' => '1']],
             line: 2759,
@@ -15985,7 +14577,6 @@ final class TableCopyTest extends SpecTestsuiteBase
     public function testAssertReturn1459(): void
     {
         $this->runAssertReturnCommand(
-            module: null,
             action: ['type' => 'invoke', 'field' => 'test', 'args' => [['type' => 'i32', 'value' => '23']]],
             expected: [['type' => 'i32', 'value' => '2']],
             line: 2760,
@@ -15996,7 +14587,6 @@ final class TableCopyTest extends SpecTestsuiteBase
     public function testAssertReturn1460(): void
     {
         $this->runAssertReturnCommand(
-            module: null,
             action: ['type' => 'invoke', 'field' => 'test', 'args' => [['type' => 'i32', 'value' => '24']]],
             expected: [['type' => 'i32', 'value' => '3']],
             line: 2761,
@@ -16007,7 +14597,6 @@ final class TableCopyTest extends SpecTestsuiteBase
     public function testAssertReturn1461(): void
     {
         $this->runAssertReturnCommand(
-            module: null,
             action: ['type' => 'invoke', 'field' => 'test', 'args' => [['type' => 'i32', 'value' => '25']]],
             expected: [['type' => 'i32', 'value' => '4']],
             line: 2762,
@@ -16018,7 +14607,6 @@ final class TableCopyTest extends SpecTestsuiteBase
     public function testAssertReturn1462(): void
     {
         $this->runAssertReturnCommand(
-            module: null,
             action: ['type' => 'invoke', 'field' => 'test', 'args' => [['type' => 'i32', 'value' => '26']]],
             expected: [['type' => 'i32', 'value' => '5']],
             line: 2763,
@@ -16029,7 +14617,6 @@ final class TableCopyTest extends SpecTestsuiteBase
     public function testAssertReturn1463(): void
     {
         $this->runAssertReturnCommand(
-            module: null,
             action: ['type' => 'invoke', 'field' => 'test', 'args' => [['type' => 'i32', 'value' => '27']]],
             expected: [['type' => 'i32', 'value' => '6']],
             line: 2764,
@@ -16040,7 +14627,6 @@ final class TableCopyTest extends SpecTestsuiteBase
     public function testAssertReturn1464(): void
     {
         $this->runAssertReturnCommand(
-            module: null,
             action: ['type' => 'invoke', 'field' => 'test', 'args' => [['type' => 'i32', 'value' => '28']]],
             expected: [['type' => 'i32', 'value' => '7']],
             line: 2765,
@@ -16051,7 +14637,6 @@ final class TableCopyTest extends SpecTestsuiteBase
     public function testAssertReturn1465(): void
     {
         $this->runAssertReturnCommand(
-            module: null,
             action: ['type' => 'invoke', 'field' => 'test', 'args' => [['type' => 'i32', 'value' => '29']]],
             expected: [['type' => 'i32', 'value' => '8']],
             line: 2766,
@@ -16062,7 +14647,6 @@ final class TableCopyTest extends SpecTestsuiteBase
     public function testAssertReturn1466(): void
     {
         $this->runAssertReturnCommand(
-            module: null,
             action: ['type' => 'invoke', 'field' => 'test', 'args' => [['type' => 'i32', 'value' => '30']]],
             expected: [['type' => 'i32', 'value' => '9']],
             line: 2767,
@@ -16073,7 +14657,6 @@ final class TableCopyTest extends SpecTestsuiteBase
     public function testAssertReturn1467(): void
     {
         $this->runAssertReturnCommand(
-            module: null,
             action: ['type' => 'invoke', 'field' => 'test', 'args' => [['type' => 'i32', 'value' => '31']]],
             expected: [['type' => 'i32', 'value' => '10']],
             line: 2768,
@@ -16094,7 +14677,6 @@ final class TableCopyTest extends SpecTestsuiteBase
     public function testAssertTrap1469(): void
     {
         $this->runAssertTrapCommand(
-            module: null,
             action: ['type' => 'invoke', 'field' => 'run', 'args' => [['type' => 'i32', 'value' => '0'], ['type' => 'i32', 'value' => '112'], ['type' => 'i32', 'value' => '4294967264']]],
             text: 'out of bounds table access',
             line: 2796,
@@ -16105,7 +14687,6 @@ final class TableCopyTest extends SpecTestsuiteBase
     public function testAssertTrap1470(): void
     {
         $this->runAssertTrapCommand(
-            module: null,
             action: ['type' => 'invoke', 'field' => 'test', 'args' => [['type' => 'i32', 'value' => '0']]],
             text: 'uninitialized element',
             line: 2798,
@@ -16116,7 +14697,6 @@ final class TableCopyTest extends SpecTestsuiteBase
     public function testAssertTrap1471(): void
     {
         $this->runAssertTrapCommand(
-            module: null,
             action: ['type' => 'invoke', 'field' => 'test', 'args' => [['type' => 'i32', 'value' => '1']]],
             text: 'uninitialized element',
             line: 2799,
@@ -16127,7 +14707,6 @@ final class TableCopyTest extends SpecTestsuiteBase
     public function testAssertTrap1472(): void
     {
         $this->runAssertTrapCommand(
-            module: null,
             action: ['type' => 'invoke', 'field' => 'test', 'args' => [['type' => 'i32', 'value' => '2']]],
             text: 'uninitialized element',
             line: 2800,
@@ -16138,7 +14717,6 @@ final class TableCopyTest extends SpecTestsuiteBase
     public function testAssertTrap1473(): void
     {
         $this->runAssertTrapCommand(
-            module: null,
             action: ['type' => 'invoke', 'field' => 'test', 'args' => [['type' => 'i32', 'value' => '3']]],
             text: 'uninitialized element',
             line: 2801,
@@ -16149,7 +14727,6 @@ final class TableCopyTest extends SpecTestsuiteBase
     public function testAssertTrap1474(): void
     {
         $this->runAssertTrapCommand(
-            module: null,
             action: ['type' => 'invoke', 'field' => 'test', 'args' => [['type' => 'i32', 'value' => '4']]],
             text: 'uninitialized element',
             line: 2802,
@@ -16160,7 +14737,6 @@ final class TableCopyTest extends SpecTestsuiteBase
     public function testAssertTrap1475(): void
     {
         $this->runAssertTrapCommand(
-            module: null,
             action: ['type' => 'invoke', 'field' => 'test', 'args' => [['type' => 'i32', 'value' => '5']]],
             text: 'uninitialized element',
             line: 2803,
@@ -16171,7 +14747,6 @@ final class TableCopyTest extends SpecTestsuiteBase
     public function testAssertTrap1476(): void
     {
         $this->runAssertTrapCommand(
-            module: null,
             action: ['type' => 'invoke', 'field' => 'test', 'args' => [['type' => 'i32', 'value' => '6']]],
             text: 'uninitialized element',
             line: 2804,
@@ -16182,7 +14757,6 @@ final class TableCopyTest extends SpecTestsuiteBase
     public function testAssertTrap1477(): void
     {
         $this->runAssertTrapCommand(
-            module: null,
             action: ['type' => 'invoke', 'field' => 'test', 'args' => [['type' => 'i32', 'value' => '7']]],
             text: 'uninitialized element',
             line: 2805,
@@ -16193,7 +14767,6 @@ final class TableCopyTest extends SpecTestsuiteBase
     public function testAssertTrap1478(): void
     {
         $this->runAssertTrapCommand(
-            module: null,
             action: ['type' => 'invoke', 'field' => 'test', 'args' => [['type' => 'i32', 'value' => '8']]],
             text: 'uninitialized element',
             line: 2806,
@@ -16204,7 +14777,6 @@ final class TableCopyTest extends SpecTestsuiteBase
     public function testAssertTrap1479(): void
     {
         $this->runAssertTrapCommand(
-            module: null,
             action: ['type' => 'invoke', 'field' => 'test', 'args' => [['type' => 'i32', 'value' => '9']]],
             text: 'uninitialized element',
             line: 2807,
@@ -16215,7 +14787,6 @@ final class TableCopyTest extends SpecTestsuiteBase
     public function testAssertTrap1480(): void
     {
         $this->runAssertTrapCommand(
-            module: null,
             action: ['type' => 'invoke', 'field' => 'test', 'args' => [['type' => 'i32', 'value' => '10']]],
             text: 'uninitialized element',
             line: 2808,
@@ -16226,7 +14797,6 @@ final class TableCopyTest extends SpecTestsuiteBase
     public function testAssertTrap1481(): void
     {
         $this->runAssertTrapCommand(
-            module: null,
             action: ['type' => 'invoke', 'field' => 'test', 'args' => [['type' => 'i32', 'value' => '11']]],
             text: 'uninitialized element',
             line: 2809,
@@ -16237,7 +14807,6 @@ final class TableCopyTest extends SpecTestsuiteBase
     public function testAssertTrap1482(): void
     {
         $this->runAssertTrapCommand(
-            module: null,
             action: ['type' => 'invoke', 'field' => 'test', 'args' => [['type' => 'i32', 'value' => '12']]],
             text: 'uninitialized element',
             line: 2810,
@@ -16248,7 +14817,6 @@ final class TableCopyTest extends SpecTestsuiteBase
     public function testAssertTrap1483(): void
     {
         $this->runAssertTrapCommand(
-            module: null,
             action: ['type' => 'invoke', 'field' => 'test', 'args' => [['type' => 'i32', 'value' => '13']]],
             text: 'uninitialized element',
             line: 2811,
@@ -16259,7 +14827,6 @@ final class TableCopyTest extends SpecTestsuiteBase
     public function testAssertTrap1484(): void
     {
         $this->runAssertTrapCommand(
-            module: null,
             action: ['type' => 'invoke', 'field' => 'test', 'args' => [['type' => 'i32', 'value' => '14']]],
             text: 'uninitialized element',
             line: 2812,
@@ -16270,7 +14837,6 @@ final class TableCopyTest extends SpecTestsuiteBase
     public function testAssertTrap1485(): void
     {
         $this->runAssertTrapCommand(
-            module: null,
             action: ['type' => 'invoke', 'field' => 'test', 'args' => [['type' => 'i32', 'value' => '15']]],
             text: 'uninitialized element',
             line: 2813,
@@ -16281,7 +14847,6 @@ final class TableCopyTest extends SpecTestsuiteBase
     public function testAssertTrap1486(): void
     {
         $this->runAssertTrapCommand(
-            module: null,
             action: ['type' => 'invoke', 'field' => 'test', 'args' => [['type' => 'i32', 'value' => '16']]],
             text: 'uninitialized element',
             line: 2814,
@@ -16292,7 +14857,6 @@ final class TableCopyTest extends SpecTestsuiteBase
     public function testAssertTrap1487(): void
     {
         $this->runAssertTrapCommand(
-            module: null,
             action: ['type' => 'invoke', 'field' => 'test', 'args' => [['type' => 'i32', 'value' => '17']]],
             text: 'uninitialized element',
             line: 2815,
@@ -16303,7 +14867,6 @@ final class TableCopyTest extends SpecTestsuiteBase
     public function testAssertTrap1488(): void
     {
         $this->runAssertTrapCommand(
-            module: null,
             action: ['type' => 'invoke', 'field' => 'test', 'args' => [['type' => 'i32', 'value' => '18']]],
             text: 'uninitialized element',
             line: 2816,
@@ -16314,7 +14877,6 @@ final class TableCopyTest extends SpecTestsuiteBase
     public function testAssertTrap1489(): void
     {
         $this->runAssertTrapCommand(
-            module: null,
             action: ['type' => 'invoke', 'field' => 'test', 'args' => [['type' => 'i32', 'value' => '19']]],
             text: 'uninitialized element',
             line: 2817,
@@ -16325,7 +14887,6 @@ final class TableCopyTest extends SpecTestsuiteBase
     public function testAssertTrap1490(): void
     {
         $this->runAssertTrapCommand(
-            module: null,
             action: ['type' => 'invoke', 'field' => 'test', 'args' => [['type' => 'i32', 'value' => '20']]],
             text: 'uninitialized element',
             line: 2818,
@@ -16336,7 +14897,6 @@ final class TableCopyTest extends SpecTestsuiteBase
     public function testAssertTrap1491(): void
     {
         $this->runAssertTrapCommand(
-            module: null,
             action: ['type' => 'invoke', 'field' => 'test', 'args' => [['type' => 'i32', 'value' => '21']]],
             text: 'uninitialized element',
             line: 2819,
@@ -16347,7 +14907,6 @@ final class TableCopyTest extends SpecTestsuiteBase
     public function testAssertTrap1492(): void
     {
         $this->runAssertTrapCommand(
-            module: null,
             action: ['type' => 'invoke', 'field' => 'test', 'args' => [['type' => 'i32', 'value' => '22']]],
             text: 'uninitialized element',
             line: 2820,
@@ -16358,7 +14917,6 @@ final class TableCopyTest extends SpecTestsuiteBase
     public function testAssertTrap1493(): void
     {
         $this->runAssertTrapCommand(
-            module: null,
             action: ['type' => 'invoke', 'field' => 'test', 'args' => [['type' => 'i32', 'value' => '23']]],
             text: 'uninitialized element',
             line: 2821,
@@ -16369,7 +14927,6 @@ final class TableCopyTest extends SpecTestsuiteBase
     public function testAssertTrap1494(): void
     {
         $this->runAssertTrapCommand(
-            module: null,
             action: ['type' => 'invoke', 'field' => 'test', 'args' => [['type' => 'i32', 'value' => '24']]],
             text: 'uninitialized element',
             line: 2822,
@@ -16380,7 +14937,6 @@ final class TableCopyTest extends SpecTestsuiteBase
     public function testAssertTrap1495(): void
     {
         $this->runAssertTrapCommand(
-            module: null,
             action: ['type' => 'invoke', 'field' => 'test', 'args' => [['type' => 'i32', 'value' => '25']]],
             text: 'uninitialized element',
             line: 2823,
@@ -16391,7 +14947,6 @@ final class TableCopyTest extends SpecTestsuiteBase
     public function testAssertTrap1496(): void
     {
         $this->runAssertTrapCommand(
-            module: null,
             action: ['type' => 'invoke', 'field' => 'test', 'args' => [['type' => 'i32', 'value' => '26']]],
             text: 'uninitialized element',
             line: 2824,
@@ -16402,7 +14957,6 @@ final class TableCopyTest extends SpecTestsuiteBase
     public function testAssertTrap1497(): void
     {
         $this->runAssertTrapCommand(
-            module: null,
             action: ['type' => 'invoke', 'field' => 'test', 'args' => [['type' => 'i32', 'value' => '27']]],
             text: 'uninitialized element',
             line: 2825,
@@ -16413,7 +14967,6 @@ final class TableCopyTest extends SpecTestsuiteBase
     public function testAssertTrap1498(): void
     {
         $this->runAssertTrapCommand(
-            module: null,
             action: ['type' => 'invoke', 'field' => 'test', 'args' => [['type' => 'i32', 'value' => '28']]],
             text: 'uninitialized element',
             line: 2826,
@@ -16424,7 +14977,6 @@ final class TableCopyTest extends SpecTestsuiteBase
     public function testAssertTrap1499(): void
     {
         $this->runAssertTrapCommand(
-            module: null,
             action: ['type' => 'invoke', 'field' => 'test', 'args' => [['type' => 'i32', 'value' => '29']]],
             text: 'uninitialized element',
             line: 2827,
@@ -16435,7 +14987,6 @@ final class TableCopyTest extends SpecTestsuiteBase
     public function testAssertTrap1500(): void
     {
         $this->runAssertTrapCommand(
-            module: null,
             action: ['type' => 'invoke', 'field' => 'test', 'args' => [['type' => 'i32', 'value' => '30']]],
             text: 'uninitialized element',
             line: 2828,
@@ -16446,7 +14997,6 @@ final class TableCopyTest extends SpecTestsuiteBase
     public function testAssertTrap1501(): void
     {
         $this->runAssertTrapCommand(
-            module: null,
             action: ['type' => 'invoke', 'field' => 'test', 'args' => [['type' => 'i32', 'value' => '31']]],
             text: 'uninitialized element',
             line: 2829,
@@ -16457,7 +15007,6 @@ final class TableCopyTest extends SpecTestsuiteBase
     public function testAssertTrap1502(): void
     {
         $this->runAssertTrapCommand(
-            module: null,
             action: ['type' => 'invoke', 'field' => 'test', 'args' => [['type' => 'i32', 'value' => '32']]],
             text: 'uninitialized element',
             line: 2830,
@@ -16468,7 +15017,6 @@ final class TableCopyTest extends SpecTestsuiteBase
     public function testAssertTrap1503(): void
     {
         $this->runAssertTrapCommand(
-            module: null,
             action: ['type' => 'invoke', 'field' => 'test', 'args' => [['type' => 'i32', 'value' => '33']]],
             text: 'uninitialized element',
             line: 2831,
@@ -16479,7 +15027,6 @@ final class TableCopyTest extends SpecTestsuiteBase
     public function testAssertTrap1504(): void
     {
         $this->runAssertTrapCommand(
-            module: null,
             action: ['type' => 'invoke', 'field' => 'test', 'args' => [['type' => 'i32', 'value' => '34']]],
             text: 'uninitialized element',
             line: 2832,
@@ -16490,7 +15037,6 @@ final class TableCopyTest extends SpecTestsuiteBase
     public function testAssertTrap1505(): void
     {
         $this->runAssertTrapCommand(
-            module: null,
             action: ['type' => 'invoke', 'field' => 'test', 'args' => [['type' => 'i32', 'value' => '35']]],
             text: 'uninitialized element',
             line: 2833,
@@ -16501,7 +15047,6 @@ final class TableCopyTest extends SpecTestsuiteBase
     public function testAssertTrap1506(): void
     {
         $this->runAssertTrapCommand(
-            module: null,
             action: ['type' => 'invoke', 'field' => 'test', 'args' => [['type' => 'i32', 'value' => '36']]],
             text: 'uninitialized element',
             line: 2834,
@@ -16512,7 +15057,6 @@ final class TableCopyTest extends SpecTestsuiteBase
     public function testAssertTrap1507(): void
     {
         $this->runAssertTrapCommand(
-            module: null,
             action: ['type' => 'invoke', 'field' => 'test', 'args' => [['type' => 'i32', 'value' => '37']]],
             text: 'uninitialized element',
             line: 2835,
@@ -16523,7 +15067,6 @@ final class TableCopyTest extends SpecTestsuiteBase
     public function testAssertTrap1508(): void
     {
         $this->runAssertTrapCommand(
-            module: null,
             action: ['type' => 'invoke', 'field' => 'test', 'args' => [['type' => 'i32', 'value' => '38']]],
             text: 'uninitialized element',
             line: 2836,
@@ -16534,7 +15077,6 @@ final class TableCopyTest extends SpecTestsuiteBase
     public function testAssertTrap1509(): void
     {
         $this->runAssertTrapCommand(
-            module: null,
             action: ['type' => 'invoke', 'field' => 'test', 'args' => [['type' => 'i32', 'value' => '39']]],
             text: 'uninitialized element',
             line: 2837,
@@ -16545,7 +15087,6 @@ final class TableCopyTest extends SpecTestsuiteBase
     public function testAssertTrap1510(): void
     {
         $this->runAssertTrapCommand(
-            module: null,
             action: ['type' => 'invoke', 'field' => 'test', 'args' => [['type' => 'i32', 'value' => '40']]],
             text: 'uninitialized element',
             line: 2838,
@@ -16556,7 +15097,6 @@ final class TableCopyTest extends SpecTestsuiteBase
     public function testAssertTrap1511(): void
     {
         $this->runAssertTrapCommand(
-            module: null,
             action: ['type' => 'invoke', 'field' => 'test', 'args' => [['type' => 'i32', 'value' => '41']]],
             text: 'uninitialized element',
             line: 2839,
@@ -16567,7 +15107,6 @@ final class TableCopyTest extends SpecTestsuiteBase
     public function testAssertTrap1512(): void
     {
         $this->runAssertTrapCommand(
-            module: null,
             action: ['type' => 'invoke', 'field' => 'test', 'args' => [['type' => 'i32', 'value' => '42']]],
             text: 'uninitialized element',
             line: 2840,
@@ -16578,7 +15117,6 @@ final class TableCopyTest extends SpecTestsuiteBase
     public function testAssertTrap1513(): void
     {
         $this->runAssertTrapCommand(
-            module: null,
             action: ['type' => 'invoke', 'field' => 'test', 'args' => [['type' => 'i32', 'value' => '43']]],
             text: 'uninitialized element',
             line: 2841,
@@ -16589,7 +15127,6 @@ final class TableCopyTest extends SpecTestsuiteBase
     public function testAssertTrap1514(): void
     {
         $this->runAssertTrapCommand(
-            module: null,
             action: ['type' => 'invoke', 'field' => 'test', 'args' => [['type' => 'i32', 'value' => '44']]],
             text: 'uninitialized element',
             line: 2842,
@@ -16600,7 +15137,6 @@ final class TableCopyTest extends SpecTestsuiteBase
     public function testAssertTrap1515(): void
     {
         $this->runAssertTrapCommand(
-            module: null,
             action: ['type' => 'invoke', 'field' => 'test', 'args' => [['type' => 'i32', 'value' => '45']]],
             text: 'uninitialized element',
             line: 2843,
@@ -16611,7 +15147,6 @@ final class TableCopyTest extends SpecTestsuiteBase
     public function testAssertTrap1516(): void
     {
         $this->runAssertTrapCommand(
-            module: null,
             action: ['type' => 'invoke', 'field' => 'test', 'args' => [['type' => 'i32', 'value' => '46']]],
             text: 'uninitialized element',
             line: 2844,
@@ -16622,7 +15157,6 @@ final class TableCopyTest extends SpecTestsuiteBase
     public function testAssertTrap1517(): void
     {
         $this->runAssertTrapCommand(
-            module: null,
             action: ['type' => 'invoke', 'field' => 'test', 'args' => [['type' => 'i32', 'value' => '47']]],
             text: 'uninitialized element',
             line: 2845,
@@ -16633,7 +15167,6 @@ final class TableCopyTest extends SpecTestsuiteBase
     public function testAssertTrap1518(): void
     {
         $this->runAssertTrapCommand(
-            module: null,
             action: ['type' => 'invoke', 'field' => 'test', 'args' => [['type' => 'i32', 'value' => '48']]],
             text: 'uninitialized element',
             line: 2846,
@@ -16644,7 +15177,6 @@ final class TableCopyTest extends SpecTestsuiteBase
     public function testAssertTrap1519(): void
     {
         $this->runAssertTrapCommand(
-            module: null,
             action: ['type' => 'invoke', 'field' => 'test', 'args' => [['type' => 'i32', 'value' => '49']]],
             text: 'uninitialized element',
             line: 2847,
@@ -16655,7 +15187,6 @@ final class TableCopyTest extends SpecTestsuiteBase
     public function testAssertTrap1520(): void
     {
         $this->runAssertTrapCommand(
-            module: null,
             action: ['type' => 'invoke', 'field' => 'test', 'args' => [['type' => 'i32', 'value' => '50']]],
             text: 'uninitialized element',
             line: 2848,
@@ -16666,7 +15197,6 @@ final class TableCopyTest extends SpecTestsuiteBase
     public function testAssertTrap1521(): void
     {
         $this->runAssertTrapCommand(
-            module: null,
             action: ['type' => 'invoke', 'field' => 'test', 'args' => [['type' => 'i32', 'value' => '51']]],
             text: 'uninitialized element',
             line: 2849,
@@ -16677,7 +15207,6 @@ final class TableCopyTest extends SpecTestsuiteBase
     public function testAssertTrap1522(): void
     {
         $this->runAssertTrapCommand(
-            module: null,
             action: ['type' => 'invoke', 'field' => 'test', 'args' => [['type' => 'i32', 'value' => '52']]],
             text: 'uninitialized element',
             line: 2850,
@@ -16688,7 +15217,6 @@ final class TableCopyTest extends SpecTestsuiteBase
     public function testAssertTrap1523(): void
     {
         $this->runAssertTrapCommand(
-            module: null,
             action: ['type' => 'invoke', 'field' => 'test', 'args' => [['type' => 'i32', 'value' => '53']]],
             text: 'uninitialized element',
             line: 2851,
@@ -16699,7 +15227,6 @@ final class TableCopyTest extends SpecTestsuiteBase
     public function testAssertTrap1524(): void
     {
         $this->runAssertTrapCommand(
-            module: null,
             action: ['type' => 'invoke', 'field' => 'test', 'args' => [['type' => 'i32', 'value' => '54']]],
             text: 'uninitialized element',
             line: 2852,
@@ -16710,7 +15237,6 @@ final class TableCopyTest extends SpecTestsuiteBase
     public function testAssertTrap1525(): void
     {
         $this->runAssertTrapCommand(
-            module: null,
             action: ['type' => 'invoke', 'field' => 'test', 'args' => [['type' => 'i32', 'value' => '55']]],
             text: 'uninitialized element',
             line: 2853,
@@ -16721,7 +15247,6 @@ final class TableCopyTest extends SpecTestsuiteBase
     public function testAssertTrap1526(): void
     {
         $this->runAssertTrapCommand(
-            module: null,
             action: ['type' => 'invoke', 'field' => 'test', 'args' => [['type' => 'i32', 'value' => '56']]],
             text: 'uninitialized element',
             line: 2854,
@@ -16732,7 +15257,6 @@ final class TableCopyTest extends SpecTestsuiteBase
     public function testAssertTrap1527(): void
     {
         $this->runAssertTrapCommand(
-            module: null,
             action: ['type' => 'invoke', 'field' => 'test', 'args' => [['type' => 'i32', 'value' => '57']]],
             text: 'uninitialized element',
             line: 2855,
@@ -16743,7 +15267,6 @@ final class TableCopyTest extends SpecTestsuiteBase
     public function testAssertTrap1528(): void
     {
         $this->runAssertTrapCommand(
-            module: null,
             action: ['type' => 'invoke', 'field' => 'test', 'args' => [['type' => 'i32', 'value' => '58']]],
             text: 'uninitialized element',
             line: 2856,
@@ -16754,7 +15277,6 @@ final class TableCopyTest extends SpecTestsuiteBase
     public function testAssertTrap1529(): void
     {
         $this->runAssertTrapCommand(
-            module: null,
             action: ['type' => 'invoke', 'field' => 'test', 'args' => [['type' => 'i32', 'value' => '59']]],
             text: 'uninitialized element',
             line: 2857,
@@ -16765,7 +15287,6 @@ final class TableCopyTest extends SpecTestsuiteBase
     public function testAssertTrap1530(): void
     {
         $this->runAssertTrapCommand(
-            module: null,
             action: ['type' => 'invoke', 'field' => 'test', 'args' => [['type' => 'i32', 'value' => '60']]],
             text: 'uninitialized element',
             line: 2858,
@@ -16776,7 +15297,6 @@ final class TableCopyTest extends SpecTestsuiteBase
     public function testAssertTrap1531(): void
     {
         $this->runAssertTrapCommand(
-            module: null,
             action: ['type' => 'invoke', 'field' => 'test', 'args' => [['type' => 'i32', 'value' => '61']]],
             text: 'uninitialized element',
             line: 2859,
@@ -16787,7 +15307,6 @@ final class TableCopyTest extends SpecTestsuiteBase
     public function testAssertTrap1532(): void
     {
         $this->runAssertTrapCommand(
-            module: null,
             action: ['type' => 'invoke', 'field' => 'test', 'args' => [['type' => 'i32', 'value' => '62']]],
             text: 'uninitialized element',
             line: 2860,
@@ -16798,7 +15317,6 @@ final class TableCopyTest extends SpecTestsuiteBase
     public function testAssertTrap1533(): void
     {
         $this->runAssertTrapCommand(
-            module: null,
             action: ['type' => 'invoke', 'field' => 'test', 'args' => [['type' => 'i32', 'value' => '63']]],
             text: 'uninitialized element',
             line: 2861,
@@ -16809,7 +15327,6 @@ final class TableCopyTest extends SpecTestsuiteBase
     public function testAssertTrap1534(): void
     {
         $this->runAssertTrapCommand(
-            module: null,
             action: ['type' => 'invoke', 'field' => 'test', 'args' => [['type' => 'i32', 'value' => '64']]],
             text: 'uninitialized element',
             line: 2862,
@@ -16820,7 +15337,6 @@ final class TableCopyTest extends SpecTestsuiteBase
     public function testAssertTrap1535(): void
     {
         $this->runAssertTrapCommand(
-            module: null,
             action: ['type' => 'invoke', 'field' => 'test', 'args' => [['type' => 'i32', 'value' => '65']]],
             text: 'uninitialized element',
             line: 2863,
@@ -16831,7 +15347,6 @@ final class TableCopyTest extends SpecTestsuiteBase
     public function testAssertTrap1536(): void
     {
         $this->runAssertTrapCommand(
-            module: null,
             action: ['type' => 'invoke', 'field' => 'test', 'args' => [['type' => 'i32', 'value' => '66']]],
             text: 'uninitialized element',
             line: 2864,
@@ -16842,7 +15357,6 @@ final class TableCopyTest extends SpecTestsuiteBase
     public function testAssertTrap1537(): void
     {
         $this->runAssertTrapCommand(
-            module: null,
             action: ['type' => 'invoke', 'field' => 'test', 'args' => [['type' => 'i32', 'value' => '67']]],
             text: 'uninitialized element',
             line: 2865,
@@ -16853,7 +15367,6 @@ final class TableCopyTest extends SpecTestsuiteBase
     public function testAssertTrap1538(): void
     {
         $this->runAssertTrapCommand(
-            module: null,
             action: ['type' => 'invoke', 'field' => 'test', 'args' => [['type' => 'i32', 'value' => '68']]],
             text: 'uninitialized element',
             line: 2866,
@@ -16864,7 +15377,6 @@ final class TableCopyTest extends SpecTestsuiteBase
     public function testAssertTrap1539(): void
     {
         $this->runAssertTrapCommand(
-            module: null,
             action: ['type' => 'invoke', 'field' => 'test', 'args' => [['type' => 'i32', 'value' => '69']]],
             text: 'uninitialized element',
             line: 2867,
@@ -16875,7 +15387,6 @@ final class TableCopyTest extends SpecTestsuiteBase
     public function testAssertTrap1540(): void
     {
         $this->runAssertTrapCommand(
-            module: null,
             action: ['type' => 'invoke', 'field' => 'test', 'args' => [['type' => 'i32', 'value' => '70']]],
             text: 'uninitialized element',
             line: 2868,
@@ -16886,7 +15397,6 @@ final class TableCopyTest extends SpecTestsuiteBase
     public function testAssertTrap1541(): void
     {
         $this->runAssertTrapCommand(
-            module: null,
             action: ['type' => 'invoke', 'field' => 'test', 'args' => [['type' => 'i32', 'value' => '71']]],
             text: 'uninitialized element',
             line: 2869,
@@ -16897,7 +15407,6 @@ final class TableCopyTest extends SpecTestsuiteBase
     public function testAssertTrap1542(): void
     {
         $this->runAssertTrapCommand(
-            module: null,
             action: ['type' => 'invoke', 'field' => 'test', 'args' => [['type' => 'i32', 'value' => '72']]],
             text: 'uninitialized element',
             line: 2870,
@@ -16908,7 +15417,6 @@ final class TableCopyTest extends SpecTestsuiteBase
     public function testAssertTrap1543(): void
     {
         $this->runAssertTrapCommand(
-            module: null,
             action: ['type' => 'invoke', 'field' => 'test', 'args' => [['type' => 'i32', 'value' => '73']]],
             text: 'uninitialized element',
             line: 2871,
@@ -16919,7 +15427,6 @@ final class TableCopyTest extends SpecTestsuiteBase
     public function testAssertTrap1544(): void
     {
         $this->runAssertTrapCommand(
-            module: null,
             action: ['type' => 'invoke', 'field' => 'test', 'args' => [['type' => 'i32', 'value' => '74']]],
             text: 'uninitialized element',
             line: 2872,
@@ -16930,7 +15437,6 @@ final class TableCopyTest extends SpecTestsuiteBase
     public function testAssertTrap1545(): void
     {
         $this->runAssertTrapCommand(
-            module: null,
             action: ['type' => 'invoke', 'field' => 'test', 'args' => [['type' => 'i32', 'value' => '75']]],
             text: 'uninitialized element',
             line: 2873,
@@ -16941,7 +15447,6 @@ final class TableCopyTest extends SpecTestsuiteBase
     public function testAssertTrap1546(): void
     {
         $this->runAssertTrapCommand(
-            module: null,
             action: ['type' => 'invoke', 'field' => 'test', 'args' => [['type' => 'i32', 'value' => '76']]],
             text: 'uninitialized element',
             line: 2874,
@@ -16952,7 +15457,6 @@ final class TableCopyTest extends SpecTestsuiteBase
     public function testAssertTrap1547(): void
     {
         $this->runAssertTrapCommand(
-            module: null,
             action: ['type' => 'invoke', 'field' => 'test', 'args' => [['type' => 'i32', 'value' => '77']]],
             text: 'uninitialized element',
             line: 2875,
@@ -16963,7 +15467,6 @@ final class TableCopyTest extends SpecTestsuiteBase
     public function testAssertTrap1548(): void
     {
         $this->runAssertTrapCommand(
-            module: null,
             action: ['type' => 'invoke', 'field' => 'test', 'args' => [['type' => 'i32', 'value' => '78']]],
             text: 'uninitialized element',
             line: 2876,
@@ -16974,7 +15477,6 @@ final class TableCopyTest extends SpecTestsuiteBase
     public function testAssertTrap1549(): void
     {
         $this->runAssertTrapCommand(
-            module: null,
             action: ['type' => 'invoke', 'field' => 'test', 'args' => [['type' => 'i32', 'value' => '79']]],
             text: 'uninitialized element',
             line: 2877,
@@ -16985,7 +15487,6 @@ final class TableCopyTest extends SpecTestsuiteBase
     public function testAssertTrap1550(): void
     {
         $this->runAssertTrapCommand(
-            module: null,
             action: ['type' => 'invoke', 'field' => 'test', 'args' => [['type' => 'i32', 'value' => '80']]],
             text: 'uninitialized element',
             line: 2878,
@@ -16996,7 +15497,6 @@ final class TableCopyTest extends SpecTestsuiteBase
     public function testAssertTrap1551(): void
     {
         $this->runAssertTrapCommand(
-            module: null,
             action: ['type' => 'invoke', 'field' => 'test', 'args' => [['type' => 'i32', 'value' => '81']]],
             text: 'uninitialized element',
             line: 2879,
@@ -17007,7 +15507,6 @@ final class TableCopyTest extends SpecTestsuiteBase
     public function testAssertTrap1552(): void
     {
         $this->runAssertTrapCommand(
-            module: null,
             action: ['type' => 'invoke', 'field' => 'test', 'args' => [['type' => 'i32', 'value' => '82']]],
             text: 'uninitialized element',
             line: 2880,
@@ -17018,7 +15517,6 @@ final class TableCopyTest extends SpecTestsuiteBase
     public function testAssertTrap1553(): void
     {
         $this->runAssertTrapCommand(
-            module: null,
             action: ['type' => 'invoke', 'field' => 'test', 'args' => [['type' => 'i32', 'value' => '83']]],
             text: 'uninitialized element',
             line: 2881,
@@ -17029,7 +15527,6 @@ final class TableCopyTest extends SpecTestsuiteBase
     public function testAssertTrap1554(): void
     {
         $this->runAssertTrapCommand(
-            module: null,
             action: ['type' => 'invoke', 'field' => 'test', 'args' => [['type' => 'i32', 'value' => '84']]],
             text: 'uninitialized element',
             line: 2882,
@@ -17040,7 +15537,6 @@ final class TableCopyTest extends SpecTestsuiteBase
     public function testAssertTrap1555(): void
     {
         $this->runAssertTrapCommand(
-            module: null,
             action: ['type' => 'invoke', 'field' => 'test', 'args' => [['type' => 'i32', 'value' => '85']]],
             text: 'uninitialized element',
             line: 2883,
@@ -17051,7 +15547,6 @@ final class TableCopyTest extends SpecTestsuiteBase
     public function testAssertTrap1556(): void
     {
         $this->runAssertTrapCommand(
-            module: null,
             action: ['type' => 'invoke', 'field' => 'test', 'args' => [['type' => 'i32', 'value' => '86']]],
             text: 'uninitialized element',
             line: 2884,
@@ -17062,7 +15557,6 @@ final class TableCopyTest extends SpecTestsuiteBase
     public function testAssertTrap1557(): void
     {
         $this->runAssertTrapCommand(
-            module: null,
             action: ['type' => 'invoke', 'field' => 'test', 'args' => [['type' => 'i32', 'value' => '87']]],
             text: 'uninitialized element',
             line: 2885,
@@ -17073,7 +15567,6 @@ final class TableCopyTest extends SpecTestsuiteBase
     public function testAssertTrap1558(): void
     {
         $this->runAssertTrapCommand(
-            module: null,
             action: ['type' => 'invoke', 'field' => 'test', 'args' => [['type' => 'i32', 'value' => '88']]],
             text: 'uninitialized element',
             line: 2886,
@@ -17084,7 +15577,6 @@ final class TableCopyTest extends SpecTestsuiteBase
     public function testAssertTrap1559(): void
     {
         $this->runAssertTrapCommand(
-            module: null,
             action: ['type' => 'invoke', 'field' => 'test', 'args' => [['type' => 'i32', 'value' => '89']]],
             text: 'uninitialized element',
             line: 2887,
@@ -17095,7 +15587,6 @@ final class TableCopyTest extends SpecTestsuiteBase
     public function testAssertTrap1560(): void
     {
         $this->runAssertTrapCommand(
-            module: null,
             action: ['type' => 'invoke', 'field' => 'test', 'args' => [['type' => 'i32', 'value' => '90']]],
             text: 'uninitialized element',
             line: 2888,
@@ -17106,7 +15597,6 @@ final class TableCopyTest extends SpecTestsuiteBase
     public function testAssertTrap1561(): void
     {
         $this->runAssertTrapCommand(
-            module: null,
             action: ['type' => 'invoke', 'field' => 'test', 'args' => [['type' => 'i32', 'value' => '91']]],
             text: 'uninitialized element',
             line: 2889,
@@ -17117,7 +15607,6 @@ final class TableCopyTest extends SpecTestsuiteBase
     public function testAssertTrap1562(): void
     {
         $this->runAssertTrapCommand(
-            module: null,
             action: ['type' => 'invoke', 'field' => 'test', 'args' => [['type' => 'i32', 'value' => '92']]],
             text: 'uninitialized element',
             line: 2890,
@@ -17128,7 +15617,6 @@ final class TableCopyTest extends SpecTestsuiteBase
     public function testAssertTrap1563(): void
     {
         $this->runAssertTrapCommand(
-            module: null,
             action: ['type' => 'invoke', 'field' => 'test', 'args' => [['type' => 'i32', 'value' => '93']]],
             text: 'uninitialized element',
             line: 2891,
@@ -17139,7 +15627,6 @@ final class TableCopyTest extends SpecTestsuiteBase
     public function testAssertTrap1564(): void
     {
         $this->runAssertTrapCommand(
-            module: null,
             action: ['type' => 'invoke', 'field' => 'test', 'args' => [['type' => 'i32', 'value' => '94']]],
             text: 'uninitialized element',
             line: 2892,
@@ -17150,7 +15637,6 @@ final class TableCopyTest extends SpecTestsuiteBase
     public function testAssertTrap1565(): void
     {
         $this->runAssertTrapCommand(
-            module: null,
             action: ['type' => 'invoke', 'field' => 'test', 'args' => [['type' => 'i32', 'value' => '95']]],
             text: 'uninitialized element',
             line: 2893,
@@ -17161,7 +15647,6 @@ final class TableCopyTest extends SpecTestsuiteBase
     public function testAssertTrap1566(): void
     {
         $this->runAssertTrapCommand(
-            module: null,
             action: ['type' => 'invoke', 'field' => 'test', 'args' => [['type' => 'i32', 'value' => '96']]],
             text: 'uninitialized element',
             line: 2894,
@@ -17172,7 +15657,6 @@ final class TableCopyTest extends SpecTestsuiteBase
     public function testAssertTrap1567(): void
     {
         $this->runAssertTrapCommand(
-            module: null,
             action: ['type' => 'invoke', 'field' => 'test', 'args' => [['type' => 'i32', 'value' => '97']]],
             text: 'uninitialized element',
             line: 2895,
@@ -17183,7 +15667,6 @@ final class TableCopyTest extends SpecTestsuiteBase
     public function testAssertTrap1568(): void
     {
         $this->runAssertTrapCommand(
-            module: null,
             action: ['type' => 'invoke', 'field' => 'test', 'args' => [['type' => 'i32', 'value' => '98']]],
             text: 'uninitialized element',
             line: 2896,
@@ -17194,7 +15677,6 @@ final class TableCopyTest extends SpecTestsuiteBase
     public function testAssertTrap1569(): void
     {
         $this->runAssertTrapCommand(
-            module: null,
             action: ['type' => 'invoke', 'field' => 'test', 'args' => [['type' => 'i32', 'value' => '99']]],
             text: 'uninitialized element',
             line: 2897,
@@ -17205,7 +15687,6 @@ final class TableCopyTest extends SpecTestsuiteBase
     public function testAssertTrap1570(): void
     {
         $this->runAssertTrapCommand(
-            module: null,
             action: ['type' => 'invoke', 'field' => 'test', 'args' => [['type' => 'i32', 'value' => '100']]],
             text: 'uninitialized element',
             line: 2898,
@@ -17216,7 +15697,6 @@ final class TableCopyTest extends SpecTestsuiteBase
     public function testAssertTrap1571(): void
     {
         $this->runAssertTrapCommand(
-            module: null,
             action: ['type' => 'invoke', 'field' => 'test', 'args' => [['type' => 'i32', 'value' => '101']]],
             text: 'uninitialized element',
             line: 2899,
@@ -17227,7 +15707,6 @@ final class TableCopyTest extends SpecTestsuiteBase
     public function testAssertTrap1572(): void
     {
         $this->runAssertTrapCommand(
-            module: null,
             action: ['type' => 'invoke', 'field' => 'test', 'args' => [['type' => 'i32', 'value' => '102']]],
             text: 'uninitialized element',
             line: 2900,
@@ -17238,7 +15717,6 @@ final class TableCopyTest extends SpecTestsuiteBase
     public function testAssertTrap1573(): void
     {
         $this->runAssertTrapCommand(
-            module: null,
             action: ['type' => 'invoke', 'field' => 'test', 'args' => [['type' => 'i32', 'value' => '103']]],
             text: 'uninitialized element',
             line: 2901,
@@ -17249,7 +15727,6 @@ final class TableCopyTest extends SpecTestsuiteBase
     public function testAssertTrap1574(): void
     {
         $this->runAssertTrapCommand(
-            module: null,
             action: ['type' => 'invoke', 'field' => 'test', 'args' => [['type' => 'i32', 'value' => '104']]],
             text: 'uninitialized element',
             line: 2902,
@@ -17260,7 +15737,6 @@ final class TableCopyTest extends SpecTestsuiteBase
     public function testAssertTrap1575(): void
     {
         $this->runAssertTrapCommand(
-            module: null,
             action: ['type' => 'invoke', 'field' => 'test', 'args' => [['type' => 'i32', 'value' => '105']]],
             text: 'uninitialized element',
             line: 2903,
@@ -17271,7 +15747,6 @@ final class TableCopyTest extends SpecTestsuiteBase
     public function testAssertTrap1576(): void
     {
         $this->runAssertTrapCommand(
-            module: null,
             action: ['type' => 'invoke', 'field' => 'test', 'args' => [['type' => 'i32', 'value' => '106']]],
             text: 'uninitialized element',
             line: 2904,
@@ -17282,7 +15757,6 @@ final class TableCopyTest extends SpecTestsuiteBase
     public function testAssertTrap1577(): void
     {
         $this->runAssertTrapCommand(
-            module: null,
             action: ['type' => 'invoke', 'field' => 'test', 'args' => [['type' => 'i32', 'value' => '107']]],
             text: 'uninitialized element',
             line: 2905,
@@ -17293,7 +15767,6 @@ final class TableCopyTest extends SpecTestsuiteBase
     public function testAssertTrap1578(): void
     {
         $this->runAssertTrapCommand(
-            module: null,
             action: ['type' => 'invoke', 'field' => 'test', 'args' => [['type' => 'i32', 'value' => '108']]],
             text: 'uninitialized element',
             line: 2906,
@@ -17304,7 +15777,6 @@ final class TableCopyTest extends SpecTestsuiteBase
     public function testAssertTrap1579(): void
     {
         $this->runAssertTrapCommand(
-            module: null,
             action: ['type' => 'invoke', 'field' => 'test', 'args' => [['type' => 'i32', 'value' => '109']]],
             text: 'uninitialized element',
             line: 2907,
@@ -17315,7 +15787,6 @@ final class TableCopyTest extends SpecTestsuiteBase
     public function testAssertTrap1580(): void
     {
         $this->runAssertTrapCommand(
-            module: null,
             action: ['type' => 'invoke', 'field' => 'test', 'args' => [['type' => 'i32', 'value' => '110']]],
             text: 'uninitialized element',
             line: 2908,
@@ -17326,7 +15797,6 @@ final class TableCopyTest extends SpecTestsuiteBase
     public function testAssertTrap1581(): void
     {
         $this->runAssertTrapCommand(
-            module: null,
             action: ['type' => 'invoke', 'field' => 'test', 'args' => [['type' => 'i32', 'value' => '111']]],
             text: 'uninitialized element',
             line: 2909,
@@ -17337,7 +15807,6 @@ final class TableCopyTest extends SpecTestsuiteBase
     public function testAssertReturn1582(): void
     {
         $this->runAssertReturnCommand(
-            module: null,
             action: ['type' => 'invoke', 'field' => 'test', 'args' => [['type' => 'i32', 'value' => '112']]],
             expected: [['type' => 'i32', 'value' => '0']],
             line: 2910,
@@ -17348,7 +15817,6 @@ final class TableCopyTest extends SpecTestsuiteBase
     public function testAssertReturn1583(): void
     {
         $this->runAssertReturnCommand(
-            module: null,
             action: ['type' => 'invoke', 'field' => 'test', 'args' => [['type' => 'i32', 'value' => '113']]],
             expected: [['type' => 'i32', 'value' => '1']],
             line: 2911,
@@ -17359,7 +15827,6 @@ final class TableCopyTest extends SpecTestsuiteBase
     public function testAssertReturn1584(): void
     {
         $this->runAssertReturnCommand(
-            module: null,
             action: ['type' => 'invoke', 'field' => 'test', 'args' => [['type' => 'i32', 'value' => '114']]],
             expected: [['type' => 'i32', 'value' => '2']],
             line: 2912,
@@ -17370,7 +15837,6 @@ final class TableCopyTest extends SpecTestsuiteBase
     public function testAssertReturn1585(): void
     {
         $this->runAssertReturnCommand(
-            module: null,
             action: ['type' => 'invoke', 'field' => 'test', 'args' => [['type' => 'i32', 'value' => '115']]],
             expected: [['type' => 'i32', 'value' => '3']],
             line: 2913,
@@ -17381,7 +15847,6 @@ final class TableCopyTest extends SpecTestsuiteBase
     public function testAssertReturn1586(): void
     {
         $this->runAssertReturnCommand(
-            module: null,
             action: ['type' => 'invoke', 'field' => 'test', 'args' => [['type' => 'i32', 'value' => '116']]],
             expected: [['type' => 'i32', 'value' => '4']],
             line: 2914,
@@ -17392,7 +15857,6 @@ final class TableCopyTest extends SpecTestsuiteBase
     public function testAssertReturn1587(): void
     {
         $this->runAssertReturnCommand(
-            module: null,
             action: ['type' => 'invoke', 'field' => 'test', 'args' => [['type' => 'i32', 'value' => '117']]],
             expected: [['type' => 'i32', 'value' => '5']],
             line: 2915,
@@ -17403,7 +15867,6 @@ final class TableCopyTest extends SpecTestsuiteBase
     public function testAssertReturn1588(): void
     {
         $this->runAssertReturnCommand(
-            module: null,
             action: ['type' => 'invoke', 'field' => 'test', 'args' => [['type' => 'i32', 'value' => '118']]],
             expected: [['type' => 'i32', 'value' => '6']],
             line: 2916,
@@ -17414,7 +15877,6 @@ final class TableCopyTest extends SpecTestsuiteBase
     public function testAssertReturn1589(): void
     {
         $this->runAssertReturnCommand(
-            module: null,
             action: ['type' => 'invoke', 'field' => 'test', 'args' => [['type' => 'i32', 'value' => '119']]],
             expected: [['type' => 'i32', 'value' => '7']],
             line: 2917,
@@ -17425,7 +15887,6 @@ final class TableCopyTest extends SpecTestsuiteBase
     public function testAssertReturn1590(): void
     {
         $this->runAssertReturnCommand(
-            module: null,
             action: ['type' => 'invoke', 'field' => 'test', 'args' => [['type' => 'i32', 'value' => '120']]],
             expected: [['type' => 'i32', 'value' => '8']],
             line: 2918,
@@ -17436,7 +15897,6 @@ final class TableCopyTest extends SpecTestsuiteBase
     public function testAssertReturn1591(): void
     {
         $this->runAssertReturnCommand(
-            module: null,
             action: ['type' => 'invoke', 'field' => 'test', 'args' => [['type' => 'i32', 'value' => '121']]],
             expected: [['type' => 'i32', 'value' => '9']],
             line: 2919,
@@ -17447,7 +15907,6 @@ final class TableCopyTest extends SpecTestsuiteBase
     public function testAssertReturn1592(): void
     {
         $this->runAssertReturnCommand(
-            module: null,
             action: ['type' => 'invoke', 'field' => 'test', 'args' => [['type' => 'i32', 'value' => '122']]],
             expected: [['type' => 'i32', 'value' => '10']],
             line: 2920,
@@ -17458,7 +15917,6 @@ final class TableCopyTest extends SpecTestsuiteBase
     public function testAssertReturn1593(): void
     {
         $this->runAssertReturnCommand(
-            module: null,
             action: ['type' => 'invoke', 'field' => 'test', 'args' => [['type' => 'i32', 'value' => '123']]],
             expected: [['type' => 'i32', 'value' => '11']],
             line: 2921,
@@ -17469,7 +15927,6 @@ final class TableCopyTest extends SpecTestsuiteBase
     public function testAssertReturn1594(): void
     {
         $this->runAssertReturnCommand(
-            module: null,
             action: ['type' => 'invoke', 'field' => 'test', 'args' => [['type' => 'i32', 'value' => '124']]],
             expected: [['type' => 'i32', 'value' => '12']],
             line: 2922,
@@ -17480,7 +15937,6 @@ final class TableCopyTest extends SpecTestsuiteBase
     public function testAssertReturn1595(): void
     {
         $this->runAssertReturnCommand(
-            module: null,
             action: ['type' => 'invoke', 'field' => 'test', 'args' => [['type' => 'i32', 'value' => '125']]],
             expected: [['type' => 'i32', 'value' => '13']],
             line: 2923,
@@ -17491,7 +15947,6 @@ final class TableCopyTest extends SpecTestsuiteBase
     public function testAssertReturn1596(): void
     {
         $this->runAssertReturnCommand(
-            module: null,
             action: ['type' => 'invoke', 'field' => 'test', 'args' => [['type' => 'i32', 'value' => '126']]],
             expected: [['type' => 'i32', 'value' => '14']],
             line: 2924,
@@ -17502,7 +15957,6 @@ final class TableCopyTest extends SpecTestsuiteBase
     public function testAssertReturn1597(): void
     {
         $this->runAssertReturnCommand(
-            module: null,
             action: ['type' => 'invoke', 'field' => 'test', 'args' => [['type' => 'i32', 'value' => '127']]],
             expected: [['type' => 'i32', 'value' => '15']],
             line: 2925,
@@ -17523,7 +15977,6 @@ final class TableCopyTest extends SpecTestsuiteBase
     public function testAssertTrap1599(): void
     {
         $this->runAssertTrapCommand(
-            module: null,
             action: ['type' => 'invoke', 'field' => 'run', 'args' => [['type' => 'i32', 'value' => '112'], ['type' => 'i32', 'value' => '0'], ['type' => 'i32', 'value' => '4294967264']]],
             text: 'out of bounds table access',
             line: 2953,
@@ -17534,7 +15987,6 @@ final class TableCopyTest extends SpecTestsuiteBase
     public function testAssertReturn1600(): void
     {
         $this->runAssertReturnCommand(
-            module: null,
             action: ['type' => 'invoke', 'field' => 'test', 'args' => [['type' => 'i32', 'value' => '0']]],
             expected: [['type' => 'i32', 'value' => '0']],
             line: 2955,
@@ -17545,7 +15997,6 @@ final class TableCopyTest extends SpecTestsuiteBase
     public function testAssertReturn1601(): void
     {
         $this->runAssertReturnCommand(
-            module: null,
             action: ['type' => 'invoke', 'field' => 'test', 'args' => [['type' => 'i32', 'value' => '1']]],
             expected: [['type' => 'i32', 'value' => '1']],
             line: 2956,
@@ -17556,7 +16007,6 @@ final class TableCopyTest extends SpecTestsuiteBase
     public function testAssertReturn1602(): void
     {
         $this->runAssertReturnCommand(
-            module: null,
             action: ['type' => 'invoke', 'field' => 'test', 'args' => [['type' => 'i32', 'value' => '2']]],
             expected: [['type' => 'i32', 'value' => '2']],
             line: 2957,
@@ -17567,7 +16017,6 @@ final class TableCopyTest extends SpecTestsuiteBase
     public function testAssertReturn1603(): void
     {
         $this->runAssertReturnCommand(
-            module: null,
             action: ['type' => 'invoke', 'field' => 'test', 'args' => [['type' => 'i32', 'value' => '3']]],
             expected: [['type' => 'i32', 'value' => '3']],
             line: 2958,
@@ -17578,7 +16027,6 @@ final class TableCopyTest extends SpecTestsuiteBase
     public function testAssertReturn1604(): void
     {
         $this->runAssertReturnCommand(
-            module: null,
             action: ['type' => 'invoke', 'field' => 'test', 'args' => [['type' => 'i32', 'value' => '4']]],
             expected: [['type' => 'i32', 'value' => '4']],
             line: 2959,
@@ -17589,7 +16037,6 @@ final class TableCopyTest extends SpecTestsuiteBase
     public function testAssertReturn1605(): void
     {
         $this->runAssertReturnCommand(
-            module: null,
             action: ['type' => 'invoke', 'field' => 'test', 'args' => [['type' => 'i32', 'value' => '5']]],
             expected: [['type' => 'i32', 'value' => '5']],
             line: 2960,
@@ -17600,7 +16047,6 @@ final class TableCopyTest extends SpecTestsuiteBase
     public function testAssertReturn1606(): void
     {
         $this->runAssertReturnCommand(
-            module: null,
             action: ['type' => 'invoke', 'field' => 'test', 'args' => [['type' => 'i32', 'value' => '6']]],
             expected: [['type' => 'i32', 'value' => '6']],
             line: 2961,
@@ -17611,7 +16057,6 @@ final class TableCopyTest extends SpecTestsuiteBase
     public function testAssertReturn1607(): void
     {
         $this->runAssertReturnCommand(
-            module: null,
             action: ['type' => 'invoke', 'field' => 'test', 'args' => [['type' => 'i32', 'value' => '7']]],
             expected: [['type' => 'i32', 'value' => '7']],
             line: 2962,
@@ -17622,7 +16067,6 @@ final class TableCopyTest extends SpecTestsuiteBase
     public function testAssertReturn1608(): void
     {
         $this->runAssertReturnCommand(
-            module: null,
             action: ['type' => 'invoke', 'field' => 'test', 'args' => [['type' => 'i32', 'value' => '8']]],
             expected: [['type' => 'i32', 'value' => '8']],
             line: 2963,
@@ -17633,7 +16077,6 @@ final class TableCopyTest extends SpecTestsuiteBase
     public function testAssertReturn1609(): void
     {
         $this->runAssertReturnCommand(
-            module: null,
             action: ['type' => 'invoke', 'field' => 'test', 'args' => [['type' => 'i32', 'value' => '9']]],
             expected: [['type' => 'i32', 'value' => '9']],
             line: 2964,
@@ -17644,7 +16087,6 @@ final class TableCopyTest extends SpecTestsuiteBase
     public function testAssertReturn1610(): void
     {
         $this->runAssertReturnCommand(
-            module: null,
             action: ['type' => 'invoke', 'field' => 'test', 'args' => [['type' => 'i32', 'value' => '10']]],
             expected: [['type' => 'i32', 'value' => '10']],
             line: 2965,
@@ -17655,7 +16097,6 @@ final class TableCopyTest extends SpecTestsuiteBase
     public function testAssertReturn1611(): void
     {
         $this->runAssertReturnCommand(
-            module: null,
             action: ['type' => 'invoke', 'field' => 'test', 'args' => [['type' => 'i32', 'value' => '11']]],
             expected: [['type' => 'i32', 'value' => '11']],
             line: 2966,
@@ -17666,7 +16107,6 @@ final class TableCopyTest extends SpecTestsuiteBase
     public function testAssertReturn1612(): void
     {
         $this->runAssertReturnCommand(
-            module: null,
             action: ['type' => 'invoke', 'field' => 'test', 'args' => [['type' => 'i32', 'value' => '12']]],
             expected: [['type' => 'i32', 'value' => '12']],
             line: 2967,
@@ -17677,7 +16117,6 @@ final class TableCopyTest extends SpecTestsuiteBase
     public function testAssertReturn1613(): void
     {
         $this->runAssertReturnCommand(
-            module: null,
             action: ['type' => 'invoke', 'field' => 'test', 'args' => [['type' => 'i32', 'value' => '13']]],
             expected: [['type' => 'i32', 'value' => '13']],
             line: 2968,
@@ -17688,7 +16127,6 @@ final class TableCopyTest extends SpecTestsuiteBase
     public function testAssertReturn1614(): void
     {
         $this->runAssertReturnCommand(
-            module: null,
             action: ['type' => 'invoke', 'field' => 'test', 'args' => [['type' => 'i32', 'value' => '14']]],
             expected: [['type' => 'i32', 'value' => '14']],
             line: 2969,
@@ -17699,7 +16137,6 @@ final class TableCopyTest extends SpecTestsuiteBase
     public function testAssertReturn1615(): void
     {
         $this->runAssertReturnCommand(
-            module: null,
             action: ['type' => 'invoke', 'field' => 'test', 'args' => [['type' => 'i32', 'value' => '15']]],
             expected: [['type' => 'i32', 'value' => '15']],
             line: 2970,
@@ -17710,7 +16147,6 @@ final class TableCopyTest extends SpecTestsuiteBase
     public function testAssertTrap1616(): void
     {
         $this->runAssertTrapCommand(
-            module: null,
             action: ['type' => 'invoke', 'field' => 'test', 'args' => [['type' => 'i32', 'value' => '16']]],
             text: 'uninitialized element',
             line: 2971,
@@ -17721,7 +16157,6 @@ final class TableCopyTest extends SpecTestsuiteBase
     public function testAssertTrap1617(): void
     {
         $this->runAssertTrapCommand(
-            module: null,
             action: ['type' => 'invoke', 'field' => 'test', 'args' => [['type' => 'i32', 'value' => '17']]],
             text: 'uninitialized element',
             line: 2972,
@@ -17732,7 +16167,6 @@ final class TableCopyTest extends SpecTestsuiteBase
     public function testAssertTrap1618(): void
     {
         $this->runAssertTrapCommand(
-            module: null,
             action: ['type' => 'invoke', 'field' => 'test', 'args' => [['type' => 'i32', 'value' => '18']]],
             text: 'uninitialized element',
             line: 2973,
@@ -17743,7 +16177,6 @@ final class TableCopyTest extends SpecTestsuiteBase
     public function testAssertTrap1619(): void
     {
         $this->runAssertTrapCommand(
-            module: null,
             action: ['type' => 'invoke', 'field' => 'test', 'args' => [['type' => 'i32', 'value' => '19']]],
             text: 'uninitialized element',
             line: 2974,
@@ -17754,7 +16187,6 @@ final class TableCopyTest extends SpecTestsuiteBase
     public function testAssertTrap1620(): void
     {
         $this->runAssertTrapCommand(
-            module: null,
             action: ['type' => 'invoke', 'field' => 'test', 'args' => [['type' => 'i32', 'value' => '20']]],
             text: 'uninitialized element',
             line: 2975,
@@ -17765,7 +16197,6 @@ final class TableCopyTest extends SpecTestsuiteBase
     public function testAssertTrap1621(): void
     {
         $this->runAssertTrapCommand(
-            module: null,
             action: ['type' => 'invoke', 'field' => 'test', 'args' => [['type' => 'i32', 'value' => '21']]],
             text: 'uninitialized element',
             line: 2976,
@@ -17776,7 +16207,6 @@ final class TableCopyTest extends SpecTestsuiteBase
     public function testAssertTrap1622(): void
     {
         $this->runAssertTrapCommand(
-            module: null,
             action: ['type' => 'invoke', 'field' => 'test', 'args' => [['type' => 'i32', 'value' => '22']]],
             text: 'uninitialized element',
             line: 2977,
@@ -17787,7 +16217,6 @@ final class TableCopyTest extends SpecTestsuiteBase
     public function testAssertTrap1623(): void
     {
         $this->runAssertTrapCommand(
-            module: null,
             action: ['type' => 'invoke', 'field' => 'test', 'args' => [['type' => 'i32', 'value' => '23']]],
             text: 'uninitialized element',
             line: 2978,
@@ -17798,7 +16227,6 @@ final class TableCopyTest extends SpecTestsuiteBase
     public function testAssertTrap1624(): void
     {
         $this->runAssertTrapCommand(
-            module: null,
             action: ['type' => 'invoke', 'field' => 'test', 'args' => [['type' => 'i32', 'value' => '24']]],
             text: 'uninitialized element',
             line: 2979,
@@ -17809,7 +16237,6 @@ final class TableCopyTest extends SpecTestsuiteBase
     public function testAssertTrap1625(): void
     {
         $this->runAssertTrapCommand(
-            module: null,
             action: ['type' => 'invoke', 'field' => 'test', 'args' => [['type' => 'i32', 'value' => '25']]],
             text: 'uninitialized element',
             line: 2980,
@@ -17820,7 +16247,6 @@ final class TableCopyTest extends SpecTestsuiteBase
     public function testAssertTrap1626(): void
     {
         $this->runAssertTrapCommand(
-            module: null,
             action: ['type' => 'invoke', 'field' => 'test', 'args' => [['type' => 'i32', 'value' => '26']]],
             text: 'uninitialized element',
             line: 2981,
@@ -17831,7 +16257,6 @@ final class TableCopyTest extends SpecTestsuiteBase
     public function testAssertTrap1627(): void
     {
         $this->runAssertTrapCommand(
-            module: null,
             action: ['type' => 'invoke', 'field' => 'test', 'args' => [['type' => 'i32', 'value' => '27']]],
             text: 'uninitialized element',
             line: 2982,
@@ -17842,7 +16267,6 @@ final class TableCopyTest extends SpecTestsuiteBase
     public function testAssertTrap1628(): void
     {
         $this->runAssertTrapCommand(
-            module: null,
             action: ['type' => 'invoke', 'field' => 'test', 'args' => [['type' => 'i32', 'value' => '28']]],
             text: 'uninitialized element',
             line: 2983,
@@ -17853,7 +16277,6 @@ final class TableCopyTest extends SpecTestsuiteBase
     public function testAssertTrap1629(): void
     {
         $this->runAssertTrapCommand(
-            module: null,
             action: ['type' => 'invoke', 'field' => 'test', 'args' => [['type' => 'i32', 'value' => '29']]],
             text: 'uninitialized element',
             line: 2984,
@@ -17864,7 +16287,6 @@ final class TableCopyTest extends SpecTestsuiteBase
     public function testAssertTrap1630(): void
     {
         $this->runAssertTrapCommand(
-            module: null,
             action: ['type' => 'invoke', 'field' => 'test', 'args' => [['type' => 'i32', 'value' => '30']]],
             text: 'uninitialized element',
             line: 2985,
@@ -17875,7 +16297,6 @@ final class TableCopyTest extends SpecTestsuiteBase
     public function testAssertTrap1631(): void
     {
         $this->runAssertTrapCommand(
-            module: null,
             action: ['type' => 'invoke', 'field' => 'test', 'args' => [['type' => 'i32', 'value' => '31']]],
             text: 'uninitialized element',
             line: 2986,
@@ -17886,7 +16307,6 @@ final class TableCopyTest extends SpecTestsuiteBase
     public function testAssertTrap1632(): void
     {
         $this->runAssertTrapCommand(
-            module: null,
             action: ['type' => 'invoke', 'field' => 'test', 'args' => [['type' => 'i32', 'value' => '32']]],
             text: 'uninitialized element',
             line: 2987,
@@ -17897,7 +16317,6 @@ final class TableCopyTest extends SpecTestsuiteBase
     public function testAssertTrap1633(): void
     {
         $this->runAssertTrapCommand(
-            module: null,
             action: ['type' => 'invoke', 'field' => 'test', 'args' => [['type' => 'i32', 'value' => '33']]],
             text: 'uninitialized element',
             line: 2988,
@@ -17908,7 +16327,6 @@ final class TableCopyTest extends SpecTestsuiteBase
     public function testAssertTrap1634(): void
     {
         $this->runAssertTrapCommand(
-            module: null,
             action: ['type' => 'invoke', 'field' => 'test', 'args' => [['type' => 'i32', 'value' => '34']]],
             text: 'uninitialized element',
             line: 2989,
@@ -17919,7 +16337,6 @@ final class TableCopyTest extends SpecTestsuiteBase
     public function testAssertTrap1635(): void
     {
         $this->runAssertTrapCommand(
-            module: null,
             action: ['type' => 'invoke', 'field' => 'test', 'args' => [['type' => 'i32', 'value' => '35']]],
             text: 'uninitialized element',
             line: 2990,
@@ -17930,7 +16347,6 @@ final class TableCopyTest extends SpecTestsuiteBase
     public function testAssertTrap1636(): void
     {
         $this->runAssertTrapCommand(
-            module: null,
             action: ['type' => 'invoke', 'field' => 'test', 'args' => [['type' => 'i32', 'value' => '36']]],
             text: 'uninitialized element',
             line: 2991,
@@ -17941,7 +16357,6 @@ final class TableCopyTest extends SpecTestsuiteBase
     public function testAssertTrap1637(): void
     {
         $this->runAssertTrapCommand(
-            module: null,
             action: ['type' => 'invoke', 'field' => 'test', 'args' => [['type' => 'i32', 'value' => '37']]],
             text: 'uninitialized element',
             line: 2992,
@@ -17952,7 +16367,6 @@ final class TableCopyTest extends SpecTestsuiteBase
     public function testAssertTrap1638(): void
     {
         $this->runAssertTrapCommand(
-            module: null,
             action: ['type' => 'invoke', 'field' => 'test', 'args' => [['type' => 'i32', 'value' => '38']]],
             text: 'uninitialized element',
             line: 2993,
@@ -17963,7 +16377,6 @@ final class TableCopyTest extends SpecTestsuiteBase
     public function testAssertTrap1639(): void
     {
         $this->runAssertTrapCommand(
-            module: null,
             action: ['type' => 'invoke', 'field' => 'test', 'args' => [['type' => 'i32', 'value' => '39']]],
             text: 'uninitialized element',
             line: 2994,
@@ -17974,7 +16387,6 @@ final class TableCopyTest extends SpecTestsuiteBase
     public function testAssertTrap1640(): void
     {
         $this->runAssertTrapCommand(
-            module: null,
             action: ['type' => 'invoke', 'field' => 'test', 'args' => [['type' => 'i32', 'value' => '40']]],
             text: 'uninitialized element',
             line: 2995,
@@ -17985,7 +16397,6 @@ final class TableCopyTest extends SpecTestsuiteBase
     public function testAssertTrap1641(): void
     {
         $this->runAssertTrapCommand(
-            module: null,
             action: ['type' => 'invoke', 'field' => 'test', 'args' => [['type' => 'i32', 'value' => '41']]],
             text: 'uninitialized element',
             line: 2996,
@@ -17996,7 +16407,6 @@ final class TableCopyTest extends SpecTestsuiteBase
     public function testAssertTrap1642(): void
     {
         $this->runAssertTrapCommand(
-            module: null,
             action: ['type' => 'invoke', 'field' => 'test', 'args' => [['type' => 'i32', 'value' => '42']]],
             text: 'uninitialized element',
             line: 2997,
@@ -18007,7 +16417,6 @@ final class TableCopyTest extends SpecTestsuiteBase
     public function testAssertTrap1643(): void
     {
         $this->runAssertTrapCommand(
-            module: null,
             action: ['type' => 'invoke', 'field' => 'test', 'args' => [['type' => 'i32', 'value' => '43']]],
             text: 'uninitialized element',
             line: 2998,
@@ -18018,7 +16427,6 @@ final class TableCopyTest extends SpecTestsuiteBase
     public function testAssertTrap1644(): void
     {
         $this->runAssertTrapCommand(
-            module: null,
             action: ['type' => 'invoke', 'field' => 'test', 'args' => [['type' => 'i32', 'value' => '44']]],
             text: 'uninitialized element',
             line: 2999,
@@ -18029,7 +16437,6 @@ final class TableCopyTest extends SpecTestsuiteBase
     public function testAssertTrap1645(): void
     {
         $this->runAssertTrapCommand(
-            module: null,
             action: ['type' => 'invoke', 'field' => 'test', 'args' => [['type' => 'i32', 'value' => '45']]],
             text: 'uninitialized element',
             line: 3000,
@@ -18040,7 +16447,6 @@ final class TableCopyTest extends SpecTestsuiteBase
     public function testAssertTrap1646(): void
     {
         $this->runAssertTrapCommand(
-            module: null,
             action: ['type' => 'invoke', 'field' => 'test', 'args' => [['type' => 'i32', 'value' => '46']]],
             text: 'uninitialized element',
             line: 3001,
@@ -18051,7 +16457,6 @@ final class TableCopyTest extends SpecTestsuiteBase
     public function testAssertTrap1647(): void
     {
         $this->runAssertTrapCommand(
-            module: null,
             action: ['type' => 'invoke', 'field' => 'test', 'args' => [['type' => 'i32', 'value' => '47']]],
             text: 'uninitialized element',
             line: 3002,
@@ -18062,7 +16467,6 @@ final class TableCopyTest extends SpecTestsuiteBase
     public function testAssertTrap1648(): void
     {
         $this->runAssertTrapCommand(
-            module: null,
             action: ['type' => 'invoke', 'field' => 'test', 'args' => [['type' => 'i32', 'value' => '48']]],
             text: 'uninitialized element',
             line: 3003,
@@ -18073,7 +16477,6 @@ final class TableCopyTest extends SpecTestsuiteBase
     public function testAssertTrap1649(): void
     {
         $this->runAssertTrapCommand(
-            module: null,
             action: ['type' => 'invoke', 'field' => 'test', 'args' => [['type' => 'i32', 'value' => '49']]],
             text: 'uninitialized element',
             line: 3004,
@@ -18084,7 +16487,6 @@ final class TableCopyTest extends SpecTestsuiteBase
     public function testAssertTrap1650(): void
     {
         $this->runAssertTrapCommand(
-            module: null,
             action: ['type' => 'invoke', 'field' => 'test', 'args' => [['type' => 'i32', 'value' => '50']]],
             text: 'uninitialized element',
             line: 3005,
@@ -18095,7 +16497,6 @@ final class TableCopyTest extends SpecTestsuiteBase
     public function testAssertTrap1651(): void
     {
         $this->runAssertTrapCommand(
-            module: null,
             action: ['type' => 'invoke', 'field' => 'test', 'args' => [['type' => 'i32', 'value' => '51']]],
             text: 'uninitialized element',
             line: 3006,
@@ -18106,7 +16507,6 @@ final class TableCopyTest extends SpecTestsuiteBase
     public function testAssertTrap1652(): void
     {
         $this->runAssertTrapCommand(
-            module: null,
             action: ['type' => 'invoke', 'field' => 'test', 'args' => [['type' => 'i32', 'value' => '52']]],
             text: 'uninitialized element',
             line: 3007,
@@ -18117,7 +16517,6 @@ final class TableCopyTest extends SpecTestsuiteBase
     public function testAssertTrap1653(): void
     {
         $this->runAssertTrapCommand(
-            module: null,
             action: ['type' => 'invoke', 'field' => 'test', 'args' => [['type' => 'i32', 'value' => '53']]],
             text: 'uninitialized element',
             line: 3008,
@@ -18128,7 +16527,6 @@ final class TableCopyTest extends SpecTestsuiteBase
     public function testAssertTrap1654(): void
     {
         $this->runAssertTrapCommand(
-            module: null,
             action: ['type' => 'invoke', 'field' => 'test', 'args' => [['type' => 'i32', 'value' => '54']]],
             text: 'uninitialized element',
             line: 3009,
@@ -18139,7 +16537,6 @@ final class TableCopyTest extends SpecTestsuiteBase
     public function testAssertTrap1655(): void
     {
         $this->runAssertTrapCommand(
-            module: null,
             action: ['type' => 'invoke', 'field' => 'test', 'args' => [['type' => 'i32', 'value' => '55']]],
             text: 'uninitialized element',
             line: 3010,
@@ -18150,7 +16547,6 @@ final class TableCopyTest extends SpecTestsuiteBase
     public function testAssertTrap1656(): void
     {
         $this->runAssertTrapCommand(
-            module: null,
             action: ['type' => 'invoke', 'field' => 'test', 'args' => [['type' => 'i32', 'value' => '56']]],
             text: 'uninitialized element',
             line: 3011,
@@ -18161,7 +16557,6 @@ final class TableCopyTest extends SpecTestsuiteBase
     public function testAssertTrap1657(): void
     {
         $this->runAssertTrapCommand(
-            module: null,
             action: ['type' => 'invoke', 'field' => 'test', 'args' => [['type' => 'i32', 'value' => '57']]],
             text: 'uninitialized element',
             line: 3012,
@@ -18172,7 +16567,6 @@ final class TableCopyTest extends SpecTestsuiteBase
     public function testAssertTrap1658(): void
     {
         $this->runAssertTrapCommand(
-            module: null,
             action: ['type' => 'invoke', 'field' => 'test', 'args' => [['type' => 'i32', 'value' => '58']]],
             text: 'uninitialized element',
             line: 3013,
@@ -18183,7 +16577,6 @@ final class TableCopyTest extends SpecTestsuiteBase
     public function testAssertTrap1659(): void
     {
         $this->runAssertTrapCommand(
-            module: null,
             action: ['type' => 'invoke', 'field' => 'test', 'args' => [['type' => 'i32', 'value' => '59']]],
             text: 'uninitialized element',
             line: 3014,
@@ -18194,7 +16587,6 @@ final class TableCopyTest extends SpecTestsuiteBase
     public function testAssertTrap1660(): void
     {
         $this->runAssertTrapCommand(
-            module: null,
             action: ['type' => 'invoke', 'field' => 'test', 'args' => [['type' => 'i32', 'value' => '60']]],
             text: 'uninitialized element',
             line: 3015,
@@ -18205,7 +16597,6 @@ final class TableCopyTest extends SpecTestsuiteBase
     public function testAssertTrap1661(): void
     {
         $this->runAssertTrapCommand(
-            module: null,
             action: ['type' => 'invoke', 'field' => 'test', 'args' => [['type' => 'i32', 'value' => '61']]],
             text: 'uninitialized element',
             line: 3016,
@@ -18216,7 +16607,6 @@ final class TableCopyTest extends SpecTestsuiteBase
     public function testAssertTrap1662(): void
     {
         $this->runAssertTrapCommand(
-            module: null,
             action: ['type' => 'invoke', 'field' => 'test', 'args' => [['type' => 'i32', 'value' => '62']]],
             text: 'uninitialized element',
             line: 3017,
@@ -18227,7 +16617,6 @@ final class TableCopyTest extends SpecTestsuiteBase
     public function testAssertTrap1663(): void
     {
         $this->runAssertTrapCommand(
-            module: null,
             action: ['type' => 'invoke', 'field' => 'test', 'args' => [['type' => 'i32', 'value' => '63']]],
             text: 'uninitialized element',
             line: 3018,
@@ -18238,7 +16627,6 @@ final class TableCopyTest extends SpecTestsuiteBase
     public function testAssertTrap1664(): void
     {
         $this->runAssertTrapCommand(
-            module: null,
             action: ['type' => 'invoke', 'field' => 'test', 'args' => [['type' => 'i32', 'value' => '64']]],
             text: 'uninitialized element',
             line: 3019,
@@ -18249,7 +16637,6 @@ final class TableCopyTest extends SpecTestsuiteBase
     public function testAssertTrap1665(): void
     {
         $this->runAssertTrapCommand(
-            module: null,
             action: ['type' => 'invoke', 'field' => 'test', 'args' => [['type' => 'i32', 'value' => '65']]],
             text: 'uninitialized element',
             line: 3020,
@@ -18260,7 +16647,6 @@ final class TableCopyTest extends SpecTestsuiteBase
     public function testAssertTrap1666(): void
     {
         $this->runAssertTrapCommand(
-            module: null,
             action: ['type' => 'invoke', 'field' => 'test', 'args' => [['type' => 'i32', 'value' => '66']]],
             text: 'uninitialized element',
             line: 3021,
@@ -18271,7 +16657,6 @@ final class TableCopyTest extends SpecTestsuiteBase
     public function testAssertTrap1667(): void
     {
         $this->runAssertTrapCommand(
-            module: null,
             action: ['type' => 'invoke', 'field' => 'test', 'args' => [['type' => 'i32', 'value' => '67']]],
             text: 'uninitialized element',
             line: 3022,
@@ -18282,7 +16667,6 @@ final class TableCopyTest extends SpecTestsuiteBase
     public function testAssertTrap1668(): void
     {
         $this->runAssertTrapCommand(
-            module: null,
             action: ['type' => 'invoke', 'field' => 'test', 'args' => [['type' => 'i32', 'value' => '68']]],
             text: 'uninitialized element',
             line: 3023,
@@ -18293,7 +16677,6 @@ final class TableCopyTest extends SpecTestsuiteBase
     public function testAssertTrap1669(): void
     {
         $this->runAssertTrapCommand(
-            module: null,
             action: ['type' => 'invoke', 'field' => 'test', 'args' => [['type' => 'i32', 'value' => '69']]],
             text: 'uninitialized element',
             line: 3024,
@@ -18304,7 +16687,6 @@ final class TableCopyTest extends SpecTestsuiteBase
     public function testAssertTrap1670(): void
     {
         $this->runAssertTrapCommand(
-            module: null,
             action: ['type' => 'invoke', 'field' => 'test', 'args' => [['type' => 'i32', 'value' => '70']]],
             text: 'uninitialized element',
             line: 3025,
@@ -18315,7 +16697,6 @@ final class TableCopyTest extends SpecTestsuiteBase
     public function testAssertTrap1671(): void
     {
         $this->runAssertTrapCommand(
-            module: null,
             action: ['type' => 'invoke', 'field' => 'test', 'args' => [['type' => 'i32', 'value' => '71']]],
             text: 'uninitialized element',
             line: 3026,
@@ -18326,7 +16707,6 @@ final class TableCopyTest extends SpecTestsuiteBase
     public function testAssertTrap1672(): void
     {
         $this->runAssertTrapCommand(
-            module: null,
             action: ['type' => 'invoke', 'field' => 'test', 'args' => [['type' => 'i32', 'value' => '72']]],
             text: 'uninitialized element',
             line: 3027,
@@ -18337,7 +16717,6 @@ final class TableCopyTest extends SpecTestsuiteBase
     public function testAssertTrap1673(): void
     {
         $this->runAssertTrapCommand(
-            module: null,
             action: ['type' => 'invoke', 'field' => 'test', 'args' => [['type' => 'i32', 'value' => '73']]],
             text: 'uninitialized element',
             line: 3028,
@@ -18348,7 +16727,6 @@ final class TableCopyTest extends SpecTestsuiteBase
     public function testAssertTrap1674(): void
     {
         $this->runAssertTrapCommand(
-            module: null,
             action: ['type' => 'invoke', 'field' => 'test', 'args' => [['type' => 'i32', 'value' => '74']]],
             text: 'uninitialized element',
             line: 3029,
@@ -18359,7 +16737,6 @@ final class TableCopyTest extends SpecTestsuiteBase
     public function testAssertTrap1675(): void
     {
         $this->runAssertTrapCommand(
-            module: null,
             action: ['type' => 'invoke', 'field' => 'test', 'args' => [['type' => 'i32', 'value' => '75']]],
             text: 'uninitialized element',
             line: 3030,
@@ -18370,7 +16747,6 @@ final class TableCopyTest extends SpecTestsuiteBase
     public function testAssertTrap1676(): void
     {
         $this->runAssertTrapCommand(
-            module: null,
             action: ['type' => 'invoke', 'field' => 'test', 'args' => [['type' => 'i32', 'value' => '76']]],
             text: 'uninitialized element',
             line: 3031,
@@ -18381,7 +16757,6 @@ final class TableCopyTest extends SpecTestsuiteBase
     public function testAssertTrap1677(): void
     {
         $this->runAssertTrapCommand(
-            module: null,
             action: ['type' => 'invoke', 'field' => 'test', 'args' => [['type' => 'i32', 'value' => '77']]],
             text: 'uninitialized element',
             line: 3032,
@@ -18392,7 +16767,6 @@ final class TableCopyTest extends SpecTestsuiteBase
     public function testAssertTrap1678(): void
     {
         $this->runAssertTrapCommand(
-            module: null,
             action: ['type' => 'invoke', 'field' => 'test', 'args' => [['type' => 'i32', 'value' => '78']]],
             text: 'uninitialized element',
             line: 3033,
@@ -18403,7 +16777,6 @@ final class TableCopyTest extends SpecTestsuiteBase
     public function testAssertTrap1679(): void
     {
         $this->runAssertTrapCommand(
-            module: null,
             action: ['type' => 'invoke', 'field' => 'test', 'args' => [['type' => 'i32', 'value' => '79']]],
             text: 'uninitialized element',
             line: 3034,
@@ -18414,7 +16787,6 @@ final class TableCopyTest extends SpecTestsuiteBase
     public function testAssertTrap1680(): void
     {
         $this->runAssertTrapCommand(
-            module: null,
             action: ['type' => 'invoke', 'field' => 'test', 'args' => [['type' => 'i32', 'value' => '80']]],
             text: 'uninitialized element',
             line: 3035,
@@ -18425,7 +16797,6 @@ final class TableCopyTest extends SpecTestsuiteBase
     public function testAssertTrap1681(): void
     {
         $this->runAssertTrapCommand(
-            module: null,
             action: ['type' => 'invoke', 'field' => 'test', 'args' => [['type' => 'i32', 'value' => '81']]],
             text: 'uninitialized element',
             line: 3036,
@@ -18436,7 +16807,6 @@ final class TableCopyTest extends SpecTestsuiteBase
     public function testAssertTrap1682(): void
     {
         $this->runAssertTrapCommand(
-            module: null,
             action: ['type' => 'invoke', 'field' => 'test', 'args' => [['type' => 'i32', 'value' => '82']]],
             text: 'uninitialized element',
             line: 3037,
@@ -18447,7 +16817,6 @@ final class TableCopyTest extends SpecTestsuiteBase
     public function testAssertTrap1683(): void
     {
         $this->runAssertTrapCommand(
-            module: null,
             action: ['type' => 'invoke', 'field' => 'test', 'args' => [['type' => 'i32', 'value' => '83']]],
             text: 'uninitialized element',
             line: 3038,
@@ -18458,7 +16827,6 @@ final class TableCopyTest extends SpecTestsuiteBase
     public function testAssertTrap1684(): void
     {
         $this->runAssertTrapCommand(
-            module: null,
             action: ['type' => 'invoke', 'field' => 'test', 'args' => [['type' => 'i32', 'value' => '84']]],
             text: 'uninitialized element',
             line: 3039,
@@ -18469,7 +16837,6 @@ final class TableCopyTest extends SpecTestsuiteBase
     public function testAssertTrap1685(): void
     {
         $this->runAssertTrapCommand(
-            module: null,
             action: ['type' => 'invoke', 'field' => 'test', 'args' => [['type' => 'i32', 'value' => '85']]],
             text: 'uninitialized element',
             line: 3040,
@@ -18480,7 +16847,6 @@ final class TableCopyTest extends SpecTestsuiteBase
     public function testAssertTrap1686(): void
     {
         $this->runAssertTrapCommand(
-            module: null,
             action: ['type' => 'invoke', 'field' => 'test', 'args' => [['type' => 'i32', 'value' => '86']]],
             text: 'uninitialized element',
             line: 3041,
@@ -18491,7 +16857,6 @@ final class TableCopyTest extends SpecTestsuiteBase
     public function testAssertTrap1687(): void
     {
         $this->runAssertTrapCommand(
-            module: null,
             action: ['type' => 'invoke', 'field' => 'test', 'args' => [['type' => 'i32', 'value' => '87']]],
             text: 'uninitialized element',
             line: 3042,
@@ -18502,7 +16867,6 @@ final class TableCopyTest extends SpecTestsuiteBase
     public function testAssertTrap1688(): void
     {
         $this->runAssertTrapCommand(
-            module: null,
             action: ['type' => 'invoke', 'field' => 'test', 'args' => [['type' => 'i32', 'value' => '88']]],
             text: 'uninitialized element',
             line: 3043,
@@ -18513,7 +16877,6 @@ final class TableCopyTest extends SpecTestsuiteBase
     public function testAssertTrap1689(): void
     {
         $this->runAssertTrapCommand(
-            module: null,
             action: ['type' => 'invoke', 'field' => 'test', 'args' => [['type' => 'i32', 'value' => '89']]],
             text: 'uninitialized element',
             line: 3044,
@@ -18524,7 +16887,6 @@ final class TableCopyTest extends SpecTestsuiteBase
     public function testAssertTrap1690(): void
     {
         $this->runAssertTrapCommand(
-            module: null,
             action: ['type' => 'invoke', 'field' => 'test', 'args' => [['type' => 'i32', 'value' => '90']]],
             text: 'uninitialized element',
             line: 3045,
@@ -18535,7 +16897,6 @@ final class TableCopyTest extends SpecTestsuiteBase
     public function testAssertTrap1691(): void
     {
         $this->runAssertTrapCommand(
-            module: null,
             action: ['type' => 'invoke', 'field' => 'test', 'args' => [['type' => 'i32', 'value' => '91']]],
             text: 'uninitialized element',
             line: 3046,
@@ -18546,7 +16907,6 @@ final class TableCopyTest extends SpecTestsuiteBase
     public function testAssertTrap1692(): void
     {
         $this->runAssertTrapCommand(
-            module: null,
             action: ['type' => 'invoke', 'field' => 'test', 'args' => [['type' => 'i32', 'value' => '92']]],
             text: 'uninitialized element',
             line: 3047,
@@ -18557,7 +16917,6 @@ final class TableCopyTest extends SpecTestsuiteBase
     public function testAssertTrap1693(): void
     {
         $this->runAssertTrapCommand(
-            module: null,
             action: ['type' => 'invoke', 'field' => 'test', 'args' => [['type' => 'i32', 'value' => '93']]],
             text: 'uninitialized element',
             line: 3048,
@@ -18568,7 +16927,6 @@ final class TableCopyTest extends SpecTestsuiteBase
     public function testAssertTrap1694(): void
     {
         $this->runAssertTrapCommand(
-            module: null,
             action: ['type' => 'invoke', 'field' => 'test', 'args' => [['type' => 'i32', 'value' => '94']]],
             text: 'uninitialized element',
             line: 3049,
@@ -18579,7 +16937,6 @@ final class TableCopyTest extends SpecTestsuiteBase
     public function testAssertTrap1695(): void
     {
         $this->runAssertTrapCommand(
-            module: null,
             action: ['type' => 'invoke', 'field' => 'test', 'args' => [['type' => 'i32', 'value' => '95']]],
             text: 'uninitialized element',
             line: 3050,
@@ -18590,7 +16947,6 @@ final class TableCopyTest extends SpecTestsuiteBase
     public function testAssertTrap1696(): void
     {
         $this->runAssertTrapCommand(
-            module: null,
             action: ['type' => 'invoke', 'field' => 'test', 'args' => [['type' => 'i32', 'value' => '96']]],
             text: 'uninitialized element',
             line: 3051,
@@ -18601,7 +16957,6 @@ final class TableCopyTest extends SpecTestsuiteBase
     public function testAssertTrap1697(): void
     {
         $this->runAssertTrapCommand(
-            module: null,
             action: ['type' => 'invoke', 'field' => 'test', 'args' => [['type' => 'i32', 'value' => '97']]],
             text: 'uninitialized element',
             line: 3052,
@@ -18612,7 +16967,6 @@ final class TableCopyTest extends SpecTestsuiteBase
     public function testAssertTrap1698(): void
     {
         $this->runAssertTrapCommand(
-            module: null,
             action: ['type' => 'invoke', 'field' => 'test', 'args' => [['type' => 'i32', 'value' => '98']]],
             text: 'uninitialized element',
             line: 3053,
@@ -18623,7 +16977,6 @@ final class TableCopyTest extends SpecTestsuiteBase
     public function testAssertTrap1699(): void
     {
         $this->runAssertTrapCommand(
-            module: null,
             action: ['type' => 'invoke', 'field' => 'test', 'args' => [['type' => 'i32', 'value' => '99']]],
             text: 'uninitialized element',
             line: 3054,
@@ -18634,7 +16987,6 @@ final class TableCopyTest extends SpecTestsuiteBase
     public function testAssertTrap1700(): void
     {
         $this->runAssertTrapCommand(
-            module: null,
             action: ['type' => 'invoke', 'field' => 'test', 'args' => [['type' => 'i32', 'value' => '100']]],
             text: 'uninitialized element',
             line: 3055,
@@ -18645,7 +16997,6 @@ final class TableCopyTest extends SpecTestsuiteBase
     public function testAssertTrap1701(): void
     {
         $this->runAssertTrapCommand(
-            module: null,
             action: ['type' => 'invoke', 'field' => 'test', 'args' => [['type' => 'i32', 'value' => '101']]],
             text: 'uninitialized element',
             line: 3056,
@@ -18656,7 +17007,6 @@ final class TableCopyTest extends SpecTestsuiteBase
     public function testAssertTrap1702(): void
     {
         $this->runAssertTrapCommand(
-            module: null,
             action: ['type' => 'invoke', 'field' => 'test', 'args' => [['type' => 'i32', 'value' => '102']]],
             text: 'uninitialized element',
             line: 3057,
@@ -18667,7 +17017,6 @@ final class TableCopyTest extends SpecTestsuiteBase
     public function testAssertTrap1703(): void
     {
         $this->runAssertTrapCommand(
-            module: null,
             action: ['type' => 'invoke', 'field' => 'test', 'args' => [['type' => 'i32', 'value' => '103']]],
             text: 'uninitialized element',
             line: 3058,
@@ -18678,7 +17027,6 @@ final class TableCopyTest extends SpecTestsuiteBase
     public function testAssertTrap1704(): void
     {
         $this->runAssertTrapCommand(
-            module: null,
             action: ['type' => 'invoke', 'field' => 'test', 'args' => [['type' => 'i32', 'value' => '104']]],
             text: 'uninitialized element',
             line: 3059,
@@ -18689,7 +17037,6 @@ final class TableCopyTest extends SpecTestsuiteBase
     public function testAssertTrap1705(): void
     {
         $this->runAssertTrapCommand(
-            module: null,
             action: ['type' => 'invoke', 'field' => 'test', 'args' => [['type' => 'i32', 'value' => '105']]],
             text: 'uninitialized element',
             line: 3060,
@@ -18700,7 +17047,6 @@ final class TableCopyTest extends SpecTestsuiteBase
     public function testAssertTrap1706(): void
     {
         $this->runAssertTrapCommand(
-            module: null,
             action: ['type' => 'invoke', 'field' => 'test', 'args' => [['type' => 'i32', 'value' => '106']]],
             text: 'uninitialized element',
             line: 3061,
@@ -18711,7 +17057,6 @@ final class TableCopyTest extends SpecTestsuiteBase
     public function testAssertTrap1707(): void
     {
         $this->runAssertTrapCommand(
-            module: null,
             action: ['type' => 'invoke', 'field' => 'test', 'args' => [['type' => 'i32', 'value' => '107']]],
             text: 'uninitialized element',
             line: 3062,
@@ -18722,7 +17067,6 @@ final class TableCopyTest extends SpecTestsuiteBase
     public function testAssertTrap1708(): void
     {
         $this->runAssertTrapCommand(
-            module: null,
             action: ['type' => 'invoke', 'field' => 'test', 'args' => [['type' => 'i32', 'value' => '108']]],
             text: 'uninitialized element',
             line: 3063,
@@ -18733,7 +17077,6 @@ final class TableCopyTest extends SpecTestsuiteBase
     public function testAssertTrap1709(): void
     {
         $this->runAssertTrapCommand(
-            module: null,
             action: ['type' => 'invoke', 'field' => 'test', 'args' => [['type' => 'i32', 'value' => '109']]],
             text: 'uninitialized element',
             line: 3064,
@@ -18744,7 +17087,6 @@ final class TableCopyTest extends SpecTestsuiteBase
     public function testAssertTrap1710(): void
     {
         $this->runAssertTrapCommand(
-            module: null,
             action: ['type' => 'invoke', 'field' => 'test', 'args' => [['type' => 'i32', 'value' => '110']]],
             text: 'uninitialized element',
             line: 3065,
@@ -18755,7 +17097,6 @@ final class TableCopyTest extends SpecTestsuiteBase
     public function testAssertTrap1711(): void
     {
         $this->runAssertTrapCommand(
-            module: null,
             action: ['type' => 'invoke', 'field' => 'test', 'args' => [['type' => 'i32', 'value' => '111']]],
             text: 'uninitialized element',
             line: 3066,
@@ -18766,7 +17107,6 @@ final class TableCopyTest extends SpecTestsuiteBase
     public function testAssertTrap1712(): void
     {
         $this->runAssertTrapCommand(
-            module: null,
             action: ['type' => 'invoke', 'field' => 'test', 'args' => [['type' => 'i32', 'value' => '112']]],
             text: 'uninitialized element',
             line: 3067,
@@ -18777,7 +17117,6 @@ final class TableCopyTest extends SpecTestsuiteBase
     public function testAssertTrap1713(): void
     {
         $this->runAssertTrapCommand(
-            module: null,
             action: ['type' => 'invoke', 'field' => 'test', 'args' => [['type' => 'i32', 'value' => '113']]],
             text: 'uninitialized element',
             line: 3068,
@@ -18788,7 +17127,6 @@ final class TableCopyTest extends SpecTestsuiteBase
     public function testAssertTrap1714(): void
     {
         $this->runAssertTrapCommand(
-            module: null,
             action: ['type' => 'invoke', 'field' => 'test', 'args' => [['type' => 'i32', 'value' => '114']]],
             text: 'uninitialized element',
             line: 3069,
@@ -18799,7 +17137,6 @@ final class TableCopyTest extends SpecTestsuiteBase
     public function testAssertTrap1715(): void
     {
         $this->runAssertTrapCommand(
-            module: null,
             action: ['type' => 'invoke', 'field' => 'test', 'args' => [['type' => 'i32', 'value' => '115']]],
             text: 'uninitialized element',
             line: 3070,
@@ -18810,7 +17147,6 @@ final class TableCopyTest extends SpecTestsuiteBase
     public function testAssertTrap1716(): void
     {
         $this->runAssertTrapCommand(
-            module: null,
             action: ['type' => 'invoke', 'field' => 'test', 'args' => [['type' => 'i32', 'value' => '116']]],
             text: 'uninitialized element',
             line: 3071,
@@ -18821,7 +17157,6 @@ final class TableCopyTest extends SpecTestsuiteBase
     public function testAssertTrap1717(): void
     {
         $this->runAssertTrapCommand(
-            module: null,
             action: ['type' => 'invoke', 'field' => 'test', 'args' => [['type' => 'i32', 'value' => '117']]],
             text: 'uninitialized element',
             line: 3072,
@@ -18832,7 +17167,6 @@ final class TableCopyTest extends SpecTestsuiteBase
     public function testAssertTrap1718(): void
     {
         $this->runAssertTrapCommand(
-            module: null,
             action: ['type' => 'invoke', 'field' => 'test', 'args' => [['type' => 'i32', 'value' => '118']]],
             text: 'uninitialized element',
             line: 3073,
@@ -18843,7 +17177,6 @@ final class TableCopyTest extends SpecTestsuiteBase
     public function testAssertTrap1719(): void
     {
         $this->runAssertTrapCommand(
-            module: null,
             action: ['type' => 'invoke', 'field' => 'test', 'args' => [['type' => 'i32', 'value' => '119']]],
             text: 'uninitialized element',
             line: 3074,
@@ -18854,7 +17187,6 @@ final class TableCopyTest extends SpecTestsuiteBase
     public function testAssertTrap1720(): void
     {
         $this->runAssertTrapCommand(
-            module: null,
             action: ['type' => 'invoke', 'field' => 'test', 'args' => [['type' => 'i32', 'value' => '120']]],
             text: 'uninitialized element',
             line: 3075,
@@ -18865,7 +17197,6 @@ final class TableCopyTest extends SpecTestsuiteBase
     public function testAssertTrap1721(): void
     {
         $this->runAssertTrapCommand(
-            module: null,
             action: ['type' => 'invoke', 'field' => 'test', 'args' => [['type' => 'i32', 'value' => '121']]],
             text: 'uninitialized element',
             line: 3076,
@@ -18876,7 +17207,6 @@ final class TableCopyTest extends SpecTestsuiteBase
     public function testAssertTrap1722(): void
     {
         $this->runAssertTrapCommand(
-            module: null,
             action: ['type' => 'invoke', 'field' => 'test', 'args' => [['type' => 'i32', 'value' => '122']]],
             text: 'uninitialized element',
             line: 3077,
@@ -18887,7 +17217,6 @@ final class TableCopyTest extends SpecTestsuiteBase
     public function testAssertTrap1723(): void
     {
         $this->runAssertTrapCommand(
-            module: null,
             action: ['type' => 'invoke', 'field' => 'test', 'args' => [['type' => 'i32', 'value' => '123']]],
             text: 'uninitialized element',
             line: 3078,
@@ -18898,7 +17227,6 @@ final class TableCopyTest extends SpecTestsuiteBase
     public function testAssertTrap1724(): void
     {
         $this->runAssertTrapCommand(
-            module: null,
             action: ['type' => 'invoke', 'field' => 'test', 'args' => [['type' => 'i32', 'value' => '124']]],
             text: 'uninitialized element',
             line: 3079,
@@ -18909,7 +17237,6 @@ final class TableCopyTest extends SpecTestsuiteBase
     public function testAssertTrap1725(): void
     {
         $this->runAssertTrapCommand(
-            module: null,
             action: ['type' => 'invoke', 'field' => 'test', 'args' => [['type' => 'i32', 'value' => '125']]],
             text: 'uninitialized element',
             line: 3080,
@@ -18920,7 +17247,6 @@ final class TableCopyTest extends SpecTestsuiteBase
     public function testAssertTrap1726(): void
     {
         $this->runAssertTrapCommand(
-            module: null,
             action: ['type' => 'invoke', 'field' => 'test', 'args' => [['type' => 'i32', 'value' => '126']]],
             text: 'uninitialized element',
             line: 3081,
@@ -18931,7 +17257,6 @@ final class TableCopyTest extends SpecTestsuiteBase
     public function testAssertTrap1727(): void
     {
         $this->runAssertTrapCommand(
-            module: null,
             action: ['type' => 'invoke', 'field' => 'test', 'args' => [['type' => 'i32', 'value' => '127']]],
             text: 'uninitialized element',
             line: 3082,
