@@ -6,14 +6,93 @@
          executionOrder="depends,defects"
          beStrictAboutOutputDuringTests="true"
          failOnRisky="true"
-         failOnWarning="true">
+         failOnWarning="true"
+         defaultTestSuite="default">
     <php>
-        <ini name="memory_limit" value="1G"/>
+        <ini name="memory_limit" value="512M"/>
     </php>
 
     <testsuites>
-        <testsuite name="default">
+        <testsuite name="all">
             <directory>tests</directory>
+        </testsuite>
+        <testsuite name="default">
+            <file>tests/src/SpecTestsuites/Core/AddressTest.php</file>
+            <file>tests/src/SpecTestsuites/Core/BinaryLeb128Test.php</file>
+            <file>tests/src/SpecTestsuites/Core/BinaryTest.php</file>
+            <file>tests/src/SpecTestsuites/Core/BlockTest.php</file>
+            <file>tests/src/SpecTestsuites/Core/BrIfTest.php</file>
+            <file>tests/src/SpecTestsuites/Core/BrTableTest.php</file>
+            <file>tests/src/SpecTestsuites/Core/BrTest.php</file>
+            <file>tests/src/SpecTestsuites/Core/BulkTest.php</file>
+            <file>tests/src/SpecTestsuites/Core/CallIndirectTest.php</file>
+            <file>tests/src/SpecTestsuites/Core/CallTest.php</file>
+            <file>tests/src/SpecTestsuites/Core/ConstTest.php</file>
+            <file>tests/src/SpecTestsuites/Core/DataTest.php</file>
+            <file>tests/src/SpecTestsuites/Core/ElemTest.php</file>
+            <file>tests/src/SpecTestsuites/Core/EndiannessTest.php</file>
+            <file>tests/src/SpecTestsuites/Core/ExportsTest.php</file>
+            <file>tests/src/SpecTestsuites/Core/F32BitwiseTest.php</file>
+            <file>tests/src/SpecTestsuites/Core/F32CmpTest.php</file>
+            <file>tests/src/SpecTestsuites/Core/F32Test.php</file>
+            <file>tests/src/SpecTestsuites/Core/F64BitwiseTest.php</file>
+            <file>tests/src/SpecTestsuites/Core/F64CmpTest.php</file>
+            <file>tests/src/SpecTestsuites/Core/F64Test.php</file>
+            <file>tests/src/SpecTestsuites/Core/FacTest.php</file>
+            <file>tests/src/SpecTestsuites/Core/ForwardTest.php</file>
+            <file>tests/src/SpecTestsuites/Core/FuncPtrsTest.php</file>
+            <file>tests/src/SpecTestsuites/Core/FuncTest.php</file>
+            <file>tests/src/SpecTestsuites/Core/GlobalTest.php</file>
+            <file>tests/src/SpecTestsuites/Core/I32Test.php</file>
+            <file>tests/src/SpecTestsuites/Core/I64Test.php</file>
+            <file>tests/src/SpecTestsuites/Core/IfTest.php</file>
+            <file>tests/src/SpecTestsuites/Core/InlineModuleTest.php</file>
+            <file>tests/src/SpecTestsuites/Core/IntExprsTest.php</file>
+            <file>tests/src/SpecTestsuites/Core/IntLiteralsTest.php</file>
+            <file>tests/src/SpecTestsuites/Core/LabelsTest.php</file>
+            <file>tests/src/SpecTestsuites/Core/LeftToRightTest.php</file>
+            <file>tests/src/SpecTestsuites/Core/LoadTest.php</file>
+            <file>tests/src/SpecTestsuites/Core/LocalGetTest.php</file>
+            <file>tests/src/SpecTestsuites/Core/LocalSetTest.php</file>
+            <file>tests/src/SpecTestsuites/Core/LocalTeeTest.php</file>
+            <file>tests/src/SpecTestsuites/Core/LoopTest.php</file>
+            <file>tests/src/SpecTestsuites/Core/MemoryCopyTest.php</file>
+            <file>tests/src/SpecTestsuites/Core/MemoryFillTest.php</file>
+            <file>tests/src/SpecTestsuites/Core/MemoryGrowTest.php</file>
+            <file>tests/src/SpecTestsuites/Core/MemoryInitTest.php</file>
+            <file>tests/src/SpecTestsuites/Core/MemoryRedundancyTest.php</file>
+            <file>tests/src/SpecTestsuites/Core/MemorySizeTest.php</file>
+            <file>tests/src/SpecTestsuites/Core/MemoryTest.php</file>
+            <file>tests/src/SpecTestsuites/Core/MemoryTrapTest.php</file>
+            <file>tests/src/SpecTestsuites/Core/NamesTest.php</file>
+            <file>tests/src/SpecTestsuites/Core/NopTest.php</file>
+            <file>tests/src/SpecTestsuites/Core/ObsoleteKeywordsTest.php</file>
+            <file>tests/src/SpecTestsuites/Core/RefFuncTest.php</file>
+            <file>tests/src/SpecTestsuites/Core/RefIsNullTest.php</file>
+            <file>tests/src/SpecTestsuites/Core/RefNullTest.php</file>
+            <file>tests/src/SpecTestsuites/Core/ReturnTest.php</file>
+            <file>tests/src/SpecTestsuites/Core/SelectTest.php</file>
+            <file>tests/src/SpecTestsuites/Core/StackTest.php</file>
+            <file>tests/src/SpecTestsuites/Core/StartTest.php</file>
+            <file>tests/src/SpecTestsuites/Core/StoreTest.php</file>
+            <file>tests/src/SpecTestsuites/Core/SwitchTest.php</file>
+            <file>tests/src/SpecTestsuites/Core/TableCopyTest.php</file>
+            <file>tests/src/SpecTestsuites/Core/TableFillTest.php</file>
+            <file>tests/src/SpecTestsuites/Core/TableGetTest.php</file>
+            <file>tests/src/SpecTestsuites/Core/TableGrowTest.php</file>
+            <file>tests/src/SpecTestsuites/Core/TableInitTest.php</file>
+            <file>tests/src/SpecTestsuites/Core/TableSetTest.php</file>
+            <file>tests/src/SpecTestsuites/Core/TableSizeTest.php</file>
+            <file>tests/src/SpecTestsuites/Core/TableSubTest.php</file>
+            <file>tests/src/SpecTestsuites/Core/TableTest.php</file>
+            <file>tests/src/SpecTestsuites/Core/TokenTest.php</file>
+            <file>tests/src/SpecTestsuites/Core/TrapsTest.php</file>
+            <file>tests/src/SpecTestsuites/Core/TypeTest.php</file>
+            <file>tests/src/SpecTestsuites/Core/UnreachableTest.php</file>
+            <file>tests/src/SpecTestsuites/Core/UnreachedInvalidTest.php</file>
+            <file>tests/src/SpecTestsuites/Core/UnreachedValidTest.php</file>
+            <file>tests/src/SpecTestsuites/Core/UnwindTest.php</file>
+            <file>tests/src/SpecTestsuites/Core/Utf8InvalidEncodingTest.php</file>
         </testsuite>
     </testsuites>
 
