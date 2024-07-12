@@ -8,9 +8,9 @@ use Nsfisis\Waddiwasi\Stream\FileStream;
 use Nsfisis\Waddiwasi\WebAssembly\BinaryFormat\Decoder;
 use Nsfisis\Waddiwasi\WebAssembly\BinaryFormat\InvalidBinaryFormatException;
 use Nsfisis\Waddiwasi\WebAssembly\Execution\Extern;
-use Nsfisis\Waddiwasi\WebAssembly\Execution\ExternVals;
 use Nsfisis\Waddiwasi\WebAssembly\Execution\FuncInst;
 use Nsfisis\Waddiwasi\WebAssembly\Execution\GlobalInst;
+use Nsfisis\Waddiwasi\WebAssembly\Execution\Linker;
 use Nsfisis\Waddiwasi\WebAssembly\Execution\MemInst;
 use Nsfisis\Waddiwasi\WebAssembly\Execution\Ref;
 use Nsfisis\Waddiwasi\WebAssembly\Execution\Refs\RefExtern;
@@ -52,57 +52,43 @@ abstract class SpecTestsuiteBase extends TestCase
         $wasmBinaryStream = new FileStream($filePath);
         $module = (new Decoder($wasmBinaryStream))->decode();
         self::$modules[$moduleName] = $module;
-        $importObj = [
-            'spectest' => [
-                'memory' => Extern::Mem(new MemInst(new MemType(new Limits(1, 2)))),
-                'table' => Extern::Table(new TableInst(new TableType(new Limits(10, 20), ValType::FuncRef), [
-                    Ref::RefNull(ValType::FuncRef),
-                    Ref::RefNull(ValType::FuncRef),
-                    Ref::RefNull(ValType::FuncRef),
-                    Ref::RefNull(ValType::FuncRef),
-                    Ref::RefNull(ValType::FuncRef),
-                    Ref::RefNull(ValType::FuncRef),
-                    Ref::RefNull(ValType::FuncRef),
-                    Ref::RefNull(ValType::FuncRef),
-                    Ref::RefNull(ValType::FuncRef),
-                    Ref::RefNull(ValType::FuncRef),
-                ])),
-                'global_i32' => Extern::Global_(new GlobalInst(new GlobalType(Mut::Const, ValType::I32), 666)),
-                'global_i64' => Extern::Global_(new GlobalInst(new GlobalType(Mut::Const, ValType::I64), 666)),
-                'global_f32' => Extern::Global_(new GlobalInst(new GlobalType(Mut::Const, ValType::F32), 666.6)),
-                'global_f64' => Extern::Global_(new GlobalInst(new GlobalType(Mut::Const, ValType::F64), 666.6)),
-                'print' => Extern::Func(FuncInst::Host(new FuncType([], []), fn () => null)),
-                'print_i32' => Extern::Func(FuncInst::Host(new FuncType([ValType::I32], []), fn () => null)),
-                'print_i64' => Extern::Func(FuncInst::Host(new FuncType([ValType::I64], []), fn () => null)),
-                'print_f32' => Extern::Func(FuncInst::Host(new FuncType([ValType::F32], []), fn () => null)),
-                'print_f64' => Extern::Func(FuncInst::Host(new FuncType([ValType::F64], []), fn () => null)),
-                'print_i32_f32' => Extern::Func(FuncInst::Host(new FuncType([ValType::I32, ValType::F32], []), fn () => null)),
-                'print_f64_f64' => Extern::Func(FuncInst::Host(new FuncType([ValType::F64, ValType::F64], []), fn () => null)),
-            ],
-        ];
-        foreach (self::$registeredModules as $registeredModuleName => $registeredModule) {
-            $registeredRuntime = self::$registeredRuntimes[$registeredModuleName];
-            foreach ($registeredModule->exports as $export) {
-                $externVal = $registeredRuntime->getExport($export->name);
-                if ($externVal instanceof ExternVals\Func) {
-                    $fn = $registeredRuntime->store->funcs[$registeredRuntime->getExport($export->name)->addr];
-                    $importObj[$registeredModuleName][$export->name] = Extern::Func($fn);
-                } elseif ($externVal instanceof ExternVals\Table) {
-                    $tab = $registeredRuntime->store->tables[$registeredRuntime->getExport($export->name)->addr];
-                    $importObj[$registeredModuleName][$export->name] = Extern::Table($tab);
-                } elseif ($externVal instanceof ExternVals\Mem) {
-                    $mem = $registeredRuntime->store->mems[$registeredRuntime->getExport($export->name)->addr];
-                    $importObj[$registeredModuleName][$export->name] = Extern::Mem($mem);
-                } elseif ($externVal instanceof ExternVals\Global_) {
-                    $gl = $registeredRuntime->store->globals[$registeredRuntime->getExport($export->name)->addr];
-                    $importObj[$registeredModuleName][$export->name] = Extern::Global_($gl);
-                }
-            }
-        }
         if (self::$store === null) {
             self::$store = Store::empty();
         }
-        $runtime = Runtime::instantiate(self::$store, $module, $importObj);
+        $spectestExterns = [
+            'memory' => Extern::Mem(new MemInst(new MemType(new Limits(1, 2)))),
+            'table' => Extern::Table(new TableInst(new TableType(new Limits(10, 20), ValType::FuncRef), [
+                Ref::RefNull(ValType::FuncRef),
+                Ref::RefNull(ValType::FuncRef),
+                Ref::RefNull(ValType::FuncRef),
+                Ref::RefNull(ValType::FuncRef),
+                Ref::RefNull(ValType::FuncRef),
+                Ref::RefNull(ValType::FuncRef),
+                Ref::RefNull(ValType::FuncRef),
+                Ref::RefNull(ValType::FuncRef),
+                Ref::RefNull(ValType::FuncRef),
+                Ref::RefNull(ValType::FuncRef),
+            ])),
+            'global_i32' => Extern::Global_(new GlobalInst(new GlobalType(Mut::Const, ValType::I32), 666)),
+            'global_i64' => Extern::Global_(new GlobalInst(new GlobalType(Mut::Const, ValType::I64), 666)),
+            'global_f32' => Extern::Global_(new GlobalInst(new GlobalType(Mut::Const, ValType::F32), 666.6)),
+            'global_f64' => Extern::Global_(new GlobalInst(new GlobalType(Mut::Const, ValType::F64), 666.6)),
+            'print' => Extern::Func(FuncInst::Host(new FuncType([], []), fn () => null)),
+            'print_i32' => Extern::Func(FuncInst::Host(new FuncType([ValType::I32], []), fn () => null)),
+            'print_i64' => Extern::Func(FuncInst::Host(new FuncType([ValType::I64], []), fn () => null)),
+            'print_f32' => Extern::Func(FuncInst::Host(new FuncType([ValType::F32], []), fn () => null)),
+            'print_f64' => Extern::Func(FuncInst::Host(new FuncType([ValType::F64], []), fn () => null)),
+            'print_i32_f32' => Extern::Func(FuncInst::Host(new FuncType([ValType::I32, ValType::F32], []), fn () => null)),
+            'print_f64_f64' => Extern::Func(FuncInst::Host(new FuncType([ValType::F64, ValType::F64], []), fn () => null)),
+        ];
+        $linker = new Linker(self::$store);
+        foreach ($spectestExterns as $externName => $extern) {
+            $linker->register('spectest', $externName, $extern);
+        }
+        foreach (self::$registeredRuntimes as $registeredModuleName => $registeredRuntime) {
+            $linker->registerNamespace($registeredModuleName, $registeredRuntime);
+        }
+        $runtime = Runtime::instantiate(self::$store, $module, $linker->resolve($module));
         self::$runtimes[$moduleName] = $runtime;
         if ($moduleName !== '_') {
             self::$modules['_'] = $module;
@@ -192,31 +178,15 @@ abstract class SpecTestsuiteBase extends TestCase
         $wasmBinaryStream = new FileStream($filePath);
         $module = (new Decoder($wasmBinaryStream))->decode();
         $exception = null;
-        $importObj = [];
-        foreach (self::$registeredModules as $registeredModuleName => $registeredModule) {
-            $registeredRuntime = self::$registeredRuntimes[$registeredModuleName];
-            foreach ($registeredModule->exports as $export) {
-                $externVal = $registeredRuntime->getExport($export->name);
-                if ($externVal instanceof ExternVals\Func) {
-                    $fn = $registeredRuntime->store->funcs[$registeredRuntime->getExport($export->name)->addr];
-                    $importObj[$registeredModuleName][$export->name] = Extern::Func($fn);
-                } elseif ($externVal instanceof ExternVals\Table) {
-                    $tab = $registeredRuntime->store->tables[$registeredRuntime->getExport($export->name)->addr];
-                    $importObj[$registeredModuleName][$export->name] = Extern::Table($tab);
-                } elseif ($externVal instanceof ExternVals\Mem) {
-                    $mem = $registeredRuntime->store->mems[$registeredRuntime->getExport($export->name)->addr];
-                    $importObj[$registeredModuleName][$export->name] = Extern::Mem($mem);
-                } elseif ($externVal instanceof ExternVals\Global_) {
-                    $gl = $registeredRuntime->store->globals[$registeredRuntime->getExport($export->name)->addr];
-                    $importObj[$registeredModuleName][$export->name] = Extern::Global_($gl);
-                }
-            }
-        }
         if (self::$store === null) {
             self::$store = Store::empty();
         }
+        $linker = new Linker(self::$store);
+        foreach (self::$registeredRuntimes as $registeredModuleName => $registeredRuntime) {
+            $linker->registerNamespace($registeredModuleName, $registeredRuntime);
+        }
         try {
-            Runtime::instantiate(self::$store, $module, $importObj);
+            Runtime::instantiate(self::$store, $module, $linker->resolve($module));
         } catch (RuntimeException $e) {
             $exception = $e;
         }
@@ -233,31 +203,15 @@ abstract class SpecTestsuiteBase extends TestCase
         $wasmBinaryStream = new FileStream($filePath);
         $module = (new Decoder($wasmBinaryStream))->decode();
         $exception = null;
-        $importObj = [];
-        foreach (self::$registeredModules as $registeredModuleName => $registeredModule) {
-            $registeredRuntime = self::$registeredRuntimes[$registeredModuleName];
-            foreach ($registeredModule->exports as $export) {
-                $externVal = $registeredRuntime->getExport($export->name);
-                if ($externVal instanceof ExternVals\Func) {
-                    $fn = $registeredRuntime->store->funcs[$registeredRuntime->getExport($export->name)->addr];
-                    $importObj[$registeredModuleName][$export->name] = Extern::Func($fn);
-                } elseif ($externVal instanceof ExternVals\Table) {
-                    $tab = $registeredRuntime->store->tables[$registeredRuntime->getExport($export->name)->addr];
-                    $importObj[$registeredModuleName][$export->name] = Extern::Table($tab);
-                } elseif ($externVal instanceof ExternVals\Mem) {
-                    $mem = $registeredRuntime->store->mems[$registeredRuntime->getExport($export->name)->addr];
-                    $importObj[$registeredModuleName][$export->name] = Extern::Mem($mem);
-                } elseif ($externVal instanceof ExternVals\Global_) {
-                    $gl = $registeredRuntime->store->globals[$registeredRuntime->getExport($export->name)->addr];
-                    $importObj[$registeredModuleName][$export->name] = Extern::Global_($gl);
-                }
-            }
-        }
         if (self::$store === null) {
             self::$store = Store::empty();
         }
+        $linker = new Linker(self::$store);
+        foreach (self::$registeredRuntimes as $registeredModuleName => $registeredRuntime) {
+            $linker->registerNamespace($registeredModuleName, $registeredRuntime);
+        }
         try {
-            Runtime::instantiate(self::$store, $module, $importObj);
+            Runtime::instantiate(self::$store, $module, $linker->resolve($module));
         } catch (RuntimeException $e) {
             $exception = $e;
         }

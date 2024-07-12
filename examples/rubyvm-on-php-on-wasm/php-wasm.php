@@ -9,6 +9,7 @@ use Nsfisis\Waddiwasi\WebAssembly\BinaryFormat\Decoder;
 use Nsfisis\Waddiwasi\WebAssembly\Execution\Extern;
 use Nsfisis\Waddiwasi\WebAssembly\Execution\Externs;
 use Nsfisis\Waddiwasi\WebAssembly\Execution\FuncInst;
+use Nsfisis\Waddiwasi\WebAssembly\Execution\Linker;
 use Nsfisis\Waddiwasi\WebAssembly\Execution\Refs;
 use Nsfisis\Waddiwasi\WebAssembly\Execution\Runtime;
 use Nsfisis\Waddiwasi\WebAssembly\Execution\Store;
@@ -123,7 +124,16 @@ $imports = [
     ],
 ];
 
-$runtime = Runtime::instantiate(Store::empty(), $module, $imports);
+$store = Store::empty();
+$linker = new Linker($store);
+
+foreach ($imports as $moduleName => $moduleImports) {
+    foreach ($moduleImports as $importName => $import) {
+        $linker->register($moduleName, $importName, $import);
+    }
+}
+
+$runtime = Runtime::instantiate($store, $module, $linker->resolve($module));
 $codePtr = allocateStringOnWasmMemory($runtime, strtr(PHP_HELLO_WORLD, ['%DIR%' => __DIR__]));
 
 $results = $runtime->invoke("php_wasm_run", [$codePtr]);

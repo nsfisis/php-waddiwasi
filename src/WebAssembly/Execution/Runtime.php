@@ -39,7 +39,7 @@ use function sqrt;
 use function unpack;
 use const PHP_INT_MIN;
 
-final class Runtime
+final class Runtime implements ExporterInterface
 {
     /**
      * @var array<string, array{int, int}>
@@ -54,28 +54,9 @@ final class Runtime
     }
 
     /**
-     * @param array<string, array<string, Extern>> $imports
-     */
-    public static function instantiate(
-        Store $store,
-        Module $module,
-        array $imports,
-    ): self {
-        $externVals = [];
-        foreach ($module->imports as $import) {
-            $extern = $imports[$import->module][$import->name] ?? null;
-            if ($extern === null) {
-                throw new RuntimeException("instantiate: import not found: {$import->module}::{$import->name}");
-            }
-            $externVals[] = $store->register($extern);
-        }
-        return self::doInstantiate($store, $module, $externVals);
-    }
-
-    /**
      * @param list<ExternVal> $externVals
      */
-    private static function doInstantiate(
+    public static function instantiate(
         Store $store,
         Module $module,
         array $externVals,
@@ -157,6 +138,11 @@ final class Runtime
         $stack->popFrame();
 
         return new self($store, $stack, $moduleInst);
+    }
+
+    public function exports(): array
+    {
+        return $this->module->exports;
     }
 
     public function getExport(string $name): ?ExternVal
