@@ -12,6 +12,7 @@ use Nsfisis\Waddiwasi\WebAssembly\Execution\FuncInst;
 use Nsfisis\Waddiwasi\WebAssembly\Execution\GlobalInst;
 use Nsfisis\Waddiwasi\WebAssembly\Execution\Linker;
 use Nsfisis\Waddiwasi\WebAssembly\Execution\MemInst;
+use Nsfisis\Waddiwasi\WebAssembly\Execution\NumericOps;
 use Nsfisis\Waddiwasi\WebAssembly\Execution\Ref;
 use Nsfisis\Waddiwasi\WebAssembly\Execution\Refs\RefExtern;
 use Nsfisis\Waddiwasi\WebAssembly\Execution\Refs\RefFunc;
@@ -247,7 +248,7 @@ abstract class SpecTestsuiteBase extends TestCase
     /**
      * @param array{type: string, value: string} $arg
      */
-    private static function wastValueToInternalValue(array $arg): int|float|Ref
+    private static function wastValueToInternalValue(array $arg): int|string|float|Ref
     {
         $type = $arg['type'];
         $value = $arg['value'];
@@ -255,13 +256,11 @@ abstract class SpecTestsuiteBase extends TestCase
             'i32' => unpack('l', pack('V', (int)$value))[1],
             'i64' => unpack('q', self::convertInt64ToBinary($value))[1],
             'f32' => match ($value) {
-                'nan:canonical' => NAN,
-                'nan:arithmetic' => NAN,
+                'nan:canonical', 'nan:arithmetic' => $value,
                 default => unpack('g', pack('V', (int)$value))[1],
             },
             'f64' => match ($value) {
-                'nan:canonical' => NAN,
-                'nan:arithmetic' => NAN,
+                'nan:canonical', 'nan:arithmetic' => $value,
                 default => unpack('e', self::convertInt64ToBinary($value))[1],
             },
             'externref' => $value === 'null' ? Ref::RefNull(ValType::ExternRef) : Ref::RefExtern((int)$value),
@@ -315,11 +314,53 @@ abstract class SpecTestsuiteBase extends TestCase
             $expectedResult = $expectedResults[$i];
             $expectedValue = self::wastValueToInternalValue($expectedResult);
             $actualResult = $actualResults[$i];
-            if (is_float($expectedValue) && is_nan($expectedValue)) {
-                // @todo check NaN bit pattern.
+            if ($expectedValue === 'nan:canonical') {
                 $this->assertTrue(
                     is_nan($actualResult),
                     "result $i is not NaN" . $message,
+                );
+                $actualBits = sprintf("%064b", NumericOps::reinterpretF64AsI64($actualResult));
+                if (str_starts_with($actualBits, '0')) {
+                    $this->assertSame(
+                        sprintf("%064b", NumericOps::reinterpretF64AsI64(NAN)),
+                        $actualBits,
+                        "result $i is not canonical NaN" . $message,
+                    );
+                } else {
+                    $this->assertSame(
+                        sprintf("1%b", NumericOps::reinterpretF64AsI64(NAN)),
+                        $actualBits,
+                        "result $i is not canonical NaN" . $message,
+                    );
+                }
+            } elseif ($expectedValue === 'nan:arithmetic') {
+                $this->assertTrue(
+                    is_nan($actualResult),
+                    "result $i is not NaN" . $message,
+                );
+                $actualBits = sprintf("%064b", NumericOps::reinterpretF64AsI64($actualResult));
+                if (str_starts_with($actualBits, '0')) {
+                    $this->assertStringStartsWith(
+                        '0111111111111',
+                        $actualBits,
+                        "result $i is not arithmetic NaN" . $message,
+                    );
+                } else {
+                    $this->assertStringStartsWith(
+                        '1111111111111',
+                        $actualBits,
+                        "result $i is not arithmetic NaN" . $message,
+                    );
+                }
+            } elseif (is_float($expectedValue) && is_nan($expectedValue)) {
+                $this->assertTrue(
+                    is_nan($actualResult),
+                    "result $i is not NaN" . $message,
+                );
+                $this->assertSame(
+                    sprintf("%b", NumericOps::reinterpretF64AsI64($expectedValue)),
+                    sprintf("%b", NumericOps::reinterpretF64AsI64($actualResult)),
+                    "result $i Nan payload mismatch" . $message,
                 );
             } elseif ($expectedValue instanceof RefNull) {
                 $this->assertInstanceOf(

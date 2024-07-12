@@ -50,6 +50,9 @@ final readonly class NumericOps
 
     public static function f32Ceil(float $x): float
     {
+        if (is_nan($x)) {
+            return NAN;
+        }
         return ceil($x);
     }
 
@@ -78,7 +81,7 @@ final readonly class NumericOps
     {
         $xSign = self::getFloatSign($x);
         $ySign = self::getFloatSign($y);
-        return $xSign === $ySign ? $x : -$x;
+        return $xSign === $ySign ? $x : self::f32Neg($x);
     }
 
     public static function f32DemoteF64(float $x): float
@@ -98,6 +101,9 @@ final readonly class NumericOps
 
     public static function f32Floor(float $x): float
     {
+        if (is_nan($x)) {
+            return NAN;
+        }
         return floor($x);
     }
 
@@ -151,12 +157,20 @@ final readonly class NumericOps
 
     public static function f32Nearest(float $x): float
     {
+        if (is_nan($x)) {
+            return NAN;
+        }
         return round($x, mode: PHP_ROUND_HALF_EVEN);
     }
 
     public static function f32Neg(float $x): float
     {
-        return -$x;
+        if (is_nan($x)) {
+            // Negate operator does not work for NaN in PHP.
+            return self::constructNan(-self::getFloatSign($x), $x);
+        } else {
+            return -$x;
+        }
     }
 
     public static function f32ReinterpretI32(int $x): float
@@ -181,6 +195,9 @@ final readonly class NumericOps
 
     public static function f32Trunc(float $x): float
     {
+        if (is_nan($x)) {
+            return NAN;
+        }
         if ($x < 0) {
             return self::truncateF64ToF32(ceil($x));
         } else {
@@ -200,6 +217,9 @@ final readonly class NumericOps
 
     public static function f64Ceil(float $x): float
     {
+        if (is_nan($x)) {
+            return NAN;
+        }
         return ceil($x);
     }
 
@@ -227,7 +247,7 @@ final readonly class NumericOps
     {
         $xSign = self::getFloatSign($x);
         $ySign = self::getFloatSign($y);
-        return $xSign === $ySign ? $x : -$x;
+        return $xSign === $ySign ? $x : self::f64Neg($x);
     }
 
     public static function f64Div(float $x, float $y): float
@@ -242,6 +262,9 @@ final readonly class NumericOps
 
     public static function f64Floor(float $x): float
     {
+        if (is_nan($x)) {
+            return NAN;
+        }
         return floor($x);
     }
 
@@ -295,12 +318,20 @@ final readonly class NumericOps
 
     public static function f64Nearest(float $x): float
     {
+        if (is_nan($x)) {
+            return NAN;
+        }
         return round($x, mode: PHP_ROUND_HALF_EVEN);
     }
 
     public static function f64Neg(float $x): float
     {
-        return -$x;
+        if (is_nan($x)) {
+            // Negate operator does not work for NaN in PHP.
+            return self::constructNan(-self::getFloatSign($x), $x);
+        } else {
+            return -$x;
+        }
     }
 
     public static function f64PromoteF32(float $x): float
@@ -330,6 +361,9 @@ final readonly class NumericOps
 
     public static function f64Trunc(float $x): float
     {
+        if (is_nan($x)) {
+            return NAN;
+        }
         if ($x < 0) {
             return ceil($x);
         } else {
@@ -1232,6 +1266,9 @@ final readonly class NumericOps
         return (int)$result;
     }
 
+    /**
+     * @return 1|-1
+     */
     public static function getFloatSign(float $p): int
     {
         if (is_nan($p)) {
@@ -1244,5 +1281,28 @@ final readonly class NumericOps
             // Comparison with 0 does not work for -0.0.
             return fdiv(1, $p) < 0.0 ? -1 : 1;
         }
+    }
+
+    /**
+     * @param -1|1 $sign
+     */
+    private static function constructNan(int $sign, float $x): float
+    {
+        [$_, $_, $payload] = self::destructFloat($x);
+        $i = ($sign === 1 ? 0 : PHP_INT_MIN) | 0b01111111_11110000_00000000_00000000_00000000_00000000_00000000_00000000 | $payload;
+        return self::reinterpretI64AsF64($i);
+    }
+
+    /**
+     * @return array{int, int, int}
+     */
+    private static function destructFloat(float $x): array
+    {
+        $i = self::reinterpretF64AsI64($x);
+        return [
+            $i & PHP_INT_MIN,
+            $i & 0b01111111_11110000_00000000_00000000_00000000_00000000_00000000_00000000,
+            $i & 0b00000000_00001111_11111111_11111111_11111111_11111111_11111111_11111111,
+        ];
     }
 }
