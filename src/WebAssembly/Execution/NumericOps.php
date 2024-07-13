@@ -691,9 +691,9 @@ final readonly class NumericOps
         if ($x < 0.0) {
             return 0;
         } elseif (4294967295.0 < $x) {
-            return 4294967295;
+            return -1;
         } else {
-            return (int) $x;
+            return self::convertU32ToS32((int) $x);
         }
     }
 
@@ -713,9 +713,9 @@ final readonly class NumericOps
         if ($x < 0.0) {
             return 0;
         } elseif (4294967295.0 < $x) {
-            return 4294967295;
+            return -1;
         } else {
-            return (int) $x;
+            return self::convertU32ToS32((int) $x);
         }
     }
 
@@ -1012,7 +1012,7 @@ final readonly class NumericOps
         if (is_infinite($x)) {
             return TrapKind::IntegerOverflow;
         }
-        if ($x <= -9223372036854775809.0 || 9223372036854775808.0 <= $x) {
+        if ($x < -9223372036854775808.0 || 9223372036854775808.0 <= $x) {
             return TrapKind::IntegerOverflow;
         }
         return (int) $x;
@@ -1040,7 +1040,7 @@ final readonly class NumericOps
         if (is_infinite($x)) {
             return TrapKind::IntegerOverflow;
         }
-        if ($x <= -9223372036854775809.0 || 9223372036854775808.0 <= $x) {
+        if ($x < -9223372036854775808.0 || 9223372036854775808.0 <= $x) {
             return TrapKind::IntegerOverflow;
         }
         return (int) $x;
@@ -1064,7 +1064,7 @@ final readonly class NumericOps
     {
         if ($x < -9223372036854775808.0) {
             return PHP_INT_MIN;
-        } elseif (9223372036854775807.0 < $x) {
+        } elseif (9223372036854775808.0 <= $x) {
             return PHP_INT_MAX;
         } else {
             return (int) $x;
@@ -1087,7 +1087,7 @@ final readonly class NumericOps
     {
         if ($x < -9223372036854775808.0) {
             return PHP_INT_MIN;
-        } elseif (9223372036854775807.0 < $x) {
+        } elseif (9223372036854775808.0 <= $x) {
             return PHP_INT_MAX;
         } else {
             return (int) $x;

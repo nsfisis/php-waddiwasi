@@ -954,7 +954,7 @@ final class Runtime implements ExporterInterface
         $x = $this->stack->popInt();
         $result = NumericOps::i32DivS($x, $y);
         if (!is_int($result)) {
-            throw new TrapException($instr::opName() . 'invalid operation', trapKind: $result);
+            throw new TrapException($instr::opName() . ': invalid operation', trapKind: $result);
         }
         $this->stack->pushValue($result);
     }
@@ -965,7 +965,7 @@ final class Runtime implements ExporterInterface
         $x = $this->stack->popInt();
         $result = NumericOps::i32DivU($x, $y);
         if (!is_int($result)) {
-            throw new TrapException($instr::opName() . 'invalid operation', trapKind: $result);
+            throw new TrapException($instr::opName() . ': invalid operation', trapKind: $result);
         }
         $this->stack->pushValue($result);
     }
@@ -1096,7 +1096,7 @@ final class Runtime implements ExporterInterface
         $x = $this->stack->popInt();
         $result = NumericOps::i32RemS($x, $y);
         if (!is_int($result)) {
-            throw new TrapException($instr::opName() . 'invalid operation', trapKind: $result);
+            throw new TrapException($instr::opName() . ': invalid operation', trapKind: $result);
         }
         $this->stack->pushValue($result);
     }
@@ -1107,7 +1107,7 @@ final class Runtime implements ExporterInterface
         $x = $this->stack->popInt();
         $result = NumericOps::i32RemU($x, $y);
         if (!is_int($result)) {
-            throw new TrapException($instr::opName() . 'invalid operation', trapKind: $result);
+            throw new TrapException($instr::opName() . ': invalid operation', trapKind: $result);
         }
         $this->stack->pushValue($result);
     }
@@ -1159,7 +1159,7 @@ final class Runtime implements ExporterInterface
         $x = $this->stack->popFloat();
         $result = NumericOps::i32TruncF32S($x);
         if (!is_int($result)) {
-            throw new TrapException($instr::opName() . 'invalid operation', trapKind: $result);
+            throw new TrapException($instr::opName() . ': invalid operation', trapKind: $result);
         }
         $this->stack->pushValue($result);
     }
@@ -1169,7 +1169,7 @@ final class Runtime implements ExporterInterface
         $x = $this->stack->popFloat();
         $result = NumericOps::i32TruncF32U($x);
         if (!is_int($result)) {
-            throw new TrapException($instr::opName() . 'invalid operation', trapKind: $result);
+            throw new TrapException($instr::opName() . ': invalid operation', trapKind: $result);
         }
         $this->stack->pushValue($result);
     }
@@ -1179,7 +1179,7 @@ final class Runtime implements ExporterInterface
         $x = $this->stack->popFloat();
         $result = NumericOps::i32TruncF64S($x);
         if (!is_int($result)) {
-            throw new TrapException($instr::opName() . 'invalid operation', trapKind: $result);
+            throw new TrapException($instr::opName() . ': invalid operation', trapKind: $result);
         }
         $this->stack->pushValue($result);
     }
@@ -1189,7 +1189,7 @@ final class Runtime implements ExporterInterface
         $x = $this->stack->popFloat();
         $result = NumericOps::i32TruncF64U($x);
         if (!is_int($result)) {
-            throw new TrapException($instr::opName() . 'invalid operation', trapKind: $result);
+            throw new TrapException($instr::opName() . ': invalid operation', trapKind: $result);
         }
         $this->stack->pushValue($result);
     }
@@ -1268,7 +1268,7 @@ final class Runtime implements ExporterInterface
         $x = $this->stack->popInt();
         $result = NumericOps::i64DivS($x, $y);
         if (!is_int($result)) {
-            throw new TrapException($instr::opName() . 'invalid operation', trapKind: $result);
+            throw new TrapException($instr::opName() . ': invalid operation', trapKind: $result);
         }
         $this->stack->pushValue($result);
     }
@@ -1279,7 +1279,7 @@ final class Runtime implements ExporterInterface
         $x = $this->stack->popInt();
         $result = NumericOps::i64DivU($x, $y);
         if (!is_int($result)) {
-            throw new TrapException($instr::opName() . 'invalid operation', trapKind: $result);
+            throw new TrapException($instr::opName() . ': invalid operation', trapKind: $result);
         }
         $this->stack->pushValue($result);
     }
@@ -1428,7 +1428,7 @@ final class Runtime implements ExporterInterface
         $x = $this->stack->popInt();
         $result = NumericOps::i64RemS($x, $y);
         if (!is_int($result)) {
-            throw new TrapException($instr::opName() . 'invalid operation', trapKind: $result);
+            throw new TrapException($instr::opName() . ': invalid operation', trapKind: $result);
         }
         $this->stack->pushValue($result);
     }
@@ -1439,7 +1439,7 @@ final class Runtime implements ExporterInterface
         $x = $this->stack->popInt();
         $result = NumericOps::i64RemU($x, $y);
         if (!is_int($result)) {
-            throw new TrapException($instr::opName() . 'invalid operation', trapKind: $result);
+            throw new TrapException($instr::opName() . ': invalid operation', trapKind: $result);
         }
         $this->stack->pushValue($result);
     }
@@ -1491,7 +1491,7 @@ final class Runtime implements ExporterInterface
         $x = $this->stack->popFloat();
         $result = NumericOps::i64TruncF32S($x);
         if (!is_int($result)) {
-            throw new TrapException($instr::opName() . 'invalid operation', trapKind: $result);
+            throw new TrapException($instr::opName() . ': invalid operation', trapKind: $result);
         }
         $this->stack->pushValue($result);
     }
@@ -1501,7 +1501,7 @@ final class Runtime implements ExporterInterface
         $x = $this->stack->popFloat();
         $result = NumericOps::i64TruncF32U($x);
         if (!is_int($result)) {
-            throw new TrapException($instr::opName() . 'invalid operation', trapKind: $result);
+            throw new TrapException($instr::opName() . ': invalid operation', trapKind: $result);
         }
         $this->stack->pushValue($result);
     }
@@ -1511,7 +1511,7 @@ final class Runtime implements ExporterInterface
         $x = $this->stack->popFloat();
         $result = NumericOps::i64TruncF64S($x);
         if (!is_int($result)) {
-            throw new TrapException($instr::opName() . 'invalid operation', trapKind: $result);
+            throw new TrapException($instr::opName() . ': invalid operation', trapKind: $result);
         }
         $this->stack->pushValue($result);
     }
@@ -1521,7 +1521,7 @@ final class Runtime implements ExporterInterface
         $x = $this->stack->popFloat();
         $result = NumericOps::i64TruncF64U($x);
         if (!is_int($result)) {
-            throw new TrapException($instr::opName() . 'invalid operation', trapKind: $result);
+            throw new TrapException($instr::opName() . ': invalid operation', trapKind: $result);
         }
         $this->stack->pushValue($result);
     }
