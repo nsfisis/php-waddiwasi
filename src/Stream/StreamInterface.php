@@ -15,7 +15,7 @@ interface StreamInterface
      *   A binary string of $bytes bytes.
      *
      * @throws UnexpectedEofException
-     *   Thrown if the stream does not have enough bytes to read.
+     *   If the stream does not have enough bytes to read.
      *
      * @phpstan-impure
      */
@@ -28,7 +28,7 @@ interface StreamInterface
      *   An 8-bit unsigned integer read from the stream.
      *
      * @throws UnexpectedEofException
-     *   Thrown if the stream have reached the end.
+     *   If the stream have reached the end.
      *
      * @phpstan-impure
      */
@@ -41,7 +41,7 @@ interface StreamInterface
      *   An 8-bit unsigned integer read from the stream.
      *
      * @throws UnexpectedEofException
-     *   Thrown if the stream have reached the end.
+     *   If the stream have reached the end.
      *
      * @phpstan-impure
      */
@@ -53,7 +53,7 @@ interface StreamInterface
      * @param positive-int $bytes
      *
      * @throws UnexpectedEofException
-     *   Thrown if the stream does not have enough bytes to seek.
+     *   If the stream does not have enough bytes to seek.
      *
      * @phpstan-impure
      */

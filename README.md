@@ -8,6 +8,13 @@ It is partially compatible with the WebAssembly specification version 2.0.
 
 ## Examples
 
+### Hello, World!
+
+```
+$ composer example:hello-world
+```
+
+
 ### PHP on Wasm
 
 The PHP runtime can be compiled to WebAssembly binary. This Wasm runtime can execute it. Currently, "Hello, World!" program works on the PHP runtime on the Wasm runtime.
@@ -15,6 +22,7 @@ The PHP runtime can be compiled to WebAssembly binary. This Wasm runtime can exe
 ```
 $ composer example:php-on-wasm
 ```
+
 
 ### RubyVM on PHP on Wasm
 
