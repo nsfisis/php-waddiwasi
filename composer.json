@@ -15,6 +15,7 @@
         }
     },
     "require-dev": {
+        "m3m0r7/rubyvm-on-php": "^0.3.3",
         "phpstan/phpstan": "^1.11.7",
         "phpstan/phpstan-deprecation-rules": "^1.2.0",
         "phpstan/phpstan-strict-rules": "^1.6.0",
