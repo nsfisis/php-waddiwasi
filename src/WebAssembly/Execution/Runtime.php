@@ -16,28 +16,14 @@ use Nsfisis\Waddiwasi\WebAssembly\Structure\Types\Limits;
 use Nsfisis\Waddiwasi\WebAssembly\Structure\Types\TableType;
 use Nsfisis\Waddiwasi\WebAssembly\Structure\Types\ValType;
 use RuntimeException;
-use function abs;
 use function array_map;
 use function array_merge;
 use function array_reverse;
 use function array_slice;
 use function assert;
-use function ceil;
 use function count;
-use function fdiv;
-use function floor;
-use function intdiv;
 use function is_array;
-use function is_infinite;
 use function is_int;
-use function is_nan;
-use function max;
-use function min;
-use function pack;
-use function round;
-use function sqrt;
-use function unpack;
-use const PHP_INT_MIN;
 
 final class Runtime implements ExporterInterface
 {
@@ -573,21 +559,21 @@ final class Runtime implements ExporterInterface
 
     private function execInstrNumericF32Abs(Instrs\Numeric\F32Abs $instr): void
     {
-        $v = $this->stack->popFloat();
-        $this->stack->pushValue(abs($v));
+        $x = $this->stack->popFloat();
+        $this->stack->pushValue(NumericOps::f32Abs($x));
     }
 
     private function execInstrNumericF32Add(Instrs\Numeric\F32Add $instr): void
     {
-        $c2 = $this->stack->popFloat();
-        $c1 = $this->stack->popFloat();
-        $this->stack->pushValue(NumericOps::truncateF64ToF32($c1 + $c2));
+        $y = $this->stack->popFloat();
+        $x = $this->stack->popFloat();
+        $this->stack->pushValue(NumericOps::f32Add($x, $y));
     }
 
     private function execInstrNumericF32Ceil(Instrs\Numeric\F32Ceil $instr): void
     {
-        $v = $this->stack->popFloat();
-        $this->stack->pushValue(ceil($v));
+        $x = $this->stack->popFloat();
+        $this->stack->pushValue(NumericOps::f32Ceil($x));
     }
 
     private function execInstrNumericF32Const(Instrs\Numeric\F32Const $instr): void
@@ -597,193 +583,177 @@ final class Runtime implements ExporterInterface
 
     private function execInstrNumericF32ConvertI32S(Instrs\Numeric\F32ConvertI32S $instr): void
     {
-        $v = $this->stack->popInt();
-        $this->stack->pushValue(NumericOps::truncateF64ToF32((float) $v));
+        $x = $this->stack->popInt();
+        $this->stack->pushValue(NumericOps::f32ConvertI32S($x));
     }
 
     private function execInstrNumericF32ConvertI32U(Instrs\Numeric\F32ConvertI32U $instr): void
     {
-        $v = NumericOps::convertS32ToU32($this->stack->popInt());
-        $this->stack->pushValue(NumericOps::truncateF64ToF32((float) $v));
+        $x = $this->stack->popInt();
+        $this->stack->pushValue(NumericOps::f32ConvertI32U($x));
     }
 
     private function execInstrNumericF32ConvertI64S(Instrs\Numeric\F32ConvertI64S $instr): void
     {
-        $v = $this->stack->popInt();
-        $this->stack->pushValue(NumericOps::truncateF64ToF32((float) $v));
+        $x = $this->stack->popInt();
+        $this->stack->pushValue(NumericOps::f32ConvertI64S($x));
     }
 
     private function execInstrNumericF32ConvertI64U(Instrs\Numeric\F32ConvertI64U $instr): void
     {
-        $v = $this->stack->popInt();
-        $this->stack->pushValue(NumericOps::truncateF64ToF32((float) $v));
+        $x = $this->stack->popInt();
+        $this->stack->pushValue(NumericOps::f32ConvertI64U($x));
     }
 
     private function execInstrNumericF32CopySign(Instrs\Numeric\F32CopySign $instr): void
     {
-        $c2 = $this->stack->popFloat();
-        $c1 = $this->stack->popFloat();
-        $c1Sign = NumericOps::getFloatSign($c1);
-        $c2Sign = NumericOps::getFloatSign($c2);
-        $this->stack->pushValue($c1Sign === $c2Sign ? $c1 : -$c1);
+        $y = $this->stack->popFloat();
+        $x = $this->stack->popFloat();
+        $this->stack->pushValue(NumericOps::f32CopySign($x, $y));
     }
 
     private function execInstrNumericF32DemoteF64(Instrs\Numeric\F32DemoteF64 $instr): void
     {
-        $v = $this->stack->popFloat();
-        $this->stack->pushValue($v);
+        $x = $this->stack->popFloat();
+        $this->stack->pushValue(NumericOps::f32DemoteF64($x));
     }
 
     private function execInstrNumericF32Div(Instrs\Numeric\F32Div $instr): void
     {
-        $c2 = $this->stack->popFloat();
-        $c1 = $this->stack->popFloat();
-        $this->stack->pushValue(NumericOps::truncateF64ToF32(fdiv($c1, $c2)));
+        $y = $this->stack->popFloat();
+        $x = $this->stack->popFloat();
+        $this->stack->pushValue(NumericOps::f32Div($x, $y));
     }
 
     private function execInstrNumericF32Eq(Instrs\Numeric\F32Eq $instr): void
     {
-        $c2 = $this->stack->popFloat();
-        $c1 = $this->stack->popFloat();
-        $this->stack->pushBool($c1 === $c2);
+        $y = $this->stack->popFloat();
+        $x = $this->stack->popFloat();
+        $this->stack->pushBool(NumericOps::f32Eq($x, $y));
     }
 
     private function execInstrNumericF32Floor(Instrs\Numeric\F32Floor $instr): void
     {
-        $v = $this->stack->popFloat();
-        $this->stack->pushValue(floor($v));
+        $x = $this->stack->popFloat();
+        $this->stack->pushValue(NumericOps::f32Floor($x));
     }
 
     private function execInstrNumericF32Ge(Instrs\Numeric\F32Ge $instr): void
     {
-        $c2 = $this->stack->popFloat();
-        $c1 = $this->stack->popFloat();
-        $this->stack->pushBool($c1 >= $c2);
+        $y = $this->stack->popFloat();
+        $x = $this->stack->popFloat();
+        $this->stack->pushBool(NumericOps::f32Ge($x, $y));
     }
 
     private function execInstrNumericF32Gt(Instrs\Numeric\F32Gt $instr): void
     {
-        $c2 = $this->stack->popFloat();
-        $c1 = $this->stack->popFloat();
-        $this->stack->pushBool($c1 > $c2);
+        $y = $this->stack->popFloat();
+        $x = $this->stack->popFloat();
+        $this->stack->pushBool(NumericOps::f32Gt($x, $y));
     }
 
     private function execInstrNumericF32Le(Instrs\Numeric\F32Le $instr): void
     {
-        $c2 = $this->stack->popFloat();
-        $c1 = $this->stack->popFloat();
-        $this->stack->pushBool($c1 <= $c2);
+        $y = $this->stack->popFloat();
+        $x = $this->stack->popFloat();
+        $this->stack->pushBool(NumericOps::f32Le($x, $y));
     }
 
     private function execInstrNumericF32Lt(Instrs\Numeric\F32Lt $instr): void
     {
-        $c2 = $this->stack->popFloat();
-        $c1 = $this->stack->popFloat();
-        $this->stack->pushBool($c1 < $c2);
+        $y = $this->stack->popFloat();
+        $x = $this->stack->popFloat();
+        $this->stack->pushBool(NumericOps::f32Lt($x, $y));
     }
 
     private function execInstrNumericF32Max(Instrs\Numeric\F32Max $instr): void
     {
-        $c2 = $this->stack->popFloat();
-        $c1 = $this->stack->popFloat();
-        if (is_nan($c1) || is_nan($c2)) {
-            // PHP's standard max() handles NaNs in diffrent way than WebAssembly spec does.
-            $this->stack->pushValue(NAN);
-            return;
-        }
-        $this->stack->pushValue(max($c1, $c2));
+        $y = $this->stack->popFloat();
+        $x = $this->stack->popFloat();
+        $this->stack->pushValue(NumericOps::f32Max($x, $y));
     }
 
     private function execInstrNumericF32Min(Instrs\Numeric\F32Min $instr): void
     {
-        $c2 = $this->stack->popFloat();
-        $c1 = $this->stack->popFloat();
-        if (is_nan($c1) || is_nan($c2)) {
-            // PHP's standard min() handles NaNs in diffrent way than WebAssembly spec does.
-            $this->stack->pushValue(NAN);
-            return;
-        }
-        $this->stack->pushValue(min($c1, $c2));
+        $y = $this->stack->popFloat();
+        $x = $this->stack->popFloat();
+        $this->stack->pushValue(NumericOps::f32Min($x, $y));
     }
 
     private function execInstrNumericF32Mul(Instrs\Numeric\F32Mul $instr): void
     {
-        $c2 = $this->stack->popFloat();
-        $c1 = $this->stack->popFloat();
-        $this->stack->pushValue(NumericOps::truncateF64ToF32($c1 * $c2));
+        $y = $this->stack->popFloat();
+        $x = $this->stack->popFloat();
+        $this->stack->pushValue(NumericOps::f32Mul($x, $y));
     }
 
     private function execInstrNumericF32Ne(Instrs\Numeric\F32Ne $instr): void
     {
-        $c2 = $this->stack->popFloat();
-        $c1 = $this->stack->popFloat();
-        $this->stack->pushBool($c1 !== $c2);
+        $y = $this->stack->popFloat();
+        $x = $this->stack->popFloat();
+        $this->stack->pushBool(NumericOps::f32Ne($x, $y));
     }
 
     private function execInstrNumericF32Nearest(Instrs\Numeric\F32Nearest $instr): void
     {
-        $v = $this->stack->popFloat();
-        $this->stack->pushValue(round($v, mode: PHP_ROUND_HALF_EVEN));
+        $x = $this->stack->popFloat();
+        $this->stack->pushValue(NumericOps::f32Nearest($x));
     }
 
     private function execInstrNumericF32Neg(Instrs\Numeric\F32Neg $instr): void
     {
-        $c1 = $this->stack->popFloat();
-        $this->stack->pushValue(-$c1);
+        $x = $this->stack->popFloat();
+        $this->stack->pushValue(NumericOps::f32Neg($x));
     }
 
     private function execInstrNumericF32ReinterpretI32(Instrs\Numeric\F32ReinterpretI32 $instr): void
     {
-        $v = $this->stack->popInt();
-        $this->stack->pushValue(NumericOps::reinterpretI32AsF32($v));
+        $x = $this->stack->popInt();
+        $this->stack->pushValue(NumericOps::f32ReinterpretI32($x));
     }
 
     private function execInstrNumericF32ReinterpretI64(Instrs\Numeric\F32ReinterpretI64 $instr): void
     {
-        $v = $this->stack->popInt();
-        $this->stack->pushValue(NumericOps::reinterpretI64AsF32($v));
+        $x = $this->stack->popInt();
+        $this->stack->pushValue(NumericOps::f32ReinterpretI64($x));
     }
 
     private function execInstrNumericF32Sqrt(Instrs\Numeric\F32Sqrt $instr): void
     {
-        $c1 = $this->stack->popFloat();
-        $this->stack->pushValue(NumericOps::truncateF64ToF32(sqrt($c1)));
+        $x = $this->stack->popFloat();
+        $this->stack->pushValue(NumericOps::f32Sqrt($x));
     }
 
     private function execInstrNumericF32Sub(Instrs\Numeric\F32Sub $instr): void
     {
-        $c2 = $this->stack->popFloat();
-        $c1 = $this->stack->popFloat();
-        $this->stack->pushValue(NumericOps::truncateF64ToF32($c1 - $c2));
+        $y = $this->stack->popFloat();
+        $x = $this->stack->popFloat();
+        $this->stack->pushValue(NumericOps::f32Sub($x, $y));
     }
 
     private function execInstrNumericF32Trunc(Instrs\Numeric\F32Trunc $instr): void
     {
-        $v = $this->stack->popFloat();
-        if ($v < 0) {
-            $this->stack->pushValue(NumericOps::truncateF64ToF32(ceil($v)));
-        } else {
-            $this->stack->pushValue(NumericOps::truncateF64ToF32(floor($v)));
-        }
+        $x = $this->stack->popFloat();
+        $this->stack->pushValue(NumericOps::f32Trunc($x));
     }
 
     private function execInstrNumericF64Abs(Instrs\Numeric\F64Abs $instr): void
     {
-        $c1 = $this->stack->popFloat();
-        $this->stack->pushValue(abs($c1));
+        $x = $this->stack->popFloat();
+        $this->stack->pushValue(NumericOps::f64Abs($x));
     }
 
     private function execInstrNumericF64Add(Instrs\Numeric\F64Add $instr): void
     {
-        $c2 = $this->stack->popFloat();
-        $c1 = $this->stack->popFloat();
-        $this->stack->pushValue($c1 + $c2);
+        $y = $this->stack->popFloat();
+        $x = $this->stack->popFloat();
+        $this->stack->pushValue(NumericOps::f64Add($x, $y));
     }
 
     private function execInstrNumericF64Ceil(Instrs\Numeric\F64Ceil $instr): void
     {
-        $c1 = $this->stack->popFloat();
-        $this->stack->pushValue(ceil($c1));
+        $x = $this->stack->popFloat();
+        $this->stack->pushValue(NumericOps::f64Ceil($x));
     }
 
     private function execInstrNumericF64Const(Instrs\Numeric\F64Const $instr): void
@@ -793,202 +763,178 @@ final class Runtime implements ExporterInterface
 
     private function execInstrNumericF64ConvertI32S(Instrs\Numeric\F64ConvertI32S $instr): void
     {
-        $c = $this->stack->popInt();
-        $this->stack->pushValue((float) $c);
+        $x = $this->stack->popInt();
+        $this->stack->pushValue(NumericOps::f64ConvertI32S($x));
     }
 
     private function execInstrNumericF64ConvertI32U(Instrs\Numeric\F64ConvertI32U $instr): void
     {
-        $c = $this->stack->popInt();
-        $this->stack->pushValue((float) $c);
+        $x = $this->stack->popInt();
+        $this->stack->pushValue(NumericOps::f64ConvertI32U($x));
     }
 
     private function execInstrNumericF64ConvertI64S(Instrs\Numeric\F64ConvertI64S $instr): void
     {
-        $c = $this->stack->popInt();
-        $this->stack->pushValue((float) $c);
+        $x = $this->stack->popInt();
+        $this->stack->pushValue(NumericOps::f64ConvertI64S($x));
     }
 
     private function execInstrNumericF64ConvertI64U(Instrs\Numeric\F64ConvertI64U $instr): void
     {
-        $c = $this->stack->popInt();
-        $this->stack->pushValue((float) $c);
+        $x = $this->stack->popInt();
+        $this->stack->pushValue(NumericOps::f64ConvertI64U($x));
     }
 
     private function execInstrNumericF64CopySign(Instrs\Numeric\F64CopySign $instr): void
     {
-        $c2 = $this->stack->popFloat();
-        $c1 = $this->stack->popFloat();
-        $c1Sign = NumericOps::getFloatSign($c1);
-        $c2Sign = NumericOps::getFloatSign($c2);
-        $this->stack->pushValue($c1Sign === $c2Sign ? $c1 : -$c1);
+        $y = $this->stack->popFloat();
+        $x = $this->stack->popFloat();
+        $this->stack->pushValue(NumericOps::f64CopySign($x, $y));
     }
 
     private function execInstrNumericF64Div(Instrs\Numeric\F64Div $instr): void
     {
-        $c2 = $this->stack->popFloat();
-        $c1 = $this->stack->popFloat();
-        $this->stack->pushValue(fdiv($c1, $c2));
+        $y = $this->stack->popFloat();
+        $x = $this->stack->popFloat();
+        $this->stack->pushValue(NumericOps::f64Div($x, $y));
     }
 
     private function execInstrNumericF64Eq(Instrs\Numeric\F64Eq $instr): void
     {
-        $c2 = $this->stack->popFloat();
-        $c1 = $this->stack->popFloat();
-        $this->stack->pushBool($c1 === $c2);
+        $y = $this->stack->popFloat();
+        $x = $this->stack->popFloat();
+        $this->stack->pushBool(NumericOps::f64Eq($x, $y));
     }
 
     private function execInstrNumericF64Floor(Instrs\Numeric\F64Floor $instr): void
     {
-        $c1 = $this->stack->popFloat();
-        $this->stack->pushValue(floor($c1));
+        $x = $this->stack->popFloat();
+        $this->stack->pushValue(NumericOps::f64Floor($x));
     }
 
     private function execInstrNumericF64Ge(Instrs\Numeric\F64Ge $instr): void
     {
-        $c2 = $this->stack->popFloat();
-        $c1 = $this->stack->popFloat();
-        $this->stack->pushBool($c1 >= $c2);
+        $y = $this->stack->popFloat();
+        $x = $this->stack->popFloat();
+        $this->stack->pushBool(NumericOps::f64Ge($x, $y));
     }
 
     private function execInstrNumericF64Gt(Instrs\Numeric\F64Gt $instr): void
     {
-        $c2 = $this->stack->popFloat();
-        $c1 = $this->stack->popFloat();
-        $this->stack->pushBool($c1 > $c2);
+        $y = $this->stack->popFloat();
+        $x = $this->stack->popFloat();
+        $this->stack->pushBool(NumericOps::f64Gt($x, $y));
     }
 
     private function execInstrNumericF64Le(Instrs\Numeric\F64Le $instr): void
     {
-        $c2 = $this->stack->popFloat();
-        $c1 = $this->stack->popFloat();
-        $this->stack->pushBool($c1 <= $c2);
+        $y = $this->stack->popFloat();
+        $x = $this->stack->popFloat();
+        $this->stack->pushBool(NumericOps::f64Le($x, $y));
     }
 
     private function execInstrNumericF64Lt(Instrs\Numeric\F64Lt $instr): void
     {
-        $c2 = $this->stack->popFloat();
-        $c1 = $this->stack->popFloat();
-        $this->stack->pushBool($c1 < $c2);
+        $y = $this->stack->popFloat();
+        $x = $this->stack->popFloat();
+        $this->stack->pushBool(NumericOps::f64Lt($x, $y));
     }
 
     private function execInstrNumericF64Max(Instrs\Numeric\F64Max $instr): void
     {
-        $c2 = $this->stack->popFloat();
-        $c1 = $this->stack->popFloat();
-        if (is_nan($c1) || is_nan($c2)) {
-            // PHP's standard max() handles NaNs in diffrent way than WebAssembly spec does.
-            $this->stack->pushValue(NAN);
-            return;
-        }
-        $this->stack->pushValue(max($c1, $c2));
+        $y = $this->stack->popFloat();
+        $x = $this->stack->popFloat();
+        $this->stack->pushValue(NumericOps::f64Max($x, $y));
     }
 
     private function execInstrNumericF64Min(Instrs\Numeric\F64Min $instr): void
     {
-        $c2 = $this->stack->popFloat();
-        $c1 = $this->stack->popFloat();
-        if (is_nan($c1) || is_nan($c2)) {
-            // PHP's standard min() handles NaNs in diffrent way than WebAssembly spec does.
-            $this->stack->pushValue(NAN);
-            return;
-        }
-        $this->stack->pushValue(min($c1, $c2));
+        $y = $this->stack->popFloat();
+        $x = $this->stack->popFloat();
+        $this->stack->pushValue(NumericOps::f64Min($x, $y));
     }
 
     private function execInstrNumericF64Mul(Instrs\Numeric\F64Mul $instr): void
     {
-        $c2 = $this->stack->popFloat();
-        $c1 = $this->stack->popFloat();
-        $this->stack->pushValue($c1 * $c2);
+        $y = $this->stack->popFloat();
+        $x = $this->stack->popFloat();
+        $this->stack->pushValue(NumericOps::f64Mul($x, $y));
     }
 
     private function execInstrNumericF64Ne(Instrs\Numeric\F64Ne $instr): void
     {
-        $c2 = $this->stack->popFloat();
-        $c1 = $this->stack->popFloat();
-        $this->stack->pushBool($c1 !== $c2);
+        $y = $this->stack->popFloat();
+        $x = $this->stack->popFloat();
+        $this->stack->pushBool(NumericOps::f64Ne($x, $y));
     }
 
     private function execInstrNumericF64Nearest(Instrs\Numeric\F64Nearest $instr): void
     {
-        $v = $this->stack->popFloat();
-        $this->stack->pushValue(round($v, mode: PHP_ROUND_HALF_EVEN));
+        $x = $this->stack->popFloat();
+        $this->stack->pushValue(NumericOps::f64Nearest($x));
     }
 
     private function execInstrNumericF64Neg(Instrs\Numeric\F64Neg $instr): void
     {
-        $c1 = $this->stack->popFloat();
-        $this->stack->pushValue(-$c1);
+        $x = $this->stack->popFloat();
+        $this->stack->pushValue(NumericOps::f64Neg($x));
     }
 
     private function execInstrNumericF64PromoteF32(Instrs\Numeric\F64PromoteF32 $instr): void
     {
-        $v = $this->stack->popFloat();
-        $this->stack->pushValue($v);
+        $x = $this->stack->popFloat();
+        $this->stack->pushValue(NumericOps::f64PromoteF32($x));
     }
 
     private function execInstrNumericF64ReinterpretI32(Instrs\Numeric\F64ReinterpretI32 $instr): void
     {
-        $v = $this->stack->popInt();
-        $this->stack->pushValue(NumericOps::reinterpretI32AsF64($v));
+        $x = $this->stack->popInt();
+        $this->stack->pushValue(NumericOps::f64ReinterpretI32($x));
     }
 
     private function execInstrNumericF64ReinterpretI64(Instrs\Numeric\F64ReinterpretI64 $instr): void
     {
-        $v = $this->stack->popInt();
-        $this->stack->pushValue(NumericOps::reinterpretI64AsF64($v));
+        $x = $this->stack->popInt();
+        $this->stack->pushValue(NumericOps::f64ReinterpretI64($x));
     }
 
     private function execInstrNumericF64Sqrt(Instrs\Numeric\F64Sqrt $instr): void
     {
-        $c1 = $this->stack->popFloat();
-        $this->stack->pushValue(sqrt($c1));
+        $x = $this->stack->popFloat();
+        $this->stack->pushValue(NumericOps::f64Sqrt($x));
     }
 
     private function execInstrNumericF64Sub(Instrs\Numeric\F64Sub $instr): void
     {
-        $c2 = $this->stack->popFloat();
-        $c1 = $this->stack->popFloat();
-        $this->stack->pushValue($c1 - $c2);
+        $y = $this->stack->popFloat();
+        $x = $this->stack->popFloat();
+        $this->stack->pushValue(NumericOps::f64Sub($x, $y));
     }
 
     private function execInstrNumericF64Trunc(Instrs\Numeric\F64Trunc $instr): void
     {
-        $v = $this->stack->popFloat();
-        if ($v < 0) {
-            $this->stack->pushValue(ceil($v));
-        } else {
-            $this->stack->pushValue(floor($v));
-        }
+        $x = $this->stack->popFloat();
+        $this->stack->pushValue(NumericOps::f64Trunc($x));
     }
 
     private function execInstrNumericI32Add(Instrs\Numeric\I32Add $instr): void
     {
-        $c2 = $this->stack->popInt();
-        $c1 = $this->stack->popInt();
-        $this->stack->pushValue(NumericOps::convertU32ToS32(($c1 + $c2) & 0xFFFFFFFF));
+        $y = $this->stack->popInt();
+        $x = $this->stack->popInt();
+        $this->stack->pushValue(NumericOps::i32Add($x, $y));
     }
 
     private function execInstrNumericI32And(Instrs\Numeric\I32And $instr): void
     {
-        $c2 = NumericOps::convertS32ToU32($this->stack->popInt());
-        $c1 = NumericOps::convertS32ToU32($this->stack->popInt());
-        $this->stack->pushValue(NumericOps::convertU32ToS32(($c1 & $c2) & 0xFFFFFFFF));
+        $y = $this->stack->popInt();
+        $x = $this->stack->popInt();
+        $this->stack->pushValue(NumericOps::i32And($x, $y));
     }
 
     private function execInstrNumericI32Clz(Instrs\Numeric\I32Clz $instr): void
     {
-        $i = NumericOps::convertS32ToU32($this->stack->popInt());
-        $leadingZeros = 0;
-        for ($j = 31; 0 <= $j; $j--) {
-            if (($i & (1 << $j)) === 0) {
-                $leadingZeros++;
-            } else {
-                break;
-            }
-        }
-        $this->stack->pushValue($leadingZeros);
+        $x = $this->stack->popInt();
+        $this->stack->pushValue(NumericOps::i32Clz($x));
     }
 
     private function execInstrNumericI32Const(Instrs\Numeric\I32Const $instr): void
@@ -998,406 +944,311 @@ final class Runtime implements ExporterInterface
 
     private function execInstrNumericI32Ctz(Instrs\Numeric\I32Ctz $instr): void
     {
-        $i = NumericOps::convertS32ToU32($this->stack->popInt());
-        $trailingZeros = 0;
-        for ($j = 0; $j < 32; $j++) {
-            if (($i & (1 << $j)) === 0) {
-                $trailingZeros++;
-            } else {
-                break;
-            }
-        }
-        $this->stack->pushValue($trailingZeros);
+        $x = $this->stack->popInt();
+        $this->stack->pushValue(NumericOps::i32Ctz($x));
     }
 
     private function execInstrNumericI32DivS(Instrs\Numeric\I32DivS $instr): void
     {
-        $c2 = $this->stack->popInt();
-        $c1 = $this->stack->popInt();
-        if ($c2 === 0) {
-            throw new TrapException("i32.div_s: divide by zero", trapKind: TrapKind::DivideByZero);
+        $y = $this->stack->popInt();
+        $x = $this->stack->popInt();
+        $result = NumericOps::i32DivS($x, $y);
+        if (!is_int($result)) {
+            throw new TrapException($instr::opName() . 'invalid operation', trapKind: $result);
         }
-        if ($c1 === -2147483648 && $c2 === -1) {
-            throw new TrapException("i32.div_s: overflow", trapKind: TrapKind::IntegerOverflow);
-        }
-        $this->stack->pushValue(intdiv($c1, $c2));
+        $this->stack->pushValue($result);
     }
 
     private function execInstrNumericI32DivU(Instrs\Numeric\I32DivU $instr): void
     {
-        $c2 = NumericOps::convertS32ToU32($this->stack->popInt());
-        $c1 = NumericOps::convertS32ToU32($this->stack->popInt());
-        if ($c2 === 0) {
-            throw new TrapException("i32.div_u: divide by zero", trapKind: TrapKind::DivideByZero);
+        $y = $this->stack->popInt();
+        $x = $this->stack->popInt();
+        $result = NumericOps::i32DivU($x, $y);
+        if (!is_int($result)) {
+            throw new TrapException($instr::opName() . 'invalid operation', trapKind: $result);
         }
-        $this->stack->pushValue(NumericOps::convertU32ToS32(intdiv($c1, $c2)));
+        $this->stack->pushValue($result);
     }
 
     private function execInstrNumericI32Eq(Instrs\Numeric\I32Eq $instr): void
     {
-        $c2 = $this->stack->popInt();
-        $c1 = $this->stack->popInt();
-        $this->stack->pushBool($c1 === $c2);
+        $y = $this->stack->popInt();
+        $x = $this->stack->popInt();
+        $this->stack->pushBool(NumericOps::i32Eq($x, $y));
     }
 
     private function execInstrNumericI32Eqz(Instrs\Numeric\I32Eqz $instr): void
     {
-        $c1 = $this->stack->popInt();
-        $this->stack->pushBool($c1 === 0);
+        $x = $this->stack->popInt();
+        $this->stack->pushBool(NumericOps::i32Eqz($x));
     }
 
     private function execInstrNumericI32Extend16S(Instrs\Numeric\I32Extend16S $instr): void
     {
-        $c1 = NumericOps::convertS32ToU32($this->stack->popInt());
-        $c2 = $c1 & 0xFFFF;
-        $result = unpack('s', pack('S', $c2));
-        assert($result !== false);
-        $this->stack->pushValue($result[1]);
+        $x = $this->stack->popInt();
+        $this->stack->pushValue(NumericOps::i32Extend16S($x));
     }
 
     private function execInstrNumericI32Extend8S(Instrs\Numeric\I32Extend8S $instr): void
     {
-        $c1 = NumericOps::convertS32ToU32($this->stack->popInt());
-        $c2 = $c1 & 0xFF;
-        $result = unpack('c', pack('C', $c2));
-        assert($result !== false);
-        $this->stack->pushValue($result[1]);
+        $x = $this->stack->popInt();
+        $this->stack->pushValue(NumericOps::i32Extend8S($x));
     }
 
     private function execInstrNumericI32GeS(Instrs\Numeric\I32GeS $instr): void
     {
-        $c2 = $this->stack->popInt();
-        $c1 = $this->stack->popInt();
-        $this->stack->pushBool($c1 >= $c2);
+        $y = $this->stack->popInt();
+        $x = $this->stack->popInt();
+        $this->stack->pushBool(NumericOps::i32GeS($x, $y));
     }
 
     private function execInstrNumericI32GeU(Instrs\Numeric\I32GeU $instr): void
     {
-        $c2 = NumericOps::convertS32ToU32($this->stack->popInt());
-        $c1 = NumericOps::convertS32ToU32($this->stack->popInt());
-        $this->stack->pushBool($c1 >= $c2);
+        $y = $this->stack->popInt();
+        $x = $this->stack->popInt();
+        $this->stack->pushBool(NumericOps::i32GeU($x, $y));
     }
 
     private function execInstrNumericI32GtS(Instrs\Numeric\I32GtS $instr): void
     {
-        $c2 = $this->stack->popInt();
-        $c1 = $this->stack->popInt();
-        $this->stack->pushBool($c1 > $c2);
+        $y = $this->stack->popInt();
+        $x = $this->stack->popInt();
+        $this->stack->pushBool(NumericOps::i32GtS($x, $y));
     }
 
     private function execInstrNumericI32GtU(Instrs\Numeric\I32GtU $instr): void
     {
-        $c2 = NumericOps::convertS32ToU32($this->stack->popInt());
-        $c1 = NumericOps::convertS32ToU32($this->stack->popInt());
-        $this->stack->pushBool($c1 > $c2);
+        $y = $this->stack->popInt();
+        $x = $this->stack->popInt();
+        $this->stack->pushBool(NumericOps::i32GtU($x, $y));
     }
 
     private function execInstrNumericI32LeS(Instrs\Numeric\I32LeS $instr): void
     {
-        $c2 = $this->stack->popInt();
-        $c1 = $this->stack->popInt();
-        $this->stack->pushBool($c1 <= $c2);
+        $y = $this->stack->popInt();
+        $x = $this->stack->popInt();
+        $this->stack->pushBool(NumericOps::i32LeS($x, $y));
     }
 
     private function execInstrNumericI32LeU(Instrs\Numeric\I32LeU $instr): void
     {
-        $c2 = NumericOps::convertS32ToU32($this->stack->popInt());
-        $c1 = NumericOps::convertS32ToU32($this->stack->popInt());
-        $this->stack->pushBool($c1 <= $c2);
+        $y = $this->stack->popInt();
+        $x = $this->stack->popInt();
+        $this->stack->pushBool(NumericOps::i32LeU($x, $y));
     }
 
     private function execInstrNumericI32LtS(Instrs\Numeric\I32LtS $instr): void
     {
-        $c2 = $this->stack->popInt();
-        $c1 = $this->stack->popInt();
-        $this->stack->pushBool($c1 < $c2);
+        $y = $this->stack->popInt();
+        $x = $this->stack->popInt();
+        $this->stack->pushBool(NumericOps::i32LtS($x, $y));
     }
 
     private function execInstrNumericI32LtU(Instrs\Numeric\I32LtU $instr): void
     {
-        $c2 = NumericOps::convertS32ToU32($this->stack->popInt());
-        $c1 = NumericOps::convertS32ToU32($this->stack->popInt());
-        $this->stack->pushBool($c1 < $c2);
+        $y = $this->stack->popInt();
+        $x = $this->stack->popInt();
+        $this->stack->pushBool(NumericOps::i32LtU($x, $y));
     }
 
     private function execInstrNumericI32Mul(Instrs\Numeric\I32Mul $instr): void
     {
-        $c2 = $this->stack->popInt();
-        $c1 = $this->stack->popInt();
-        $this->stack->pushValue(NumericOps::convertU32ToS32(($c1 * $c2) & 0xFFFFFFFF));
+        $y = $this->stack->popInt();
+        $x = $this->stack->popInt();
+        $this->stack->pushValue(NumericOps::i32Mul($x, $y));
     }
 
     private function execInstrNumericI32Ne(Instrs\Numeric\I32Ne $instr): void
     {
-        $c2 = $this->stack->popInt();
-        $c1 = $this->stack->popInt();
-        $this->stack->pushBool($c1 !== $c2);
+        $y = $this->stack->popInt();
+        $x = $this->stack->popInt();
+        $this->stack->pushBool(NumericOps::i32Ne($x, $y));
     }
 
     private function execInstrNumericI32Or(Instrs\Numeric\I32Or $instr): void
     {
-        $c2 = NumericOps::convertS32ToU32($this->stack->popInt());
-        $c1 = NumericOps::convertS32ToU32($this->stack->popInt());
-        $this->stack->pushValue(NumericOps::convertU32ToS32(($c1 | $c2) & 0xFFFFFFFF));
+        $y = $this->stack->popInt();
+        $x = $this->stack->popInt();
+        $this->stack->pushValue(NumericOps::i32Or($x, $y));
     }
 
     private function execInstrNumericI32Popcnt(Instrs\Numeric\I32Popcnt $instr): void
     {
-        $i = NumericOps::convertS32ToU32($this->stack->popInt());
-        $popcnt = 0;
-        for ($j = 0; $j < 32; $j++) {
-            if (($i & (1 << $j)) !== 0) {
-                $popcnt++;
-            }
-        }
-        $this->stack->pushValue($popcnt);
+        $x = $this->stack->popInt();
+        $this->stack->pushValue(NumericOps::i32Popcnt($x));
     }
 
     private function execInstrNumericI32ReinterpretF32(Instrs\Numeric\I32ReinterpretF32 $instr): void
     {
-        $v = $this->stack->popFloat();
-        $this->stack->pushValue(NumericOps::reinterpretF32AsI32($v));
+        $x = $this->stack->popFloat();
+        $this->stack->pushValue(NumericOps::i32ReinterpretF32($x));
     }
 
     private function execInstrNumericI32ReinterpretF64(Instrs\Numeric\I32ReinterpretF64 $instr): void
     {
-        $v = $this->stack->popFloat();
-        $this->stack->pushValue(NumericOps::reinterpretF64AsI32($v));
+        $x = $this->stack->popFloat();
+        $this->stack->pushValue(NumericOps::i32ReinterpretF64($x));
     }
 
     private function execInstrNumericI32RemS(Instrs\Numeric\I32RemS $instr): void
     {
-        $c2 = $this->stack->popInt();
-        $c1 = $this->stack->popInt();
-        if ($c2 === 0) {
-            throw new TrapException("i32.rem_s: divide by zero or overflow", trapKind: TrapKind::DivideByZero);
+        $y = $this->stack->popInt();
+        $x = $this->stack->popInt();
+        $result = NumericOps::i32RemS($x, $y);
+        if (!is_int($result)) {
+            throw new TrapException($instr::opName() . 'invalid operation', trapKind: $result);
         }
-        $this->stack->pushValue($c1 % $c2);
+        $this->stack->pushValue($result);
     }
 
     private function execInstrNumericI32RemU(Instrs\Numeric\I32RemU $instr): void
     {
-        $c2 = NumericOps::convertS32ToU32($this->stack->popInt());
-        $c1 = NumericOps::convertS32ToU32($this->stack->popInt());
-        if ($c2 === 0) {
-            throw new TrapException("i32.rem_u: divide by zero", trapKind: TrapKind::DivideByZero);
+        $y = $this->stack->popInt();
+        $x = $this->stack->popInt();
+        $result = NumericOps::i32RemU($x, $y);
+        if (!is_int($result)) {
+            throw new TrapException($instr::opName() . 'invalid operation', trapKind: $result);
         }
-        $this->stack->pushValue(NumericOps::convertU32ToS32($c1 % $c2));
+        $this->stack->pushValue($result);
     }
 
     private function execInstrNumericI32RotL(Instrs\Numeric\I32RotL $instr): void
     {
-        $i2 = NumericOps::convertS32ToU32($this->stack->popInt());
-        $i1 = NumericOps::convertS32ToU32($this->stack->popInt());
-        $k = $i2 % 32;
-        $this->stack->pushValue(NumericOps::convertU32ToS32((($i1 << $k) | ($i1 >> (32 - $k))) & 0xFFFFFFFF));
+        $y = $this->stack->popInt();
+        $x = $this->stack->popInt();
+        $this->stack->pushValue(NumericOps::i32RotL($x, $y));
     }
 
     private function execInstrNumericI32RotR(Instrs\Numeric\I32RotR $instr): void
     {
-        $i2 = NumericOps::convertS32ToU32($this->stack->popInt());
-        $i1 = NumericOps::convertS32ToU32($this->stack->popInt());
-        $k = $i2 % 32;
-        $this->stack->pushValue(NumericOps::convertU32ToS32((($i1 >> $k) | ($i1 << (32 - $k))) & 0xFFFFFFFF));
+        $y = $this->stack->popInt();
+        $x = $this->stack->popInt();
+        $this->stack->pushValue(NumericOps::i32RotR($x, $y));
     }
 
     private function execInstrNumericI32Shl(Instrs\Numeric\I32Shl $instr): void
     {
-        $c2 = NumericOps::convertS32ToU32($this->stack->popInt());
-        $k = $c2 % 32;
-        $c1 = $this->stack->popInt();
-        $this->stack->pushValue(NumericOps::convertU32ToS32(($c1 << $k) & 0xFFFFFFFF));
+        $y = $this->stack->popInt();
+        $x = $this->stack->popInt();
+        $this->stack->pushValue(NumericOps::i32Shl($x, $y));
     }
 
     private function execInstrNumericI32ShrS(Instrs\Numeric\I32ShrS $instr): void
     {
-        $c2 = NumericOps::convertS32ToU32($this->stack->popInt());
-        $k = $c2 % 32;
-        $c1 = NumericOps::convertS32ToU32($this->stack->popInt());
-        $signed = $c1 & 0x80000000;
-        if ($signed !== 0) {
-            $result = $c1;
-            for ($i = 0; $i < $k; $i++) {
-                $result = ($result >> 1) | 0x80000000;
-            }
-            $this->stack->pushValue(NumericOps::convertU32ToS32($result));
-        } else {
-            $this->stack->pushValue($c1 >> $k);
-        }
+        $y = $this->stack->popInt();
+        $x = $this->stack->popInt();
+        $this->stack->pushValue(NumericOps::i32ShrS($x, $y));
     }
 
     private function execInstrNumericI32ShrU(Instrs\Numeric\I32ShrU $instr): void
     {
-        $c2 = NumericOps::convertS32ToU32($this->stack->popInt());
-        $k = $c2 % 32;
-        $c1 = NumericOps::convertS32ToU32($this->stack->popInt());
-        $this->stack->pushValue(NumericOps::convertU32ToS32($c1 >> $k));
+        $y = $this->stack->popInt();
+        $x = $this->stack->popInt();
+        $this->stack->pushValue(NumericOps::i32ShrU($x, $y));
     }
 
     private function execInstrNumericI32Sub(Instrs\Numeric\I32Sub $instr): void
     {
-        $c2 = NumericOps::convertS32ToU32($this->stack->popInt());
-        $c1 = NumericOps::convertS32ToU32($this->stack->popInt());
-        $c2Neg = ((~$c2 & 0xFFFFFFFF) + 1) & 0xFFFFFFFF;
-        $this->stack->pushValue(NumericOps::convertU32ToS32(($c1 + $c2Neg) & 0xFFFFFFFF));
+        $y = $this->stack->popInt();
+        $x = $this->stack->popInt();
+        $this->stack->pushValue(NumericOps::i32Sub($x, $y));
     }
 
     private function execInstrNumericI32TruncF32S(Instrs\Numeric\I32TruncF32S $instr): void
     {
-        $v = $this->stack->popFloat();
-        if (is_nan($v)) {
-            throw new TrapException($instr::opName() . ": invalid conversion", trapKind: TrapKind::InvalidConversionToInteger);
+        $x = $this->stack->popFloat();
+        $result = NumericOps::i32TruncF32S($x);
+        if (!is_int($result)) {
+            throw new TrapException($instr::opName() . 'invalid operation', trapKind: $result);
         }
-        if (is_infinite($v)) {
-            throw new TrapException($instr::opName() . ": overflow", trapKind: TrapKind::IntegerOverflow);
-        }
-        if ($v <= -2147483649.0 || 2147483648.0 <= $v) {
-            throw new TrapException($instr::opName() . ": overflow", trapKind: TrapKind::IntegerOverflow);
-        }
-        $this->stack->pushValue((int) $v);
+        $this->stack->pushValue($result);
     }
 
     private function execInstrNumericI32TruncF32U(Instrs\Numeric\I32TruncF32U $instr): void
     {
-        $v = $this->stack->popFloat();
-        if (is_nan($v)) {
-            throw new TrapException($instr::opName() . ": invalid conversion", trapKind: TrapKind::InvalidConversionToInteger);
+        $x = $this->stack->popFloat();
+        $result = NumericOps::i32TruncF32U($x);
+        if (!is_int($result)) {
+            throw new TrapException($instr::opName() . 'invalid operation', trapKind: $result);
         }
-        if (is_infinite($v)) {
-            throw new TrapException($instr::opName() . ": overflow", trapKind: TrapKind::IntegerOverflow);
-        }
-        if ($v <= -1.0 || 4294967296.0 <= $v) {
-            throw new TrapException($instr::opName() . ": overflow", trapKind: TrapKind::IntegerOverflow);
-        }
-        $this->stack->pushValue(NumericOps::convertU32ToS32((int) $v));
+        $this->stack->pushValue($result);
     }
 
     private function execInstrNumericI32TruncF64S(Instrs\Numeric\I32TruncF64S $instr): void
     {
-        $v = $this->stack->popFloat();
-        if (is_nan($v)) {
-            throw new TrapException($instr::opName() . ": invalid conversion", trapKind: TrapKind::InvalidConversionToInteger);
+        $x = $this->stack->popFloat();
+        $result = NumericOps::i32TruncF64S($x);
+        if (!is_int($result)) {
+            throw new TrapException($instr::opName() . 'invalid operation', trapKind: $result);
         }
-        if (is_infinite($v)) {
-            throw new TrapException($instr::opName() . ": overflow", trapKind: TrapKind::IntegerOverflow);
-        }
-        if ($v <= -2147483649.0 || 2147483648.0 <= $v) {
-            throw new TrapException($instr::opName() . ": overflow", trapKind: TrapKind::IntegerOverflow);
-        }
-        $this->stack->pushValue((int) $v);
+        $this->stack->pushValue($result);
     }
 
     private function execInstrNumericI32TruncF64U(Instrs\Numeric\I32TruncF64U $instr): void
     {
-        $v = $this->stack->popFloat();
-        if (is_nan($v)) {
-            throw new TrapException($instr::opName() . ": invalid conversion", trapKind: TrapKind::InvalidConversionToInteger);
+        $x = $this->stack->popFloat();
+        $result = NumericOps::i32TruncF64U($x);
+        if (!is_int($result)) {
+            throw new TrapException($instr::opName() . 'invalid operation', trapKind: $result);
         }
-        if (is_infinite($v)) {
-            throw new TrapException($instr::opName() . ": overflow", trapKind: TrapKind::IntegerOverflow);
-        }
-        if ($v <= -1.0 || 4294967296.0 <= $v) {
-            throw new TrapException($instr::opName() . ": overflow", trapKind: TrapKind::IntegerOverflow);
-        }
-        $this->stack->pushValue(NumericOps::convertU32ToS32((int) $v));
+        $this->stack->pushValue($result);
     }
 
     private function execInstrNumericI32TruncSatF32S(Instrs\Numeric\I32TruncSatF32S $instr): void
     {
-        $v = $this->stack->popFloat();
-        if ($v < -2147483648.0) {
-            $this->stack->pushValue(-2147483648);
-        } elseif ($v > 2147483647.0) {
-            $this->stack->pushValue(2147483647);
-        } else {
-            $this->stack->pushValue((int) $v);
-        }
+        $x = $this->stack->popFloat();
+        $this->stack->pushValue(NumericOps::i32TruncSatF32S($x));
     }
 
     private function execInstrNumericI32TruncSatF32U(Instrs\Numeric\I32TruncSatF32U $instr): void
     {
-        $v = $this->stack->popFloat();
-        if ($v < 0.0) {
-            $this->stack->pushValue(0);
-        } elseif ($v > 4294967295.0) {
-            $this->stack->pushValue(4294967295);
-        } else {
-            $this->stack->pushValue((int) $v);
-        }
+        $x = $this->stack->popFloat();
+        $this->stack->pushValue(NumericOps::i32TruncSatF32U($x));
     }
 
     private function execInstrNumericI32TruncSatF64S(Instrs\Numeric\I32TruncSatF64S $instr): void
     {
-        $v = $this->stack->popFloat();
-        if ($v < -2147483648.0) {
-            $this->stack->pushValue(-2147483648);
-        } elseif ($v > 2147483647.0) {
-            $this->stack->pushValue(2147483647);
-        } else {
-            $this->stack->pushValue((int) $v);
-        }
+        $x = $this->stack->popFloat();
+        $this->stack->pushValue(NumericOps::i32TruncSatF64S($x));
     }
 
     private function execInstrNumericI32TruncSatF64U(Instrs\Numeric\I32TruncSatF64U $instr): void
     {
-        $v = $this->stack->popFloat();
-        if ($v < 0.0) {
-            $this->stack->pushValue(0);
-        } elseif ($v > 4294967295.0) {
-            $this->stack->pushValue(4294967295);
-        } else {
-            $this->stack->pushValue((int) $v);
-        }
+        $x = $this->stack->popFloat();
+        $this->stack->pushValue(NumericOps::i32TruncSatF64U($x));
     }
 
     private function execInstrNumericI32WrapI64(Instrs\Numeric\I32WrapI64 $instr): void
     {
-        $c1 = $this->stack->popInt();
-        $this->stack->pushValue(NumericOps::convertU32ToS32($c1 & 0xFFFFFFFF));
+        $x = $this->stack->popInt();
+        $this->stack->pushValue(NumericOps::i32WrapI64($x));
     }
 
     private function execInstrNumericI32Xor(Instrs\Numeric\I32Xor $instr): void
     {
-        $c2 = NumericOps::convertS32ToU32($this->stack->popInt());
-        $c1 = NumericOps::convertS32ToU32($this->stack->popInt());
-        $this->stack->pushValue(NumericOps::convertU32ToS32(($c1 ^ $c2) & 0xFFFFFFFF));
+        $y = $this->stack->popInt();
+        $x = $this->stack->popInt();
+        $this->stack->pushValue(NumericOps::i32Xor($x, $y));
     }
 
     private function execInstrNumericI64Add(Instrs\Numeric\I64Add $instr): void
     {
-        $c2 = $this->stack->popInt();
-        $c1 = $this->stack->popInt();
-        $result = NumericOps::bigIntToPhpInt(bcadd((string)$c1, (string)$c2));
-        $this->stack->pushValue($result);
+        $y = $this->stack->popInt();
+        $x = $this->stack->popInt();
+        $this->stack->pushValue(NumericOps::i64Add($x, $y));
     }
 
     private function execInstrNumericI64And(Instrs\Numeric\I64And $instr): void
     {
-        $c2 = $this->stack->popInt();
-        $c1 = $this->stack->popInt();
-        $this->stack->pushValue($c1 & $c2);
+        $y = $this->stack->popInt();
+        $x = $this->stack->popInt();
+        $this->stack->pushValue(NumericOps::i64And($x, $y));
     }
 
     private function execInstrNumericI64Clz(Instrs\Numeric\I64Clz $instr): void
     {
-        $i = $this->stack->popInt();
-        $leadingZeros = 0;
-        for ($j = 63; 0 <= $j; $j--) {
-            if ($j === 63) {
-                if ($i < 0) {
-                    break;
-                } else {
-                    $leadingZeros++;
-                }
-            } else {
-                if (($i & (1 << $j)) === 0) {
-                    $leadingZeros++;
-                } else {
-                    break;
-                }
-            }
-        }
-        $this->stack->pushValue($leadingZeros);
+        $x = $this->stack->popInt();
+        $this->stack->pushValue(NumericOps::i64Clz($x));
     }
 
     private function execInstrNumericI64Const(Instrs\Numeric\I64Const $instr): void
@@ -1407,406 +1258,303 @@ final class Runtime implements ExporterInterface
 
     private function execInstrNumericI64Ctz(Instrs\Numeric\I64Ctz $instr): void
     {
-        $i = $this->stack->popInt();
-        $trailingZeros = 0;
-        for ($j = 0; $j < 64; $j++) {
-            if ($j === 63) {
-                if ($i >= 0) {
-                    $trailingZeros++;
-                }
-            } else {
-                if (($i & (1 << $j)) === 0) {
-                    $trailingZeros++;
-                } else {
-                    break;
-                }
-            }
-        }
-        $this->stack->pushValue($trailingZeros);
+        $x = $this->stack->popInt();
+        $this->stack->pushValue(NumericOps::i64Ctz($x));
     }
 
     private function execInstrNumericI64DivS(Instrs\Numeric\I64DivS $instr): void
     {
-        $c2 = $this->stack->popInt();
-        $c1 = $this->stack->popInt();
-        if ($c2 === 0) {
-            throw new TrapException("i64.div_s: divide by zero", trapKind: TrapKind::DivideByZero);
+        $y = $this->stack->popInt();
+        $x = $this->stack->popInt();
+        $result = NumericOps::i64DivS($x, $y);
+        if (!is_int($result)) {
+            throw new TrapException($instr::opName() . 'invalid operation', trapKind: $result);
         }
-        if ($c1 === PHP_INT_MIN && $c2 === -1) {
-            throw new TrapException("i64.div_s: overflow", trapKind: TrapKind::IntegerOverflow);
-        }
-        $this->stack->pushValue(intdiv($c1, $c2));
+        $this->stack->pushValue($result);
     }
 
     private function execInstrNumericI64DivU(Instrs\Numeric\I64DivU $instr): void
     {
-        $c2 = NumericOps::convertS64ToBigUInt($this->stack->popInt());
-        $c1 = NumericOps::convertS64ToBigUInt($this->stack->popInt());
-        if ($c2 === '0') {
-            throw new TrapException("i64.div_u: divide by zero", trapKind: TrapKind::DivideByZero);
+        $y = $this->stack->popInt();
+        $x = $this->stack->popInt();
+        $result = NumericOps::i64DivU($x, $y);
+        if (!is_int($result)) {
+            throw new TrapException($instr::opName() . 'invalid operation', trapKind: $result);
         }
-        $this->stack->pushValue(NumericOps::bigIntToPhpInt(bcdiv($c1, $c2, 0)));
+        $this->stack->pushValue($result);
     }
 
     private function execInstrNumericI64Eq(Instrs\Numeric\I64Eq $instr): void
     {
-        $c2 = $this->stack->popInt();
-        $c1 = $this->stack->popInt();
-        $this->stack->pushBool($c1 === $c2);
+        $y = $this->stack->popInt();
+        $x = $this->stack->popInt();
+        $this->stack->pushBool(NumericOps::i64Eq($x, $y));
     }
 
     private function execInstrNumericI64Eqz(Instrs\Numeric\I64Eqz $instr): void
     {
-        $c1 = $this->stack->popInt();
-        $this->stack->pushBool($c1 === 0);
+        $x = $this->stack->popInt();
+        $this->stack->pushBool(NumericOps::i64Eqz($x));
     }
 
     private function execInstrNumericI64Extend16S(Instrs\Numeric\I64Extend16S $instr): void
     {
-        $c1 = $this->stack->popInt();
-        $c2 = $c1 & 0xFFFF;
-        $result = unpack('s', pack('S', $c2));
-        assert($result !== false);
-        $this->stack->pushValue($result[1]);
+        $x = $this->stack->popInt();
+        $this->stack->pushValue(NumericOps::i64Extend16S($x));
     }
 
     private function execInstrNumericI64Extend32S(Instrs\Numeric\I64Extend32S $instr): void
     {
-        $c1 = $this->stack->popInt();
-        $c2 = $c1 & 0xFFFFFFFF;
-        $result = unpack('l', pack('L', $c2));
-        assert($result !== false);
-        $this->stack->pushValue($result[1]);
+        $x = $this->stack->popInt();
+        $this->stack->pushValue(NumericOps::i64Extend32S($x));
     }
 
     private function execInstrNumericI64Extend8S(Instrs\Numeric\I64Extend8S $instr): void
     {
-        $c1 = $this->stack->popInt();
-        $c2 = $c1 & 0xFF;
-        $result = unpack('c', pack('C', $c2));
-        assert($result !== false);
-        $this->stack->pushValue($result[1]);
+        $x = $this->stack->popInt();
+        $this->stack->pushValue(NumericOps::i64Extend8S($x));
     }
 
     private function execInstrNumericI64ExtendI32S(Instrs\Numeric\I64ExtendI32S $instr): void
     {
-        $c1 = $this->stack->popInt();
-        $this->stack->pushValue($c1);
+        $x = $this->stack->popInt();
+        $this->stack->pushValue(NumericOps::i64ExtendI32S($x));
     }
 
     private function execInstrNumericI64ExtendI32U(Instrs\Numeric\I64ExtendI32U $instr): void
     {
-        $c1 = NumericOps::convertS32ToU32($this->stack->popInt());
-        $c2 = $c1 & 0xFFFFFFFF;
-        $this->stack->pushValue($c2);
+        $x = $this->stack->popInt();
+        $this->stack->pushValue(NumericOps::i64ExtendI32U($x));
     }
 
     private function execInstrNumericI64GeS(Instrs\Numeric\I64GeS $instr): void
     {
-        $c2 = $this->stack->popInt();
-        $c1 = $this->stack->popInt();
-        $this->stack->pushBool($c1 >= $c2);
+        $y = $this->stack->popInt();
+        $x = $this->stack->popInt();
+        $this->stack->pushBool(NumericOps::i64GeS($x, $y));
     }
 
     private function execInstrNumericI64GeU(Instrs\Numeric\I64GeU $instr): void
     {
-        $c2 = $this->stack->popInt();
-        $c2Packed = pack('J', $c2);
-        $c1 = $this->stack->popInt();
-        $c1Packed = pack('J', $c1);
-        $this->stack->pushBool($c1Packed >= $c2Packed);
+        $y = $this->stack->popInt();
+        $x = $this->stack->popInt();
+        $this->stack->pushBool(NumericOps::i64GeU($x, $y));
     }
 
     private function execInstrNumericI64GtS(Instrs\Numeric\I64GtS $instr): void
     {
-        $c2 = $this->stack->popInt();
-        $c1 = $this->stack->popInt();
-        $this->stack->pushBool($c1 > $c2);
+        $y = $this->stack->popInt();
+        $x = $this->stack->popInt();
+        $this->stack->pushBool(NumericOps::i64GtS($x, $y));
     }
 
     private function execInstrNumericI64GtU(Instrs\Numeric\I64GtU $instr): void
     {
-        $c2 = $this->stack->popInt();
-        $c2Packed = pack('J', $c2);
-        $c1 = $this->stack->popInt();
-        $c1Packed = pack('J', $c1);
-        $this->stack->pushBool($c1Packed > $c2Packed);
+        $y = $this->stack->popInt();
+        $x = $this->stack->popInt();
+        $this->stack->pushBool(NumericOps::i64GtU($x, $y));
     }
 
     private function execInstrNumericI64LeS(Instrs\Numeric\I64LeS $instr): void
     {
-        $c2 = $this->stack->popInt();
-        $c1 = $this->stack->popInt();
-        $this->stack->pushBool($c1 <= $c2);
+        $y = $this->stack->popInt();
+        $x = $this->stack->popInt();
+        $this->stack->pushBool(NumericOps::i64LeS($x, $y));
     }
 
     private function execInstrNumericI64LeU(Instrs\Numeric\I64LeU $instr): void
     {
-        $c2 = $this->stack->popInt();
-        $c2Packed = pack('J', $c2);
-        $c1 = $this->stack->popInt();
-        $c1Packed = pack('J', $c1);
-        $this->stack->pushBool($c1Packed <= $c2Packed);
+        $y = $this->stack->popInt();
+        $x = $this->stack->popInt();
+        $this->stack->pushBool(NumericOps::i64LeU($x, $y));
     }
 
     private function execInstrNumericI64LtS(Instrs\Numeric\I64LtS $instr): void
     {
-        $c2 = $this->stack->popInt();
-        $c1 = $this->stack->popInt();
-        $this->stack->pushBool($c1 < $c2);
+        $y = $this->stack->popInt();
+        $x = $this->stack->popInt();
+        $this->stack->pushBool(NumericOps::i64LtS($x, $y));
     }
 
     private function execInstrNumericI64LtU(Instrs\Numeric\I64LtU $instr): void
     {
-        $c2 = $this->stack->popInt();
-        $c2Packed = pack('J', $c2);
-        $c1 = $this->stack->popInt();
-        $c1Packed = pack('J', $c1);
-        $this->stack->pushBool($c1Packed < $c2Packed);
+        $y = $this->stack->popInt();
+        $x = $this->stack->popInt();
+        $this->stack->pushBool(NumericOps::i64LtU($x, $y));
     }
 
     private function execInstrNumericI64Mul(Instrs\Numeric\I64Mul $instr): void
     {
-        $c2 = $this->stack->popInt();
-        $c1 = $this->stack->popInt();
-        $result = NumericOps::bigIntToPhpInt(bcmul((string)$c1, (string)$c2));
-        $this->stack->pushValue($result);
+        $y = $this->stack->popInt();
+        $x = $this->stack->popInt();
+        $this->stack->pushValue(NumericOps::i64Mul($x, $y));
     }
 
     private function execInstrNumericI64Ne(Instrs\Numeric\I64Ne $instr): void
     {
-        $c2 = $this->stack->popInt();
-        $c1 = $this->stack->popInt();
-        $this->stack->pushBool($c1 !== $c2);
+        $y = $this->stack->popInt();
+        $x = $this->stack->popInt();
+        $this->stack->pushBool(NumericOps::i64Ne($x, $y));
     }
 
     private function execInstrNumericI64Or(Instrs\Numeric\I64Or $instr): void
     {
-        $c2 = $this->stack->popInt();
-        $c1 = $this->stack->popInt();
-        $this->stack->pushValue($c1 | $c2);
+        $y = $this->stack->popInt();
+        $x = $this->stack->popInt();
+        $this->stack->pushValue(NumericOps::i64Or($x, $y));
     }
 
     private function execInstrNumericI64Popcnt(Instrs\Numeric\I64Popcnt $instr): void
     {
-        $i = $this->stack->popInt();
-        $popcnt = 0;
-        for ($j = 0; $j < 64; $j++) {
-            if (($i & (1 << $j)) !== 0) {
-                $popcnt++;
-            }
-        }
-        $this->stack->pushValue($popcnt);
+        $x = $this->stack->popInt();
+        $this->stack->pushValue(NumericOps::i64Popcnt($x));
     }
 
     private function execInstrNumericI64ReinterpretF32(Instrs\Numeric\I64ReinterpretF32 $instr): void
     {
-        $v = $this->stack->popFloat();
-        $this->stack->pushValue(NumericOps::reinterpretF32AsI64($v));
+        $x = $this->stack->popFloat();
+        $this->stack->pushValue(NumericOps::i64ReinterpretF32($x));
     }
 
     private function execInstrNumericI64ReinterpretF64(Instrs\Numeric\I64ReinterpretF64 $instr): void
     {
-        $v = $this->stack->popFloat();
-        $this->stack->pushValue(NumericOps::reinterpretF64AsI64($v));
+        $x = $this->stack->popFloat();
+        $this->stack->pushValue(NumericOps::i64ReinterpretF64($x));
     }
 
     private function execInstrNumericI64RemS(Instrs\Numeric\I64RemS $instr): void
     {
-        $c2 = $this->stack->popInt();
-        $c1 = $this->stack->popInt();
-        if ($c2 === 0) {
-            throw new TrapException("i64.rem_s: divide by zero", trapKind: TrapKind::DivideByZero);
+        $y = $this->stack->popInt();
+        $x = $this->stack->popInt();
+        $result = NumericOps::i64RemS($x, $y);
+        if (!is_int($result)) {
+            throw new TrapException($instr::opName() . 'invalid operation', trapKind: $result);
         }
-        $this->stack->pushValue($c1 % $c2);
+        $this->stack->pushValue($result);
     }
 
     private function execInstrNumericI64RemU(Instrs\Numeric\I64RemU $instr): void
     {
-        $c2 = NumericOps::convertS64ToBigUInt($this->stack->popInt());
-        $c1 = NumericOps::convertS64ToBigUInt($this->stack->popInt());
-        if ($c2 === '0') {
-            throw new TrapException("i64.rem_u: divide by zero", trapKind: TrapKind::DivideByZero);
+        $y = $this->stack->popInt();
+        $x = $this->stack->popInt();
+        $result = NumericOps::i64RemU($x, $y);
+        if (!is_int($result)) {
+            throw new TrapException($instr::opName() . 'invalid operation', trapKind: $result);
         }
-        $this->stack->pushValue(NumericOps::bigIntToPhpInt(bcmod($c1, $c2, 0)));
+        $this->stack->pushValue($result);
     }
 
     private function execInstrNumericI64RotL(Instrs\Numeric\I64RotL $instr): void
     {
-        $i2 = NumericOps::convertS64ToBigUInt($this->stack->popInt());
-        $k = (int)bcmod($i2, '64');
-        $i1 = $this->stack->popInt();
-        $left = $i1 << $k;
-        $right = $i1;
-        for ($i = 0; $i < 64 - $k; $i++) {
-            $right = ($right >> 1) & 0x7FFFFFFFFFFFFFFF;
-        }
-        $this->stack->pushValue($left | $right);
+        $y = $this->stack->popInt();
+        $x = $this->stack->popInt();
+        $this->stack->pushValue(NumericOps::i64RotL($x, $y));
     }
 
     private function execInstrNumericI64RotR(Instrs\Numeric\I64RotR $instr): void
     {
-        $i2 = NumericOps::convertS64ToBigUInt($this->stack->popInt());
-        $k = (int)bcmod($i2, '64');
-        $i1 = $this->stack->popInt();
-        $left = $i1;
-        for ($i = 0; $i < $k; $i++) {
-            $left = ($left >> 1) & 0x7FFFFFFFFFFFFFFF;
-        }
-        $right = $i1 << (64 - $k);
-        $this->stack->pushValue($left | $right);
+        $y = $this->stack->popInt();
+        $x = $this->stack->popInt();
+        $this->stack->pushValue(NumericOps::i64RotR($x, $y));
     }
 
     private function execInstrNumericI64Shl(Instrs\Numeric\I64Shl $instr): void
     {
-        $c2 = NumericOps::convertS64ToBigUInt($this->stack->popInt());
-        $k = (int)bcmod($c2, '64');
-        $c1 = $this->stack->popInt();
-        $this->stack->pushValue($c1 << $k);
+        $y = $this->stack->popInt();
+        $x = $this->stack->popInt();
+        $this->stack->pushValue(NumericOps::i64Shl($x, $y));
     }
 
     private function execInstrNumericI64ShrS(Instrs\Numeric\I64ShrS $instr): void
     {
-        $c2 = NumericOps::convertS64ToBigUInt($this->stack->popInt());
-        $k = (int)bcmod($c2, '64');
-        $c1 = $this->stack->popInt();
-        $this->stack->pushValue($c1 >> $k);
+        $y = $this->stack->popInt();
+        $x = $this->stack->popInt();
+        $this->stack->pushValue(NumericOps::i64ShrS($x, $y));
     }
 
     private function execInstrNumericI64ShrU(Instrs\Numeric\I64ShrU $instr): void
     {
-        $c2 = NumericOps::convertS64ToBigUInt($this->stack->popInt());
-        $k = (int)bcmod($c2, '64');
-        if ($k === 0) {
-            return;
-        }
-        // Perform shr_u based on string manipulation because PHP does not
-        // support shr_u operation.
-        $c1 = $this->stack->popInt();
-        $this->stack->pushValue(bindec(substr(decbin($c1), 0, -$k)));
+        $y = $this->stack->popInt();
+        $x = $this->stack->popInt();
+        $this->stack->pushValue(NumericOps::i64ShrU($x, $y));
     }
 
     private function execInstrNumericI64Sub(Instrs\Numeric\I64Sub $instr): void
     {
-        $c2 = $this->stack->popInt();
-        $c1 = $this->stack->popInt();
-        $result = NumericOps::bigIntToPhpInt(bcsub((string)$c1, (string)$c2));
-        $this->stack->pushValue($result);
+        $y = $this->stack->popInt();
+        $x = $this->stack->popInt();
+        $this->stack->pushValue(NumericOps::i64Sub($x, $y));
     }
 
     private function execInstrNumericI64TruncF32S(Instrs\Numeric\I64TruncF32S $instr): void
     {
-        $v = $this->stack->popFloat();
-        if (is_nan($v)) {
-            throw new TrapException($instr::opName() . ": invalid conversion ($v)", trapKind: TrapKind::InvalidConversionToInteger);
+        $x = $this->stack->popFloat();
+        $result = NumericOps::i64TruncF32S($x);
+        if (!is_int($result)) {
+            throw new TrapException($instr::opName() . 'invalid operation', trapKind: $result);
         }
-        if (is_infinite($v)) {
-            throw new TrapException($instr::opName() . ": overflow ($v)", trapKind: TrapKind::IntegerOverflow);
-        }
-        if ($v <= -9223372036854775809.0 || 9223372036854775808.0 <= $v) {
-            throw new TrapException($instr::opName() . ": overflow ($v)", trapKind: TrapKind::IntegerOverflow);
-        }
-        $this->stack->pushValue((int) $v);
+        $this->stack->pushValue($result);
     }
 
     private function execInstrNumericI64TruncF32U(Instrs\Numeric\I64TruncF32U $instr): void
     {
-        $v = $this->stack->popFloat();
-        if (is_nan($v)) {
-            throw new TrapException($instr::opName() . ": invalid conversion", trapKind: TrapKind::InvalidConversionToInteger);
+        $x = $this->stack->popFloat();
+        $result = NumericOps::i64TruncF32U($x);
+        if (!is_int($result)) {
+            throw new TrapException($instr::opName() . 'invalid operation', trapKind: $result);
         }
-        if (is_infinite($v)) {
-            throw new TrapException($instr::opName() . ": overflow", trapKind: TrapKind::IntegerOverflow);
-        }
-        if ($v <= -1.0 || 18446744073709551616.0 <= $v) {
-            throw new TrapException($instr::opName() . ": overflow", trapKind: TrapKind::IntegerOverflow);
-        }
-        $this->stack->pushValue((int) $v);
+        $this->stack->pushValue($result);
     }
 
     private function execInstrNumericI64TruncF64S(Instrs\Numeric\I64TruncF64S $instr): void
     {
-        $v = $this->stack->popFloat();
-        if (is_nan($v)) {
-            throw new TrapException($instr::opName() . ": invalid conversion", trapKind: TrapKind::InvalidConversionToInteger);
+        $x = $this->stack->popFloat();
+        $result = NumericOps::i64TruncF64S($x);
+        if (!is_int($result)) {
+            throw new TrapException($instr::opName() . 'invalid operation', trapKind: $result);
         }
-        if (is_infinite($v)) {
-            throw new TrapException($instr::opName() . ": overflow", trapKind: TrapKind::IntegerOverflow);
-        }
-        if ($v <= -9223372036854775809.0 || 9223372036854775808.0 <= $v) {
-            throw new TrapException($instr::opName() . ": overflow", trapKind: TrapKind::IntegerOverflow);
-        }
-        $this->stack->pushValue((int) $v);
+        $this->stack->pushValue($result);
     }
 
     private function execInstrNumericI64TruncF64U(Instrs\Numeric\I64TruncF64U $instr): void
     {
-        $v = $this->stack->popFloat();
-        if (is_nan($v)) {
-            throw new TrapException($instr::opName() . ": invalid conversion", trapKind: TrapKind::InvalidConversionToInteger);
+        $x = $this->stack->popFloat();
+        $result = NumericOps::i64TruncF64U($x);
+        if (!is_int($result)) {
+            throw new TrapException($instr::opName() . 'invalid operation', trapKind: $result);
         }
-        if (is_infinite($v)) {
-            throw new TrapException($instr::opName() . ": overflow", trapKind: TrapKind::IntegerOverflow);
-        }
-        if ($v <= -1.0 || 18446744073709551616.0 <= $v) {
-            throw new TrapException($instr::opName() . ": overflow", trapKind: TrapKind::IntegerOverflow);
-        }
-        $this->stack->pushValue((int) $v);
+        $this->stack->pushValue($result);
     }
 
     private function execInstrNumericI64TruncSatF32S(Instrs\Numeric\I64TruncSatF32S $instr): void
     {
-        $v = $this->stack->popFloat();
-        if ($v < -9223372036854775808.0) {
-            $this->stack->pushValue(-9223372036854775808);
-        } elseif ($v > 9223372036854775807.0) {
-            $this->stack->pushValue(9223372036854775807);
-        } else {
-            $this->stack->pushValue((int) $v);
-        }
+        $x = $this->stack->popFloat();
+        $this->stack->pushValue(NumericOps::i64TruncSatF32S($x));
     }
 
     private function execInstrNumericI64TruncSatF32U(Instrs\Numeric\I64TruncSatF32U $instr): void
     {
-        $v = $this->stack->popFloat();
-        if ($v < 0.0) {
-            $this->stack->pushValue(0);
-        } elseif ($v > 18446744073709551615.0) {
-            $this->stack->pushValue(18446744073709551615);
-        } else {
-            $this->stack->pushValue((int) $v);
-        }
+        $x = $this->stack->popFloat();
+        $this->stack->pushValue(NumericOps::i64TruncSatF32U($x));
     }
 
     private function execInstrNumericI64TruncSatF64S(Instrs\Numeric\I64TruncSatF64S $instr): void
     {
-        $v = $this->stack->popFloat();
-        if ($v < -9223372036854775808.0) {
-            $this->stack->pushValue(-9223372036854775808);
-        } elseif ($v > 9223372036854775807.0) {
-            $this->stack->pushValue(9223372036854775807);
-        } else {
-            $this->stack->pushValue((int) $v);
-        }
+        $x = $this->stack->popFloat();
+        $this->stack->pushValue(NumericOps::i64TruncSatF64S($x));
     }
 
     private function execInstrNumericI64TruncSatF64U(Instrs\Numeric\I64TruncSatF64U $instr): void
     {
-        $v = $this->stack->popFloat();
-        if ($v < 0.0) {
-            $this->stack->pushValue(0);
-        } elseif ($v > 18446744073709551615.0) {
-            $this->stack->pushValue(18446744073709551615);
-        } else {
-            $this->stack->pushValue((int) $v);
-        }
+        $x = $this->stack->popFloat();
+        $this->stack->pushValue(NumericOps::i64TruncSatF64U($x));
     }
 
     private function execInstrNumericI64Xor(Instrs\Numeric\I64Xor $instr): void
     {
-        $c2 = $this->stack->popInt();
-        $c1 = $this->stack->popInt();
-        $this->stack->pushValue($c1 ^ $c2);
+        $y = $this->stack->popInt();
+        $x = $this->stack->popInt();
+        $this->stack->pushValue(NumericOps::i64Xor($x, $y));
     }
 
     private function execInstrReferenceRefFunc(Instrs\Reference\RefFunc $instr): void
