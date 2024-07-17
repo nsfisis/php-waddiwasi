@@ -89,7 +89,7 @@ abstract class SpecTestsuiteBase extends TestCase
         foreach (self::$registeredRuntimes as $registeredModuleName => $registeredRuntime) {
             $linker->registerNamespace($registeredModuleName, $registeredRuntime);
         }
-        $runtime = Runtime::instantiate(self::$store, $module, $linker->resolve($module));
+        $runtime = Runtime::instantiate($module, $linker);
         self::$runtimes[$moduleName] = $runtime;
         if ($moduleName !== '_') {
             self::$modules['_'] = $module;
@@ -187,7 +187,7 @@ abstract class SpecTestsuiteBase extends TestCase
             $linker->registerNamespace($registeredModuleName, $registeredRuntime);
         }
         try {
-            Runtime::instantiate(self::$store, $module, $linker->resolve($module));
+            Runtime::instantiate($module, $linker);
         } catch (RuntimeException $e) {
             $exception = $e;
         }
@@ -212,7 +212,7 @@ abstract class SpecTestsuiteBase extends TestCase
             $linker->registerNamespace($registeredModuleName, $registeredRuntime);
         }
         try {
-            Runtime::instantiate(self::$store, $module, $linker->resolve($module));
+            Runtime::instantiate($module, $linker);
         } catch (RuntimeException $e) {
             $exception = $e;
         }

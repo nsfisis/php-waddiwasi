@@ -14,7 +14,7 @@ final class Linker
     private array $symbols = [];
 
     public function __construct(
-        private Store $store,
+        public readonly Store $store,
     ) {
     }
 

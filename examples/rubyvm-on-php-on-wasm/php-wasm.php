@@ -133,7 +133,7 @@ foreach ($imports as $moduleName => $moduleImports) {
     }
 }
 
-$runtime = Runtime::instantiate($store, $module, $linker->resolve($module));
+$runtime = Runtime::instantiate($module, $linker);
 $codePtr = allocateStringOnWasmMemory($runtime, strtr(PHP_HELLO_WORLD, ['%DIR%' => __DIR__]));
 
 $results = $runtime->invoke("php_wasm_run", [$codePtr]);

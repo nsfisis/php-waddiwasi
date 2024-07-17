@@ -39,14 +39,13 @@ final class Runtime implements ExporterInterface
     ) {
     }
 
-    /**
-     * @param list<ExternVal> $externVals
-     */
     public static function instantiate(
-        Store $store,
         Module $module,
-        array $externVals,
+        Linker $linker,
     ): self {
+        $store = $linker->store;
+        $externVals = $linker->resolve($module);
+
         $allocator = new Allocator($store);
 
         $moduleInstInit = $allocator->allocPreInitModule($module, $externVals);

@@ -30,6 +30,6 @@ $linker = new Linker($store);
 
 $linker->register('', 'putc', Extern::Func(FuncInst::Host(new FuncType([ValType::I32], []), function (Runtime $runtime, int $c) { printf('%c', $c); })));
 
-$runtime = Runtime::instantiate($store, $module, $linker->resolve($module));
+$runtime = Runtime::instantiate($module, $linker);
 
 $runtime->invoke('main', []);
