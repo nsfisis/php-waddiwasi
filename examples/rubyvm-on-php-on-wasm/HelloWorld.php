@@ -1,10 +1,8 @@
 <?php
 
-require_once __DIR__ . '/vendor/autoload.php';
+require_once __DIR__ . '/../../vendor/autoload.php';
 
 \define('STDIN', fopen('php://stdin', 'r'));
-\define('STDOUT', fopen('php://stdout', 'r'));
-\define('STDERR', fopen('php://stderr', 'r'));
 
 $rubyVM = new \RubyVM\VM\Core\Runtime\RubyVM(
     new \RubyVM\VM\Core\Runtime\Option(
