@@ -74,6 +74,7 @@ final readonly class NumericOps
 
     public static function f32ConvertI64U(int $x): float
     {
+        $x = self::convertS64ToBigUInt($x);
         return self::truncateF64ToF32((float) $x);
     }
 
@@ -230,6 +231,7 @@ final readonly class NumericOps
 
     public static function f64ConvertI32U(int $x): float
     {
+        $x = self::convertS32ToU32($x);
         return (float) $x;
     }
 
@@ -240,6 +242,7 @@ final readonly class NumericOps
 
     public static function f64ConvertI64U(int $x): float
     {
+        $x = self::convertS64ToBigUInt($x);
         return (float) $x;
     }
 
