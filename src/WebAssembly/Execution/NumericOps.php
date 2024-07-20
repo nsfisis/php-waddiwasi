@@ -1057,10 +1057,26 @@ final readonly class NumericOps
         if (is_infinite($x)) {
             return TrapKind::IntegerOverflow;
         }
-        if ($x <= -1.0 || 18446744073709551616.0 <= $x) {
+        if ($x <= -1.0) {
             return TrapKind::IntegerOverflow;
         }
-        return (int) $x;
+        if ($x < 1.0) {
+            return 0;
+        }
+
+        [$_, $exponent, $fraction] = self::destructFloat($x);
+        $exponent_ = ($exponent >> 52) - 1023;
+        $fraction_ = $fraction | 0b00000000_00010000_00000000_00000000_00000000_00000000_00000000_00000000;
+        if (64 <= $exponent_) {
+            return TrapKind::IntegerOverflow;
+        }
+        if (53 <= $exponent_) {
+            $shiftWidth = $exponent_ - 52;
+            return $fraction_ << $shiftWidth;
+        } else {
+            $shiftWidth = 52 - $exponent_;
+            return $fraction_ >> $shiftWidth;
+        }
     }
 
     public static function i64TruncSatF32S(float $x): int
