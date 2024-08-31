@@ -42,6 +42,7 @@ use function in_array;
 use function is_float;
 use function is_int;
 use function ord;
+use function sprintf;
 
 final class Decoder
 {

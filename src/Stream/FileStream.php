@@ -10,6 +10,7 @@ use function fclose;
 use function fopen;
 use function fread;
 use function ord;
+use function sprintf;
 use function strlen;
 
 final class FileStream implements StreamInterface

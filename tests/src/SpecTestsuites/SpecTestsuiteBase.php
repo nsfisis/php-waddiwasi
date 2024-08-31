@@ -34,6 +34,7 @@ use PHPUnit\Framework\TestCase;
 use RuntimeException;
 use function count;
 use function is_float;
+use function sprintf;
 
 abstract class SpecTestsuiteBase extends TestCase
 {

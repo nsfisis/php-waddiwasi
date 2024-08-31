@@ -10,6 +10,7 @@ use Nsfisis\Waddiwasi\WebAssembly\Structure\Types\Limits;
 use Nsfisis\Waddiwasi\WebAssembly\Structure\Types\MemType;
 use function assert;
 use function count;
+use function sprintf;
 
 final class MemInst
 {

@@ -190,7 +190,8 @@ function makeHostFunc(string $typeDef, callable $fn): Externs\Func
         'f64' => ValType::F64,
         default => throw new \RuntimeException('Invalid type: ' . $s),
     };
-    preg_match('/^\(([^)]*)\) -> \(([^)]*)\)$/', $typeDef, $matches);
+    $ok = preg_match('/^\(([^)]*)\) -> \(([^)]*)\)$/', $typeDef, $matches);
+    \assert($ok === 1);
     $paramsDef = $matches[1];
     $resultsDef = $matches[2];
     $params = array_map($stringToType, $paramsDef === '' ? [] : explode(', ', $paramsDef));

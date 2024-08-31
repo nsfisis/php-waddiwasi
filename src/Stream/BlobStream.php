@@ -6,6 +6,7 @@ namespace Nsfisis\Waddiwasi\Stream;
 
 use function assert;
 use function ord;
+use function sprintf;
 use function strlen;
 use function substr;
 
