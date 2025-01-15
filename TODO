@@ -1,3 +1,4 @@
+* Support PHP 8.4
 * Support text format (.wat)
 * Implement validation
 * Fix known bugs (BUGS)
@@ -5,3 +6,14 @@
 * Provide sane bindings to PHP
 * Write PHPDoc for public APIs
 * Provide high-level APIs
+
+NOTE:
+
+* instance は store を参照する
+* runtime は instance と stack を持つ
+* extern を単独で持ち回れるか
+* extern は store に属する
+* linker が必要になるのは instantiate 操作だけ
+* linker が store への登録までおこなうのか
+* extern は store への参照を持つべきか
+* store が extern を生成すべき
