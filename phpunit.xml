@@ -39,6 +39,7 @@
             <file>tests/src/SpecTestsuites/Core/F64CmpTest.php</file>
             <file>tests/src/SpecTestsuites/Core/F64Test.php</file>
             <file>tests/src/SpecTestsuites/Core/FacTest.php</file>
+            <file>tests/src/SpecTestsuites/Core/FloatMiscTest.php</file>
             <file>tests/src/SpecTestsuites/Core/ForwardTest.php</file>
             <file>tests/src/SpecTestsuites/Core/FuncPtrsTest.php</file>
             <file>tests/src/SpecTestsuites/Core/FuncTest.php</file>

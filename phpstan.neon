@@ -9,7 +9,8 @@ parameters:
     paths:
         - src
         - examples/hello-world
-        - examples/php-on-wasm
+        # TODO
+        # - examples/php-on-wasm
     typeAliases:
         Byte: 'int'
         U32: 'int'
