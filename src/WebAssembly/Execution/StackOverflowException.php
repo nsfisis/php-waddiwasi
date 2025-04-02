@@ -12,7 +12,7 @@ final class StackOverflowException extends RuntimeException
     public function __construct(
         string $message = 'Stack overflow',
         int $code = 0,
-        Throwable $previous = null,
+        ?Throwable $previous = null,
     ) {
         parent::__construct($message, $code, $previous);
     }

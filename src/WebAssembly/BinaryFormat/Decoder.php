@@ -78,6 +78,8 @@ final class Decoder
         $codes = $this->decodeSection(SectionId::Code, $this->decodeCodeSecRest(...)) ?? [];
         $datas = $this->decodeSection(SectionId::Data, $this->decodeDataSecRest(...)) ?? [];
 
+        $this->skipCustomSections();
+
         if (!$this->stream->eof()) {
             throw new InvalidBinaryFormatException("eof");
         }

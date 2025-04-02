@@ -1,6 +1,6 @@
-FROM emscripten/emsdk:3.1.62
+FROM emscripten/emsdk:3.1.74
 
-RUN git clone --depth=1 --branch=php-8.3.9 https://github.com/php/php-src
+RUN git clone --depth=1 --branch=php-8.4.5 https://github.com/php/php-src
 
 RUN apt-get update && \
     apt-get install -y --no-install-recommends \

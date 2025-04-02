@@ -100,7 +100,6 @@ final class MemInst
         $originalSize = $this->size();
         // @phpstan-ignore-next-line
         $originalData = $this->ffi->new("uint8_t[$originalSize+8]");
-        assert($originalData !== null);
         FFI::memcpy($originalData, $this->dataU8, $originalSize);
 
         $this->initInternalMemory($len);
@@ -133,76 +132,43 @@ final class MemInst
             $this->ffi->cast("uint8_t[$this->dataSize+8]", $this->dataU8 + $offset),
         );
 
-        // @phpstan-ignore-next-line
         $this->dataU16_0 = $castInt(16, false, 0);
-        // @phpstan-ignore-next-line
         $this->dataU16_1 = $castInt(16, false, 1);
-        // @phpstan-ignore-next-line
         $this->dataS16_0 = $castInt(16, true, 0);
-        // @phpstan-ignore-next-line
         $this->dataS16_1 = $castInt(16, true, 1);
 
-        // @phpstan-ignore-next-line
         $this->dataU32_0 = $castInt(32, false, 0);
-        // @phpstan-ignore-next-line
         $this->dataU32_1 = $castInt(32, false, 1);
-        // @phpstan-ignore-next-line
         $this->dataU32_2 = $castInt(32, false, 2);
-        // @phpstan-ignore-next-line
         $this->dataU32_3 = $castInt(32, false, 3);
-        // @phpstan-ignore-next-line
         $this->dataS32_0 = $castInt(32, true, 0);
-        // @phpstan-ignore-next-line
         $this->dataS32_1 = $castInt(32, true, 1);
-        // @phpstan-ignore-next-line
         $this->dataS32_2 = $castInt(32, true, 2);
-        // @phpstan-ignore-next-line
         $this->dataS32_3 = $castInt(32, true, 3);
 
-        // @phpstan-ignore-next-line
         $this->dataS64_0 = $castInt(64, true, 0);
-        // @phpstan-ignore-next-line
         $this->dataS64_1 = $castInt(64, true, 1);
-        // @phpstan-ignore-next-line
         $this->dataS64_2 = $castInt(64, true, 2);
-        // @phpstan-ignore-next-line
         $this->dataS64_3 = $castInt(64, true, 3);
-        // @phpstan-ignore-next-line
         $this->dataS64_4 = $castInt(64, true, 4);
-        // @phpstan-ignore-next-line
         $this->dataS64_5 = $castInt(64, true, 5);
-        // @phpstan-ignore-next-line
         $this->dataS64_6 = $castInt(64, true, 6);
-        // @phpstan-ignore-next-line
         $this->dataS64_7 = $castInt(64, true, 7);
 
-        // @phpstan-ignore-next-line
         $this->dataF32_0 = $castFloat(32, 0);
-        // @phpstan-ignore-next-line
         $this->dataF32_1 = $castFloat(32, 1);
-        // @phpstan-ignore-next-line
         $this->dataF32_2 = $castFloat(32, 2);
-        // @phpstan-ignore-next-line
         $this->dataF32_3 = $castFloat(32, 3);
 
-        // @phpstan-ignore-next-line
         $this->dataF64_0 = $castFloat(64, 0);
-        // @phpstan-ignore-next-line
         $this->dataF64_1 = $castFloat(64, 1);
-        // @phpstan-ignore-next-line
         $this->dataF64_2 = $castFloat(64, 2);
-        // @phpstan-ignore-next-line
         $this->dataF64_3 = $castFloat(64, 3);
-        // @phpstan-ignore-next-line
         $this->dataF64_4 = $castFloat(64, 4);
-        // @phpstan-ignore-next-line
         $this->dataF64_5 = $castFloat(64, 5);
-        // @phpstan-ignore-next-line
         $this->dataF64_6 = $castFloat(64, 6);
-        // @phpstan-ignore-next-line
         $this->dataF64_7 = $castFloat(64, 7);
 
-        // @phpstan-ignore-next-line
         FFI::memset($this->dataU8, 0, $this->dataSize);
     }
 
@@ -258,7 +224,6 @@ final class MemInst
         if ($this->size() < $ptr + 1) {
             return null;
         }
-        // @phpstan-ignore-next-line
         $c = $this->dataS8[$ptr];
         assert(-0x80 <= $c && $c <= 0x7F, "$c");
         return $c;
@@ -272,7 +237,6 @@ final class MemInst
         if ($this->size() < $ptr + 1) {
             return null;
         }
-        // @phpstan-ignore-next-line
         $c = $this->dataU8[$ptr];
         assert(0 <= $c && $c <= 0xFF, "$c");
         return $c;
@@ -286,7 +250,6 @@ final class MemInst
         if ($this->size() < $ptr + 2) {
             return null;
         }
-        // @phpstan-ignore-next-line
         $c = $this->dataS16($ptr)[$ptr >> 1];
         assert(-0x8000 <= $c && $c <= 0x7FFF, "$c");
         return $c;
@@ -300,7 +263,6 @@ final class MemInst
         if ($this->size() < $ptr + 2) {
             return null;
         }
-        // @phpstan-ignore-next-line
         $c = $this->dataU16($ptr)[$ptr >> 1];
         assert(0 <= $c && $c <= 0xFFFF, "$c");
         return $c;
@@ -314,7 +276,6 @@ final class MemInst
         if ($this->size() < $ptr + 4) {
             return null;
         }
-        // @phpstan-ignore-next-line
         $c = $this->dataS32($ptr)[$ptr >> 2];
         assert(-0x80000000 <= $c && $c <= 0x7FFFFFFF, "$c");
         return $c;
@@ -328,7 +289,6 @@ final class MemInst
         if ($this->size() < $ptr + 1) {
             return null;
         }
-        // @phpstan-ignore-next-line
         $c = $this->dataS8[$ptr];
         assert(-0x80 <= $c && $c <= 0x7F, "$c");
         return $c;
@@ -342,7 +302,6 @@ final class MemInst
         if ($this->size() < $ptr + 1) {
             return null;
         }
-        // @phpstan-ignore-next-line
         $c = $this->dataU8[$ptr];
         assert(0 <= $c && $c <= 0xFF, "$c");
         return $c;
@@ -356,7 +315,6 @@ final class MemInst
         if ($this->size() < $ptr + 2) {
             return null;
         }
-        // @phpstan-ignore-next-line
         $c = $this->dataS16($ptr)[$ptr >> 1];
         assert(-0x8000 <= $c && $c <= 0x7FFF, "$c");
         return $c;
@@ -370,7 +328,6 @@ final class MemInst
         if ($this->size() < $ptr + 2) {
             return null;
         }
-        // @phpstan-ignore-next-line
         $c = $this->dataU16($ptr)[$ptr >> 1];
         assert(0 <= $c && $c <= 0xFFFF, "$c");
         return $c;
@@ -384,7 +341,6 @@ final class MemInst
         if ($this->size() < $ptr + 4) {
             return null;
         }
-        // @phpstan-ignore-next-line
         $c = $this->dataS32($ptr)[$ptr >> 2];
         assert(-0x80000000 <= $c && $c <= 0x7FFFFFFF, "$c");
         return $c;
@@ -398,7 +354,6 @@ final class MemInst
         if ($this->size() < $ptr + 4) {
             return null;
         }
-        // @phpstan-ignore-next-line
         $c = $this->dataU32($ptr)[$ptr >> 2];
         assert(0 <= $c && $c <= 0xFFFFFFFF, "$c");
         return $c;
@@ -412,7 +367,6 @@ final class MemInst
         if ($this->size() < $ptr + 8) {
             return null;
         }
-        // @phpstan-ignore-next-line
         $c = $this->dataS64($ptr)[$ptr >> 3];
         assert(-0x8000000000000000 <= $c && $c <= 0x7FFFFFFFFFFFFFFF, "$c");
         return $c;
@@ -426,7 +380,6 @@ final class MemInst
         if ($this->size() < $ptr + 4) {
             return null;
         }
-        // @phpstan-ignore-next-line
         return $this->dataF32($ptr)[$ptr >> 2];
     }
 
@@ -438,7 +391,6 @@ final class MemInst
         if ($this->size() < $ptr + 8) {
             return null;
         }
-        // @phpstan-ignore-next-line
         return $this->dataF64($ptr)[$ptr >> 3];
     }
 
@@ -450,7 +402,6 @@ final class MemInst
         if ($this->size() < $ptr + 1) {
             return null;
         }
-        // @phpstan-ignore-next-line
         return $this->dataU8[$ptr];
     }
 
@@ -462,7 +413,6 @@ final class MemInst
         if ($this->size() < $ptr + 1) {
             return false;
         }
-        // @phpstan-ignore-next-line
         $this->dataU8[$ptr] = $c;
         return true;
     }
@@ -476,7 +426,6 @@ final class MemInst
         if ($this->size() < $ptr + 1) {
             return false;
         }
-        // @phpstan-ignore-next-line
         $this->dataS8[$ptr] = $c;
         return true;
     }
@@ -490,7 +439,6 @@ final class MemInst
         if ($this->size() < $ptr + 2) {
             return false;
         }
-        // @phpstan-ignore-next-line
         $this->dataS16($ptr)[$ptr >> 1] = $c;
         return true;
     }
@@ -504,7 +452,6 @@ final class MemInst
         if ($this->size() < $ptr + 4) {
             return false;
         }
-        // @phpstan-ignore-next-line
         $this->dataS32($ptr)[$ptr >> 2] = $c;
         return true;
     }
@@ -518,7 +465,6 @@ final class MemInst
         if ($this->size() < $ptr + 1) {
             return false;
         }
-        // @phpstan-ignore-next-line
         $this->dataS8[$ptr] = $c;
         return true;
     }
@@ -532,7 +478,6 @@ final class MemInst
         if ($this->size() < $ptr + 2) {
             return false;
         }
-        // @phpstan-ignore-next-line
         $this->dataS16($ptr)[$ptr >> 1] = $c;
         return true;
     }
@@ -546,7 +491,6 @@ final class MemInst
         if ($this->size() < $ptr + 4) {
             return false;
         }
-        // @phpstan-ignore-next-line
         $this->dataS32($ptr)[$ptr >> 2] = $c;
         return true;
     }
@@ -560,7 +504,6 @@ final class MemInst
         if ($this->size() < $ptr + 8) {
             return false;
         }
-        // @phpstan-ignore-next-line
         $this->dataS64($ptr)[$ptr >> 3] = $c;
         return true;
     }
@@ -574,7 +517,6 @@ final class MemInst
         if ($this->size() < $ptr + 4) {
             return false;
         }
-        // @phpstan-ignore-next-line
         $this->dataF32($ptr)[$ptr >> 2] = $c;
         return true;
     }
@@ -588,7 +530,6 @@ final class MemInst
         if ($this->size() < $ptr + 8) {
             return false;
         }
-        // @phpstan-ignore-next-line
         $this->dataF64($ptr)[$ptr >> 3] = $c;
         return true;
     }

@@ -50,7 +50,6 @@ $imports = [
         'getprotobynumber' => makeHostFunc('(i32) -> (i32)', hostFunc__env__getprotobynumber(...)),
         'strptime' => makeHostFunc('(i32, i32, i32) -> (i32)', hostFunc__env__strptime(...)),
         'getnameinfo' => makeHostFunc('(i32, i32, i32, i32, i32, i32, i32) -> (i32)', hostFunc__env__getnameinfo(...)),
-        'invoke_viiiiii' => makeHostFunc('(i32, i32, i32, i32, i32, i32, i32) -> ()', hostFunc__env__invoke_viiiiii(...)),
         'invoke_viidii' => makeHostFunc('(i32, i32, i32, f64, i32, i32) -> ()', hostFunc__env__invoke_viidii(...)),
         'getcontext' => makeHostFunc('(i32) -> (i32)', hostFunc__env__getcontext(...)),
         'makecontext' => makeHostFunc('(i32, i32, i32, i32) -> ()', hostFunc__env__makecontext(...)),
@@ -64,7 +63,6 @@ $imports = [
         '__syscall_dup' => makeHostFunc('(i32) -> (i32)', hostFunc__env____syscall_dup(...)),
         '_emscripten_memcpy_js' => makeHostFunc('(i32, i32, i32) -> ()', hostFunc__env___emscripten_memcpy_js(...)),
         'emscripten_date_now' => makeHostFunc('() -> (f64)', hostFunc__env__emscripten_date_now(...)),
-        '_emscripten_get_now_is_monotonic' => makeHostFunc('() -> (i32)', hostFunc__env___emscripten_get_now_is_monotonic(...)),
         'emscripten_get_now' => makeHostFunc('() -> (f64)', hostFunc__env__emscripten_get_now(...)),
         '__syscall_fdatasync' => makeHostFunc('(i32) -> (i32)', hostFunc__env____syscall_fdatasync(...)),
         '__syscall_openat' => makeHostFunc('(i32, i32, i32, i32) -> (i32)', hostFunc__env____syscall_openat(...)),
@@ -86,7 +84,7 @@ $imports = [
         '__syscall__newselect' => makeHostFunc('(i32, i32, i32, i32, i32) -> (i32)', hostFunc__env____syscall__newselect(...)),
         '_setitimer_js' => makeHostFunc('(i32, f64) -> (i32)', hostFunc__env___setitimer_js(...)),
         '__syscall_statfs64' => makeHostFunc('(i32, i32, i32) -> (i32)', hostFunc__env____syscall_statfs64(...)),
-        '__syscall_symlink' => makeHostFunc('(i32, i32) -> (i32)', hostFunc__env____syscall_symlink(...)),
+        '__syscall_symlinkat' => makeHostFunc('(i32, i32, i32) -> (i32)', hostFunc__env____syscall_symlinkat(...)),
         'emscripten_get_heap_max' => makeHostFunc('() -> (i32)', hostFunc__env__emscripten_get_heap_max(...)),
         '_tzset_js' => makeHostFunc('(i32, i32, i32) -> ()', hostFunc__env___tzset_js(...)),
         '__syscall_unlinkat' => makeHostFunc('(i32, i32, i32) -> (i32)', hostFunc__env____syscall_unlinkat(...)),
@@ -120,6 +118,7 @@ $imports = [
         'proc_exit' => makeHostFunc('(i32) -> ()', hostFunc__wasi_snapshot_preview1__proc_exit(...)),
         'fd_sync' => makeHostFunc('(i32) -> (i32)', hostFunc__wasi_snapshot_preview1__fd_sync(...)),
         'fd_fdstat_get' => makeHostFunc('(i32, i32) -> (i32)', hostFunc__wasi_snapshot_preview1__fd_fdstat_get(...)),
+        'clock_time_get' => makeHostFunc('(i32, i32, i32, i32) -> (i32)', hostFunc__wasi_snapshot_preview1__clock_time_get(...)),
         'fd_seek' => makeHostFunc('(i32, i32, i32, i32, i32) -> (i32)', hostFunc__wasi_snapshot_preview1__fd_seek(...)),
     ],
 ];
@@ -826,20 +825,6 @@ function hostFunc__env__getnameinfo(Runtime $runtime): void
     throw new \RuntimeException('env::getnameinfo: not implemented');
 }
 
-// Type: (i32, i32, i32, i32, i32, i32, i32) -> ()
-function hostFunc__env__invoke_viiiiii(Runtime $runtime, int $index, int $a1, int $a2, int $a3, int $a4, int $a5, int $a6): void
-{
-    $sp = emscripten_stack_get_current($runtime);
-    $func = getWasmTableEntry($runtime, $index);
-    $runtime->stack->pushValue($a1);
-    $runtime->stack->pushValue($a2);
-    $runtime->stack->pushValue($a3);
-    $runtime->stack->pushValue($a4);
-    $runtime->stack->pushValue($a5);
-    $runtime->stack->pushValue($a6);
-    $runtime->invokeByFuncAddr($func);
-}
-
 // Type: (i32, i32, i32, f64, i32, i32) -> ()
 function hostFunc__env__invoke_viidii(Runtime $runtime, int $index, int $a1, int $a2, float $a3, int $a4, int $a5): void
 {
@@ -1069,12 +1054,6 @@ function hostFunc__env__emscripten_date_now(Runtime $runtime): float
     return round(microtime(true) * 1000);
 }
 
-// Type: () -> (i32)
-function hostFunc__env___emscripten_get_now_is_monotonic(Runtime $runtime): int
-{
-    return 1;
-}
-
 // Type: () -> (f64)
 function hostFunc__env__emscripten_get_now(Runtime $runtime): float
 {
@@ -1285,10 +1264,10 @@ function hostFunc__env____syscall_statfs64(Runtime $runtime): void
     throw new \RuntimeException('env::__syscall_statfs64: not implemented');
 }
 
-// Type: (i32, i32) -> (i32)
-function hostFunc__env____syscall_symlink(Runtime $runtime): void
+// Type: (i32, i32, i32) -> (i32)
+function hostFunc__env____syscall_symlinkat(Runtime $runtime): void
 {
-    throw new \RuntimeException('env::__syscall_symlink: not implemented');
+    throw new \RuntimeException('env::__syscall_symlinkat: not implemented');
 }
 
 // Type: () -> (i32)
@@ -1397,6 +1376,27 @@ function hostFunc__env____syscall_socket(Runtime $runtime): void
 function hostFunc__env____syscall_ftruncate64(Runtime $runtime): void
 {
     throw new \RuntimeException('env::__syscall_ftruncate64: not implemented');
+}
+
+// Type: (i32, i32, i32, i32) -> (i32)
+function hostFunc__wasi_snapshot_preview1__clock_time_get(Runtime $runtime, int $clk_id, int $ignored_precision_low, int $ignored_precision_high, int $ptime): int
+{
+    if ($clk_id < 0 || 3 < $clk_id) {
+        return 28;
+    }
+    if ($clk_id === 0) {
+        $now = hostFunc__env__emscripten_date_now($runtime);
+    } else {
+        $now = hostFunc__env__emscripten_get_now($runtime);
+    }
+    $nsec = round($now * 1000 * 1000);
+
+    $mem = $runtime->getExportedMemory('memory');
+    \assert($mem !== null);
+    $mem->storeI32_s32($ptime, $nsec & 0xFFFFFFFF);
+    $mem->storeI32_s32($ptime + 4, $nsec >> 32);
+
+    return 0;
 }
 
 // Type: (i32, i32, i32, i32, i32) -> (i32)
