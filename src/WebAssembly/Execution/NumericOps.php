@@ -4,6 +4,7 @@ declare(strict_types=1);
 
 namespace Nsfisis\Waddiwasi\WebAssembly\Execution;
 
+use FFI;
 use InvalidArgumentException;
 use RoundingMode;
 use function abs;
@@ -70,13 +71,13 @@ final readonly class NumericOps
 
     public static function f32ConvertI64S(int $x): float
     {
-        return self::truncateF64ToF32((float) $x);
+        return self::castBitIntToCFloat((string)$x);
     }
 
     public static function f32ConvertI64U(int $x): float
     {
         $x = self::convertS64ToBigUInt($x);
-        return self::truncateF64ToF32((float) $x);
+        return self::castBitIntToCFloat($x);
     }
 
     public static function f32CopySign(float $x, float $y): float
@@ -88,7 +89,7 @@ final readonly class NumericOps
 
     public static function f32DemoteF64(float $x): float
     {
-        return $x;
+        return self::truncateF64ToF32($x);
     }
 
     public static function f32Div(float $x, float $y): float
@@ -1334,5 +1335,22 @@ final readonly class NumericOps
             $i & 0b01111111_11110000_00000000_00000000_00000000_00000000_00000000_00000000,
             $i & 0b00000000_00001111_11111111_11111111_11111111_11111111_11111111_11111111,
         ];
+    }
+
+    private static function castBitIntToCFloat(string $x): float
+    {
+        // @phpstan-ignore-next-line
+        return self::ffi()->strtof($x, null);
+    }
+
+    private static function ffi(): FFI
+    {
+        static $ffi;
+        if (!$ffi) {
+            $ffi = FFI::cdef(
+                'float strtof(const char *restrict nptr, char **restrict endptr);',
+            );
+        }
+        return $ffi;
     }
 }
