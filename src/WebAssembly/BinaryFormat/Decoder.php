@@ -4,6 +4,7 @@ declare(strict_types=1);
 
 namespace Nsfisis\Waddiwasi\WebAssembly\BinaryFormat;
 
+use Nsfisis\Waddiwasi\BitOps\BinaryConversion;
 use Nsfisis\Waddiwasi\Stream\StreamInterface;
 use Nsfisis\Waddiwasi\Stream\UnexpectedEofException;
 use Nsfisis\Waddiwasi\WebAssembly\BinaryFormat\Internal\Code;
@@ -39,7 +40,6 @@ use function assert;
 use function count;
 use function get_class;
 use function in_array;
-use function is_float;
 use function is_int;
 use function ord;
 use function sprintf;
@@ -1090,13 +1090,7 @@ final class Decoder
      */
     private function decodeF32(): float
     {
-        $buf = $this->stream->read(4);
-        $result = unpack('g', $buf);
-        if ($result === false) {
-            throw new InvalidBinaryFormatException("f32");
-        }
-        assert(isset($result[1]) && is_float($result[1]));
-        return $result[1];
+        return BinaryConversion::deserializeF32($this->stream->read(4));
     }
 
     /**
@@ -1104,13 +1098,7 @@ final class Decoder
      */
     private function decodeF64(): float
     {
-        $buf = $this->stream->read(8);
-        $result = unpack('e', $buf);
-        if ($result === false) {
-            throw new InvalidBinaryFormatException("f64");
-        }
-        assert(isset($result[1]) && is_float($result[1]));
-        return $result[1];
+        return BinaryConversion::deserializeF64($this->stream->read(8));
     }
 
     /**

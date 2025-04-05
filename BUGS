@@ -1,12 +1,5 @@
 # Failed spec tests
 
-## Numeric
-
-* ConversionsTest
-* FloatExprsTest
-* FloatLiteralsTest
-* FloatMemoryTest
-
 ## Validation
 
 * ImportsTest
