@@ -4,6 +4,8 @@ declare(strict_types=1);
 
 namespace Nsfisis\Waddiwasi\WebAssembly\Execution;
 
+use Nsfisis\Waddiwasi\Stream\StreamInterface;
+use Nsfisis\Waddiwasi\WebAssembly\BinaryFormat\Decoder;
 use Nsfisis\Waddiwasi\WebAssembly\Structure\Instructions\Instr;
 use Nsfisis\Waddiwasi\WebAssembly\Structure\Instructions\Instrs;
 use Nsfisis\Waddiwasi\WebAssembly\Structure\Instructions\Instrs\Control\BlockType;
@@ -123,6 +125,16 @@ final class Runtime implements ExporterInterface
         $stack->popFrame();
 
         return new self($store, $stack, $moduleInst);
+    }
+
+    public static function instantiateFromStream(
+        StreamInterface $stream,
+        Linker $linker,
+    ): self {
+        return self::instantiate(
+            (new Decoder($stream))->decode(),
+            $linker,
+        );
     }
 
     public function exports(): array

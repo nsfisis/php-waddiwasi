@@ -5,7 +5,6 @@ declare(strict_types=1);
 require_once __DIR__ . '/../../vendor/autoload.php';
 
 use Nsfisis\Waddiwasi\Stream\BlobStream;
-use Nsfisis\Waddiwasi\WebAssembly\BinaryFormat\Decoder;
 use Nsfisis\Waddiwasi\WebAssembly\Execution\Extern;
 use Nsfisis\Waddiwasi\WebAssembly\Execution\FuncInst;
 use Nsfisis\Waddiwasi\WebAssembly\Execution\Linker;
@@ -23,13 +22,13 @@ $wasmBinary = (""
     . "\x00\x41\xd7\x00\x10\x00\x41\xef\x00\x10\x00\x41\xf2\x00\x10\x00"
     . "\x41\xec\x00\x10\x00\x41\xe4\x00\x10\x00\x41\x21\x10\x00\x41\x0a"
     . "\x10\x00\x0b");
-$module = (new Decoder(new BlobStream($wasmBinary)))->decode();
+$wasmBinaryStream = new BlobStream($wasmBinary);
 
 $store = Store::empty();
 $linker = new Linker($store);
 
 $linker->register('', 'putc', Extern::Func(FuncInst::Host(new FuncType([ValType::I32], []), function (Runtime $runtime, int $c) { printf('%c', $c); })));
 
-$runtime = Runtime::instantiate($module, $linker);
+$runtime = Runtime::instantiateFromStream($wasmBinaryStream, $linker);
 
 $runtime->invoke('main', []);

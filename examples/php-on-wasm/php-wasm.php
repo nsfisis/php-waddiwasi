@@ -5,7 +5,6 @@ declare(strict_types=1);
 require_once __DIR__ . '/../../vendor/autoload.php';
 
 use Nsfisis\Waddiwasi\Stream\FileStream;
-use Nsfisis\Waddiwasi\WebAssembly\BinaryFormat\Decoder;
 use Nsfisis\Waddiwasi\WebAssembly\Execution\Runtime;
 
 const PHP_HELLO_WORLD = <<<'EOS'
@@ -15,9 +14,8 @@ EOS;
 $linker = (require_once __DIR__ . '/emscripten_bridge.php');
 
 $wasmBinaryStream = new FileStream(__DIR__ . '/php-wasm.wasm');
-$module = (new Decoder($wasmBinaryStream))->decode();
 
-$runtime = Runtime::instantiate($module, $linker);
+$runtime = Runtime::instantiateFromStream($wasmBinaryStream, $linker);
 $codePtr = allocateStringOnWasmMemory($runtime, PHP_HELLO_WORLD);
 
 $results = $runtime->invoke("php_wasm_run", [$codePtr]);
