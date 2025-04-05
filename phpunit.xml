@@ -42,6 +42,7 @@
             <file>tests/src/SpecTestsuites/Core/FacTest.php</file>
             <file>tests/src/SpecTestsuites/Core/FloatExprsTest.php</file>
             <file>tests/src/SpecTestsuites/Core/FloatLiteralsTest.php</file>
+            <file>tests/src/SpecTestsuites/Core/FloatMemoryTest.php</file>
             <file>tests/src/SpecTestsuites/Core/FloatMiscTest.php</file>
             <file>tests/src/SpecTestsuites/Core/ForwardTest.php</file>
             <file>tests/src/SpecTestsuites/Core/FuncPtrsTest.php</file>

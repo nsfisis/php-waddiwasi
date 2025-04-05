@@ -44,11 +44,6 @@ final class MemInst
     private CData $dataS64_6;
     private CData $dataS64_7;
 
-    private CData $dataF32_0;
-    private CData $dataF32_1;
-    private CData $dataF32_2;
-    private CData $dataF32_3;
-
     private CData $dataF64_0;
     private CData $dataF64_1;
     private CData $dataF64_2;
@@ -154,11 +149,6 @@ final class MemInst
         $this->dataS64_5 = $castInt(64, true, 5);
         $this->dataS64_6 = $castInt(64, true, 6);
         $this->dataS64_7 = $castInt(64, true, 7);
-
-        $this->dataF32_0 = $castFloat(32, 0);
-        $this->dataF32_1 = $castFloat(32, 1);
-        $this->dataF32_2 = $castFloat(32, 2);
-        $this->dataF32_3 = $castFloat(32, 3);
 
         $this->dataF64_0 = $castFloat(64, 0);
         $this->dataF64_1 = $castFloat(64, 1);
@@ -380,7 +370,10 @@ final class MemInst
         if ($this->size() < $ptr + 4) {
             return null;
         }
-        return $this->dataF32($ptr)[$ptr >> 2];
+        // f32 cannot be loaded directly from memory because PHP handles NaN
+        // differently than WebAssembly spec defines.
+        $i = $this->dataU32($ptr)[$ptr >> 2];
+        return NumericOps::f32ReinterpretI32($i);
     }
 
     /**
@@ -517,7 +510,9 @@ final class MemInst
         if ($this->size() < $ptr + 4) {
             return false;
         }
-        $this->dataF32($ptr)[$ptr >> 2] = $c;
+        // f32 cannot be stored directly in memory because PHP handles NaN
+        // differently than WebAssembly spec defines.
+        $this->dataU32($ptr)[$ptr >> 2] = NumericOps::i32ReinterpretF32($c);
         return true;
     }
 
@@ -575,16 +570,6 @@ final class MemInst
             5 => $this->dataS64_5,
             6 => $this->dataS64_6,
             7 => $this->dataS64_7,
-        };
-    }
-
-    private function dataF32(int $ptr): CData
-    {
-        return match ($ptr & 3) {
-            0 => $this->dataF32_0,
-            1 => $this->dataF32_1,
-            2 => $this->dataF32_2,
-            3 => $this->dataF32_3,
         };
     }
 
