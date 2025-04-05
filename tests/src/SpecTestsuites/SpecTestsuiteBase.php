@@ -258,7 +258,7 @@ abstract class SpecTestsuiteBase extends TestCase
             'i64' => unpack('q', self::convertInt64ToBinary($value))[1],
             'f32' => match ($value) {
                 'nan:canonical', 'nan:arithmetic' => $value,
-                default => unpack('g', pack('V', (int)$value))[1],
+                default => self::i32ToF32((int)$value),
             },
             'f64' => match ($value) {
                 'nan:canonical', 'nan:arithmetic' => $value,
@@ -268,6 +268,18 @@ abstract class SpecTestsuiteBase extends TestCase
             'funcref' => $value === 'null' ? Ref::RefNull(ValType::FuncRef) : Ref::RefFunc((int)$value),
             default => throw new RuntimeException("unknown type: $type"),
         };
+    }
+
+    private static function i32ToF32(int $x): float
+    {
+        if (($x & 0b01111111100000000000000000000000) === 0b01111111100000000000000000000000) {
+            $sign = ($x & 0b10000000000000000000000000000000) === 0 ? 1 : -1;
+            $payload = $x & 0b00000000011111111111111111111111;
+            $i = ($sign === 1 ? 0 : PHP_INT_MIN) | 0b0111111111110000000000000000000000000000000000000000000000000000 | ($payload << (52 - 23));
+            return unpack('e', pack('q', $i))[1];
+        } else {
+            return unpack('g', pack('V', $x))[1];
+        }
     }
 
     private function doAction(

@@ -168,6 +168,7 @@ final readonly class NumericOps
 
     public static function f32Neg(float $x): float
     {
+        self::reinterpretF32AsI32($x);
         if (is_nan($x)) {
             // Negate operator does not work for NaN in PHP.
             return self::constructNan(-self::getFloatSign($x), $x);
@@ -341,7 +342,11 @@ final readonly class NumericOps
 
     public static function f64PromoteF32(float $x): float
     {
-        return $x;
+        if (is_nan($x)) {
+            return NAN;
+        } else {
+            return $x;
+        }
     }
 
     public static function f64ReinterpretI32(int $x): float
@@ -1144,7 +1149,15 @@ final readonly class NumericOps
 
     public static function reinterpretI32AsF32(int $x): float
     {
-        return self::deserializeF32FromBytes(self::serializeI32ToBytes($x));
+        $y = self::convertS32ToU32($x);
+        if (($y & 0b01111111100000000000000000000000) === 0b01111111100000000000000000000000) {
+            $sign = ($y & 0b10000000000000000000000000000000) === 0 ? 1 : -1;
+            $payload = $y & 0b00000000011111111111111111111111;
+            $i = ($sign === 1 ? 0 : PHP_INT_MIN) | 0b0111111111110000000000000000000000000000000000000000000000000000 | ($payload << (52 - 23));
+            return self::reinterpretI64AsF64($i);
+        } else {
+            return self::deserializeF32FromBytes(self::serializeI32ToBytes($x));
+        }
     }
 
     public static function reinterpretI64AsF32(int $x): float
@@ -1164,7 +1177,16 @@ final readonly class NumericOps
 
     public static function reinterpretF32AsI32(float $x): int
     {
-        return self::deserializeI32FromBytes(self::serializeF32ToBytes($x));
+        if (is_nan($x)) {
+            [$sign, , $payload] = self::destructFloat($x);
+            $i = 0
+                | ($sign === 0 ? 0 : 0b10000000000000000000000000000000)
+                | 0b01111111100000000000000000000000
+                | ($payload >> (52 - 23));
+            return self::convertU32ToS32($i);
+        } else {
+            return self::deserializeI32FromBytes(self::serializeF32ToBytes($x));
+        }
     }
 
     public static function reinterpretF64AsI32(float $x): int
@@ -1319,7 +1341,7 @@ final readonly class NumericOps
      */
     private static function constructNan(int $sign, float $x): float
     {
-        [$_, $_, $payload] = self::destructFloat($x);
+        [, , $payload] = self::destructFloat($x);
         $i = ($sign === 1 ? 0 : PHP_INT_MIN) | 0b01111111_11110000_00000000_00000000_00000000_00000000_00000000_00000000 | $payload;
         return self::reinterpretI64AsF64($i);
     }

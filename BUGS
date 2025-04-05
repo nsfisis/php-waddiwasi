@@ -2,9 +2,6 @@
 
 ## Numeric
 
-* ConversionsTest
-* FloatExprsTest
-* FloatLiteralsTest
 * FloatMemoryTest
 
 ## Validation

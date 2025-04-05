@@ -1091,12 +1091,24 @@ final class Decoder
     private function decodeF32(): float
     {
         $buf = $this->stream->read(4);
-        $result = unpack('g', $buf);
+        $result = unpack('V', $buf);
         if ($result === false) {
             throw new InvalidBinaryFormatException("f32");
         }
-        assert(isset($result[1]) && is_float($result[1]));
-        return $result[1];
+        assert(isset($result[1]) && is_int($result[1]));
+        $i = $result[1];
+        if (($i & 0b01111111100000000000000000000000) === 0b01111111100000000000000000000000) {
+            $sign = ($i & 0b10000000000000000000000000000000) === 0 ? 1 : -1;
+            $payload = $i & 0b00000000011111111111111111111111;
+            $j = ($sign === 1 ? 0 : PHP_INT_MIN) | 0b0111111111110000000000000000000000000000000000000000000000000000 | ($payload << (52 - 23));
+            $result = unpack('d', pack('q', $j));
+            assert(isset($result[1]) && is_float($result[1]));
+            return $result[1];
+        } else {
+            $result = unpack('g', $buf);
+            assert(isset($result[1]) && is_float($result[1]));
+            return $result[1];
+        }
     }
 
     /**

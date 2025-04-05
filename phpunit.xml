@@ -28,6 +28,7 @@
             <file>tests/src/SpecTestsuites/Core/CallIndirectTest.php</file>
             <file>tests/src/SpecTestsuites/Core/CallTest.php</file>
             <file>tests/src/SpecTestsuites/Core/ConstTest.php</file>
+            <file>tests/src/SpecTestsuites/Core/ConversionsTest.php</file>
             <file>tests/src/SpecTestsuites/Core/DataTest.php</file>
             <file>tests/src/SpecTestsuites/Core/ElemTest.php</file>
             <file>tests/src/SpecTestsuites/Core/EndiannessTest.php</file>
@@ -39,6 +40,8 @@
             <file>tests/src/SpecTestsuites/Core/F64CmpTest.php</file>
             <file>tests/src/SpecTestsuites/Core/F64Test.php</file>
             <file>tests/src/SpecTestsuites/Core/FacTest.php</file>
+            <file>tests/src/SpecTestsuites/Core/FloatExprsTest.php</file>
+            <file>tests/src/SpecTestsuites/Core/FloatLiteralsTest.php</file>
             <file>tests/src/SpecTestsuites/Core/FloatMiscTest.php</file>
             <file>tests/src/SpecTestsuites/Core/ForwardTest.php</file>
             <file>tests/src/SpecTestsuites/Core/FuncPtrsTest.php</file>
