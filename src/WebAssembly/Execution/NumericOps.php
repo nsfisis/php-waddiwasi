@@ -5,7 +5,8 @@ declare(strict_types=1);
 namespace Nsfisis\Waddiwasi\WebAssembly\Execution;
 
 use FFI;
-use InvalidArgumentException;
+use Nsfisis\Waddiwasi\BitOps\BinaryConversion;
+use Nsfisis\Waddiwasi\BitOps\FloatOps;
 use RoundingMode;
 use function abs;
 use function assert;
@@ -25,12 +26,10 @@ use function is_int;
 use function is_nan;
 use function max;
 use function min;
-use function pack;
 use function round;
 use function sprintf;
 use function sqrt;
 use function substr;
-use function unpack;
 use const PHP_INT_MAX;
 use const PHP_INT_MIN;
 
@@ -82,14 +81,18 @@ final readonly class NumericOps
 
     public static function f32CopySign(float $x, float $y): float
     {
-        $xSign = self::getFloatSign($x);
-        $ySign = self::getFloatSign($y);
+        $xSign = FloatOps::getSignedness($x);
+        $ySign = FloatOps::getSignedness($y);
         return $xSign === $ySign ? $x : self::f32Neg($x);
     }
 
     public static function f32DemoteF64(float $x): float
     {
-        return self::truncateF64ToF32($x);
+        if (is_nan($x)) {
+            return NAN;
+        } else {
+            return self::truncateF64ToF32($x);
+        }
     }
 
     public static function f32Div(float $x, float $y): float
@@ -168,10 +171,9 @@ final readonly class NumericOps
 
     public static function f32Neg(float $x): float
     {
-        self::reinterpretF32AsI32($x);
         if (is_nan($x)) {
             // Negate operator does not work for NaN in PHP.
-            return self::constructNan(-self::getFloatSign($x), $x);
+            return FloatOps::constructNan(FloatOps::getSignedness($x)->negated(), $x);
         } else {
             return -$x;
         }
@@ -179,12 +181,12 @@ final readonly class NumericOps
 
     public static function f32ReinterpretI32(int $x): float
     {
-        return self::reinterpretI32AsF32($x);
+        return BinaryConversion::reinterpretI32AsF32($x);
     }
 
     public static function f32ReinterpretI64(int $x): float
     {
-        return self::reinterpretI64AsF32($x);
+        return BinaryConversion::reinterpretI64AsF32($x);
     }
 
     public static function f32Sqrt(float $x): float
@@ -251,8 +253,8 @@ final readonly class NumericOps
 
     public static function f64CopySign(float $x, float $y): float
     {
-        $xSign = self::getFloatSign($x);
-        $ySign = self::getFloatSign($y);
+        $xSign = FloatOps::getSignedness($x);
+        $ySign = FloatOps::getSignedness($y);
         return $xSign === $ySign ? $x : self::f64Neg($x);
     }
 
@@ -334,7 +336,7 @@ final readonly class NumericOps
     {
         if (is_nan($x)) {
             // Negate operator does not work for NaN in PHP.
-            return self::constructNan(-self::getFloatSign($x), $x);
+            return FloatOps::constructNan(FloatOps::getSignedness($x)->negated(), $x);
         } else {
             return -$x;
         }
@@ -351,12 +353,12 @@ final readonly class NumericOps
 
     public static function f64ReinterpretI32(int $x): float
     {
-        return self::reinterpretI32AsF64($x);
+        return BinaryConversion::reinterpretI32AsF64($x);
     }
 
     public static function f64ReinterpretI64(int $x): float
     {
-        return self::reinterpretI64AsF64($x);
+        return BinaryConversion::reinterpretI64AsF64($x);
     }
 
     public static function f64Sqrt(float $x): float
@@ -455,17 +457,13 @@ final readonly class NumericOps
     public static function i32Extend16S(int $x): int
     {
         $x = self::convertS32ToU32($x);
-        $result = unpack('s', pack('S', $x & 0xFFFF));
-        assert($result !== false);
-        return $result[1];
+        return BinaryConversion::deserializeS16(BinaryConversion::serializeI16($x & 0xFFFF));
     }
 
     public static function i32Extend8S(int $x): int
     {
         $x = self::convertS32ToU32($x);
-        $result = unpack('c', pack('C', $x & 0xFF));
-        assert($result !== false);
-        return $result[1];
+        return BinaryConversion::deserializeS8(BinaryConversion::serializeI8($x & 0xFF));
     }
 
     public static function i32GeS(int $x, int $y): bool
@@ -547,12 +545,12 @@ final readonly class NumericOps
 
     public static function i32ReinterpretF32(float $x): int
     {
-        return self::reinterpretF32AsI32($x);
+        return BinaryConversion::reinterpretF32AsI32($x);
     }
 
     public static function i32ReinterpretF64(float $x): int
     {
-        return self::reinterpretF64AsI32($x);
+        return BinaryConversion::reinterpretF64AsI32($x);
     }
 
     public static function i32RemS(int $x, int $y): int|TrapKind
@@ -836,23 +834,17 @@ final readonly class NumericOps
 
     public static function i64Extend16S(int $x): int
     {
-        $result = unpack('s', pack('S', $x & 0xFFFF));
-        assert($result !== false);
-        return $result[1];
+        return BinaryConversion::deserializeS16(BinaryConversion::serializeI16($x & 0xFFFF));
     }
 
     public static function i64Extend32S(int $x): int
     {
-        $result = unpack('l', pack('L', $x & 0xFFFFFFFF));
-        assert($result !== false);
-        return $result[1];
+        return BinaryConversion::deserializeS32(BinaryConversion::serializeI32($x & 0xFFFFFFFF));
     }
 
     public static function i64Extend8S(int $x): int
     {
-        $result = unpack('c', pack('C', $x & 0xFF));
-        assert($result !== false);
-        return $result[1];
+        return BinaryConversion::deserializeS8(BinaryConversion::serializeI8($x & 0xFF));
     }
 
     public static function i64ExtendI32S(int $x): int
@@ -873,8 +865,8 @@ final readonly class NumericOps
 
     public static function i64GeU(int $x, int $y): bool
     {
-        $yPacked = pack('J', $y);
-        $xPacked = pack('J', $x);
+        $yPacked = BinaryConversion::serializeI64InBigEndian($y);
+        $xPacked = BinaryConversion::serializeI64InBigEndian($x);
         return $xPacked >= $yPacked;
     }
 
@@ -885,8 +877,8 @@ final readonly class NumericOps
 
     public static function i64GtU(int $x, int $y): bool
     {
-        $yPacked = pack('J', $y);
-        $xPacked = pack('J', $x);
+        $yPacked = BinaryConversion::serializeI64InBigEndian($y);
+        $xPacked = BinaryConversion::serializeI64InBigEndian($x);
         return $xPacked > $yPacked;
     }
 
@@ -897,8 +889,8 @@ final readonly class NumericOps
 
     public static function i64LeU(int $x, int $y): bool
     {
-        $yPacked = pack('J', $y);
-        $xPacked = pack('J', $x);
+        $yPacked = BinaryConversion::serializeI64InBigEndian($y);
+        $xPacked = BinaryConversion::serializeI64InBigEndian($x);
         return $xPacked <= $yPacked;
     }
 
@@ -909,8 +901,8 @@ final readonly class NumericOps
 
     public static function i64LtU(int $x, int $y): bool
     {
-        $yPacked = pack('J', $y);
-        $xPacked = pack('J', $x);
+        $yPacked = BinaryConversion::serializeI64InBigEndian($y);
+        $xPacked = BinaryConversion::serializeI64InBigEndian($x);
         return $xPacked < $yPacked;
     }
 
@@ -942,12 +934,12 @@ final readonly class NumericOps
 
     public static function i64ReinterpretF32(float $x): int
     {
-        return self::reinterpretF32AsI64($x);
+        return BinaryConversion::reinterpretF32AsI64($x);
     }
 
     public static function i64ReinterpretF64(float $x): int
     {
-        return self::reinterpretF64AsI64($x);
+        return BinaryConversion::reinterpretF64AsI64($x);
     }
 
     public static function i64RemS(int $x, int $y): int|TrapKind
@@ -1147,133 +1139,17 @@ final readonly class NumericOps
         return $x ^ $y;
     }
 
-    public static function reinterpretI32AsF32(int $x): float
-    {
-        $y = self::convertS32ToU32($x);
-        if (($y & 0b01111111100000000000000000000000) === 0b01111111100000000000000000000000) {
-            $sign = ($y & 0b10000000000000000000000000000000) === 0 ? 1 : -1;
-            $payload = $y & 0b00000000011111111111111111111111;
-            $i = ($sign === 1 ? 0 : PHP_INT_MIN) | 0b0111111111110000000000000000000000000000000000000000000000000000 | ($payload << (52 - 23));
-            return self::reinterpretI64AsF64($i);
-        } else {
-            return self::deserializeF32FromBytes(self::serializeI32ToBytes($x));
-        }
-    }
-
-    public static function reinterpretI64AsF32(int $x): float
-    {
-        return self::deserializeF32FromBytes(self::serializeI64ToBytes($x));
-    }
-
-    public static function reinterpretI32AsF64(int $x): float
-    {
-        return self::deserializeF64FromBytes(self::serializeI32ToBytes($x));
-    }
-
-    public static function reinterpretI64AsF64(int $x): float
-    {
-        return self::deserializeF64FromBytes(self::serializeI64ToBytes($x));
-    }
-
-    public static function reinterpretF32AsI32(float $x): int
-    {
-        if (is_nan($x)) {
-            [$sign, , $payload] = self::destructFloat($x);
-            $i = 0
-                | ($sign === 0 ? 0 : 0b10000000000000000000000000000000)
-                | 0b01111111100000000000000000000000
-                | ($payload >> (52 - 23));
-            return self::convertU32ToS32($i);
-        } else {
-            return self::deserializeI32FromBytes(self::serializeF32ToBytes($x));
-        }
-    }
-
-    public static function reinterpretF64AsI32(float $x): int
-    {
-        return self::deserializeI32FromBytes(self::serializeF64ToBytes($x));
-    }
-
-    public static function reinterpretF32AsI64(float $x): int
-    {
-        return self::deserializeI64FromBytes(self::serializeF32ToBytes($x));
-    }
-
-    public static function reinterpretF64AsI64(float $x): int
-    {
-        return self::deserializeI64FromBytes(self::serializeF64ToBytes($x));
-    }
-
     public static function truncateF64ToF32(float $x): float
     {
-        return self::deserializeF32FromBytes(self::serializeF32ToBytes($x));
+        return BinaryConversion::deserializeF32(BinaryConversion::serializeF32($x));
     }
 
-    public static function serializeI32ToBytes(int $x): string
-    {
-        return pack('l', $x);
-    }
-
-    public static function deserializeI32FromBytes(string $s): int
-    {
-        $result = unpack('l', $s);
-        if ($result === false) {
-            throw new InvalidArgumentException("Failed to unpack i32: $s");
-        }
-        return $result[1];
-    }
-
-    public static function serializeI64ToBytes(int $x): string
-    {
-        return pack('q', $x);
-    }
-
-    public static function deserializeI64FromBytes(string $s): int
-    {
-        $result = unpack('q', $s);
-        if ($result === false) {
-            throw new InvalidArgumentException("Failed to unpack i64: $s");
-        }
-        return $result[1];
-    }
-
-    public static function serializeF32ToBytes(float $x): string
-    {
-        return pack('f', $x);
-    }
-
-    public static function deserializeF32FromBytes(string $s): float
-    {
-        $result = unpack('f', $s);
-        if ($result === false) {
-            throw new InvalidArgumentException("Failed to unpack f32: $s");
-        }
-        return $result[1];
-    }
-
-    public static function serializeF64ToBytes(float $x): string
-    {
-        return pack('d', $x);
-    }
-
-    public static function deserializeF64FromBytes(string $s): float
-    {
-        $result = unpack('d', $s);
-        if ($result === false) {
-            throw new InvalidArgumentException("Failed to unpack f64: $s");
-        }
-        return $result[1];
-    }
 
     public static function convertS32ToU32(int $x): int
     {
-        // assert(-0x80000000 <= $x && $x <= 0x7FFFFFFF, "convertS32ToU32: out of range $x");
+        assert(-0x80000000 <= $x && $x <= 0x7FFFFFFF);
         if ($x < 0) {
-            $buf = pack('l', $x);
-            $result = unpack('L', $buf);
-            assert($result !== false);
-            assert(0x00000000 <= $result[1] && $result[1] <= 0xFFFFFFFF, "convertS32ToU32: out of range $result[1]");
-            return $result[1];
+            return $x + 0x100000000;
         } else {
             return $x;
         }
@@ -1283,11 +1159,7 @@ final readonly class NumericOps
     {
         assert(0x00000000 <= $x && $x <= 0xFFFFFFFF);
         if (($x & 0x80000000) !== 0) {
-            $buf = pack('L', $x);
-            $result = unpack('l', $buf);
-            assert($result !== false);
-            assert(-0x80000000 <= $result[1] && $result[1] <= 0x7FFFFFFF, "convertU32ToS32: out of range $result[1]");
-            return $result[1];
+            return $x - 0x100000000;
         } else {
             return $x;
         }
@@ -1319,45 +1191,6 @@ final readonly class NumericOps
         return (int)$result;
     }
 
-    /**
-     * @return 1|-1
-     */
-    public static function getFloatSign(float $p): int
-    {
-        if (is_nan($p)) {
-            $n = self::reinterpretF64AsI64($p);
-            // The MSB is the sign bit.
-            return (($n >> 63) & 1) === 1 ? -1 : 1;
-        } elseif ($p !== 0.0) {
-            return $p < 0.0 ? -1 : 1;
-        } else {
-            // Comparison with 0 does not work for -0.0.
-            return fdiv(1, $p) < 0.0 ? -1 : 1;
-        }
-    }
-
-    /**
-     * @param -1|1 $sign
-     */
-    private static function constructNan(int $sign, float $x): float
-    {
-        [, , $payload] = self::destructFloat($x);
-        $i = ($sign === 1 ? 0 : PHP_INT_MIN) | 0b01111111_11110000_00000000_00000000_00000000_00000000_00000000_00000000 | $payload;
-        return self::reinterpretI64AsF64($i);
-    }
-
-    /**
-     * @return array{int, int, int}
-     */
-    private static function destructFloat(float $x): array
-    {
-        $i = self::reinterpretF64AsI64($x);
-        return [
-            $i & PHP_INT_MIN,
-            $i & 0b01111111_11110000_00000000_00000000_00000000_00000000_00000000_00000000,
-            $i & 0b00000000_00001111_11111111_11111111_11111111_11111111_11111111_11111111,
-        ];
-    }
 
     private static function castBitIntToCFloat(string $x): float
     {

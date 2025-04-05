@@ -4,6 +4,7 @@ declare(strict_types=1);
 
 namespace Nsfisis\Waddiwasi\WebAssembly\BinaryFormat;
 
+use Nsfisis\Waddiwasi\BitOps\BinaryConversion;
 use Nsfisis\Waddiwasi\Stream\StreamInterface;
 use Nsfisis\Waddiwasi\Stream\UnexpectedEofException;
 use Nsfisis\Waddiwasi\WebAssembly\BinaryFormat\Internal\Code;
@@ -39,7 +40,6 @@ use function assert;
 use function count;
 use function get_class;
 use function in_array;
-use function is_float;
 use function is_int;
 use function ord;
 use function sprintf;
@@ -1090,25 +1090,7 @@ final class Decoder
      */
     private function decodeF32(): float
     {
-        $buf = $this->stream->read(4);
-        $result = unpack('V', $buf);
-        if ($result === false) {
-            throw new InvalidBinaryFormatException("f32");
-        }
-        assert(isset($result[1]) && is_int($result[1]));
-        $i = $result[1];
-        if (($i & 0b01111111100000000000000000000000) === 0b01111111100000000000000000000000) {
-            $sign = ($i & 0b10000000000000000000000000000000) === 0 ? 1 : -1;
-            $payload = $i & 0b00000000011111111111111111111111;
-            $j = ($sign === 1 ? 0 : PHP_INT_MIN) | 0b0111111111110000000000000000000000000000000000000000000000000000 | ($payload << (52 - 23));
-            $result = unpack('d', pack('q', $j));
-            assert(isset($result[1]) && is_float($result[1]));
-            return $result[1];
-        } else {
-            $result = unpack('g', $buf);
-            assert(isset($result[1]) && is_float($result[1]));
-            return $result[1];
-        }
+        return BinaryConversion::deserializeF32($this->stream->read(4));
     }
 
     /**
@@ -1116,13 +1098,7 @@ final class Decoder
      */
     private function decodeF64(): float
     {
-        $buf = $this->stream->read(8);
-        $result = unpack('e', $buf);
-        if ($result === false) {
-            throw new InvalidBinaryFormatException("f64");
-        }
-        assert(isset($result[1]) && is_float($result[1]));
-        return $result[1];
+        return BinaryConversion::deserializeF64($this->stream->read(8));
     }
 
     /**

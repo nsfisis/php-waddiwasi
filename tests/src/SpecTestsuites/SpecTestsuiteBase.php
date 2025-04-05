@@ -4,6 +4,7 @@ declare(strict_types=1);
 
 namespace Nsfisis\Waddiwasi\Tests\SpecTestsuites;
 
+use Nsfisis\Waddiwasi\BitOps\BinaryConversion;
 use Nsfisis\Waddiwasi\Stream\FileStream;
 use Nsfisis\Waddiwasi\WebAssembly\BinaryFormat\Decoder;
 use Nsfisis\Waddiwasi\WebAssembly\BinaryFormat\InvalidBinaryFormatException;
@@ -12,7 +13,6 @@ use Nsfisis\Waddiwasi\WebAssembly\Execution\FuncInst;
 use Nsfisis\Waddiwasi\WebAssembly\Execution\GlobalInst;
 use Nsfisis\Waddiwasi\WebAssembly\Execution\Linker;
 use Nsfisis\Waddiwasi\WebAssembly\Execution\MemInst;
-use Nsfisis\Waddiwasi\WebAssembly\Execution\NumericOps;
 use Nsfisis\Waddiwasi\WebAssembly\Execution\Ref;
 use Nsfisis\Waddiwasi\WebAssembly\Execution\Refs\RefExtern;
 use Nsfisis\Waddiwasi\WebAssembly\Execution\Refs\RefFunc;
@@ -254,32 +254,20 @@ abstract class SpecTestsuiteBase extends TestCase
         $type = $arg['type'];
         $value = $arg['value'];
         return match ($type) {
-            'i32' => unpack('l', pack('V', (int)$value))[1],
-            'i64' => unpack('q', self::convertInt64ToBinary($value))[1],
+            'i32' => BinaryConversion::deserializeS32(BinaryConversion::serializeI32((int)$value)),
+            'i64' => BinaryConversion::deserializeS64(self::convertInt64ToBinary($value)),
             'f32' => match ($value) {
                 'nan:canonical', 'nan:arithmetic' => $value,
-                default => self::i32ToF32((int)$value),
+                default => BinaryConversion::deserializeF32(BinaryConversion::serializeI32((int)$value)),
             },
             'f64' => match ($value) {
                 'nan:canonical', 'nan:arithmetic' => $value,
-                default => unpack('e', self::convertInt64ToBinary($value))[1],
+                default => BinaryConversion::deserializeF64(self::convertInt64ToBinary($value)),
             },
             'externref' => $value === 'null' ? Ref::RefNull(ValType::ExternRef) : Ref::RefExtern((int)$value),
             'funcref' => $value === 'null' ? Ref::RefNull(ValType::FuncRef) : Ref::RefFunc((int)$value),
             default => throw new RuntimeException("unknown type: $type"),
         };
-    }
-
-    private static function i32ToF32(int $x): float
-    {
-        if (($x & 0b01111111100000000000000000000000) === 0b01111111100000000000000000000000) {
-            $sign = ($x & 0b10000000000000000000000000000000) === 0 ? 1 : -1;
-            $payload = $x & 0b00000000011111111111111111111111;
-            $i = ($sign === 1 ? 0 : PHP_INT_MIN) | 0b0111111111110000000000000000000000000000000000000000000000000000 | ($payload << (52 - 23));
-            return unpack('e', pack('q', $i))[1];
-        } else {
-            return unpack('g', pack('V', $x))[1];
-        }
     }
 
     private function doAction(
@@ -332,16 +320,16 @@ abstract class SpecTestsuiteBase extends TestCase
                     is_nan($actualResult),
                     "result $i is not NaN" . $message,
                 );
-                $actualBits = sprintf("%064b", NumericOps::reinterpretF64AsI64($actualResult));
+                $actualBits = sprintf("%064b", BinaryConversion::reinterpretF64AsI64($actualResult));
                 if (str_starts_with($actualBits, '0')) {
                     $this->assertSame(
-                        sprintf("%064b", NumericOps::reinterpretF64AsI64(NAN)),
+                        sprintf("%064b", BinaryConversion::reinterpretF64AsI64(NAN)),
                         $actualBits,
                         "result $i is not canonical NaN" . $message,
                     );
                 } else {
                     $this->assertSame(
-                        sprintf("1%b", NumericOps::reinterpretF64AsI64(NAN)),
+                        sprintf("1%b", BinaryConversion::reinterpretF64AsI64(NAN)),
                         $actualBits,
                         "result $i is not canonical NaN" . $message,
                     );
@@ -351,7 +339,7 @@ abstract class SpecTestsuiteBase extends TestCase
                     is_nan($actualResult),
                     "result $i is not NaN" . $message,
                 );
-                $actualBits = sprintf("%064b", NumericOps::reinterpretF64AsI64($actualResult));
+                $actualBits = sprintf("%064b", BinaryConversion::reinterpretF64AsI64($actualResult));
                 if (str_starts_with($actualBits, '0')) {
                     $this->assertStringStartsWith(
                         '0111111111111',
@@ -371,8 +359,8 @@ abstract class SpecTestsuiteBase extends TestCase
                     "result $i is not NaN" . $message,
                 );
                 $this->assertSame(
-                    sprintf("%b", NumericOps::reinterpretF64AsI64($expectedValue)),
-                    sprintf("%b", NumericOps::reinterpretF64AsI64($actualResult)),
+                    sprintf("%b", BinaryConversion::reinterpretF64AsI64($expectedValue)),
+                    sprintf("%b", BinaryConversion::reinterpretF64AsI64($actualResult)),
                     "result $i Nan payload mismatch" . $message,
                 );
             } elseif ($expectedValue instanceof RefNull) {
@@ -446,6 +434,6 @@ abstract class SpecTestsuiteBase extends TestCase
         if (bccomp(bcsub(bcpow('2', '63'), '1'), $value) < 0) {
             $value = bcsub($value, bcpow('2', '64'));
         }
-        return pack('q', (int)$value);
+        return BinaryConversion::serializeI64((int)$value);
     }
 }
