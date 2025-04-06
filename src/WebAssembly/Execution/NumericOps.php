@@ -4,7 +4,6 @@ declare(strict_types=1);
 
 namespace Nsfisis\Waddiwasi\WebAssembly\Execution;
 
-use FFI;
 use Nsfisis\Waddiwasi\BitOps\BinaryConversion;
 use Nsfisis\Waddiwasi\BitOps\FloatOps;
 use RoundingMode;
@@ -70,13 +69,13 @@ final readonly class NumericOps
 
     public static function f32ConvertI64S(int $x): float
     {
-        return self::castBigIntToF32((string)$x);
+        return BinaryConversion::convertBigIntToF32((string)$x);
     }
 
     public static function f32ConvertI64U(int $x): float
     {
         $x = self::convertS64ToBigUInt($x);
-        return self::castBigIntToF32($x);
+        return BinaryConversion::convertBigIntToF32($x);
     }
 
     public static function f32CopySign(float $x, float $y): float
@@ -1165,6 +1164,9 @@ final readonly class NumericOps
         }
     }
 
+    /**
+     * @return numeric-string
+     */
     public static function convertS64ToBigUInt(int $x): string
     {
         if ($x < 0) {
@@ -1189,23 +1191,5 @@ final readonly class NumericOps
             }
         }
         return (int)$result;
-    }
-
-
-    private static function castBigIntToF32(string $x): float
-    {
-        // @phpstan-ignore-next-line
-        return self::ffi()->strtof($x, null);
-    }
-
-    private static function ffi(): FFI
-    {
-        static $ffi;
-        if (!$ffi) {
-            $ffi = FFI::cdef(
-                'float strtof(const char *restrict nptr, char **restrict endptr);',
-            );
-        }
-        return $ffi;
     }
 }

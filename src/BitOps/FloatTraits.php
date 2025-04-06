@@ -17,6 +17,8 @@ final readonly class FloatTraits
     public const int F32_SIGN_SIGNED = 0b10000000_00000000_00000000_00000000;
     public const int F32_EXPONENT_NAN = 0b01111111_10000000_00000000_00000000;
 
+    public const int F32_INFINITY_BITS = 0b01111111_10000000_00000000_00000000;
+
     public const int F64_EXPONENT_BITS = 11;
     public const int F64_MANTISSA_BITS = 52;
 

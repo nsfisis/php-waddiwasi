@@ -4,8 +4,6 @@
 * Provide sane bindings to PHP
 * Write PHPDoc for public APIs
 * Provide high-level APIs
-* Eliminate use of FFI, except for optimization
-    * strtof
 
 NOTE:
 

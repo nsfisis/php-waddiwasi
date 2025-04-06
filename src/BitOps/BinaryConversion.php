@@ -196,6 +196,16 @@ final readonly class BinaryConversion
     }
 
     /**
+     * @param numeric-string $x
+     */
+    public static function convertBigIntToF32(string $x): float
+    {
+        // PHP's (float) cast is through f64, so we have to convert it to f32 directly.
+        // i64 => f32 is not equal to i64 => f64 => f32.
+        return self::reinterpretI32AsF32(self::convertBigIntToF32Bits($x));
+    }
+
+    /**
      * @return non-empty-string
      */
     private static function packInt(PackIntSpecifiers $spec, int $x): string
@@ -235,6 +245,69 @@ final readonly class BinaryConversion
         $result = unpack($spec->value, $s);
         assert($result !== false && isset($result[1]) && is_float($result[1]));
         return $result[1];
+    }
+
+    /**
+     * @param numeric-string $value
+     */
+    private static function convertBigIntToF32Bits(string $value): int
+    {
+        if ($value === '0') {
+            return 0;
+        }
+
+        // Sign
+        if (bccomp($value, '0') < 0) {
+            $sign = Signedness::Signed;
+            $value = bcsub('0', $value);
+        } else {
+            $sign = Signedness::Unsigned;
+        }
+
+        // Exponent
+        if (bccomp($value, "9223372036854775807") <= 0) {
+            $e = strlen(decbin((int)$value)) - 1;
+        } else {
+            for ($i = 63; ; $i++) {
+                if (bccomp($value, bcpow('2', (string)$i)) < 0) {
+                    $e = $i - 1;
+                    break;
+                }
+            }
+            assert(isset($e));
+        }
+
+        // Infinity
+        if ($e >= 128) {
+            return FloatTraits::getF32SignBit($sign) | FloatTraits::F32_INFINITY_BITS;
+        }
+
+        // Mantissa
+        $p = bcpow('2', (string)$e); // p = 2^e
+        $numerator = bcmul(bcsub($value, $p), (string)(1 << 23)); // (value - p) * 2^23
+        $quotient = (int)bcdiv($numerator, $p, scale: 0);
+        $remainder = bcmod($numerator, $p);
+
+        // Round
+        $half = bcdiv($p, '2', scale: 0);
+        if (bccomp($remainder, $half) > 0) {
+            $quotient += 1;
+        } elseif ($remainder === $half) {
+            // Half to even
+            if ($quotient % 2 === 1) {
+                $quotient += 1;
+            }
+        }
+        if ($quotient >= (1 << 23)) {
+            $quotient -= (1 << 23);
+            $e += 1;
+            // Infinity
+            if ($e >= 128) {
+                return FloatTraits::getF32SignBit($sign) | FloatTraits::F32_INFINITY_BITS;
+            }
+        }
+
+        return FloatTraits::getF32SignBit($sign) | (($e + 127) << FloatTraits::F32_MANTISSA_BITS) | $quotient;
     }
 
     private static function isLittleEndian(): bool
