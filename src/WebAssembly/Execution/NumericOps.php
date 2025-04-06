@@ -70,13 +70,13 @@ final readonly class NumericOps
 
     public static function f32ConvertI64S(int $x): float
     {
-        return self::castBitIntToCFloat((string)$x);
+        return self::castBigIntToF32((string)$x);
     }
 
     public static function f32ConvertI64U(int $x): float
     {
         $x = self::convertS64ToBigUInt($x);
-        return self::castBitIntToCFloat($x);
+        return self::castBigIntToF32($x);
     }
 
     public static function f32CopySign(float $x, float $y): float
@@ -1192,7 +1192,7 @@ final readonly class NumericOps
     }
 
 
-    private static function castBitIntToCFloat(string $x): float
+    private static function castBigIntToF32(string $x): float
     {
         // @phpstan-ignore-next-line
         return self::ffi()->strtof($x, null);
