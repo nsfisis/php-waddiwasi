@@ -279,7 +279,7 @@ final readonly class BinaryConversion
 
         // Infinity
         if ($e >= 128) {
-            return FloatTraits::getF32SignBit($sign) | FloatTraits::F32_INFINITY_BITS;
+            return FloatTraits::getF32SignBit($sign) | FloatTraits::F32_INFINITY_BIT_PATTERN;
         }
 
         // Mantissa
@@ -303,7 +303,7 @@ final readonly class BinaryConversion
             $e += 1;
             // Infinity
             if ($e >= 128) {
-                return FloatTraits::getF32SignBit($sign) | FloatTraits::F32_INFINITY_BITS;
+                return FloatTraits::getF32SignBit($sign) | FloatTraits::F32_INFINITY_BIT_PATTERN;
             }
         }
 
