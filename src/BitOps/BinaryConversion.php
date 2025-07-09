@@ -321,9 +321,6 @@ final readonly class BinaryConversion
      */
     private static function byteSwapIfNeeded(string $s): string
     {
-        // note: currently phpstan cannot infer that strrev(non-empty-string) returns non-empty-string.
-        $ret = self::isLittleEndian() ? $s : strrev($s);
-        assert($ret !== '');
-        return $ret;
+        return self::isLittleEndian() ? $s : strrev($s);
     }
 }

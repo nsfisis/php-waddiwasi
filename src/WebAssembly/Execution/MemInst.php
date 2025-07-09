@@ -114,14 +114,14 @@ final class MemInst
         $this->dataS8 = $this->ffi->cast("int8_t[$this->dataSize]", $this->dataU8);
 
         // @phpstan-ignore-next-line
-        $castInt = fn ($n, $signed, $offset) => $this->ffi->cast(
+        $castInt = fn (int $n, bool $signed, int $offset) => $this->ffi->cast(
             sprintf("%sint%d_t[$this->dataSize/%d]", $signed ? "" : "u", $n, $n / 8),
             // @phpstan-ignore-next-line
             $this->ffi->cast("uint8_t[$this->dataSize+8]", $this->dataU8 + $offset),
         );
 
         // @phpstan-ignore-next-line
-        $castFloat = fn ($n, $offset) => $this->ffi->cast(
+        $castFloat = fn (int $n, int $offset) => $this->ffi->cast(
             sprintf("%s[$this->dataSize/%d]", $n === 32 ? "float" : "double", $n / 8),
             // @phpstan-ignore-next-line
             $this->ffi->cast("uint8_t[$this->dataSize+8]", $this->dataU8 + $offset),
@@ -214,6 +214,7 @@ final class MemInst
         if ($this->size() < $ptr + 1) {
             return null;
         }
+        /** @var S8 $c */
         $c = $this->dataS8[$ptr];
         assert(-0x80 <= $c && $c <= 0x7F, "$c");
         return $c;
@@ -227,6 +228,7 @@ final class MemInst
         if ($this->size() < $ptr + 1) {
             return null;
         }
+        /** @var U8 $c */
         $c = $this->dataU8[$ptr];
         assert(0 <= $c && $c <= 0xFF, "$c");
         return $c;
@@ -240,6 +242,7 @@ final class MemInst
         if ($this->size() < $ptr + 2) {
             return null;
         }
+        /** @var S16 $c */
         $c = $this->dataS16($ptr)[$ptr >> 1];
         assert(-0x8000 <= $c && $c <= 0x7FFF, "$c");
         return $c;
@@ -253,6 +256,7 @@ final class MemInst
         if ($this->size() < $ptr + 2) {
             return null;
         }
+        /** @var U16 $c */
         $c = $this->dataU16($ptr)[$ptr >> 1];
         assert(0 <= $c && $c <= 0xFFFF, "$c");
         return $c;
@@ -266,6 +270,7 @@ final class MemInst
         if ($this->size() < $ptr + 4) {
             return null;
         }
+        /** @var S32 $c */
         $c = $this->dataS32($ptr)[$ptr >> 2];
         assert(-0x80000000 <= $c && $c <= 0x7FFFFFFF, "$c");
         return $c;
@@ -279,6 +284,7 @@ final class MemInst
         if ($this->size() < $ptr + 1) {
             return null;
         }
+        /** @var S8 $c */
         $c = $this->dataS8[$ptr];
         assert(-0x80 <= $c && $c <= 0x7F, "$c");
         return $c;
@@ -292,6 +298,7 @@ final class MemInst
         if ($this->size() < $ptr + 1) {
             return null;
         }
+        /** @var U8 $c */
         $c = $this->dataU8[$ptr];
         assert(0 <= $c && $c <= 0xFF, "$c");
         return $c;
@@ -305,6 +312,7 @@ final class MemInst
         if ($this->size() < $ptr + 2) {
             return null;
         }
+        /** @var S16 $c */
         $c = $this->dataS16($ptr)[$ptr >> 1];
         assert(-0x8000 <= $c && $c <= 0x7FFF, "$c");
         return $c;
@@ -318,6 +326,7 @@ final class MemInst
         if ($this->size() < $ptr + 2) {
             return null;
         }
+        /** @var U16 $c */
         $c = $this->dataU16($ptr)[$ptr >> 1];
         assert(0 <= $c && $c <= 0xFFFF, "$c");
         return $c;
@@ -331,6 +340,7 @@ final class MemInst
         if ($this->size() < $ptr + 4) {
             return null;
         }
+        /** @var S32 $c */
         $c = $this->dataS32($ptr)[$ptr >> 2];
         assert(-0x80000000 <= $c && $c <= 0x7FFFFFFF, "$c");
         return $c;
@@ -344,6 +354,7 @@ final class MemInst
         if ($this->size() < $ptr + 4) {
             return null;
         }
+        /** @var U32 $c */
         $c = $this->dataU32($ptr)[$ptr >> 2];
         assert(0 <= $c && $c <= 0xFFFFFFFF, "$c");
         return $c;
@@ -357,6 +368,7 @@ final class MemInst
         if ($this->size() < $ptr + 8) {
             return null;
         }
+        /** @var S64 $c */
         $c = $this->dataS64($ptr)[$ptr >> 3];
         assert(-0x8000000000000000 <= $c && $c <= 0x7FFFFFFFFFFFFFFF, "$c");
         return $c;
@@ -372,6 +384,7 @@ final class MemInst
         }
         // f32 cannot be loaded directly from memory because PHP handles NaN
         // differently than WebAssembly spec defines.
+        /** @var U32 $i */
         $i = $this->dataU32($ptr)[$ptr >> 2];
         return NumericOps::f32ReinterpretI32($i);
     }
@@ -384,7 +397,9 @@ final class MemInst
         if ($this->size() < $ptr + 8) {
             return null;
         }
-        return $this->dataF64($ptr)[$ptr >> 3];
+        /** @var F64 $x */
+        $x = $this->dataF64($ptr)[$ptr >> 3];
+        return $x;
     }
 
     /**
@@ -395,7 +410,9 @@ final class MemInst
         if ($this->size() < $ptr + 1) {
             return null;
         }
-        return $this->dataU8[$ptr];
+        /** @var U8 $c */
+        $c = $this->dataU8[$ptr];
+        return $c;
     }
 
     /**
