@@ -1119,35 +1119,8 @@ final class Decoder
      */
     private function implodeUtf8BytesToString(array $bytes): ?string
     {
-        $s = '';
-        $count = count($bytes);
-        for ($i = 0; $i < $count; $i++) {
-            if (($bytes[$i] & 0x80) === 0) {
-                $code = $bytes[$i];
-            } elseif (($bytes[$i] & 0xE0) === 0xC0) {
-                if ($count <= $i + 1) {
-                    return null;
-                }
-                $code = (($bytes[$i] & 0x1F) << 6) | ($bytes[$i + 1] & 0x3F);
-                $i++;
-            } elseif (($bytes[$i] & 0xF0) === 0xE0) {
-                if ($count <= $i + 2) {
-                    return null;
-                }
-                $code = (($bytes[$i] & 0x0F) << 12) | (($bytes[$i + 1] & 0x3F) << 6) | ($bytes[$i + 2] & 0x3F);
-                $i += 2;
-            } elseif (($bytes[$i] & 0xF8) === 0xF0) {
-                if ($count <= $i + 3) {
-                    return null;
-                }
-                $code = (($bytes[$i] & 0x07) << 18) | (($bytes[$i + 1] & 0x3F) << 12) | (($bytes[$i + 2] & 0x3F) << 6) | ($bytes[$i + 3] & 0x3F);
-                $i += 3;
-            } else {
-                return null;
-            }
-            $s .= mb_chr($code, 'UTF-8');
-        }
-        return $s;
+        $s = pack('C*', ...$bytes);
+        return mb_check_encoding($s, 'UTF-8') ? $s : null;
     }
 
     /**

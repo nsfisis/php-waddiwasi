@@ -2,14 +2,7 @@
 
 ## Validation
 
+* AlignTest
 * ImportsTest
 * LinkingTest
-
-## Misc.
-
-* AlignTest
-* CustomTest
 * SkipStackGuardPageTest
-* Utf8CustomSectionIdTest
-* Utf8ImportFieldTest
-* Utf8ImportModuleTest

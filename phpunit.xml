@@ -29,6 +29,7 @@
             <file>tests/src/SpecTestsuites/Core/CallTest.php</file>
             <file>tests/src/SpecTestsuites/Core/ConstTest.php</file>
             <file>tests/src/SpecTestsuites/Core/ConversionsTest.php</file>
+            <file>tests/src/SpecTestsuites/Core/CustomTest.php</file>
             <file>tests/src/SpecTestsuites/Core/DataTest.php</file>
             <file>tests/src/SpecTestsuites/Core/ElemTest.php</file>
             <file>tests/src/SpecTestsuites/Core/EndiannessTest.php</file>
@@ -97,6 +98,9 @@
             <file>tests/src/SpecTestsuites/Core/UnreachedInvalidTest.php</file>
             <file>tests/src/SpecTestsuites/Core/UnreachedValidTest.php</file>
             <file>tests/src/SpecTestsuites/Core/UnwindTest.php</file>
+            <file>tests/src/SpecTestsuites/Core/Utf8CustomSectionIdTest.php</file>
+            <file>tests/src/SpecTestsuites/Core/Utf8ImportFieldTest.php</file>
+            <file>tests/src/SpecTestsuites/Core/Utf8ImportModuleTest.php</file>
             <file>tests/src/SpecTestsuites/Core/Utf8InvalidEncodingTest.php</file>
         </testsuite>
     </testsuites>
