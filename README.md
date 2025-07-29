@@ -43,12 +43,6 @@ $ composer example:rubyvm-on-php-on-wasm
 
 
 
-## Known Bugs
-
-See [BUGS](./BUGS).
-
-
-
 ## License
 
 See [LICENSE](./LICENSE).
