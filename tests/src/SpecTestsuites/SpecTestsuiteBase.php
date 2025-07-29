@@ -13,6 +13,7 @@ use Nsfisis\Waddiwasi\WebAssembly\Execution\FuncInst;
 use Nsfisis\Waddiwasi\WebAssembly\Execution\GlobalInst;
 use Nsfisis\Waddiwasi\WebAssembly\Execution\Linker;
 use Nsfisis\Waddiwasi\WebAssembly\Execution\MemInst;
+use Nsfisis\Waddiwasi\WebAssembly\Execution\NumericOps;
 use Nsfisis\Waddiwasi\WebAssembly\Execution\Ref;
 use Nsfisis\Waddiwasi\WebAssembly\Execution\Refs\RefExtern;
 use Nsfisis\Waddiwasi\WebAssembly\Execution\Refs\RefFunc;
@@ -73,7 +74,7 @@ abstract class SpecTestsuiteBase extends TestCase
             ])),
             'global_i32' => Extern::Global_(new GlobalInst(new GlobalType(Mut::Const, ValType::I32), 666)),
             'global_i64' => Extern::Global_(new GlobalInst(new GlobalType(Mut::Const, ValType::I64), 666)),
-            'global_f32' => Extern::Global_(new GlobalInst(new GlobalType(Mut::Const, ValType::F32), 666.6)),
+            'global_f32' => Extern::Global_(new GlobalInst(new GlobalType(Mut::Const, ValType::F32), NumericOps::truncateF64ToF32(666.6))),
             'global_f64' => Extern::Global_(new GlobalInst(new GlobalType(Mut::Const, ValType::F64), 666.6)),
             'print' => Extern::Func(FuncInst::Host(new FuncType([], []), fn () => null)),
             'print_i32' => Extern::Func(FuncInst::Host(new FuncType([ValType::I32], []), fn () => null)),

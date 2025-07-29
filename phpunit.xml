@@ -52,6 +52,7 @@
             <file>tests/src/SpecTestsuites/Core/I32Test.php</file>
             <file>tests/src/SpecTestsuites/Core/I64Test.php</file>
             <file>tests/src/SpecTestsuites/Core/IfTest.php</file>
+            <file>tests/src/SpecTestsuites/Core/ImportsTest.php</file>
             <file>tests/src/SpecTestsuites/Core/InlineModuleTest.php</file>
             <file>tests/src/SpecTestsuites/Core/IntExprsTest.php</file>
             <file>tests/src/SpecTestsuites/Core/IntLiteralsTest.php</file>
