@@ -57,6 +57,7 @@
             <file>tests/src/SpecTestsuites/Core/IntLiteralsTest.php</file>
             <file>tests/src/SpecTestsuites/Core/LabelsTest.php</file>
             <file>tests/src/SpecTestsuites/Core/LeftToRightTest.php</file>
+            <file>tests/src/SpecTestsuites/Core/LinkingTest.php</file>
             <file>tests/src/SpecTestsuites/Core/LoadTest.php</file>
             <file>tests/src/SpecTestsuites/Core/LocalGetTest.php</file>
             <file>tests/src/SpecTestsuites/Core/LocalSetTest.php</file>
