@@ -158,12 +158,12 @@ abstract class SpecTestsuiteBase extends TestCase
         string $text,
         int $line,
     ): void {
-        $filePath = __DIR__ . "/../../fixtures/spec_testsuites/core/$filename";
+        $filePath = __DIR__ . "/../../fixtures/spec_testsuites/core/{$filename}";
         $wasmBinaryStream = new FileStream($filePath);
         $module = (new Decoder($wasmBinaryStream))->decode();
         $result = (new Validator($module))->validate();
         // @todo Check error message.
-        $this->assertNotEmpty($result->errors, "validating $filename is expected to fail (at $line)");
+        $this->assertNotEmpty($result->errors, "validating {$filename} is expected to fail (at {$line})");
     }
 
     protected function runAssertExhaustionCommand(

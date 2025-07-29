@@ -59,7 +59,7 @@ final class Validator
         $this->controlStack = [];
 
         // Extract actual function signature types from func
-        if (!isset($this->module->types[$func->type])) {
+        if (! isset($this->module->types[$func->type])) {
             $this->addError("Invalid function type index: {$func->type}");
             return;
         }
@@ -355,7 +355,7 @@ final class Validator
                 break;
 
             default:
-                $this->addError("Unsupported instruction: " . $instr::class);
+                $this->addError('Unsupported instruction: ' . $instr::class);
         }
     }
 
@@ -486,7 +486,7 @@ final class Validator
         $this->popValExpected(ValType::I32);
         $t1 = $this->popVal();
         $t2 = $this->popVal();
-        if (!(($t1 === null || $t1->isNum()) && ($t2 === null || $t2->isNum()) || ($t1 === null || $t1->isVec()) && ($t2 === null || $t2->isVec()))) {
+        if (! (($t1 === null || $t1->isNum()) && ($t2 === null || $t2->isNum()) || ($t1 === null || $t1->isVec()) && ($t2 === null || $t2->isVec()))) {
             $this->addError('Invalid select operand types');
             return;
         }
@@ -784,7 +784,7 @@ final class Validator
     private function expandBlockType(BlockType $blockType): FuncType
     {
         if ($blockType instanceof BlockTypes\TypeIdx) {
-            if (!isset($this->module->types[$blockType->inner])) {
+            if (! isset($this->module->types[$blockType->inner])) {
                 $this->addError("Invalid type index: {$blockType->inner}");
                 return new FuncType([], []);
             }
@@ -795,9 +795,8 @@ final class Validator
                 [],
                 $t === null ? [] : [$t],
             );
-        } else {
-            $this->addError("Unknown block type: " . $blockType::class);
-            return new FuncType([], []);
         }
+        $this->addError('Unknown block type: ' . $blockType::class);
+        return new FuncType([], []);
     }
 }
