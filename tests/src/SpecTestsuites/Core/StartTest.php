@@ -5,7 +5,6 @@ declare(strict_types=1);
 namespace Nsfisis\Waddiwasi\Tests\SpecTestsuites\Core;
 
 use Nsfisis\Waddiwasi\Tests\SpecTestsuites\SpecTestsuiteBase;
-use PHPUnit\Framework\Attributes\Depends;
 use PHPUnit\Framework\Attributes\DoesNotPerformAssertions;
 
 final class StartTest extends SpecTestsuiteBase
@@ -19,7 +18,6 @@ final class StartTest extends SpecTestsuiteBase
         );
     }
 
-    #[Depends('testAssertInvalid0')]
     public function testAssertInvalid1(): void
     {
         $this->runAssertInvalidCommand(
@@ -29,7 +27,6 @@ final class StartTest extends SpecTestsuiteBase
         );
     }
 
-    #[Depends('testAssertInvalid1')]
     public function testAssertInvalid2(): void
     {
         $this->runAssertInvalidCommand(
@@ -39,7 +36,6 @@ final class StartTest extends SpecTestsuiteBase
         );
     }
 
-    #[Depends('testAssertInvalid2')]
     public function testModule3(): void
     {
         $this->runModuleCommand(
@@ -49,7 +45,6 @@ final class StartTest extends SpecTestsuiteBase
         );
     }
 
-    #[Depends('testModule3')]
     public function testAssertReturn4(): void
     {
         $this->runAssertReturnCommand(
@@ -59,7 +54,6 @@ final class StartTest extends SpecTestsuiteBase
         );
     }
 
-    #[Depends('testAssertReturn4')]
     public function testAction5(): void
     {
         $this->runActionCommand(
@@ -68,7 +62,6 @@ final class StartTest extends SpecTestsuiteBase
         );
     }
 
-    #[Depends('testAction5')]
     public function testAssertReturn6(): void
     {
         $this->runAssertReturnCommand(
@@ -78,7 +71,6 @@ final class StartTest extends SpecTestsuiteBase
         );
     }
 
-    #[Depends('testAssertReturn6')]
     public function testAction7(): void
     {
         $this->runActionCommand(
@@ -87,7 +79,6 @@ final class StartTest extends SpecTestsuiteBase
         );
     }
 
-    #[Depends('testAction7')]
     public function testAssertReturn8(): void
     {
         $this->runAssertReturnCommand(
@@ -97,7 +88,6 @@ final class StartTest extends SpecTestsuiteBase
         );
     }
 
-    #[Depends('testAssertReturn8')]
     public function testModule9(): void
     {
         $this->runModuleCommand(
@@ -107,7 +97,6 @@ final class StartTest extends SpecTestsuiteBase
         );
     }
 
-    #[Depends('testModule9')]
     public function testAssertReturn10(): void
     {
         $this->runAssertReturnCommand(
@@ -117,7 +106,6 @@ final class StartTest extends SpecTestsuiteBase
         );
     }
 
-    #[Depends('testAssertReturn10')]
     public function testAction11(): void
     {
         $this->runActionCommand(
@@ -126,7 +114,6 @@ final class StartTest extends SpecTestsuiteBase
         );
     }
 
-    #[Depends('testAction11')]
     public function testAssertReturn12(): void
     {
         $this->runAssertReturnCommand(
@@ -136,7 +123,6 @@ final class StartTest extends SpecTestsuiteBase
         );
     }
 
-    #[Depends('testAssertReturn12')]
     public function testAction13(): void
     {
         $this->runActionCommand(
@@ -145,7 +131,6 @@ final class StartTest extends SpecTestsuiteBase
         );
     }
 
-    #[Depends('testAction13')]
     public function testAssertReturn14(): void
     {
         $this->runAssertReturnCommand(
@@ -155,7 +140,6 @@ final class StartTest extends SpecTestsuiteBase
         );
     }
 
-    #[Depends('testAssertReturn14')]
     public function testModule15(): void
     {
         $this->runModuleCommand(
@@ -165,7 +149,6 @@ final class StartTest extends SpecTestsuiteBase
         );
     }
 
-    #[Depends('testModule15')]
     public function testModule16(): void
     {
         $this->runModuleCommand(
@@ -175,7 +158,6 @@ final class StartTest extends SpecTestsuiteBase
         );
     }
 
-    #[Depends('testModule16')]
     public function testModule17(): void
     {
         $this->runModuleCommand(
@@ -185,7 +167,6 @@ final class StartTest extends SpecTestsuiteBase
         );
     }
 
-    #[Depends('testModule17')]
     public function testAssertUninstantiable18(): void
     {
         $this->runAssertUninstantiableCommand(
@@ -196,7 +177,6 @@ final class StartTest extends SpecTestsuiteBase
     }
 
     #[DoesNotPerformAssertions]
-    #[Depends('testAssertUninstantiable18')]
     public function testAssertMalformed19(): void
     {
     }

@@ -5,7 +5,6 @@ declare(strict_types=1);
 namespace Nsfisis\Waddiwasi\Tests\SpecTestsuites\Core;
 
 use Nsfisis\Waddiwasi\Tests\SpecTestsuites\SpecTestsuiteBase;
-use PHPUnit\Framework\Attributes\Depends;
 use PHPUnit\Framework\Attributes\DoesNotPerformAssertions;
 
 final class ElemTest extends SpecTestsuiteBase
@@ -19,7 +18,6 @@ final class ElemTest extends SpecTestsuiteBase
         );
     }
 
-    #[Depends('testModule0')]
     public function testModule1(): void
     {
         $this->runModuleCommand(
@@ -29,7 +27,6 @@ final class ElemTest extends SpecTestsuiteBase
         );
     }
 
-    #[Depends('testModule1')]
     public function testModule2(): void
     {
         $this->runModuleCommand(
@@ -39,7 +36,6 @@ final class ElemTest extends SpecTestsuiteBase
         );
     }
 
-    #[Depends('testModule2')]
     public function testModule3(): void
     {
         $this->runModuleCommand(
@@ -49,7 +45,6 @@ final class ElemTest extends SpecTestsuiteBase
         );
     }
 
-    #[Depends('testModule3')]
     public function testModule4(): void
     {
         $this->runModuleCommand(
@@ -59,7 +54,6 @@ final class ElemTest extends SpecTestsuiteBase
         );
     }
 
-    #[Depends('testModule4')]
     public function testModule5(): void
     {
         $this->runModuleCommand(
@@ -69,7 +63,6 @@ final class ElemTest extends SpecTestsuiteBase
         );
     }
 
-    #[Depends('testModule5')]
     public function testModule6(): void
     {
         $this->runModuleCommand(
@@ -79,7 +72,6 @@ final class ElemTest extends SpecTestsuiteBase
         );
     }
 
-    #[Depends('testModule6')]
     public function testModule7(): void
     {
         $this->runModuleCommand(
@@ -89,7 +81,6 @@ final class ElemTest extends SpecTestsuiteBase
         );
     }
 
-    #[Depends('testModule7')]
     public function testModule8(): void
     {
         $this->runModuleCommand(
@@ -99,7 +90,6 @@ final class ElemTest extends SpecTestsuiteBase
         );
     }
 
-    #[Depends('testModule8')]
     public function testAssertReturn9(): void
     {
         $this->runAssertReturnCommand(
@@ -109,7 +99,6 @@ final class ElemTest extends SpecTestsuiteBase
         );
     }
 
-    #[Depends('testAssertReturn9')]
     public function testAssertReturn10(): void
     {
         $this->runAssertReturnCommand(
@@ -119,7 +108,6 @@ final class ElemTest extends SpecTestsuiteBase
         );
     }
 
-    #[Depends('testAssertReturn10')]
     public function testModule11(): void
     {
         $this->runModuleCommand(
@@ -129,7 +117,6 @@ final class ElemTest extends SpecTestsuiteBase
         );
     }
 
-    #[Depends('testModule11')]
     public function testAssertReturn12(): void
     {
         $this->runAssertReturnCommand(
@@ -139,7 +126,6 @@ final class ElemTest extends SpecTestsuiteBase
         );
     }
 
-    #[Depends('testAssertReturn12')]
     public function testAssertReturn13(): void
     {
         $this->runAssertReturnCommand(
@@ -149,7 +135,6 @@ final class ElemTest extends SpecTestsuiteBase
         );
     }
 
-    #[Depends('testAssertReturn13')]
     public function testAssertInvalid14(): void
     {
         $this->runAssertInvalidCommand(
@@ -159,7 +144,6 @@ final class ElemTest extends SpecTestsuiteBase
         );
     }
 
-    #[Depends('testAssertInvalid14')]
     public function testAssertInvalid15(): void
     {
         $this->runAssertInvalidCommand(
@@ -169,7 +153,6 @@ final class ElemTest extends SpecTestsuiteBase
         );
     }
 
-    #[Depends('testAssertInvalid15')]
     public function testModule16(): void
     {
         $this->runModuleCommand(
@@ -179,7 +162,6 @@ final class ElemTest extends SpecTestsuiteBase
         );
     }
 
-    #[Depends('testModule16')]
     public function testModule17(): void
     {
         $this->runModuleCommand(
@@ -189,7 +171,6 @@ final class ElemTest extends SpecTestsuiteBase
         );
     }
 
-    #[Depends('testModule17')]
     public function testModule18(): void
     {
         $this->runModuleCommand(
@@ -199,7 +180,6 @@ final class ElemTest extends SpecTestsuiteBase
         );
     }
 
-    #[Depends('testModule18')]
     public function testModule19(): void
     {
         $this->runModuleCommand(
@@ -209,7 +189,6 @@ final class ElemTest extends SpecTestsuiteBase
         );
     }
 
-    #[Depends('testModule19')]
     public function testModule20(): void
     {
         $this->runModuleCommand(
@@ -219,7 +198,6 @@ final class ElemTest extends SpecTestsuiteBase
         );
     }
 
-    #[Depends('testModule20')]
     public function testModule21(): void
     {
         $this->runModuleCommand(
@@ -229,7 +207,6 @@ final class ElemTest extends SpecTestsuiteBase
         );
     }
 
-    #[Depends('testModule21')]
     public function testModule22(): void
     {
         $this->runModuleCommand(
@@ -239,7 +216,6 @@ final class ElemTest extends SpecTestsuiteBase
         );
     }
 
-    #[Depends('testModule22')]
     public function testModule23(): void
     {
         $this->runModuleCommand(
@@ -249,7 +225,6 @@ final class ElemTest extends SpecTestsuiteBase
         );
     }
 
-    #[Depends('testModule23')]
     public function testModule24(): void
     {
         $this->runModuleCommand(
@@ -259,7 +234,6 @@ final class ElemTest extends SpecTestsuiteBase
         );
     }
 
-    #[Depends('testModule24')]
     public function testModule25(): void
     {
         $this->runModuleCommand(
@@ -269,7 +243,6 @@ final class ElemTest extends SpecTestsuiteBase
         );
     }
 
-    #[Depends('testModule25')]
     public function testAssertUninstantiable26(): void
     {
         $this->runAssertUninstantiableCommand(
@@ -279,7 +252,6 @@ final class ElemTest extends SpecTestsuiteBase
         );
     }
 
-    #[Depends('testAssertUninstantiable26')]
     public function testAssertUninstantiable27(): void
     {
         $this->runAssertUninstantiableCommand(
@@ -289,7 +261,6 @@ final class ElemTest extends SpecTestsuiteBase
         );
     }
 
-    #[Depends('testAssertUninstantiable27')]
     public function testAssertUninstantiable28(): void
     {
         $this->runAssertUninstantiableCommand(
@@ -299,7 +270,6 @@ final class ElemTest extends SpecTestsuiteBase
         );
     }
 
-    #[Depends('testAssertUninstantiable28')]
     public function testAssertUninstantiable29(): void
     {
         $this->runAssertUninstantiableCommand(
@@ -309,7 +279,6 @@ final class ElemTest extends SpecTestsuiteBase
         );
     }
 
-    #[Depends('testAssertUninstantiable29')]
     public function testAssertUninstantiable30(): void
     {
         $this->runAssertUninstantiableCommand(
@@ -319,7 +288,6 @@ final class ElemTest extends SpecTestsuiteBase
         );
     }
 
-    #[Depends('testAssertUninstantiable30')]
     public function testAssertUninstantiable31(): void
     {
         $this->runAssertUninstantiableCommand(
@@ -329,7 +297,6 @@ final class ElemTest extends SpecTestsuiteBase
         );
     }
 
-    #[Depends('testAssertUninstantiable31')]
     public function testAssertUninstantiable32(): void
     {
         $this->runAssertUninstantiableCommand(
@@ -339,7 +306,6 @@ final class ElemTest extends SpecTestsuiteBase
         );
     }
 
-    #[Depends('testAssertUninstantiable32')]
     public function testAssertUninstantiable33(): void
     {
         $this->runAssertUninstantiableCommand(
@@ -349,7 +315,6 @@ final class ElemTest extends SpecTestsuiteBase
         );
     }
 
-    #[Depends('testAssertUninstantiable33')]
     public function testAssertUninstantiable34(): void
     {
         $this->runAssertUninstantiableCommand(
@@ -359,7 +324,6 @@ final class ElemTest extends SpecTestsuiteBase
         );
     }
 
-    #[Depends('testAssertUninstantiable34')]
     public function testAssertUninstantiable35(): void
     {
         $this->runAssertUninstantiableCommand(
@@ -369,7 +333,6 @@ final class ElemTest extends SpecTestsuiteBase
         );
     }
 
-    #[Depends('testAssertUninstantiable35')]
     public function testAssertUninstantiable36(): void
     {
         $this->runAssertUninstantiableCommand(
@@ -379,7 +342,6 @@ final class ElemTest extends SpecTestsuiteBase
         );
     }
 
-    #[Depends('testAssertUninstantiable36')]
     public function testAssertUninstantiable37(): void
     {
         $this->runAssertUninstantiableCommand(
@@ -389,7 +351,6 @@ final class ElemTest extends SpecTestsuiteBase
         );
     }
 
-    #[Depends('testAssertUninstantiable37')]
     public function testModule38(): void
     {
         $this->runModuleCommand(
@@ -399,7 +360,6 @@ final class ElemTest extends SpecTestsuiteBase
         );
     }
 
-    #[Depends('testModule38')]
     public function testAssertTrap39(): void
     {
         $this->runAssertTrapCommand(
@@ -409,7 +369,6 @@ final class ElemTest extends SpecTestsuiteBase
         );
     }
 
-    #[Depends('testAssertTrap39')]
     public function testModule40(): void
     {
         $this->runModuleCommand(
@@ -419,7 +378,6 @@ final class ElemTest extends SpecTestsuiteBase
         );
     }
 
-    #[Depends('testModule40')]
     public function testAssertTrap41(): void
     {
         $this->runAssertTrapCommand(
@@ -429,7 +387,6 @@ final class ElemTest extends SpecTestsuiteBase
         );
     }
 
-    #[Depends('testAssertTrap41')]
     public function testAssertInvalid42(): void
     {
         $this->runAssertInvalidCommand(
@@ -439,7 +396,6 @@ final class ElemTest extends SpecTestsuiteBase
         );
     }
 
-    #[Depends('testAssertInvalid42')]
     public function testAssertInvalid43(): void
     {
         $this->runAssertInvalidCommand(
@@ -449,7 +405,6 @@ final class ElemTest extends SpecTestsuiteBase
         );
     }
 
-    #[Depends('testAssertInvalid43')]
     public function testAssertInvalid44(): void
     {
         $this->runAssertInvalidCommand(
@@ -459,7 +414,6 @@ final class ElemTest extends SpecTestsuiteBase
         );
     }
 
-    #[Depends('testAssertInvalid44')]
     public function testAssertInvalid45(): void
     {
         $this->runAssertInvalidCommand(
@@ -469,7 +423,6 @@ final class ElemTest extends SpecTestsuiteBase
         );
     }
 
-    #[Depends('testAssertInvalid45')]
     public function testAssertInvalid46(): void
     {
         $this->runAssertInvalidCommand(
@@ -479,7 +432,6 @@ final class ElemTest extends SpecTestsuiteBase
         );
     }
 
-    #[Depends('testAssertInvalid46')]
     public function testAssertInvalid47(): void
     {
         $this->runAssertInvalidCommand(
@@ -489,7 +441,6 @@ final class ElemTest extends SpecTestsuiteBase
         );
     }
 
-    #[Depends('testAssertInvalid47')]
     public function testAssertInvalid48(): void
     {
         $this->runAssertInvalidCommand(
@@ -499,7 +450,6 @@ final class ElemTest extends SpecTestsuiteBase
         );
     }
 
-    #[Depends('testAssertInvalid48')]
     public function testAssertInvalid49(): void
     {
         $this->runAssertInvalidCommand(
@@ -509,7 +459,6 @@ final class ElemTest extends SpecTestsuiteBase
         );
     }
 
-    #[Depends('testAssertInvalid49')]
     public function testAssertInvalid50(): void
     {
         $this->runAssertInvalidCommand(
@@ -519,7 +468,6 @@ final class ElemTest extends SpecTestsuiteBase
         );
     }
 
-    #[Depends('testAssertInvalid50')]
     public function testAssertInvalid51(): void
     {
         $this->runAssertInvalidCommand(
@@ -529,7 +477,6 @@ final class ElemTest extends SpecTestsuiteBase
         );
     }
 
-    #[Depends('testAssertInvalid51')]
     public function testAssertInvalid52(): void
     {
         $this->runAssertInvalidCommand(
@@ -539,7 +486,6 @@ final class ElemTest extends SpecTestsuiteBase
         );
     }
 
-    #[Depends('testAssertInvalid52')]
     public function testAssertInvalid53(): void
     {
         $this->runAssertInvalidCommand(
@@ -549,7 +495,6 @@ final class ElemTest extends SpecTestsuiteBase
         );
     }
 
-    #[Depends('testAssertInvalid53')]
     public function testAssertInvalid54(): void
     {
         $this->runAssertInvalidCommand(
@@ -559,7 +504,6 @@ final class ElemTest extends SpecTestsuiteBase
         );
     }
 
-    #[Depends('testAssertInvalid54')]
     public function testAssertInvalid55(): void
     {
         $this->runAssertInvalidCommand(
@@ -569,7 +513,6 @@ final class ElemTest extends SpecTestsuiteBase
         );
     }
 
-    #[Depends('testAssertInvalid55')]
     public function testAssertInvalid56(): void
     {
         $this->runAssertInvalidCommand(
@@ -579,7 +522,6 @@ final class ElemTest extends SpecTestsuiteBase
         );
     }
 
-    #[Depends('testAssertInvalid56')]
     public function testAssertInvalid57(): void
     {
         $this->runAssertInvalidCommand(
@@ -589,7 +531,6 @@ final class ElemTest extends SpecTestsuiteBase
         );
     }
 
-    #[Depends('testAssertInvalid57')]
     public function testAssertInvalid58(): void
     {
         $this->runAssertInvalidCommand(
@@ -599,7 +540,6 @@ final class ElemTest extends SpecTestsuiteBase
         );
     }
 
-    #[Depends('testAssertInvalid58')]
     public function testAssertInvalid59(): void
     {
         $this->runAssertInvalidCommand(
@@ -609,7 +549,6 @@ final class ElemTest extends SpecTestsuiteBase
         );
     }
 
-    #[Depends('testAssertInvalid59')]
     public function testAssertInvalid60(): void
     {
         $this->runAssertInvalidCommand(
@@ -619,7 +558,6 @@ final class ElemTest extends SpecTestsuiteBase
         );
     }
 
-    #[Depends('testAssertInvalid60')]
     public function testAssertInvalid61(): void
     {
         $this->runAssertInvalidCommand(
@@ -629,7 +567,6 @@ final class ElemTest extends SpecTestsuiteBase
         );
     }
 
-    #[Depends('testAssertInvalid61')]
     public function testModule62(): void
     {
         $this->runModuleCommand(
@@ -639,7 +576,6 @@ final class ElemTest extends SpecTestsuiteBase
         );
     }
 
-    #[Depends('testModule62')]
     public function testAssertReturn63(): void
     {
         $this->runAssertReturnCommand(
@@ -649,7 +585,6 @@ final class ElemTest extends SpecTestsuiteBase
         );
     }
 
-    #[Depends('testAssertReturn63')]
     public function testModule64(): void
     {
         $this->runModuleCommand(
@@ -659,7 +594,6 @@ final class ElemTest extends SpecTestsuiteBase
         );
     }
 
-    #[Depends('testModule64')]
     public function testAssertReturn65(): void
     {
         $this->runAssertReturnCommand(
@@ -669,7 +603,6 @@ final class ElemTest extends SpecTestsuiteBase
         );
     }
 
-    #[Depends('testAssertReturn65')]
     public function testModule66(): void
     {
         $this->runModuleCommand(
@@ -679,7 +612,6 @@ final class ElemTest extends SpecTestsuiteBase
         );
     }
 
-    #[Depends('testModule66')]
     public function testRegister67(): void
     {
         $this->runRegisterCommand(
@@ -689,7 +621,6 @@ final class ElemTest extends SpecTestsuiteBase
         );
     }
 
-    #[Depends('testRegister67')]
     public function testAssertTrap68(): void
     {
         $this->runAssertTrapCommand(
@@ -699,7 +630,6 @@ final class ElemTest extends SpecTestsuiteBase
         );
     }
 
-    #[Depends('testAssertTrap68')]
     public function testAssertReturn69(): void
     {
         $this->runAssertReturnCommand(
@@ -709,7 +639,6 @@ final class ElemTest extends SpecTestsuiteBase
         );
     }
 
-    #[Depends('testAssertReturn69')]
     public function testAssertReturn70(): void
     {
         $this->runAssertReturnCommand(
@@ -719,7 +648,6 @@ final class ElemTest extends SpecTestsuiteBase
         );
     }
 
-    #[Depends('testAssertReturn70')]
     public function testModule71(): void
     {
         $this->runModuleCommand(
@@ -729,7 +657,6 @@ final class ElemTest extends SpecTestsuiteBase
         );
     }
 
-    #[Depends('testModule71')]
     public function testAssertReturn72(): void
     {
         $this->runAssertReturnCommand(
@@ -739,7 +666,6 @@ final class ElemTest extends SpecTestsuiteBase
         );
     }
 
-    #[Depends('testAssertReturn72')]
     public function testAssertReturn73(): void
     {
         $this->runAssertReturnCommand(
@@ -749,7 +675,6 @@ final class ElemTest extends SpecTestsuiteBase
         );
     }
 
-    #[Depends('testAssertReturn73')]
     public function testAssertReturn74(): void
     {
         $this->runAssertReturnCommand(
@@ -759,7 +684,6 @@ final class ElemTest extends SpecTestsuiteBase
         );
     }
 
-    #[Depends('testAssertReturn74')]
     public function testModule75(): void
     {
         $this->runModuleCommand(
@@ -769,7 +693,6 @@ final class ElemTest extends SpecTestsuiteBase
         );
     }
 
-    #[Depends('testModule75')]
     public function testAssertReturn76(): void
     {
         $this->runAssertReturnCommand(
@@ -779,7 +702,6 @@ final class ElemTest extends SpecTestsuiteBase
         );
     }
 
-    #[Depends('testAssertReturn76')]
     public function testAssertReturn77(): void
     {
         $this->runAssertReturnCommand(
@@ -789,7 +711,6 @@ final class ElemTest extends SpecTestsuiteBase
         );
     }
 
-    #[Depends('testAssertReturn77')]
     public function testAssertReturn78(): void
     {
         $this->runAssertReturnCommand(
@@ -799,7 +720,6 @@ final class ElemTest extends SpecTestsuiteBase
         );
     }
 
-    #[Depends('testAssertReturn78')]
     public function testAssertInvalid79(): void
     {
         $this->runAssertInvalidCommand(
@@ -809,7 +729,6 @@ final class ElemTest extends SpecTestsuiteBase
         );
     }
 
-    #[Depends('testAssertInvalid79')]
     public function testAssertInvalid80(): void
     {
         $this->runAssertInvalidCommand(
@@ -819,7 +738,6 @@ final class ElemTest extends SpecTestsuiteBase
         );
     }
 
-    #[Depends('testAssertInvalid80')]
     public function testAssertInvalid81(): void
     {
         $this->runAssertInvalidCommand(
@@ -829,7 +747,6 @@ final class ElemTest extends SpecTestsuiteBase
         );
     }
 
-    #[Depends('testAssertInvalid81')]
     public function testAssertInvalid82(): void
     {
         $this->runAssertInvalidCommand(
@@ -839,7 +756,6 @@ final class ElemTest extends SpecTestsuiteBase
         );
     }
 
-    #[Depends('testAssertInvalid82')]
     public function testModule83(): void
     {
         $this->runModuleCommand(
@@ -849,7 +765,6 @@ final class ElemTest extends SpecTestsuiteBase
         );
     }
 
-    #[Depends('testModule83')]
     public function testRegister84(): void
     {
         $this->runRegisterCommand(
@@ -859,7 +774,6 @@ final class ElemTest extends SpecTestsuiteBase
         );
     }
 
-    #[Depends('testRegister84')]
     public function testAssertReturn85(): void
     {
         $this->runAssertReturnCommand(
@@ -869,7 +783,6 @@ final class ElemTest extends SpecTestsuiteBase
         );
     }
 
-    #[Depends('testAssertReturn85')]
     public function testAssertReturn86(): void
     {
         $this->runAssertReturnCommand(
@@ -879,7 +792,6 @@ final class ElemTest extends SpecTestsuiteBase
         );
     }
 
-    #[Depends('testAssertReturn86')]
     public function testAssertReturn87(): void
     {
         $this->runAssertReturnCommand(
@@ -889,7 +801,6 @@ final class ElemTest extends SpecTestsuiteBase
         );
     }
 
-    #[Depends('testAssertReturn87')]
     public function testAssertReturn88(): void
     {
         $this->runAssertReturnCommand(
@@ -899,7 +810,6 @@ final class ElemTest extends SpecTestsuiteBase
         );
     }
 
-    #[Depends('testAssertReturn88')]
     public function testAssertReturn89(): void
     {
         $this->runAssertReturnCommand(
@@ -909,7 +819,6 @@ final class ElemTest extends SpecTestsuiteBase
         );
     }
 
-    #[Depends('testAssertReturn89')]
     public function testAssertReturn90(): void
     {
         $this->runAssertReturnCommand(
@@ -919,7 +828,6 @@ final class ElemTest extends SpecTestsuiteBase
         );
     }
 
-    #[Depends('testAssertReturn90')]
     public function testModule91(): void
     {
         $this->runModuleCommand(
@@ -929,7 +837,6 @@ final class ElemTest extends SpecTestsuiteBase
         );
     }
 
-    #[Depends('testModule91')]
     public function testAssertReturn92(): void
     {
         $this->runAssertReturnCommand(
@@ -939,7 +846,6 @@ final class ElemTest extends SpecTestsuiteBase
         );
     }
 
-    #[Depends('testAssertReturn92')]
     public function testAssertReturn93(): void
     {
         $this->runAssertReturnCommand(
@@ -949,7 +855,6 @@ final class ElemTest extends SpecTestsuiteBase
         );
     }
 
-    #[Depends('testAssertReturn93')]
     public function testModule94(): void
     {
         $this->runModuleCommand(
@@ -959,7 +864,6 @@ final class ElemTest extends SpecTestsuiteBase
         );
     }
 
-    #[Depends('testModule94')]
     public function testRegister95(): void
     {
         $this->runRegisterCommand(
@@ -969,7 +873,6 @@ final class ElemTest extends SpecTestsuiteBase
         );
     }
 
-    #[Depends('testRegister95')]
     public function testModule96(): void
     {
         $this->runModuleCommand(
@@ -979,7 +882,6 @@ final class ElemTest extends SpecTestsuiteBase
         );
     }
 
-    #[Depends('testModule96')]
     public function testAssertReturn97(): void
     {
         $this->runAssertReturnCommand(

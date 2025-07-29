@@ -55,12 +55,10 @@ foreach ($wastJsonFiles as $wastJsonFile) {
     fwrite($fp, "declare(strict_types=1);\n\n");
     fwrite($fp, "namespace Nsfisis\\Waddiwasi\\Tests\\SpecTestsuites\\Core;\n\n");
     fwrite($fp, "use Nsfisis\\Waddiwasi\\Tests\\SpecTestsuites\\SpecTestsuiteBase;\n");
-    fwrite($fp, "use PHPUnit\\Framework\\Attributes\\Depends;\n");
     fwrite($fp, "use PHPUnit\\Framework\\Attributes\\DoesNotPerformAssertions;\n\n");
     fwrite($fp, "final class $className extends SpecTestsuiteBase\n");
     fwrite($fp, "{\n");
 
-    $prevMethodName = null;
     foreach ($commands as $i => $command) {
         $type = $command['type'];
         $line = $command['line'];
@@ -82,9 +80,6 @@ foreach ($wastJsonFiles as $wastJsonFile) {
         if ($commandTest === null) {
             fwrite($fp, "    #[DoesNotPerformAssertions]\n");
         }
-        if ($prevMethodName !== null) {
-            fwrite($fp, "    #[Depends('$prevMethodName')]\n");
-        }
         fwrite($fp, "    public function $methodName(): void\n");
         fwrite($fp, "    {\n");
 
@@ -102,7 +97,6 @@ foreach ($wastJsonFiles as $wastJsonFile) {
         if ($i !== count($commands) - 1) {
             fwrite($fp, "\n");
         }
-        $prevMethodName = $methodName;
     }
 
     fwrite($fp, "}\n");

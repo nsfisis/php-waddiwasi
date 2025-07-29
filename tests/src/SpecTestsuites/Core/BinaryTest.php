@@ -5,7 +5,6 @@ declare(strict_types=1);
 namespace Nsfisis\Waddiwasi\Tests\SpecTestsuites\Core;
 
 use Nsfisis\Waddiwasi\Tests\SpecTestsuites\SpecTestsuiteBase;
-use PHPUnit\Framework\Attributes\Depends;
 use PHPUnit\Framework\Attributes\DoesNotPerformAssertions;
 
 final class BinaryTest extends SpecTestsuiteBase
@@ -19,7 +18,6 @@ final class BinaryTest extends SpecTestsuiteBase
         );
     }
 
-    #[Depends('testModule0')]
     public function testModule1(): void
     {
         $this->runModuleCommand(
@@ -29,7 +27,6 @@ final class BinaryTest extends SpecTestsuiteBase
         );
     }
 
-    #[Depends('testModule1')]
     public function testModule2(): void
     {
         $this->runModuleCommand(
@@ -39,7 +36,6 @@ final class BinaryTest extends SpecTestsuiteBase
         );
     }
 
-    #[Depends('testModule2')]
     public function testModule3(): void
     {
         $this->runModuleCommand(
@@ -49,7 +45,6 @@ final class BinaryTest extends SpecTestsuiteBase
         );
     }
 
-    #[Depends('testModule3')]
     public function testAssertMalformed4(): void
     {
         $this->runAssertMalformedCommand(
@@ -59,7 +54,6 @@ final class BinaryTest extends SpecTestsuiteBase
         );
     }
 
-    #[Depends('testAssertMalformed4')]
     public function testAssertMalformed5(): void
     {
         $this->runAssertMalformedCommand(
@@ -69,7 +63,6 @@ final class BinaryTest extends SpecTestsuiteBase
         );
     }
 
-    #[Depends('testAssertMalformed5')]
     public function testAssertMalformed6(): void
     {
         $this->runAssertMalformedCommand(
@@ -79,7 +72,6 @@ final class BinaryTest extends SpecTestsuiteBase
         );
     }
 
-    #[Depends('testAssertMalformed6')]
     public function testAssertMalformed7(): void
     {
         $this->runAssertMalformedCommand(
@@ -89,7 +81,6 @@ final class BinaryTest extends SpecTestsuiteBase
         );
     }
 
-    #[Depends('testAssertMalformed7')]
     public function testAssertMalformed8(): void
     {
         $this->runAssertMalformedCommand(
@@ -99,7 +90,6 @@ final class BinaryTest extends SpecTestsuiteBase
         );
     }
 
-    #[Depends('testAssertMalformed8')]
     public function testAssertMalformed9(): void
     {
         $this->runAssertMalformedCommand(
@@ -109,7 +99,6 @@ final class BinaryTest extends SpecTestsuiteBase
         );
     }
 
-    #[Depends('testAssertMalformed9')]
     public function testAssertMalformed10(): void
     {
         $this->runAssertMalformedCommand(
@@ -119,7 +108,6 @@ final class BinaryTest extends SpecTestsuiteBase
         );
     }
 
-    #[Depends('testAssertMalformed10')]
     public function testAssertMalformed11(): void
     {
         $this->runAssertMalformedCommand(
@@ -129,7 +117,6 @@ final class BinaryTest extends SpecTestsuiteBase
         );
     }
 
-    #[Depends('testAssertMalformed11')]
     public function testAssertMalformed12(): void
     {
         $this->runAssertMalformedCommand(
@@ -139,7 +126,6 @@ final class BinaryTest extends SpecTestsuiteBase
         );
     }
 
-    #[Depends('testAssertMalformed12')]
     public function testAssertMalformed13(): void
     {
         $this->runAssertMalformedCommand(
@@ -149,7 +135,6 @@ final class BinaryTest extends SpecTestsuiteBase
         );
     }
 
-    #[Depends('testAssertMalformed13')]
     public function testAssertMalformed14(): void
     {
         $this->runAssertMalformedCommand(
@@ -159,7 +144,6 @@ final class BinaryTest extends SpecTestsuiteBase
         );
     }
 
-    #[Depends('testAssertMalformed14')]
     public function testAssertMalformed15(): void
     {
         $this->runAssertMalformedCommand(
@@ -169,7 +153,6 @@ final class BinaryTest extends SpecTestsuiteBase
         );
     }
 
-    #[Depends('testAssertMalformed15')]
     public function testAssertMalformed16(): void
     {
         $this->runAssertMalformedCommand(
@@ -179,7 +162,6 @@ final class BinaryTest extends SpecTestsuiteBase
         );
     }
 
-    #[Depends('testAssertMalformed16')]
     public function testAssertMalformed17(): void
     {
         $this->runAssertMalformedCommand(
@@ -189,7 +171,6 @@ final class BinaryTest extends SpecTestsuiteBase
         );
     }
 
-    #[Depends('testAssertMalformed17')]
     public function testAssertMalformed18(): void
     {
         $this->runAssertMalformedCommand(
@@ -199,7 +180,6 @@ final class BinaryTest extends SpecTestsuiteBase
         );
     }
 
-    #[Depends('testAssertMalformed18')]
     public function testAssertMalformed19(): void
     {
         $this->runAssertMalformedCommand(
@@ -209,7 +189,6 @@ final class BinaryTest extends SpecTestsuiteBase
         );
     }
 
-    #[Depends('testAssertMalformed19')]
     public function testAssertMalformed20(): void
     {
         $this->runAssertMalformedCommand(
@@ -219,7 +198,6 @@ final class BinaryTest extends SpecTestsuiteBase
         );
     }
 
-    #[Depends('testAssertMalformed20')]
     public function testAssertMalformed21(): void
     {
         $this->runAssertMalformedCommand(
@@ -229,7 +207,6 @@ final class BinaryTest extends SpecTestsuiteBase
         );
     }
 
-    #[Depends('testAssertMalformed21')]
     public function testAssertMalformed22(): void
     {
         $this->runAssertMalformedCommand(
@@ -239,7 +216,6 @@ final class BinaryTest extends SpecTestsuiteBase
         );
     }
 
-    #[Depends('testAssertMalformed22')]
     public function testAssertMalformed23(): void
     {
         $this->runAssertMalformedCommand(
@@ -249,7 +225,6 @@ final class BinaryTest extends SpecTestsuiteBase
         );
     }
 
-    #[Depends('testAssertMalformed23')]
     public function testAssertMalformed24(): void
     {
         $this->runAssertMalformedCommand(
@@ -259,7 +234,6 @@ final class BinaryTest extends SpecTestsuiteBase
         );
     }
 
-    #[Depends('testAssertMalformed24')]
     public function testAssertMalformed25(): void
     {
         $this->runAssertMalformedCommand(
@@ -269,7 +243,6 @@ final class BinaryTest extends SpecTestsuiteBase
         );
     }
 
-    #[Depends('testAssertMalformed25')]
     public function testAssertMalformed26(): void
     {
         $this->runAssertMalformedCommand(
@@ -279,7 +252,6 @@ final class BinaryTest extends SpecTestsuiteBase
         );
     }
 
-    #[Depends('testAssertMalformed26')]
     public function testAssertMalformed27(): void
     {
         $this->runAssertMalformedCommand(
@@ -289,7 +261,6 @@ final class BinaryTest extends SpecTestsuiteBase
         );
     }
 
-    #[Depends('testAssertMalformed27')]
     public function testAssertMalformed28(): void
     {
         $this->runAssertMalformedCommand(
@@ -299,7 +270,6 @@ final class BinaryTest extends SpecTestsuiteBase
         );
     }
 
-    #[Depends('testAssertMalformed28')]
     public function testAssertMalformed29(): void
     {
         $this->runAssertMalformedCommand(
@@ -309,7 +279,6 @@ final class BinaryTest extends SpecTestsuiteBase
         );
     }
 
-    #[Depends('testAssertMalformed29')]
     public function testAssertMalformed30(): void
     {
         $this->runAssertMalformedCommand(
@@ -319,7 +288,6 @@ final class BinaryTest extends SpecTestsuiteBase
         );
     }
 
-    #[Depends('testAssertMalformed30')]
     public function testAssertMalformed31(): void
     {
         $this->runAssertMalformedCommand(
@@ -329,7 +297,6 @@ final class BinaryTest extends SpecTestsuiteBase
         );
     }
 
-    #[Depends('testAssertMalformed31')]
     public function testAssertMalformed32(): void
     {
         $this->runAssertMalformedCommand(
@@ -339,7 +306,6 @@ final class BinaryTest extends SpecTestsuiteBase
         );
     }
 
-    #[Depends('testAssertMalformed32')]
     public function testAssertMalformed33(): void
     {
         $this->runAssertMalformedCommand(
@@ -349,7 +315,6 @@ final class BinaryTest extends SpecTestsuiteBase
         );
     }
 
-    #[Depends('testAssertMalformed33')]
     public function testAssertMalformed34(): void
     {
         $this->runAssertMalformedCommand(
@@ -359,7 +324,6 @@ final class BinaryTest extends SpecTestsuiteBase
         );
     }
 
-    #[Depends('testAssertMalformed34')]
     public function testAssertMalformed35(): void
     {
         $this->runAssertMalformedCommand(
@@ -369,7 +333,6 @@ final class BinaryTest extends SpecTestsuiteBase
         );
     }
 
-    #[Depends('testAssertMalformed35')]
     public function testAssertMalformed36(): void
     {
         $this->runAssertMalformedCommand(
@@ -379,7 +342,6 @@ final class BinaryTest extends SpecTestsuiteBase
         );
     }
 
-    #[Depends('testAssertMalformed36')]
     public function testAssertMalformed37(): void
     {
         $this->runAssertMalformedCommand(
@@ -389,7 +351,6 @@ final class BinaryTest extends SpecTestsuiteBase
         );
     }
 
-    #[Depends('testAssertMalformed37')]
     public function testAssertMalformed38(): void
     {
         $this->runAssertMalformedCommand(
@@ -399,7 +360,6 @@ final class BinaryTest extends SpecTestsuiteBase
         );
     }
 
-    #[Depends('testAssertMalformed38')]
     public function testAssertMalformed39(): void
     {
         $this->runAssertMalformedCommand(
@@ -409,7 +369,6 @@ final class BinaryTest extends SpecTestsuiteBase
         );
     }
 
-    #[Depends('testAssertMalformed39')]
     public function testAssertMalformed40(): void
     {
         $this->runAssertMalformedCommand(
@@ -419,7 +378,6 @@ final class BinaryTest extends SpecTestsuiteBase
         );
     }
 
-    #[Depends('testAssertMalformed40')]
     public function testAssertMalformed41(): void
     {
         $this->runAssertMalformedCommand(
@@ -429,7 +387,6 @@ final class BinaryTest extends SpecTestsuiteBase
         );
     }
 
-    #[Depends('testAssertMalformed41')]
     public function testAssertMalformed42(): void
     {
         $this->runAssertMalformedCommand(
@@ -439,7 +396,6 @@ final class BinaryTest extends SpecTestsuiteBase
         );
     }
 
-    #[Depends('testAssertMalformed42')]
     public function testAssertMalformed43(): void
     {
         $this->runAssertMalformedCommand(
@@ -449,7 +405,6 @@ final class BinaryTest extends SpecTestsuiteBase
         );
     }
 
-    #[Depends('testAssertMalformed43')]
     public function testAssertMalformed44(): void
     {
         $this->runAssertMalformedCommand(
@@ -459,7 +414,6 @@ final class BinaryTest extends SpecTestsuiteBase
         );
     }
 
-    #[Depends('testAssertMalformed44')]
     public function testAssertMalformed45(): void
     {
         $this->runAssertMalformedCommand(
@@ -469,7 +423,6 @@ final class BinaryTest extends SpecTestsuiteBase
         );
     }
 
-    #[Depends('testAssertMalformed45')]
     public function testAssertMalformed46(): void
     {
         $this->runAssertMalformedCommand(
@@ -479,7 +432,6 @@ final class BinaryTest extends SpecTestsuiteBase
         );
     }
 
-    #[Depends('testAssertMalformed46')]
     public function testAssertMalformed47(): void
     {
         $this->runAssertMalformedCommand(
@@ -489,7 +441,6 @@ final class BinaryTest extends SpecTestsuiteBase
         );
     }
 
-    #[Depends('testAssertMalformed47')]
     public function testAssertMalformed48(): void
     {
         $this->runAssertMalformedCommand(
@@ -499,7 +450,6 @@ final class BinaryTest extends SpecTestsuiteBase
         );
     }
 
-    #[Depends('testAssertMalformed48')]
     public function testAssertMalformed49(): void
     {
         $this->runAssertMalformedCommand(
@@ -509,7 +459,6 @@ final class BinaryTest extends SpecTestsuiteBase
         );
     }
 
-    #[Depends('testAssertMalformed49')]
     public function testAssertMalformed50(): void
     {
         $this->runAssertMalformedCommand(
@@ -519,7 +468,6 @@ final class BinaryTest extends SpecTestsuiteBase
         );
     }
 
-    #[Depends('testAssertMalformed50')]
     public function testAssertMalformed51(): void
     {
         $this->runAssertMalformedCommand(
@@ -529,7 +477,6 @@ final class BinaryTest extends SpecTestsuiteBase
         );
     }
 
-    #[Depends('testAssertMalformed51')]
     public function testAssertMalformed52(): void
     {
         $this->runAssertMalformedCommand(
@@ -539,7 +486,6 @@ final class BinaryTest extends SpecTestsuiteBase
         );
     }
 
-    #[Depends('testAssertMalformed52')]
     public function testAssertMalformed53(): void
     {
         $this->runAssertMalformedCommand(
@@ -549,7 +495,6 @@ final class BinaryTest extends SpecTestsuiteBase
         );
     }
 
-    #[Depends('testAssertMalformed53')]
     public function testAssertMalformed54(): void
     {
         $this->runAssertMalformedCommand(
@@ -559,7 +504,6 @@ final class BinaryTest extends SpecTestsuiteBase
         );
     }
 
-    #[Depends('testAssertMalformed54')]
     public function testModule55(): void
     {
         $this->runModuleCommand(
@@ -569,7 +513,6 @@ final class BinaryTest extends SpecTestsuiteBase
         );
     }
 
-    #[Depends('testModule55')]
     public function testAssertMalformed56(): void
     {
         $this->runAssertMalformedCommand(
@@ -579,7 +522,6 @@ final class BinaryTest extends SpecTestsuiteBase
         );
     }
 
-    #[Depends('testAssertMalformed56')]
     public function testAssertMalformed57(): void
     {
         $this->runAssertMalformedCommand(
@@ -589,7 +531,6 @@ final class BinaryTest extends SpecTestsuiteBase
         );
     }
 
-    #[Depends('testAssertMalformed57')]
     public function testAssertMalformed58(): void
     {
         $this->runAssertMalformedCommand(
@@ -599,7 +540,6 @@ final class BinaryTest extends SpecTestsuiteBase
         );
     }
 
-    #[Depends('testAssertMalformed58')]
     public function testAssertMalformed59(): void
     {
         $this->runAssertMalformedCommand(
@@ -609,7 +549,6 @@ final class BinaryTest extends SpecTestsuiteBase
         );
     }
 
-    #[Depends('testAssertMalformed59')]
     public function testModule60(): void
     {
         $this->runModuleCommand(
@@ -619,7 +558,6 @@ final class BinaryTest extends SpecTestsuiteBase
         );
     }
 
-    #[Depends('testModule60')]
     public function testModule61(): void
     {
         $this->runModuleCommand(
@@ -629,7 +567,6 @@ final class BinaryTest extends SpecTestsuiteBase
         );
     }
 
-    #[Depends('testModule61')]
     public function testAssertMalformed62(): void
     {
         $this->runAssertMalformedCommand(
@@ -639,7 +576,6 @@ final class BinaryTest extends SpecTestsuiteBase
         );
     }
 
-    #[Depends('testAssertMalformed62')]
     public function testAssertMalformed63(): void
     {
         $this->runAssertMalformedCommand(
@@ -649,7 +585,6 @@ final class BinaryTest extends SpecTestsuiteBase
         );
     }
 
-    #[Depends('testAssertMalformed63')]
     public function testAssertMalformed64(): void
     {
         $this->runAssertMalformedCommand(
@@ -659,7 +594,6 @@ final class BinaryTest extends SpecTestsuiteBase
         );
     }
 
-    #[Depends('testAssertMalformed64')]
     public function testAssertMalformed65(): void
     {
         $this->runAssertMalformedCommand(
@@ -669,7 +603,6 @@ final class BinaryTest extends SpecTestsuiteBase
         );
     }
 
-    #[Depends('testAssertMalformed65')]
     public function testAssertMalformed66(): void
     {
         $this->runAssertMalformedCommand(
@@ -679,7 +612,6 @@ final class BinaryTest extends SpecTestsuiteBase
         );
     }
 
-    #[Depends('testAssertMalformed66')]
     public function testAssertMalformed67(): void
     {
         $this->runAssertMalformedCommand(
@@ -689,7 +621,6 @@ final class BinaryTest extends SpecTestsuiteBase
         );
     }
 
-    #[Depends('testAssertMalformed67')]
     public function testModule68(): void
     {
         $this->runModuleCommand(
@@ -699,7 +630,6 @@ final class BinaryTest extends SpecTestsuiteBase
         );
     }
 
-    #[Depends('testModule68')]
     public function testModule69(): void
     {
         $this->runModuleCommand(
@@ -709,7 +639,6 @@ final class BinaryTest extends SpecTestsuiteBase
         );
     }
 
-    #[Depends('testModule69')]
     public function testModule70(): void
     {
         $this->runModuleCommand(
@@ -719,7 +648,6 @@ final class BinaryTest extends SpecTestsuiteBase
         );
     }
 
-    #[Depends('testModule70')]
     public function testAssertMalformed71(): void
     {
         $this->runAssertMalformedCommand(
@@ -729,7 +657,6 @@ final class BinaryTest extends SpecTestsuiteBase
         );
     }
 
-    #[Depends('testAssertMalformed71')]
     public function testAssertMalformed72(): void
     {
         $this->runAssertMalformedCommand(
@@ -739,7 +666,6 @@ final class BinaryTest extends SpecTestsuiteBase
         );
     }
 
-    #[Depends('testAssertMalformed72')]
     public function testModule73(): void
     {
         $this->runModuleCommand(
@@ -749,7 +675,6 @@ final class BinaryTest extends SpecTestsuiteBase
         );
     }
 
-    #[Depends('testModule73')]
     public function testAssertMalformed74(): void
     {
         $this->runAssertMalformedCommand(
@@ -759,7 +684,6 @@ final class BinaryTest extends SpecTestsuiteBase
         );
     }
 
-    #[Depends('testAssertMalformed74')]
     public function testAssertMalformed75(): void
     {
         $this->runAssertMalformedCommand(
@@ -769,7 +693,6 @@ final class BinaryTest extends SpecTestsuiteBase
         );
     }
 
-    #[Depends('testAssertMalformed75')]
     public function testAssertMalformed76(): void
     {
         $this->runAssertMalformedCommand(
@@ -779,7 +702,6 @@ final class BinaryTest extends SpecTestsuiteBase
         );
     }
 
-    #[Depends('testAssertMalformed76')]
     public function testAssertMalformed77(): void
     {
         $this->runAssertMalformedCommand(
@@ -789,7 +711,6 @@ final class BinaryTest extends SpecTestsuiteBase
         );
     }
 
-    #[Depends('testAssertMalformed77')]
     public function testAssertMalformed78(): void
     {
         $this->runAssertMalformedCommand(
@@ -799,7 +720,6 @@ final class BinaryTest extends SpecTestsuiteBase
         );
     }
 
-    #[Depends('testAssertMalformed78')]
     public function testAssertMalformed79(): void
     {
         $this->runAssertMalformedCommand(
@@ -809,7 +729,6 @@ final class BinaryTest extends SpecTestsuiteBase
         );
     }
 
-    #[Depends('testAssertMalformed79')]
     public function testAssertMalformed80(): void
     {
         $this->runAssertMalformedCommand(
@@ -819,7 +738,6 @@ final class BinaryTest extends SpecTestsuiteBase
         );
     }
 
-    #[Depends('testAssertMalformed80')]
     public function testAssertMalformed81(): void
     {
         $this->runAssertMalformedCommand(
@@ -829,7 +747,6 @@ final class BinaryTest extends SpecTestsuiteBase
         );
     }
 
-    #[Depends('testAssertMalformed81')]
     public function testModule82(): void
     {
         $this->runModuleCommand(
@@ -839,7 +756,6 @@ final class BinaryTest extends SpecTestsuiteBase
         );
     }
 
-    #[Depends('testModule82')]
     public function testAssertMalformed83(): void
     {
         $this->runAssertMalformedCommand(
@@ -849,7 +765,6 @@ final class BinaryTest extends SpecTestsuiteBase
         );
     }
 
-    #[Depends('testAssertMalformed83')]
     public function testAssertMalformed84(): void
     {
         $this->runAssertMalformedCommand(
@@ -859,7 +774,6 @@ final class BinaryTest extends SpecTestsuiteBase
         );
     }
 
-    #[Depends('testAssertMalformed84')]
     public function testAssertMalformed85(): void
     {
         $this->runAssertMalformedCommand(
@@ -869,7 +783,6 @@ final class BinaryTest extends SpecTestsuiteBase
         );
     }
 
-    #[Depends('testAssertMalformed85')]
     public function testAssertMalformed86(): void
     {
         $this->runAssertMalformedCommand(
@@ -879,7 +792,6 @@ final class BinaryTest extends SpecTestsuiteBase
         );
     }
 
-    #[Depends('testAssertMalformed86')]
     public function testModule87(): void
     {
         $this->runModuleCommand(
@@ -889,7 +801,6 @@ final class BinaryTest extends SpecTestsuiteBase
         );
     }
 
-    #[Depends('testModule87')]
     public function testAssertMalformed88(): void
     {
         $this->runAssertMalformedCommand(
@@ -899,7 +810,6 @@ final class BinaryTest extends SpecTestsuiteBase
         );
     }
 
-    #[Depends('testAssertMalformed88')]
     public function testAssertMalformed89(): void
     {
         $this->runAssertMalformedCommand(
@@ -909,7 +819,6 @@ final class BinaryTest extends SpecTestsuiteBase
         );
     }
 
-    #[Depends('testAssertMalformed89')]
     public function testAssertMalformed90(): void
     {
         $this->runAssertMalformedCommand(
@@ -919,7 +828,6 @@ final class BinaryTest extends SpecTestsuiteBase
         );
     }
 
-    #[Depends('testAssertMalformed90')]
     public function testAssertMalformed91(): void
     {
         $this->runAssertMalformedCommand(
@@ -929,7 +837,6 @@ final class BinaryTest extends SpecTestsuiteBase
         );
     }
 
-    #[Depends('testAssertMalformed91')]
     public function testAssertMalformed92(): void
     {
         $this->runAssertMalformedCommand(
@@ -939,7 +846,6 @@ final class BinaryTest extends SpecTestsuiteBase
         );
     }
 
-    #[Depends('testAssertMalformed92')]
     public function testModule93(): void
     {
         $this->runModuleCommand(
@@ -949,7 +855,6 @@ final class BinaryTest extends SpecTestsuiteBase
         );
     }
 
-    #[Depends('testModule93')]
     public function testAssertMalformed94(): void
     {
         $this->runAssertMalformedCommand(
@@ -959,7 +864,6 @@ final class BinaryTest extends SpecTestsuiteBase
         );
     }
 
-    #[Depends('testAssertMalformed94')]
     public function testAssertMalformed95(): void
     {
         $this->runAssertMalformedCommand(
@@ -969,7 +873,6 @@ final class BinaryTest extends SpecTestsuiteBase
         );
     }
 
-    #[Depends('testAssertMalformed95')]
     public function testModule96(): void
     {
         $this->runModuleCommand(
@@ -979,7 +882,6 @@ final class BinaryTest extends SpecTestsuiteBase
         );
     }
 
-    #[Depends('testModule96')]
     public function testAssertMalformed97(): void
     {
         $this->runAssertMalformedCommand(
@@ -989,7 +891,6 @@ final class BinaryTest extends SpecTestsuiteBase
         );
     }
 
-    #[Depends('testAssertMalformed97')]
     public function testAssertMalformed98(): void
     {
         $this->runAssertMalformedCommand(
@@ -999,7 +900,6 @@ final class BinaryTest extends SpecTestsuiteBase
         );
     }
 
-    #[Depends('testAssertMalformed98')]
     public function testModule99(): void
     {
         $this->runModuleCommand(
@@ -1009,7 +909,6 @@ final class BinaryTest extends SpecTestsuiteBase
         );
     }
 
-    #[Depends('testModule99')]
     public function testAssertMalformed100(): void
     {
         $this->runAssertMalformedCommand(
@@ -1019,7 +918,6 @@ final class BinaryTest extends SpecTestsuiteBase
         );
     }
 
-    #[Depends('testAssertMalformed100')]
     public function testAssertMalformed101(): void
     {
         $this->runAssertMalformedCommand(
@@ -1029,7 +927,6 @@ final class BinaryTest extends SpecTestsuiteBase
         );
     }
 
-    #[Depends('testAssertMalformed101')]
     public function testAssertMalformed102(): void
     {
         $this->runAssertMalformedCommand(
@@ -1039,7 +936,6 @@ final class BinaryTest extends SpecTestsuiteBase
         );
     }
 
-    #[Depends('testAssertMalformed102')]
     public function testModule103(): void
     {
         $this->runModuleCommand(
@@ -1049,7 +945,6 @@ final class BinaryTest extends SpecTestsuiteBase
         );
     }
 
-    #[Depends('testModule103')]
     public function testAssertMalformed104(): void
     {
         $this->runAssertMalformedCommand(
@@ -1059,7 +954,6 @@ final class BinaryTest extends SpecTestsuiteBase
         );
     }
 
-    #[Depends('testAssertMalformed104')]
     public function testAssertMalformed105(): void
     {
         $this->runAssertMalformedCommand(
@@ -1069,7 +963,6 @@ final class BinaryTest extends SpecTestsuiteBase
         );
     }
 
-    #[Depends('testAssertMalformed105')]
     public function testAssertMalformed106(): void
     {
         $this->runAssertMalformedCommand(
@@ -1079,7 +972,6 @@ final class BinaryTest extends SpecTestsuiteBase
         );
     }
 
-    #[Depends('testAssertMalformed106')]
     public function testAssertMalformed107(): void
     {
         $this->runAssertMalformedCommand(
@@ -1089,7 +981,6 @@ final class BinaryTest extends SpecTestsuiteBase
         );
     }
 
-    #[Depends('testAssertMalformed107')]
     public function testModule108(): void
     {
         $this->runModuleCommand(
@@ -1099,7 +990,6 @@ final class BinaryTest extends SpecTestsuiteBase
         );
     }
 
-    #[Depends('testModule108')]
     public function testAssertMalformed109(): void
     {
         $this->runAssertMalformedCommand(
@@ -1109,7 +999,6 @@ final class BinaryTest extends SpecTestsuiteBase
         );
     }
 
-    #[Depends('testAssertMalformed109')]
     public function testModule110(): void
     {
         $this->runModuleCommand(
@@ -1119,7 +1008,6 @@ final class BinaryTest extends SpecTestsuiteBase
         );
     }
 
-    #[Depends('testModule110')]
     public function testAssertMalformed111(): void
     {
         $this->runAssertMalformedCommand(

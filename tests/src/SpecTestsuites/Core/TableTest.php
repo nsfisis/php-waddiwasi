@@ -5,7 +5,6 @@ declare(strict_types=1);
 namespace Nsfisis\Waddiwasi\Tests\SpecTestsuites\Core;
 
 use Nsfisis\Waddiwasi\Tests\SpecTestsuites\SpecTestsuiteBase;
-use PHPUnit\Framework\Attributes\Depends;
 use PHPUnit\Framework\Attributes\DoesNotPerformAssertions;
 
 final class TableTest extends SpecTestsuiteBase
@@ -19,7 +18,6 @@ final class TableTest extends SpecTestsuiteBase
         );
     }
 
-    #[Depends('testModule0')]
     public function testModule1(): void
     {
         $this->runModuleCommand(
@@ -29,7 +27,6 @@ final class TableTest extends SpecTestsuiteBase
         );
     }
 
-    #[Depends('testModule1')]
     public function testModule2(): void
     {
         $this->runModuleCommand(
@@ -39,7 +36,6 @@ final class TableTest extends SpecTestsuiteBase
         );
     }
 
-    #[Depends('testModule2')]
     public function testModule3(): void
     {
         $this->runModuleCommand(
@@ -49,7 +45,6 @@ final class TableTest extends SpecTestsuiteBase
         );
     }
 
-    #[Depends('testModule3')]
     public function testModule4(): void
     {
         $this->runModuleCommand(
@@ -59,7 +54,6 @@ final class TableTest extends SpecTestsuiteBase
         );
     }
 
-    #[Depends('testModule4')]
     public function testModule5(): void
     {
         $this->runModuleCommand(
@@ -69,7 +63,6 @@ final class TableTest extends SpecTestsuiteBase
         );
     }
 
-    #[Depends('testModule5')]
     public function testModule6(): void
     {
         $this->runModuleCommand(
@@ -79,7 +72,6 @@ final class TableTest extends SpecTestsuiteBase
         );
     }
 
-    #[Depends('testModule6')]
     public function testModule7(): void
     {
         $this->runModuleCommand(
@@ -89,7 +81,6 @@ final class TableTest extends SpecTestsuiteBase
         );
     }
 
-    #[Depends('testModule7')]
     public function testModule8(): void
     {
         $this->runModuleCommand(
@@ -99,7 +90,6 @@ final class TableTest extends SpecTestsuiteBase
         );
     }
 
-    #[Depends('testModule8')]
     public function testAssertInvalid9(): void
     {
         $this->runAssertInvalidCommand(
@@ -109,7 +99,6 @@ final class TableTest extends SpecTestsuiteBase
         );
     }
 
-    #[Depends('testAssertInvalid9')]
     public function testAssertInvalid10(): void
     {
         $this->runAssertInvalidCommand(
@@ -119,7 +108,6 @@ final class TableTest extends SpecTestsuiteBase
         );
     }
 
-    #[Depends('testAssertInvalid10')]
     public function testAssertInvalid11(): void
     {
         $this->runAssertInvalidCommand(
@@ -129,7 +117,6 @@ final class TableTest extends SpecTestsuiteBase
         );
     }
 
-    #[Depends('testAssertInvalid11')]
     public function testAssertInvalid12(): void
     {
         $this->runAssertInvalidCommand(
@@ -140,37 +127,31 @@ final class TableTest extends SpecTestsuiteBase
     }
 
     #[DoesNotPerformAssertions]
-    #[Depends('testAssertInvalid12')]
     public function testAssertMalformed13(): void
     {
     }
 
     #[DoesNotPerformAssertions]
-    #[Depends('testAssertMalformed13')]
     public function testAssertMalformed14(): void
     {
     }
 
     #[DoesNotPerformAssertions]
-    #[Depends('testAssertMalformed14')]
     public function testAssertMalformed15(): void
     {
     }
 
     #[DoesNotPerformAssertions]
-    #[Depends('testAssertMalformed15')]
     public function testAssertMalformed16(): void
     {
     }
 
     #[DoesNotPerformAssertions]
-    #[Depends('testAssertMalformed16')]
     public function testAssertMalformed17(): void
     {
     }
 
     #[DoesNotPerformAssertions]
-    #[Depends('testAssertMalformed17')]
     public function testAssertMalformed18(): void
     {
     }

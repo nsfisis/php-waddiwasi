@@ -5,7 +5,6 @@ declare(strict_types=1);
 namespace Nsfisis\Waddiwasi\Tests\SpecTestsuites\Core;
 
 use Nsfisis\Waddiwasi\Tests\SpecTestsuites\SpecTestsuiteBase;
-use PHPUnit\Framework\Attributes\Depends;
 use PHPUnit\Framework\Attributes\DoesNotPerformAssertions;
 
 final class MemoryRedundancyTest extends SpecTestsuiteBase
@@ -19,7 +18,6 @@ final class MemoryRedundancyTest extends SpecTestsuiteBase
         );
     }
 
-    #[Depends('testModule0')]
     public function testAssertReturn1(): void
     {
         $this->runAssertReturnCommand(
@@ -29,7 +27,6 @@ final class MemoryRedundancyTest extends SpecTestsuiteBase
         );
     }
 
-    #[Depends('testAssertReturn1')]
     public function testAction2(): void
     {
         $this->runActionCommand(
@@ -38,7 +35,6 @@ final class MemoryRedundancyTest extends SpecTestsuiteBase
         );
     }
 
-    #[Depends('testAction2')]
     public function testAssertReturn3(): void
     {
         $this->runAssertReturnCommand(
@@ -48,7 +44,6 @@ final class MemoryRedundancyTest extends SpecTestsuiteBase
         );
     }
 
-    #[Depends('testAssertReturn3')]
     public function testAction4(): void
     {
         $this->runActionCommand(
@@ -57,7 +52,6 @@ final class MemoryRedundancyTest extends SpecTestsuiteBase
         );
     }
 
-    #[Depends('testAction4')]
     public function testAssertReturn5(): void
     {
         $this->runAssertReturnCommand(
@@ -67,7 +61,6 @@ final class MemoryRedundancyTest extends SpecTestsuiteBase
         );
     }
 
-    #[Depends('testAssertReturn5')]
     public function testAction6(): void
     {
         $this->runActionCommand(
@@ -76,7 +69,6 @@ final class MemoryRedundancyTest extends SpecTestsuiteBase
         );
     }
 
-    #[Depends('testAction6')]
     public function testAssertReturn7(): void
     {
         $this->runAssertReturnCommand(

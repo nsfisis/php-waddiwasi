@@ -5,7 +5,6 @@ declare(strict_types=1);
 namespace Nsfisis\Waddiwasi\Tests\SpecTestsuites\Core;
 
 use Nsfisis\Waddiwasi\Tests\SpecTestsuites\SpecTestsuiteBase;
-use PHPUnit\Framework\Attributes\Depends;
 use PHPUnit\Framework\Attributes\DoesNotPerformAssertions;
 
 final class TableSetTest extends SpecTestsuiteBase
@@ -19,7 +18,6 @@ final class TableSetTest extends SpecTestsuiteBase
         );
     }
 
-    #[Depends('testModule0')]
     public function testAssertReturn1(): void
     {
         $this->runAssertReturnCommand(
@@ -29,7 +27,6 @@ final class TableSetTest extends SpecTestsuiteBase
         );
     }
 
-    #[Depends('testAssertReturn1')]
     public function testAssertReturn2(): void
     {
         $this->runAssertReturnCommand(
@@ -39,7 +36,6 @@ final class TableSetTest extends SpecTestsuiteBase
         );
     }
 
-    #[Depends('testAssertReturn2')]
     public function testAssertReturn3(): void
     {
         $this->runAssertReturnCommand(
@@ -49,7 +45,6 @@ final class TableSetTest extends SpecTestsuiteBase
         );
     }
 
-    #[Depends('testAssertReturn3')]
     public function testAssertReturn4(): void
     {
         $this->runAssertReturnCommand(
@@ -59,7 +54,6 @@ final class TableSetTest extends SpecTestsuiteBase
         );
     }
 
-    #[Depends('testAssertReturn4')]
     public function testAssertReturn5(): void
     {
         $this->runAssertReturnCommand(
@@ -69,7 +63,6 @@ final class TableSetTest extends SpecTestsuiteBase
         );
     }
 
-    #[Depends('testAssertReturn5')]
     public function testAssertReturn6(): void
     {
         $this->runAssertReturnCommand(
@@ -79,7 +72,6 @@ final class TableSetTest extends SpecTestsuiteBase
         );
     }
 
-    #[Depends('testAssertReturn6')]
     public function testAssertReturn7(): void
     {
         $this->runAssertReturnCommand(
@@ -89,7 +81,6 @@ final class TableSetTest extends SpecTestsuiteBase
         );
     }
 
-    #[Depends('testAssertReturn7')]
     public function testAssertReturn8(): void
     {
         $this->runAssertReturnCommand(
@@ -99,7 +90,6 @@ final class TableSetTest extends SpecTestsuiteBase
         );
     }
 
-    #[Depends('testAssertReturn8')]
     public function testAssertReturn9(): void
     {
         $this->runAssertReturnCommand(
@@ -109,7 +99,6 @@ final class TableSetTest extends SpecTestsuiteBase
         );
     }
 
-    #[Depends('testAssertReturn9')]
     public function testAssertReturn10(): void
     {
         $this->runAssertReturnCommand(
@@ -119,7 +108,6 @@ final class TableSetTest extends SpecTestsuiteBase
         );
     }
 
-    #[Depends('testAssertReturn10')]
     public function testAssertTrap11(): void
     {
         $this->runAssertTrapCommand(
@@ -129,7 +117,6 @@ final class TableSetTest extends SpecTestsuiteBase
         );
     }
 
-    #[Depends('testAssertTrap11')]
     public function testAssertTrap12(): void
     {
         $this->runAssertTrapCommand(
@@ -139,7 +126,6 @@ final class TableSetTest extends SpecTestsuiteBase
         );
     }
 
-    #[Depends('testAssertTrap12')]
     public function testAssertTrap13(): void
     {
         $this->runAssertTrapCommand(
@@ -149,7 +135,6 @@ final class TableSetTest extends SpecTestsuiteBase
         );
     }
 
-    #[Depends('testAssertTrap13')]
     public function testAssertTrap14(): void
     {
         $this->runAssertTrapCommand(
@@ -159,7 +144,6 @@ final class TableSetTest extends SpecTestsuiteBase
         );
     }
 
-    #[Depends('testAssertTrap14')]
     public function testAssertTrap15(): void
     {
         $this->runAssertTrapCommand(
@@ -169,7 +153,6 @@ final class TableSetTest extends SpecTestsuiteBase
         );
     }
 
-    #[Depends('testAssertTrap15')]
     public function testAssertTrap16(): void
     {
         $this->runAssertTrapCommand(
@@ -179,7 +162,6 @@ final class TableSetTest extends SpecTestsuiteBase
         );
     }
 
-    #[Depends('testAssertTrap16')]
     public function testAssertTrap17(): void
     {
         $this->runAssertTrapCommand(
@@ -189,7 +171,6 @@ final class TableSetTest extends SpecTestsuiteBase
         );
     }
 
-    #[Depends('testAssertTrap17')]
     public function testAssertTrap18(): void
     {
         $this->runAssertTrapCommand(
@@ -199,7 +180,6 @@ final class TableSetTest extends SpecTestsuiteBase
         );
     }
 
-    #[Depends('testAssertTrap18')]
     public function testAssertInvalid19(): void
     {
         $this->runAssertInvalidCommand(
@@ -209,7 +189,6 @@ final class TableSetTest extends SpecTestsuiteBase
         );
     }
 
-    #[Depends('testAssertInvalid19')]
     public function testAssertInvalid20(): void
     {
         $this->runAssertInvalidCommand(
@@ -219,7 +198,6 @@ final class TableSetTest extends SpecTestsuiteBase
         );
     }
 
-    #[Depends('testAssertInvalid20')]
     public function testAssertInvalid21(): void
     {
         $this->runAssertInvalidCommand(
@@ -229,7 +207,6 @@ final class TableSetTest extends SpecTestsuiteBase
         );
     }
 
-    #[Depends('testAssertInvalid21')]
     public function testAssertInvalid22(): void
     {
         $this->runAssertInvalidCommand(
@@ -239,7 +216,6 @@ final class TableSetTest extends SpecTestsuiteBase
         );
     }
 
-    #[Depends('testAssertInvalid22')]
     public function testAssertInvalid23(): void
     {
         $this->runAssertInvalidCommand(
@@ -249,7 +225,6 @@ final class TableSetTest extends SpecTestsuiteBase
         );
     }
 
-    #[Depends('testAssertInvalid23')]
     public function testAssertInvalid24(): void
     {
         $this->runAssertInvalidCommand(
@@ -259,7 +234,6 @@ final class TableSetTest extends SpecTestsuiteBase
         );
     }
 
-    #[Depends('testAssertInvalid24')]
     public function testAssertInvalid25(): void
     {
         $this->runAssertInvalidCommand(

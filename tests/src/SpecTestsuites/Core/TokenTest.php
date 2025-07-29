@@ -5,7 +5,6 @@ declare(strict_types=1);
 namespace Nsfisis\Waddiwasi\Tests\SpecTestsuites\Core;
 
 use Nsfisis\Waddiwasi\Tests\SpecTestsuites\SpecTestsuiteBase;
-use PHPUnit\Framework\Attributes\Depends;
 use PHPUnit\Framework\Attributes\DoesNotPerformAssertions;
 
 final class TokenTest extends SpecTestsuiteBase
@@ -16,12 +15,10 @@ final class TokenTest extends SpecTestsuiteBase
     }
 
     #[DoesNotPerformAssertions]
-    #[Depends('testAssertMalformed0')]
     public function testAssertMalformed1(): void
     {
     }
 
-    #[Depends('testAssertMalformed1')]
     public function testModule2(): void
     {
         $this->runModuleCommand(
@@ -31,7 +28,6 @@ final class TokenTest extends SpecTestsuiteBase
         );
     }
 
-    #[Depends('testModule2')]
     public function testModule3(): void
     {
         $this->runModuleCommand(
@@ -41,7 +37,6 @@ final class TokenTest extends SpecTestsuiteBase
         );
     }
 
-    #[Depends('testModule3')]
     public function testModule4(): void
     {
         $this->runModuleCommand(
@@ -51,7 +46,6 @@ final class TokenTest extends SpecTestsuiteBase
         );
     }
 
-    #[Depends('testModule4')]
     public function testModule5(): void
     {
         $this->runModuleCommand(
@@ -61,7 +55,6 @@ final class TokenTest extends SpecTestsuiteBase
         );
     }
 
-    #[Depends('testModule5')]
     public function testModule6(): void
     {
         $this->runModuleCommand(
@@ -71,7 +64,6 @@ final class TokenTest extends SpecTestsuiteBase
         );
     }
 
-    #[Depends('testModule6')]
     public function testModule7(): void
     {
         $this->runModuleCommand(
@@ -81,7 +73,6 @@ final class TokenTest extends SpecTestsuiteBase
         );
     }
 
-    #[Depends('testModule7')]
     public function testModule8(): void
     {
         $this->runModuleCommand(
@@ -91,7 +82,6 @@ final class TokenTest extends SpecTestsuiteBase
         );
     }
 
-    #[Depends('testModule8')]
     public function testModule9(): void
     {
         $this->runModuleCommand(
@@ -101,7 +91,6 @@ final class TokenTest extends SpecTestsuiteBase
         );
     }
 
-    #[Depends('testModule9')]
     public function testModule10(): void
     {
         $this->runModuleCommand(
@@ -111,7 +100,6 @@ final class TokenTest extends SpecTestsuiteBase
         );
     }
 
-    #[Depends('testModule10')]
     public function testModule11(): void
     {
         $this->runModuleCommand(
@@ -121,7 +109,6 @@ final class TokenTest extends SpecTestsuiteBase
         );
     }
 
-    #[Depends('testModule11')]
     public function testModule12(): void
     {
         $this->runModuleCommand(
@@ -131,7 +118,6 @@ final class TokenTest extends SpecTestsuiteBase
         );
     }
 
-    #[Depends('testModule12')]
     public function testModule13(): void
     {
         $this->runModuleCommand(
@@ -141,7 +127,6 @@ final class TokenTest extends SpecTestsuiteBase
         );
     }
 
-    #[Depends('testModule13')]
     public function testModule14(): void
     {
         $this->runModuleCommand(
@@ -151,7 +136,6 @@ final class TokenTest extends SpecTestsuiteBase
         );
     }
 
-    #[Depends('testModule14')]
     public function testModule15(): void
     {
         $this->runModuleCommand(
@@ -161,7 +145,6 @@ final class TokenTest extends SpecTestsuiteBase
         );
     }
 
-    #[Depends('testModule15')]
     public function testModule16(): void
     {
         $this->runModuleCommand(
@@ -171,7 +154,6 @@ final class TokenTest extends SpecTestsuiteBase
         );
     }
 
-    #[Depends('testModule16')]
     public function testModule17(): void
     {
         $this->runModuleCommand(
@@ -181,7 +163,6 @@ final class TokenTest extends SpecTestsuiteBase
         );
     }
 
-    #[Depends('testModule17')]
     public function testModule18(): void
     {
         $this->runModuleCommand(
@@ -192,12 +173,10 @@ final class TokenTest extends SpecTestsuiteBase
     }
 
     #[DoesNotPerformAssertions]
-    #[Depends('testModule18')]
     public function testAssertMalformed19(): void
     {
     }
 
-    #[Depends('testAssertMalformed19')]
     public function testModule20(): void
     {
         $this->runModuleCommand(
@@ -208,12 +187,10 @@ final class TokenTest extends SpecTestsuiteBase
     }
 
     #[DoesNotPerformAssertions]
-    #[Depends('testModule20')]
     public function testAssertMalformed21(): void
     {
     }
 
-    #[Depends('testAssertMalformed21')]
     public function testModule22(): void
     {
         $this->runModuleCommand(
@@ -224,12 +201,10 @@ final class TokenTest extends SpecTestsuiteBase
     }
 
     #[DoesNotPerformAssertions]
-    #[Depends('testModule22')]
     public function testAssertMalformed23(): void
     {
     }
 
-    #[Depends('testAssertMalformed23')]
     public function testModule24(): void
     {
         $this->runModuleCommand(
@@ -239,7 +214,6 @@ final class TokenTest extends SpecTestsuiteBase
         );
     }
 
-    #[Depends('testModule24')]
     public function testModule25(): void
     {
         $this->runModuleCommand(
@@ -249,7 +223,6 @@ final class TokenTest extends SpecTestsuiteBase
         );
     }
 
-    #[Depends('testModule25')]
     public function testModule26(): void
     {
         $this->runModuleCommand(
@@ -260,12 +233,10 @@ final class TokenTest extends SpecTestsuiteBase
     }
 
     #[DoesNotPerformAssertions]
-    #[Depends('testModule26')]
     public function testAssertMalformed27(): void
     {
     }
 
-    #[Depends('testAssertMalformed27')]
     public function testModule28(): void
     {
         $this->runModuleCommand(
@@ -276,12 +247,10 @@ final class TokenTest extends SpecTestsuiteBase
     }
 
     #[DoesNotPerformAssertions]
-    #[Depends('testModule28')]
     public function testAssertMalformed29(): void
     {
     }
 
-    #[Depends('testAssertMalformed29')]
     public function testModule30(): void
     {
         $this->runModuleCommand(
@@ -292,12 +261,10 @@ final class TokenTest extends SpecTestsuiteBase
     }
 
     #[DoesNotPerformAssertions]
-    #[Depends('testModule30')]
     public function testAssertMalformed31(): void
     {
     }
 
-    #[Depends('testAssertMalformed31')]
     public function testModule32(): void
     {
         $this->runModuleCommand(
@@ -308,12 +275,10 @@ final class TokenTest extends SpecTestsuiteBase
     }
 
     #[DoesNotPerformAssertions]
-    #[Depends('testModule32')]
     public function testAssertMalformed33(): void
     {
     }
 
-    #[Depends('testAssertMalformed33')]
     public function testModule34(): void
     {
         $this->runModuleCommand(
@@ -324,12 +289,10 @@ final class TokenTest extends SpecTestsuiteBase
     }
 
     #[DoesNotPerformAssertions]
-    #[Depends('testModule34')]
     public function testAssertMalformed35(): void
     {
     }
 
-    #[Depends('testAssertMalformed35')]
     public function testModule36(): void
     {
         $this->runModuleCommand(
@@ -340,12 +303,10 @@ final class TokenTest extends SpecTestsuiteBase
     }
 
     #[DoesNotPerformAssertions]
-    #[Depends('testModule36')]
     public function testAssertMalformed37(): void
     {
     }
 
-    #[Depends('testAssertMalformed37')]
     public function testModule38(): void
     {
         $this->runModuleCommand(
@@ -356,12 +317,10 @@ final class TokenTest extends SpecTestsuiteBase
     }
 
     #[DoesNotPerformAssertions]
-    #[Depends('testModule38')]
     public function testAssertMalformed39(): void
     {
     }
 
-    #[Depends('testAssertMalformed39')]
     public function testModule40(): void
     {
         $this->runModuleCommand(
@@ -372,12 +331,10 @@ final class TokenTest extends SpecTestsuiteBase
     }
 
     #[DoesNotPerformAssertions]
-    #[Depends('testModule40')]
     public function testAssertMalformed41(): void
     {
     }
 
-    #[Depends('testAssertMalformed41')]
     public function testModule42(): void
     {
         $this->runModuleCommand(
@@ -388,12 +345,10 @@ final class TokenTest extends SpecTestsuiteBase
     }
 
     #[DoesNotPerformAssertions]
-    #[Depends('testModule42')]
     public function testAssertMalformed43(): void
     {
     }
 
-    #[Depends('testAssertMalformed43')]
     public function testModule44(): void
     {
         $this->runModuleCommand(
@@ -404,12 +359,10 @@ final class TokenTest extends SpecTestsuiteBase
     }
 
     #[DoesNotPerformAssertions]
-    #[Depends('testModule44')]
     public function testAssertMalformed45(): void
     {
     }
 
-    #[Depends('testAssertMalformed45')]
     public function testModule46(): void
     {
         $this->runModuleCommand(
@@ -420,12 +373,10 @@ final class TokenTest extends SpecTestsuiteBase
     }
 
     #[DoesNotPerformAssertions]
-    #[Depends('testModule46')]
     public function testAssertMalformed47(): void
     {
     }
 
-    #[Depends('testAssertMalformed47')]
     public function testModule48(): void
     {
         $this->runModuleCommand(
@@ -436,12 +387,10 @@ final class TokenTest extends SpecTestsuiteBase
     }
 
     #[DoesNotPerformAssertions]
-    #[Depends('testModule48')]
     public function testAssertMalformed49(): void
     {
     }
 
-    #[Depends('testAssertMalformed49')]
     public function testModule50(): void
     {
         $this->runModuleCommand(
@@ -452,12 +401,10 @@ final class TokenTest extends SpecTestsuiteBase
     }
 
     #[DoesNotPerformAssertions]
-    #[Depends('testModule50')]
     public function testAssertMalformed51(): void
     {
     }
 
-    #[Depends('testAssertMalformed51')]
     public function testModule52(): void
     {
         $this->runModuleCommand(
@@ -468,31 +415,26 @@ final class TokenTest extends SpecTestsuiteBase
     }
 
     #[DoesNotPerformAssertions]
-    #[Depends('testModule52')]
     public function testAssertMalformed53(): void
     {
     }
 
     #[DoesNotPerformAssertions]
-    #[Depends('testAssertMalformed53')]
     public function testAssertMalformed54(): void
     {
     }
 
     #[DoesNotPerformAssertions]
-    #[Depends('testAssertMalformed54')]
     public function testAssertMalformed55(): void
     {
     }
 
     #[DoesNotPerformAssertions]
-    #[Depends('testAssertMalformed55')]
     public function testAssertMalformed56(): void
     {
     }
 
     #[DoesNotPerformAssertions]
-    #[Depends('testAssertMalformed56')]
     public function testAssertMalformed57(): void
     {
     }

@@ -5,7 +5,6 @@ declare(strict_types=1);
 namespace Nsfisis\Waddiwasi\Tests\SpecTestsuites\Core;
 
 use Nsfisis\Waddiwasi\Tests\SpecTestsuites\SpecTestsuiteBase;
-use PHPUnit\Framework\Attributes\Depends;
 use PHPUnit\Framework\Attributes\DoesNotPerformAssertions;
 
 final class LocalGetTest extends SpecTestsuiteBase
@@ -19,7 +18,6 @@ final class LocalGetTest extends SpecTestsuiteBase
         );
     }
 
-    #[Depends('testModule0')]
     public function testAssertReturn1(): void
     {
         $this->runAssertReturnCommand(
@@ -29,7 +27,6 @@ final class LocalGetTest extends SpecTestsuiteBase
         );
     }
 
-    #[Depends('testAssertReturn1')]
     public function testAssertReturn2(): void
     {
         $this->runAssertReturnCommand(
@@ -39,7 +36,6 @@ final class LocalGetTest extends SpecTestsuiteBase
         );
     }
 
-    #[Depends('testAssertReturn2')]
     public function testAssertReturn3(): void
     {
         $this->runAssertReturnCommand(
@@ -49,7 +45,6 @@ final class LocalGetTest extends SpecTestsuiteBase
         );
     }
 
-    #[Depends('testAssertReturn3')]
     public function testAssertReturn4(): void
     {
         $this->runAssertReturnCommand(
@@ -59,7 +54,6 @@ final class LocalGetTest extends SpecTestsuiteBase
         );
     }
 
-    #[Depends('testAssertReturn4')]
     public function testAssertReturn5(): void
     {
         $this->runAssertReturnCommand(
@@ -69,7 +63,6 @@ final class LocalGetTest extends SpecTestsuiteBase
         );
     }
 
-    #[Depends('testAssertReturn5')]
     public function testAssertReturn6(): void
     {
         $this->runAssertReturnCommand(
@@ -79,7 +72,6 @@ final class LocalGetTest extends SpecTestsuiteBase
         );
     }
 
-    #[Depends('testAssertReturn6')]
     public function testAssertReturn7(): void
     {
         $this->runAssertReturnCommand(
@@ -89,7 +81,6 @@ final class LocalGetTest extends SpecTestsuiteBase
         );
     }
 
-    #[Depends('testAssertReturn7')]
     public function testAssertReturn8(): void
     {
         $this->runAssertReturnCommand(
@@ -99,7 +90,6 @@ final class LocalGetTest extends SpecTestsuiteBase
         );
     }
 
-    #[Depends('testAssertReturn8')]
     public function testAssertReturn9(): void
     {
         $this->runAssertReturnCommand(
@@ -109,7 +99,6 @@ final class LocalGetTest extends SpecTestsuiteBase
         );
     }
 
-    #[Depends('testAssertReturn9')]
     public function testAssertReturn10(): void
     {
         $this->runAssertReturnCommand(
@@ -119,7 +108,6 @@ final class LocalGetTest extends SpecTestsuiteBase
         );
     }
 
-    #[Depends('testAssertReturn10')]
     public function testAssertReturn11(): void
     {
         $this->runAssertReturnCommand(
@@ -129,7 +117,6 @@ final class LocalGetTest extends SpecTestsuiteBase
         );
     }
 
-    #[Depends('testAssertReturn11')]
     public function testAssertReturn12(): void
     {
         $this->runAssertReturnCommand(
@@ -139,7 +126,6 @@ final class LocalGetTest extends SpecTestsuiteBase
         );
     }
 
-    #[Depends('testAssertReturn12')]
     public function testAssertReturn13(): void
     {
         $this->runAssertReturnCommand(
@@ -149,7 +135,6 @@ final class LocalGetTest extends SpecTestsuiteBase
         );
     }
 
-    #[Depends('testAssertReturn13')]
     public function testAssertReturn14(): void
     {
         $this->runAssertReturnCommand(
@@ -159,7 +144,6 @@ final class LocalGetTest extends SpecTestsuiteBase
         );
     }
 
-    #[Depends('testAssertReturn14')]
     public function testAssertReturn15(): void
     {
         $this->runAssertReturnCommand(
@@ -169,7 +153,6 @@ final class LocalGetTest extends SpecTestsuiteBase
         );
     }
 
-    #[Depends('testAssertReturn15')]
     public function testAssertReturn16(): void
     {
         $this->runAssertReturnCommand(
@@ -179,7 +162,6 @@ final class LocalGetTest extends SpecTestsuiteBase
         );
     }
 
-    #[Depends('testAssertReturn16')]
     public function testAssertReturn17(): void
     {
         $this->runAssertReturnCommand(
@@ -189,7 +171,6 @@ final class LocalGetTest extends SpecTestsuiteBase
         );
     }
 
-    #[Depends('testAssertReturn17')]
     public function testAssertReturn18(): void
     {
         $this->runAssertReturnCommand(
@@ -199,7 +180,6 @@ final class LocalGetTest extends SpecTestsuiteBase
         );
     }
 
-    #[Depends('testAssertReturn18')]
     public function testAssertReturn19(): void
     {
         $this->runAssertReturnCommand(
@@ -209,7 +189,6 @@ final class LocalGetTest extends SpecTestsuiteBase
         );
     }
 
-    #[Depends('testAssertReturn19')]
     public function testAssertInvalid20(): void
     {
         $this->runAssertInvalidCommand(
@@ -219,7 +198,6 @@ final class LocalGetTest extends SpecTestsuiteBase
         );
     }
 
-    #[Depends('testAssertInvalid20')]
     public function testAssertInvalid21(): void
     {
         $this->runAssertInvalidCommand(
@@ -229,7 +207,6 @@ final class LocalGetTest extends SpecTestsuiteBase
         );
     }
 
-    #[Depends('testAssertInvalid21')]
     public function testAssertInvalid22(): void
     {
         $this->runAssertInvalidCommand(
@@ -239,7 +216,6 @@ final class LocalGetTest extends SpecTestsuiteBase
         );
     }
 
-    #[Depends('testAssertInvalid22')]
     public function testAssertInvalid23(): void
     {
         $this->runAssertInvalidCommand(
@@ -249,7 +225,6 @@ final class LocalGetTest extends SpecTestsuiteBase
         );
     }
 
-    #[Depends('testAssertInvalid23')]
     public function testAssertInvalid24(): void
     {
         $this->runAssertInvalidCommand(
@@ -259,7 +234,6 @@ final class LocalGetTest extends SpecTestsuiteBase
         );
     }
 
-    #[Depends('testAssertInvalid24')]
     public function testAssertInvalid25(): void
     {
         $this->runAssertInvalidCommand(
@@ -269,7 +243,6 @@ final class LocalGetTest extends SpecTestsuiteBase
         );
     }
 
-    #[Depends('testAssertInvalid25')]
     public function testAssertInvalid26(): void
     {
         $this->runAssertInvalidCommand(
@@ -279,7 +252,6 @@ final class LocalGetTest extends SpecTestsuiteBase
         );
     }
 
-    #[Depends('testAssertInvalid26')]
     public function testAssertInvalid27(): void
     {
         $this->runAssertInvalidCommand(
@@ -289,7 +261,6 @@ final class LocalGetTest extends SpecTestsuiteBase
         );
     }
 
-    #[Depends('testAssertInvalid27')]
     public function testAssertInvalid28(): void
     {
         $this->runAssertInvalidCommand(
@@ -299,7 +270,6 @@ final class LocalGetTest extends SpecTestsuiteBase
         );
     }
 
-    #[Depends('testAssertInvalid28')]
     public function testAssertInvalid29(): void
     {
         $this->runAssertInvalidCommand(
@@ -309,7 +279,6 @@ final class LocalGetTest extends SpecTestsuiteBase
         );
     }
 
-    #[Depends('testAssertInvalid29')]
     public function testAssertInvalid30(): void
     {
         $this->runAssertInvalidCommand(
@@ -319,7 +288,6 @@ final class LocalGetTest extends SpecTestsuiteBase
         );
     }
 
-    #[Depends('testAssertInvalid30')]
     public function testAssertInvalid31(): void
     {
         $this->runAssertInvalidCommand(
@@ -329,7 +297,6 @@ final class LocalGetTest extends SpecTestsuiteBase
         );
     }
 
-    #[Depends('testAssertInvalid31')]
     public function testAssertInvalid32(): void
     {
         $this->runAssertInvalidCommand(
@@ -339,7 +306,6 @@ final class LocalGetTest extends SpecTestsuiteBase
         );
     }
 
-    #[Depends('testAssertInvalid32')]
     public function testAssertInvalid33(): void
     {
         $this->runAssertInvalidCommand(
@@ -349,7 +315,6 @@ final class LocalGetTest extends SpecTestsuiteBase
         );
     }
 
-    #[Depends('testAssertInvalid33')]
     public function testAssertInvalid34(): void
     {
         $this->runAssertInvalidCommand(
@@ -359,7 +324,6 @@ final class LocalGetTest extends SpecTestsuiteBase
         );
     }
 
-    #[Depends('testAssertInvalid34')]
     public function testAssertInvalid35(): void
     {
         $this->runAssertInvalidCommand(

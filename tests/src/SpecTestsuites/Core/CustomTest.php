@@ -5,7 +5,6 @@ declare(strict_types=1);
 namespace Nsfisis\Waddiwasi\Tests\SpecTestsuites\Core;
 
 use Nsfisis\Waddiwasi\Tests\SpecTestsuites\SpecTestsuiteBase;
-use PHPUnit\Framework\Attributes\Depends;
 use PHPUnit\Framework\Attributes\DoesNotPerformAssertions;
 
 final class CustomTest extends SpecTestsuiteBase
@@ -19,7 +18,6 @@ final class CustomTest extends SpecTestsuiteBase
         );
     }
 
-    #[Depends('testModule0')]
     public function testModule1(): void
     {
         $this->runModuleCommand(
@@ -29,7 +27,6 @@ final class CustomTest extends SpecTestsuiteBase
         );
     }
 
-    #[Depends('testModule1')]
     public function testModule2(): void
     {
         $this->runModuleCommand(
@@ -39,7 +36,6 @@ final class CustomTest extends SpecTestsuiteBase
         );
     }
 
-    #[Depends('testModule2')]
     public function testAssertMalformed3(): void
     {
         $this->runAssertMalformedCommand(
@@ -49,7 +45,6 @@ final class CustomTest extends SpecTestsuiteBase
         );
     }
 
-    #[Depends('testAssertMalformed3')]
     public function testAssertMalformed4(): void
     {
         $this->runAssertMalformedCommand(
@@ -59,7 +54,6 @@ final class CustomTest extends SpecTestsuiteBase
         );
     }
 
-    #[Depends('testAssertMalformed4')]
     public function testAssertMalformed5(): void
     {
         $this->runAssertMalformedCommand(
@@ -69,7 +63,6 @@ final class CustomTest extends SpecTestsuiteBase
         );
     }
 
-    #[Depends('testAssertMalformed5')]
     public function testAssertMalformed6(): void
     {
         $this->runAssertMalformedCommand(
@@ -79,7 +72,6 @@ final class CustomTest extends SpecTestsuiteBase
         );
     }
 
-    #[Depends('testAssertMalformed6')]
     public function testAssertMalformed7(): void
     {
         $this->runAssertMalformedCommand(
@@ -89,7 +81,6 @@ final class CustomTest extends SpecTestsuiteBase
         );
     }
 
-    #[Depends('testAssertMalformed7')]
     public function testAssertMalformed8(): void
     {
         $this->runAssertMalformedCommand(
@@ -99,7 +90,6 @@ final class CustomTest extends SpecTestsuiteBase
         );
     }
 
-    #[Depends('testAssertMalformed8')]
     public function testAssertMalformed9(): void
     {
         $this->runAssertMalformedCommand(
@@ -109,7 +99,6 @@ final class CustomTest extends SpecTestsuiteBase
         );
     }
 
-    #[Depends('testAssertMalformed9')]
     public function testAssertMalformed10(): void
     {
         $this->runAssertMalformedCommand(

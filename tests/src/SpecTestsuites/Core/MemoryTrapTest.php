@@ -5,7 +5,6 @@ declare(strict_types=1);
 namespace Nsfisis\Waddiwasi\Tests\SpecTestsuites\Core;
 
 use Nsfisis\Waddiwasi\Tests\SpecTestsuites\SpecTestsuiteBase;
-use PHPUnit\Framework\Attributes\Depends;
 use PHPUnit\Framework\Attributes\DoesNotPerformAssertions;
 
 final class MemoryTrapTest extends SpecTestsuiteBase
@@ -19,7 +18,6 @@ final class MemoryTrapTest extends SpecTestsuiteBase
         );
     }
 
-    #[Depends('testModule0')]
     public function testAssertReturn1(): void
     {
         $this->runAssertReturnCommand(
@@ -29,7 +27,6 @@ final class MemoryTrapTest extends SpecTestsuiteBase
         );
     }
 
-    #[Depends('testAssertReturn1')]
     public function testAssertReturn2(): void
     {
         $this->runAssertReturnCommand(
@@ -39,7 +36,6 @@ final class MemoryTrapTest extends SpecTestsuiteBase
         );
     }
 
-    #[Depends('testAssertReturn2')]
     public function testAssertTrap3(): void
     {
         $this->runAssertTrapCommand(
@@ -49,7 +45,6 @@ final class MemoryTrapTest extends SpecTestsuiteBase
         );
     }
 
-    #[Depends('testAssertTrap3')]
     public function testAssertTrap4(): void
     {
         $this->runAssertTrapCommand(
@@ -59,7 +54,6 @@ final class MemoryTrapTest extends SpecTestsuiteBase
         );
     }
 
-    #[Depends('testAssertTrap4')]
     public function testAssertTrap5(): void
     {
         $this->runAssertTrapCommand(
@@ -69,7 +63,6 @@ final class MemoryTrapTest extends SpecTestsuiteBase
         );
     }
 
-    #[Depends('testAssertTrap5')]
     public function testAssertTrap6(): void
     {
         $this->runAssertTrapCommand(
@@ -79,7 +72,6 @@ final class MemoryTrapTest extends SpecTestsuiteBase
         );
     }
 
-    #[Depends('testAssertTrap6')]
     public function testAssertTrap7(): void
     {
         $this->runAssertTrapCommand(
@@ -89,7 +81,6 @@ final class MemoryTrapTest extends SpecTestsuiteBase
         );
     }
 
-    #[Depends('testAssertTrap7')]
     public function testAssertTrap8(): void
     {
         $this->runAssertTrapCommand(
@@ -99,7 +90,6 @@ final class MemoryTrapTest extends SpecTestsuiteBase
         );
     }
 
-    #[Depends('testAssertTrap8')]
     public function testAssertTrap9(): void
     {
         $this->runAssertTrapCommand(
@@ -109,7 +99,6 @@ final class MemoryTrapTest extends SpecTestsuiteBase
         );
     }
 
-    #[Depends('testAssertTrap9')]
     public function testAssertTrap10(): void
     {
         $this->runAssertTrapCommand(
@@ -119,7 +108,6 @@ final class MemoryTrapTest extends SpecTestsuiteBase
         );
     }
 
-    #[Depends('testAssertTrap10')]
     public function testAssertTrap11(): void
     {
         $this->runAssertTrapCommand(
@@ -129,7 +117,6 @@ final class MemoryTrapTest extends SpecTestsuiteBase
         );
     }
 
-    #[Depends('testAssertTrap11')]
     public function testAssertTrap12(): void
     {
         $this->runAssertTrapCommand(
@@ -139,7 +126,6 @@ final class MemoryTrapTest extends SpecTestsuiteBase
         );
     }
 
-    #[Depends('testAssertTrap12')]
     public function testAssertReturn13(): void
     {
         $this->runAssertReturnCommand(
@@ -149,7 +135,6 @@ final class MemoryTrapTest extends SpecTestsuiteBase
         );
     }
 
-    #[Depends('testAssertReturn13')]
     public function testModule14(): void
     {
         $this->runModuleCommand(
@@ -159,7 +144,6 @@ final class MemoryTrapTest extends SpecTestsuiteBase
         );
     }
 
-    #[Depends('testModule14')]
     public function testAssertTrap15(): void
     {
         $this->runAssertTrapCommand(
@@ -169,7 +153,6 @@ final class MemoryTrapTest extends SpecTestsuiteBase
         );
     }
 
-    #[Depends('testAssertTrap15')]
     public function testAssertTrap16(): void
     {
         $this->runAssertTrapCommand(
@@ -179,7 +162,6 @@ final class MemoryTrapTest extends SpecTestsuiteBase
         );
     }
 
-    #[Depends('testAssertTrap16')]
     public function testAssertTrap17(): void
     {
         $this->runAssertTrapCommand(
@@ -189,7 +171,6 @@ final class MemoryTrapTest extends SpecTestsuiteBase
         );
     }
 
-    #[Depends('testAssertTrap17')]
     public function testAssertTrap18(): void
     {
         $this->runAssertTrapCommand(
@@ -199,7 +180,6 @@ final class MemoryTrapTest extends SpecTestsuiteBase
         );
     }
 
-    #[Depends('testAssertTrap18')]
     public function testAssertTrap19(): void
     {
         $this->runAssertTrapCommand(
@@ -209,7 +189,6 @@ final class MemoryTrapTest extends SpecTestsuiteBase
         );
     }
 
-    #[Depends('testAssertTrap19')]
     public function testAssertTrap20(): void
     {
         $this->runAssertTrapCommand(
@@ -219,7 +198,6 @@ final class MemoryTrapTest extends SpecTestsuiteBase
         );
     }
 
-    #[Depends('testAssertTrap20')]
     public function testAssertTrap21(): void
     {
         $this->runAssertTrapCommand(
@@ -229,7 +207,6 @@ final class MemoryTrapTest extends SpecTestsuiteBase
         );
     }
 
-    #[Depends('testAssertTrap21')]
     public function testAssertTrap22(): void
     {
         $this->runAssertTrapCommand(
@@ -239,7 +216,6 @@ final class MemoryTrapTest extends SpecTestsuiteBase
         );
     }
 
-    #[Depends('testAssertTrap22')]
     public function testAssertTrap23(): void
     {
         $this->runAssertTrapCommand(
@@ -249,7 +225,6 @@ final class MemoryTrapTest extends SpecTestsuiteBase
         );
     }
 
-    #[Depends('testAssertTrap23')]
     public function testAssertTrap24(): void
     {
         $this->runAssertTrapCommand(
@@ -259,7 +234,6 @@ final class MemoryTrapTest extends SpecTestsuiteBase
         );
     }
 
-    #[Depends('testAssertTrap24')]
     public function testAssertTrap25(): void
     {
         $this->runAssertTrapCommand(
@@ -269,7 +243,6 @@ final class MemoryTrapTest extends SpecTestsuiteBase
         );
     }
 
-    #[Depends('testAssertTrap25')]
     public function testAssertTrap26(): void
     {
         $this->runAssertTrapCommand(
@@ -279,7 +252,6 @@ final class MemoryTrapTest extends SpecTestsuiteBase
         );
     }
 
-    #[Depends('testAssertTrap26')]
     public function testAssertTrap27(): void
     {
         $this->runAssertTrapCommand(
@@ -289,7 +261,6 @@ final class MemoryTrapTest extends SpecTestsuiteBase
         );
     }
 
-    #[Depends('testAssertTrap27')]
     public function testAssertTrap28(): void
     {
         $this->runAssertTrapCommand(
@@ -299,7 +270,6 @@ final class MemoryTrapTest extends SpecTestsuiteBase
         );
     }
 
-    #[Depends('testAssertTrap28')]
     public function testAssertTrap29(): void
     {
         $this->runAssertTrapCommand(
@@ -309,7 +279,6 @@ final class MemoryTrapTest extends SpecTestsuiteBase
         );
     }
 
-    #[Depends('testAssertTrap29')]
     public function testAssertTrap30(): void
     {
         $this->runAssertTrapCommand(
@@ -319,7 +288,6 @@ final class MemoryTrapTest extends SpecTestsuiteBase
         );
     }
 
-    #[Depends('testAssertTrap30')]
     public function testAssertTrap31(): void
     {
         $this->runAssertTrapCommand(
@@ -329,7 +297,6 @@ final class MemoryTrapTest extends SpecTestsuiteBase
         );
     }
 
-    #[Depends('testAssertTrap31')]
     public function testAssertTrap32(): void
     {
         $this->runAssertTrapCommand(
@@ -339,7 +306,6 @@ final class MemoryTrapTest extends SpecTestsuiteBase
         );
     }
 
-    #[Depends('testAssertTrap32')]
     public function testAssertTrap33(): void
     {
         $this->runAssertTrapCommand(
@@ -349,7 +315,6 @@ final class MemoryTrapTest extends SpecTestsuiteBase
         );
     }
 
-    #[Depends('testAssertTrap33')]
     public function testAssertTrap34(): void
     {
         $this->runAssertTrapCommand(
@@ -359,7 +324,6 @@ final class MemoryTrapTest extends SpecTestsuiteBase
         );
     }
 
-    #[Depends('testAssertTrap34')]
     public function testAssertTrap35(): void
     {
         $this->runAssertTrapCommand(
@@ -369,7 +333,6 @@ final class MemoryTrapTest extends SpecTestsuiteBase
         );
     }
 
-    #[Depends('testAssertTrap35')]
     public function testAssertTrap36(): void
     {
         $this->runAssertTrapCommand(
@@ -379,7 +342,6 @@ final class MemoryTrapTest extends SpecTestsuiteBase
         );
     }
 
-    #[Depends('testAssertTrap36')]
     public function testAssertTrap37(): void
     {
         $this->runAssertTrapCommand(
@@ -389,7 +351,6 @@ final class MemoryTrapTest extends SpecTestsuiteBase
         );
     }
 
-    #[Depends('testAssertTrap37')]
     public function testAssertTrap38(): void
     {
         $this->runAssertTrapCommand(
@@ -399,7 +360,6 @@ final class MemoryTrapTest extends SpecTestsuiteBase
         );
     }
 
-    #[Depends('testAssertTrap38')]
     public function testAssertTrap39(): void
     {
         $this->runAssertTrapCommand(
@@ -409,7 +369,6 @@ final class MemoryTrapTest extends SpecTestsuiteBase
         );
     }
 
-    #[Depends('testAssertTrap39')]
     public function testAssertTrap40(): void
     {
         $this->runAssertTrapCommand(
@@ -419,7 +378,6 @@ final class MemoryTrapTest extends SpecTestsuiteBase
         );
     }
 
-    #[Depends('testAssertTrap40')]
     public function testAssertTrap41(): void
     {
         $this->runAssertTrapCommand(
@@ -429,7 +387,6 @@ final class MemoryTrapTest extends SpecTestsuiteBase
         );
     }
 
-    #[Depends('testAssertTrap41')]
     public function testAssertTrap42(): void
     {
         $this->runAssertTrapCommand(
@@ -439,7 +396,6 @@ final class MemoryTrapTest extends SpecTestsuiteBase
         );
     }
 
-    #[Depends('testAssertTrap42')]
     public function testAssertTrap43(): void
     {
         $this->runAssertTrapCommand(
@@ -449,7 +405,6 @@ final class MemoryTrapTest extends SpecTestsuiteBase
         );
     }
 
-    #[Depends('testAssertTrap43')]
     public function testAssertTrap44(): void
     {
         $this->runAssertTrapCommand(
@@ -459,7 +414,6 @@ final class MemoryTrapTest extends SpecTestsuiteBase
         );
     }
 
-    #[Depends('testAssertTrap44')]
     public function testAssertTrap45(): void
     {
         $this->runAssertTrapCommand(
@@ -469,7 +423,6 @@ final class MemoryTrapTest extends SpecTestsuiteBase
         );
     }
 
-    #[Depends('testAssertTrap45')]
     public function testAssertTrap46(): void
     {
         $this->runAssertTrapCommand(
@@ -479,7 +432,6 @@ final class MemoryTrapTest extends SpecTestsuiteBase
         );
     }
 
-    #[Depends('testAssertTrap46')]
     public function testAssertTrap47(): void
     {
         $this->runAssertTrapCommand(
@@ -489,7 +441,6 @@ final class MemoryTrapTest extends SpecTestsuiteBase
         );
     }
 
-    #[Depends('testAssertTrap47')]
     public function testAssertTrap48(): void
     {
         $this->runAssertTrapCommand(
@@ -499,7 +450,6 @@ final class MemoryTrapTest extends SpecTestsuiteBase
         );
     }
 
-    #[Depends('testAssertTrap48')]
     public function testAssertTrap49(): void
     {
         $this->runAssertTrapCommand(
@@ -509,7 +459,6 @@ final class MemoryTrapTest extends SpecTestsuiteBase
         );
     }
 
-    #[Depends('testAssertTrap49')]
     public function testAssertTrap50(): void
     {
         $this->runAssertTrapCommand(
@@ -519,7 +468,6 @@ final class MemoryTrapTest extends SpecTestsuiteBase
         );
     }
 
-    #[Depends('testAssertTrap50')]
     public function testAssertTrap51(): void
     {
         $this->runAssertTrapCommand(
@@ -529,7 +477,6 @@ final class MemoryTrapTest extends SpecTestsuiteBase
         );
     }
 
-    #[Depends('testAssertTrap51')]
     public function testAssertTrap52(): void
     {
         $this->runAssertTrapCommand(
@@ -539,7 +486,6 @@ final class MemoryTrapTest extends SpecTestsuiteBase
         );
     }
 
-    #[Depends('testAssertTrap52')]
     public function testAssertTrap53(): void
     {
         $this->runAssertTrapCommand(
@@ -549,7 +495,6 @@ final class MemoryTrapTest extends SpecTestsuiteBase
         );
     }
 
-    #[Depends('testAssertTrap53')]
     public function testAssertTrap54(): void
     {
         $this->runAssertTrapCommand(
@@ -559,7 +504,6 @@ final class MemoryTrapTest extends SpecTestsuiteBase
         );
     }
 
-    #[Depends('testAssertTrap54')]
     public function testAssertTrap55(): void
     {
         $this->runAssertTrapCommand(
@@ -569,7 +513,6 @@ final class MemoryTrapTest extends SpecTestsuiteBase
         );
     }
 
-    #[Depends('testAssertTrap55')]
     public function testAssertTrap56(): void
     {
         $this->runAssertTrapCommand(
@@ -579,7 +522,6 @@ final class MemoryTrapTest extends SpecTestsuiteBase
         );
     }
 
-    #[Depends('testAssertTrap56')]
     public function testAssertTrap57(): void
     {
         $this->runAssertTrapCommand(
@@ -589,7 +531,6 @@ final class MemoryTrapTest extends SpecTestsuiteBase
         );
     }
 
-    #[Depends('testAssertTrap57')]
     public function testAssertTrap58(): void
     {
         $this->runAssertTrapCommand(
@@ -599,7 +540,6 @@ final class MemoryTrapTest extends SpecTestsuiteBase
         );
     }
 
-    #[Depends('testAssertTrap58')]
     public function testAssertTrap59(): void
     {
         $this->runAssertTrapCommand(
@@ -609,7 +549,6 @@ final class MemoryTrapTest extends SpecTestsuiteBase
         );
     }
 
-    #[Depends('testAssertTrap59')]
     public function testAssertTrap60(): void
     {
         $this->runAssertTrapCommand(
@@ -619,7 +558,6 @@ final class MemoryTrapTest extends SpecTestsuiteBase
         );
     }
 
-    #[Depends('testAssertTrap60')]
     public function testAssertTrap61(): void
     {
         $this->runAssertTrapCommand(
@@ -629,7 +567,6 @@ final class MemoryTrapTest extends SpecTestsuiteBase
         );
     }
 
-    #[Depends('testAssertTrap61')]
     public function testAssertTrap62(): void
     {
         $this->runAssertTrapCommand(
@@ -639,7 +576,6 @@ final class MemoryTrapTest extends SpecTestsuiteBase
         );
     }
 
-    #[Depends('testAssertTrap62')]
     public function testAssertTrap63(): void
     {
         $this->runAssertTrapCommand(
@@ -649,7 +585,6 @@ final class MemoryTrapTest extends SpecTestsuiteBase
         );
     }
 
-    #[Depends('testAssertTrap63')]
     public function testAssertTrap64(): void
     {
         $this->runAssertTrapCommand(
@@ -659,7 +594,6 @@ final class MemoryTrapTest extends SpecTestsuiteBase
         );
     }
 
-    #[Depends('testAssertTrap64')]
     public function testAssertTrap65(): void
     {
         $this->runAssertTrapCommand(
@@ -669,7 +603,6 @@ final class MemoryTrapTest extends SpecTestsuiteBase
         );
     }
 
-    #[Depends('testAssertTrap65')]
     public function testAssertTrap66(): void
     {
         $this->runAssertTrapCommand(
@@ -679,7 +612,6 @@ final class MemoryTrapTest extends SpecTestsuiteBase
         );
     }
 
-    #[Depends('testAssertTrap66')]
     public function testAssertTrap67(): void
     {
         $this->runAssertTrapCommand(
@@ -689,7 +621,6 @@ final class MemoryTrapTest extends SpecTestsuiteBase
         );
     }
 
-    #[Depends('testAssertTrap67')]
     public function testAssertTrap68(): void
     {
         $this->runAssertTrapCommand(
@@ -699,7 +630,6 @@ final class MemoryTrapTest extends SpecTestsuiteBase
         );
     }
 
-    #[Depends('testAssertTrap68')]
     public function testAssertTrap69(): void
     {
         $this->runAssertTrapCommand(
@@ -709,7 +639,6 @@ final class MemoryTrapTest extends SpecTestsuiteBase
         );
     }
 
-    #[Depends('testAssertTrap69')]
     public function testAssertTrap70(): void
     {
         $this->runAssertTrapCommand(
@@ -719,7 +648,6 @@ final class MemoryTrapTest extends SpecTestsuiteBase
         );
     }
 
-    #[Depends('testAssertTrap70')]
     public function testAssertTrap71(): void
     {
         $this->runAssertTrapCommand(
@@ -729,7 +657,6 @@ final class MemoryTrapTest extends SpecTestsuiteBase
         );
     }
 
-    #[Depends('testAssertTrap71')]
     public function testAssertTrap72(): void
     {
         $this->runAssertTrapCommand(
@@ -739,7 +666,6 @@ final class MemoryTrapTest extends SpecTestsuiteBase
         );
     }
 
-    #[Depends('testAssertTrap72')]
     public function testAssertTrap73(): void
     {
         $this->runAssertTrapCommand(
@@ -749,7 +675,6 @@ final class MemoryTrapTest extends SpecTestsuiteBase
         );
     }
 
-    #[Depends('testAssertTrap73')]
     public function testAssertTrap74(): void
     {
         $this->runAssertTrapCommand(
@@ -759,7 +684,6 @@ final class MemoryTrapTest extends SpecTestsuiteBase
         );
     }
 
-    #[Depends('testAssertTrap74')]
     public function testAssertTrap75(): void
     {
         $this->runAssertTrapCommand(
@@ -769,7 +693,6 @@ final class MemoryTrapTest extends SpecTestsuiteBase
         );
     }
 
-    #[Depends('testAssertTrap75')]
     public function testAssertTrap76(): void
     {
         $this->runAssertTrapCommand(
@@ -779,7 +702,6 @@ final class MemoryTrapTest extends SpecTestsuiteBase
         );
     }
 
-    #[Depends('testAssertTrap76')]
     public function testAssertTrap77(): void
     {
         $this->runAssertTrapCommand(
@@ -789,7 +711,6 @@ final class MemoryTrapTest extends SpecTestsuiteBase
         );
     }
 
-    #[Depends('testAssertTrap77')]
     public function testAssertTrap78(): void
     {
         $this->runAssertTrapCommand(
@@ -799,7 +720,6 @@ final class MemoryTrapTest extends SpecTestsuiteBase
         );
     }
 
-    #[Depends('testAssertTrap78')]
     public function testAssertTrap79(): void
     {
         $this->runAssertTrapCommand(
@@ -809,7 +729,6 @@ final class MemoryTrapTest extends SpecTestsuiteBase
         );
     }
 
-    #[Depends('testAssertTrap79')]
     public function testAssertTrap80(): void
     {
         $this->runAssertTrapCommand(
@@ -819,7 +738,6 @@ final class MemoryTrapTest extends SpecTestsuiteBase
         );
     }
 
-    #[Depends('testAssertTrap80')]
     public function testAssertTrap81(): void
     {
         $this->runAssertTrapCommand(
@@ -829,7 +747,6 @@ final class MemoryTrapTest extends SpecTestsuiteBase
         );
     }
 
-    #[Depends('testAssertTrap81')]
     public function testAssertTrap82(): void
     {
         $this->runAssertTrapCommand(
@@ -839,7 +756,6 @@ final class MemoryTrapTest extends SpecTestsuiteBase
         );
     }
 
-    #[Depends('testAssertTrap82')]
     public function testAssertTrap83(): void
     {
         $this->runAssertTrapCommand(
@@ -849,7 +765,6 @@ final class MemoryTrapTest extends SpecTestsuiteBase
         );
     }
 
-    #[Depends('testAssertTrap83')]
     public function testAssertTrap84(): void
     {
         $this->runAssertTrapCommand(
@@ -859,7 +774,6 @@ final class MemoryTrapTest extends SpecTestsuiteBase
         );
     }
 
-    #[Depends('testAssertTrap84')]
     public function testAssertTrap85(): void
     {
         $this->runAssertTrapCommand(
@@ -869,7 +783,6 @@ final class MemoryTrapTest extends SpecTestsuiteBase
         );
     }
 
-    #[Depends('testAssertTrap85')]
     public function testAssertTrap86(): void
     {
         $this->runAssertTrapCommand(
@@ -879,7 +792,6 @@ final class MemoryTrapTest extends SpecTestsuiteBase
         );
     }
 
-    #[Depends('testAssertTrap86')]
     public function testAssertTrap87(): void
     {
         $this->runAssertTrapCommand(
@@ -889,7 +801,6 @@ final class MemoryTrapTest extends SpecTestsuiteBase
         );
     }
 
-    #[Depends('testAssertTrap87')]
     public function testAssertTrap88(): void
     {
         $this->runAssertTrapCommand(
@@ -899,7 +810,6 @@ final class MemoryTrapTest extends SpecTestsuiteBase
         );
     }
 
-    #[Depends('testAssertTrap88')]
     public function testAssertTrap89(): void
     {
         $this->runAssertTrapCommand(
@@ -909,7 +819,6 @@ final class MemoryTrapTest extends SpecTestsuiteBase
         );
     }
 
-    #[Depends('testAssertTrap89')]
     public function testAssertTrap90(): void
     {
         $this->runAssertTrapCommand(
@@ -919,7 +828,6 @@ final class MemoryTrapTest extends SpecTestsuiteBase
         );
     }
 
-    #[Depends('testAssertTrap90')]
     public function testAssertTrap91(): void
     {
         $this->runAssertTrapCommand(
@@ -929,7 +837,6 @@ final class MemoryTrapTest extends SpecTestsuiteBase
         );
     }
 
-    #[Depends('testAssertTrap91')]
     public function testAssertTrap92(): void
     {
         $this->runAssertTrapCommand(
@@ -939,7 +846,6 @@ final class MemoryTrapTest extends SpecTestsuiteBase
         );
     }
 
-    #[Depends('testAssertTrap92')]
     public function testAssertTrap93(): void
     {
         $this->runAssertTrapCommand(
@@ -949,7 +855,6 @@ final class MemoryTrapTest extends SpecTestsuiteBase
         );
     }
 
-    #[Depends('testAssertTrap93')]
     public function testAssertTrap94(): void
     {
         $this->runAssertTrapCommand(
@@ -959,7 +864,6 @@ final class MemoryTrapTest extends SpecTestsuiteBase
         );
     }
 
-    #[Depends('testAssertTrap94')]
     public function testAssertTrap95(): void
     {
         $this->runAssertTrapCommand(
@@ -969,7 +873,6 @@ final class MemoryTrapTest extends SpecTestsuiteBase
         );
     }
 
-    #[Depends('testAssertTrap95')]
     public function testAssertTrap96(): void
     {
         $this->runAssertTrapCommand(
@@ -979,7 +882,6 @@ final class MemoryTrapTest extends SpecTestsuiteBase
         );
     }
 
-    #[Depends('testAssertTrap96')]
     public function testAssertTrap97(): void
     {
         $this->runAssertTrapCommand(
@@ -989,7 +891,6 @@ final class MemoryTrapTest extends SpecTestsuiteBase
         );
     }
 
-    #[Depends('testAssertTrap97')]
     public function testAssertTrap98(): void
     {
         $this->runAssertTrapCommand(
@@ -999,7 +900,6 @@ final class MemoryTrapTest extends SpecTestsuiteBase
         );
     }
 
-    #[Depends('testAssertTrap98')]
     public function testAssertTrap99(): void
     {
         $this->runAssertTrapCommand(
@@ -1009,7 +909,6 @@ final class MemoryTrapTest extends SpecTestsuiteBase
         );
     }
 
-    #[Depends('testAssertTrap99')]
     public function testAssertTrap100(): void
     {
         $this->runAssertTrapCommand(
@@ -1019,7 +918,6 @@ final class MemoryTrapTest extends SpecTestsuiteBase
         );
     }
 
-    #[Depends('testAssertTrap100')]
     public function testAssertTrap101(): void
     {
         $this->runAssertTrapCommand(
@@ -1029,7 +927,6 @@ final class MemoryTrapTest extends SpecTestsuiteBase
         );
     }
 
-    #[Depends('testAssertTrap101')]
     public function testAssertTrap102(): void
     {
         $this->runAssertTrapCommand(
@@ -1039,7 +936,6 @@ final class MemoryTrapTest extends SpecTestsuiteBase
         );
     }
 
-    #[Depends('testAssertTrap102')]
     public function testAssertTrap103(): void
     {
         $this->runAssertTrapCommand(
@@ -1049,7 +945,6 @@ final class MemoryTrapTest extends SpecTestsuiteBase
         );
     }
 
-    #[Depends('testAssertTrap103')]
     public function testAssertTrap104(): void
     {
         $this->runAssertTrapCommand(
@@ -1059,7 +954,6 @@ final class MemoryTrapTest extends SpecTestsuiteBase
         );
     }
 
-    #[Depends('testAssertTrap104')]
     public function testAssertTrap105(): void
     {
         $this->runAssertTrapCommand(
@@ -1069,7 +963,6 @@ final class MemoryTrapTest extends SpecTestsuiteBase
         );
     }
 
-    #[Depends('testAssertTrap105')]
     public function testAssertTrap106(): void
     {
         $this->runAssertTrapCommand(
@@ -1079,7 +972,6 @@ final class MemoryTrapTest extends SpecTestsuiteBase
         );
     }
 
-    #[Depends('testAssertTrap106')]
     public function testAssertTrap107(): void
     {
         $this->runAssertTrapCommand(
@@ -1089,7 +981,6 @@ final class MemoryTrapTest extends SpecTestsuiteBase
         );
     }
 
-    #[Depends('testAssertTrap107')]
     public function testAssertTrap108(): void
     {
         $this->runAssertTrapCommand(
@@ -1099,7 +990,6 @@ final class MemoryTrapTest extends SpecTestsuiteBase
         );
     }
 
-    #[Depends('testAssertTrap108')]
     public function testAssertTrap109(): void
     {
         $this->runAssertTrapCommand(
@@ -1109,7 +999,6 @@ final class MemoryTrapTest extends SpecTestsuiteBase
         );
     }
 
-    #[Depends('testAssertTrap109')]
     public function testAssertTrap110(): void
     {
         $this->runAssertTrapCommand(
@@ -1119,7 +1008,6 @@ final class MemoryTrapTest extends SpecTestsuiteBase
         );
     }
 
-    #[Depends('testAssertTrap110')]
     public function testAssertTrap111(): void
     {
         $this->runAssertTrapCommand(
@@ -1129,7 +1017,6 @@ final class MemoryTrapTest extends SpecTestsuiteBase
         );
     }
 
-    #[Depends('testAssertTrap111')]
     public function testAssertTrap112(): void
     {
         $this->runAssertTrapCommand(
@@ -1139,7 +1026,6 @@ final class MemoryTrapTest extends SpecTestsuiteBase
         );
     }
 
-    #[Depends('testAssertTrap112')]
     public function testAssertTrap113(): void
     {
         $this->runAssertTrapCommand(
@@ -1149,7 +1035,6 @@ final class MemoryTrapTest extends SpecTestsuiteBase
         );
     }
 
-    #[Depends('testAssertTrap113')]
     public function testAssertTrap114(): void
     {
         $this->runAssertTrapCommand(
@@ -1159,7 +1044,6 @@ final class MemoryTrapTest extends SpecTestsuiteBase
         );
     }
 
-    #[Depends('testAssertTrap114')]
     public function testAssertTrap115(): void
     {
         $this->runAssertTrapCommand(
@@ -1169,7 +1053,6 @@ final class MemoryTrapTest extends SpecTestsuiteBase
         );
     }
 
-    #[Depends('testAssertTrap115')]
     public function testAssertTrap116(): void
     {
         $this->runAssertTrapCommand(
@@ -1179,7 +1062,6 @@ final class MemoryTrapTest extends SpecTestsuiteBase
         );
     }
 
-    #[Depends('testAssertTrap116')]
     public function testAssertTrap117(): void
     {
         $this->runAssertTrapCommand(
@@ -1189,7 +1071,6 @@ final class MemoryTrapTest extends SpecTestsuiteBase
         );
     }
 
-    #[Depends('testAssertTrap117')]
     public function testAssertTrap118(): void
     {
         $this->runAssertTrapCommand(
@@ -1199,7 +1080,6 @@ final class MemoryTrapTest extends SpecTestsuiteBase
         );
     }
 
-    #[Depends('testAssertTrap118')]
     public function testAssertTrap119(): void
     {
         $this->runAssertTrapCommand(
@@ -1209,7 +1089,6 @@ final class MemoryTrapTest extends SpecTestsuiteBase
         );
     }
 
-    #[Depends('testAssertTrap119')]
     public function testAssertTrap120(): void
     {
         $this->runAssertTrapCommand(
@@ -1219,7 +1098,6 @@ final class MemoryTrapTest extends SpecTestsuiteBase
         );
     }
 
-    #[Depends('testAssertTrap120')]
     public function testAssertTrap121(): void
     {
         $this->runAssertTrapCommand(
@@ -1229,7 +1107,6 @@ final class MemoryTrapTest extends SpecTestsuiteBase
         );
     }
 
-    #[Depends('testAssertTrap121')]
     public function testAssertTrap122(): void
     {
         $this->runAssertTrapCommand(
@@ -1239,7 +1116,6 @@ final class MemoryTrapTest extends SpecTestsuiteBase
         );
     }
 
-    #[Depends('testAssertTrap122')]
     public function testAssertTrap123(): void
     {
         $this->runAssertTrapCommand(
@@ -1249,7 +1125,6 @@ final class MemoryTrapTest extends SpecTestsuiteBase
         );
     }
 
-    #[Depends('testAssertTrap123')]
     public function testAssertTrap124(): void
     {
         $this->runAssertTrapCommand(
@@ -1259,7 +1134,6 @@ final class MemoryTrapTest extends SpecTestsuiteBase
         );
     }
 
-    #[Depends('testAssertTrap124')]
     public function testAssertTrap125(): void
     {
         $this->runAssertTrapCommand(
@@ -1269,7 +1143,6 @@ final class MemoryTrapTest extends SpecTestsuiteBase
         );
     }
 
-    #[Depends('testAssertTrap125')]
     public function testAssertTrap126(): void
     {
         $this->runAssertTrapCommand(
@@ -1279,7 +1152,6 @@ final class MemoryTrapTest extends SpecTestsuiteBase
         );
     }
 
-    #[Depends('testAssertTrap126')]
     public function testAssertTrap127(): void
     {
         $this->runAssertTrapCommand(
@@ -1289,7 +1161,6 @@ final class MemoryTrapTest extends SpecTestsuiteBase
         );
     }
 
-    #[Depends('testAssertTrap127')]
     public function testAssertTrap128(): void
     {
         $this->runAssertTrapCommand(
@@ -1299,7 +1170,6 @@ final class MemoryTrapTest extends SpecTestsuiteBase
         );
     }
 
-    #[Depends('testAssertTrap128')]
     public function testAssertTrap129(): void
     {
         $this->runAssertTrapCommand(
@@ -1309,7 +1179,6 @@ final class MemoryTrapTest extends SpecTestsuiteBase
         );
     }
 
-    #[Depends('testAssertTrap129')]
     public function testAssertTrap130(): void
     {
         $this->runAssertTrapCommand(
@@ -1319,7 +1188,6 @@ final class MemoryTrapTest extends SpecTestsuiteBase
         );
     }
 
-    #[Depends('testAssertTrap130')]
     public function testAssertTrap131(): void
     {
         $this->runAssertTrapCommand(
@@ -1329,7 +1197,6 @@ final class MemoryTrapTest extends SpecTestsuiteBase
         );
     }
 
-    #[Depends('testAssertTrap131')]
     public function testAssertTrap132(): void
     {
         $this->runAssertTrapCommand(
@@ -1339,7 +1206,6 @@ final class MemoryTrapTest extends SpecTestsuiteBase
         );
     }
 
-    #[Depends('testAssertTrap132')]
     public function testAssertTrap133(): void
     {
         $this->runAssertTrapCommand(
@@ -1349,7 +1215,6 @@ final class MemoryTrapTest extends SpecTestsuiteBase
         );
     }
 
-    #[Depends('testAssertTrap133')]
     public function testAssertTrap134(): void
     {
         $this->runAssertTrapCommand(
@@ -1359,7 +1224,6 @@ final class MemoryTrapTest extends SpecTestsuiteBase
         );
     }
 
-    #[Depends('testAssertTrap134')]
     public function testAssertTrap135(): void
     {
         $this->runAssertTrapCommand(
@@ -1369,7 +1233,6 @@ final class MemoryTrapTest extends SpecTestsuiteBase
         );
     }
 
-    #[Depends('testAssertTrap135')]
     public function testAssertTrap136(): void
     {
         $this->runAssertTrapCommand(
@@ -1379,7 +1242,6 @@ final class MemoryTrapTest extends SpecTestsuiteBase
         );
     }
 
-    #[Depends('testAssertTrap136')]
     public function testAssertTrap137(): void
     {
         $this->runAssertTrapCommand(
@@ -1389,7 +1251,6 @@ final class MemoryTrapTest extends SpecTestsuiteBase
         );
     }
 
-    #[Depends('testAssertTrap137')]
     public function testAssertTrap138(): void
     {
         $this->runAssertTrapCommand(
@@ -1399,7 +1260,6 @@ final class MemoryTrapTest extends SpecTestsuiteBase
         );
     }
 
-    #[Depends('testAssertTrap138')]
     public function testAssertTrap139(): void
     {
         $this->runAssertTrapCommand(
@@ -1409,7 +1269,6 @@ final class MemoryTrapTest extends SpecTestsuiteBase
         );
     }
 
-    #[Depends('testAssertTrap139')]
     public function testAssertTrap140(): void
     {
         $this->runAssertTrapCommand(
@@ -1419,7 +1278,6 @@ final class MemoryTrapTest extends SpecTestsuiteBase
         );
     }
 
-    #[Depends('testAssertTrap140')]
     public function testAssertTrap141(): void
     {
         $this->runAssertTrapCommand(
@@ -1429,7 +1287,6 @@ final class MemoryTrapTest extends SpecTestsuiteBase
         );
     }
 
-    #[Depends('testAssertTrap141')]
     public function testAssertTrap142(): void
     {
         $this->runAssertTrapCommand(
@@ -1439,7 +1296,6 @@ final class MemoryTrapTest extends SpecTestsuiteBase
         );
     }
 
-    #[Depends('testAssertTrap142')]
     public function testAssertTrap143(): void
     {
         $this->runAssertTrapCommand(
@@ -1449,7 +1305,6 @@ final class MemoryTrapTest extends SpecTestsuiteBase
         );
     }
 
-    #[Depends('testAssertTrap143')]
     public function testAssertTrap144(): void
     {
         $this->runAssertTrapCommand(
@@ -1459,7 +1314,6 @@ final class MemoryTrapTest extends SpecTestsuiteBase
         );
     }
 
-    #[Depends('testAssertTrap144')]
     public function testAssertTrap145(): void
     {
         $this->runAssertTrapCommand(
@@ -1469,7 +1323,6 @@ final class MemoryTrapTest extends SpecTestsuiteBase
         );
     }
 
-    #[Depends('testAssertTrap145')]
     public function testAssertTrap146(): void
     {
         $this->runAssertTrapCommand(
@@ -1479,7 +1332,6 @@ final class MemoryTrapTest extends SpecTestsuiteBase
         );
     }
 
-    #[Depends('testAssertTrap146')]
     public function testAssertTrap147(): void
     {
         $this->runAssertTrapCommand(
@@ -1489,7 +1341,6 @@ final class MemoryTrapTest extends SpecTestsuiteBase
         );
     }
 
-    #[Depends('testAssertTrap147')]
     public function testAssertTrap148(): void
     {
         $this->runAssertTrapCommand(
@@ -1499,7 +1350,6 @@ final class MemoryTrapTest extends SpecTestsuiteBase
         );
     }
 
-    #[Depends('testAssertTrap148')]
     public function testAssertTrap149(): void
     {
         $this->runAssertTrapCommand(
@@ -1509,7 +1359,6 @@ final class MemoryTrapTest extends SpecTestsuiteBase
         );
     }
 
-    #[Depends('testAssertTrap149')]
     public function testAssertTrap150(): void
     {
         $this->runAssertTrapCommand(
@@ -1519,7 +1368,6 @@ final class MemoryTrapTest extends SpecTestsuiteBase
         );
     }
 
-    #[Depends('testAssertTrap150')]
     public function testAssertTrap151(): void
     {
         $this->runAssertTrapCommand(
@@ -1529,7 +1377,6 @@ final class MemoryTrapTest extends SpecTestsuiteBase
         );
     }
 
-    #[Depends('testAssertTrap151')]
     public function testAssertTrap152(): void
     {
         $this->runAssertTrapCommand(
@@ -1539,7 +1386,6 @@ final class MemoryTrapTest extends SpecTestsuiteBase
         );
     }
 
-    #[Depends('testAssertTrap152')]
     public function testAssertTrap153(): void
     {
         $this->runAssertTrapCommand(
@@ -1549,7 +1395,6 @@ final class MemoryTrapTest extends SpecTestsuiteBase
         );
     }
 
-    #[Depends('testAssertTrap153')]
     public function testAssertTrap154(): void
     {
         $this->runAssertTrapCommand(
@@ -1559,7 +1404,6 @@ final class MemoryTrapTest extends SpecTestsuiteBase
         );
     }
 
-    #[Depends('testAssertTrap154')]
     public function testAssertTrap155(): void
     {
         $this->runAssertTrapCommand(
@@ -1569,7 +1413,6 @@ final class MemoryTrapTest extends SpecTestsuiteBase
         );
     }
 
-    #[Depends('testAssertTrap155')]
     public function testAssertTrap156(): void
     {
         $this->runAssertTrapCommand(
@@ -1579,7 +1422,6 @@ final class MemoryTrapTest extends SpecTestsuiteBase
         );
     }
 
-    #[Depends('testAssertTrap156')]
     public function testAssertTrap157(): void
     {
         $this->runAssertTrapCommand(
@@ -1589,7 +1431,6 @@ final class MemoryTrapTest extends SpecTestsuiteBase
         );
     }
 
-    #[Depends('testAssertTrap157')]
     public function testAssertTrap158(): void
     {
         $this->runAssertTrapCommand(
@@ -1599,7 +1440,6 @@ final class MemoryTrapTest extends SpecTestsuiteBase
         );
     }
 
-    #[Depends('testAssertTrap158')]
     public function testAssertTrap159(): void
     {
         $this->runAssertTrapCommand(
@@ -1609,7 +1449,6 @@ final class MemoryTrapTest extends SpecTestsuiteBase
         );
     }
 
-    #[Depends('testAssertTrap159')]
     public function testAssertTrap160(): void
     {
         $this->runAssertTrapCommand(
@@ -1619,7 +1458,6 @@ final class MemoryTrapTest extends SpecTestsuiteBase
         );
     }
 
-    #[Depends('testAssertTrap160')]
     public function testAssertTrap161(): void
     {
         $this->runAssertTrapCommand(
@@ -1629,7 +1467,6 @@ final class MemoryTrapTest extends SpecTestsuiteBase
         );
     }
 
-    #[Depends('testAssertTrap161')]
     public function testAssertTrap162(): void
     {
         $this->runAssertTrapCommand(
@@ -1639,7 +1476,6 @@ final class MemoryTrapTest extends SpecTestsuiteBase
         );
     }
 
-    #[Depends('testAssertTrap162')]
     public function testAssertTrap163(): void
     {
         $this->runAssertTrapCommand(
@@ -1649,7 +1485,6 @@ final class MemoryTrapTest extends SpecTestsuiteBase
         );
     }
 
-    #[Depends('testAssertTrap163')]
     public function testAssertTrap164(): void
     {
         $this->runAssertTrapCommand(
@@ -1659,7 +1494,6 @@ final class MemoryTrapTest extends SpecTestsuiteBase
         );
     }
 
-    #[Depends('testAssertTrap164')]
     public function testAssertTrap165(): void
     {
         $this->runAssertTrapCommand(
@@ -1669,7 +1503,6 @@ final class MemoryTrapTest extends SpecTestsuiteBase
         );
     }
 
-    #[Depends('testAssertTrap165')]
     public function testAssertTrap166(): void
     {
         $this->runAssertTrapCommand(
@@ -1679,7 +1512,6 @@ final class MemoryTrapTest extends SpecTestsuiteBase
         );
     }
 
-    #[Depends('testAssertTrap166')]
     public function testAssertTrap167(): void
     {
         $this->runAssertTrapCommand(
@@ -1689,7 +1521,6 @@ final class MemoryTrapTest extends SpecTestsuiteBase
         );
     }
 
-    #[Depends('testAssertTrap167')]
     public function testAssertTrap168(): void
     {
         $this->runAssertTrapCommand(
@@ -1699,7 +1530,6 @@ final class MemoryTrapTest extends SpecTestsuiteBase
         );
     }
 
-    #[Depends('testAssertTrap168')]
     public function testAssertTrap169(): void
     {
         $this->runAssertTrapCommand(
@@ -1709,7 +1539,6 @@ final class MemoryTrapTest extends SpecTestsuiteBase
         );
     }
 
-    #[Depends('testAssertTrap169')]
     public function testAssertTrap170(): void
     {
         $this->runAssertTrapCommand(
@@ -1719,7 +1548,6 @@ final class MemoryTrapTest extends SpecTestsuiteBase
         );
     }
 
-    #[Depends('testAssertTrap170')]
     public function testAssertReturn171(): void
     {
         $this->runAssertReturnCommand(
@@ -1729,7 +1557,6 @@ final class MemoryTrapTest extends SpecTestsuiteBase
         );
     }
 
-    #[Depends('testAssertReturn171')]
     public function testAssertReturn172(): void
     {
         $this->runAssertReturnCommand(
@@ -1739,7 +1566,6 @@ final class MemoryTrapTest extends SpecTestsuiteBase
         );
     }
 
-    #[Depends('testAssertReturn172')]
     public function testAssertReturn173(): void
     {
         $this->runAssertReturnCommand(
@@ -1749,7 +1575,6 @@ final class MemoryTrapTest extends SpecTestsuiteBase
         );
     }
 
-    #[Depends('testAssertReturn173')]
     public function testAssertTrap174(): void
     {
         $this->runAssertTrapCommand(
@@ -1759,7 +1584,6 @@ final class MemoryTrapTest extends SpecTestsuiteBase
         );
     }
 
-    #[Depends('testAssertTrap174')]
     public function testAssertReturn175(): void
     {
         $this->runAssertReturnCommand(
@@ -1769,7 +1593,6 @@ final class MemoryTrapTest extends SpecTestsuiteBase
         );
     }
 
-    #[Depends('testAssertReturn175')]
     public function testAssertTrap176(): void
     {
         $this->runAssertTrapCommand(
@@ -1779,7 +1602,6 @@ final class MemoryTrapTest extends SpecTestsuiteBase
         );
     }
 
-    #[Depends('testAssertTrap176')]
     public function testAssertReturn177(): void
     {
         $this->runAssertReturnCommand(
@@ -1789,7 +1611,6 @@ final class MemoryTrapTest extends SpecTestsuiteBase
         );
     }
 
-    #[Depends('testAssertReturn177')]
     public function testAssertTrap178(): void
     {
         $this->runAssertTrapCommand(
@@ -1799,7 +1620,6 @@ final class MemoryTrapTest extends SpecTestsuiteBase
         );
     }
 
-    #[Depends('testAssertTrap178')]
     public function testAssertReturn179(): void
     {
         $this->runAssertReturnCommand(
@@ -1809,7 +1629,6 @@ final class MemoryTrapTest extends SpecTestsuiteBase
         );
     }
 
-    #[Depends('testAssertReturn179')]
     public function testAssertTrap180(): void
     {
         $this->runAssertTrapCommand(
@@ -1819,7 +1638,6 @@ final class MemoryTrapTest extends SpecTestsuiteBase
         );
     }
 
-    #[Depends('testAssertTrap180')]
     public function testAssertReturn181(): void
     {
         $this->runAssertReturnCommand(

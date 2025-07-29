@@ -5,7 +5,6 @@ declare(strict_types=1);
 namespace Nsfisis\Waddiwasi\Tests\SpecTestsuites\Core;
 
 use Nsfisis\Waddiwasi\Tests\SpecTestsuites\SpecTestsuiteBase;
-use PHPUnit\Framework\Attributes\Depends;
 use PHPUnit\Framework\Attributes\DoesNotPerformAssertions;
 
 final class UnreachedValidTest extends SpecTestsuiteBase
@@ -19,7 +18,6 @@ final class UnreachedValidTest extends SpecTestsuiteBase
         );
     }
 
-    #[Depends('testModule0')]
     public function testAssertTrap1(): void
     {
         $this->runAssertTrapCommand(
@@ -29,7 +27,6 @@ final class UnreachedValidTest extends SpecTestsuiteBase
         );
     }
 
-    #[Depends('testAssertTrap1')]
     public function testAssertTrap2(): void
     {
         $this->runAssertTrapCommand(
@@ -39,7 +36,6 @@ final class UnreachedValidTest extends SpecTestsuiteBase
         );
     }
 
-    #[Depends('testAssertTrap2')]
     public function testAssertTrap3(): void
     {
         $this->runAssertTrapCommand(
@@ -49,7 +45,6 @@ final class UnreachedValidTest extends SpecTestsuiteBase
         );
     }
 
-    #[Depends('testAssertTrap3')]
     public function testAssertTrap4(): void
     {
         $this->runAssertTrapCommand(
@@ -59,7 +54,6 @@ final class UnreachedValidTest extends SpecTestsuiteBase
         );
     }
 
-    #[Depends('testAssertTrap4')]
     public function testModule5(): void
     {
         $this->runModuleCommand(
@@ -69,7 +63,6 @@ final class UnreachedValidTest extends SpecTestsuiteBase
         );
     }
 
-    #[Depends('testModule5')]
     public function testAssertTrap6(): void
     {
         $this->runAssertTrapCommand(

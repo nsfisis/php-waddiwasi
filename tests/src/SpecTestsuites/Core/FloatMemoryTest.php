@@ -5,7 +5,6 @@ declare(strict_types=1);
 namespace Nsfisis\Waddiwasi\Tests\SpecTestsuites\Core;
 
 use Nsfisis\Waddiwasi\Tests\SpecTestsuites\SpecTestsuiteBase;
-use PHPUnit\Framework\Attributes\Depends;
 use PHPUnit\Framework\Attributes\DoesNotPerformAssertions;
 
 final class FloatMemoryTest extends SpecTestsuiteBase
@@ -19,7 +18,6 @@ final class FloatMemoryTest extends SpecTestsuiteBase
         );
     }
 
-    #[Depends('testModule0')]
     public function testAssertReturn1(): void
     {
         $this->runAssertReturnCommand(
@@ -29,7 +27,6 @@ final class FloatMemoryTest extends SpecTestsuiteBase
         );
     }
 
-    #[Depends('testAssertReturn1')]
     public function testAssertReturn2(): void
     {
         $this->runAssertReturnCommand(
@@ -39,7 +36,6 @@ final class FloatMemoryTest extends SpecTestsuiteBase
         );
     }
 
-    #[Depends('testAssertReturn2')]
     public function testAction3(): void
     {
         $this->runActionCommand(
@@ -48,7 +44,6 @@ final class FloatMemoryTest extends SpecTestsuiteBase
         );
     }
 
-    #[Depends('testAction3')]
     public function testAssertReturn4(): void
     {
         $this->runAssertReturnCommand(
@@ -58,7 +53,6 @@ final class FloatMemoryTest extends SpecTestsuiteBase
         );
     }
 
-    #[Depends('testAssertReturn4')]
     public function testAssertReturn5(): void
     {
         $this->runAssertReturnCommand(
@@ -68,7 +62,6 @@ final class FloatMemoryTest extends SpecTestsuiteBase
         );
     }
 
-    #[Depends('testAssertReturn5')]
     public function testAction6(): void
     {
         $this->runActionCommand(
@@ -77,7 +70,6 @@ final class FloatMemoryTest extends SpecTestsuiteBase
         );
     }
 
-    #[Depends('testAction6')]
     public function testAssertReturn7(): void
     {
         $this->runAssertReturnCommand(
@@ -87,7 +79,6 @@ final class FloatMemoryTest extends SpecTestsuiteBase
         );
     }
 
-    #[Depends('testAssertReturn7')]
     public function testAssertReturn8(): void
     {
         $this->runAssertReturnCommand(
@@ -97,7 +88,6 @@ final class FloatMemoryTest extends SpecTestsuiteBase
         );
     }
 
-    #[Depends('testAssertReturn8')]
     public function testAction9(): void
     {
         $this->runActionCommand(
@@ -106,7 +96,6 @@ final class FloatMemoryTest extends SpecTestsuiteBase
         );
     }
 
-    #[Depends('testAction9')]
     public function testAssertReturn10(): void
     {
         $this->runAssertReturnCommand(
@@ -116,7 +105,6 @@ final class FloatMemoryTest extends SpecTestsuiteBase
         );
     }
 
-    #[Depends('testAssertReturn10')]
     public function testAssertReturn11(): void
     {
         $this->runAssertReturnCommand(
@@ -126,7 +114,6 @@ final class FloatMemoryTest extends SpecTestsuiteBase
         );
     }
 
-    #[Depends('testAssertReturn11')]
     public function testAction12(): void
     {
         $this->runActionCommand(
@@ -135,7 +122,6 @@ final class FloatMemoryTest extends SpecTestsuiteBase
         );
     }
 
-    #[Depends('testAction12')]
     public function testAssertReturn13(): void
     {
         $this->runAssertReturnCommand(
@@ -145,7 +131,6 @@ final class FloatMemoryTest extends SpecTestsuiteBase
         );
     }
 
-    #[Depends('testAssertReturn13')]
     public function testAssertReturn14(): void
     {
         $this->runAssertReturnCommand(
@@ -155,7 +140,6 @@ final class FloatMemoryTest extends SpecTestsuiteBase
         );
     }
 
-    #[Depends('testAssertReturn14')]
     public function testModule15(): void
     {
         $this->runModuleCommand(
@@ -165,7 +149,6 @@ final class FloatMemoryTest extends SpecTestsuiteBase
         );
     }
 
-    #[Depends('testModule15')]
     public function testAssertReturn16(): void
     {
         $this->runAssertReturnCommand(
@@ -175,7 +158,6 @@ final class FloatMemoryTest extends SpecTestsuiteBase
         );
     }
 
-    #[Depends('testAssertReturn16')]
     public function testAssertReturn17(): void
     {
         $this->runAssertReturnCommand(
@@ -185,7 +167,6 @@ final class FloatMemoryTest extends SpecTestsuiteBase
         );
     }
 
-    #[Depends('testAssertReturn17')]
     public function testAction18(): void
     {
         $this->runActionCommand(
@@ -194,7 +175,6 @@ final class FloatMemoryTest extends SpecTestsuiteBase
         );
     }
 
-    #[Depends('testAction18')]
     public function testAssertReturn19(): void
     {
         $this->runAssertReturnCommand(
@@ -204,7 +184,6 @@ final class FloatMemoryTest extends SpecTestsuiteBase
         );
     }
 
-    #[Depends('testAssertReturn19')]
     public function testAssertReturn20(): void
     {
         $this->runAssertReturnCommand(
@@ -214,7 +193,6 @@ final class FloatMemoryTest extends SpecTestsuiteBase
         );
     }
 
-    #[Depends('testAssertReturn20')]
     public function testAction21(): void
     {
         $this->runActionCommand(
@@ -223,7 +201,6 @@ final class FloatMemoryTest extends SpecTestsuiteBase
         );
     }
 
-    #[Depends('testAction21')]
     public function testAssertReturn22(): void
     {
         $this->runAssertReturnCommand(
@@ -233,7 +210,6 @@ final class FloatMemoryTest extends SpecTestsuiteBase
         );
     }
 
-    #[Depends('testAssertReturn22')]
     public function testAssertReturn23(): void
     {
         $this->runAssertReturnCommand(
@@ -243,7 +219,6 @@ final class FloatMemoryTest extends SpecTestsuiteBase
         );
     }
 
-    #[Depends('testAssertReturn23')]
     public function testAction24(): void
     {
         $this->runActionCommand(
@@ -252,7 +227,6 @@ final class FloatMemoryTest extends SpecTestsuiteBase
         );
     }
 
-    #[Depends('testAction24')]
     public function testAssertReturn25(): void
     {
         $this->runAssertReturnCommand(
@@ -262,7 +236,6 @@ final class FloatMemoryTest extends SpecTestsuiteBase
         );
     }
 
-    #[Depends('testAssertReturn25')]
     public function testAssertReturn26(): void
     {
         $this->runAssertReturnCommand(
@@ -272,7 +245,6 @@ final class FloatMemoryTest extends SpecTestsuiteBase
         );
     }
 
-    #[Depends('testAssertReturn26')]
     public function testAction27(): void
     {
         $this->runActionCommand(
@@ -281,7 +253,6 @@ final class FloatMemoryTest extends SpecTestsuiteBase
         );
     }
 
-    #[Depends('testAction27')]
     public function testAssertReturn28(): void
     {
         $this->runAssertReturnCommand(
@@ -291,7 +262,6 @@ final class FloatMemoryTest extends SpecTestsuiteBase
         );
     }
 
-    #[Depends('testAssertReturn28')]
     public function testAssertReturn29(): void
     {
         $this->runAssertReturnCommand(
@@ -301,7 +271,6 @@ final class FloatMemoryTest extends SpecTestsuiteBase
         );
     }
 
-    #[Depends('testAssertReturn29')]
     public function testModule30(): void
     {
         $this->runModuleCommand(
@@ -311,7 +280,6 @@ final class FloatMemoryTest extends SpecTestsuiteBase
         );
     }
 
-    #[Depends('testModule30')]
     public function testAssertReturn31(): void
     {
         $this->runAssertReturnCommand(
@@ -321,7 +289,6 @@ final class FloatMemoryTest extends SpecTestsuiteBase
         );
     }
 
-    #[Depends('testAssertReturn31')]
     public function testAssertReturn32(): void
     {
         $this->runAssertReturnCommand(
@@ -331,7 +298,6 @@ final class FloatMemoryTest extends SpecTestsuiteBase
         );
     }
 
-    #[Depends('testAssertReturn32')]
     public function testAction33(): void
     {
         $this->runActionCommand(
@@ -340,7 +306,6 @@ final class FloatMemoryTest extends SpecTestsuiteBase
         );
     }
 
-    #[Depends('testAction33')]
     public function testAssertReturn34(): void
     {
         $this->runAssertReturnCommand(
@@ -350,7 +315,6 @@ final class FloatMemoryTest extends SpecTestsuiteBase
         );
     }
 
-    #[Depends('testAssertReturn34')]
     public function testAssertReturn35(): void
     {
         $this->runAssertReturnCommand(
@@ -360,7 +324,6 @@ final class FloatMemoryTest extends SpecTestsuiteBase
         );
     }
 
-    #[Depends('testAssertReturn35')]
     public function testAction36(): void
     {
         $this->runActionCommand(
@@ -369,7 +332,6 @@ final class FloatMemoryTest extends SpecTestsuiteBase
         );
     }
 
-    #[Depends('testAction36')]
     public function testAssertReturn37(): void
     {
         $this->runAssertReturnCommand(
@@ -379,7 +341,6 @@ final class FloatMemoryTest extends SpecTestsuiteBase
         );
     }
 
-    #[Depends('testAssertReturn37')]
     public function testAssertReturn38(): void
     {
         $this->runAssertReturnCommand(
@@ -389,7 +350,6 @@ final class FloatMemoryTest extends SpecTestsuiteBase
         );
     }
 
-    #[Depends('testAssertReturn38')]
     public function testAction39(): void
     {
         $this->runActionCommand(
@@ -398,7 +358,6 @@ final class FloatMemoryTest extends SpecTestsuiteBase
         );
     }
 
-    #[Depends('testAction39')]
     public function testAssertReturn40(): void
     {
         $this->runAssertReturnCommand(
@@ -408,7 +367,6 @@ final class FloatMemoryTest extends SpecTestsuiteBase
         );
     }
 
-    #[Depends('testAssertReturn40')]
     public function testAssertReturn41(): void
     {
         $this->runAssertReturnCommand(
@@ -418,7 +376,6 @@ final class FloatMemoryTest extends SpecTestsuiteBase
         );
     }
 
-    #[Depends('testAssertReturn41')]
     public function testAction42(): void
     {
         $this->runActionCommand(
@@ -427,7 +384,6 @@ final class FloatMemoryTest extends SpecTestsuiteBase
         );
     }
 
-    #[Depends('testAction42')]
     public function testAssertReturn43(): void
     {
         $this->runAssertReturnCommand(
@@ -437,7 +393,6 @@ final class FloatMemoryTest extends SpecTestsuiteBase
         );
     }
 
-    #[Depends('testAssertReturn43')]
     public function testAssertReturn44(): void
     {
         $this->runAssertReturnCommand(
@@ -447,7 +402,6 @@ final class FloatMemoryTest extends SpecTestsuiteBase
         );
     }
 
-    #[Depends('testAssertReturn44')]
     public function testModule45(): void
     {
         $this->runModuleCommand(
@@ -457,7 +411,6 @@ final class FloatMemoryTest extends SpecTestsuiteBase
         );
     }
 
-    #[Depends('testModule45')]
     public function testAssertReturn46(): void
     {
         $this->runAssertReturnCommand(
@@ -467,7 +420,6 @@ final class FloatMemoryTest extends SpecTestsuiteBase
         );
     }
 
-    #[Depends('testAssertReturn46')]
     public function testAssertReturn47(): void
     {
         $this->runAssertReturnCommand(
@@ -477,7 +429,6 @@ final class FloatMemoryTest extends SpecTestsuiteBase
         );
     }
 
-    #[Depends('testAssertReturn47')]
     public function testAction48(): void
     {
         $this->runActionCommand(
@@ -486,7 +437,6 @@ final class FloatMemoryTest extends SpecTestsuiteBase
         );
     }
 
-    #[Depends('testAction48')]
     public function testAssertReturn49(): void
     {
         $this->runAssertReturnCommand(
@@ -496,7 +446,6 @@ final class FloatMemoryTest extends SpecTestsuiteBase
         );
     }
 
-    #[Depends('testAssertReturn49')]
     public function testAssertReturn50(): void
     {
         $this->runAssertReturnCommand(
@@ -506,7 +455,6 @@ final class FloatMemoryTest extends SpecTestsuiteBase
         );
     }
 
-    #[Depends('testAssertReturn50')]
     public function testAction51(): void
     {
         $this->runActionCommand(
@@ -515,7 +463,6 @@ final class FloatMemoryTest extends SpecTestsuiteBase
         );
     }
 
-    #[Depends('testAction51')]
     public function testAssertReturn52(): void
     {
         $this->runAssertReturnCommand(
@@ -525,7 +472,6 @@ final class FloatMemoryTest extends SpecTestsuiteBase
         );
     }
 
-    #[Depends('testAssertReturn52')]
     public function testAssertReturn53(): void
     {
         $this->runAssertReturnCommand(
@@ -535,7 +481,6 @@ final class FloatMemoryTest extends SpecTestsuiteBase
         );
     }
 
-    #[Depends('testAssertReturn53')]
     public function testAction54(): void
     {
         $this->runActionCommand(
@@ -544,7 +489,6 @@ final class FloatMemoryTest extends SpecTestsuiteBase
         );
     }
 
-    #[Depends('testAction54')]
     public function testAssertReturn55(): void
     {
         $this->runAssertReturnCommand(
@@ -554,7 +498,6 @@ final class FloatMemoryTest extends SpecTestsuiteBase
         );
     }
 
-    #[Depends('testAssertReturn55')]
     public function testAssertReturn56(): void
     {
         $this->runAssertReturnCommand(
@@ -564,7 +507,6 @@ final class FloatMemoryTest extends SpecTestsuiteBase
         );
     }
 
-    #[Depends('testAssertReturn56')]
     public function testAction57(): void
     {
         $this->runActionCommand(
@@ -573,7 +515,6 @@ final class FloatMemoryTest extends SpecTestsuiteBase
         );
     }
 
-    #[Depends('testAction57')]
     public function testAssertReturn58(): void
     {
         $this->runAssertReturnCommand(
@@ -583,7 +524,6 @@ final class FloatMemoryTest extends SpecTestsuiteBase
         );
     }
 
-    #[Depends('testAssertReturn58')]
     public function testAssertReturn59(): void
     {
         $this->runAssertReturnCommand(
@@ -593,7 +533,6 @@ final class FloatMemoryTest extends SpecTestsuiteBase
         );
     }
 
-    #[Depends('testAssertReturn59')]
     public function testModule60(): void
     {
         $this->runModuleCommand(
@@ -603,7 +542,6 @@ final class FloatMemoryTest extends SpecTestsuiteBase
         );
     }
 
-    #[Depends('testModule60')]
     public function testAssertReturn61(): void
     {
         $this->runAssertReturnCommand(
@@ -613,7 +551,6 @@ final class FloatMemoryTest extends SpecTestsuiteBase
         );
     }
 
-    #[Depends('testAssertReturn61')]
     public function testAssertReturn62(): void
     {
         $this->runAssertReturnCommand(
@@ -623,7 +560,6 @@ final class FloatMemoryTest extends SpecTestsuiteBase
         );
     }
 
-    #[Depends('testAssertReturn62')]
     public function testAction63(): void
     {
         $this->runActionCommand(
@@ -632,7 +568,6 @@ final class FloatMemoryTest extends SpecTestsuiteBase
         );
     }
 
-    #[Depends('testAction63')]
     public function testAssertReturn64(): void
     {
         $this->runAssertReturnCommand(
@@ -642,7 +577,6 @@ final class FloatMemoryTest extends SpecTestsuiteBase
         );
     }
 
-    #[Depends('testAssertReturn64')]
     public function testAssertReturn65(): void
     {
         $this->runAssertReturnCommand(
@@ -652,7 +586,6 @@ final class FloatMemoryTest extends SpecTestsuiteBase
         );
     }
 
-    #[Depends('testAssertReturn65')]
     public function testAction66(): void
     {
         $this->runActionCommand(
@@ -661,7 +594,6 @@ final class FloatMemoryTest extends SpecTestsuiteBase
         );
     }
 
-    #[Depends('testAction66')]
     public function testAssertReturn67(): void
     {
         $this->runAssertReturnCommand(
@@ -671,7 +603,6 @@ final class FloatMemoryTest extends SpecTestsuiteBase
         );
     }
 
-    #[Depends('testAssertReturn67')]
     public function testAssertReturn68(): void
     {
         $this->runAssertReturnCommand(
@@ -681,7 +612,6 @@ final class FloatMemoryTest extends SpecTestsuiteBase
         );
     }
 
-    #[Depends('testAssertReturn68')]
     public function testAction69(): void
     {
         $this->runActionCommand(
@@ -690,7 +620,6 @@ final class FloatMemoryTest extends SpecTestsuiteBase
         );
     }
 
-    #[Depends('testAction69')]
     public function testAssertReturn70(): void
     {
         $this->runAssertReturnCommand(
@@ -700,7 +629,6 @@ final class FloatMemoryTest extends SpecTestsuiteBase
         );
     }
 
-    #[Depends('testAssertReturn70')]
     public function testAssertReturn71(): void
     {
         $this->runAssertReturnCommand(
@@ -710,7 +638,6 @@ final class FloatMemoryTest extends SpecTestsuiteBase
         );
     }
 
-    #[Depends('testAssertReturn71')]
     public function testAction72(): void
     {
         $this->runActionCommand(
@@ -719,7 +646,6 @@ final class FloatMemoryTest extends SpecTestsuiteBase
         );
     }
 
-    #[Depends('testAction72')]
     public function testAssertReturn73(): void
     {
         $this->runAssertReturnCommand(
@@ -729,7 +655,6 @@ final class FloatMemoryTest extends SpecTestsuiteBase
         );
     }
 
-    #[Depends('testAssertReturn73')]
     public function testAssertReturn74(): void
     {
         $this->runAssertReturnCommand(
@@ -739,7 +664,6 @@ final class FloatMemoryTest extends SpecTestsuiteBase
         );
     }
 
-    #[Depends('testAssertReturn74')]
     public function testModule75(): void
     {
         $this->runModuleCommand(
@@ -749,7 +673,6 @@ final class FloatMemoryTest extends SpecTestsuiteBase
         );
     }
 
-    #[Depends('testModule75')]
     public function testAssertReturn76(): void
     {
         $this->runAssertReturnCommand(
@@ -759,7 +682,6 @@ final class FloatMemoryTest extends SpecTestsuiteBase
         );
     }
 
-    #[Depends('testAssertReturn76')]
     public function testAssertReturn77(): void
     {
         $this->runAssertReturnCommand(
@@ -769,7 +691,6 @@ final class FloatMemoryTest extends SpecTestsuiteBase
         );
     }
 
-    #[Depends('testAssertReturn77')]
     public function testAction78(): void
     {
         $this->runActionCommand(
@@ -778,7 +699,6 @@ final class FloatMemoryTest extends SpecTestsuiteBase
         );
     }
 
-    #[Depends('testAction78')]
     public function testAssertReturn79(): void
     {
         $this->runAssertReturnCommand(
@@ -788,7 +708,6 @@ final class FloatMemoryTest extends SpecTestsuiteBase
         );
     }
 
-    #[Depends('testAssertReturn79')]
     public function testAssertReturn80(): void
     {
         $this->runAssertReturnCommand(
@@ -798,7 +717,6 @@ final class FloatMemoryTest extends SpecTestsuiteBase
         );
     }
 
-    #[Depends('testAssertReturn80')]
     public function testAction81(): void
     {
         $this->runActionCommand(
@@ -807,7 +725,6 @@ final class FloatMemoryTest extends SpecTestsuiteBase
         );
     }
 
-    #[Depends('testAction81')]
     public function testAssertReturn82(): void
     {
         $this->runAssertReturnCommand(
@@ -817,7 +734,6 @@ final class FloatMemoryTest extends SpecTestsuiteBase
         );
     }
 
-    #[Depends('testAssertReturn82')]
     public function testAssertReturn83(): void
     {
         $this->runAssertReturnCommand(
@@ -827,7 +743,6 @@ final class FloatMemoryTest extends SpecTestsuiteBase
         );
     }
 
-    #[Depends('testAssertReturn83')]
     public function testAction84(): void
     {
         $this->runActionCommand(
@@ -836,7 +751,6 @@ final class FloatMemoryTest extends SpecTestsuiteBase
         );
     }
 
-    #[Depends('testAction84')]
     public function testAssertReturn85(): void
     {
         $this->runAssertReturnCommand(
@@ -846,7 +760,6 @@ final class FloatMemoryTest extends SpecTestsuiteBase
         );
     }
 
-    #[Depends('testAssertReturn85')]
     public function testAssertReturn86(): void
     {
         $this->runAssertReturnCommand(
@@ -856,7 +769,6 @@ final class FloatMemoryTest extends SpecTestsuiteBase
         );
     }
 
-    #[Depends('testAssertReturn86')]
     public function testAction87(): void
     {
         $this->runActionCommand(
@@ -865,7 +777,6 @@ final class FloatMemoryTest extends SpecTestsuiteBase
         );
     }
 
-    #[Depends('testAction87')]
     public function testAssertReturn88(): void
     {
         $this->runAssertReturnCommand(
@@ -875,7 +786,6 @@ final class FloatMemoryTest extends SpecTestsuiteBase
         );
     }
 
-    #[Depends('testAssertReturn88')]
     public function testAssertReturn89(): void
     {
         $this->runAssertReturnCommand(

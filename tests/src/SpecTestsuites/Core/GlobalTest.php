@@ -5,7 +5,6 @@ declare(strict_types=1);
 namespace Nsfisis\Waddiwasi\Tests\SpecTestsuites\Core;
 
 use Nsfisis\Waddiwasi\Tests\SpecTestsuites\SpecTestsuiteBase;
-use PHPUnit\Framework\Attributes\Depends;
 use PHPUnit\Framework\Attributes\DoesNotPerformAssertions;
 
 final class GlobalTest extends SpecTestsuiteBase
@@ -19,7 +18,6 @@ final class GlobalTest extends SpecTestsuiteBase
         );
     }
 
-    #[Depends('testModule0')]
     public function testAssertReturn1(): void
     {
         $this->runAssertReturnCommand(
@@ -29,7 +27,6 @@ final class GlobalTest extends SpecTestsuiteBase
         );
     }
 
-    #[Depends('testAssertReturn1')]
     public function testAssertReturn2(): void
     {
         $this->runAssertReturnCommand(
@@ -39,7 +36,6 @@ final class GlobalTest extends SpecTestsuiteBase
         );
     }
 
-    #[Depends('testAssertReturn2')]
     public function testAssertReturn3(): void
     {
         $this->runAssertReturnCommand(
@@ -49,7 +45,6 @@ final class GlobalTest extends SpecTestsuiteBase
         );
     }
 
-    #[Depends('testAssertReturn3')]
     public function testAssertReturn4(): void
     {
         $this->runAssertReturnCommand(
@@ -59,7 +54,6 @@ final class GlobalTest extends SpecTestsuiteBase
         );
     }
 
-    #[Depends('testAssertReturn4')]
     public function testAssertReturn5(): void
     {
         $this->runAssertReturnCommand(
@@ -69,7 +63,6 @@ final class GlobalTest extends SpecTestsuiteBase
         );
     }
 
-    #[Depends('testAssertReturn5')]
     public function testAssertReturn6(): void
     {
         $this->runAssertReturnCommand(
@@ -79,7 +72,6 @@ final class GlobalTest extends SpecTestsuiteBase
         );
     }
 
-    #[Depends('testAssertReturn6')]
     public function testAssertReturn7(): void
     {
         $this->runAssertReturnCommand(
@@ -89,7 +81,6 @@ final class GlobalTest extends SpecTestsuiteBase
         );
     }
 
-    #[Depends('testAssertReturn7')]
     public function testAssertReturn8(): void
     {
         $this->runAssertReturnCommand(
@@ -99,7 +90,6 @@ final class GlobalTest extends SpecTestsuiteBase
         );
     }
 
-    #[Depends('testAssertReturn8')]
     public function testAssertReturn9(): void
     {
         $this->runAssertReturnCommand(
@@ -109,7 +99,6 @@ final class GlobalTest extends SpecTestsuiteBase
         );
     }
 
-    #[Depends('testAssertReturn9')]
     public function testAssertReturn10(): void
     {
         $this->runAssertReturnCommand(
@@ -119,7 +108,6 @@ final class GlobalTest extends SpecTestsuiteBase
         );
     }
 
-    #[Depends('testAssertReturn10')]
     public function testAssertReturn11(): void
     {
         $this->runAssertReturnCommand(
@@ -129,7 +117,6 @@ final class GlobalTest extends SpecTestsuiteBase
         );
     }
 
-    #[Depends('testAssertReturn11')]
     public function testAssertReturn12(): void
     {
         $this->runAssertReturnCommand(
@@ -139,7 +126,6 @@ final class GlobalTest extends SpecTestsuiteBase
         );
     }
 
-    #[Depends('testAssertReturn12')]
     public function testAssertReturn13(): void
     {
         $this->runAssertReturnCommand(
@@ -149,7 +135,6 @@ final class GlobalTest extends SpecTestsuiteBase
         );
     }
 
-    #[Depends('testAssertReturn13')]
     public function testAssertReturn14(): void
     {
         $this->runAssertReturnCommand(
@@ -159,7 +144,6 @@ final class GlobalTest extends SpecTestsuiteBase
         );
     }
 
-    #[Depends('testAssertReturn14')]
     public function testAssertReturn15(): void
     {
         $this->runAssertReturnCommand(
@@ -169,7 +153,6 @@ final class GlobalTest extends SpecTestsuiteBase
         );
     }
 
-    #[Depends('testAssertReturn15')]
     public function testAssertReturn16(): void
     {
         $this->runAssertReturnCommand(
@@ -179,7 +162,6 @@ final class GlobalTest extends SpecTestsuiteBase
         );
     }
 
-    #[Depends('testAssertReturn16')]
     public function testAssertReturn17(): void
     {
         $this->runAssertReturnCommand(
@@ -189,7 +171,6 @@ final class GlobalTest extends SpecTestsuiteBase
         );
     }
 
-    #[Depends('testAssertReturn17')]
     public function testAssertReturn18(): void
     {
         $this->runAssertReturnCommand(
@@ -199,7 +180,6 @@ final class GlobalTest extends SpecTestsuiteBase
         );
     }
 
-    #[Depends('testAssertReturn18')]
     public function testAssertReturn19(): void
     {
         $this->runAssertReturnCommand(
@@ -209,7 +189,6 @@ final class GlobalTest extends SpecTestsuiteBase
         );
     }
 
-    #[Depends('testAssertReturn19')]
     public function testAssertReturn20(): void
     {
         $this->runAssertReturnCommand(
@@ -219,7 +198,6 @@ final class GlobalTest extends SpecTestsuiteBase
         );
     }
 
-    #[Depends('testAssertReturn20')]
     public function testAssertReturn21(): void
     {
         $this->runAssertReturnCommand(
@@ -229,7 +207,6 @@ final class GlobalTest extends SpecTestsuiteBase
         );
     }
 
-    #[Depends('testAssertReturn21')]
     public function testAssertReturn22(): void
     {
         $this->runAssertReturnCommand(
@@ -239,7 +216,6 @@ final class GlobalTest extends SpecTestsuiteBase
         );
     }
 
-    #[Depends('testAssertReturn22')]
     public function testAssertReturn23(): void
     {
         $this->runAssertReturnCommand(
@@ -249,7 +225,6 @@ final class GlobalTest extends SpecTestsuiteBase
         );
     }
 
-    #[Depends('testAssertReturn23')]
     public function testAssertReturn24(): void
     {
         $this->runAssertReturnCommand(
@@ -259,7 +234,6 @@ final class GlobalTest extends SpecTestsuiteBase
         );
     }
 
-    #[Depends('testAssertReturn24')]
     public function testAssertReturn25(): void
     {
         $this->runAssertReturnCommand(
@@ -269,7 +243,6 @@ final class GlobalTest extends SpecTestsuiteBase
         );
     }
 
-    #[Depends('testAssertReturn25')]
     public function testAssertReturn26(): void
     {
         $this->runAssertReturnCommand(
@@ -279,7 +252,6 @@ final class GlobalTest extends SpecTestsuiteBase
         );
     }
 
-    #[Depends('testAssertReturn26')]
     public function testAssertReturn27(): void
     {
         $this->runAssertReturnCommand(
@@ -289,7 +261,6 @@ final class GlobalTest extends SpecTestsuiteBase
         );
     }
 
-    #[Depends('testAssertReturn27')]
     public function testAssertReturn28(): void
     {
         $this->runAssertReturnCommand(
@@ -299,7 +270,6 @@ final class GlobalTest extends SpecTestsuiteBase
         );
     }
 
-    #[Depends('testAssertReturn28')]
     public function testAssertReturn29(): void
     {
         $this->runAssertReturnCommand(
@@ -309,7 +279,6 @@ final class GlobalTest extends SpecTestsuiteBase
         );
     }
 
-    #[Depends('testAssertReturn29')]
     public function testAssertReturn30(): void
     {
         $this->runAssertReturnCommand(
@@ -319,7 +288,6 @@ final class GlobalTest extends SpecTestsuiteBase
         );
     }
 
-    #[Depends('testAssertReturn30')]
     public function testAssertReturn31(): void
     {
         $this->runAssertReturnCommand(
@@ -329,7 +297,6 @@ final class GlobalTest extends SpecTestsuiteBase
         );
     }
 
-    #[Depends('testAssertReturn31')]
     public function testAssertReturn32(): void
     {
         $this->runAssertReturnCommand(
@@ -339,7 +306,6 @@ final class GlobalTest extends SpecTestsuiteBase
         );
     }
 
-    #[Depends('testAssertReturn32')]
     public function testAssertReturn33(): void
     {
         $this->runAssertReturnCommand(
@@ -349,7 +315,6 @@ final class GlobalTest extends SpecTestsuiteBase
         );
     }
 
-    #[Depends('testAssertReturn33')]
     public function testAssertReturn34(): void
     {
         $this->runAssertReturnCommand(
@@ -359,7 +324,6 @@ final class GlobalTest extends SpecTestsuiteBase
         );
     }
 
-    #[Depends('testAssertReturn34')]
     public function testAssertReturn35(): void
     {
         $this->runAssertReturnCommand(
@@ -369,7 +333,6 @@ final class GlobalTest extends SpecTestsuiteBase
         );
     }
 
-    #[Depends('testAssertReturn35')]
     public function testAssertReturn36(): void
     {
         $this->runAssertReturnCommand(
@@ -379,7 +342,6 @@ final class GlobalTest extends SpecTestsuiteBase
         );
     }
 
-    #[Depends('testAssertReturn36')]
     public function testAssertReturn37(): void
     {
         $this->runAssertReturnCommand(
@@ -389,7 +351,6 @@ final class GlobalTest extends SpecTestsuiteBase
         );
     }
 
-    #[Depends('testAssertReturn37')]
     public function testAssertReturn38(): void
     {
         $this->runAssertReturnCommand(
@@ -399,7 +360,6 @@ final class GlobalTest extends SpecTestsuiteBase
         );
     }
 
-    #[Depends('testAssertReturn38')]
     public function testAssertReturn39(): void
     {
         $this->runAssertReturnCommand(
@@ -409,7 +369,6 @@ final class GlobalTest extends SpecTestsuiteBase
         );
     }
 
-    #[Depends('testAssertReturn39')]
     public function testAssertReturn40(): void
     {
         $this->runAssertReturnCommand(
@@ -419,7 +378,6 @@ final class GlobalTest extends SpecTestsuiteBase
         );
     }
 
-    #[Depends('testAssertReturn40')]
     public function testAssertReturn41(): void
     {
         $this->runAssertReturnCommand(
@@ -429,7 +387,6 @@ final class GlobalTest extends SpecTestsuiteBase
         );
     }
 
-    #[Depends('testAssertReturn41')]
     public function testAssertReturn42(): void
     {
         $this->runAssertReturnCommand(
@@ -439,7 +396,6 @@ final class GlobalTest extends SpecTestsuiteBase
         );
     }
 
-    #[Depends('testAssertReturn42')]
     public function testAssertReturn43(): void
     {
         $this->runAssertReturnCommand(
@@ -449,7 +405,6 @@ final class GlobalTest extends SpecTestsuiteBase
         );
     }
 
-    #[Depends('testAssertReturn43')]
     public function testAssertTrap44(): void
     {
         $this->runAssertTrapCommand(
@@ -459,7 +414,6 @@ final class GlobalTest extends SpecTestsuiteBase
         );
     }
 
-    #[Depends('testAssertTrap44')]
     public function testAssertReturn45(): void
     {
         $this->runAssertReturnCommand(
@@ -469,7 +423,6 @@ final class GlobalTest extends SpecTestsuiteBase
         );
     }
 
-    #[Depends('testAssertReturn45')]
     public function testAssertReturn46(): void
     {
         $this->runAssertReturnCommand(
@@ -479,7 +432,6 @@ final class GlobalTest extends SpecTestsuiteBase
         );
     }
 
-    #[Depends('testAssertReturn46')]
     public function testAssertReturn47(): void
     {
         $this->runAssertReturnCommand(
@@ -489,7 +441,6 @@ final class GlobalTest extends SpecTestsuiteBase
         );
     }
 
-    #[Depends('testAssertReturn47')]
     public function testAssertReturn48(): void
     {
         $this->runAssertReturnCommand(
@@ -499,7 +450,6 @@ final class GlobalTest extends SpecTestsuiteBase
         );
     }
 
-    #[Depends('testAssertReturn48')]
     public function testAssertReturn49(): void
     {
         $this->runAssertReturnCommand(
@@ -509,7 +459,6 @@ final class GlobalTest extends SpecTestsuiteBase
         );
     }
 
-    #[Depends('testAssertReturn49')]
     public function testAssertReturn50(): void
     {
         $this->runAssertReturnCommand(
@@ -519,7 +468,6 @@ final class GlobalTest extends SpecTestsuiteBase
         );
     }
 
-    #[Depends('testAssertReturn50')]
     public function testAssertReturn51(): void
     {
         $this->runAssertReturnCommand(
@@ -529,7 +477,6 @@ final class GlobalTest extends SpecTestsuiteBase
         );
     }
 
-    #[Depends('testAssertReturn51')]
     public function testAssertReturn52(): void
     {
         $this->runAssertReturnCommand(
@@ -539,7 +486,6 @@ final class GlobalTest extends SpecTestsuiteBase
         );
     }
 
-    #[Depends('testAssertReturn52')]
     public function testAssertReturn53(): void
     {
         $this->runAssertReturnCommand(
@@ -549,7 +495,6 @@ final class GlobalTest extends SpecTestsuiteBase
         );
     }
 
-    #[Depends('testAssertReturn53')]
     public function testAssertReturn54(): void
     {
         $this->runAssertReturnCommand(
@@ -559,7 +504,6 @@ final class GlobalTest extends SpecTestsuiteBase
         );
     }
 
-    #[Depends('testAssertReturn54')]
     public function testAssertReturn55(): void
     {
         $this->runAssertReturnCommand(
@@ -569,7 +513,6 @@ final class GlobalTest extends SpecTestsuiteBase
         );
     }
 
-    #[Depends('testAssertReturn55')]
     public function testAssertReturn56(): void
     {
         $this->runAssertReturnCommand(
@@ -579,7 +522,6 @@ final class GlobalTest extends SpecTestsuiteBase
         );
     }
 
-    #[Depends('testAssertReturn56')]
     public function testAssertReturn57(): void
     {
         $this->runAssertReturnCommand(
@@ -589,7 +531,6 @@ final class GlobalTest extends SpecTestsuiteBase
         );
     }
 
-    #[Depends('testAssertReturn57')]
     public function testAssertReturn58(): void
     {
         $this->runAssertReturnCommand(
@@ -599,7 +540,6 @@ final class GlobalTest extends SpecTestsuiteBase
         );
     }
 
-    #[Depends('testAssertReturn58')]
     public function testAssertInvalid59(): void
     {
         $this->runAssertInvalidCommand(
@@ -609,7 +549,6 @@ final class GlobalTest extends SpecTestsuiteBase
         );
     }
 
-    #[Depends('testAssertInvalid59')]
     public function testAssertInvalid60(): void
     {
         $this->runAssertInvalidCommand(
@@ -619,7 +558,6 @@ final class GlobalTest extends SpecTestsuiteBase
         );
     }
 
-    #[Depends('testAssertInvalid60')]
     public function testModule61(): void
     {
         $this->runModuleCommand(
@@ -629,7 +567,6 @@ final class GlobalTest extends SpecTestsuiteBase
         );
     }
 
-    #[Depends('testModule61')]
     public function testModule62(): void
     {
         $this->runModuleCommand(
@@ -639,7 +576,6 @@ final class GlobalTest extends SpecTestsuiteBase
         );
     }
 
-    #[Depends('testModule62')]
     public function testAssertInvalid63(): void
     {
         $this->runAssertInvalidCommand(
@@ -649,7 +585,6 @@ final class GlobalTest extends SpecTestsuiteBase
         );
     }
 
-    #[Depends('testAssertInvalid63')]
     public function testAssertInvalid64(): void
     {
         $this->runAssertInvalidCommand(
@@ -659,7 +594,6 @@ final class GlobalTest extends SpecTestsuiteBase
         );
     }
 
-    #[Depends('testAssertInvalid64')]
     public function testAssertInvalid65(): void
     {
         $this->runAssertInvalidCommand(
@@ -669,7 +603,6 @@ final class GlobalTest extends SpecTestsuiteBase
         );
     }
 
-    #[Depends('testAssertInvalid65')]
     public function testAssertInvalid66(): void
     {
         $this->runAssertInvalidCommand(
@@ -679,7 +612,6 @@ final class GlobalTest extends SpecTestsuiteBase
         );
     }
 
-    #[Depends('testAssertInvalid66')]
     public function testAssertInvalid67(): void
     {
         $this->runAssertInvalidCommand(
@@ -689,7 +621,6 @@ final class GlobalTest extends SpecTestsuiteBase
         );
     }
 
-    #[Depends('testAssertInvalid67')]
     public function testAssertInvalid68(): void
     {
         $this->runAssertInvalidCommand(
@@ -699,7 +630,6 @@ final class GlobalTest extends SpecTestsuiteBase
         );
     }
 
-    #[Depends('testAssertInvalid68')]
     public function testAssertInvalid69(): void
     {
         $this->runAssertInvalidCommand(
@@ -709,7 +639,6 @@ final class GlobalTest extends SpecTestsuiteBase
         );
     }
 
-    #[Depends('testAssertInvalid69')]
     public function testAssertInvalid70(): void
     {
         $this->runAssertInvalidCommand(
@@ -719,7 +648,6 @@ final class GlobalTest extends SpecTestsuiteBase
         );
     }
 
-    #[Depends('testAssertInvalid70')]
     public function testAssertInvalid71(): void
     {
         $this->runAssertInvalidCommand(
@@ -729,7 +657,6 @@ final class GlobalTest extends SpecTestsuiteBase
         );
     }
 
-    #[Depends('testAssertInvalid71')]
     public function testAssertInvalid72(): void
     {
         $this->runAssertInvalidCommand(
@@ -739,7 +666,6 @@ final class GlobalTest extends SpecTestsuiteBase
         );
     }
 
-    #[Depends('testAssertInvalid72')]
     public function testAssertInvalid73(): void
     {
         $this->runAssertInvalidCommand(
@@ -749,7 +675,6 @@ final class GlobalTest extends SpecTestsuiteBase
         );
     }
 
-    #[Depends('testAssertInvalid73')]
     public function testAssertInvalid74(): void
     {
         $this->runAssertInvalidCommand(
@@ -759,7 +684,6 @@ final class GlobalTest extends SpecTestsuiteBase
         );
     }
 
-    #[Depends('testAssertInvalid74')]
     public function testAssertInvalid75(): void
     {
         $this->runAssertInvalidCommand(
@@ -769,7 +693,6 @@ final class GlobalTest extends SpecTestsuiteBase
         );
     }
 
-    #[Depends('testAssertInvalid75')]
     public function testAssertInvalid76(): void
     {
         $this->runAssertInvalidCommand(
@@ -779,7 +702,6 @@ final class GlobalTest extends SpecTestsuiteBase
         );
     }
 
-    #[Depends('testAssertInvalid76')]
     public function testAssertInvalid77(): void
     {
         $this->runAssertInvalidCommand(
@@ -789,7 +711,6 @@ final class GlobalTest extends SpecTestsuiteBase
         );
     }
 
-    #[Depends('testAssertInvalid77')]
     public function testAssertInvalid78(): void
     {
         $this->runAssertInvalidCommand(
@@ -799,7 +720,6 @@ final class GlobalTest extends SpecTestsuiteBase
         );
     }
 
-    #[Depends('testAssertInvalid78')]
     public function testAssertInvalid79(): void
     {
         $this->runAssertInvalidCommand(
@@ -809,7 +729,6 @@ final class GlobalTest extends SpecTestsuiteBase
         );
     }
 
-    #[Depends('testAssertInvalid79')]
     public function testAssertInvalid80(): void
     {
         $this->runAssertInvalidCommand(
@@ -819,7 +738,6 @@ final class GlobalTest extends SpecTestsuiteBase
         );
     }
 
-    #[Depends('testAssertInvalid80')]
     public function testModule81(): void
     {
         $this->runModuleCommand(
@@ -829,7 +747,6 @@ final class GlobalTest extends SpecTestsuiteBase
         );
     }
 
-    #[Depends('testModule81')]
     public function testAssertMalformed82(): void
     {
         $this->runAssertMalformedCommand(
@@ -839,7 +756,6 @@ final class GlobalTest extends SpecTestsuiteBase
         );
     }
 
-    #[Depends('testAssertMalformed82')]
     public function testAssertMalformed83(): void
     {
         $this->runAssertMalformedCommand(
@@ -849,7 +765,6 @@ final class GlobalTest extends SpecTestsuiteBase
         );
     }
 
-    #[Depends('testAssertMalformed83')]
     public function testModule84(): void
     {
         $this->runModuleCommand(
@@ -859,7 +774,6 @@ final class GlobalTest extends SpecTestsuiteBase
         );
     }
 
-    #[Depends('testModule84')]
     public function testAssertMalformed85(): void
     {
         $this->runAssertMalformedCommand(
@@ -869,7 +783,6 @@ final class GlobalTest extends SpecTestsuiteBase
         );
     }
 
-    #[Depends('testAssertMalformed85')]
     public function testAssertMalformed86(): void
     {
         $this->runAssertMalformedCommand(
@@ -879,7 +792,6 @@ final class GlobalTest extends SpecTestsuiteBase
         );
     }
 
-    #[Depends('testAssertMalformed86')]
     public function testAssertInvalid87(): void
     {
         $this->runAssertInvalidCommand(
@@ -889,7 +801,6 @@ final class GlobalTest extends SpecTestsuiteBase
         );
     }
 
-    #[Depends('testAssertInvalid87')]
     public function testAssertInvalid88(): void
     {
         $this->runAssertInvalidCommand(
@@ -899,7 +810,6 @@ final class GlobalTest extends SpecTestsuiteBase
         );
     }
 
-    #[Depends('testAssertInvalid88')]
     public function testAssertInvalid89(): void
     {
         $this->runAssertInvalidCommand(
@@ -909,7 +819,6 @@ final class GlobalTest extends SpecTestsuiteBase
         );
     }
 
-    #[Depends('testAssertInvalid89')]
     public function testAssertInvalid90(): void
     {
         $this->runAssertInvalidCommand(
@@ -919,7 +828,6 @@ final class GlobalTest extends SpecTestsuiteBase
         );
     }
 
-    #[Depends('testAssertInvalid90')]
     public function testAssertInvalid91(): void
     {
         $this->runAssertInvalidCommand(
@@ -929,7 +837,6 @@ final class GlobalTest extends SpecTestsuiteBase
         );
     }
 
-    #[Depends('testAssertInvalid91')]
     public function testAssertInvalid92(): void
     {
         $this->runAssertInvalidCommand(
@@ -939,7 +846,6 @@ final class GlobalTest extends SpecTestsuiteBase
         );
     }
 
-    #[Depends('testAssertInvalid92')]
     public function testAssertInvalid93(): void
     {
         $this->runAssertInvalidCommand(
@@ -949,7 +855,6 @@ final class GlobalTest extends SpecTestsuiteBase
         );
     }
 
-    #[Depends('testAssertInvalid93')]
     public function testAssertInvalid94(): void
     {
         $this->runAssertInvalidCommand(
@@ -959,7 +864,6 @@ final class GlobalTest extends SpecTestsuiteBase
         );
     }
 
-    #[Depends('testAssertInvalid94')]
     public function testAssertInvalid95(): void
     {
         $this->runAssertInvalidCommand(
@@ -969,7 +873,6 @@ final class GlobalTest extends SpecTestsuiteBase
         );
     }
 
-    #[Depends('testAssertInvalid95')]
     public function testAssertInvalid96(): void
     {
         $this->runAssertInvalidCommand(
@@ -979,7 +882,6 @@ final class GlobalTest extends SpecTestsuiteBase
         );
     }
 
-    #[Depends('testAssertInvalid96')]
     public function testAssertInvalid97(): void
     {
         $this->runAssertInvalidCommand(
@@ -989,7 +891,6 @@ final class GlobalTest extends SpecTestsuiteBase
         );
     }
 
-    #[Depends('testAssertInvalid97')]
     public function testAssertInvalid98(): void
     {
         $this->runAssertInvalidCommand(
@@ -999,7 +900,6 @@ final class GlobalTest extends SpecTestsuiteBase
         );
     }
 
-    #[Depends('testAssertInvalid98')]
     public function testAssertInvalid99(): void
     {
         $this->runAssertInvalidCommand(
@@ -1009,7 +909,6 @@ final class GlobalTest extends SpecTestsuiteBase
         );
     }
 
-    #[Depends('testAssertInvalid99')]
     public function testAssertInvalid100(): void
     {
         $this->runAssertInvalidCommand(
@@ -1019,7 +918,6 @@ final class GlobalTest extends SpecTestsuiteBase
         );
     }
 
-    #[Depends('testAssertInvalid100')]
     public function testAssertInvalid101(): void
     {
         $this->runAssertInvalidCommand(
@@ -1029,7 +927,6 @@ final class GlobalTest extends SpecTestsuiteBase
         );
     }
 
-    #[Depends('testAssertInvalid101')]
     public function testAssertInvalid102(): void
     {
         $this->runAssertInvalidCommand(
@@ -1039,7 +936,6 @@ final class GlobalTest extends SpecTestsuiteBase
         );
     }
 
-    #[Depends('testAssertInvalid102')]
     public function testAssertInvalid103(): void
     {
         $this->runAssertInvalidCommand(
@@ -1049,7 +945,6 @@ final class GlobalTest extends SpecTestsuiteBase
         );
     }
 
-    #[Depends('testAssertInvalid103')]
     public function testAssertInvalid104(): void
     {
         $this->runAssertInvalidCommand(
@@ -1059,7 +954,6 @@ final class GlobalTest extends SpecTestsuiteBase
         );
     }
 
-    #[Depends('testAssertInvalid104')]
     public function testAssertInvalid105(): void
     {
         $this->runAssertInvalidCommand(
@@ -1069,7 +963,6 @@ final class GlobalTest extends SpecTestsuiteBase
         );
     }
 
-    #[Depends('testAssertInvalid105')]
     public function testAssertInvalid106(): void
     {
         $this->runAssertInvalidCommand(
@@ -1080,19 +973,16 @@ final class GlobalTest extends SpecTestsuiteBase
     }
 
     #[DoesNotPerformAssertions]
-    #[Depends('testAssertInvalid106')]
     public function testAssertMalformed107(): void
     {
     }
 
     #[DoesNotPerformAssertions]
-    #[Depends('testAssertMalformed107')]
     public function testAssertMalformed108(): void
     {
     }
 
     #[DoesNotPerformAssertions]
-    #[Depends('testAssertMalformed108')]
     public function testAssertMalformed109(): void
     {
     }

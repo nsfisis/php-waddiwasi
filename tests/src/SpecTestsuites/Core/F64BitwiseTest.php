@@ -5,7 +5,6 @@ declare(strict_types=1);
 namespace Nsfisis\Waddiwasi\Tests\SpecTestsuites\Core;
 
 use Nsfisis\Waddiwasi\Tests\SpecTestsuites\SpecTestsuiteBase;
-use PHPUnit\Framework\Attributes\Depends;
 use PHPUnit\Framework\Attributes\DoesNotPerformAssertions;
 
 final class F64BitwiseTest extends SpecTestsuiteBase
@@ -19,7 +18,6 @@ final class F64BitwiseTest extends SpecTestsuiteBase
         );
     }
 
-    #[Depends('testModule0')]
     public function testAssertReturn1(): void
     {
         $this->runAssertReturnCommand(
@@ -29,7 +27,6 @@ final class F64BitwiseTest extends SpecTestsuiteBase
         );
     }
 
-    #[Depends('testAssertReturn1')]
     public function testAssertReturn2(): void
     {
         $this->runAssertReturnCommand(
@@ -39,7 +36,6 @@ final class F64BitwiseTest extends SpecTestsuiteBase
         );
     }
 
-    #[Depends('testAssertReturn2')]
     public function testAssertReturn3(): void
     {
         $this->runAssertReturnCommand(
@@ -49,7 +45,6 @@ final class F64BitwiseTest extends SpecTestsuiteBase
         );
     }
 
-    #[Depends('testAssertReturn3')]
     public function testAssertReturn4(): void
     {
         $this->runAssertReturnCommand(
@@ -59,7 +54,6 @@ final class F64BitwiseTest extends SpecTestsuiteBase
         );
     }
 
-    #[Depends('testAssertReturn4')]
     public function testAssertReturn5(): void
     {
         $this->runAssertReturnCommand(
@@ -69,7 +63,6 @@ final class F64BitwiseTest extends SpecTestsuiteBase
         );
     }
 
-    #[Depends('testAssertReturn5')]
     public function testAssertReturn6(): void
     {
         $this->runAssertReturnCommand(
@@ -79,7 +72,6 @@ final class F64BitwiseTest extends SpecTestsuiteBase
         );
     }
 
-    #[Depends('testAssertReturn6')]
     public function testAssertReturn7(): void
     {
         $this->runAssertReturnCommand(
@@ -89,7 +81,6 @@ final class F64BitwiseTest extends SpecTestsuiteBase
         );
     }
 
-    #[Depends('testAssertReturn7')]
     public function testAssertReturn8(): void
     {
         $this->runAssertReturnCommand(
@@ -99,7 +90,6 @@ final class F64BitwiseTest extends SpecTestsuiteBase
         );
     }
 
-    #[Depends('testAssertReturn8')]
     public function testAssertReturn9(): void
     {
         $this->runAssertReturnCommand(
@@ -109,7 +99,6 @@ final class F64BitwiseTest extends SpecTestsuiteBase
         );
     }
 
-    #[Depends('testAssertReturn9')]
     public function testAssertReturn10(): void
     {
         $this->runAssertReturnCommand(
@@ -119,7 +108,6 @@ final class F64BitwiseTest extends SpecTestsuiteBase
         );
     }
 
-    #[Depends('testAssertReturn10')]
     public function testAssertReturn11(): void
     {
         $this->runAssertReturnCommand(
@@ -129,7 +117,6 @@ final class F64BitwiseTest extends SpecTestsuiteBase
         );
     }
 
-    #[Depends('testAssertReturn11')]
     public function testAssertReturn12(): void
     {
         $this->runAssertReturnCommand(
@@ -139,7 +126,6 @@ final class F64BitwiseTest extends SpecTestsuiteBase
         );
     }
 
-    #[Depends('testAssertReturn12')]
     public function testAssertReturn13(): void
     {
         $this->runAssertReturnCommand(
@@ -149,7 +135,6 @@ final class F64BitwiseTest extends SpecTestsuiteBase
         );
     }
 
-    #[Depends('testAssertReturn13')]
     public function testAssertReturn14(): void
     {
         $this->runAssertReturnCommand(
@@ -159,7 +144,6 @@ final class F64BitwiseTest extends SpecTestsuiteBase
         );
     }
 
-    #[Depends('testAssertReturn14')]
     public function testAssertReturn15(): void
     {
         $this->runAssertReturnCommand(
@@ -169,7 +153,6 @@ final class F64BitwiseTest extends SpecTestsuiteBase
         );
     }
 
-    #[Depends('testAssertReturn15')]
     public function testAssertReturn16(): void
     {
         $this->runAssertReturnCommand(
@@ -179,7 +162,6 @@ final class F64BitwiseTest extends SpecTestsuiteBase
         );
     }
 
-    #[Depends('testAssertReturn16')]
     public function testAssertReturn17(): void
     {
         $this->runAssertReturnCommand(
@@ -189,7 +171,6 @@ final class F64BitwiseTest extends SpecTestsuiteBase
         );
     }
 
-    #[Depends('testAssertReturn17')]
     public function testAssertReturn18(): void
     {
         $this->runAssertReturnCommand(
@@ -199,7 +180,6 @@ final class F64BitwiseTest extends SpecTestsuiteBase
         );
     }
 
-    #[Depends('testAssertReturn18')]
     public function testAssertReturn19(): void
     {
         $this->runAssertReturnCommand(
@@ -209,7 +189,6 @@ final class F64BitwiseTest extends SpecTestsuiteBase
         );
     }
 
-    #[Depends('testAssertReturn19')]
     public function testAssertReturn20(): void
     {
         $this->runAssertReturnCommand(
@@ -219,7 +198,6 @@ final class F64BitwiseTest extends SpecTestsuiteBase
         );
     }
 
-    #[Depends('testAssertReturn20')]
     public function testAssertReturn21(): void
     {
         $this->runAssertReturnCommand(
@@ -229,7 +207,6 @@ final class F64BitwiseTest extends SpecTestsuiteBase
         );
     }
 
-    #[Depends('testAssertReturn21')]
     public function testAssertReturn22(): void
     {
         $this->runAssertReturnCommand(
@@ -239,7 +216,6 @@ final class F64BitwiseTest extends SpecTestsuiteBase
         );
     }
 
-    #[Depends('testAssertReturn22')]
     public function testAssertReturn23(): void
     {
         $this->runAssertReturnCommand(
@@ -249,7 +225,6 @@ final class F64BitwiseTest extends SpecTestsuiteBase
         );
     }
 
-    #[Depends('testAssertReturn23')]
     public function testAssertReturn24(): void
     {
         $this->runAssertReturnCommand(
@@ -259,7 +234,6 @@ final class F64BitwiseTest extends SpecTestsuiteBase
         );
     }
 
-    #[Depends('testAssertReturn24')]
     public function testAssertReturn25(): void
     {
         $this->runAssertReturnCommand(
@@ -269,7 +243,6 @@ final class F64BitwiseTest extends SpecTestsuiteBase
         );
     }
 
-    #[Depends('testAssertReturn25')]
     public function testAssertReturn26(): void
     {
         $this->runAssertReturnCommand(
@@ -279,7 +252,6 @@ final class F64BitwiseTest extends SpecTestsuiteBase
         );
     }
 
-    #[Depends('testAssertReturn26')]
     public function testAssertReturn27(): void
     {
         $this->runAssertReturnCommand(
@@ -289,7 +261,6 @@ final class F64BitwiseTest extends SpecTestsuiteBase
         );
     }
 
-    #[Depends('testAssertReturn27')]
     public function testAssertReturn28(): void
     {
         $this->runAssertReturnCommand(
@@ -299,7 +270,6 @@ final class F64BitwiseTest extends SpecTestsuiteBase
         );
     }
 
-    #[Depends('testAssertReturn28')]
     public function testAssertReturn29(): void
     {
         $this->runAssertReturnCommand(
@@ -309,7 +279,6 @@ final class F64BitwiseTest extends SpecTestsuiteBase
         );
     }
 
-    #[Depends('testAssertReturn29')]
     public function testAssertReturn30(): void
     {
         $this->runAssertReturnCommand(
@@ -319,7 +288,6 @@ final class F64BitwiseTest extends SpecTestsuiteBase
         );
     }
 
-    #[Depends('testAssertReturn30')]
     public function testAssertReturn31(): void
     {
         $this->runAssertReturnCommand(
@@ -329,7 +297,6 @@ final class F64BitwiseTest extends SpecTestsuiteBase
         );
     }
 
-    #[Depends('testAssertReturn31')]
     public function testAssertReturn32(): void
     {
         $this->runAssertReturnCommand(
@@ -339,7 +306,6 @@ final class F64BitwiseTest extends SpecTestsuiteBase
         );
     }
 
-    #[Depends('testAssertReturn32')]
     public function testAssertReturn33(): void
     {
         $this->runAssertReturnCommand(
@@ -349,7 +315,6 @@ final class F64BitwiseTest extends SpecTestsuiteBase
         );
     }
 
-    #[Depends('testAssertReturn33')]
     public function testAssertReturn34(): void
     {
         $this->runAssertReturnCommand(
@@ -359,7 +324,6 @@ final class F64BitwiseTest extends SpecTestsuiteBase
         );
     }
 
-    #[Depends('testAssertReturn34')]
     public function testAssertReturn35(): void
     {
         $this->runAssertReturnCommand(
@@ -369,7 +333,6 @@ final class F64BitwiseTest extends SpecTestsuiteBase
         );
     }
 
-    #[Depends('testAssertReturn35')]
     public function testAssertReturn36(): void
     {
         $this->runAssertReturnCommand(
@@ -379,7 +342,6 @@ final class F64BitwiseTest extends SpecTestsuiteBase
         );
     }
 
-    #[Depends('testAssertReturn36')]
     public function testAssertReturn37(): void
     {
         $this->runAssertReturnCommand(
@@ -389,7 +351,6 @@ final class F64BitwiseTest extends SpecTestsuiteBase
         );
     }
 
-    #[Depends('testAssertReturn37')]
     public function testAssertReturn38(): void
     {
         $this->runAssertReturnCommand(
@@ -399,7 +360,6 @@ final class F64BitwiseTest extends SpecTestsuiteBase
         );
     }
 
-    #[Depends('testAssertReturn38')]
     public function testAssertReturn39(): void
     {
         $this->runAssertReturnCommand(
@@ -409,7 +369,6 @@ final class F64BitwiseTest extends SpecTestsuiteBase
         );
     }
 
-    #[Depends('testAssertReturn39')]
     public function testAssertReturn40(): void
     {
         $this->runAssertReturnCommand(
@@ -419,7 +378,6 @@ final class F64BitwiseTest extends SpecTestsuiteBase
         );
     }
 
-    #[Depends('testAssertReturn40')]
     public function testAssertReturn41(): void
     {
         $this->runAssertReturnCommand(
@@ -429,7 +387,6 @@ final class F64BitwiseTest extends SpecTestsuiteBase
         );
     }
 
-    #[Depends('testAssertReturn41')]
     public function testAssertReturn42(): void
     {
         $this->runAssertReturnCommand(
@@ -439,7 +396,6 @@ final class F64BitwiseTest extends SpecTestsuiteBase
         );
     }
 
-    #[Depends('testAssertReturn42')]
     public function testAssertReturn43(): void
     {
         $this->runAssertReturnCommand(
@@ -449,7 +405,6 @@ final class F64BitwiseTest extends SpecTestsuiteBase
         );
     }
 
-    #[Depends('testAssertReturn43')]
     public function testAssertReturn44(): void
     {
         $this->runAssertReturnCommand(
@@ -459,7 +414,6 @@ final class F64BitwiseTest extends SpecTestsuiteBase
         );
     }
 
-    #[Depends('testAssertReturn44')]
     public function testAssertReturn45(): void
     {
         $this->runAssertReturnCommand(
@@ -469,7 +423,6 @@ final class F64BitwiseTest extends SpecTestsuiteBase
         );
     }
 
-    #[Depends('testAssertReturn45')]
     public function testAssertReturn46(): void
     {
         $this->runAssertReturnCommand(
@@ -479,7 +432,6 @@ final class F64BitwiseTest extends SpecTestsuiteBase
         );
     }
 
-    #[Depends('testAssertReturn46')]
     public function testAssertReturn47(): void
     {
         $this->runAssertReturnCommand(
@@ -489,7 +441,6 @@ final class F64BitwiseTest extends SpecTestsuiteBase
         );
     }
 
-    #[Depends('testAssertReturn47')]
     public function testAssertReturn48(): void
     {
         $this->runAssertReturnCommand(
@@ -499,7 +450,6 @@ final class F64BitwiseTest extends SpecTestsuiteBase
         );
     }
 
-    #[Depends('testAssertReturn48')]
     public function testAssertReturn49(): void
     {
         $this->runAssertReturnCommand(
@@ -509,7 +459,6 @@ final class F64BitwiseTest extends SpecTestsuiteBase
         );
     }
 
-    #[Depends('testAssertReturn49')]
     public function testAssertReturn50(): void
     {
         $this->runAssertReturnCommand(
@@ -519,7 +468,6 @@ final class F64BitwiseTest extends SpecTestsuiteBase
         );
     }
 
-    #[Depends('testAssertReturn50')]
     public function testAssertReturn51(): void
     {
         $this->runAssertReturnCommand(
@@ -529,7 +477,6 @@ final class F64BitwiseTest extends SpecTestsuiteBase
         );
     }
 
-    #[Depends('testAssertReturn51')]
     public function testAssertReturn52(): void
     {
         $this->runAssertReturnCommand(
@@ -539,7 +486,6 @@ final class F64BitwiseTest extends SpecTestsuiteBase
         );
     }
 
-    #[Depends('testAssertReturn52')]
     public function testAssertReturn53(): void
     {
         $this->runAssertReturnCommand(
@@ -549,7 +495,6 @@ final class F64BitwiseTest extends SpecTestsuiteBase
         );
     }
 
-    #[Depends('testAssertReturn53')]
     public function testAssertReturn54(): void
     {
         $this->runAssertReturnCommand(
@@ -559,7 +504,6 @@ final class F64BitwiseTest extends SpecTestsuiteBase
         );
     }
 
-    #[Depends('testAssertReturn54')]
     public function testAssertReturn55(): void
     {
         $this->runAssertReturnCommand(
@@ -569,7 +513,6 @@ final class F64BitwiseTest extends SpecTestsuiteBase
         );
     }
 
-    #[Depends('testAssertReturn55')]
     public function testAssertReturn56(): void
     {
         $this->runAssertReturnCommand(
@@ -579,7 +522,6 @@ final class F64BitwiseTest extends SpecTestsuiteBase
         );
     }
 
-    #[Depends('testAssertReturn56')]
     public function testAssertReturn57(): void
     {
         $this->runAssertReturnCommand(
@@ -589,7 +531,6 @@ final class F64BitwiseTest extends SpecTestsuiteBase
         );
     }
 
-    #[Depends('testAssertReturn57')]
     public function testAssertReturn58(): void
     {
         $this->runAssertReturnCommand(
@@ -599,7 +540,6 @@ final class F64BitwiseTest extends SpecTestsuiteBase
         );
     }
 
-    #[Depends('testAssertReturn58')]
     public function testAssertReturn59(): void
     {
         $this->runAssertReturnCommand(
@@ -609,7 +549,6 @@ final class F64BitwiseTest extends SpecTestsuiteBase
         );
     }
 
-    #[Depends('testAssertReturn59')]
     public function testAssertReturn60(): void
     {
         $this->runAssertReturnCommand(
@@ -619,7 +558,6 @@ final class F64BitwiseTest extends SpecTestsuiteBase
         );
     }
 
-    #[Depends('testAssertReturn60')]
     public function testAssertReturn61(): void
     {
         $this->runAssertReturnCommand(
@@ -629,7 +567,6 @@ final class F64BitwiseTest extends SpecTestsuiteBase
         );
     }
 
-    #[Depends('testAssertReturn61')]
     public function testAssertReturn62(): void
     {
         $this->runAssertReturnCommand(
@@ -639,7 +576,6 @@ final class F64BitwiseTest extends SpecTestsuiteBase
         );
     }
 
-    #[Depends('testAssertReturn62')]
     public function testAssertReturn63(): void
     {
         $this->runAssertReturnCommand(
@@ -649,7 +585,6 @@ final class F64BitwiseTest extends SpecTestsuiteBase
         );
     }
 
-    #[Depends('testAssertReturn63')]
     public function testAssertReturn64(): void
     {
         $this->runAssertReturnCommand(
@@ -659,7 +594,6 @@ final class F64BitwiseTest extends SpecTestsuiteBase
         );
     }
 
-    #[Depends('testAssertReturn64')]
     public function testAssertReturn65(): void
     {
         $this->runAssertReturnCommand(
@@ -669,7 +603,6 @@ final class F64BitwiseTest extends SpecTestsuiteBase
         );
     }
 
-    #[Depends('testAssertReturn65')]
     public function testAssertReturn66(): void
     {
         $this->runAssertReturnCommand(
@@ -679,7 +612,6 @@ final class F64BitwiseTest extends SpecTestsuiteBase
         );
     }
 
-    #[Depends('testAssertReturn66')]
     public function testAssertReturn67(): void
     {
         $this->runAssertReturnCommand(
@@ -689,7 +621,6 @@ final class F64BitwiseTest extends SpecTestsuiteBase
         );
     }
 
-    #[Depends('testAssertReturn67')]
     public function testAssertReturn68(): void
     {
         $this->runAssertReturnCommand(
@@ -699,7 +630,6 @@ final class F64BitwiseTest extends SpecTestsuiteBase
         );
     }
 
-    #[Depends('testAssertReturn68')]
     public function testAssertReturn69(): void
     {
         $this->runAssertReturnCommand(
@@ -709,7 +639,6 @@ final class F64BitwiseTest extends SpecTestsuiteBase
         );
     }
 
-    #[Depends('testAssertReturn69')]
     public function testAssertReturn70(): void
     {
         $this->runAssertReturnCommand(
@@ -719,7 +648,6 @@ final class F64BitwiseTest extends SpecTestsuiteBase
         );
     }
 
-    #[Depends('testAssertReturn70')]
     public function testAssertReturn71(): void
     {
         $this->runAssertReturnCommand(
@@ -729,7 +657,6 @@ final class F64BitwiseTest extends SpecTestsuiteBase
         );
     }
 
-    #[Depends('testAssertReturn71')]
     public function testAssertReturn72(): void
     {
         $this->runAssertReturnCommand(
@@ -739,7 +666,6 @@ final class F64BitwiseTest extends SpecTestsuiteBase
         );
     }
 
-    #[Depends('testAssertReturn72')]
     public function testAssertReturn73(): void
     {
         $this->runAssertReturnCommand(
@@ -749,7 +675,6 @@ final class F64BitwiseTest extends SpecTestsuiteBase
         );
     }
 
-    #[Depends('testAssertReturn73')]
     public function testAssertReturn74(): void
     {
         $this->runAssertReturnCommand(
@@ -759,7 +684,6 @@ final class F64BitwiseTest extends SpecTestsuiteBase
         );
     }
 
-    #[Depends('testAssertReturn74')]
     public function testAssertReturn75(): void
     {
         $this->runAssertReturnCommand(
@@ -769,7 +693,6 @@ final class F64BitwiseTest extends SpecTestsuiteBase
         );
     }
 
-    #[Depends('testAssertReturn75')]
     public function testAssertReturn76(): void
     {
         $this->runAssertReturnCommand(
@@ -779,7 +702,6 @@ final class F64BitwiseTest extends SpecTestsuiteBase
         );
     }
 
-    #[Depends('testAssertReturn76')]
     public function testAssertReturn77(): void
     {
         $this->runAssertReturnCommand(
@@ -789,7 +711,6 @@ final class F64BitwiseTest extends SpecTestsuiteBase
         );
     }
 
-    #[Depends('testAssertReturn77')]
     public function testAssertReturn78(): void
     {
         $this->runAssertReturnCommand(
@@ -799,7 +720,6 @@ final class F64BitwiseTest extends SpecTestsuiteBase
         );
     }
 
-    #[Depends('testAssertReturn78')]
     public function testAssertReturn79(): void
     {
         $this->runAssertReturnCommand(
@@ -809,7 +729,6 @@ final class F64BitwiseTest extends SpecTestsuiteBase
         );
     }
 
-    #[Depends('testAssertReturn79')]
     public function testAssertReturn80(): void
     {
         $this->runAssertReturnCommand(
@@ -819,7 +738,6 @@ final class F64BitwiseTest extends SpecTestsuiteBase
         );
     }
 
-    #[Depends('testAssertReturn80')]
     public function testAssertReturn81(): void
     {
         $this->runAssertReturnCommand(
@@ -829,7 +747,6 @@ final class F64BitwiseTest extends SpecTestsuiteBase
         );
     }
 
-    #[Depends('testAssertReturn81')]
     public function testAssertReturn82(): void
     {
         $this->runAssertReturnCommand(
@@ -839,7 +756,6 @@ final class F64BitwiseTest extends SpecTestsuiteBase
         );
     }
 
-    #[Depends('testAssertReturn82')]
     public function testAssertReturn83(): void
     {
         $this->runAssertReturnCommand(
@@ -849,7 +765,6 @@ final class F64BitwiseTest extends SpecTestsuiteBase
         );
     }
 
-    #[Depends('testAssertReturn83')]
     public function testAssertReturn84(): void
     {
         $this->runAssertReturnCommand(
@@ -859,7 +774,6 @@ final class F64BitwiseTest extends SpecTestsuiteBase
         );
     }
 
-    #[Depends('testAssertReturn84')]
     public function testAssertReturn85(): void
     {
         $this->runAssertReturnCommand(
@@ -869,7 +783,6 @@ final class F64BitwiseTest extends SpecTestsuiteBase
         );
     }
 
-    #[Depends('testAssertReturn85')]
     public function testAssertReturn86(): void
     {
         $this->runAssertReturnCommand(
@@ -879,7 +792,6 @@ final class F64BitwiseTest extends SpecTestsuiteBase
         );
     }
 
-    #[Depends('testAssertReturn86')]
     public function testAssertReturn87(): void
     {
         $this->runAssertReturnCommand(
@@ -889,7 +801,6 @@ final class F64BitwiseTest extends SpecTestsuiteBase
         );
     }
 
-    #[Depends('testAssertReturn87')]
     public function testAssertReturn88(): void
     {
         $this->runAssertReturnCommand(
@@ -899,7 +810,6 @@ final class F64BitwiseTest extends SpecTestsuiteBase
         );
     }
 
-    #[Depends('testAssertReturn88')]
     public function testAssertReturn89(): void
     {
         $this->runAssertReturnCommand(
@@ -909,7 +819,6 @@ final class F64BitwiseTest extends SpecTestsuiteBase
         );
     }
 
-    #[Depends('testAssertReturn89')]
     public function testAssertReturn90(): void
     {
         $this->runAssertReturnCommand(
@@ -919,7 +828,6 @@ final class F64BitwiseTest extends SpecTestsuiteBase
         );
     }
 
-    #[Depends('testAssertReturn90')]
     public function testAssertReturn91(): void
     {
         $this->runAssertReturnCommand(
@@ -929,7 +837,6 @@ final class F64BitwiseTest extends SpecTestsuiteBase
         );
     }
 
-    #[Depends('testAssertReturn91')]
     public function testAssertReturn92(): void
     {
         $this->runAssertReturnCommand(
@@ -939,7 +846,6 @@ final class F64BitwiseTest extends SpecTestsuiteBase
         );
     }
 
-    #[Depends('testAssertReturn92')]
     public function testAssertReturn93(): void
     {
         $this->runAssertReturnCommand(
@@ -949,7 +855,6 @@ final class F64BitwiseTest extends SpecTestsuiteBase
         );
     }
 
-    #[Depends('testAssertReturn93')]
     public function testAssertReturn94(): void
     {
         $this->runAssertReturnCommand(
@@ -959,7 +864,6 @@ final class F64BitwiseTest extends SpecTestsuiteBase
         );
     }
 
-    #[Depends('testAssertReturn94')]
     public function testAssertReturn95(): void
     {
         $this->runAssertReturnCommand(
@@ -969,7 +873,6 @@ final class F64BitwiseTest extends SpecTestsuiteBase
         );
     }
 
-    #[Depends('testAssertReturn95')]
     public function testAssertReturn96(): void
     {
         $this->runAssertReturnCommand(
@@ -979,7 +882,6 @@ final class F64BitwiseTest extends SpecTestsuiteBase
         );
     }
 
-    #[Depends('testAssertReturn96')]
     public function testAssertReturn97(): void
     {
         $this->runAssertReturnCommand(
@@ -989,7 +891,6 @@ final class F64BitwiseTest extends SpecTestsuiteBase
         );
     }
 
-    #[Depends('testAssertReturn97')]
     public function testAssertReturn98(): void
     {
         $this->runAssertReturnCommand(
@@ -999,7 +900,6 @@ final class F64BitwiseTest extends SpecTestsuiteBase
         );
     }
 
-    #[Depends('testAssertReturn98')]
     public function testAssertReturn99(): void
     {
         $this->runAssertReturnCommand(
@@ -1009,7 +909,6 @@ final class F64BitwiseTest extends SpecTestsuiteBase
         );
     }
 
-    #[Depends('testAssertReturn99')]
     public function testAssertReturn100(): void
     {
         $this->runAssertReturnCommand(
@@ -1019,7 +918,6 @@ final class F64BitwiseTest extends SpecTestsuiteBase
         );
     }
 
-    #[Depends('testAssertReturn100')]
     public function testAssertReturn101(): void
     {
         $this->runAssertReturnCommand(
@@ -1029,7 +927,6 @@ final class F64BitwiseTest extends SpecTestsuiteBase
         );
     }
 
-    #[Depends('testAssertReturn101')]
     public function testAssertReturn102(): void
     {
         $this->runAssertReturnCommand(
@@ -1039,7 +936,6 @@ final class F64BitwiseTest extends SpecTestsuiteBase
         );
     }
 
-    #[Depends('testAssertReturn102')]
     public function testAssertReturn103(): void
     {
         $this->runAssertReturnCommand(
@@ -1049,7 +945,6 @@ final class F64BitwiseTest extends SpecTestsuiteBase
         );
     }
 
-    #[Depends('testAssertReturn103')]
     public function testAssertReturn104(): void
     {
         $this->runAssertReturnCommand(
@@ -1059,7 +954,6 @@ final class F64BitwiseTest extends SpecTestsuiteBase
         );
     }
 
-    #[Depends('testAssertReturn104')]
     public function testAssertReturn105(): void
     {
         $this->runAssertReturnCommand(
@@ -1069,7 +963,6 @@ final class F64BitwiseTest extends SpecTestsuiteBase
         );
     }
 
-    #[Depends('testAssertReturn105')]
     public function testAssertReturn106(): void
     {
         $this->runAssertReturnCommand(
@@ -1079,7 +972,6 @@ final class F64BitwiseTest extends SpecTestsuiteBase
         );
     }
 
-    #[Depends('testAssertReturn106')]
     public function testAssertReturn107(): void
     {
         $this->runAssertReturnCommand(
@@ -1089,7 +981,6 @@ final class F64BitwiseTest extends SpecTestsuiteBase
         );
     }
 
-    #[Depends('testAssertReturn107')]
     public function testAssertReturn108(): void
     {
         $this->runAssertReturnCommand(
@@ -1099,7 +990,6 @@ final class F64BitwiseTest extends SpecTestsuiteBase
         );
     }
 
-    #[Depends('testAssertReturn108')]
     public function testAssertReturn109(): void
     {
         $this->runAssertReturnCommand(
@@ -1109,7 +999,6 @@ final class F64BitwiseTest extends SpecTestsuiteBase
         );
     }
 
-    #[Depends('testAssertReturn109')]
     public function testAssertReturn110(): void
     {
         $this->runAssertReturnCommand(
@@ -1119,7 +1008,6 @@ final class F64BitwiseTest extends SpecTestsuiteBase
         );
     }
 
-    #[Depends('testAssertReturn110')]
     public function testAssertReturn111(): void
     {
         $this->runAssertReturnCommand(
@@ -1129,7 +1017,6 @@ final class F64BitwiseTest extends SpecTestsuiteBase
         );
     }
 
-    #[Depends('testAssertReturn111')]
     public function testAssertReturn112(): void
     {
         $this->runAssertReturnCommand(
@@ -1139,7 +1026,6 @@ final class F64BitwiseTest extends SpecTestsuiteBase
         );
     }
 
-    #[Depends('testAssertReturn112')]
     public function testAssertReturn113(): void
     {
         $this->runAssertReturnCommand(
@@ -1149,7 +1035,6 @@ final class F64BitwiseTest extends SpecTestsuiteBase
         );
     }
 
-    #[Depends('testAssertReturn113')]
     public function testAssertReturn114(): void
     {
         $this->runAssertReturnCommand(
@@ -1159,7 +1044,6 @@ final class F64BitwiseTest extends SpecTestsuiteBase
         );
     }
 
-    #[Depends('testAssertReturn114')]
     public function testAssertReturn115(): void
     {
         $this->runAssertReturnCommand(
@@ -1169,7 +1053,6 @@ final class F64BitwiseTest extends SpecTestsuiteBase
         );
     }
 
-    #[Depends('testAssertReturn115')]
     public function testAssertReturn116(): void
     {
         $this->runAssertReturnCommand(
@@ -1179,7 +1062,6 @@ final class F64BitwiseTest extends SpecTestsuiteBase
         );
     }
 
-    #[Depends('testAssertReturn116')]
     public function testAssertReturn117(): void
     {
         $this->runAssertReturnCommand(
@@ -1189,7 +1071,6 @@ final class F64BitwiseTest extends SpecTestsuiteBase
         );
     }
 
-    #[Depends('testAssertReturn117')]
     public function testAssertReturn118(): void
     {
         $this->runAssertReturnCommand(
@@ -1199,7 +1080,6 @@ final class F64BitwiseTest extends SpecTestsuiteBase
         );
     }
 
-    #[Depends('testAssertReturn118')]
     public function testAssertReturn119(): void
     {
         $this->runAssertReturnCommand(
@@ -1209,7 +1089,6 @@ final class F64BitwiseTest extends SpecTestsuiteBase
         );
     }
 
-    #[Depends('testAssertReturn119')]
     public function testAssertReturn120(): void
     {
         $this->runAssertReturnCommand(
@@ -1219,7 +1098,6 @@ final class F64BitwiseTest extends SpecTestsuiteBase
         );
     }
 
-    #[Depends('testAssertReturn120')]
     public function testAssertReturn121(): void
     {
         $this->runAssertReturnCommand(
@@ -1229,7 +1107,6 @@ final class F64BitwiseTest extends SpecTestsuiteBase
         );
     }
 
-    #[Depends('testAssertReturn121')]
     public function testAssertReturn122(): void
     {
         $this->runAssertReturnCommand(
@@ -1239,7 +1116,6 @@ final class F64BitwiseTest extends SpecTestsuiteBase
         );
     }
 
-    #[Depends('testAssertReturn122')]
     public function testAssertReturn123(): void
     {
         $this->runAssertReturnCommand(
@@ -1249,7 +1125,6 @@ final class F64BitwiseTest extends SpecTestsuiteBase
         );
     }
 
-    #[Depends('testAssertReturn123')]
     public function testAssertReturn124(): void
     {
         $this->runAssertReturnCommand(
@@ -1259,7 +1134,6 @@ final class F64BitwiseTest extends SpecTestsuiteBase
         );
     }
 
-    #[Depends('testAssertReturn124')]
     public function testAssertReturn125(): void
     {
         $this->runAssertReturnCommand(
@@ -1269,7 +1143,6 @@ final class F64BitwiseTest extends SpecTestsuiteBase
         );
     }
 
-    #[Depends('testAssertReturn125')]
     public function testAssertReturn126(): void
     {
         $this->runAssertReturnCommand(
@@ -1279,7 +1152,6 @@ final class F64BitwiseTest extends SpecTestsuiteBase
         );
     }
 
-    #[Depends('testAssertReturn126')]
     public function testAssertReturn127(): void
     {
         $this->runAssertReturnCommand(
@@ -1289,7 +1161,6 @@ final class F64BitwiseTest extends SpecTestsuiteBase
         );
     }
 
-    #[Depends('testAssertReturn127')]
     public function testAssertReturn128(): void
     {
         $this->runAssertReturnCommand(
@@ -1299,7 +1170,6 @@ final class F64BitwiseTest extends SpecTestsuiteBase
         );
     }
 
-    #[Depends('testAssertReturn128')]
     public function testAssertReturn129(): void
     {
         $this->runAssertReturnCommand(
@@ -1309,7 +1179,6 @@ final class F64BitwiseTest extends SpecTestsuiteBase
         );
     }
 
-    #[Depends('testAssertReturn129')]
     public function testAssertReturn130(): void
     {
         $this->runAssertReturnCommand(
@@ -1319,7 +1188,6 @@ final class F64BitwiseTest extends SpecTestsuiteBase
         );
     }
 
-    #[Depends('testAssertReturn130')]
     public function testAssertReturn131(): void
     {
         $this->runAssertReturnCommand(
@@ -1329,7 +1197,6 @@ final class F64BitwiseTest extends SpecTestsuiteBase
         );
     }
 
-    #[Depends('testAssertReturn131')]
     public function testAssertReturn132(): void
     {
         $this->runAssertReturnCommand(
@@ -1339,7 +1206,6 @@ final class F64BitwiseTest extends SpecTestsuiteBase
         );
     }
 
-    #[Depends('testAssertReturn132')]
     public function testAssertReturn133(): void
     {
         $this->runAssertReturnCommand(
@@ -1349,7 +1215,6 @@ final class F64BitwiseTest extends SpecTestsuiteBase
         );
     }
 
-    #[Depends('testAssertReturn133')]
     public function testAssertReturn134(): void
     {
         $this->runAssertReturnCommand(
@@ -1359,7 +1224,6 @@ final class F64BitwiseTest extends SpecTestsuiteBase
         );
     }
 
-    #[Depends('testAssertReturn134')]
     public function testAssertReturn135(): void
     {
         $this->runAssertReturnCommand(
@@ -1369,7 +1233,6 @@ final class F64BitwiseTest extends SpecTestsuiteBase
         );
     }
 
-    #[Depends('testAssertReturn135')]
     public function testAssertReturn136(): void
     {
         $this->runAssertReturnCommand(
@@ -1379,7 +1242,6 @@ final class F64BitwiseTest extends SpecTestsuiteBase
         );
     }
 
-    #[Depends('testAssertReturn136')]
     public function testAssertReturn137(): void
     {
         $this->runAssertReturnCommand(
@@ -1389,7 +1251,6 @@ final class F64BitwiseTest extends SpecTestsuiteBase
         );
     }
 
-    #[Depends('testAssertReturn137')]
     public function testAssertReturn138(): void
     {
         $this->runAssertReturnCommand(
@@ -1399,7 +1260,6 @@ final class F64BitwiseTest extends SpecTestsuiteBase
         );
     }
 
-    #[Depends('testAssertReturn138')]
     public function testAssertReturn139(): void
     {
         $this->runAssertReturnCommand(
@@ -1409,7 +1269,6 @@ final class F64BitwiseTest extends SpecTestsuiteBase
         );
     }
 
-    #[Depends('testAssertReturn139')]
     public function testAssertReturn140(): void
     {
         $this->runAssertReturnCommand(
@@ -1419,7 +1278,6 @@ final class F64BitwiseTest extends SpecTestsuiteBase
         );
     }
 
-    #[Depends('testAssertReturn140')]
     public function testAssertReturn141(): void
     {
         $this->runAssertReturnCommand(
@@ -1429,7 +1287,6 @@ final class F64BitwiseTest extends SpecTestsuiteBase
         );
     }
 
-    #[Depends('testAssertReturn141')]
     public function testAssertReturn142(): void
     {
         $this->runAssertReturnCommand(
@@ -1439,7 +1296,6 @@ final class F64BitwiseTest extends SpecTestsuiteBase
         );
     }
 
-    #[Depends('testAssertReturn142')]
     public function testAssertReturn143(): void
     {
         $this->runAssertReturnCommand(
@@ -1449,7 +1305,6 @@ final class F64BitwiseTest extends SpecTestsuiteBase
         );
     }
 
-    #[Depends('testAssertReturn143')]
     public function testAssertReturn144(): void
     {
         $this->runAssertReturnCommand(
@@ -1459,7 +1314,6 @@ final class F64BitwiseTest extends SpecTestsuiteBase
         );
     }
 
-    #[Depends('testAssertReturn144')]
     public function testAssertReturn145(): void
     {
         $this->runAssertReturnCommand(
@@ -1469,7 +1323,6 @@ final class F64BitwiseTest extends SpecTestsuiteBase
         );
     }
 
-    #[Depends('testAssertReturn145')]
     public function testAssertReturn146(): void
     {
         $this->runAssertReturnCommand(
@@ -1479,7 +1332,6 @@ final class F64BitwiseTest extends SpecTestsuiteBase
         );
     }
 
-    #[Depends('testAssertReturn146')]
     public function testAssertReturn147(): void
     {
         $this->runAssertReturnCommand(
@@ -1489,7 +1341,6 @@ final class F64BitwiseTest extends SpecTestsuiteBase
         );
     }
 
-    #[Depends('testAssertReturn147')]
     public function testAssertReturn148(): void
     {
         $this->runAssertReturnCommand(
@@ -1499,7 +1350,6 @@ final class F64BitwiseTest extends SpecTestsuiteBase
         );
     }
 
-    #[Depends('testAssertReturn148')]
     public function testAssertReturn149(): void
     {
         $this->runAssertReturnCommand(
@@ -1509,7 +1359,6 @@ final class F64BitwiseTest extends SpecTestsuiteBase
         );
     }
 
-    #[Depends('testAssertReturn149')]
     public function testAssertReturn150(): void
     {
         $this->runAssertReturnCommand(
@@ -1519,7 +1368,6 @@ final class F64BitwiseTest extends SpecTestsuiteBase
         );
     }
 
-    #[Depends('testAssertReturn150')]
     public function testAssertReturn151(): void
     {
         $this->runAssertReturnCommand(
@@ -1529,7 +1377,6 @@ final class F64BitwiseTest extends SpecTestsuiteBase
         );
     }
 
-    #[Depends('testAssertReturn151')]
     public function testAssertReturn152(): void
     {
         $this->runAssertReturnCommand(
@@ -1539,7 +1386,6 @@ final class F64BitwiseTest extends SpecTestsuiteBase
         );
     }
 
-    #[Depends('testAssertReturn152')]
     public function testAssertReturn153(): void
     {
         $this->runAssertReturnCommand(
@@ -1549,7 +1395,6 @@ final class F64BitwiseTest extends SpecTestsuiteBase
         );
     }
 
-    #[Depends('testAssertReturn153')]
     public function testAssertReturn154(): void
     {
         $this->runAssertReturnCommand(
@@ -1559,7 +1404,6 @@ final class F64BitwiseTest extends SpecTestsuiteBase
         );
     }
 
-    #[Depends('testAssertReturn154')]
     public function testAssertReturn155(): void
     {
         $this->runAssertReturnCommand(
@@ -1569,7 +1413,6 @@ final class F64BitwiseTest extends SpecTestsuiteBase
         );
     }
 
-    #[Depends('testAssertReturn155')]
     public function testAssertReturn156(): void
     {
         $this->runAssertReturnCommand(
@@ -1579,7 +1422,6 @@ final class F64BitwiseTest extends SpecTestsuiteBase
         );
     }
 
-    #[Depends('testAssertReturn156')]
     public function testAssertReturn157(): void
     {
         $this->runAssertReturnCommand(
@@ -1589,7 +1431,6 @@ final class F64BitwiseTest extends SpecTestsuiteBase
         );
     }
 
-    #[Depends('testAssertReturn157')]
     public function testAssertReturn158(): void
     {
         $this->runAssertReturnCommand(
@@ -1599,7 +1440,6 @@ final class F64BitwiseTest extends SpecTestsuiteBase
         );
     }
 
-    #[Depends('testAssertReturn158')]
     public function testAssertReturn159(): void
     {
         $this->runAssertReturnCommand(
@@ -1609,7 +1449,6 @@ final class F64BitwiseTest extends SpecTestsuiteBase
         );
     }
 
-    #[Depends('testAssertReturn159')]
     public function testAssertReturn160(): void
     {
         $this->runAssertReturnCommand(
@@ -1619,7 +1458,6 @@ final class F64BitwiseTest extends SpecTestsuiteBase
         );
     }
 
-    #[Depends('testAssertReturn160')]
     public function testAssertReturn161(): void
     {
         $this->runAssertReturnCommand(
@@ -1629,7 +1467,6 @@ final class F64BitwiseTest extends SpecTestsuiteBase
         );
     }
 
-    #[Depends('testAssertReturn161')]
     public function testAssertReturn162(): void
     {
         $this->runAssertReturnCommand(
@@ -1639,7 +1476,6 @@ final class F64BitwiseTest extends SpecTestsuiteBase
         );
     }
 
-    #[Depends('testAssertReturn162')]
     public function testAssertReturn163(): void
     {
         $this->runAssertReturnCommand(
@@ -1649,7 +1485,6 @@ final class F64BitwiseTest extends SpecTestsuiteBase
         );
     }
 
-    #[Depends('testAssertReturn163')]
     public function testAssertReturn164(): void
     {
         $this->runAssertReturnCommand(
@@ -1659,7 +1494,6 @@ final class F64BitwiseTest extends SpecTestsuiteBase
         );
     }
 
-    #[Depends('testAssertReturn164')]
     public function testAssertReturn165(): void
     {
         $this->runAssertReturnCommand(
@@ -1669,7 +1503,6 @@ final class F64BitwiseTest extends SpecTestsuiteBase
         );
     }
 
-    #[Depends('testAssertReturn165')]
     public function testAssertReturn166(): void
     {
         $this->runAssertReturnCommand(
@@ -1679,7 +1512,6 @@ final class F64BitwiseTest extends SpecTestsuiteBase
         );
     }
 
-    #[Depends('testAssertReturn166')]
     public function testAssertReturn167(): void
     {
         $this->runAssertReturnCommand(
@@ -1689,7 +1521,6 @@ final class F64BitwiseTest extends SpecTestsuiteBase
         );
     }
 
-    #[Depends('testAssertReturn167')]
     public function testAssertReturn168(): void
     {
         $this->runAssertReturnCommand(
@@ -1699,7 +1530,6 @@ final class F64BitwiseTest extends SpecTestsuiteBase
         );
     }
 
-    #[Depends('testAssertReturn168')]
     public function testAssertReturn169(): void
     {
         $this->runAssertReturnCommand(
@@ -1709,7 +1539,6 @@ final class F64BitwiseTest extends SpecTestsuiteBase
         );
     }
 
-    #[Depends('testAssertReturn169')]
     public function testAssertReturn170(): void
     {
         $this->runAssertReturnCommand(
@@ -1719,7 +1548,6 @@ final class F64BitwiseTest extends SpecTestsuiteBase
         );
     }
 
-    #[Depends('testAssertReturn170')]
     public function testAssertReturn171(): void
     {
         $this->runAssertReturnCommand(
@@ -1729,7 +1557,6 @@ final class F64BitwiseTest extends SpecTestsuiteBase
         );
     }
 
-    #[Depends('testAssertReturn171')]
     public function testAssertReturn172(): void
     {
         $this->runAssertReturnCommand(
@@ -1739,7 +1566,6 @@ final class F64BitwiseTest extends SpecTestsuiteBase
         );
     }
 
-    #[Depends('testAssertReturn172')]
     public function testAssertReturn173(): void
     {
         $this->runAssertReturnCommand(
@@ -1749,7 +1575,6 @@ final class F64BitwiseTest extends SpecTestsuiteBase
         );
     }
 
-    #[Depends('testAssertReturn173')]
     public function testAssertReturn174(): void
     {
         $this->runAssertReturnCommand(
@@ -1759,7 +1584,6 @@ final class F64BitwiseTest extends SpecTestsuiteBase
         );
     }
 
-    #[Depends('testAssertReturn174')]
     public function testAssertReturn175(): void
     {
         $this->runAssertReturnCommand(
@@ -1769,7 +1593,6 @@ final class F64BitwiseTest extends SpecTestsuiteBase
         );
     }
 
-    #[Depends('testAssertReturn175')]
     public function testAssertReturn176(): void
     {
         $this->runAssertReturnCommand(
@@ -1779,7 +1602,6 @@ final class F64BitwiseTest extends SpecTestsuiteBase
         );
     }
 
-    #[Depends('testAssertReturn176')]
     public function testAssertReturn177(): void
     {
         $this->runAssertReturnCommand(
@@ -1789,7 +1611,6 @@ final class F64BitwiseTest extends SpecTestsuiteBase
         );
     }
 
-    #[Depends('testAssertReturn177')]
     public function testAssertReturn178(): void
     {
         $this->runAssertReturnCommand(
@@ -1799,7 +1620,6 @@ final class F64BitwiseTest extends SpecTestsuiteBase
         );
     }
 
-    #[Depends('testAssertReturn178')]
     public function testAssertReturn179(): void
     {
         $this->runAssertReturnCommand(
@@ -1809,7 +1629,6 @@ final class F64BitwiseTest extends SpecTestsuiteBase
         );
     }
 
-    #[Depends('testAssertReturn179')]
     public function testAssertReturn180(): void
     {
         $this->runAssertReturnCommand(
@@ -1819,7 +1638,6 @@ final class F64BitwiseTest extends SpecTestsuiteBase
         );
     }
 
-    #[Depends('testAssertReturn180')]
     public function testAssertReturn181(): void
     {
         $this->runAssertReturnCommand(
@@ -1829,7 +1647,6 @@ final class F64BitwiseTest extends SpecTestsuiteBase
         );
     }
 
-    #[Depends('testAssertReturn181')]
     public function testAssertReturn182(): void
     {
         $this->runAssertReturnCommand(
@@ -1839,7 +1656,6 @@ final class F64BitwiseTest extends SpecTestsuiteBase
         );
     }
 
-    #[Depends('testAssertReturn182')]
     public function testAssertReturn183(): void
     {
         $this->runAssertReturnCommand(
@@ -1849,7 +1665,6 @@ final class F64BitwiseTest extends SpecTestsuiteBase
         );
     }
 
-    #[Depends('testAssertReturn183')]
     public function testAssertReturn184(): void
     {
         $this->runAssertReturnCommand(
@@ -1859,7 +1674,6 @@ final class F64BitwiseTest extends SpecTestsuiteBase
         );
     }
 
-    #[Depends('testAssertReturn184')]
     public function testAssertReturn185(): void
     {
         $this->runAssertReturnCommand(
@@ -1869,7 +1683,6 @@ final class F64BitwiseTest extends SpecTestsuiteBase
         );
     }
 
-    #[Depends('testAssertReturn185')]
     public function testAssertReturn186(): void
     {
         $this->runAssertReturnCommand(
@@ -1879,7 +1692,6 @@ final class F64BitwiseTest extends SpecTestsuiteBase
         );
     }
 
-    #[Depends('testAssertReturn186')]
     public function testAssertReturn187(): void
     {
         $this->runAssertReturnCommand(
@@ -1889,7 +1701,6 @@ final class F64BitwiseTest extends SpecTestsuiteBase
         );
     }
 
-    #[Depends('testAssertReturn187')]
     public function testAssertReturn188(): void
     {
         $this->runAssertReturnCommand(
@@ -1899,7 +1710,6 @@ final class F64BitwiseTest extends SpecTestsuiteBase
         );
     }
 
-    #[Depends('testAssertReturn188')]
     public function testAssertReturn189(): void
     {
         $this->runAssertReturnCommand(
@@ -1909,7 +1719,6 @@ final class F64BitwiseTest extends SpecTestsuiteBase
         );
     }
 
-    #[Depends('testAssertReturn189')]
     public function testAssertReturn190(): void
     {
         $this->runAssertReturnCommand(
@@ -1919,7 +1728,6 @@ final class F64BitwiseTest extends SpecTestsuiteBase
         );
     }
 
-    #[Depends('testAssertReturn190')]
     public function testAssertReturn191(): void
     {
         $this->runAssertReturnCommand(
@@ -1929,7 +1737,6 @@ final class F64BitwiseTest extends SpecTestsuiteBase
         );
     }
 
-    #[Depends('testAssertReturn191')]
     public function testAssertReturn192(): void
     {
         $this->runAssertReturnCommand(
@@ -1939,7 +1746,6 @@ final class F64BitwiseTest extends SpecTestsuiteBase
         );
     }
 
-    #[Depends('testAssertReturn192')]
     public function testAssertReturn193(): void
     {
         $this->runAssertReturnCommand(
@@ -1949,7 +1755,6 @@ final class F64BitwiseTest extends SpecTestsuiteBase
         );
     }
 
-    #[Depends('testAssertReturn193')]
     public function testAssertReturn194(): void
     {
         $this->runAssertReturnCommand(
@@ -1959,7 +1764,6 @@ final class F64BitwiseTest extends SpecTestsuiteBase
         );
     }
 
-    #[Depends('testAssertReturn194')]
     public function testAssertReturn195(): void
     {
         $this->runAssertReturnCommand(
@@ -1969,7 +1773,6 @@ final class F64BitwiseTest extends SpecTestsuiteBase
         );
     }
 
-    #[Depends('testAssertReturn195')]
     public function testAssertReturn196(): void
     {
         $this->runAssertReturnCommand(
@@ -1979,7 +1782,6 @@ final class F64BitwiseTest extends SpecTestsuiteBase
         );
     }
 
-    #[Depends('testAssertReturn196')]
     public function testAssertReturn197(): void
     {
         $this->runAssertReturnCommand(
@@ -1989,7 +1791,6 @@ final class F64BitwiseTest extends SpecTestsuiteBase
         );
     }
 
-    #[Depends('testAssertReturn197')]
     public function testAssertReturn198(): void
     {
         $this->runAssertReturnCommand(
@@ -1999,7 +1800,6 @@ final class F64BitwiseTest extends SpecTestsuiteBase
         );
     }
 
-    #[Depends('testAssertReturn198')]
     public function testAssertReturn199(): void
     {
         $this->runAssertReturnCommand(
@@ -2009,7 +1809,6 @@ final class F64BitwiseTest extends SpecTestsuiteBase
         );
     }
 
-    #[Depends('testAssertReturn199')]
     public function testAssertReturn200(): void
     {
         $this->runAssertReturnCommand(
@@ -2019,7 +1818,6 @@ final class F64BitwiseTest extends SpecTestsuiteBase
         );
     }
 
-    #[Depends('testAssertReturn200')]
     public function testAssertReturn201(): void
     {
         $this->runAssertReturnCommand(
@@ -2029,7 +1827,6 @@ final class F64BitwiseTest extends SpecTestsuiteBase
         );
     }
 
-    #[Depends('testAssertReturn201')]
     public function testAssertReturn202(): void
     {
         $this->runAssertReturnCommand(
@@ -2039,7 +1836,6 @@ final class F64BitwiseTest extends SpecTestsuiteBase
         );
     }
 
-    #[Depends('testAssertReturn202')]
     public function testAssertReturn203(): void
     {
         $this->runAssertReturnCommand(
@@ -2049,7 +1845,6 @@ final class F64BitwiseTest extends SpecTestsuiteBase
         );
     }
 
-    #[Depends('testAssertReturn203')]
     public function testAssertReturn204(): void
     {
         $this->runAssertReturnCommand(
@@ -2059,7 +1854,6 @@ final class F64BitwiseTest extends SpecTestsuiteBase
         );
     }
 
-    #[Depends('testAssertReturn204')]
     public function testAssertReturn205(): void
     {
         $this->runAssertReturnCommand(
@@ -2069,7 +1863,6 @@ final class F64BitwiseTest extends SpecTestsuiteBase
         );
     }
 
-    #[Depends('testAssertReturn205')]
     public function testAssertReturn206(): void
     {
         $this->runAssertReturnCommand(
@@ -2079,7 +1872,6 @@ final class F64BitwiseTest extends SpecTestsuiteBase
         );
     }
 
-    #[Depends('testAssertReturn206')]
     public function testAssertReturn207(): void
     {
         $this->runAssertReturnCommand(
@@ -2089,7 +1881,6 @@ final class F64BitwiseTest extends SpecTestsuiteBase
         );
     }
 
-    #[Depends('testAssertReturn207')]
     public function testAssertReturn208(): void
     {
         $this->runAssertReturnCommand(
@@ -2099,7 +1890,6 @@ final class F64BitwiseTest extends SpecTestsuiteBase
         );
     }
 
-    #[Depends('testAssertReturn208')]
     public function testAssertReturn209(): void
     {
         $this->runAssertReturnCommand(
@@ -2109,7 +1899,6 @@ final class F64BitwiseTest extends SpecTestsuiteBase
         );
     }
 
-    #[Depends('testAssertReturn209')]
     public function testAssertReturn210(): void
     {
         $this->runAssertReturnCommand(
@@ -2119,7 +1908,6 @@ final class F64BitwiseTest extends SpecTestsuiteBase
         );
     }
 
-    #[Depends('testAssertReturn210')]
     public function testAssertReturn211(): void
     {
         $this->runAssertReturnCommand(
@@ -2129,7 +1917,6 @@ final class F64BitwiseTest extends SpecTestsuiteBase
         );
     }
 
-    #[Depends('testAssertReturn211')]
     public function testAssertReturn212(): void
     {
         $this->runAssertReturnCommand(
@@ -2139,7 +1926,6 @@ final class F64BitwiseTest extends SpecTestsuiteBase
         );
     }
 
-    #[Depends('testAssertReturn212')]
     public function testAssertReturn213(): void
     {
         $this->runAssertReturnCommand(
@@ -2149,7 +1935,6 @@ final class F64BitwiseTest extends SpecTestsuiteBase
         );
     }
 
-    #[Depends('testAssertReturn213')]
     public function testAssertReturn214(): void
     {
         $this->runAssertReturnCommand(
@@ -2159,7 +1944,6 @@ final class F64BitwiseTest extends SpecTestsuiteBase
         );
     }
 
-    #[Depends('testAssertReturn214')]
     public function testAssertReturn215(): void
     {
         $this->runAssertReturnCommand(
@@ -2169,7 +1953,6 @@ final class F64BitwiseTest extends SpecTestsuiteBase
         );
     }
 
-    #[Depends('testAssertReturn215')]
     public function testAssertReturn216(): void
     {
         $this->runAssertReturnCommand(
@@ -2179,7 +1962,6 @@ final class F64BitwiseTest extends SpecTestsuiteBase
         );
     }
 
-    #[Depends('testAssertReturn216')]
     public function testAssertReturn217(): void
     {
         $this->runAssertReturnCommand(
@@ -2189,7 +1971,6 @@ final class F64BitwiseTest extends SpecTestsuiteBase
         );
     }
 
-    #[Depends('testAssertReturn217')]
     public function testAssertReturn218(): void
     {
         $this->runAssertReturnCommand(
@@ -2199,7 +1980,6 @@ final class F64BitwiseTest extends SpecTestsuiteBase
         );
     }
 
-    #[Depends('testAssertReturn218')]
     public function testAssertReturn219(): void
     {
         $this->runAssertReturnCommand(
@@ -2209,7 +1989,6 @@ final class F64BitwiseTest extends SpecTestsuiteBase
         );
     }
 
-    #[Depends('testAssertReturn219')]
     public function testAssertReturn220(): void
     {
         $this->runAssertReturnCommand(
@@ -2219,7 +1998,6 @@ final class F64BitwiseTest extends SpecTestsuiteBase
         );
     }
 
-    #[Depends('testAssertReturn220')]
     public function testAssertReturn221(): void
     {
         $this->runAssertReturnCommand(
@@ -2229,7 +2007,6 @@ final class F64BitwiseTest extends SpecTestsuiteBase
         );
     }
 
-    #[Depends('testAssertReturn221')]
     public function testAssertReturn222(): void
     {
         $this->runAssertReturnCommand(
@@ -2239,7 +2016,6 @@ final class F64BitwiseTest extends SpecTestsuiteBase
         );
     }
 
-    #[Depends('testAssertReturn222')]
     public function testAssertReturn223(): void
     {
         $this->runAssertReturnCommand(
@@ -2249,7 +2025,6 @@ final class F64BitwiseTest extends SpecTestsuiteBase
         );
     }
 
-    #[Depends('testAssertReturn223')]
     public function testAssertReturn224(): void
     {
         $this->runAssertReturnCommand(
@@ -2259,7 +2034,6 @@ final class F64BitwiseTest extends SpecTestsuiteBase
         );
     }
 
-    #[Depends('testAssertReturn224')]
     public function testAssertReturn225(): void
     {
         $this->runAssertReturnCommand(
@@ -2269,7 +2043,6 @@ final class F64BitwiseTest extends SpecTestsuiteBase
         );
     }
 
-    #[Depends('testAssertReturn225')]
     public function testAssertReturn226(): void
     {
         $this->runAssertReturnCommand(
@@ -2279,7 +2052,6 @@ final class F64BitwiseTest extends SpecTestsuiteBase
         );
     }
 
-    #[Depends('testAssertReturn226')]
     public function testAssertReturn227(): void
     {
         $this->runAssertReturnCommand(
@@ -2289,7 +2061,6 @@ final class F64BitwiseTest extends SpecTestsuiteBase
         );
     }
 
-    #[Depends('testAssertReturn227')]
     public function testAssertReturn228(): void
     {
         $this->runAssertReturnCommand(
@@ -2299,7 +2070,6 @@ final class F64BitwiseTest extends SpecTestsuiteBase
         );
     }
 
-    #[Depends('testAssertReturn228')]
     public function testAssertReturn229(): void
     {
         $this->runAssertReturnCommand(
@@ -2309,7 +2079,6 @@ final class F64BitwiseTest extends SpecTestsuiteBase
         );
     }
 
-    #[Depends('testAssertReturn229')]
     public function testAssertReturn230(): void
     {
         $this->runAssertReturnCommand(
@@ -2319,7 +2088,6 @@ final class F64BitwiseTest extends SpecTestsuiteBase
         );
     }
 
-    #[Depends('testAssertReturn230')]
     public function testAssertReturn231(): void
     {
         $this->runAssertReturnCommand(
@@ -2329,7 +2097,6 @@ final class F64BitwiseTest extends SpecTestsuiteBase
         );
     }
 
-    #[Depends('testAssertReturn231')]
     public function testAssertReturn232(): void
     {
         $this->runAssertReturnCommand(
@@ -2339,7 +2106,6 @@ final class F64BitwiseTest extends SpecTestsuiteBase
         );
     }
 
-    #[Depends('testAssertReturn232')]
     public function testAssertReturn233(): void
     {
         $this->runAssertReturnCommand(
@@ -2349,7 +2115,6 @@ final class F64BitwiseTest extends SpecTestsuiteBase
         );
     }
 
-    #[Depends('testAssertReturn233')]
     public function testAssertReturn234(): void
     {
         $this->runAssertReturnCommand(
@@ -2359,7 +2124,6 @@ final class F64BitwiseTest extends SpecTestsuiteBase
         );
     }
 
-    #[Depends('testAssertReturn234')]
     public function testAssertReturn235(): void
     {
         $this->runAssertReturnCommand(
@@ -2369,7 +2133,6 @@ final class F64BitwiseTest extends SpecTestsuiteBase
         );
     }
 
-    #[Depends('testAssertReturn235')]
     public function testAssertReturn236(): void
     {
         $this->runAssertReturnCommand(
@@ -2379,7 +2142,6 @@ final class F64BitwiseTest extends SpecTestsuiteBase
         );
     }
 
-    #[Depends('testAssertReturn236')]
     public function testAssertReturn237(): void
     {
         $this->runAssertReturnCommand(
@@ -2389,7 +2151,6 @@ final class F64BitwiseTest extends SpecTestsuiteBase
         );
     }
 
-    #[Depends('testAssertReturn237')]
     public function testAssertReturn238(): void
     {
         $this->runAssertReturnCommand(
@@ -2399,7 +2160,6 @@ final class F64BitwiseTest extends SpecTestsuiteBase
         );
     }
 
-    #[Depends('testAssertReturn238')]
     public function testAssertReturn239(): void
     {
         $this->runAssertReturnCommand(
@@ -2409,7 +2169,6 @@ final class F64BitwiseTest extends SpecTestsuiteBase
         );
     }
 
-    #[Depends('testAssertReturn239')]
     public function testAssertReturn240(): void
     {
         $this->runAssertReturnCommand(
@@ -2419,7 +2178,6 @@ final class F64BitwiseTest extends SpecTestsuiteBase
         );
     }
 
-    #[Depends('testAssertReturn240')]
     public function testAssertReturn241(): void
     {
         $this->runAssertReturnCommand(
@@ -2429,7 +2187,6 @@ final class F64BitwiseTest extends SpecTestsuiteBase
         );
     }
 
-    #[Depends('testAssertReturn241')]
     public function testAssertReturn242(): void
     {
         $this->runAssertReturnCommand(
@@ -2439,7 +2196,6 @@ final class F64BitwiseTest extends SpecTestsuiteBase
         );
     }
 
-    #[Depends('testAssertReturn242')]
     public function testAssertReturn243(): void
     {
         $this->runAssertReturnCommand(
@@ -2449,7 +2205,6 @@ final class F64BitwiseTest extends SpecTestsuiteBase
         );
     }
 
-    #[Depends('testAssertReturn243')]
     public function testAssertReturn244(): void
     {
         $this->runAssertReturnCommand(
@@ -2459,7 +2214,6 @@ final class F64BitwiseTest extends SpecTestsuiteBase
         );
     }
 
-    #[Depends('testAssertReturn244')]
     public function testAssertReturn245(): void
     {
         $this->runAssertReturnCommand(
@@ -2469,7 +2223,6 @@ final class F64BitwiseTest extends SpecTestsuiteBase
         );
     }
 
-    #[Depends('testAssertReturn245')]
     public function testAssertReturn246(): void
     {
         $this->runAssertReturnCommand(
@@ -2479,7 +2232,6 @@ final class F64BitwiseTest extends SpecTestsuiteBase
         );
     }
 
-    #[Depends('testAssertReturn246')]
     public function testAssertReturn247(): void
     {
         $this->runAssertReturnCommand(
@@ -2489,7 +2241,6 @@ final class F64BitwiseTest extends SpecTestsuiteBase
         );
     }
 
-    #[Depends('testAssertReturn247')]
     public function testAssertReturn248(): void
     {
         $this->runAssertReturnCommand(
@@ -2499,7 +2250,6 @@ final class F64BitwiseTest extends SpecTestsuiteBase
         );
     }
 
-    #[Depends('testAssertReturn248')]
     public function testAssertReturn249(): void
     {
         $this->runAssertReturnCommand(
@@ -2509,7 +2259,6 @@ final class F64BitwiseTest extends SpecTestsuiteBase
         );
     }
 
-    #[Depends('testAssertReturn249')]
     public function testAssertReturn250(): void
     {
         $this->runAssertReturnCommand(
@@ -2519,7 +2268,6 @@ final class F64BitwiseTest extends SpecTestsuiteBase
         );
     }
 
-    #[Depends('testAssertReturn250')]
     public function testAssertReturn251(): void
     {
         $this->runAssertReturnCommand(
@@ -2529,7 +2277,6 @@ final class F64BitwiseTest extends SpecTestsuiteBase
         );
     }
 
-    #[Depends('testAssertReturn251')]
     public function testAssertReturn252(): void
     {
         $this->runAssertReturnCommand(
@@ -2539,7 +2286,6 @@ final class F64BitwiseTest extends SpecTestsuiteBase
         );
     }
 
-    #[Depends('testAssertReturn252')]
     public function testAssertReturn253(): void
     {
         $this->runAssertReturnCommand(
@@ -2549,7 +2295,6 @@ final class F64BitwiseTest extends SpecTestsuiteBase
         );
     }
 
-    #[Depends('testAssertReturn253')]
     public function testAssertReturn254(): void
     {
         $this->runAssertReturnCommand(
@@ -2559,7 +2304,6 @@ final class F64BitwiseTest extends SpecTestsuiteBase
         );
     }
 
-    #[Depends('testAssertReturn254')]
     public function testAssertReturn255(): void
     {
         $this->runAssertReturnCommand(
@@ -2569,7 +2313,6 @@ final class F64BitwiseTest extends SpecTestsuiteBase
         );
     }
 
-    #[Depends('testAssertReturn255')]
     public function testAssertReturn256(): void
     {
         $this->runAssertReturnCommand(
@@ -2579,7 +2322,6 @@ final class F64BitwiseTest extends SpecTestsuiteBase
         );
     }
 
-    #[Depends('testAssertReturn256')]
     public function testAssertReturn257(): void
     {
         $this->runAssertReturnCommand(
@@ -2589,7 +2331,6 @@ final class F64BitwiseTest extends SpecTestsuiteBase
         );
     }
 
-    #[Depends('testAssertReturn257')]
     public function testAssertReturn258(): void
     {
         $this->runAssertReturnCommand(
@@ -2599,7 +2340,6 @@ final class F64BitwiseTest extends SpecTestsuiteBase
         );
     }
 
-    #[Depends('testAssertReturn258')]
     public function testAssertReturn259(): void
     {
         $this->runAssertReturnCommand(
@@ -2609,7 +2349,6 @@ final class F64BitwiseTest extends SpecTestsuiteBase
         );
     }
 
-    #[Depends('testAssertReturn259')]
     public function testAssertReturn260(): void
     {
         $this->runAssertReturnCommand(
@@ -2619,7 +2358,6 @@ final class F64BitwiseTest extends SpecTestsuiteBase
         );
     }
 
-    #[Depends('testAssertReturn260')]
     public function testAssertReturn261(): void
     {
         $this->runAssertReturnCommand(
@@ -2629,7 +2367,6 @@ final class F64BitwiseTest extends SpecTestsuiteBase
         );
     }
 
-    #[Depends('testAssertReturn261')]
     public function testAssertReturn262(): void
     {
         $this->runAssertReturnCommand(
@@ -2639,7 +2376,6 @@ final class F64BitwiseTest extends SpecTestsuiteBase
         );
     }
 
-    #[Depends('testAssertReturn262')]
     public function testAssertReturn263(): void
     {
         $this->runAssertReturnCommand(
@@ -2649,7 +2385,6 @@ final class F64BitwiseTest extends SpecTestsuiteBase
         );
     }
 
-    #[Depends('testAssertReturn263')]
     public function testAssertReturn264(): void
     {
         $this->runAssertReturnCommand(
@@ -2659,7 +2394,6 @@ final class F64BitwiseTest extends SpecTestsuiteBase
         );
     }
 
-    #[Depends('testAssertReturn264')]
     public function testAssertReturn265(): void
     {
         $this->runAssertReturnCommand(
@@ -2669,7 +2403,6 @@ final class F64BitwiseTest extends SpecTestsuiteBase
         );
     }
 
-    #[Depends('testAssertReturn265')]
     public function testAssertReturn266(): void
     {
         $this->runAssertReturnCommand(
@@ -2679,7 +2412,6 @@ final class F64BitwiseTest extends SpecTestsuiteBase
         );
     }
 
-    #[Depends('testAssertReturn266')]
     public function testAssertReturn267(): void
     {
         $this->runAssertReturnCommand(
@@ -2689,7 +2421,6 @@ final class F64BitwiseTest extends SpecTestsuiteBase
         );
     }
 
-    #[Depends('testAssertReturn267')]
     public function testAssertReturn268(): void
     {
         $this->runAssertReturnCommand(
@@ -2699,7 +2430,6 @@ final class F64BitwiseTest extends SpecTestsuiteBase
         );
     }
 
-    #[Depends('testAssertReturn268')]
     public function testAssertReturn269(): void
     {
         $this->runAssertReturnCommand(
@@ -2709,7 +2439,6 @@ final class F64BitwiseTest extends SpecTestsuiteBase
         );
     }
 
-    #[Depends('testAssertReturn269')]
     public function testAssertReturn270(): void
     {
         $this->runAssertReturnCommand(
@@ -2719,7 +2448,6 @@ final class F64BitwiseTest extends SpecTestsuiteBase
         );
     }
 
-    #[Depends('testAssertReturn270')]
     public function testAssertReturn271(): void
     {
         $this->runAssertReturnCommand(
@@ -2729,7 +2457,6 @@ final class F64BitwiseTest extends SpecTestsuiteBase
         );
     }
 
-    #[Depends('testAssertReturn271')]
     public function testAssertReturn272(): void
     {
         $this->runAssertReturnCommand(
@@ -2739,7 +2466,6 @@ final class F64BitwiseTest extends SpecTestsuiteBase
         );
     }
 
-    #[Depends('testAssertReturn272')]
     public function testAssertReturn273(): void
     {
         $this->runAssertReturnCommand(
@@ -2749,7 +2475,6 @@ final class F64BitwiseTest extends SpecTestsuiteBase
         );
     }
 
-    #[Depends('testAssertReturn273')]
     public function testAssertReturn274(): void
     {
         $this->runAssertReturnCommand(
@@ -2759,7 +2484,6 @@ final class F64BitwiseTest extends SpecTestsuiteBase
         );
     }
 
-    #[Depends('testAssertReturn274')]
     public function testAssertReturn275(): void
     {
         $this->runAssertReturnCommand(
@@ -2769,7 +2493,6 @@ final class F64BitwiseTest extends SpecTestsuiteBase
         );
     }
 
-    #[Depends('testAssertReturn275')]
     public function testAssertReturn276(): void
     {
         $this->runAssertReturnCommand(
@@ -2779,7 +2502,6 @@ final class F64BitwiseTest extends SpecTestsuiteBase
         );
     }
 
-    #[Depends('testAssertReturn276')]
     public function testAssertReturn277(): void
     {
         $this->runAssertReturnCommand(
@@ -2789,7 +2511,6 @@ final class F64BitwiseTest extends SpecTestsuiteBase
         );
     }
 
-    #[Depends('testAssertReturn277')]
     public function testAssertReturn278(): void
     {
         $this->runAssertReturnCommand(
@@ -2799,7 +2520,6 @@ final class F64BitwiseTest extends SpecTestsuiteBase
         );
     }
 
-    #[Depends('testAssertReturn278')]
     public function testAssertReturn279(): void
     {
         $this->runAssertReturnCommand(
@@ -2809,7 +2529,6 @@ final class F64BitwiseTest extends SpecTestsuiteBase
         );
     }
 
-    #[Depends('testAssertReturn279')]
     public function testAssertReturn280(): void
     {
         $this->runAssertReturnCommand(
@@ -2819,7 +2538,6 @@ final class F64BitwiseTest extends SpecTestsuiteBase
         );
     }
 
-    #[Depends('testAssertReturn280')]
     public function testAssertReturn281(): void
     {
         $this->runAssertReturnCommand(
@@ -2829,7 +2547,6 @@ final class F64BitwiseTest extends SpecTestsuiteBase
         );
     }
 
-    #[Depends('testAssertReturn281')]
     public function testAssertReturn282(): void
     {
         $this->runAssertReturnCommand(
@@ -2839,7 +2556,6 @@ final class F64BitwiseTest extends SpecTestsuiteBase
         );
     }
 
-    #[Depends('testAssertReturn282')]
     public function testAssertReturn283(): void
     {
         $this->runAssertReturnCommand(
@@ -2849,7 +2565,6 @@ final class F64BitwiseTest extends SpecTestsuiteBase
         );
     }
 
-    #[Depends('testAssertReturn283')]
     public function testAssertReturn284(): void
     {
         $this->runAssertReturnCommand(
@@ -2859,7 +2574,6 @@ final class F64BitwiseTest extends SpecTestsuiteBase
         );
     }
 
-    #[Depends('testAssertReturn284')]
     public function testAssertReturn285(): void
     {
         $this->runAssertReturnCommand(
@@ -2869,7 +2583,6 @@ final class F64BitwiseTest extends SpecTestsuiteBase
         );
     }
 
-    #[Depends('testAssertReturn285')]
     public function testAssertReturn286(): void
     {
         $this->runAssertReturnCommand(
@@ -2879,7 +2592,6 @@ final class F64BitwiseTest extends SpecTestsuiteBase
         );
     }
 
-    #[Depends('testAssertReturn286')]
     public function testAssertReturn287(): void
     {
         $this->runAssertReturnCommand(
@@ -2889,7 +2601,6 @@ final class F64BitwiseTest extends SpecTestsuiteBase
         );
     }
 
-    #[Depends('testAssertReturn287')]
     public function testAssertReturn288(): void
     {
         $this->runAssertReturnCommand(
@@ -2899,7 +2610,6 @@ final class F64BitwiseTest extends SpecTestsuiteBase
         );
     }
 
-    #[Depends('testAssertReturn288')]
     public function testAssertReturn289(): void
     {
         $this->runAssertReturnCommand(
@@ -2909,7 +2619,6 @@ final class F64BitwiseTest extends SpecTestsuiteBase
         );
     }
 
-    #[Depends('testAssertReturn289')]
     public function testAssertReturn290(): void
     {
         $this->runAssertReturnCommand(
@@ -2919,7 +2628,6 @@ final class F64BitwiseTest extends SpecTestsuiteBase
         );
     }
 
-    #[Depends('testAssertReturn290')]
     public function testAssertReturn291(): void
     {
         $this->runAssertReturnCommand(
@@ -2929,7 +2637,6 @@ final class F64BitwiseTest extends SpecTestsuiteBase
         );
     }
 
-    #[Depends('testAssertReturn291')]
     public function testAssertReturn292(): void
     {
         $this->runAssertReturnCommand(
@@ -2939,7 +2646,6 @@ final class F64BitwiseTest extends SpecTestsuiteBase
         );
     }
 
-    #[Depends('testAssertReturn292')]
     public function testAssertReturn293(): void
     {
         $this->runAssertReturnCommand(
@@ -2949,7 +2655,6 @@ final class F64BitwiseTest extends SpecTestsuiteBase
         );
     }
 
-    #[Depends('testAssertReturn293')]
     public function testAssertReturn294(): void
     {
         $this->runAssertReturnCommand(
@@ -2959,7 +2664,6 @@ final class F64BitwiseTest extends SpecTestsuiteBase
         );
     }
 
-    #[Depends('testAssertReturn294')]
     public function testAssertReturn295(): void
     {
         $this->runAssertReturnCommand(
@@ -2969,7 +2673,6 @@ final class F64BitwiseTest extends SpecTestsuiteBase
         );
     }
 
-    #[Depends('testAssertReturn295')]
     public function testAssertReturn296(): void
     {
         $this->runAssertReturnCommand(
@@ -2979,7 +2682,6 @@ final class F64BitwiseTest extends SpecTestsuiteBase
         );
     }
 
-    #[Depends('testAssertReturn296')]
     public function testAssertReturn297(): void
     {
         $this->runAssertReturnCommand(
@@ -2989,7 +2691,6 @@ final class F64BitwiseTest extends SpecTestsuiteBase
         );
     }
 
-    #[Depends('testAssertReturn297')]
     public function testAssertReturn298(): void
     {
         $this->runAssertReturnCommand(
@@ -2999,7 +2700,6 @@ final class F64BitwiseTest extends SpecTestsuiteBase
         );
     }
 
-    #[Depends('testAssertReturn298')]
     public function testAssertReturn299(): void
     {
         $this->runAssertReturnCommand(
@@ -3009,7 +2709,6 @@ final class F64BitwiseTest extends SpecTestsuiteBase
         );
     }
 
-    #[Depends('testAssertReturn299')]
     public function testAssertReturn300(): void
     {
         $this->runAssertReturnCommand(
@@ -3019,7 +2718,6 @@ final class F64BitwiseTest extends SpecTestsuiteBase
         );
     }
 
-    #[Depends('testAssertReturn300')]
     public function testAssertReturn301(): void
     {
         $this->runAssertReturnCommand(
@@ -3029,7 +2727,6 @@ final class F64BitwiseTest extends SpecTestsuiteBase
         );
     }
 
-    #[Depends('testAssertReturn301')]
     public function testAssertReturn302(): void
     {
         $this->runAssertReturnCommand(
@@ -3039,7 +2736,6 @@ final class F64BitwiseTest extends SpecTestsuiteBase
         );
     }
 
-    #[Depends('testAssertReturn302')]
     public function testAssertReturn303(): void
     {
         $this->runAssertReturnCommand(
@@ -3049,7 +2745,6 @@ final class F64BitwiseTest extends SpecTestsuiteBase
         );
     }
 
-    #[Depends('testAssertReturn303')]
     public function testAssertReturn304(): void
     {
         $this->runAssertReturnCommand(
@@ -3059,7 +2754,6 @@ final class F64BitwiseTest extends SpecTestsuiteBase
         );
     }
 
-    #[Depends('testAssertReturn304')]
     public function testAssertReturn305(): void
     {
         $this->runAssertReturnCommand(
@@ -3069,7 +2763,6 @@ final class F64BitwiseTest extends SpecTestsuiteBase
         );
     }
 
-    #[Depends('testAssertReturn305')]
     public function testAssertReturn306(): void
     {
         $this->runAssertReturnCommand(
@@ -3079,7 +2772,6 @@ final class F64BitwiseTest extends SpecTestsuiteBase
         );
     }
 
-    #[Depends('testAssertReturn306')]
     public function testAssertReturn307(): void
     {
         $this->runAssertReturnCommand(
@@ -3089,7 +2781,6 @@ final class F64BitwiseTest extends SpecTestsuiteBase
         );
     }
 
-    #[Depends('testAssertReturn307')]
     public function testAssertReturn308(): void
     {
         $this->runAssertReturnCommand(
@@ -3099,7 +2790,6 @@ final class F64BitwiseTest extends SpecTestsuiteBase
         );
     }
 
-    #[Depends('testAssertReturn308')]
     public function testAssertReturn309(): void
     {
         $this->runAssertReturnCommand(
@@ -3109,7 +2799,6 @@ final class F64BitwiseTest extends SpecTestsuiteBase
         );
     }
 
-    #[Depends('testAssertReturn309')]
     public function testAssertReturn310(): void
     {
         $this->runAssertReturnCommand(
@@ -3119,7 +2808,6 @@ final class F64BitwiseTest extends SpecTestsuiteBase
         );
     }
 
-    #[Depends('testAssertReturn310')]
     public function testAssertReturn311(): void
     {
         $this->runAssertReturnCommand(
@@ -3129,7 +2817,6 @@ final class F64BitwiseTest extends SpecTestsuiteBase
         );
     }
 
-    #[Depends('testAssertReturn311')]
     public function testAssertReturn312(): void
     {
         $this->runAssertReturnCommand(
@@ -3139,7 +2826,6 @@ final class F64BitwiseTest extends SpecTestsuiteBase
         );
     }
 
-    #[Depends('testAssertReturn312')]
     public function testAssertReturn313(): void
     {
         $this->runAssertReturnCommand(
@@ -3149,7 +2835,6 @@ final class F64BitwiseTest extends SpecTestsuiteBase
         );
     }
 
-    #[Depends('testAssertReturn313')]
     public function testAssertReturn314(): void
     {
         $this->runAssertReturnCommand(
@@ -3159,7 +2844,6 @@ final class F64BitwiseTest extends SpecTestsuiteBase
         );
     }
 
-    #[Depends('testAssertReturn314')]
     public function testAssertReturn315(): void
     {
         $this->runAssertReturnCommand(
@@ -3169,7 +2853,6 @@ final class F64BitwiseTest extends SpecTestsuiteBase
         );
     }
 
-    #[Depends('testAssertReturn315')]
     public function testAssertReturn316(): void
     {
         $this->runAssertReturnCommand(
@@ -3179,7 +2862,6 @@ final class F64BitwiseTest extends SpecTestsuiteBase
         );
     }
 
-    #[Depends('testAssertReturn316')]
     public function testAssertReturn317(): void
     {
         $this->runAssertReturnCommand(
@@ -3189,7 +2871,6 @@ final class F64BitwiseTest extends SpecTestsuiteBase
         );
     }
 
-    #[Depends('testAssertReturn317')]
     public function testAssertReturn318(): void
     {
         $this->runAssertReturnCommand(
@@ -3199,7 +2880,6 @@ final class F64BitwiseTest extends SpecTestsuiteBase
         );
     }
 
-    #[Depends('testAssertReturn318')]
     public function testAssertReturn319(): void
     {
         $this->runAssertReturnCommand(
@@ -3209,7 +2889,6 @@ final class F64BitwiseTest extends SpecTestsuiteBase
         );
     }
 
-    #[Depends('testAssertReturn319')]
     public function testAssertReturn320(): void
     {
         $this->runAssertReturnCommand(
@@ -3219,7 +2898,6 @@ final class F64BitwiseTest extends SpecTestsuiteBase
         );
     }
 
-    #[Depends('testAssertReturn320')]
     public function testAssertReturn321(): void
     {
         $this->runAssertReturnCommand(
@@ -3229,7 +2907,6 @@ final class F64BitwiseTest extends SpecTestsuiteBase
         );
     }
 
-    #[Depends('testAssertReturn321')]
     public function testAssertReturn322(): void
     {
         $this->runAssertReturnCommand(
@@ -3239,7 +2916,6 @@ final class F64BitwiseTest extends SpecTestsuiteBase
         );
     }
 
-    #[Depends('testAssertReturn322')]
     public function testAssertReturn323(): void
     {
         $this->runAssertReturnCommand(
@@ -3249,7 +2925,6 @@ final class F64BitwiseTest extends SpecTestsuiteBase
         );
     }
 
-    #[Depends('testAssertReturn323')]
     public function testAssertReturn324(): void
     {
         $this->runAssertReturnCommand(
@@ -3259,7 +2934,6 @@ final class F64BitwiseTest extends SpecTestsuiteBase
         );
     }
 
-    #[Depends('testAssertReturn324')]
     public function testAssertReturn325(): void
     {
         $this->runAssertReturnCommand(
@@ -3269,7 +2943,6 @@ final class F64BitwiseTest extends SpecTestsuiteBase
         );
     }
 
-    #[Depends('testAssertReturn325')]
     public function testAssertReturn326(): void
     {
         $this->runAssertReturnCommand(
@@ -3279,7 +2952,6 @@ final class F64BitwiseTest extends SpecTestsuiteBase
         );
     }
 
-    #[Depends('testAssertReturn326')]
     public function testAssertReturn327(): void
     {
         $this->runAssertReturnCommand(
@@ -3289,7 +2961,6 @@ final class F64BitwiseTest extends SpecTestsuiteBase
         );
     }
 
-    #[Depends('testAssertReturn327')]
     public function testAssertReturn328(): void
     {
         $this->runAssertReturnCommand(
@@ -3299,7 +2970,6 @@ final class F64BitwiseTest extends SpecTestsuiteBase
         );
     }
 
-    #[Depends('testAssertReturn328')]
     public function testAssertReturn329(): void
     {
         $this->runAssertReturnCommand(
@@ -3309,7 +2979,6 @@ final class F64BitwiseTest extends SpecTestsuiteBase
         );
     }
 
-    #[Depends('testAssertReturn329')]
     public function testAssertReturn330(): void
     {
         $this->runAssertReturnCommand(
@@ -3319,7 +2988,6 @@ final class F64BitwiseTest extends SpecTestsuiteBase
         );
     }
 
-    #[Depends('testAssertReturn330')]
     public function testAssertReturn331(): void
     {
         $this->runAssertReturnCommand(
@@ -3329,7 +2997,6 @@ final class F64BitwiseTest extends SpecTestsuiteBase
         );
     }
 
-    #[Depends('testAssertReturn331')]
     public function testAssertReturn332(): void
     {
         $this->runAssertReturnCommand(
@@ -3339,7 +3006,6 @@ final class F64BitwiseTest extends SpecTestsuiteBase
         );
     }
 
-    #[Depends('testAssertReturn332')]
     public function testAssertReturn333(): void
     {
         $this->runAssertReturnCommand(
@@ -3349,7 +3015,6 @@ final class F64BitwiseTest extends SpecTestsuiteBase
         );
     }
 
-    #[Depends('testAssertReturn333')]
     public function testAssertReturn334(): void
     {
         $this->runAssertReturnCommand(
@@ -3359,7 +3024,6 @@ final class F64BitwiseTest extends SpecTestsuiteBase
         );
     }
 
-    #[Depends('testAssertReturn334')]
     public function testAssertReturn335(): void
     {
         $this->runAssertReturnCommand(
@@ -3369,7 +3033,6 @@ final class F64BitwiseTest extends SpecTestsuiteBase
         );
     }
 
-    #[Depends('testAssertReturn335')]
     public function testAssertReturn336(): void
     {
         $this->runAssertReturnCommand(
@@ -3379,7 +3042,6 @@ final class F64BitwiseTest extends SpecTestsuiteBase
         );
     }
 
-    #[Depends('testAssertReturn336')]
     public function testAssertReturn337(): void
     {
         $this->runAssertReturnCommand(
@@ -3389,7 +3051,6 @@ final class F64BitwiseTest extends SpecTestsuiteBase
         );
     }
 
-    #[Depends('testAssertReturn337')]
     public function testAssertReturn338(): void
     {
         $this->runAssertReturnCommand(
@@ -3399,7 +3060,6 @@ final class F64BitwiseTest extends SpecTestsuiteBase
         );
     }
 
-    #[Depends('testAssertReturn338')]
     public function testAssertReturn339(): void
     {
         $this->runAssertReturnCommand(
@@ -3409,7 +3069,6 @@ final class F64BitwiseTest extends SpecTestsuiteBase
         );
     }
 
-    #[Depends('testAssertReturn339')]
     public function testAssertReturn340(): void
     {
         $this->runAssertReturnCommand(
@@ -3419,7 +3078,6 @@ final class F64BitwiseTest extends SpecTestsuiteBase
         );
     }
 
-    #[Depends('testAssertReturn340')]
     public function testAssertReturn341(): void
     {
         $this->runAssertReturnCommand(
@@ -3429,7 +3087,6 @@ final class F64BitwiseTest extends SpecTestsuiteBase
         );
     }
 
-    #[Depends('testAssertReturn341')]
     public function testAssertReturn342(): void
     {
         $this->runAssertReturnCommand(
@@ -3439,7 +3096,6 @@ final class F64BitwiseTest extends SpecTestsuiteBase
         );
     }
 
-    #[Depends('testAssertReturn342')]
     public function testAssertReturn343(): void
     {
         $this->runAssertReturnCommand(
@@ -3449,7 +3105,6 @@ final class F64BitwiseTest extends SpecTestsuiteBase
         );
     }
 
-    #[Depends('testAssertReturn343')]
     public function testAssertReturn344(): void
     {
         $this->runAssertReturnCommand(
@@ -3459,7 +3114,6 @@ final class F64BitwiseTest extends SpecTestsuiteBase
         );
     }
 
-    #[Depends('testAssertReturn344')]
     public function testAssertReturn345(): void
     {
         $this->runAssertReturnCommand(
@@ -3469,7 +3123,6 @@ final class F64BitwiseTest extends SpecTestsuiteBase
         );
     }
 
-    #[Depends('testAssertReturn345')]
     public function testAssertReturn346(): void
     {
         $this->runAssertReturnCommand(
@@ -3479,7 +3132,6 @@ final class F64BitwiseTest extends SpecTestsuiteBase
         );
     }
 
-    #[Depends('testAssertReturn346')]
     public function testAssertReturn347(): void
     {
         $this->runAssertReturnCommand(
@@ -3489,7 +3141,6 @@ final class F64BitwiseTest extends SpecTestsuiteBase
         );
     }
 
-    #[Depends('testAssertReturn347')]
     public function testAssertReturn348(): void
     {
         $this->runAssertReturnCommand(
@@ -3499,7 +3150,6 @@ final class F64BitwiseTest extends SpecTestsuiteBase
         );
     }
 
-    #[Depends('testAssertReturn348')]
     public function testAssertReturn349(): void
     {
         $this->runAssertReturnCommand(
@@ -3509,7 +3159,6 @@ final class F64BitwiseTest extends SpecTestsuiteBase
         );
     }
 
-    #[Depends('testAssertReturn349')]
     public function testAssertReturn350(): void
     {
         $this->runAssertReturnCommand(
@@ -3519,7 +3168,6 @@ final class F64BitwiseTest extends SpecTestsuiteBase
         );
     }
 
-    #[Depends('testAssertReturn350')]
     public function testAssertReturn351(): void
     {
         $this->runAssertReturnCommand(
@@ -3529,7 +3177,6 @@ final class F64BitwiseTest extends SpecTestsuiteBase
         );
     }
 
-    #[Depends('testAssertReturn351')]
     public function testAssertReturn352(): void
     {
         $this->runAssertReturnCommand(
@@ -3539,7 +3186,6 @@ final class F64BitwiseTest extends SpecTestsuiteBase
         );
     }
 
-    #[Depends('testAssertReturn352')]
     public function testAssertReturn353(): void
     {
         $this->runAssertReturnCommand(
@@ -3549,7 +3195,6 @@ final class F64BitwiseTest extends SpecTestsuiteBase
         );
     }
 
-    #[Depends('testAssertReturn353')]
     public function testAssertReturn354(): void
     {
         $this->runAssertReturnCommand(
@@ -3559,7 +3204,6 @@ final class F64BitwiseTest extends SpecTestsuiteBase
         );
     }
 
-    #[Depends('testAssertReturn354')]
     public function testAssertReturn355(): void
     {
         $this->runAssertReturnCommand(
@@ -3569,7 +3213,6 @@ final class F64BitwiseTest extends SpecTestsuiteBase
         );
     }
 
-    #[Depends('testAssertReturn355')]
     public function testAssertReturn356(): void
     {
         $this->runAssertReturnCommand(
@@ -3579,7 +3222,6 @@ final class F64BitwiseTest extends SpecTestsuiteBase
         );
     }
 
-    #[Depends('testAssertReturn356')]
     public function testAssertReturn357(): void
     {
         $this->runAssertReturnCommand(
@@ -3589,7 +3231,6 @@ final class F64BitwiseTest extends SpecTestsuiteBase
         );
     }
 
-    #[Depends('testAssertReturn357')]
     public function testAssertReturn358(): void
     {
         $this->runAssertReturnCommand(
@@ -3599,7 +3240,6 @@ final class F64BitwiseTest extends SpecTestsuiteBase
         );
     }
 
-    #[Depends('testAssertReturn358')]
     public function testAssertReturn359(): void
     {
         $this->runAssertReturnCommand(
@@ -3609,7 +3249,6 @@ final class F64BitwiseTest extends SpecTestsuiteBase
         );
     }
 
-    #[Depends('testAssertReturn359')]
     public function testAssertReturn360(): void
     {
         $this->runAssertReturnCommand(
@@ -3619,7 +3258,6 @@ final class F64BitwiseTest extends SpecTestsuiteBase
         );
     }
 
-    #[Depends('testAssertReturn360')]
     public function testAssertInvalid361(): void
     {
         $this->runAssertInvalidCommand(
@@ -3629,7 +3267,6 @@ final class F64BitwiseTest extends SpecTestsuiteBase
         );
     }
 
-    #[Depends('testAssertInvalid361')]
     public function testAssertInvalid362(): void
     {
         $this->runAssertInvalidCommand(
@@ -3639,7 +3276,6 @@ final class F64BitwiseTest extends SpecTestsuiteBase
         );
     }
 
-    #[Depends('testAssertInvalid362')]
     public function testAssertInvalid363(): void
     {
         $this->runAssertInvalidCommand(

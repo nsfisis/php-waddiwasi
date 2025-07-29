@@ -5,7 +5,6 @@ declare(strict_types=1);
 namespace Nsfisis\Waddiwasi\Tests\SpecTestsuites\Core;
 
 use Nsfisis\Waddiwasi\Tests\SpecTestsuites\SpecTestsuiteBase;
-use PHPUnit\Framework\Attributes\Depends;
 use PHPUnit\Framework\Attributes\DoesNotPerformAssertions;
 
 final class TableSubTest extends SpecTestsuiteBase
@@ -19,7 +18,6 @@ final class TableSubTest extends SpecTestsuiteBase
         );
     }
 
-    #[Depends('testAssertInvalid0')]
     public function testAssertInvalid1(): void
     {
         $this->runAssertInvalidCommand(

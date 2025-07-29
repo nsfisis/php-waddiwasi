@@ -5,7 +5,6 @@ declare(strict_types=1);
 namespace Nsfisis\Waddiwasi\Tests\SpecTestsuites\Core;
 
 use Nsfisis\Waddiwasi\Tests\SpecTestsuites\SpecTestsuiteBase;
-use PHPUnit\Framework\Attributes\Depends;
 use PHPUnit\Framework\Attributes\DoesNotPerformAssertions;
 
 final class BulkTest extends SpecTestsuiteBase
@@ -19,7 +18,6 @@ final class BulkTest extends SpecTestsuiteBase
         );
     }
 
-    #[Depends('testModule0')]
     public function testModule1(): void
     {
         $this->runModuleCommand(
@@ -29,7 +27,6 @@ final class BulkTest extends SpecTestsuiteBase
         );
     }
 
-    #[Depends('testModule1')]
     public function testModule2(): void
     {
         $this->runModuleCommand(
@@ -39,7 +36,6 @@ final class BulkTest extends SpecTestsuiteBase
         );
     }
 
-    #[Depends('testModule2')]
     public function testAction3(): void
     {
         $this->runActionCommand(
@@ -48,7 +44,6 @@ final class BulkTest extends SpecTestsuiteBase
         );
     }
 
-    #[Depends('testAction3')]
     public function testAssertReturn4(): void
     {
         $this->runAssertReturnCommand(
@@ -58,7 +53,6 @@ final class BulkTest extends SpecTestsuiteBase
         );
     }
 
-    #[Depends('testAssertReturn4')]
     public function testAssertReturn5(): void
     {
         $this->runAssertReturnCommand(
@@ -68,7 +62,6 @@ final class BulkTest extends SpecTestsuiteBase
         );
     }
 
-    #[Depends('testAssertReturn5')]
     public function testAssertReturn6(): void
     {
         $this->runAssertReturnCommand(
@@ -78,7 +71,6 @@ final class BulkTest extends SpecTestsuiteBase
         );
     }
 
-    #[Depends('testAssertReturn6')]
     public function testAssertReturn7(): void
     {
         $this->runAssertReturnCommand(
@@ -88,7 +80,6 @@ final class BulkTest extends SpecTestsuiteBase
         );
     }
 
-    #[Depends('testAssertReturn7')]
     public function testAssertReturn8(): void
     {
         $this->runAssertReturnCommand(
@@ -98,7 +89,6 @@ final class BulkTest extends SpecTestsuiteBase
         );
     }
 
-    #[Depends('testAssertReturn8')]
     public function testAction9(): void
     {
         $this->runActionCommand(
@@ -107,7 +97,6 @@ final class BulkTest extends SpecTestsuiteBase
         );
     }
 
-    #[Depends('testAction9')]
     public function testAssertReturn10(): void
     {
         $this->runAssertReturnCommand(
@@ -117,7 +106,6 @@ final class BulkTest extends SpecTestsuiteBase
         );
     }
 
-    #[Depends('testAssertReturn10')]
     public function testAssertReturn11(): void
     {
         $this->runAssertReturnCommand(
@@ -127,7 +115,6 @@ final class BulkTest extends SpecTestsuiteBase
         );
     }
 
-    #[Depends('testAssertReturn11')]
     public function testAction12(): void
     {
         $this->runActionCommand(
@@ -136,7 +123,6 @@ final class BulkTest extends SpecTestsuiteBase
         );
     }
 
-    #[Depends('testAction12')]
     public function testAssertTrap13(): void
     {
         $this->runAssertTrapCommand(
@@ -146,7 +132,6 @@ final class BulkTest extends SpecTestsuiteBase
         );
     }
 
-    #[Depends('testAssertTrap13')]
     public function testAssertReturn14(): void
     {
         $this->runAssertReturnCommand(
@@ -156,7 +141,6 @@ final class BulkTest extends SpecTestsuiteBase
         );
     }
 
-    #[Depends('testAssertReturn14')]
     public function testAssertReturn15(): void
     {
         $this->runAssertReturnCommand(
@@ -166,7 +150,6 @@ final class BulkTest extends SpecTestsuiteBase
         );
     }
 
-    #[Depends('testAssertReturn15')]
     public function testAction16(): void
     {
         $this->runActionCommand(
@@ -175,7 +158,6 @@ final class BulkTest extends SpecTestsuiteBase
         );
     }
 
-    #[Depends('testAction16')]
     public function testAssertTrap17(): void
     {
         $this->runAssertTrapCommand(
@@ -185,7 +167,6 @@ final class BulkTest extends SpecTestsuiteBase
         );
     }
 
-    #[Depends('testAssertTrap17')]
     public function testModule18(): void
     {
         $this->runModuleCommand(
@@ -195,7 +176,6 @@ final class BulkTest extends SpecTestsuiteBase
         );
     }
 
-    #[Depends('testModule18')]
     public function testAction19(): void
     {
         $this->runActionCommand(
@@ -204,7 +184,6 @@ final class BulkTest extends SpecTestsuiteBase
         );
     }
 
-    #[Depends('testAction19')]
     public function testAssertReturn20(): void
     {
         $this->runAssertReturnCommand(
@@ -214,7 +193,6 @@ final class BulkTest extends SpecTestsuiteBase
         );
     }
 
-    #[Depends('testAssertReturn20')]
     public function testAssertReturn21(): void
     {
         $this->runAssertReturnCommand(
@@ -224,7 +202,6 @@ final class BulkTest extends SpecTestsuiteBase
         );
     }
 
-    #[Depends('testAssertReturn21')]
     public function testAssertReturn22(): void
     {
         $this->runAssertReturnCommand(
@@ -234,7 +211,6 @@ final class BulkTest extends SpecTestsuiteBase
         );
     }
 
-    #[Depends('testAssertReturn22')]
     public function testAssertReturn23(): void
     {
         $this->runAssertReturnCommand(
@@ -244,7 +220,6 @@ final class BulkTest extends SpecTestsuiteBase
         );
     }
 
-    #[Depends('testAssertReturn23')]
     public function testAssertReturn24(): void
     {
         $this->runAssertReturnCommand(
@@ -254,7 +229,6 @@ final class BulkTest extends SpecTestsuiteBase
         );
     }
 
-    #[Depends('testAssertReturn24')]
     public function testAssertReturn25(): void
     {
         $this->runAssertReturnCommand(
@@ -264,7 +238,6 @@ final class BulkTest extends SpecTestsuiteBase
         );
     }
 
-    #[Depends('testAssertReturn25')]
     public function testAction26(): void
     {
         $this->runActionCommand(
@@ -273,7 +246,6 @@ final class BulkTest extends SpecTestsuiteBase
         );
     }
 
-    #[Depends('testAction26')]
     public function testAssertReturn27(): void
     {
         $this->runAssertReturnCommand(
@@ -283,7 +255,6 @@ final class BulkTest extends SpecTestsuiteBase
         );
     }
 
-    #[Depends('testAssertReturn27')]
     public function testAssertReturn28(): void
     {
         $this->runAssertReturnCommand(
@@ -293,7 +264,6 @@ final class BulkTest extends SpecTestsuiteBase
         );
     }
 
-    #[Depends('testAssertReturn28')]
     public function testAssertReturn29(): void
     {
         $this->runAssertReturnCommand(
@@ -303,7 +273,6 @@ final class BulkTest extends SpecTestsuiteBase
         );
     }
 
-    #[Depends('testAssertReturn29')]
     public function testAssertReturn30(): void
     {
         $this->runAssertReturnCommand(
@@ -313,7 +282,6 @@ final class BulkTest extends SpecTestsuiteBase
         );
     }
 
-    #[Depends('testAssertReturn30')]
     public function testAssertReturn31(): void
     {
         $this->runAssertReturnCommand(
@@ -323,7 +291,6 @@ final class BulkTest extends SpecTestsuiteBase
         );
     }
 
-    #[Depends('testAssertReturn31')]
     public function testAssertReturn32(): void
     {
         $this->runAssertReturnCommand(
@@ -333,7 +300,6 @@ final class BulkTest extends SpecTestsuiteBase
         );
     }
 
-    #[Depends('testAssertReturn32')]
     public function testAction33(): void
     {
         $this->runActionCommand(
@@ -342,7 +308,6 @@ final class BulkTest extends SpecTestsuiteBase
         );
     }
 
-    #[Depends('testAction33')]
     public function testAssertReturn34(): void
     {
         $this->runAssertReturnCommand(
@@ -352,7 +317,6 @@ final class BulkTest extends SpecTestsuiteBase
         );
     }
 
-    #[Depends('testAssertReturn34')]
     public function testAssertReturn35(): void
     {
         $this->runAssertReturnCommand(
@@ -362,7 +326,6 @@ final class BulkTest extends SpecTestsuiteBase
         );
     }
 
-    #[Depends('testAssertReturn35')]
     public function testAssertReturn36(): void
     {
         $this->runAssertReturnCommand(
@@ -372,7 +335,6 @@ final class BulkTest extends SpecTestsuiteBase
         );
     }
 
-    #[Depends('testAssertReturn36')]
     public function testAssertReturn37(): void
     {
         $this->runAssertReturnCommand(
@@ -382,7 +344,6 @@ final class BulkTest extends SpecTestsuiteBase
         );
     }
 
-    #[Depends('testAssertReturn37')]
     public function testAssertReturn38(): void
     {
         $this->runAssertReturnCommand(
@@ -392,7 +353,6 @@ final class BulkTest extends SpecTestsuiteBase
         );
     }
 
-    #[Depends('testAssertReturn38')]
     public function testAssertReturn39(): void
     {
         $this->runAssertReturnCommand(
@@ -402,7 +362,6 @@ final class BulkTest extends SpecTestsuiteBase
         );
     }
 
-    #[Depends('testAssertReturn39')]
     public function testAssertReturn40(): void
     {
         $this->runAssertReturnCommand(
@@ -412,7 +371,6 @@ final class BulkTest extends SpecTestsuiteBase
         );
     }
 
-    #[Depends('testAssertReturn40')]
     public function testAction41(): void
     {
         $this->runActionCommand(
@@ -421,7 +379,6 @@ final class BulkTest extends SpecTestsuiteBase
         );
     }
 
-    #[Depends('testAction41')]
     public function testAction42(): void
     {
         $this->runActionCommand(
@@ -430,7 +387,6 @@ final class BulkTest extends SpecTestsuiteBase
         );
     }
 
-    #[Depends('testAction42')]
     public function testAction43(): void
     {
         $this->runActionCommand(
@@ -439,7 +395,6 @@ final class BulkTest extends SpecTestsuiteBase
         );
     }
 
-    #[Depends('testAction43')]
     public function testAction44(): void
     {
         $this->runActionCommand(
@@ -448,7 +403,6 @@ final class BulkTest extends SpecTestsuiteBase
         );
     }
 
-    #[Depends('testAction44')]
     public function testAssertTrap45(): void
     {
         $this->runAssertTrapCommand(
@@ -458,7 +412,6 @@ final class BulkTest extends SpecTestsuiteBase
         );
     }
 
-    #[Depends('testAssertTrap45')]
     public function testAssertTrap46(): void
     {
         $this->runAssertTrapCommand(
@@ -468,7 +421,6 @@ final class BulkTest extends SpecTestsuiteBase
         );
     }
 
-    #[Depends('testAssertTrap46')]
     public function testModule47(): void
     {
         $this->runModuleCommand(
@@ -478,7 +430,6 @@ final class BulkTest extends SpecTestsuiteBase
         );
     }
 
-    #[Depends('testModule47')]
     public function testAction48(): void
     {
         $this->runActionCommand(
@@ -487,7 +438,6 @@ final class BulkTest extends SpecTestsuiteBase
         );
     }
 
-    #[Depends('testAction48')]
     public function testAssertReturn49(): void
     {
         $this->runAssertReturnCommand(
@@ -497,7 +447,6 @@ final class BulkTest extends SpecTestsuiteBase
         );
     }
 
-    #[Depends('testAssertReturn49')]
     public function testAssertReturn50(): void
     {
         $this->runAssertReturnCommand(
@@ -507,7 +456,6 @@ final class BulkTest extends SpecTestsuiteBase
         );
     }
 
-    #[Depends('testAssertReturn50')]
     public function testAssertReturn51(): void
     {
         $this->runAssertReturnCommand(
@@ -517,7 +465,6 @@ final class BulkTest extends SpecTestsuiteBase
         );
     }
 
-    #[Depends('testAssertReturn51')]
     public function testAction52(): void
     {
         $this->runActionCommand(
@@ -526,7 +473,6 @@ final class BulkTest extends SpecTestsuiteBase
         );
     }
 
-    #[Depends('testAction52')]
     public function testAssertTrap53(): void
     {
         $this->runAssertTrapCommand(
@@ -536,7 +482,6 @@ final class BulkTest extends SpecTestsuiteBase
         );
     }
 
-    #[Depends('testAssertTrap53')]
     public function testAssertReturn54(): void
     {
         $this->runAssertReturnCommand(
@@ -546,7 +491,6 @@ final class BulkTest extends SpecTestsuiteBase
         );
     }
 
-    #[Depends('testAssertReturn54')]
     public function testAssertReturn55(): void
     {
         $this->runAssertReturnCommand(
@@ -556,7 +500,6 @@ final class BulkTest extends SpecTestsuiteBase
         );
     }
 
-    #[Depends('testAssertReturn55')]
     public function testAction56(): void
     {
         $this->runActionCommand(
@@ -565,7 +508,6 @@ final class BulkTest extends SpecTestsuiteBase
         );
     }
 
-    #[Depends('testAction56')]
     public function testAction57(): void
     {
         $this->runActionCommand(
@@ -574,7 +516,6 @@ final class BulkTest extends SpecTestsuiteBase
         );
     }
 
-    #[Depends('testAction57')]
     public function testAssertTrap58(): void
     {
         $this->runAssertTrapCommand(
@@ -584,7 +525,6 @@ final class BulkTest extends SpecTestsuiteBase
         );
     }
 
-    #[Depends('testAssertTrap58')]
     public function testAssertTrap59(): void
     {
         $this->runAssertTrapCommand(
@@ -594,7 +534,6 @@ final class BulkTest extends SpecTestsuiteBase
         );
     }
 
-    #[Depends('testAssertTrap59')]
     public function testModule60(): void
     {
         $this->runModuleCommand(
@@ -604,7 +543,6 @@ final class BulkTest extends SpecTestsuiteBase
         );
     }
 
-    #[Depends('testModule60')]
     public function testAction61(): void
     {
         $this->runActionCommand(
@@ -613,7 +551,6 @@ final class BulkTest extends SpecTestsuiteBase
         );
     }
 
-    #[Depends('testAction61')]
     public function testAction62(): void
     {
         $this->runActionCommand(
@@ -622,7 +559,6 @@ final class BulkTest extends SpecTestsuiteBase
         );
     }
 
-    #[Depends('testAction62')]
     public function testAction63(): void
     {
         $this->runActionCommand(
@@ -631,7 +567,6 @@ final class BulkTest extends SpecTestsuiteBase
         );
     }
 
-    #[Depends('testAction63')]
     public function testAssertReturn64(): void
     {
         $this->runAssertReturnCommand(
@@ -641,7 +576,6 @@ final class BulkTest extends SpecTestsuiteBase
         );
     }
 
-    #[Depends('testAssertReturn64')]
     public function testAssertTrap65(): void
     {
         $this->runAssertTrapCommand(
@@ -651,7 +585,6 @@ final class BulkTest extends SpecTestsuiteBase
         );
     }
 
-    #[Depends('testAssertTrap65')]
     public function testAction66(): void
     {
         $this->runActionCommand(
@@ -660,7 +593,6 @@ final class BulkTest extends SpecTestsuiteBase
         );
     }
 
-    #[Depends('testAction66')]
     public function testAction67(): void
     {
         $this->runActionCommand(
@@ -669,7 +601,6 @@ final class BulkTest extends SpecTestsuiteBase
         );
     }
 
-    #[Depends('testAction67')]
     public function testAssertReturn68(): void
     {
         $this->runAssertReturnCommand(
@@ -679,7 +610,6 @@ final class BulkTest extends SpecTestsuiteBase
         );
     }
 
-    #[Depends('testAssertReturn68')]
     public function testAssertTrap69(): void
     {
         $this->runAssertTrapCommand(
@@ -689,7 +619,6 @@ final class BulkTest extends SpecTestsuiteBase
         );
     }
 
-    #[Depends('testAssertTrap69')]
     public function testAction70(): void
     {
         $this->runActionCommand(
@@ -698,7 +627,6 @@ final class BulkTest extends SpecTestsuiteBase
         );
     }
 
-    #[Depends('testAction70')]
     public function testModule71(): void
     {
         $this->runModuleCommand(
@@ -708,7 +636,6 @@ final class BulkTest extends SpecTestsuiteBase
         );
     }
 
-    #[Depends('testModule71')]
     public function testModule72(): void
     {
         $this->runModuleCommand(
@@ -718,7 +645,6 @@ final class BulkTest extends SpecTestsuiteBase
         );
     }
 
-    #[Depends('testModule72')]
     public function testModule73(): void
     {
         $this->runModuleCommand(
@@ -728,7 +654,6 @@ final class BulkTest extends SpecTestsuiteBase
         );
     }
 
-    #[Depends('testModule73')]
     public function testAssertTrap74(): void
     {
         $this->runAssertTrapCommand(
@@ -738,7 +663,6 @@ final class BulkTest extends SpecTestsuiteBase
         );
     }
 
-    #[Depends('testAssertTrap74')]
     public function testAssertTrap75(): void
     {
         $this->runAssertTrapCommand(
@@ -748,7 +672,6 @@ final class BulkTest extends SpecTestsuiteBase
         );
     }
 
-    #[Depends('testAssertTrap75')]
     public function testAction76(): void
     {
         $this->runActionCommand(
@@ -757,7 +680,6 @@ final class BulkTest extends SpecTestsuiteBase
         );
     }
 
-    #[Depends('testAction76')]
     public function testAssertReturn77(): void
     {
         $this->runAssertReturnCommand(
@@ -767,7 +689,6 @@ final class BulkTest extends SpecTestsuiteBase
         );
     }
 
-    #[Depends('testAssertReturn77')]
     public function testAssertReturn78(): void
     {
         $this->runAssertReturnCommand(
@@ -777,7 +698,6 @@ final class BulkTest extends SpecTestsuiteBase
         );
     }
 
-    #[Depends('testAssertReturn78')]
     public function testAssertTrap79(): void
     {
         $this->runAssertTrapCommand(
@@ -787,7 +707,6 @@ final class BulkTest extends SpecTestsuiteBase
         );
     }
 
-    #[Depends('testAssertTrap79')]
     public function testAction80(): void
     {
         $this->runActionCommand(
@@ -796,7 +715,6 @@ final class BulkTest extends SpecTestsuiteBase
         );
     }
 
-    #[Depends('testAction80')]
     public function testAction81(): void
     {
         $this->runActionCommand(
@@ -805,7 +723,6 @@ final class BulkTest extends SpecTestsuiteBase
         );
     }
 
-    #[Depends('testAction81')]
     public function testAction82(): void
     {
         $this->runActionCommand(
@@ -814,7 +731,6 @@ final class BulkTest extends SpecTestsuiteBase
         );
     }
 
-    #[Depends('testAction82')]
     public function testAssertTrap83(): void
     {
         $this->runAssertTrapCommand(
@@ -824,7 +740,6 @@ final class BulkTest extends SpecTestsuiteBase
         );
     }
 
-    #[Depends('testAssertTrap83')]
     public function testAssertTrap84(): void
     {
         $this->runAssertTrapCommand(
@@ -834,7 +749,6 @@ final class BulkTest extends SpecTestsuiteBase
         );
     }
 
-    #[Depends('testAssertTrap84')]
     public function testModule85(): void
     {
         $this->runModuleCommand(
@@ -844,7 +758,6 @@ final class BulkTest extends SpecTestsuiteBase
         );
     }
 
-    #[Depends('testModule85')]
     public function testAction86(): void
     {
         $this->runActionCommand(
@@ -853,7 +766,6 @@ final class BulkTest extends SpecTestsuiteBase
         );
     }
 
-    #[Depends('testAction86')]
     public function testAction87(): void
     {
         $this->runActionCommand(
@@ -862,7 +774,6 @@ final class BulkTest extends SpecTestsuiteBase
         );
     }
 
-    #[Depends('testAction87')]
     public function testAction88(): void
     {
         $this->runActionCommand(
@@ -871,7 +782,6 @@ final class BulkTest extends SpecTestsuiteBase
         );
     }
 
-    #[Depends('testAction88')]
     public function testAssertReturn89(): void
     {
         $this->runAssertReturnCommand(
@@ -881,7 +791,6 @@ final class BulkTest extends SpecTestsuiteBase
         );
     }
 
-    #[Depends('testAssertReturn89')]
     public function testAssertTrap90(): void
     {
         $this->runAssertTrapCommand(
@@ -891,7 +800,6 @@ final class BulkTest extends SpecTestsuiteBase
         );
     }
 
-    #[Depends('testAssertTrap90')]
     public function testAction91(): void
     {
         $this->runActionCommand(
@@ -900,7 +808,6 @@ final class BulkTest extends SpecTestsuiteBase
         );
     }
 
-    #[Depends('testAction91')]
     public function testAction92(): void
     {
         $this->runActionCommand(
@@ -909,7 +816,6 @@ final class BulkTest extends SpecTestsuiteBase
         );
     }
 
-    #[Depends('testAction92')]
     public function testAssertReturn93(): void
     {
         $this->runAssertReturnCommand(
@@ -919,7 +825,6 @@ final class BulkTest extends SpecTestsuiteBase
         );
     }
 
-    #[Depends('testAssertReturn93')]
     public function testAssertTrap94(): void
     {
         $this->runAssertTrapCommand(
@@ -929,7 +834,6 @@ final class BulkTest extends SpecTestsuiteBase
         );
     }
 
-    #[Depends('testAssertTrap94')]
     public function testAction95(): void
     {
         $this->runActionCommand(
@@ -938,7 +842,6 @@ final class BulkTest extends SpecTestsuiteBase
         );
     }
 
-    #[Depends('testAction95')]
     public function testModule96(): void
     {
         $this->runModuleCommand(
@@ -948,7 +851,6 @@ final class BulkTest extends SpecTestsuiteBase
         );
     }
 
-    #[Depends('testModule96')]
     public function testModule97(): void
     {
         $this->runModuleCommand(
@@ -958,7 +860,6 @@ final class BulkTest extends SpecTestsuiteBase
         );
     }
 
-    #[Depends('testModule97')]
     public function testModule98(): void
     {
         $this->runModuleCommand(
@@ -968,7 +869,6 @@ final class BulkTest extends SpecTestsuiteBase
         );
     }
 
-    #[Depends('testModule98')]
     public function testAction99(): void
     {
         $this->runActionCommand(
@@ -977,7 +877,6 @@ final class BulkTest extends SpecTestsuiteBase
         );
     }
 
-    #[Depends('testAction99')]
     public function testAssertReturn100(): void
     {
         $this->runAssertReturnCommand(
@@ -987,7 +886,6 @@ final class BulkTest extends SpecTestsuiteBase
         );
     }
 
-    #[Depends('testAssertReturn100')]
     public function testAssertReturn101(): void
     {
         $this->runAssertReturnCommand(
@@ -997,7 +895,6 @@ final class BulkTest extends SpecTestsuiteBase
         );
     }
 
-    #[Depends('testAssertReturn101')]
     public function testAssertReturn102(): void
     {
         $this->runAssertReturnCommand(
@@ -1007,7 +904,6 @@ final class BulkTest extends SpecTestsuiteBase
         );
     }
 
-    #[Depends('testAssertReturn102')]
     public function testAction103(): void
     {
         $this->runActionCommand(
@@ -1016,7 +912,6 @@ final class BulkTest extends SpecTestsuiteBase
         );
     }
 
-    #[Depends('testAction103')]
     public function testAssertReturn104(): void
     {
         $this->runAssertReturnCommand(
@@ -1026,7 +921,6 @@ final class BulkTest extends SpecTestsuiteBase
         );
     }
 
-    #[Depends('testAssertReturn104')]
     public function testAssertReturn105(): void
     {
         $this->runAssertReturnCommand(
@@ -1036,7 +930,6 @@ final class BulkTest extends SpecTestsuiteBase
         );
     }
 
-    #[Depends('testAssertReturn105')]
     public function testAssertReturn106(): void
     {
         $this->runAssertReturnCommand(
@@ -1046,7 +939,6 @@ final class BulkTest extends SpecTestsuiteBase
         );
     }
 
-    #[Depends('testAssertReturn106')]
     public function testAction107(): void
     {
         $this->runActionCommand(
@@ -1055,7 +947,6 @@ final class BulkTest extends SpecTestsuiteBase
         );
     }
 
-    #[Depends('testAction107')]
     public function testAssertReturn108(): void
     {
         $this->runAssertReturnCommand(
@@ -1065,7 +956,6 @@ final class BulkTest extends SpecTestsuiteBase
         );
     }
 
-    #[Depends('testAssertReturn108')]
     public function testAssertReturn109(): void
     {
         $this->runAssertReturnCommand(
@@ -1075,7 +965,6 @@ final class BulkTest extends SpecTestsuiteBase
         );
     }
 
-    #[Depends('testAssertReturn109')]
     public function testAssertReturn110(): void
     {
         $this->runAssertReturnCommand(
@@ -1085,7 +974,6 @@ final class BulkTest extends SpecTestsuiteBase
         );
     }
 
-    #[Depends('testAssertReturn110')]
     public function testAction111(): void
     {
         $this->runActionCommand(
@@ -1094,7 +982,6 @@ final class BulkTest extends SpecTestsuiteBase
         );
     }
 
-    #[Depends('testAction111')]
     public function testAction112(): void
     {
         $this->runActionCommand(
@@ -1103,7 +990,6 @@ final class BulkTest extends SpecTestsuiteBase
         );
     }
 
-    #[Depends('testAction112')]
     public function testAction113(): void
     {
         $this->runActionCommand(
@@ -1112,7 +998,6 @@ final class BulkTest extends SpecTestsuiteBase
         );
     }
 
-    #[Depends('testAction113')]
     public function testAction114(): void
     {
         $this->runActionCommand(
@@ -1121,7 +1006,6 @@ final class BulkTest extends SpecTestsuiteBase
         );
     }
 
-    #[Depends('testAction114')]
     public function testAssertTrap115(): void
     {
         $this->runAssertTrapCommand(
@@ -1131,7 +1015,6 @@ final class BulkTest extends SpecTestsuiteBase
         );
     }
 
-    #[Depends('testAssertTrap115')]
     public function testAssertTrap116(): void
     {
         $this->runAssertTrapCommand(

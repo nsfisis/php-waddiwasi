@@ -5,7 +5,6 @@ declare(strict_types=1);
 namespace Nsfisis\Waddiwasi\Tests\SpecTestsuites\Core;
 
 use Nsfisis\Waddiwasi\Tests\SpecTestsuites\SpecTestsuiteBase;
-use PHPUnit\Framework\Attributes\Depends;
 use PHPUnit\Framework\Attributes\DoesNotPerformAssertions;
 
 final class SkipStackGuardPageTest extends SpecTestsuiteBase
@@ -19,7 +18,6 @@ final class SkipStackGuardPageTest extends SpecTestsuiteBase
         );
     }
 
-    #[Depends('testModule0')]
     public function testAssertExhaustion1(): void
     {
         $this->runAssertExhaustionCommand(
@@ -29,7 +27,6 @@ final class SkipStackGuardPageTest extends SpecTestsuiteBase
         );
     }
 
-    #[Depends('testAssertExhaustion1')]
     public function testAssertExhaustion2(): void
     {
         $this->runAssertExhaustionCommand(
@@ -39,7 +36,6 @@ final class SkipStackGuardPageTest extends SpecTestsuiteBase
         );
     }
 
-    #[Depends('testAssertExhaustion2')]
     public function testAssertExhaustion3(): void
     {
         $this->runAssertExhaustionCommand(
@@ -49,7 +45,6 @@ final class SkipStackGuardPageTest extends SpecTestsuiteBase
         );
     }
 
-    #[Depends('testAssertExhaustion3')]
     public function testAssertExhaustion4(): void
     {
         $this->runAssertExhaustionCommand(
@@ -59,7 +54,6 @@ final class SkipStackGuardPageTest extends SpecTestsuiteBase
         );
     }
 
-    #[Depends('testAssertExhaustion4')]
     public function testAssertExhaustion5(): void
     {
         $this->runAssertExhaustionCommand(
@@ -69,7 +63,6 @@ final class SkipStackGuardPageTest extends SpecTestsuiteBase
         );
     }
 
-    #[Depends('testAssertExhaustion5')]
     public function testAssertExhaustion6(): void
     {
         $this->runAssertExhaustionCommand(
@@ -79,7 +72,6 @@ final class SkipStackGuardPageTest extends SpecTestsuiteBase
         );
     }
 
-    #[Depends('testAssertExhaustion6')]
     public function testAssertExhaustion7(): void
     {
         $this->runAssertExhaustionCommand(
@@ -89,7 +81,6 @@ final class SkipStackGuardPageTest extends SpecTestsuiteBase
         );
     }
 
-    #[Depends('testAssertExhaustion7')]
     public function testAssertExhaustion8(): void
     {
         $this->runAssertExhaustionCommand(
@@ -99,7 +90,6 @@ final class SkipStackGuardPageTest extends SpecTestsuiteBase
         );
     }
 
-    #[Depends('testAssertExhaustion8')]
     public function testAssertExhaustion9(): void
     {
         $this->runAssertExhaustionCommand(
@@ -109,7 +99,6 @@ final class SkipStackGuardPageTest extends SpecTestsuiteBase
         );
     }
 
-    #[Depends('testAssertExhaustion9')]
     public function testAssertExhaustion10(): void
     {
         $this->runAssertExhaustionCommand(

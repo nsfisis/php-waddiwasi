@@ -5,7 +5,6 @@ declare(strict_types=1);
 namespace Nsfisis\Waddiwasi\Tests\SpecTestsuites\Core;
 
 use Nsfisis\Waddiwasi\Tests\SpecTestsuites\SpecTestsuiteBase;
-use PHPUnit\Framework\Attributes\Depends;
 use PHPUnit\Framework\Attributes\DoesNotPerformAssertions;
 
 final class UnreachableTest extends SpecTestsuiteBase
@@ -19,7 +18,6 @@ final class UnreachableTest extends SpecTestsuiteBase
         );
     }
 
-    #[Depends('testModule0')]
     public function testAssertTrap1(): void
     {
         $this->runAssertTrapCommand(
@@ -29,7 +27,6 @@ final class UnreachableTest extends SpecTestsuiteBase
         );
     }
 
-    #[Depends('testAssertTrap1')]
     public function testAssertTrap2(): void
     {
         $this->runAssertTrapCommand(
@@ -39,7 +36,6 @@ final class UnreachableTest extends SpecTestsuiteBase
         );
     }
 
-    #[Depends('testAssertTrap2')]
     public function testAssertTrap3(): void
     {
         $this->runAssertTrapCommand(
@@ -49,7 +45,6 @@ final class UnreachableTest extends SpecTestsuiteBase
         );
     }
 
-    #[Depends('testAssertTrap3')]
     public function testAssertTrap4(): void
     {
         $this->runAssertTrapCommand(
@@ -59,7 +54,6 @@ final class UnreachableTest extends SpecTestsuiteBase
         );
     }
 
-    #[Depends('testAssertTrap4')]
     public function testAssertTrap5(): void
     {
         $this->runAssertTrapCommand(
@@ -69,7 +63,6 @@ final class UnreachableTest extends SpecTestsuiteBase
         );
     }
 
-    #[Depends('testAssertTrap5')]
     public function testAssertTrap6(): void
     {
         $this->runAssertTrapCommand(
@@ -79,7 +72,6 @@ final class UnreachableTest extends SpecTestsuiteBase
         );
     }
 
-    #[Depends('testAssertTrap6')]
     public function testAssertTrap7(): void
     {
         $this->runAssertTrapCommand(
@@ -89,7 +81,6 @@ final class UnreachableTest extends SpecTestsuiteBase
         );
     }
 
-    #[Depends('testAssertTrap7')]
     public function testAssertTrap8(): void
     {
         $this->runAssertTrapCommand(
@@ -99,7 +90,6 @@ final class UnreachableTest extends SpecTestsuiteBase
         );
     }
 
-    #[Depends('testAssertTrap8')]
     public function testAssertTrap9(): void
     {
         $this->runAssertTrapCommand(
@@ -109,7 +99,6 @@ final class UnreachableTest extends SpecTestsuiteBase
         );
     }
 
-    #[Depends('testAssertTrap9')]
     public function testAssertTrap10(): void
     {
         $this->runAssertTrapCommand(
@@ -119,7 +108,6 @@ final class UnreachableTest extends SpecTestsuiteBase
         );
     }
 
-    #[Depends('testAssertTrap10')]
     public function testAssertTrap11(): void
     {
         $this->runAssertTrapCommand(
@@ -129,7 +117,6 @@ final class UnreachableTest extends SpecTestsuiteBase
         );
     }
 
-    #[Depends('testAssertTrap11')]
     public function testAssertTrap12(): void
     {
         $this->runAssertTrapCommand(
@@ -139,7 +126,6 @@ final class UnreachableTest extends SpecTestsuiteBase
         );
     }
 
-    #[Depends('testAssertTrap12')]
     public function testAssertReturn13(): void
     {
         $this->runAssertReturnCommand(
@@ -149,7 +135,6 @@ final class UnreachableTest extends SpecTestsuiteBase
         );
     }
 
-    #[Depends('testAssertReturn13')]
     public function testAssertTrap14(): void
     {
         $this->runAssertTrapCommand(
@@ -159,7 +144,6 @@ final class UnreachableTest extends SpecTestsuiteBase
         );
     }
 
-    #[Depends('testAssertTrap14')]
     public function testAssertTrap15(): void
     {
         $this->runAssertTrapCommand(
@@ -169,7 +153,6 @@ final class UnreachableTest extends SpecTestsuiteBase
         );
     }
 
-    #[Depends('testAssertTrap15')]
     public function testAssertTrap16(): void
     {
         $this->runAssertTrapCommand(
@@ -179,7 +162,6 @@ final class UnreachableTest extends SpecTestsuiteBase
         );
     }
 
-    #[Depends('testAssertTrap16')]
     public function testAssertReturn17(): void
     {
         $this->runAssertReturnCommand(
@@ -189,7 +171,6 @@ final class UnreachableTest extends SpecTestsuiteBase
         );
     }
 
-    #[Depends('testAssertReturn17')]
     public function testAssertTrap18(): void
     {
         $this->runAssertTrapCommand(
@@ -199,7 +180,6 @@ final class UnreachableTest extends SpecTestsuiteBase
         );
     }
 
-    #[Depends('testAssertTrap18')]
     public function testAssertTrap19(): void
     {
         $this->runAssertTrapCommand(
@@ -209,7 +189,6 @@ final class UnreachableTest extends SpecTestsuiteBase
         );
     }
 
-    #[Depends('testAssertTrap19')]
     public function testAssertTrap20(): void
     {
         $this->runAssertTrapCommand(
@@ -219,7 +198,6 @@ final class UnreachableTest extends SpecTestsuiteBase
         );
     }
 
-    #[Depends('testAssertTrap20')]
     public function testAssertTrap21(): void
     {
         $this->runAssertTrapCommand(
@@ -229,7 +207,6 @@ final class UnreachableTest extends SpecTestsuiteBase
         );
     }
 
-    #[Depends('testAssertTrap21')]
     public function testAssertTrap22(): void
     {
         $this->runAssertTrapCommand(
@@ -239,7 +216,6 @@ final class UnreachableTest extends SpecTestsuiteBase
         );
     }
 
-    #[Depends('testAssertTrap22')]
     public function testAssertTrap23(): void
     {
         $this->runAssertTrapCommand(
@@ -249,7 +225,6 @@ final class UnreachableTest extends SpecTestsuiteBase
         );
     }
 
-    #[Depends('testAssertTrap23')]
     public function testAssertTrap24(): void
     {
         $this->runAssertTrapCommand(
@@ -259,7 +234,6 @@ final class UnreachableTest extends SpecTestsuiteBase
         );
     }
 
-    #[Depends('testAssertTrap24')]
     public function testAssertTrap25(): void
     {
         $this->runAssertTrapCommand(
@@ -269,7 +243,6 @@ final class UnreachableTest extends SpecTestsuiteBase
         );
     }
 
-    #[Depends('testAssertTrap25')]
     public function testAssertTrap26(): void
     {
         $this->runAssertTrapCommand(
@@ -279,7 +252,6 @@ final class UnreachableTest extends SpecTestsuiteBase
         );
     }
 
-    #[Depends('testAssertTrap26')]
     public function testAssertTrap27(): void
     {
         $this->runAssertTrapCommand(
@@ -289,7 +261,6 @@ final class UnreachableTest extends SpecTestsuiteBase
         );
     }
 
-    #[Depends('testAssertTrap27')]
     public function testAssertTrap28(): void
     {
         $this->runAssertTrapCommand(
@@ -299,7 +270,6 @@ final class UnreachableTest extends SpecTestsuiteBase
         );
     }
 
-    #[Depends('testAssertTrap28')]
     public function testAssertTrap29(): void
     {
         $this->runAssertTrapCommand(
@@ -309,7 +279,6 @@ final class UnreachableTest extends SpecTestsuiteBase
         );
     }
 
-    #[Depends('testAssertTrap29')]
     public function testAssertReturn30(): void
     {
         $this->runAssertReturnCommand(
@@ -319,7 +288,6 @@ final class UnreachableTest extends SpecTestsuiteBase
         );
     }
 
-    #[Depends('testAssertReturn30')]
     public function testAssertTrap31(): void
     {
         $this->runAssertTrapCommand(
@@ -329,7 +297,6 @@ final class UnreachableTest extends SpecTestsuiteBase
         );
     }
 
-    #[Depends('testAssertTrap31')]
     public function testAssertReturn32(): void
     {
         $this->runAssertReturnCommand(
@@ -339,7 +306,6 @@ final class UnreachableTest extends SpecTestsuiteBase
         );
     }
 
-    #[Depends('testAssertReturn32')]
     public function testAssertTrap33(): void
     {
         $this->runAssertTrapCommand(
@@ -349,7 +315,6 @@ final class UnreachableTest extends SpecTestsuiteBase
         );
     }
 
-    #[Depends('testAssertTrap33')]
     public function testAssertReturn34(): void
     {
         $this->runAssertReturnCommand(
@@ -359,7 +324,6 @@ final class UnreachableTest extends SpecTestsuiteBase
         );
     }
 
-    #[Depends('testAssertReturn34')]
     public function testAssertTrap35(): void
     {
         $this->runAssertTrapCommand(
@@ -369,7 +333,6 @@ final class UnreachableTest extends SpecTestsuiteBase
         );
     }
 
-    #[Depends('testAssertTrap35')]
     public function testAssertTrap36(): void
     {
         $this->runAssertTrapCommand(
@@ -379,7 +342,6 @@ final class UnreachableTest extends SpecTestsuiteBase
         );
     }
 
-    #[Depends('testAssertTrap36')]
     public function testAssertTrap37(): void
     {
         $this->runAssertTrapCommand(
@@ -389,7 +351,6 @@ final class UnreachableTest extends SpecTestsuiteBase
         );
     }
 
-    #[Depends('testAssertTrap37')]
     public function testAssertTrap38(): void
     {
         $this->runAssertTrapCommand(
@@ -399,7 +360,6 @@ final class UnreachableTest extends SpecTestsuiteBase
         );
     }
 
-    #[Depends('testAssertTrap38')]
     public function testAssertTrap39(): void
     {
         $this->runAssertTrapCommand(
@@ -409,7 +369,6 @@ final class UnreachableTest extends SpecTestsuiteBase
         );
     }
 
-    #[Depends('testAssertTrap39')]
     public function testAssertTrap40(): void
     {
         $this->runAssertTrapCommand(
@@ -419,7 +378,6 @@ final class UnreachableTest extends SpecTestsuiteBase
         );
     }
 
-    #[Depends('testAssertTrap40')]
     public function testAssertTrap41(): void
     {
         $this->runAssertTrapCommand(
@@ -429,7 +387,6 @@ final class UnreachableTest extends SpecTestsuiteBase
         );
     }
 
-    #[Depends('testAssertTrap41')]
     public function testAssertTrap42(): void
     {
         $this->runAssertTrapCommand(
@@ -439,7 +396,6 @@ final class UnreachableTest extends SpecTestsuiteBase
         );
     }
 
-    #[Depends('testAssertTrap42')]
     public function testAssertTrap43(): void
     {
         $this->runAssertTrapCommand(
@@ -449,7 +405,6 @@ final class UnreachableTest extends SpecTestsuiteBase
         );
     }
 
-    #[Depends('testAssertTrap43')]
     public function testAssertTrap44(): void
     {
         $this->runAssertTrapCommand(
@@ -459,7 +414,6 @@ final class UnreachableTest extends SpecTestsuiteBase
         );
     }
 
-    #[Depends('testAssertTrap44')]
     public function testAssertTrap45(): void
     {
         $this->runAssertTrapCommand(
@@ -469,7 +423,6 @@ final class UnreachableTest extends SpecTestsuiteBase
         );
     }
 
-    #[Depends('testAssertTrap45')]
     public function testAssertTrap46(): void
     {
         $this->runAssertTrapCommand(
@@ -479,7 +432,6 @@ final class UnreachableTest extends SpecTestsuiteBase
         );
     }
 
-    #[Depends('testAssertTrap46')]
     public function testAssertTrap47(): void
     {
         $this->runAssertTrapCommand(
@@ -489,7 +441,6 @@ final class UnreachableTest extends SpecTestsuiteBase
         );
     }
 
-    #[Depends('testAssertTrap47')]
     public function testAssertTrap48(): void
     {
         $this->runAssertTrapCommand(
@@ -499,7 +450,6 @@ final class UnreachableTest extends SpecTestsuiteBase
         );
     }
 
-    #[Depends('testAssertTrap48')]
     public function testAssertTrap49(): void
     {
         $this->runAssertTrapCommand(
@@ -509,7 +459,6 @@ final class UnreachableTest extends SpecTestsuiteBase
         );
     }
 
-    #[Depends('testAssertTrap49')]
     public function testAssertTrap50(): void
     {
         $this->runAssertTrapCommand(
@@ -519,7 +468,6 @@ final class UnreachableTest extends SpecTestsuiteBase
         );
     }
 
-    #[Depends('testAssertTrap50')]
     public function testAssertTrap51(): void
     {
         $this->runAssertTrapCommand(
@@ -529,7 +477,6 @@ final class UnreachableTest extends SpecTestsuiteBase
         );
     }
 
-    #[Depends('testAssertTrap51')]
     public function testAssertTrap52(): void
     {
         $this->runAssertTrapCommand(
@@ -539,7 +486,6 @@ final class UnreachableTest extends SpecTestsuiteBase
         );
     }
 
-    #[Depends('testAssertTrap52')]
     public function testAssertTrap53(): void
     {
         $this->runAssertTrapCommand(
@@ -549,7 +495,6 @@ final class UnreachableTest extends SpecTestsuiteBase
         );
     }
 
-    #[Depends('testAssertTrap53')]
     public function testAssertTrap54(): void
     {
         $this->runAssertTrapCommand(
@@ -559,7 +504,6 @@ final class UnreachableTest extends SpecTestsuiteBase
         );
     }
 
-    #[Depends('testAssertTrap54')]
     public function testAssertTrap55(): void
     {
         $this->runAssertTrapCommand(
@@ -569,7 +513,6 @@ final class UnreachableTest extends SpecTestsuiteBase
         );
     }
 
-    #[Depends('testAssertTrap55')]
     public function testAssertTrap56(): void
     {
         $this->runAssertTrapCommand(
@@ -579,7 +522,6 @@ final class UnreachableTest extends SpecTestsuiteBase
         );
     }
 
-    #[Depends('testAssertTrap56')]
     public function testAssertTrap57(): void
     {
         $this->runAssertTrapCommand(
@@ -589,7 +531,6 @@ final class UnreachableTest extends SpecTestsuiteBase
         );
     }
 
-    #[Depends('testAssertTrap57')]
     public function testAssertTrap58(): void
     {
         $this->runAssertTrapCommand(
@@ -599,7 +540,6 @@ final class UnreachableTest extends SpecTestsuiteBase
         );
     }
 
-    #[Depends('testAssertTrap58')]
     public function testAssertTrap59(): void
     {
         $this->runAssertTrapCommand(
@@ -609,7 +549,6 @@ final class UnreachableTest extends SpecTestsuiteBase
         );
     }
 
-    #[Depends('testAssertTrap59')]
     public function testAssertTrap60(): void
     {
         $this->runAssertTrapCommand(
@@ -619,7 +558,6 @@ final class UnreachableTest extends SpecTestsuiteBase
         );
     }
 
-    #[Depends('testAssertTrap60')]
     public function testAssertTrap61(): void
     {
         $this->runAssertTrapCommand(
@@ -629,7 +567,6 @@ final class UnreachableTest extends SpecTestsuiteBase
         );
     }
 
-    #[Depends('testAssertTrap61')]
     public function testAssertTrap62(): void
     {
         $this->runAssertTrapCommand(
@@ -639,7 +576,6 @@ final class UnreachableTest extends SpecTestsuiteBase
         );
     }
 
-    #[Depends('testAssertTrap62')]
     public function testAssertTrap63(): void
     {
         $this->runAssertTrapCommand(

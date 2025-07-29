@@ -5,7 +5,6 @@ declare(strict_types=1);
 namespace Nsfisis\Waddiwasi\Tests\SpecTestsuites\Core;
 
 use Nsfisis\Waddiwasi\Tests\SpecTestsuites\SpecTestsuiteBase;
-use PHPUnit\Framework\Attributes\Depends;
 use PHPUnit\Framework\Attributes\DoesNotPerformAssertions;
 
 final class Utf8CustomSectionIdTest extends SpecTestsuiteBase
@@ -19,7 +18,6 @@ final class Utf8CustomSectionIdTest extends SpecTestsuiteBase
         );
     }
 
-    #[Depends('testAssertMalformed0')]
     public function testAssertMalformed1(): void
     {
         $this->runAssertMalformedCommand(
@@ -29,7 +27,6 @@ final class Utf8CustomSectionIdTest extends SpecTestsuiteBase
         );
     }
 
-    #[Depends('testAssertMalformed1')]
     public function testAssertMalformed2(): void
     {
         $this->runAssertMalformedCommand(
@@ -39,7 +36,6 @@ final class Utf8CustomSectionIdTest extends SpecTestsuiteBase
         );
     }
 
-    #[Depends('testAssertMalformed2')]
     public function testAssertMalformed3(): void
     {
         $this->runAssertMalformedCommand(
@@ -49,7 +45,6 @@ final class Utf8CustomSectionIdTest extends SpecTestsuiteBase
         );
     }
 
-    #[Depends('testAssertMalformed3')]
     public function testAssertMalformed4(): void
     {
         $this->runAssertMalformedCommand(
@@ -59,7 +54,6 @@ final class Utf8CustomSectionIdTest extends SpecTestsuiteBase
         );
     }
 
-    #[Depends('testAssertMalformed4')]
     public function testAssertMalformed5(): void
     {
         $this->runAssertMalformedCommand(
@@ -69,7 +63,6 @@ final class Utf8CustomSectionIdTest extends SpecTestsuiteBase
         );
     }
 
-    #[Depends('testAssertMalformed5')]
     public function testAssertMalformed6(): void
     {
         $this->runAssertMalformedCommand(
@@ -79,7 +72,6 @@ final class Utf8CustomSectionIdTest extends SpecTestsuiteBase
         );
     }
 
-    #[Depends('testAssertMalformed6')]
     public function testAssertMalformed7(): void
     {
         $this->runAssertMalformedCommand(
@@ -89,7 +81,6 @@ final class Utf8CustomSectionIdTest extends SpecTestsuiteBase
         );
     }
 
-    #[Depends('testAssertMalformed7')]
     public function testAssertMalformed8(): void
     {
         $this->runAssertMalformedCommand(
@@ -99,7 +90,6 @@ final class Utf8CustomSectionIdTest extends SpecTestsuiteBase
         );
     }
 
-    #[Depends('testAssertMalformed8')]
     public function testAssertMalformed9(): void
     {
         $this->runAssertMalformedCommand(
@@ -109,7 +99,6 @@ final class Utf8CustomSectionIdTest extends SpecTestsuiteBase
         );
     }
 
-    #[Depends('testAssertMalformed9')]
     public function testAssertMalformed10(): void
     {
         $this->runAssertMalformedCommand(
@@ -119,7 +108,6 @@ final class Utf8CustomSectionIdTest extends SpecTestsuiteBase
         );
     }
 
-    #[Depends('testAssertMalformed10')]
     public function testAssertMalformed11(): void
     {
         $this->runAssertMalformedCommand(
@@ -129,7 +117,6 @@ final class Utf8CustomSectionIdTest extends SpecTestsuiteBase
         );
     }
 
-    #[Depends('testAssertMalformed11')]
     public function testAssertMalformed12(): void
     {
         $this->runAssertMalformedCommand(
@@ -139,7 +126,6 @@ final class Utf8CustomSectionIdTest extends SpecTestsuiteBase
         );
     }
 
-    #[Depends('testAssertMalformed12')]
     public function testAssertMalformed13(): void
     {
         $this->runAssertMalformedCommand(
@@ -149,7 +135,6 @@ final class Utf8CustomSectionIdTest extends SpecTestsuiteBase
         );
     }
 
-    #[Depends('testAssertMalformed13')]
     public function testAssertMalformed14(): void
     {
         $this->runAssertMalformedCommand(
@@ -159,7 +144,6 @@ final class Utf8CustomSectionIdTest extends SpecTestsuiteBase
         );
     }
 
-    #[Depends('testAssertMalformed14')]
     public function testAssertMalformed15(): void
     {
         $this->runAssertMalformedCommand(
@@ -169,7 +153,6 @@ final class Utf8CustomSectionIdTest extends SpecTestsuiteBase
         );
     }
 
-    #[Depends('testAssertMalformed15')]
     public function testAssertMalformed16(): void
     {
         $this->runAssertMalformedCommand(
@@ -179,7 +162,6 @@ final class Utf8CustomSectionIdTest extends SpecTestsuiteBase
         );
     }
 
-    #[Depends('testAssertMalformed16')]
     public function testAssertMalformed17(): void
     {
         $this->runAssertMalformedCommand(
@@ -189,7 +171,6 @@ final class Utf8CustomSectionIdTest extends SpecTestsuiteBase
         );
     }
 
-    #[Depends('testAssertMalformed17')]
     public function testAssertMalformed18(): void
     {
         $this->runAssertMalformedCommand(
@@ -199,7 +180,6 @@ final class Utf8CustomSectionIdTest extends SpecTestsuiteBase
         );
     }
 
-    #[Depends('testAssertMalformed18')]
     public function testAssertMalformed19(): void
     {
         $this->runAssertMalformedCommand(
@@ -209,7 +189,6 @@ final class Utf8CustomSectionIdTest extends SpecTestsuiteBase
         );
     }
 
-    #[Depends('testAssertMalformed19')]
     public function testAssertMalformed20(): void
     {
         $this->runAssertMalformedCommand(
@@ -219,7 +198,6 @@ final class Utf8CustomSectionIdTest extends SpecTestsuiteBase
         );
     }
 
-    #[Depends('testAssertMalformed20')]
     public function testAssertMalformed21(): void
     {
         $this->runAssertMalformedCommand(
@@ -229,7 +207,6 @@ final class Utf8CustomSectionIdTest extends SpecTestsuiteBase
         );
     }
 
-    #[Depends('testAssertMalformed21')]
     public function testAssertMalformed22(): void
     {
         $this->runAssertMalformedCommand(
@@ -239,7 +216,6 @@ final class Utf8CustomSectionIdTest extends SpecTestsuiteBase
         );
     }
 
-    #[Depends('testAssertMalformed22')]
     public function testAssertMalformed23(): void
     {
         $this->runAssertMalformedCommand(
@@ -249,7 +225,6 @@ final class Utf8CustomSectionIdTest extends SpecTestsuiteBase
         );
     }
 
-    #[Depends('testAssertMalformed23')]
     public function testAssertMalformed24(): void
     {
         $this->runAssertMalformedCommand(
@@ -259,7 +234,6 @@ final class Utf8CustomSectionIdTest extends SpecTestsuiteBase
         );
     }
 
-    #[Depends('testAssertMalformed24')]
     public function testAssertMalformed25(): void
     {
         $this->runAssertMalformedCommand(
@@ -269,7 +243,6 @@ final class Utf8CustomSectionIdTest extends SpecTestsuiteBase
         );
     }
 
-    #[Depends('testAssertMalformed25')]
     public function testAssertMalformed26(): void
     {
         $this->runAssertMalformedCommand(
@@ -279,7 +252,6 @@ final class Utf8CustomSectionIdTest extends SpecTestsuiteBase
         );
     }
 
-    #[Depends('testAssertMalformed26')]
     public function testAssertMalformed27(): void
     {
         $this->runAssertMalformedCommand(
@@ -289,7 +261,6 @@ final class Utf8CustomSectionIdTest extends SpecTestsuiteBase
         );
     }
 
-    #[Depends('testAssertMalformed27')]
     public function testAssertMalformed28(): void
     {
         $this->runAssertMalformedCommand(
@@ -299,7 +270,6 @@ final class Utf8CustomSectionIdTest extends SpecTestsuiteBase
         );
     }
 
-    #[Depends('testAssertMalformed28')]
     public function testAssertMalformed29(): void
     {
         $this->runAssertMalformedCommand(
@@ -309,7 +279,6 @@ final class Utf8CustomSectionIdTest extends SpecTestsuiteBase
         );
     }
 
-    #[Depends('testAssertMalformed29')]
     public function testAssertMalformed30(): void
     {
         $this->runAssertMalformedCommand(
@@ -319,7 +288,6 @@ final class Utf8CustomSectionIdTest extends SpecTestsuiteBase
         );
     }
 
-    #[Depends('testAssertMalformed30')]
     public function testAssertMalformed31(): void
     {
         $this->runAssertMalformedCommand(
@@ -329,7 +297,6 @@ final class Utf8CustomSectionIdTest extends SpecTestsuiteBase
         );
     }
 
-    #[Depends('testAssertMalformed31')]
     public function testAssertMalformed32(): void
     {
         $this->runAssertMalformedCommand(
@@ -339,7 +306,6 @@ final class Utf8CustomSectionIdTest extends SpecTestsuiteBase
         );
     }
 
-    #[Depends('testAssertMalformed32')]
     public function testAssertMalformed33(): void
     {
         $this->runAssertMalformedCommand(
@@ -349,7 +315,6 @@ final class Utf8CustomSectionIdTest extends SpecTestsuiteBase
         );
     }
 
-    #[Depends('testAssertMalformed33')]
     public function testAssertMalformed34(): void
     {
         $this->runAssertMalformedCommand(
@@ -359,7 +324,6 @@ final class Utf8CustomSectionIdTest extends SpecTestsuiteBase
         );
     }
 
-    #[Depends('testAssertMalformed34')]
     public function testAssertMalformed35(): void
     {
         $this->runAssertMalformedCommand(
@@ -369,7 +333,6 @@ final class Utf8CustomSectionIdTest extends SpecTestsuiteBase
         );
     }
 
-    #[Depends('testAssertMalformed35')]
     public function testAssertMalformed36(): void
     {
         $this->runAssertMalformedCommand(
@@ -379,7 +342,6 @@ final class Utf8CustomSectionIdTest extends SpecTestsuiteBase
         );
     }
 
-    #[Depends('testAssertMalformed36')]
     public function testAssertMalformed37(): void
     {
         $this->runAssertMalformedCommand(
@@ -389,7 +351,6 @@ final class Utf8CustomSectionIdTest extends SpecTestsuiteBase
         );
     }
 
-    #[Depends('testAssertMalformed37')]
     public function testAssertMalformed38(): void
     {
         $this->runAssertMalformedCommand(
@@ -399,7 +360,6 @@ final class Utf8CustomSectionIdTest extends SpecTestsuiteBase
         );
     }
 
-    #[Depends('testAssertMalformed38')]
     public function testAssertMalformed39(): void
     {
         $this->runAssertMalformedCommand(
@@ -409,7 +369,6 @@ final class Utf8CustomSectionIdTest extends SpecTestsuiteBase
         );
     }
 
-    #[Depends('testAssertMalformed39')]
     public function testAssertMalformed40(): void
     {
         $this->runAssertMalformedCommand(
@@ -419,7 +378,6 @@ final class Utf8CustomSectionIdTest extends SpecTestsuiteBase
         );
     }
 
-    #[Depends('testAssertMalformed40')]
     public function testAssertMalformed41(): void
     {
         $this->runAssertMalformedCommand(
@@ -429,7 +387,6 @@ final class Utf8CustomSectionIdTest extends SpecTestsuiteBase
         );
     }
 
-    #[Depends('testAssertMalformed41')]
     public function testAssertMalformed42(): void
     {
         $this->runAssertMalformedCommand(
@@ -439,7 +396,6 @@ final class Utf8CustomSectionIdTest extends SpecTestsuiteBase
         );
     }
 
-    #[Depends('testAssertMalformed42')]
     public function testAssertMalformed43(): void
     {
         $this->runAssertMalformedCommand(
@@ -449,7 +405,6 @@ final class Utf8CustomSectionIdTest extends SpecTestsuiteBase
         );
     }
 
-    #[Depends('testAssertMalformed43')]
     public function testAssertMalformed44(): void
     {
         $this->runAssertMalformedCommand(
@@ -459,7 +414,6 @@ final class Utf8CustomSectionIdTest extends SpecTestsuiteBase
         );
     }
 
-    #[Depends('testAssertMalformed44')]
     public function testAssertMalformed45(): void
     {
         $this->runAssertMalformedCommand(
@@ -469,7 +423,6 @@ final class Utf8CustomSectionIdTest extends SpecTestsuiteBase
         );
     }
 
-    #[Depends('testAssertMalformed45')]
     public function testAssertMalformed46(): void
     {
         $this->runAssertMalformedCommand(
@@ -479,7 +432,6 @@ final class Utf8CustomSectionIdTest extends SpecTestsuiteBase
         );
     }
 
-    #[Depends('testAssertMalformed46')]
     public function testAssertMalformed47(): void
     {
         $this->runAssertMalformedCommand(
@@ -489,7 +441,6 @@ final class Utf8CustomSectionIdTest extends SpecTestsuiteBase
         );
     }
 
-    #[Depends('testAssertMalformed47')]
     public function testAssertMalformed48(): void
     {
         $this->runAssertMalformedCommand(
@@ -499,7 +450,6 @@ final class Utf8CustomSectionIdTest extends SpecTestsuiteBase
         );
     }
 
-    #[Depends('testAssertMalformed48')]
     public function testAssertMalformed49(): void
     {
         $this->runAssertMalformedCommand(
@@ -509,7 +459,6 @@ final class Utf8CustomSectionIdTest extends SpecTestsuiteBase
         );
     }
 
-    #[Depends('testAssertMalformed49')]
     public function testAssertMalformed50(): void
     {
         $this->runAssertMalformedCommand(
@@ -519,7 +468,6 @@ final class Utf8CustomSectionIdTest extends SpecTestsuiteBase
         );
     }
 
-    #[Depends('testAssertMalformed50')]
     public function testAssertMalformed51(): void
     {
         $this->runAssertMalformedCommand(
@@ -529,7 +477,6 @@ final class Utf8CustomSectionIdTest extends SpecTestsuiteBase
         );
     }
 
-    #[Depends('testAssertMalformed51')]
     public function testAssertMalformed52(): void
     {
         $this->runAssertMalformedCommand(
@@ -539,7 +486,6 @@ final class Utf8CustomSectionIdTest extends SpecTestsuiteBase
         );
     }
 
-    #[Depends('testAssertMalformed52')]
     public function testAssertMalformed53(): void
     {
         $this->runAssertMalformedCommand(
@@ -549,7 +495,6 @@ final class Utf8CustomSectionIdTest extends SpecTestsuiteBase
         );
     }
 
-    #[Depends('testAssertMalformed53')]
     public function testAssertMalformed54(): void
     {
         $this->runAssertMalformedCommand(
@@ -559,7 +504,6 @@ final class Utf8CustomSectionIdTest extends SpecTestsuiteBase
         );
     }
 
-    #[Depends('testAssertMalformed54')]
     public function testAssertMalformed55(): void
     {
         $this->runAssertMalformedCommand(
@@ -569,7 +513,6 @@ final class Utf8CustomSectionIdTest extends SpecTestsuiteBase
         );
     }
 
-    #[Depends('testAssertMalformed55')]
     public function testAssertMalformed56(): void
     {
         $this->runAssertMalformedCommand(
@@ -579,7 +522,6 @@ final class Utf8CustomSectionIdTest extends SpecTestsuiteBase
         );
     }
 
-    #[Depends('testAssertMalformed56')]
     public function testAssertMalformed57(): void
     {
         $this->runAssertMalformedCommand(
@@ -589,7 +531,6 @@ final class Utf8CustomSectionIdTest extends SpecTestsuiteBase
         );
     }
 
-    #[Depends('testAssertMalformed57')]
     public function testAssertMalformed58(): void
     {
         $this->runAssertMalformedCommand(
@@ -599,7 +540,6 @@ final class Utf8CustomSectionIdTest extends SpecTestsuiteBase
         );
     }
 
-    #[Depends('testAssertMalformed58')]
     public function testAssertMalformed59(): void
     {
         $this->runAssertMalformedCommand(
@@ -609,7 +549,6 @@ final class Utf8CustomSectionIdTest extends SpecTestsuiteBase
         );
     }
 
-    #[Depends('testAssertMalformed59')]
     public function testAssertMalformed60(): void
     {
         $this->runAssertMalformedCommand(
@@ -619,7 +558,6 @@ final class Utf8CustomSectionIdTest extends SpecTestsuiteBase
         );
     }
 
-    #[Depends('testAssertMalformed60')]
     public function testAssertMalformed61(): void
     {
         $this->runAssertMalformedCommand(
@@ -629,7 +567,6 @@ final class Utf8CustomSectionIdTest extends SpecTestsuiteBase
         );
     }
 
-    #[Depends('testAssertMalformed61')]
     public function testAssertMalformed62(): void
     {
         $this->runAssertMalformedCommand(
@@ -639,7 +576,6 @@ final class Utf8CustomSectionIdTest extends SpecTestsuiteBase
         );
     }
 
-    #[Depends('testAssertMalformed62')]
     public function testAssertMalformed63(): void
     {
         $this->runAssertMalformedCommand(
@@ -649,7 +585,6 @@ final class Utf8CustomSectionIdTest extends SpecTestsuiteBase
         );
     }
 
-    #[Depends('testAssertMalformed63')]
     public function testAssertMalformed64(): void
     {
         $this->runAssertMalformedCommand(
@@ -659,7 +594,6 @@ final class Utf8CustomSectionIdTest extends SpecTestsuiteBase
         );
     }
 
-    #[Depends('testAssertMalformed64')]
     public function testAssertMalformed65(): void
     {
         $this->runAssertMalformedCommand(
@@ -669,7 +603,6 @@ final class Utf8CustomSectionIdTest extends SpecTestsuiteBase
         );
     }
 
-    #[Depends('testAssertMalformed65')]
     public function testAssertMalformed66(): void
     {
         $this->runAssertMalformedCommand(
@@ -679,7 +612,6 @@ final class Utf8CustomSectionIdTest extends SpecTestsuiteBase
         );
     }
 
-    #[Depends('testAssertMalformed66')]
     public function testAssertMalformed67(): void
     {
         $this->runAssertMalformedCommand(
@@ -689,7 +621,6 @@ final class Utf8CustomSectionIdTest extends SpecTestsuiteBase
         );
     }
 
-    #[Depends('testAssertMalformed67')]
     public function testAssertMalformed68(): void
     {
         $this->runAssertMalformedCommand(
@@ -699,7 +630,6 @@ final class Utf8CustomSectionIdTest extends SpecTestsuiteBase
         );
     }
 
-    #[Depends('testAssertMalformed68')]
     public function testAssertMalformed69(): void
     {
         $this->runAssertMalformedCommand(
@@ -709,7 +639,6 @@ final class Utf8CustomSectionIdTest extends SpecTestsuiteBase
         );
     }
 
-    #[Depends('testAssertMalformed69')]
     public function testAssertMalformed70(): void
     {
         $this->runAssertMalformedCommand(
@@ -719,7 +648,6 @@ final class Utf8CustomSectionIdTest extends SpecTestsuiteBase
         );
     }
 
-    #[Depends('testAssertMalformed70')]
     public function testAssertMalformed71(): void
     {
         $this->runAssertMalformedCommand(
@@ -729,7 +657,6 @@ final class Utf8CustomSectionIdTest extends SpecTestsuiteBase
         );
     }
 
-    #[Depends('testAssertMalformed71')]
     public function testAssertMalformed72(): void
     {
         $this->runAssertMalformedCommand(
@@ -739,7 +666,6 @@ final class Utf8CustomSectionIdTest extends SpecTestsuiteBase
         );
     }
 
-    #[Depends('testAssertMalformed72')]
     public function testAssertMalformed73(): void
     {
         $this->runAssertMalformedCommand(
@@ -749,7 +675,6 @@ final class Utf8CustomSectionIdTest extends SpecTestsuiteBase
         );
     }
 
-    #[Depends('testAssertMalformed73')]
     public function testAssertMalformed74(): void
     {
         $this->runAssertMalformedCommand(
@@ -759,7 +684,6 @@ final class Utf8CustomSectionIdTest extends SpecTestsuiteBase
         );
     }
 
-    #[Depends('testAssertMalformed74')]
     public function testAssertMalformed75(): void
     {
         $this->runAssertMalformedCommand(
@@ -769,7 +693,6 @@ final class Utf8CustomSectionIdTest extends SpecTestsuiteBase
         );
     }
 
-    #[Depends('testAssertMalformed75')]
     public function testAssertMalformed76(): void
     {
         $this->runAssertMalformedCommand(
@@ -779,7 +702,6 @@ final class Utf8CustomSectionIdTest extends SpecTestsuiteBase
         );
     }
 
-    #[Depends('testAssertMalformed76')]
     public function testAssertMalformed77(): void
     {
         $this->runAssertMalformedCommand(
@@ -789,7 +711,6 @@ final class Utf8CustomSectionIdTest extends SpecTestsuiteBase
         );
     }
 
-    #[Depends('testAssertMalformed77')]
     public function testAssertMalformed78(): void
     {
         $this->runAssertMalformedCommand(
@@ -799,7 +720,6 @@ final class Utf8CustomSectionIdTest extends SpecTestsuiteBase
         );
     }
 
-    #[Depends('testAssertMalformed78')]
     public function testAssertMalformed79(): void
     {
         $this->runAssertMalformedCommand(
@@ -809,7 +729,6 @@ final class Utf8CustomSectionIdTest extends SpecTestsuiteBase
         );
     }
 
-    #[Depends('testAssertMalformed79')]
     public function testAssertMalformed80(): void
     {
         $this->runAssertMalformedCommand(
@@ -819,7 +738,6 @@ final class Utf8CustomSectionIdTest extends SpecTestsuiteBase
         );
     }
 
-    #[Depends('testAssertMalformed80')]
     public function testAssertMalformed81(): void
     {
         $this->runAssertMalformedCommand(
@@ -829,7 +747,6 @@ final class Utf8CustomSectionIdTest extends SpecTestsuiteBase
         );
     }
 
-    #[Depends('testAssertMalformed81')]
     public function testAssertMalformed82(): void
     {
         $this->runAssertMalformedCommand(
@@ -839,7 +756,6 @@ final class Utf8CustomSectionIdTest extends SpecTestsuiteBase
         );
     }
 
-    #[Depends('testAssertMalformed82')]
     public function testAssertMalformed83(): void
     {
         $this->runAssertMalformedCommand(
@@ -849,7 +765,6 @@ final class Utf8CustomSectionIdTest extends SpecTestsuiteBase
         );
     }
 
-    #[Depends('testAssertMalformed83')]
     public function testAssertMalformed84(): void
     {
         $this->runAssertMalformedCommand(
@@ -859,7 +774,6 @@ final class Utf8CustomSectionIdTest extends SpecTestsuiteBase
         );
     }
 
-    #[Depends('testAssertMalformed84')]
     public function testAssertMalformed85(): void
     {
         $this->runAssertMalformedCommand(
@@ -869,7 +783,6 @@ final class Utf8CustomSectionIdTest extends SpecTestsuiteBase
         );
     }
 
-    #[Depends('testAssertMalformed85')]
     public function testAssertMalformed86(): void
     {
         $this->runAssertMalformedCommand(
@@ -879,7 +792,6 @@ final class Utf8CustomSectionIdTest extends SpecTestsuiteBase
         );
     }
 
-    #[Depends('testAssertMalformed86')]
     public function testAssertMalformed87(): void
     {
         $this->runAssertMalformedCommand(
@@ -889,7 +801,6 @@ final class Utf8CustomSectionIdTest extends SpecTestsuiteBase
         );
     }
 
-    #[Depends('testAssertMalformed87')]
     public function testAssertMalformed88(): void
     {
         $this->runAssertMalformedCommand(
@@ -899,7 +810,6 @@ final class Utf8CustomSectionIdTest extends SpecTestsuiteBase
         );
     }
 
-    #[Depends('testAssertMalformed88')]
     public function testAssertMalformed89(): void
     {
         $this->runAssertMalformedCommand(
@@ -909,7 +819,6 @@ final class Utf8CustomSectionIdTest extends SpecTestsuiteBase
         );
     }
 
-    #[Depends('testAssertMalformed89')]
     public function testAssertMalformed90(): void
     {
         $this->runAssertMalformedCommand(
@@ -919,7 +828,6 @@ final class Utf8CustomSectionIdTest extends SpecTestsuiteBase
         );
     }
 
-    #[Depends('testAssertMalformed90')]
     public function testAssertMalformed91(): void
     {
         $this->runAssertMalformedCommand(
@@ -929,7 +837,6 @@ final class Utf8CustomSectionIdTest extends SpecTestsuiteBase
         );
     }
 
-    #[Depends('testAssertMalformed91')]
     public function testAssertMalformed92(): void
     {
         $this->runAssertMalformedCommand(
@@ -939,7 +846,6 @@ final class Utf8CustomSectionIdTest extends SpecTestsuiteBase
         );
     }
 
-    #[Depends('testAssertMalformed92')]
     public function testAssertMalformed93(): void
     {
         $this->runAssertMalformedCommand(
@@ -949,7 +855,6 @@ final class Utf8CustomSectionIdTest extends SpecTestsuiteBase
         );
     }
 
-    #[Depends('testAssertMalformed93')]
     public function testAssertMalformed94(): void
     {
         $this->runAssertMalformedCommand(
@@ -959,7 +864,6 @@ final class Utf8CustomSectionIdTest extends SpecTestsuiteBase
         );
     }
 
-    #[Depends('testAssertMalformed94')]
     public function testAssertMalformed95(): void
     {
         $this->runAssertMalformedCommand(
@@ -969,7 +873,6 @@ final class Utf8CustomSectionIdTest extends SpecTestsuiteBase
         );
     }
 
-    #[Depends('testAssertMalformed95')]
     public function testAssertMalformed96(): void
     {
         $this->runAssertMalformedCommand(
@@ -979,7 +882,6 @@ final class Utf8CustomSectionIdTest extends SpecTestsuiteBase
         );
     }
 
-    #[Depends('testAssertMalformed96')]
     public function testAssertMalformed97(): void
     {
         $this->runAssertMalformedCommand(
@@ -989,7 +891,6 @@ final class Utf8CustomSectionIdTest extends SpecTestsuiteBase
         );
     }
 
-    #[Depends('testAssertMalformed97')]
     public function testAssertMalformed98(): void
     {
         $this->runAssertMalformedCommand(
@@ -999,7 +900,6 @@ final class Utf8CustomSectionIdTest extends SpecTestsuiteBase
         );
     }
 
-    #[Depends('testAssertMalformed98')]
     public function testAssertMalformed99(): void
     {
         $this->runAssertMalformedCommand(
@@ -1009,7 +909,6 @@ final class Utf8CustomSectionIdTest extends SpecTestsuiteBase
         );
     }
 
-    #[Depends('testAssertMalformed99')]
     public function testAssertMalformed100(): void
     {
         $this->runAssertMalformedCommand(
@@ -1019,7 +918,6 @@ final class Utf8CustomSectionIdTest extends SpecTestsuiteBase
         );
     }
 
-    #[Depends('testAssertMalformed100')]
     public function testAssertMalformed101(): void
     {
         $this->runAssertMalformedCommand(
@@ -1029,7 +927,6 @@ final class Utf8CustomSectionIdTest extends SpecTestsuiteBase
         );
     }
 
-    #[Depends('testAssertMalformed101')]
     public function testAssertMalformed102(): void
     {
         $this->runAssertMalformedCommand(
@@ -1039,7 +936,6 @@ final class Utf8CustomSectionIdTest extends SpecTestsuiteBase
         );
     }
 
-    #[Depends('testAssertMalformed102')]
     public function testAssertMalformed103(): void
     {
         $this->runAssertMalformedCommand(
@@ -1049,7 +945,6 @@ final class Utf8CustomSectionIdTest extends SpecTestsuiteBase
         );
     }
 
-    #[Depends('testAssertMalformed103')]
     public function testAssertMalformed104(): void
     {
         $this->runAssertMalformedCommand(
@@ -1059,7 +954,6 @@ final class Utf8CustomSectionIdTest extends SpecTestsuiteBase
         );
     }
 
-    #[Depends('testAssertMalformed104')]
     public function testAssertMalformed105(): void
     {
         $this->runAssertMalformedCommand(
@@ -1069,7 +963,6 @@ final class Utf8CustomSectionIdTest extends SpecTestsuiteBase
         );
     }
 
-    #[Depends('testAssertMalformed105')]
     public function testAssertMalformed106(): void
     {
         $this->runAssertMalformedCommand(
@@ -1079,7 +972,6 @@ final class Utf8CustomSectionIdTest extends SpecTestsuiteBase
         );
     }
 
-    #[Depends('testAssertMalformed106')]
     public function testAssertMalformed107(): void
     {
         $this->runAssertMalformedCommand(
@@ -1089,7 +981,6 @@ final class Utf8CustomSectionIdTest extends SpecTestsuiteBase
         );
     }
 
-    #[Depends('testAssertMalformed107')]
     public function testAssertMalformed108(): void
     {
         $this->runAssertMalformedCommand(
@@ -1099,7 +990,6 @@ final class Utf8CustomSectionIdTest extends SpecTestsuiteBase
         );
     }
 
-    #[Depends('testAssertMalformed108')]
     public function testAssertMalformed109(): void
     {
         $this->runAssertMalformedCommand(
@@ -1109,7 +999,6 @@ final class Utf8CustomSectionIdTest extends SpecTestsuiteBase
         );
     }
 
-    #[Depends('testAssertMalformed109')]
     public function testAssertMalformed110(): void
     {
         $this->runAssertMalformedCommand(
@@ -1119,7 +1008,6 @@ final class Utf8CustomSectionIdTest extends SpecTestsuiteBase
         );
     }
 
-    #[Depends('testAssertMalformed110')]
     public function testAssertMalformed111(): void
     {
         $this->runAssertMalformedCommand(
@@ -1129,7 +1017,6 @@ final class Utf8CustomSectionIdTest extends SpecTestsuiteBase
         );
     }
 
-    #[Depends('testAssertMalformed111')]
     public function testAssertMalformed112(): void
     {
         $this->runAssertMalformedCommand(
@@ -1139,7 +1026,6 @@ final class Utf8CustomSectionIdTest extends SpecTestsuiteBase
         );
     }
 
-    #[Depends('testAssertMalformed112')]
     public function testAssertMalformed113(): void
     {
         $this->runAssertMalformedCommand(
@@ -1149,7 +1035,6 @@ final class Utf8CustomSectionIdTest extends SpecTestsuiteBase
         );
     }
 
-    #[Depends('testAssertMalformed113')]
     public function testAssertMalformed114(): void
     {
         $this->runAssertMalformedCommand(
@@ -1159,7 +1044,6 @@ final class Utf8CustomSectionIdTest extends SpecTestsuiteBase
         );
     }
 
-    #[Depends('testAssertMalformed114')]
     public function testAssertMalformed115(): void
     {
         $this->runAssertMalformedCommand(
@@ -1169,7 +1053,6 @@ final class Utf8CustomSectionIdTest extends SpecTestsuiteBase
         );
     }
 
-    #[Depends('testAssertMalformed115')]
     public function testAssertMalformed116(): void
     {
         $this->runAssertMalformedCommand(
@@ -1179,7 +1062,6 @@ final class Utf8CustomSectionIdTest extends SpecTestsuiteBase
         );
     }
 
-    #[Depends('testAssertMalformed116')]
     public function testAssertMalformed117(): void
     {
         $this->runAssertMalformedCommand(
@@ -1189,7 +1071,6 @@ final class Utf8CustomSectionIdTest extends SpecTestsuiteBase
         );
     }
 
-    #[Depends('testAssertMalformed117')]
     public function testAssertMalformed118(): void
     {
         $this->runAssertMalformedCommand(
@@ -1199,7 +1080,6 @@ final class Utf8CustomSectionIdTest extends SpecTestsuiteBase
         );
     }
 
-    #[Depends('testAssertMalformed118')]
     public function testAssertMalformed119(): void
     {
         $this->runAssertMalformedCommand(
@@ -1209,7 +1089,6 @@ final class Utf8CustomSectionIdTest extends SpecTestsuiteBase
         );
     }
 
-    #[Depends('testAssertMalformed119')]
     public function testAssertMalformed120(): void
     {
         $this->runAssertMalformedCommand(
@@ -1219,7 +1098,6 @@ final class Utf8CustomSectionIdTest extends SpecTestsuiteBase
         );
     }
 
-    #[Depends('testAssertMalformed120')]
     public function testAssertMalformed121(): void
     {
         $this->runAssertMalformedCommand(
@@ -1229,7 +1107,6 @@ final class Utf8CustomSectionIdTest extends SpecTestsuiteBase
         );
     }
 
-    #[Depends('testAssertMalformed121')]
     public function testAssertMalformed122(): void
     {
         $this->runAssertMalformedCommand(
@@ -1239,7 +1116,6 @@ final class Utf8CustomSectionIdTest extends SpecTestsuiteBase
         );
     }
 
-    #[Depends('testAssertMalformed122')]
     public function testAssertMalformed123(): void
     {
         $this->runAssertMalformedCommand(
@@ -1249,7 +1125,6 @@ final class Utf8CustomSectionIdTest extends SpecTestsuiteBase
         );
     }
 
-    #[Depends('testAssertMalformed123')]
     public function testAssertMalformed124(): void
     {
         $this->runAssertMalformedCommand(
@@ -1259,7 +1134,6 @@ final class Utf8CustomSectionIdTest extends SpecTestsuiteBase
         );
     }
 
-    #[Depends('testAssertMalformed124')]
     public function testAssertMalformed125(): void
     {
         $this->runAssertMalformedCommand(
@@ -1269,7 +1143,6 @@ final class Utf8CustomSectionIdTest extends SpecTestsuiteBase
         );
     }
 
-    #[Depends('testAssertMalformed125')]
     public function testAssertMalformed126(): void
     {
         $this->runAssertMalformedCommand(
@@ -1279,7 +1152,6 @@ final class Utf8CustomSectionIdTest extends SpecTestsuiteBase
         );
     }
 
-    #[Depends('testAssertMalformed126')]
     public function testAssertMalformed127(): void
     {
         $this->runAssertMalformedCommand(
@@ -1289,7 +1161,6 @@ final class Utf8CustomSectionIdTest extends SpecTestsuiteBase
         );
     }
 
-    #[Depends('testAssertMalformed127')]
     public function testAssertMalformed128(): void
     {
         $this->runAssertMalformedCommand(
@@ -1299,7 +1170,6 @@ final class Utf8CustomSectionIdTest extends SpecTestsuiteBase
         );
     }
 
-    #[Depends('testAssertMalformed128')]
     public function testAssertMalformed129(): void
     {
         $this->runAssertMalformedCommand(
@@ -1309,7 +1179,6 @@ final class Utf8CustomSectionIdTest extends SpecTestsuiteBase
         );
     }
 
-    #[Depends('testAssertMalformed129')]
     public function testAssertMalformed130(): void
     {
         $this->runAssertMalformedCommand(
@@ -1319,7 +1188,6 @@ final class Utf8CustomSectionIdTest extends SpecTestsuiteBase
         );
     }
 
-    #[Depends('testAssertMalformed130')]
     public function testAssertMalformed131(): void
     {
         $this->runAssertMalformedCommand(
@@ -1329,7 +1197,6 @@ final class Utf8CustomSectionIdTest extends SpecTestsuiteBase
         );
     }
 
-    #[Depends('testAssertMalformed131')]
     public function testAssertMalformed132(): void
     {
         $this->runAssertMalformedCommand(
@@ -1339,7 +1206,6 @@ final class Utf8CustomSectionIdTest extends SpecTestsuiteBase
         );
     }
 
-    #[Depends('testAssertMalformed132')]
     public function testAssertMalformed133(): void
     {
         $this->runAssertMalformedCommand(
@@ -1349,7 +1215,6 @@ final class Utf8CustomSectionIdTest extends SpecTestsuiteBase
         );
     }
 
-    #[Depends('testAssertMalformed133')]
     public function testAssertMalformed134(): void
     {
         $this->runAssertMalformedCommand(
@@ -1359,7 +1224,6 @@ final class Utf8CustomSectionIdTest extends SpecTestsuiteBase
         );
     }
 
-    #[Depends('testAssertMalformed134')]
     public function testAssertMalformed135(): void
     {
         $this->runAssertMalformedCommand(
@@ -1369,7 +1233,6 @@ final class Utf8CustomSectionIdTest extends SpecTestsuiteBase
         );
     }
 
-    #[Depends('testAssertMalformed135')]
     public function testAssertMalformed136(): void
     {
         $this->runAssertMalformedCommand(
@@ -1379,7 +1242,6 @@ final class Utf8CustomSectionIdTest extends SpecTestsuiteBase
         );
     }
 
-    #[Depends('testAssertMalformed136')]
     public function testAssertMalformed137(): void
     {
         $this->runAssertMalformedCommand(
@@ -1389,7 +1251,6 @@ final class Utf8CustomSectionIdTest extends SpecTestsuiteBase
         );
     }
 
-    #[Depends('testAssertMalformed137')]
     public function testAssertMalformed138(): void
     {
         $this->runAssertMalformedCommand(
@@ -1399,7 +1260,6 @@ final class Utf8CustomSectionIdTest extends SpecTestsuiteBase
         );
     }
 
-    #[Depends('testAssertMalformed138')]
     public function testAssertMalformed139(): void
     {
         $this->runAssertMalformedCommand(
@@ -1409,7 +1269,6 @@ final class Utf8CustomSectionIdTest extends SpecTestsuiteBase
         );
     }
 
-    #[Depends('testAssertMalformed139')]
     public function testAssertMalformed140(): void
     {
         $this->runAssertMalformedCommand(
@@ -1419,7 +1278,6 @@ final class Utf8CustomSectionIdTest extends SpecTestsuiteBase
         );
     }
 
-    #[Depends('testAssertMalformed140')]
     public function testAssertMalformed141(): void
     {
         $this->runAssertMalformedCommand(
@@ -1429,7 +1287,6 @@ final class Utf8CustomSectionIdTest extends SpecTestsuiteBase
         );
     }
 
-    #[Depends('testAssertMalformed141')]
     public function testAssertMalformed142(): void
     {
         $this->runAssertMalformedCommand(
@@ -1439,7 +1296,6 @@ final class Utf8CustomSectionIdTest extends SpecTestsuiteBase
         );
     }
 
-    #[Depends('testAssertMalformed142')]
     public function testAssertMalformed143(): void
     {
         $this->runAssertMalformedCommand(
@@ -1449,7 +1305,6 @@ final class Utf8CustomSectionIdTest extends SpecTestsuiteBase
         );
     }
 
-    #[Depends('testAssertMalformed143')]
     public function testAssertMalformed144(): void
     {
         $this->runAssertMalformedCommand(
@@ -1459,7 +1314,6 @@ final class Utf8CustomSectionIdTest extends SpecTestsuiteBase
         );
     }
 
-    #[Depends('testAssertMalformed144')]
     public function testAssertMalformed145(): void
     {
         $this->runAssertMalformedCommand(
@@ -1469,7 +1323,6 @@ final class Utf8CustomSectionIdTest extends SpecTestsuiteBase
         );
     }
 
-    #[Depends('testAssertMalformed145')]
     public function testAssertMalformed146(): void
     {
         $this->runAssertMalformedCommand(
@@ -1479,7 +1332,6 @@ final class Utf8CustomSectionIdTest extends SpecTestsuiteBase
         );
     }
 
-    #[Depends('testAssertMalformed146')]
     public function testAssertMalformed147(): void
     {
         $this->runAssertMalformedCommand(
@@ -1489,7 +1341,6 @@ final class Utf8CustomSectionIdTest extends SpecTestsuiteBase
         );
     }
 
-    #[Depends('testAssertMalformed147')]
     public function testAssertMalformed148(): void
     {
         $this->runAssertMalformedCommand(
@@ -1499,7 +1350,6 @@ final class Utf8CustomSectionIdTest extends SpecTestsuiteBase
         );
     }
 
-    #[Depends('testAssertMalformed148')]
     public function testAssertMalformed149(): void
     {
         $this->runAssertMalformedCommand(
@@ -1509,7 +1359,6 @@ final class Utf8CustomSectionIdTest extends SpecTestsuiteBase
         );
     }
 
-    #[Depends('testAssertMalformed149')]
     public function testAssertMalformed150(): void
     {
         $this->runAssertMalformedCommand(
@@ -1519,7 +1368,6 @@ final class Utf8CustomSectionIdTest extends SpecTestsuiteBase
         );
     }
 
-    #[Depends('testAssertMalformed150')]
     public function testAssertMalformed151(): void
     {
         $this->runAssertMalformedCommand(
@@ -1529,7 +1377,6 @@ final class Utf8CustomSectionIdTest extends SpecTestsuiteBase
         );
     }
 
-    #[Depends('testAssertMalformed151')]
     public function testAssertMalformed152(): void
     {
         $this->runAssertMalformedCommand(
@@ -1539,7 +1386,6 @@ final class Utf8CustomSectionIdTest extends SpecTestsuiteBase
         );
     }
 
-    #[Depends('testAssertMalformed152')]
     public function testAssertMalformed153(): void
     {
         $this->runAssertMalformedCommand(
@@ -1549,7 +1395,6 @@ final class Utf8CustomSectionIdTest extends SpecTestsuiteBase
         );
     }
 
-    #[Depends('testAssertMalformed153')]
     public function testAssertMalformed154(): void
     {
         $this->runAssertMalformedCommand(
@@ -1559,7 +1404,6 @@ final class Utf8CustomSectionIdTest extends SpecTestsuiteBase
         );
     }
 
-    #[Depends('testAssertMalformed154')]
     public function testAssertMalformed155(): void
     {
         $this->runAssertMalformedCommand(
@@ -1569,7 +1413,6 @@ final class Utf8CustomSectionIdTest extends SpecTestsuiteBase
         );
     }
 
-    #[Depends('testAssertMalformed155')]
     public function testAssertMalformed156(): void
     {
         $this->runAssertMalformedCommand(
@@ -1579,7 +1422,6 @@ final class Utf8CustomSectionIdTest extends SpecTestsuiteBase
         );
     }
 
-    #[Depends('testAssertMalformed156')]
     public function testAssertMalformed157(): void
     {
         $this->runAssertMalformedCommand(
@@ -1589,7 +1431,6 @@ final class Utf8CustomSectionIdTest extends SpecTestsuiteBase
         );
     }
 
-    #[Depends('testAssertMalformed157')]
     public function testAssertMalformed158(): void
     {
         $this->runAssertMalformedCommand(
@@ -1599,7 +1440,6 @@ final class Utf8CustomSectionIdTest extends SpecTestsuiteBase
         );
     }
 
-    #[Depends('testAssertMalformed158')]
     public function testAssertMalformed159(): void
     {
         $this->runAssertMalformedCommand(
@@ -1609,7 +1449,6 @@ final class Utf8CustomSectionIdTest extends SpecTestsuiteBase
         );
     }
 
-    #[Depends('testAssertMalformed159')]
     public function testAssertMalformed160(): void
     {
         $this->runAssertMalformedCommand(
@@ -1619,7 +1458,6 @@ final class Utf8CustomSectionIdTest extends SpecTestsuiteBase
         );
     }
 
-    #[Depends('testAssertMalformed160')]
     public function testAssertMalformed161(): void
     {
         $this->runAssertMalformedCommand(
@@ -1629,7 +1467,6 @@ final class Utf8CustomSectionIdTest extends SpecTestsuiteBase
         );
     }
 
-    #[Depends('testAssertMalformed161')]
     public function testAssertMalformed162(): void
     {
         $this->runAssertMalformedCommand(
@@ -1639,7 +1476,6 @@ final class Utf8CustomSectionIdTest extends SpecTestsuiteBase
         );
     }
 
-    #[Depends('testAssertMalformed162')]
     public function testAssertMalformed163(): void
     {
         $this->runAssertMalformedCommand(
@@ -1649,7 +1485,6 @@ final class Utf8CustomSectionIdTest extends SpecTestsuiteBase
         );
     }
 
-    #[Depends('testAssertMalformed163')]
     public function testAssertMalformed164(): void
     {
         $this->runAssertMalformedCommand(
@@ -1659,7 +1494,6 @@ final class Utf8CustomSectionIdTest extends SpecTestsuiteBase
         );
     }
 
-    #[Depends('testAssertMalformed164')]
     public function testAssertMalformed165(): void
     {
         $this->runAssertMalformedCommand(
@@ -1669,7 +1503,6 @@ final class Utf8CustomSectionIdTest extends SpecTestsuiteBase
         );
     }
 
-    #[Depends('testAssertMalformed165')]
     public function testAssertMalformed166(): void
     {
         $this->runAssertMalformedCommand(
@@ -1679,7 +1512,6 @@ final class Utf8CustomSectionIdTest extends SpecTestsuiteBase
         );
     }
 
-    #[Depends('testAssertMalformed166')]
     public function testAssertMalformed167(): void
     {
         $this->runAssertMalformedCommand(
@@ -1689,7 +1521,6 @@ final class Utf8CustomSectionIdTest extends SpecTestsuiteBase
         );
     }
 
-    #[Depends('testAssertMalformed167')]
     public function testAssertMalformed168(): void
     {
         $this->runAssertMalformedCommand(
@@ -1699,7 +1530,6 @@ final class Utf8CustomSectionIdTest extends SpecTestsuiteBase
         );
     }
 
-    #[Depends('testAssertMalformed168')]
     public function testAssertMalformed169(): void
     {
         $this->runAssertMalformedCommand(
@@ -1709,7 +1539,6 @@ final class Utf8CustomSectionIdTest extends SpecTestsuiteBase
         );
     }
 
-    #[Depends('testAssertMalformed169')]
     public function testAssertMalformed170(): void
     {
         $this->runAssertMalformedCommand(
@@ -1719,7 +1548,6 @@ final class Utf8CustomSectionIdTest extends SpecTestsuiteBase
         );
     }
 
-    #[Depends('testAssertMalformed170')]
     public function testAssertMalformed171(): void
     {
         $this->runAssertMalformedCommand(
@@ -1729,7 +1557,6 @@ final class Utf8CustomSectionIdTest extends SpecTestsuiteBase
         );
     }
 
-    #[Depends('testAssertMalformed171')]
     public function testAssertMalformed172(): void
     {
         $this->runAssertMalformedCommand(
@@ -1739,7 +1566,6 @@ final class Utf8CustomSectionIdTest extends SpecTestsuiteBase
         );
     }
 
-    #[Depends('testAssertMalformed172')]
     public function testAssertMalformed173(): void
     {
         $this->runAssertMalformedCommand(
@@ -1749,7 +1575,6 @@ final class Utf8CustomSectionIdTest extends SpecTestsuiteBase
         );
     }
 
-    #[Depends('testAssertMalformed173')]
     public function testAssertMalformed174(): void
     {
         $this->runAssertMalformedCommand(
@@ -1759,7 +1584,6 @@ final class Utf8CustomSectionIdTest extends SpecTestsuiteBase
         );
     }
 
-    #[Depends('testAssertMalformed174')]
     public function testAssertMalformed175(): void
     {
         $this->runAssertMalformedCommand(
