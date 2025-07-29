@@ -86,11 +86,11 @@ final class MemInst
             return -1;
         }
 
-        $limits = $this->type->limits;
-        $limits_ = new Limits($len, $limits->max);
-        if (!$limits_->isValid()) {
+        $limits = new Limits($len, $this->type->limits->max);
+        if (!$limits->isValid()) {
             return -1;
         }
+        $this->type = new MemType($limits);
 
         $originalSize = $this->size();
         // @phpstan-ignore-next-line
