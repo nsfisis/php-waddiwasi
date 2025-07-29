@@ -613,7 +613,7 @@ final class Decoder
     {
         $count = $this->decodeU32();
         // @todo Provide a way to configure the limit.
-        if (1024 < $count) {
+        if (1056 < $count) {
             throw new InvalidBinaryFormatException("too many local variables");
         }
         $type = $this->decodeValType();

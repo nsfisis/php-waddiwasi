@@ -79,6 +79,7 @@
             <file>tests/src/SpecTestsuites/Core/RefNullTest.php</file>
             <file>tests/src/SpecTestsuites/Core/ReturnTest.php</file>
             <file>tests/src/SpecTestsuites/Core/SelectTest.php</file>
+            <file>tests/src/SpecTestsuites/Core/SkipStackGuardPageTest.php</file>
             <file>tests/src/SpecTestsuites/Core/StackTest.php</file>
             <file>tests/src/SpecTestsuites/Core/StartTest.php</file>
             <file>tests/src/SpecTestsuites/Core/StoreTest.php</file>
