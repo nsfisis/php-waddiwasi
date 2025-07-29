@@ -10,6 +10,6 @@ final readonly class F64Ge extends Instr
 {
     public static function opName(): string
     {
-        return "f64.ge";
+        return 'f64.ge';
     }
 }

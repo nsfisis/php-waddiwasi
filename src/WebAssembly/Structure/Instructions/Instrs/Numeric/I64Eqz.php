@@ -10,6 +10,6 @@ final readonly class I64Eqz extends Instr
 {
     public static function opName(): string
     {
-        return "i64.eqz";
+        return 'i64.eqz';
     }
 }

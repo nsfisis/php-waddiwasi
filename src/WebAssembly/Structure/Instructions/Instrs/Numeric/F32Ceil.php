@@ -10,6 +10,6 @@ final readonly class F32Ceil extends Instr
 {
     public static function opName(): string
     {
-        return "f32.ceil";
+        return 'f32.ceil';
     }
 }

@@ -10,6 +10,6 @@ final readonly class F32Le extends Instr
 {
     public static function opName(): string
     {
-        return "f32.le";
+        return 'f32.le';
     }
 }

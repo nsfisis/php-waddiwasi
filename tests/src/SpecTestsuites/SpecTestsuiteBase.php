@@ -40,9 +40,13 @@ use function sprintf;
 abstract class SpecTestsuiteBase extends TestCase
 {
     private static $modules = [];
+
     private static $runtimes = [];
+
     private static $registeredModules = [];
+
     private static $registeredRuntimes = [];
+
     private static $store = null;
 
     protected function runModuleCommand(
@@ -51,7 +55,7 @@ abstract class SpecTestsuiteBase extends TestCase
         int $line,
     ): void {
         $moduleName = $name ?? '_';
-        $filePath = __DIR__ . "/../../fixtures/spec_testsuites/core/$filename";
+        $filePath = __DIR__ . "/../../fixtures/spec_testsuites/core/{$filename}";
         $wasmBinaryStream = new FileStream($filePath);
         $module = (new Decoder($wasmBinaryStream))->decode();
         self::$modules[$moduleName] = $module;
@@ -109,10 +113,10 @@ abstract class SpecTestsuiteBase extends TestCase
             $this->assertWasmInvokeResults(
                 $expected,
                 $this->doAction($action),
-                "at $line",
+                "at {$line}",
             );
         } catch (TrapException $e) {
-            $this->assertTrue(false, "assert_return: trap, $e at $line");
+            $this->assertTrue(false, "assert_return: trap, {$e} at {$line}");
         }
     }
 
@@ -127,8 +131,8 @@ abstract class SpecTestsuiteBase extends TestCase
         } catch (TrapException $e) {
             $exception = $e;
         }
-        $this->assertNotNull($exception, "at $line");
-        $this->assertTrapKind($text, $e->getTrapKind(), "at $line");
+        $this->assertNotNull($exception, "at {$line}");
+        $this->assertTrapKind($text, $e->getTrapKind(), "at {$line}");
     }
 
     protected function runAssertMalformedCommand(
@@ -136,7 +140,7 @@ abstract class SpecTestsuiteBase extends TestCase
         string $text,
         int $line,
     ): void {
-        $filePath = __DIR__ . "/../../fixtures/spec_testsuites/core/$filename";
+        $filePath = __DIR__ . "/../../fixtures/spec_testsuites/core/{$filename}";
         $wasmBinaryStream = new FileStream($filePath);
         $exception = null;
         try {
@@ -145,7 +149,7 @@ abstract class SpecTestsuiteBase extends TestCase
             $exception = $e;
         }
         // @todo Check error message.
-        $this->assertNotNull($exception, "decoding $filename is expected to fail (at $line)");
+        $this->assertNotNull($exception, "decoding {$filename} is expected to fail (at {$line})");
     }
 
     protected function runAssertInvalidCommand(
@@ -168,7 +172,7 @@ abstract class SpecTestsuiteBase extends TestCase
         } catch (StackOverflowException $e) {
             $exception = $e;
         }
-        $this->assertNotNull($exception, "at $line");
+        $this->assertNotNull($exception, "at {$line}");
         // @todo Check $text?
     }
 
@@ -177,7 +181,7 @@ abstract class SpecTestsuiteBase extends TestCase
         string $text,
         int $line,
     ): void {
-        $filePath = __DIR__ . "/../../fixtures/spec_testsuites/core/$filename";
+        $filePath = __DIR__ . "/../../fixtures/spec_testsuites/core/{$filename}";
         $wasmBinaryStream = new FileStream($filePath);
         $module = (new Decoder($wasmBinaryStream))->decode();
         $exception = null;
@@ -194,7 +198,7 @@ abstract class SpecTestsuiteBase extends TestCase
             $exception = $e;
         }
         // @todo Check error message.
-        $this->assertNotNull($exception, "instantiating $filename is expected to fail (at $line)");
+        $this->assertNotNull($exception, "instantiating {$filename} is expected to fail (at {$line})");
     }
 
     protected function runAssertUnlinkableCommand(
@@ -202,7 +206,7 @@ abstract class SpecTestsuiteBase extends TestCase
         string $text,
         int $line,
     ): void {
-        $filePath = __DIR__ . "/../../fixtures/spec_testsuites/core/$filename";
+        $filePath = __DIR__ . "/../../fixtures/spec_testsuites/core/{$filename}";
         $wasmBinaryStream = new FileStream($filePath);
         $module = (new Decoder($wasmBinaryStream))->decode();
         $exception = null;
@@ -219,7 +223,7 @@ abstract class SpecTestsuiteBase extends TestCase
             $exception = $e;
         }
         // @todo Check error message.
-        $this->assertNotNull($exception, "linking $filename is expected to fail (at $line)");
+        $this->assertNotNull($exception, "linking {$filename} is expected to fail (at {$line})");
     }
 
     protected function runActionCommand(
@@ -255,19 +259,19 @@ abstract class SpecTestsuiteBase extends TestCase
         $type = $arg['type'];
         $value = $arg['value'];
         return match ($type) {
-            'i32' => BinaryConversion::deserializeS32(BinaryConversion::serializeI32((int)$value)),
+            'i32' => BinaryConversion::deserializeS32(BinaryConversion::serializeI32((int) $value)),
             'i64' => BinaryConversion::deserializeS64(self::convertInt64ToBinary($value)),
             'f32' => match ($value) {
                 'nan:canonical', 'nan:arithmetic' => $value,
-                default => BinaryConversion::deserializeF32(BinaryConversion::serializeI32((int)$value)),
+                default => BinaryConversion::deserializeF32(BinaryConversion::serializeI32((int) $value)),
             },
             'f64' => match ($value) {
                 'nan:canonical', 'nan:arithmetic' => $value,
                 default => BinaryConversion::deserializeF64(self::convertInt64ToBinary($value)),
             },
-            'externref' => $value === 'null' ? Ref::RefNull(ValType::ExternRef) : Ref::RefExtern((int)$value),
-            'funcref' => $value === 'null' ? Ref::RefNull(ValType::FuncRef) : Ref::RefFunc((int)$value),
-            default => throw new RuntimeException("unknown type: $type"),
+            'externref' => $value === 'null' ? Ref::RefNull(ValType::ExternRef) : Ref::RefExtern((int) $value),
+            'funcref' => $value === 'null' ? Ref::RefNull(ValType::FuncRef) : Ref::RefFunc((int) $value),
+            default => throw new RuntimeException("unknown type: {$type}"),
         };
     }
 
@@ -289,9 +293,8 @@ abstract class SpecTestsuiteBase extends TestCase
             $runtime = self::$runtimes[$targetModuleName];
             $addr = $runtime->getExport($actionField)->addr;
             return [$runtime->store->globals[$addr]->value];
-        } else {
-            $this->assertTrue(false, "unknown action: $actionType");
         }
+        $this->assertTrue(false, "unknown action: {$actionType}");
     }
 
     /**
@@ -304,7 +307,7 @@ abstract class SpecTestsuiteBase extends TestCase
         string $message = '',
     ): void {
         if ($message !== '') {
-            $message = " ($message)";
+            $message = " ({$message})";
         }
         $this->assertCount(
             count($expectedResults),
@@ -319,84 +322,84 @@ abstract class SpecTestsuiteBase extends TestCase
             if ($expectedValue === 'nan:canonical') {
                 $this->assertTrue(
                     is_nan($actualResult),
-                    "result $i is not NaN" . $message,
+                    "result {$i} is not NaN" . $message,
                 );
-                $actualBits = sprintf("%064b", BinaryConversion::reinterpretF64AsI64($actualResult));
+                $actualBits = sprintf('%064b', BinaryConversion::reinterpretF64AsI64($actualResult));
                 if (str_starts_with($actualBits, '0')) {
                     $this->assertSame(
-                        sprintf("%064b", BinaryConversion::reinterpretF64AsI64(NAN)),
+                        sprintf('%064b', BinaryConversion::reinterpretF64AsI64(NAN)),
                         $actualBits,
-                        "result $i is not canonical NaN" . $message,
+                        "result {$i} is not canonical NaN" . $message,
                     );
                 } else {
                     $this->assertSame(
-                        sprintf("1%b", BinaryConversion::reinterpretF64AsI64(NAN)),
+                        sprintf('1%b', BinaryConversion::reinterpretF64AsI64(NAN)),
                         $actualBits,
-                        "result $i is not canonical NaN" . $message,
+                        "result {$i} is not canonical NaN" . $message,
                     );
                 }
             } elseif ($expectedValue === 'nan:arithmetic') {
                 $this->assertTrue(
                     is_nan($actualResult),
-                    "result $i is not NaN" . $message,
+                    "result {$i} is not NaN" . $message,
                 );
-                $actualBits = sprintf("%064b", BinaryConversion::reinterpretF64AsI64($actualResult));
+                $actualBits = sprintf('%064b', BinaryConversion::reinterpretF64AsI64($actualResult));
                 if (str_starts_with($actualBits, '0')) {
                     $this->assertStringStartsWith(
                         '0111111111111',
                         $actualBits,
-                        "result $i is not arithmetic NaN" . $message,
+                        "result {$i} is not arithmetic NaN" . $message,
                     );
                 } else {
                     $this->assertStringStartsWith(
                         '1111111111111',
                         $actualBits,
-                        "result $i is not arithmetic NaN" . $message,
+                        "result {$i} is not arithmetic NaN" . $message,
                     );
                 }
             } elseif (is_float($expectedValue) && is_nan($expectedValue)) {
                 $this->assertTrue(
                     is_nan($actualResult),
-                    "result $i is not NaN" . $message,
+                    "result {$i} is not NaN" . $message,
                 );
                 $this->assertSame(
-                    sprintf("%b", BinaryConversion::reinterpretF64AsI64($expectedValue)),
-                    sprintf("%b", BinaryConversion::reinterpretF64AsI64($actualResult)),
-                    "result $i Nan payload mismatch" . $message,
+                    sprintf('%b', BinaryConversion::reinterpretF64AsI64($expectedValue)),
+                    sprintf('%b', BinaryConversion::reinterpretF64AsI64($actualResult)),
+                    "result {$i} Nan payload mismatch" . $message,
                 );
             } elseif ($expectedValue instanceof RefNull) {
                 $this->assertInstanceOf(
                     RefNull::class,
                     $actualResult,
-                    "result $i is not a null" . $message,
+                    "result {$i} is not a null" . $message,
                 );
             } elseif ($expectedValue instanceof RefExtern) {
                 $this->assertInstanceOf(
                     RefExtern::class,
                     $actualResult,
-                    "result $i is not an externref" . $message,
+                    "result {$i} is not an externref" . $message,
                 );
                 $this->assertSame(
                     $expectedValue->addr,
                     $actualResult->addr,
-                    "result $i mismatch" . $message,
+                    "result {$i} mismatch" . $message,
                 );
             } elseif ($expectedValue instanceof RefFunc) {
                 $this->assertInstanceOf(
                     RefFunc::class,
                     $actualResult,
-                    "result $i is not an funcref" . $message,
+                    "result {$i} is not an funcref" . $message,
                 );
                 $this->assertSame(
                     $expectedValue->addr,
                     $actualResult->addr,
-                    "result $i mismatch" . $message,
+                    "result {$i} mismatch" . $message,
                 );
             } else {
                 $this->assertSame(
                     $expectedValue,
                     $actualResult,
-                    "result $i mismatch" . $message,
+                    "result {$i} mismatch" . $message,
                 );
             }
         }
@@ -408,7 +411,7 @@ abstract class SpecTestsuiteBase extends TestCase
         string $message = '',
     ): void {
         if ($message !== '') {
-            $message = " ($message)";
+            $message = " ({$message})";
         }
         $actualErrorMessage = match ($kind) {
             TrapKind::Unknown => 'unknown',
@@ -435,6 +438,6 @@ abstract class SpecTestsuiteBase extends TestCase
         if (bccomp(bcsub(bcpow('2', '63'), '1'), $value) < 0) {
             $value = bcsub($value, bcpow('2', '64'));
         }
-        return BinaryConversion::serializeI64((int)$value);
+        return BinaryConversion::serializeI64((int) $value);
     }
 }

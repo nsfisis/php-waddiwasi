@@ -10,6 +10,6 @@ final readonly class F64Sub extends Instr
 {
     public static function opName(): string
     {
-        return "f64.sub";
+        return 'f64.sub';
     }
 }

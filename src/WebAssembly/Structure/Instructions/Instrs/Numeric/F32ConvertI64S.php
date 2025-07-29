@@ -10,6 +10,6 @@ final readonly class F32ConvertI64S extends Instr
 {
     public static function opName(): string
     {
-        return "f32.convert_i64_s";
+        return 'f32.convert_i64_s';
     }
 }

@@ -15,6 +15,6 @@ final readonly class TableSet extends Instr
 
     public static function opName(): string
     {
-        return "table.set";
+        return 'table.set';
     }
 }

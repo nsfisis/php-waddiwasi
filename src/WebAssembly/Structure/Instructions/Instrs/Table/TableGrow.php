@@ -15,6 +15,6 @@ final readonly class TableGrow extends Instr
 
     public static function opName(): string
     {
-        return "table.grow";
+        return 'table.grow';
     }
 }

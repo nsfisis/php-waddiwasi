@@ -10,6 +10,6 @@ final readonly class F64Lt extends Instr
 {
     public static function opName(): string
     {
-        return "f64.lt";
+        return 'f64.lt';
     }
 }

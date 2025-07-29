@@ -30,7 +30,7 @@ final class FileStream implements StreamInterface
     ) {
         $fp = fopen($path, 'rb');
         if ($fp === false) {
-            throw new IoException("Failed to open file: $path");
+            throw new IoException("Failed to open file: {$path}");
         }
         $this->fp = $fp;
     }
@@ -47,12 +47,10 @@ final class FileStream implements StreamInterface
             $this->peekedByte = null;
             if ($bytes === 1) {
                 return $first;
-            } else {
-                return $first . $this->doRead($bytes - 1);
             }
-        } else {
-            return $this->doRead($bytes);
+            return $first . $this->doRead($bytes - 1);
         }
+        return $this->doRead($bytes);
     }
 
     public function readByte(): int
@@ -82,9 +80,9 @@ final class FileStream implements StreamInterface
     {
         $ret = ftell($this->fp);
         if ($ret === false) {
-            throw new IoException("Failed to get current position in file: $this->path");
+            throw new IoException("Failed to get current position in file: {$this->path}");
         }
-        assert(0 <= $ret);
+        assert($ret >= 0);
         return $ret;
     }
 
@@ -114,10 +112,10 @@ final class FileStream implements StreamInterface
     {
         $result = fread($this->fp, $bytes);
         if ($result === false) {
-            throw new IoException("Failed to read from file: $this->path");
+            throw new IoException("Failed to read from file: {$this->path}");
         }
         if (strlen($result) < $bytes) {
-            throw new UnexpectedEofException(sprintf("Unexpected EOF while reading from file: %s (%d bytes expected, %d bytes read)", $this->path, $bytes, strlen($result)));
+            throw new UnexpectedEofException(sprintf('Unexpected EOF while reading from file: %s (%d bytes expected, %d bytes read)', $this->path, $bytes, strlen($result)));
         }
         return $result;
     }

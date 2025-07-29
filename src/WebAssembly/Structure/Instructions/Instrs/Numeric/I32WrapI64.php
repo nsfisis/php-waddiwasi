@@ -10,6 +10,6 @@ final readonly class I32WrapI64 extends Instr
 {
     public static function opName(): string
     {
-        return "i32.wrap_i64";
+        return 'i32.wrap_i64';
     }
 }

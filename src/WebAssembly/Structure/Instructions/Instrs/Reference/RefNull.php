@@ -19,6 +19,6 @@ final readonly class RefNull extends Instr
 
     public static function opName(): string
     {
-        return "ref.null";
+        return 'ref.null';
     }
 }

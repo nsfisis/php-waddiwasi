@@ -15,6 +15,6 @@ final readonly class TableSize extends Instr
 
     public static function opName(): string
     {
-        return "table.size";
+        return 'table.size';
     }
 }

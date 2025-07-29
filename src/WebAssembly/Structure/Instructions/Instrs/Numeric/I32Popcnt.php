@@ -10,6 +10,6 @@ final readonly class I32Popcnt extends Instr
 {
     public static function opName(): string
     {
-        return "i32.popcnt";
+        return 'i32.popcnt';
     }
 }

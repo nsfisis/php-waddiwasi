@@ -188,7 +188,7 @@ final class Runtime implements ExporterInterface
         try {
             $export = $this->getExport($name);
             if ($export === null) {
-                throw new TrapException("invoke($name) not found", trapKind: TrapKind::UninitializedElement);
+                throw new TrapException("invoke({$name}) not found", trapKind: TrapKind::UninitializedElement);
             }
             assert($export instanceof ExternVals\Func);
             $funcAddr = $export->addr;
@@ -198,9 +198,9 @@ final class Runtime implements ExporterInterface
             $paramTypes = $funcInst->type->params;
             $resultTypes = $funcInst->type->results;
             if (count($paramTypes) !== count($vals)) {
-                throw new RuntimeException("invoke($name) invalid function arity: expected " . count($paramTypes) . ", got " . count($vals));
+                throw new RuntimeException("invoke({$name}) invalid function arity: expected " . count($paramTypes) . ', got ' . count($vals));
             }
-            $f = new Frame(0, [], new ModuleInst([], [], [], [], [], [], [], []), "export: $name");
+            $f = new Frame(0, [], new ModuleInst([], [], [], [], [], [], [], []), "export: {$name}");
             $this->stack->pushFrame($f);
             foreach ($vals as $val) {
                 $this->stack->pushValue($val);
@@ -229,7 +229,7 @@ final class Runtime implements ExporterInterface
         } elseif ($fn instanceof FuncInsts\Host) {
             $this->doInvokeHostFunc($fn);
         } else {
-            throw new RuntimeException("doInvokeFunc: unreachable");
+            throw new RuntimeException('doInvokeFunc: unreachable');
         }
     }
 
@@ -248,7 +248,7 @@ final class Runtime implements ExporterInterface
                 array_map(fn ($local) => self::defaultValueFromValType($local->type), $ts),
             ),
             $fn->module,
-            "wasm: $funcAddr",
+            "wasm: {$funcAddr}",
         );
         $this->activateFrame($f);
         $l = new Label($m);
@@ -265,7 +265,7 @@ final class Runtime implements ExporterInterface
     {
         $vals = $this->stack->popNValues($arity);
         $this->stack->popEntriesToCurrentFrame();
-        for ($i = $arity - 1; 0 <= $i; $i--) {
+        for ($i = $arity - 1; $i >= 0; $i--) {
             $this->stack->pushValue($vals[$i]);
         }
     }
@@ -283,7 +283,7 @@ final class Runtime implements ExporterInterface
             $vals = $this->stack->popNValues($arity);
             $this->stack->popValuesToLabel();
         }
-        for ($i = count($vals) - 1; 0 <= $i; $i--) {
+        for ($i = count($vals) - 1; $i >= 0; $i--) {
             $this->stack->pushValue($vals[$i]);
         }
     }
@@ -301,7 +301,7 @@ final class Runtime implements ExporterInterface
             assert($m === 0);
             return;
         }
-        if (!is_array($results)) {
+        if (! is_array($results)) {
             $results = [$results];
         }
         assert($m === count($results));
@@ -564,7 +564,7 @@ final class Runtime implements ExporterInterface
             Instrs\Control\Nop::class => $this->execInstrControlNop($instr),
             Instrs\Control\Return_::class => $this->execInstrControlReturn_($instr),
             Instrs\Control\Unreachable::class => $this->execInstrControlUnreachable($instr),
-            default => throw new RuntimeException("invalid instruction"),
+            default => throw new RuntimeException('invalid instruction'),
         };
     }
 
@@ -964,7 +964,7 @@ final class Runtime implements ExporterInterface
         $y = $this->stack->popInt();
         $x = $this->stack->popInt();
         $result = NumericOps::i32DivS($x, $y);
-        if (!is_int($result)) {
+        if (! is_int($result)) {
             throw new TrapException($instr::opName() . ': invalid operation', trapKind: $result);
         }
         $this->stack->pushValue($result);
@@ -975,7 +975,7 @@ final class Runtime implements ExporterInterface
         $y = $this->stack->popInt();
         $x = $this->stack->popInt();
         $result = NumericOps::i32DivU($x, $y);
-        if (!is_int($result)) {
+        if (! is_int($result)) {
             throw new TrapException($instr::opName() . ': invalid operation', trapKind: $result);
         }
         $this->stack->pushValue($result);
@@ -1106,7 +1106,7 @@ final class Runtime implements ExporterInterface
         $y = $this->stack->popInt();
         $x = $this->stack->popInt();
         $result = NumericOps::i32RemS($x, $y);
-        if (!is_int($result)) {
+        if (! is_int($result)) {
             throw new TrapException($instr::opName() . ': invalid operation', trapKind: $result);
         }
         $this->stack->pushValue($result);
@@ -1117,7 +1117,7 @@ final class Runtime implements ExporterInterface
         $y = $this->stack->popInt();
         $x = $this->stack->popInt();
         $result = NumericOps::i32RemU($x, $y);
-        if (!is_int($result)) {
+        if (! is_int($result)) {
             throw new TrapException($instr::opName() . ': invalid operation', trapKind: $result);
         }
         $this->stack->pushValue($result);
@@ -1169,7 +1169,7 @@ final class Runtime implements ExporterInterface
     {
         $x = $this->stack->popFloat();
         $result = NumericOps::i32TruncF32S($x);
-        if (!is_int($result)) {
+        if (! is_int($result)) {
             throw new TrapException($instr::opName() . ': invalid operation', trapKind: $result);
         }
         $this->stack->pushValue($result);
@@ -1179,7 +1179,7 @@ final class Runtime implements ExporterInterface
     {
         $x = $this->stack->popFloat();
         $result = NumericOps::i32TruncF32U($x);
-        if (!is_int($result)) {
+        if (! is_int($result)) {
             throw new TrapException($instr::opName() . ': invalid operation', trapKind: $result);
         }
         $this->stack->pushValue($result);
@@ -1189,7 +1189,7 @@ final class Runtime implements ExporterInterface
     {
         $x = $this->stack->popFloat();
         $result = NumericOps::i32TruncF64S($x);
-        if (!is_int($result)) {
+        if (! is_int($result)) {
             throw new TrapException($instr::opName() . ': invalid operation', trapKind: $result);
         }
         $this->stack->pushValue($result);
@@ -1199,7 +1199,7 @@ final class Runtime implements ExporterInterface
     {
         $x = $this->stack->popFloat();
         $result = NumericOps::i32TruncF64U($x);
-        if (!is_int($result)) {
+        if (! is_int($result)) {
             throw new TrapException($instr::opName() . ': invalid operation', trapKind: $result);
         }
         $this->stack->pushValue($result);
@@ -1278,7 +1278,7 @@ final class Runtime implements ExporterInterface
         $y = $this->stack->popInt();
         $x = $this->stack->popInt();
         $result = NumericOps::i64DivS($x, $y);
-        if (!is_int($result)) {
+        if (! is_int($result)) {
             throw new TrapException($instr::opName() . ': invalid operation', trapKind: $result);
         }
         $this->stack->pushValue($result);
@@ -1289,7 +1289,7 @@ final class Runtime implements ExporterInterface
         $y = $this->stack->popInt();
         $x = $this->stack->popInt();
         $result = NumericOps::i64DivU($x, $y);
-        if (!is_int($result)) {
+        if (! is_int($result)) {
             throw new TrapException($instr::opName() . ': invalid operation', trapKind: $result);
         }
         $this->stack->pushValue($result);
@@ -1438,7 +1438,7 @@ final class Runtime implements ExporterInterface
         $y = $this->stack->popInt();
         $x = $this->stack->popInt();
         $result = NumericOps::i64RemS($x, $y);
-        if (!is_int($result)) {
+        if (! is_int($result)) {
             throw new TrapException($instr::opName() . ': invalid operation', trapKind: $result);
         }
         $this->stack->pushValue($result);
@@ -1449,7 +1449,7 @@ final class Runtime implements ExporterInterface
         $y = $this->stack->popInt();
         $x = $this->stack->popInt();
         $result = NumericOps::i64RemU($x, $y);
-        if (!is_int($result)) {
+        if (! is_int($result)) {
             throw new TrapException($instr::opName() . ': invalid operation', trapKind: $result);
         }
         $this->stack->pushValue($result);
@@ -1501,7 +1501,7 @@ final class Runtime implements ExporterInterface
     {
         $x = $this->stack->popFloat();
         $result = NumericOps::i64TruncF32S($x);
-        if (!is_int($result)) {
+        if (! is_int($result)) {
             throw new TrapException($instr::opName() . ': invalid operation', trapKind: $result);
         }
         $this->stack->pushValue($result);
@@ -1511,7 +1511,7 @@ final class Runtime implements ExporterInterface
     {
         $x = $this->stack->popFloat();
         $result = NumericOps::i64TruncF32U($x);
-        if (!is_int($result)) {
+        if (! is_int($result)) {
             throw new TrapException($instr::opName() . ': invalid operation', trapKind: $result);
         }
         $this->stack->pushValue($result);
@@ -1521,7 +1521,7 @@ final class Runtime implements ExporterInterface
     {
         $x = $this->stack->popFloat();
         $result = NumericOps::i64TruncF64S($x);
-        if (!is_int($result)) {
+        if (! is_int($result)) {
             throw new TrapException($instr::opName() . ': invalid operation', trapKind: $result);
         }
         $this->stack->pushValue($result);
@@ -1531,7 +1531,7 @@ final class Runtime implements ExporterInterface
     {
         $x = $this->stack->popFloat();
         $result = NumericOps::i64TruncF64U($x);
-        if (!is_int($result)) {
+        if (! is_int($result)) {
             throw new TrapException($instr::opName() . ': invalid operation', trapKind: $result);
         }
         $this->stack->pushValue($result);
@@ -1631,7 +1631,7 @@ final class Runtime implements ExporterInterface
         $f = $this->stack->currentFrame();
         $val = $f->locals[$x] ?? null;
         if ($val === null) {
-            throw new RuntimeException("local.get: local $x not found in [$f->debugName]");
+            throw new RuntimeException("local.get: local {$x} not found in [{$f->debugName}]");
         }
         $this->stack->pushValue($val);
     }
@@ -1678,7 +1678,7 @@ final class Runtime implements ExporterInterface
         $s = NumericOps::convertS32ToU32($this->stack->popInt());
         $d = NumericOps::convertS32ToU32($this->stack->popInt());
         if (count($tabX->elem) < $d + $n || count($tabY->elem) < $s + $n) {
-            throw new TrapException("table.copy: out of bounds", trapKind: TrapKind::OutOfBoundsTableAccess);
+            throw new TrapException('table.copy: out of bounds', trapKind: TrapKind::OutOfBoundsTableAccess);
         }
         if ($n === 0 || ($x === $y && $d === $s)) {
             return;
@@ -1701,7 +1701,7 @@ final class Runtime implements ExporterInterface
         $val = $this->stack->popRef();
         $i = NumericOps::convertS32ToU32($this->stack->popInt());
         if (count($tab->elem) < $i + $n) {
-            throw new TrapException("table.fill: out of bounds", trapKind: TrapKind::OutOfBoundsTableAccess);
+            throw new TrapException('table.fill: out of bounds', trapKind: TrapKind::OutOfBoundsTableAccess);
         }
         for ($k = 0; $k < $n; $k++) {
             // @phpstan-ignore-next-line
@@ -1717,7 +1717,7 @@ final class Runtime implements ExporterInterface
         $tab = $this->store->tables[$a];
         $i = NumericOps::convertS32ToU32($this->stack->popInt());
         if (count($tab->elem) <= $i) {
-            throw new TrapException("table.get: out of bounds", trapKind: TrapKind::OutOfBoundsTableAccess);
+            throw new TrapException('table.get: out of bounds', trapKind: TrapKind::OutOfBoundsTableAccess);
         }
         $val = $tab->elem[$i];
         $this->stack->pushValue($val);
@@ -1741,7 +1741,7 @@ final class Runtime implements ExporterInterface
 
         $limits = $tab->type->limits;
         $limits_ = new Limits($len, $limits->max);
-        if (!$limits_->isValid()) {
+        if (! $limits_->isValid()) {
             $this->stack->pushValue(-1);
             return;
         }
@@ -1767,10 +1767,10 @@ final class Runtime implements ExporterInterface
         $s = NumericOps::convertS32ToU32($this->stack->popInt());
         $d = NumericOps::convertS32ToU32($this->stack->popInt());
         if (count($elem->elem) < $s + $n) {
-            throw new TrapException("table.init: out of bounds", trapKind: TrapKind::OutOfBoundsTableAccess);
+            throw new TrapException('table.init: out of bounds', trapKind: TrapKind::OutOfBoundsTableAccess);
         }
         if (count($tab->elem) < $d + $n) {
-            throw new TrapException("table.init: out of bounds", trapKind: TrapKind::OutOfBoundsTableAccess);
+            throw new TrapException('table.init: out of bounds', trapKind: TrapKind::OutOfBoundsTableAccess);
         }
         for ($i = 0; $i < $n; $i++) {
             // @phpstan-ignore-next-line
@@ -1787,7 +1787,7 @@ final class Runtime implements ExporterInterface
         $val = $this->stack->popRef();
         $i = NumericOps::convertS32ToU32($this->stack->popInt());
         if (count($tab->elem) <= $i) {
-            throw new TrapException("table.set: out of bounds", trapKind: TrapKind::OutOfBoundsTableAccess);
+            throw new TrapException('table.set: out of bounds', trapKind: TrapKind::OutOfBoundsTableAccess);
         }
         // @phpstan-ignore-next-line
         $tab->elem[$i] = $val;
@@ -1827,8 +1827,8 @@ final class Runtime implements ExporterInterface
         $i = NumericOps::convertS32ToU32($this->stack->popInt());
         $ea = $i + $offset;
         $ok = $mem->storeF32($ea, $c);
-        if (!$ok) {
-            throw new TrapException($instr::opName() . ": out of bounds", trapKind: TrapKind::OutOfBoundsMemoryAccess);
+        if (! $ok) {
+            throw new TrapException($instr::opName() . ': out of bounds', trapKind: TrapKind::OutOfBoundsMemoryAccess);
         }
     }
 
@@ -1847,8 +1847,8 @@ final class Runtime implements ExporterInterface
         $i = NumericOps::convertS32ToU32($this->stack->popInt());
         $ea = $i + $offset;
         $ok = $mem->storeF64($ea, $c);
-        if (!$ok) {
-            throw new TrapException($instr::opName() . ": out of bounds", trapKind: TrapKind::OutOfBoundsMemoryAccess);
+        if (! $ok) {
+            throw new TrapException($instr::opName() . ': out of bounds', trapKind: TrapKind::OutOfBoundsMemoryAccess);
         }
     }
 
@@ -1862,7 +1862,7 @@ final class Runtime implements ExporterInterface
         $ea = $i + $offset;
         $c = $mem->loadI32_s32($ea);
         if ($c === null) {
-            throw new TrapException($instr::opName() . ": out of bounds", trapKind: TrapKind::OutOfBoundsMemoryAccess);
+            throw new TrapException($instr::opName() . ': out of bounds', trapKind: TrapKind::OutOfBoundsMemoryAccess);
         }
         $this->stack->pushValue($c);
     }
@@ -1877,7 +1877,7 @@ final class Runtime implements ExporterInterface
         $ea = $i + $offset;
         $c = $mem->loadI32_s16($ea);
         if ($c === null) {
-            throw new TrapException($instr::opName() . ": out of bounds", trapKind: TrapKind::OutOfBoundsMemoryAccess);
+            throw new TrapException($instr::opName() . ': out of bounds', trapKind: TrapKind::OutOfBoundsMemoryAccess);
         }
         $this->stack->pushValue($c);
     }
@@ -1892,7 +1892,7 @@ final class Runtime implements ExporterInterface
         $ea = $i + $offset;
         $c = $mem->loadI32_u16($ea);
         if ($c === null) {
-            throw new TrapException($instr::opName() . ": out of bounds", trapKind: TrapKind::OutOfBoundsMemoryAccess);
+            throw new TrapException($instr::opName() . ': out of bounds', trapKind: TrapKind::OutOfBoundsMemoryAccess);
         }
         $this->stack->pushValue($c);
     }
@@ -1907,7 +1907,7 @@ final class Runtime implements ExporterInterface
         $ea = $i + $offset;
         $c = $mem->loadI32_s8($ea);
         if ($c === null) {
-            throw new TrapException($instr::opName() . ": out of bounds", trapKind: TrapKind::OutOfBoundsMemoryAccess);
+            throw new TrapException($instr::opName() . ': out of bounds', trapKind: TrapKind::OutOfBoundsMemoryAccess);
         }
         $this->stack->pushValue($c);
     }
@@ -1922,7 +1922,7 @@ final class Runtime implements ExporterInterface
         $ea = $i + $offset;
         $c = $mem->loadI32_u8($ea);
         if ($c === null) {
-            throw new TrapException($instr::opName() . ": out of bounds", trapKind: TrapKind::OutOfBoundsMemoryAccess);
+            throw new TrapException($instr::opName() . ': out of bounds', trapKind: TrapKind::OutOfBoundsMemoryAccess);
         }
         $this->stack->pushValue($c);
     }
@@ -1937,8 +1937,8 @@ final class Runtime implements ExporterInterface
         $i = NumericOps::convertS32ToU32($this->stack->popInt());
         $ea = $i + $offset;
         $ok = $mem->storeI32_s32($ea, $c);
-        if (!$ok) {
-            throw new TrapException($instr::opName() . ": out of bounds", trapKind: TrapKind::OutOfBoundsMemoryAccess);
+        if (! $ok) {
+            throw new TrapException($instr::opName() . ': out of bounds', trapKind: TrapKind::OutOfBoundsMemoryAccess);
         }
     }
 
@@ -1952,8 +1952,8 @@ final class Runtime implements ExporterInterface
         $i = NumericOps::convertS32ToU32($this->stack->popInt());
         $ea = $i + $offset;
         $ok = $mem->storeI32_s16($ea, $c);
-        if (!$ok) {
-            throw new TrapException($instr::opName() . ": out of bounds", trapKind: TrapKind::OutOfBoundsMemoryAccess);
+        if (! $ok) {
+            throw new TrapException($instr::opName() . ': out of bounds', trapKind: TrapKind::OutOfBoundsMemoryAccess);
         }
     }
 
@@ -1967,8 +1967,8 @@ final class Runtime implements ExporterInterface
         $i = NumericOps::convertS32ToU32($this->stack->popInt());
         $ea = $i + $offset;
         $ok = $mem->storeI32_s8($ea, $c);
-        if (!$ok) {
-            throw new TrapException($instr::opName() . ": out of bounds", trapKind: TrapKind::OutOfBoundsMemoryAccess);
+        if (! $ok) {
+            throw new TrapException($instr::opName() . ': out of bounds', trapKind: TrapKind::OutOfBoundsMemoryAccess);
         }
     }
 
@@ -1982,7 +1982,7 @@ final class Runtime implements ExporterInterface
         $ea = $i + $offset;
         $c = $mem->loadI64_s64($ea);
         if ($c === null) {
-            throw new TrapException($instr::opName() . ": out of bounds", trapKind: TrapKind::OutOfBoundsMemoryAccess);
+            throw new TrapException($instr::opName() . ': out of bounds', trapKind: TrapKind::OutOfBoundsMemoryAccess);
         }
         $this->stack->pushValue($c);
     }
@@ -1997,7 +1997,7 @@ final class Runtime implements ExporterInterface
         $ea = $i + $offset;
         $c = $mem->loadI64_s16($ea);
         if ($c === null) {
-            throw new TrapException($instr::opName() . ": out of bounds", trapKind: TrapKind::OutOfBoundsMemoryAccess);
+            throw new TrapException($instr::opName() . ': out of bounds', trapKind: TrapKind::OutOfBoundsMemoryAccess);
         }
         $this->stack->pushValue($c);
     }
@@ -2012,7 +2012,7 @@ final class Runtime implements ExporterInterface
         $ea = $i + $offset;
         $c = $mem->loadI64_u16($ea);
         if ($c === null) {
-            throw new TrapException($instr::opName() . ": out of bounds", trapKind: TrapKind::OutOfBoundsMemoryAccess);
+            throw new TrapException($instr::opName() . ': out of bounds', trapKind: TrapKind::OutOfBoundsMemoryAccess);
         }
         $this->stack->pushValue($c);
     }
@@ -2027,7 +2027,7 @@ final class Runtime implements ExporterInterface
         $ea = $i + $offset;
         $c = $mem->loadI64_s32($ea);
         if ($c === null) {
-            throw new TrapException($instr::opName() . ": out of bounds", trapKind: TrapKind::OutOfBoundsMemoryAccess);
+            throw new TrapException($instr::opName() . ': out of bounds', trapKind: TrapKind::OutOfBoundsMemoryAccess);
         }
         $this->stack->pushValue($c);
     }
@@ -2042,7 +2042,7 @@ final class Runtime implements ExporterInterface
         $ea = $i + $offset;
         $c = $mem->loadI64_u32($ea);
         if ($c === null) {
-            throw new TrapException($instr::opName() . ": out of bounds", trapKind: TrapKind::OutOfBoundsMemoryAccess);
+            throw new TrapException($instr::opName() . ': out of bounds', trapKind: TrapKind::OutOfBoundsMemoryAccess);
         }
         $this->stack->pushValue($c);
     }
@@ -2057,7 +2057,7 @@ final class Runtime implements ExporterInterface
         $ea = $i + $offset;
         $c = $mem->loadI64_s8($ea);
         if ($c === null) {
-            throw new TrapException($instr::opName() . ": out of bounds", trapKind: TrapKind::OutOfBoundsMemoryAccess);
+            throw new TrapException($instr::opName() . ': out of bounds', trapKind: TrapKind::OutOfBoundsMemoryAccess);
         }
         $this->stack->pushValue($c);
     }
@@ -2072,7 +2072,7 @@ final class Runtime implements ExporterInterface
         $ea = $i + $offset;
         $c = $mem->loadI64_u8($ea);
         if ($c === null) {
-            throw new TrapException($instr::opName() . ": out of bounds", trapKind: TrapKind::OutOfBoundsMemoryAccess);
+            throw new TrapException($instr::opName() . ': out of bounds', trapKind: TrapKind::OutOfBoundsMemoryAccess);
         }
         $this->stack->pushValue($c);
     }
@@ -2087,8 +2087,8 @@ final class Runtime implements ExporterInterface
         $i = NumericOps::convertS32ToU32($this->stack->popInt());
         $ea = $i + $offset;
         $ok = $mem->storeI64_s64($ea, $c);
-        if (!$ok) {
-            throw new TrapException($instr::opName() . ": out of bounds: $ea >= " . $mem->size(), trapKind: TrapKind::OutOfBoundsMemoryAccess);
+        if (! $ok) {
+            throw new TrapException($instr::opName() . ": out of bounds: {$ea} >= " . $mem->size(), trapKind: TrapKind::OutOfBoundsMemoryAccess);
         }
     }
 
@@ -2102,8 +2102,8 @@ final class Runtime implements ExporterInterface
         $i = NumericOps::convertS32ToU32($this->stack->popInt());
         $ea = $i + $offset;
         $ok = $mem->storeI64_s16($ea, $c);
-        if (!$ok) {
-            throw new TrapException($instr::opName() . ": out of bounds: $ea >= " . $mem->size(), trapKind: TrapKind::OutOfBoundsMemoryAccess);
+        if (! $ok) {
+            throw new TrapException($instr::opName() . ": out of bounds: {$ea} >= " . $mem->size(), trapKind: TrapKind::OutOfBoundsMemoryAccess);
         }
     }
 
@@ -2117,8 +2117,8 @@ final class Runtime implements ExporterInterface
         $i = NumericOps::convertS32ToU32($this->stack->popInt());
         $ea = $i + $offset;
         $ok = $mem->storeI64_s32($ea, $c);
-        if (!$ok) {
-            throw new TrapException($instr::opName() . ": out of bounds: $ea >= " . $mem->size(), trapKind: TrapKind::OutOfBoundsMemoryAccess);
+        if (! $ok) {
+            throw new TrapException($instr::opName() . ": out of bounds: {$ea} >= " . $mem->size(), trapKind: TrapKind::OutOfBoundsMemoryAccess);
         }
     }
 
@@ -2132,8 +2132,8 @@ final class Runtime implements ExporterInterface
         $i = NumericOps::convertS32ToU32($this->stack->popInt());
         $ea = $i + $offset;
         $ok = $mem->storeI64_s8($ea, $c);
-        if (!$ok) {
-            throw new TrapException($instr::opName() . ": out of bounds: $ea >= " . $mem->size(), trapKind: TrapKind::OutOfBoundsMemoryAccess);
+        if (! $ok) {
+            throw new TrapException($instr::opName() . ": out of bounds: {$ea} >= " . $mem->size(), trapKind: TrapKind::OutOfBoundsMemoryAccess);
         }
     }
 
@@ -2146,7 +2146,7 @@ final class Runtime implements ExporterInterface
         $s = NumericOps::convertS32ToU32($this->stack->popInt());
         $d = NumericOps::convertS32ToU32($this->stack->popInt());
         if ($mem->size() < $s + $n || $mem->size() < $d + $n) {
-            throw new TrapException("memory.copy: out of bounds", trapKind: TrapKind::OutOfBoundsMemoryAccess);
+            throw new TrapException('memory.copy: out of bounds', trapKind: TrapKind::OutOfBoundsMemoryAccess);
         }
         $mem->memcpy($d, $s, $n);
     }
@@ -2160,7 +2160,7 @@ final class Runtime implements ExporterInterface
         $val = $this->stack->popInt();
         $d = NumericOps::convertS32ToU32($this->stack->popInt());
         if ($mem->size() < $d + $n) {
-            throw new TrapException("memory.fill: out of bounds", trapKind: TrapKind::OutOfBoundsMemoryAccess);
+            throw new TrapException('memory.fill: out of bounds', trapKind: TrapKind::OutOfBoundsMemoryAccess);
         }
         $mem->memset($d, $val, $n);
     }
@@ -2187,10 +2187,10 @@ final class Runtime implements ExporterInterface
         $s = NumericOps::convertS32ToU32($this->stack->popInt());
         $d = NumericOps::convertS32ToU32($this->stack->popInt());
         if (count($data->data) < $s + $n) {
-            throw new TrapException("memory.init: out of bounds", trapKind: TrapKind::OutOfBoundsMemoryAccess);
+            throw new TrapException('memory.init: out of bounds', trapKind: TrapKind::OutOfBoundsMemoryAccess);
         }
         if ($mem->size() < $d + $n) {
-            throw new TrapException("memory.init: out of bounds", trapKind: TrapKind::OutOfBoundsMemoryAccess);
+            throw new TrapException('memory.init: out of bounds', trapKind: TrapKind::OutOfBoundsMemoryAccess);
         }
         $mem->copyData($data->data, $s, $d, $n);
     }
@@ -2240,9 +2240,8 @@ final class Runtime implements ExporterInterface
         $c = $this->stack->popInt();
         if ($c !== 0) {
             return $l;
-        } else {
-            return null;
         }
+        return null;
     }
 
     private function execInstrControlBrTable(Instrs\Control\BrTable $instr): int
@@ -2252,9 +2251,8 @@ final class Runtime implements ExporterInterface
         $i = NumericOps::convertS32ToU32($this->stack->popInt());
         if ($i < count($ls)) {
             return $ls[$i];
-        } else {
-            return $ln;
         }
+        return $ln;
     }
 
     private function execInstrControlCall(Instrs\Control\Call $instr): void
@@ -2275,19 +2273,19 @@ final class Runtime implements ExporterInterface
         $ftExpect = $f->module->types[$y];
         $i = NumericOps::convertS32ToU32($this->stack->popInt());
         if (count($tab->elem) <= $i) {
-            throw new TrapException("call_indirect: out of bounds", trapKind: TrapKind::UndefinedElement);
+            throw new TrapException('call_indirect: out of bounds', trapKind: TrapKind::UndefinedElement);
         }
         $r = $tab->elem[$i];
         if ($r instanceof Refs\RefNull) {
-            throw new TrapException("call_indirect: ref.null", trapKind: TrapKind::UninitializedElement);
+            throw new TrapException('call_indirect: ref.null', trapKind: TrapKind::UninitializedElement);
         }
         assert($r instanceof Refs\RefFunc);
         $a = $r->addr;
         $fn = $this->store->funcs[$a];
         assert($fn instanceof FuncInsts\Wasm || $fn instanceof FuncInsts\Host);
         $ftActual = $fn->type;
-        if (!$ftExpect->equals($ftActual)) {
-            throw new TrapException("call_indirect: type mismatch", trapKind: TrapKind::IndirectCallTypeMismatch);
+        if (! $ftExpect->equals($ftActual)) {
+            throw new TrapException('call_indirect: type mismatch', trapKind: TrapKind::IndirectCallTypeMismatch);
         }
         $this->doInvokeFunc($a);
     }
@@ -2310,9 +2308,8 @@ final class Runtime implements ExporterInterface
         $c = $this->stack->popInt();
         if ($c !== 0) {
             return $this->execInstr(Instr::Block($blockType, $instrs1));
-        } else {
-            return $this->execInstr(Instr::Block($blockType, $instrs2));
         }
+        return $this->execInstr(Instr::Block($blockType, $instrs2));
     }
 
     private function execInstrControlLoop(Instrs\Control\Loop $instr): ?int
@@ -2333,10 +2330,9 @@ final class Runtime implements ExporterInterface
             } elseif ($result === 0) {
                 $this->deactivateLabel($m);
                 continue;
-            } else {
-                $this->deactivateLabel(null);
-                return $result - 1;
             }
+            $this->deactivateLabel(null);
+            return $result - 1;
         }
     }
 
@@ -2352,7 +2348,7 @@ final class Runtime implements ExporterInterface
 
     private function execInstrControlUnreachable(Instrs\Control\Unreachable $instr): void
     {
-        throw new TrapException("unreachable", trapKind: TrapKind::Unreachable);
+        throw new TrapException('unreachable', trapKind: TrapKind::Unreachable);
     }
 
     private function doLoadF32(int $offset, string $instrOpName): void
@@ -2364,7 +2360,7 @@ final class Runtime implements ExporterInterface
         $ea = $i + $offset;
         $c = $mem->loadF32($ea);
         if ($c === null) {
-            throw new TrapException("$instrOpName: out of bounds", trapKind: TrapKind::OutOfBoundsMemoryAccess);
+            throw new TrapException("{$instrOpName}: out of bounds", trapKind: TrapKind::OutOfBoundsMemoryAccess);
         }
         $this->stack->pushValue($c);
     }
@@ -2378,7 +2374,7 @@ final class Runtime implements ExporterInterface
         $ea = $i + $offset;
         $c = $mem->loadF64($ea);
         if ($c === null) {
-            throw new TrapException("$instrOpName: out of bounds", trapKind: TrapKind::OutOfBoundsMemoryAccess);
+            throw new TrapException("{$instrOpName}: out of bounds", trapKind: TrapKind::OutOfBoundsMemoryAccess);
         }
         $this->stack->pushValue($c);
     }
@@ -2391,7 +2387,7 @@ final class Runtime implements ExporterInterface
             ValType::F32 => 0.0,
             ValType::F64 => 0.0,
             ValType::FuncRef, ValType::ExternRef => Ref::RefNull($type),
-            default => throw new RuntimeException("unreachable"),
+            default => throw new RuntimeException('unreachable'),
         };
     }
 
@@ -2405,8 +2401,7 @@ final class Runtime implements ExporterInterface
                 [],
                 $t === null ? [] : [$t],
             );
-        } else {
-            throw new RuntimeException("expand(): invalid blocktype");
         }
+        throw new RuntimeException('expand(): invalid blocktype');
     }
 }

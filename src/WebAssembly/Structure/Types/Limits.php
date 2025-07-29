@@ -18,7 +18,7 @@ final readonly class Limits
 
     public function isValid(): bool
     {
-        return 0 <= $this->min &&
+        return $this->min >= 0 &&
             ($this->max === null || $this->min <= $this->max);
     }
 }

@@ -10,6 +10,6 @@ final readonly class I64Shl extends Instr
 {
     public static function opName(): string
     {
-        return "i64.shl";
+        return 'i64.shl';
     }
 }

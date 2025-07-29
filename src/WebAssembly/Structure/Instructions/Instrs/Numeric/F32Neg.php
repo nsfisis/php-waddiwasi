@@ -10,6 +10,6 @@ final readonly class F32Neg extends Instr
 {
     public static function opName(): string
     {
-        return "f32.neg";
+        return 'f32.neg';
     }
 }

@@ -16,6 +16,6 @@ final readonly class TableInit extends Instr
 
     public static function opName(): string
     {
-        return "table.init";
+        return 'table.init';
     }
 }

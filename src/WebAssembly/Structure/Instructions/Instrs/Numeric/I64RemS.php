@@ -10,6 +10,6 @@ final readonly class I64RemS extends Instr
 {
     public static function opName(): string
     {
-        return "i64.rem_s";
+        return 'i64.rem_s';
     }
 }

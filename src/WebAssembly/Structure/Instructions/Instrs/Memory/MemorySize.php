@@ -10,6 +10,6 @@ final readonly class MemorySize extends Instr
 {
     public static function opName(): string
     {
-        return "memory.size";
+        return 'memory.size';
     }
 }

@@ -136,7 +136,7 @@ function allocateStringOnWasmMemory(Runtime $runtime, string $str): int
 
 function _emscripten_stack_alloc(Runtime $runtime, int $size): int
 {
-    $results = $runtime->invoke("_emscripten_stack_alloc", [$size]);
+    $results = $runtime->invoke('_emscripten_stack_alloc', [$size]);
     \assert(\count($results) === 1);
     $result = $results[0];
     \assert(\is_int($result));
@@ -145,7 +145,7 @@ function _emscripten_stack_alloc(Runtime $runtime, int $size): int
 
 function emscripten_stack_get_current(Runtime $runtime): int
 {
-    $results = $runtime->invoke("emscripten_stack_get_current", []);
+    $results = $runtime->invoke('emscripten_stack_get_current', []);
     \assert(\count($results) === 1);
     $result = $results[0];
     \assert(\is_int($result));
@@ -194,7 +194,7 @@ function getWasmTableEntry(Runtime $runtime, int $funcPtr): int
     }
 
     $func = $wasmTable->elem[$funcPtr] ?? null;
-    \assert($func instanceof Refs\RefFunc, "Expected RefFunc, but got " . \get_class($func));
+    \assert($func instanceof Refs\RefFunc, 'Expected RefFunc, but got ' . \get_class($func));
     return $func->addr;
 }
 
@@ -293,19 +293,18 @@ function syscallCalculateAt(Runtime $runtime, int $dirfd, string $path): string
         $dir = getcwd();
         \assert($dir !== false);
     } else {
-        throw new \RuntimeException("syscallCalculateAt: not implemented ($dirfd)");
+        throw new \RuntimeException("syscallCalculateAt: not implemented ({$dirfd})");
     }
     if ($path === '.') {
         return $dir;
-    } else {
-        return $dir . '/' . $path;
     }
+    return $dir . '/' . $path;
 }
 
 function fsStat(string $path, bool $dontFollow): object
 {
     if ($path === 'php://stdin') {
-        return (object)[
+        return (object) [
             'dev' => 0,
             'mode' => 0,
             'nlink' => 0,
@@ -320,7 +319,7 @@ function fsStat(string $path, bool $dontFollow): object
             'ctime' => 0,
         ];
     } elseif ($path === 'php://stdout') {
-        return (object)[
+        return (object) [
             'dev' => 0,
             'mode' => 0,
             'nlink' => 0,
@@ -335,7 +334,7 @@ function fsStat(string $path, bool $dontFollow): object
             'ctime' => 0,
         ];
     } elseif ($path === 'php://stderr') {
-        return (object)[
+        return (object) [
             'dev' => 0,
             'mode' => 0,
             'nlink' => 0,
@@ -353,7 +352,7 @@ function fsStat(string $path, bool $dontFollow): object
 
     $phpStat = $dontFollow ? lstat($path) : stat($path);
     \assert($phpStat !== false);
-    return (object)[
+    return (object) [
         'dev' => $phpStat['dev'],
         'mode' => $phpStat['mode'],
         'nlink' => $phpStat['nlink'],
@@ -398,7 +397,7 @@ final class VFile
         } elseif ($whence === 2) {
             fseek($this->fp, $offset, SEEK_END);
         } else {
-            throw new \RuntimeException("VFile::seek: invalid whence");
+            throw new \RuntimeException('VFile::seek: invalid whence');
         }
         $pos = ftell($this->fp);
         return $pos === false ? 0 : $pos;
@@ -418,7 +417,7 @@ final class VFile
 function fsOpen(string $path, int $flags, int $mode): ?int
 {
     global $fdTable;
-    if (!isset($fdTable)) {
+    if (! isset($fdTable)) {
         $fdTable = [];
     }
     $fp = @fopen($path, 'r');
@@ -438,7 +437,7 @@ function fsOpen(string $path, int $flags, int $mode): ?int
 function fsDup(int $fd): ?int
 {
     global $fdTable;
-    if (!isset($fdTable)) {
+    if (! isset($fdTable)) {
         return null;
     }
     $nextFd = \count($fdTable) + 10;
@@ -523,12 +522,12 @@ function fsLookupChild(string $p, string $c): string
 
 function alignMemory(int $size, int $alignment): int
 {
-    return (int)ceil($size / $alignment) * $alignment;
+    return (int) ceil($size / $alignment) * $alignment;
 }
 
 function _emscripten_builtin_memalign(Runtime $runtime, int $alignment, int $size): int
 {
-    $results = $runtime->invoke("emscripten_builtin_memalign", [$alignment, $size]);
+    $results = $runtime->invoke('emscripten_builtin_memalign', [$alignment, $size]);
     \assert(\count($results) === 1);
     $result = $results[0];
     \assert(\is_int($result));
@@ -558,8 +557,8 @@ function mmapAlloc(Runtime $runtime, int $len): int
 function fsMmap(Runtime $runtime, int $fd, int $len, int $offset, int $prot, int $flags): array
 {
     global $fdTable;
-    if (!isset($fdTable[$fd])) {
-        throw new \RuntimeException("fsMmap: invalid fd");
+    if (! isset($fdTable[$fd])) {
+        throw new \RuntimeException('fsMmap: invalid fd');
     }
     $file = $fdTable[$fd];
 
@@ -859,16 +858,16 @@ function hostFunc__env____syscall_fcntl64(Runtime $runtime, int $fd, int $cmd, i
 {
     switch ($cmd) {
         case 0:
-            throw new \RuntimeException("env::__syscall_fcntl64: command $cmd not implemented");
+            throw new \RuntimeException("env::__syscall_fcntl64: command {$cmd} not implemented");
         case 1:
         case 2:
             return 0;
         case 3:
             return fsGetFlagsFromFd($fd);
         case 4:
-            throw new \RuntimeException("env::__syscall_fcntl64: command $cmd not implemented");
+            throw new \RuntimeException("env::__syscall_fcntl64: command {$cmd} not implemented");
         case 5:
-            throw new \RuntimeException("env::__syscall_fcntl64: command $cmd not implemented");
+            throw new \RuntimeException("env::__syscall_fcntl64: command {$cmd} not implemented");
         case 6:
         case 7:
             return 0;
@@ -1071,10 +1070,9 @@ function hostFunc__env____syscall_openat(Runtime $runtime, int $dirfd, int $path
     $fd = fsOpen($path, $flags, $mode);
     if ($fd !== null) {
         return $fd;
-    } else {
-        // no such file
-        return -44;
     }
+    // no such file
+    return -44;
 }
 
 // Type: (i32, i32) -> (i32)
@@ -1185,7 +1183,7 @@ function hostFunc__env____syscall_getdents64(Runtime $runtime, int $fd, int $dir
     $pos = 0;
     $off = $file->seek(0, 1);
 
-    $idx = (int)floor($off / $struct_size);
+    $idx = (int) floor($off / $struct_size);
 
     while ($idx < \count($file->getdents) && $pos + $struct_size <= $count) {
         $name = $file->getdents[$idx];
@@ -1207,7 +1205,7 @@ function hostFunc__env____syscall_getdents64(Runtime $runtime, int $fd, int $dir
         heap8Write($runtime, $dirp + $pos + 18, $type);
         stringToUTF8($runtime, $name, $dirp + $pos + 19, 256);
         $pos += $struct_size;
-        $idx += 1;
+        ++$idx;
     }
     $file->seek($idx * $struct_size, 0);
 
@@ -1367,7 +1365,7 @@ function hostFunc__env____syscall_ftruncate64(Runtime $runtime): void
 // Type: (i32, i32, i32, i32) -> (i32)
 function hostFunc__wasi_snapshot_preview1__clock_time_get(Runtime $runtime, int $clk_id, int $ignored_precision_low, int $ignored_precision_high, int $ptime): int
 {
-    if ($clk_id < 0 || 3 < $clk_id) {
+    if ($clk_id < 0 || $clk_id > 3) {
         return 28;
     }
     if ($clk_id === 0) {

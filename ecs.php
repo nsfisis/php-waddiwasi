@@ -15,6 +15,7 @@ return function (ECSConfig $ecsConfig): void {
         __DIR__ . '/tools',
     ]);
     $ecsConfig->sets([
+        SetList::COMMON,
         SetList::CLEAN_CODE,
         SetList::PSR_12,
     ]);

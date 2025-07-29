@@ -10,6 +10,6 @@ final readonly class F32Max extends Instr
 {
     public static function opName(): string
     {
-        return "f32.max";
+        return 'f32.max';
     }
 }

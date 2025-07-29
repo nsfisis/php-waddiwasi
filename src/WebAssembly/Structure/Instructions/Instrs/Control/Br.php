@@ -15,6 +15,6 @@ final readonly class Br extends Instr
 
     public static function opName(): string
     {
-        return "br";
+        return 'br';
     }
 }

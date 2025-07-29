@@ -10,6 +10,6 @@ final readonly class Else_ extends Instr
 {
     public static function opName(): string
     {
-        return "else";
+        return 'else';
     }
 }

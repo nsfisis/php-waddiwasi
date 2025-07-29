@@ -18,6 +18,6 @@ final readonly class F64Const extends Instr
 
     public static function opName(): string
     {
-        return "f64.const";
+        return 'f64.const';
     }
 }

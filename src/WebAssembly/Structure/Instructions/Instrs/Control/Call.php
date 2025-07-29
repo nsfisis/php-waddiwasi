@@ -15,6 +15,6 @@ final readonly class Call extends Instr
 
     public static function opName(): string
     {
-        return "call";
+        return 'call';
     }
 }

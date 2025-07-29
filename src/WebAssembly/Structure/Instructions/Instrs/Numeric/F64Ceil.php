@@ -10,6 +10,6 @@ final readonly class F64Ceil extends Instr
 {
     public static function opName(): string
     {
-        return "f64.ceil";
+        return 'f64.ceil';
     }
 }

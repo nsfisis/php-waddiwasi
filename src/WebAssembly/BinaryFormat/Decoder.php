@@ -80,22 +80,22 @@ final class Decoder
 
         $this->skipCustomSections();
 
-        if (!$this->stream->eof()) {
-            throw new InvalidBinaryFormatException("eof");
+        if (! $this->stream->eof()) {
+            throw new InvalidBinaryFormatException('eof');
         }
         if ($dataCount === null) {
             foreach ($codes as $code) {
                 if ($this->countDataIndicesUsedInCode($code) !== 0) {
-                    throw new InvalidBinaryFormatException("datacount section is required");
+                    throw new InvalidBinaryFormatException('datacount section is required');
                 }
             }
         } else {
             if (count($datas) !== $dataCount) {
-                throw new InvalidBinaryFormatException("datasec");
+                throw new InvalidBinaryFormatException('datasec');
             }
         }
         if (count($typeIndices) !== count($codes)) {
-            throw new InvalidBinaryFormatException("number of funcs and codes does not match");
+            throw new InvalidBinaryFormatException('number of funcs and codes does not match');
         }
 
         $funcs = [];
@@ -134,7 +134,7 @@ final class Decoder
         $b3 = ord($bs[2]);
         $b4 = ord($bs[3]);
         if ([$b1, $b2, $b3, $b4] !== [0x00, 0x61, 0x73, 0x6D]) {
-            throw new InvalidBinaryFormatException("magic");
+            throw new InvalidBinaryFormatException('magic');
         }
     }
 
@@ -146,7 +146,7 @@ final class Decoder
         $b3 = ord($bs[2]);
         $b4 = ord($bs[3]);
         if ([$b1, $b2, $b3, $b4] !== [0x01, 0x00, 0x00, 0x00]) {
-            throw new InvalidBinaryFormatException(sprintf("version: [%x, %x, %x, %x]", $b1, $b2, $b3, $b4));
+            throw new InvalidBinaryFormatException(sprintf('version: [%x, %x, %x, %x]', $b1, $b2, $b3, $b4));
         }
     }
 
@@ -165,7 +165,7 @@ final class Decoder
         $idValue = $this->stream->peekByte();
         $id = SectionId::tryFrom($idValue);
         if ($id === null) {
-            throw new InvalidBinaryFormatException("section id");
+            throw new InvalidBinaryFormatException('section id');
         }
         if ($id !== $sectionId) {
             return null;
@@ -176,14 +176,14 @@ final class Decoder
         $prevPos = $this->stream->tell();
         $result = $decoder();
         if ($this->stream->tell() - $prevPos !== $size) {
-            throw new InvalidBinaryFormatException("type section size");
+            throw new InvalidBinaryFormatException('type section size');
         }
         return $result;
     }
 
     private function skipCustomSections(): void
     {
-        while (!$this->stream->eof()) {
+        while (! $this->stream->eof()) {
             $b = $this->stream->peekByte();
             if ($b !== SectionId::Custom->value) {
                 break;
@@ -195,7 +195,7 @@ final class Decoder
             $encodedSizeOfName = $this->stream->tell() - $prevPos;
             $offset = $size - $encodedSizeOfName;
             if ($offset < 0) {
-                throw new InvalidBinaryFormatException("custom section size");
+                throw new InvalidBinaryFormatException('custom section size');
             }
             if ($offset !== 0) {
                 $this->stream->seek($offset);
@@ -308,7 +308,7 @@ final class Decoder
     {
         $b = $this->decodeByte();
         if ($b !== 0x60) {
-            throw new InvalidBinaryFormatException("functype");
+            throw new InvalidBinaryFormatException('functype');
         }
         $params = $this->decodeResultType();
         $results = $this->decodeResultType();
@@ -329,7 +329,7 @@ final class Decoder
             0x7B => ValType::V128,
             0x70 => ValType::FuncRef,
             0x6F => ValType::ExternRef,
-            default => throw new InvalidBinaryFormatException("valtype $b"),
+            default => throw new InvalidBinaryFormatException("valtype {$b}"),
         };
     }
 
@@ -341,7 +341,7 @@ final class Decoder
         $type = $this->decodeValType();
         return match ($type) {
             ValType::FuncRef, ValType::ExternRef => $type,
-            default => throw new InvalidBinaryFormatException("reftype"),
+            default => throw new InvalidBinaryFormatException('reftype'),
         };
     }
 
@@ -355,9 +355,8 @@ final class Decoder
             $min = $this->decodeU32();
             $max = $this->decodeU32();
             return new Limits($min, $max);
-        } else {
-            throw new InvalidBinaryFormatException("limits");
         }
+        throw new InvalidBinaryFormatException('limits');
     }
 
     private function decodeMemType(): MemType
@@ -390,7 +389,7 @@ final class Decoder
         return match ($this->decodeByte()) {
             0x00 => Mut::Const,
             0x01 => Mut::Var,
-            default => throw new InvalidBinaryFormatException("mutability"),
+            default => throw new InvalidBinaryFormatException('mutability'),
         };
     }
 
@@ -519,9 +518,8 @@ final class Decoder
                 $init,
                 ElemMode::Declarative(),
             );
-        } else {
-            throw new InvalidBinaryFormatException("code");
         }
+        throw new InvalidBinaryFormatException('code');
     }
 
     private function decodeCode(): Code
@@ -531,7 +529,7 @@ final class Decoder
         $compressedLocals = $this->decodeVec($this->decodeLocals(...));
         $body = $this->decodeExpr();
         if ($this->stream->tell() - $prevPos !== $size) {
-            throw new InvalidBinaryFormatException("code size");
+            throw new InvalidBinaryFormatException('code size');
         }
         return new Code(
             $compressedLocals,
@@ -569,9 +567,8 @@ final class Decoder
                     $offset,
                 ),
             );
-        } else {
-            throw new InvalidBinaryFormatException("data");
         }
+        throw new InvalidBinaryFormatException('data');
     }
 
     private function decodeImportDesc(): ImportDesc
@@ -581,7 +578,7 @@ final class Decoder
             0x01 => ImportDesc::Table($this->decodeTableType()),
             0x02 => ImportDesc::Mem($this->decodeMemType()),
             0x03 => ImportDesc::Global($this->decodeGlobalType()),
-            default => throw new InvalidBinaryFormatException("importdesc"),
+            default => throw new InvalidBinaryFormatException('importdesc'),
         };
     }
 
@@ -592,7 +589,7 @@ final class Decoder
             0x01 => ExportDesc::Table($this->decodeTableIdx()),
             0x02 => ExportDesc::Mem($this->decodeMemIdx()),
             0x03 => ExportDesc::Global($this->decodeGlobalIdx()),
-            default => throw new InvalidBinaryFormatException("exportdesc"),
+            default => throw new InvalidBinaryFormatException('exportdesc'),
         };
     }
 
@@ -604,17 +601,16 @@ final class Decoder
         $b = $this->decodeByte();
         if ($b === 0x00) {
             return ValType::FuncRef;
-        } else {
-            throw new InvalidBinaryFormatException("elemkind");
         }
+        throw new InvalidBinaryFormatException('elemkind');
     }
 
     private function decodeLocals(): Locals
     {
         $count = $this->decodeU32();
         // @todo Provide a way to configure the limit.
-        if (1056 < $count) {
-            throw new InvalidBinaryFormatException("too many local variables");
+        if ($count > 1056) {
+            throw new InvalidBinaryFormatException('too many local variables');
         }
         $type = $this->decodeValType();
         return new Locals(
@@ -754,13 +750,13 @@ final class Decoder
             case 0x3F:
                 $c = $this->decodeByte();
                 if ($c !== 0) {
-                    throw new InvalidBinaryFormatException("Unexpected value while decoding an instruction `memory.size`, expected 0, but got $c");
+                    throw new InvalidBinaryFormatException("Unexpected value while decoding an instruction `memory.size`, expected 0, but got {$c}");
                 }
                 return Instr::MemorySize();
             case 0x40:
                 $c = $this->decodeByte();
                 if ($c !== 0) {
-                    throw new InvalidBinaryFormatException("Unexpected value while decoding an instruction `memory.grow`, expected 0, but got $c");
+                    throw new InvalidBinaryFormatException("Unexpected value while decoding an instruction `memory.grow`, expected 0, but got {$c}");
                 }
                 return Instr::MemoryGrow();
             case 0x41: return Instr::I32Const($this->decodeS32());
@@ -911,21 +907,21 @@ final class Decoder
                     case 8:
                         $data = $this->decodeDataIdx();
                         if ($this->decodeByte() !== 0) {
-                            throw new InvalidBinaryFormatException("memory init");
+                            throw new InvalidBinaryFormatException('memory init');
                         }
                         return Instr::MemoryInit($data);
                     case 9: return Instr::DataDrop($this->decodeDataIdx());
                     case 10:
                         if ($this->decodeByte() !== 0) {
-                            throw new InvalidBinaryFormatException("memory copy");
+                            throw new InvalidBinaryFormatException('memory copy');
                         }
                         if ($this->decodeByte() !== 0) {
-                            throw new InvalidBinaryFormatException("memory copy");
+                            throw new InvalidBinaryFormatException('memory copy');
                         }
                         return Instr::MemoryCopy();
                     case 11:
                         if ($this->decodeByte() !== 0) {
-                            throw new InvalidBinaryFormatException("memory fill");
+                            throw new InvalidBinaryFormatException('memory fill');
                         }
                         return Instr::MemoryFill();
                     case 12:
@@ -941,11 +937,11 @@ final class Decoder
                     case 16: return Instr::TableSize($this->decodeTableIdx());
                     case 17: return Instr::TableFill($this->decodeTableIdx());
                     default:
-                        throw new InvalidBinaryFormatException("instr");
+                        throw new InvalidBinaryFormatException('instr');
                 }
                 // no break
             default:
-                throw new InvalidBinaryFormatException("Unexpected opcode $op while decoding an instruction");
+                throw new InvalidBinaryFormatException("Unexpected opcode {$op} while decoding an instruction");
         }
     }
 
@@ -967,13 +963,12 @@ final class Decoder
             return BlockType::ValType(null);
         } elseif (in_array($b, [0x7F, 0x7E, 0x7D, 0x7C, 0x7B, 0x70, 0x6F], true)) {
             return BlockType::ValType($this->decodeValType());
-        } else {
-            $type = $this->decodeS33();
-            if ($type < 0) {
-                throw new InvalidBinaryFormatException("blocktype");
-            }
-            return BlockType::TypeIdx($type);
         }
+        $type = $this->decodeS33();
+        if ($type < 0) {
+            throw new InvalidBinaryFormatException('blocktype');
+        }
+        return BlockType::TypeIdx($type);
     }
 
     /**
@@ -1028,7 +1023,7 @@ final class Decoder
             $leftBitsCount = $maxBits - $shiftBits;
             if ($leftBitsCount < 7) {
                 if ((($b & 0b01111111) >> $leftBitsCount) !== 0) {
-                    throw new InvalidBinaryFormatException("unsigned leb128 ($maxBits): too large");
+                    throw new InvalidBinaryFormatException("unsigned leb128 ({$maxBits}): too large");
                 }
             }
             $result |= ($b & 0b01111111) << $shiftBits;
@@ -1036,7 +1031,7 @@ final class Decoder
                 return $result;
             }
         }
-        throw new InvalidBinaryFormatException("unsigned leb128 ($maxBits): too large");
+        throw new InvalidBinaryFormatException("unsigned leb128 ({$maxBits}): too large");
     }
 
     private function decodeSignedLeb128(int $maxBits): int
@@ -1048,11 +1043,11 @@ final class Decoder
             if ($leftBitsCount < 7) {
                 if (($b & (1 << ($leftBitsCount - 1))) === 0) {
                     if ((($b & 0b01111111) >> $leftBitsCount) !== 0) {
-                        throw new InvalidBinaryFormatException("signed leb128 ($maxBits): too large");
+                        throw new InvalidBinaryFormatException("signed leb128 ({$maxBits}): too large");
                     }
                 } else {
                     if ((($b & 0b01111111) >> $leftBitsCount) + 1 !== (1 << (7 - $leftBitsCount))) {
-                        throw new InvalidBinaryFormatException("signed leb128 ($maxBits): too large");
+                        throw new InvalidBinaryFormatException("signed leb128 ({$maxBits}): too large");
                     }
                 }
             }
@@ -1060,12 +1055,11 @@ final class Decoder
             if (($b & 0b10000000) === 0) {
                 if (($b & 0b01000000) === 0) {
                     return $result;
-                } else {
-                    return $result | (~0 << ($shiftBits + 7));
                 }
+                return $result | (~0 << ($shiftBits + 7));
             }
         }
-        throw new InvalidBinaryFormatException("signed leb128 ($maxBits): too large");
+        throw new InvalidBinaryFormatException("signed leb128 ({$maxBits}): too large");
     }
 
     /**
@@ -1116,7 +1110,7 @@ final class Decoder
         $bytes = $this->decodeVec($this->decodeByte(...));
         $name = $this->implodeUtf8BytesToString($bytes);
         if ($name === null) {
-            throw new InvalidBinaryFormatException("name");
+            throw new InvalidBinaryFormatException('name');
         }
         return $name;
     }
@@ -1145,7 +1139,7 @@ final class Decoder
             0,
         );
         assert(is_int($result), '$result is guaranteed not to exceed the maximum value of an integer because the number of instructions in $code is limited');
-        assert(0 <= $result, '$result is guaranteed to be non-negative because it is the sum of non-negative integers');
+        assert($result >= 0, '$result is guaranteed to be non-negative because it is the sum of non-negative integers');
         return $result;
     }
 
@@ -1182,8 +1176,8 @@ final class Decoder
             // Not a memory operation.
             default => true,
         };
-        if (!$isValid) {
-            throw new InvalidBinaryFormatException("malformed memop flags");
+        if (! $isValid) {
+            throw new InvalidBinaryFormatException('malformed memop flags');
         }
     }
 }

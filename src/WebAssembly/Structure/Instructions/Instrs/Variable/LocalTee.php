@@ -15,6 +15,6 @@ final readonly class LocalTee extends Instr
 
     public static function opName(): string
     {
-        return "local.tee";
+        return 'local.tee';
     }
 }

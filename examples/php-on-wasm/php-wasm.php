@@ -18,7 +18,7 @@ $wasmBinaryStream = new FileStream(__DIR__ . '/php-wasm.wasm');
 $runtime = Runtime::instantiateFromStream($wasmBinaryStream, $linker);
 $codePtr = allocateStringOnWasmMemory($runtime, PHP_HELLO_WORLD);
 
-$results = $runtime->invoke("php_wasm_run", [$codePtr]);
+$results = $runtime->invoke('php_wasm_run', [$codePtr]);
 \assert(\count($results) === 1);
 $exitCode = $results[0];
 \assert(\is_int($exitCode));

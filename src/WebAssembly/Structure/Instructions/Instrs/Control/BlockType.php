@@ -20,6 +20,6 @@ abstract readonly class BlockType
 
     public static function opName(): string
     {
-        return "hoge";
+        return 'hoge';
     }
 }

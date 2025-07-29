@@ -10,6 +10,6 @@ final readonly class F64Neg extends Instr
 {
     public static function opName(): string
     {
-        return "f64.neg";
+        return 'f64.neg';
     }
 }

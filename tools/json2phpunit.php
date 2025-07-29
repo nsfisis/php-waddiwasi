@@ -18,7 +18,6 @@ use function glob;
 use function implode;
 use function is_array;
 use function is_int;
-use function is_null;
 use function is_string;
 use function json_decode;
 use function strtr;
@@ -27,28 +26,28 @@ use function ucfirst;
 $wastJsonBaseDir = __DIR__ . '/../tests/fixtures/spec_testsuites/core';
 $phpUnitBaseDir = __DIR__ . '/../tests/src/SpecTestsuites/Core';
 
-$wastJsonFiles = glob("$wastJsonBaseDir/*.json", GLOB_ERR);
+$wastJsonFiles = glob("{$wastJsonBaseDir}/*.json", GLOB_ERR);
 if ($wastJsonFiles === false) {
-    exit("Failed to list wast json files (base dir: $wastJsonBaseDir).\n");
+    exit("Failed to list wast json files (base dir: {$wastJsonBaseDir}).\n");
 }
 
 foreach ($wastJsonFiles as $wastJsonFile) {
     $wastJsonFileContent = file_get_contents($wastJsonFile);
     if ($wastJsonFileContent === false) {
-        exit("Failed to read wast json file (path: $wastJsonFile).\n");
+        exit("Failed to read wast json file (path: {$wastJsonFile}).\n");
     }
     $wastJson = json_decode($wastJsonFileContent, associative: true);
-    if (!is_array($wastJson)) {
-        exit("Failed to decode wast json file (path: $wastJsonFile).\n");
+    if (! is_array($wastJson)) {
+        exit("Failed to decode wast json file (path: {$wastJsonFile}).\n");
     }
     $sourceFilename = $wastJson['source_filename'] ?? null;
     $commands = $wastJson['commands'] ?? null;
 
     $className = wastJsonFileToPascalCase($wastJsonFile) . 'Test';
 
-    $fp = fopen("$phpUnitBaseDir/$className.php", 'w');
+    $fp = fopen("{$phpUnitBaseDir}/{$className}.php", 'w');
     if ($fp === false) {
-        exit("Failed to open file to write (path: $phpUnitBaseDir/$className.php).\n");
+        exit("Failed to open file to write (path: {$phpUnitBaseDir}/{$className}.php).\n");
     }
 
     fwrite($fp, "<?php\n\n");
@@ -56,7 +55,7 @@ foreach ($wastJsonFiles as $wastJsonFile) {
     fwrite($fp, "namespace Nsfisis\\Waddiwasi\\Tests\\SpecTestsuites\\Core;\n\n");
     fwrite($fp, "use Nsfisis\\Waddiwasi\\Tests\\SpecTestsuites\\SpecTestsuiteBase;\n");
     fwrite($fp, "use PHPUnit\\Framework\\Attributes\\DoesNotPerformAssertions;\n\n");
-    fwrite($fp, "final class $className extends SpecTestsuiteBase\n");
+    fwrite($fp, "final class {$className} extends SpecTestsuiteBase\n");
     fwrite($fp, "{\n");
 
     foreach ($commands as $i => $command) {
@@ -75,21 +74,21 @@ foreach ($wastJsonFiles as $wastJsonFile) {
             'assert_unlinkable' => buildAssertUnlinkableCommandTest($command),
             'action' => buildActionCommandTest($command),
             'register' => buildRegisterCommandTest($command),
-            default => exit("Unknown command type: $type\n"),
+            default => exit("Unknown command type: {$type}\n"),
         };
         if ($commandTest === null) {
             fwrite($fp, "    #[DoesNotPerformAssertions]\n");
         }
-        fwrite($fp, "    public function $methodName(): void\n");
+        fwrite($fp, "    public function {$methodName}(): void\n");
         fwrite($fp, "    {\n");
 
         if ($commandTest !== null) {
             fwrite($fp, "        \$this->{$commandTest['method']}(\n");
             foreach ($commandTest['args'] as $argName => $argValue) {
                 $argValue = toPhpLiteral($argValue);
-                fwrite($fp, "            $argName: $argValue,\n");
+                fwrite($fp, "            {$argName}: {$argValue},\n");
             }
-            fwrite($fp, "            line: $line,\n");
+            fwrite($fp, "            line: {$line},\n");
             fwrite($fp, "        );\n");
         }
 
@@ -105,7 +104,10 @@ foreach ($wastJsonFiles as $wastJsonFile) {
 
 function wastJsonFileToPascalCase(string $s): string
 {
-    $s = strtr(basename($s), ['.json' => '', '-' => '_']);
+    $s = strtr(basename($s), [
+        '.json' => '',
+        '-' => '_',
+    ]);
     return implode('', array_map(ucfirst(...), explode('_', $s)));
 }
 
@@ -240,18 +242,20 @@ function buildRegisterCommandTest(array $command): array
 
 function toPhpLiteral(mixed $value): string
 {
-    if (is_null($value)) {
+    if ($value === null) {
         return 'null';
     } elseif (is_int($value)) {
-        return (string)$value;
+        return (string) $value;
     } elseif (is_string($value)) {
-        $value = strtr($value, ["\\" => "\\\\", "'" => "\\'"]);
-        return "'$value'";
+        $value = strtr($value, [
+            '\\' => '\\\\',
+            "'" => "\\'",
+        ]);
+        return "'{$value}'";
     } elseif (is_array($value) && array_is_list($value)) {
         return '[' . implode(', ', array_map(toPhpLiteral(...), $value)) . ']';
     } elseif (is_array($value)) {
-        return '[' . implode(', ', array_map(fn ($k) => "'$k' => " . toPhpLiteral($value[$k]), array_keys($value))) . ']';
-    } else {
-        return 'ERROR';
+        return '[' . implode(', ', array_map(fn ($k) => "'{$k}' => " . toPhpLiteral($value[$k]), array_keys($value))) . ']';
     }
+    return 'ERROR';
 }

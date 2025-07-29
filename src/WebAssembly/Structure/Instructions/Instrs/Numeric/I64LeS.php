@@ -10,6 +10,6 @@ final readonly class I64LeS extends Instr
 {
     public static function opName(): string
     {
-        return "i64.le_s";
+        return 'i64.le_s';
     }
 }

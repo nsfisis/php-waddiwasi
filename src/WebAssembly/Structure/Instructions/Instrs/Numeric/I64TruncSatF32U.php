@@ -10,6 +10,6 @@ final readonly class I64TruncSatF32U extends Instr
 {
     public static function opName(): string
     {
-        return "i64.trunc_sat_f32_u";
+        return 'i64.trunc_sat_f32_u';
     }
 }

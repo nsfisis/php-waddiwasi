@@ -10,6 +10,6 @@ final readonly class I32LeS extends Instr
 {
     public static function opName(): string
     {
-        return "i32.le_s";
+        return 'i32.le_s';
     }
 }

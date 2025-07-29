@@ -15,6 +15,6 @@ final readonly class LocalGet extends Instr
 
     public static function opName(): string
     {
-        return "local.get";
+        return 'local.get';
     }
 }

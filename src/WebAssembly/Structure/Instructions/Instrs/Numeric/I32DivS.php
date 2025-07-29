@@ -10,6 +10,6 @@ final readonly class I32DivS extends Instr
 {
     public static function opName(): string
     {
-        return "i32.div_s";
+        return 'i32.div_s';
     }
 }

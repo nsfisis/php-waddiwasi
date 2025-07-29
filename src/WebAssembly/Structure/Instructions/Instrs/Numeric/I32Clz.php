@@ -10,6 +10,6 @@ final readonly class I32Clz extends Instr
 {
     public static function opName(): string
     {
-        return "i32.clz";
+        return 'i32.clz';
     }
 }

@@ -8,7 +8,8 @@ use Nsfisis\Waddiwasi\WebAssembly\Structure\Instructions\Instrs\Control\BlockTyp
 
 final readonly class TypeIdx extends BlockType
 {
-    protected function __construct(public int $inner)
-    {
+    protected function __construct(
+        public int $inner
+    ) {
     }
 }

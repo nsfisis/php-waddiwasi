@@ -10,6 +10,6 @@ final readonly class F32Div extends Instr
 {
     public static function opName(): string
     {
-        return "f32.div";
+        return 'f32.div';
     }
 }

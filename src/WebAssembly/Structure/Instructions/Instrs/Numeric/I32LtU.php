@@ -10,6 +10,6 @@ final readonly class I32LtU extends Instr
 {
     public static function opName(): string
     {
-        return "i32.lt_u";
+        return 'i32.lt_u';
     }
 }

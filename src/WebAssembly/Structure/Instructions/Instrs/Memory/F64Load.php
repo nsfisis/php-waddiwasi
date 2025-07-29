@@ -20,6 +20,6 @@ final readonly class F64Load extends Instr
 
     public static function opName(): string
     {
-        return "f64.load";
+        return 'f64.load';
     }
 }

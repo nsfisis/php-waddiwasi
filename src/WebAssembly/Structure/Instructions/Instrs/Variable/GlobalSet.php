@@ -15,6 +15,6 @@ final readonly class GlobalSet extends Instr
 
     public static function opName(): string
     {
-        return "global.set";
+        return 'global.set';
     }
 }

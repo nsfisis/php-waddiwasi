@@ -10,6 +10,6 @@ final readonly class F64Eq extends Instr
 {
     public static function opName(): string
     {
-        return "f64.eq";
+        return 'f64.eq';
     }
 }

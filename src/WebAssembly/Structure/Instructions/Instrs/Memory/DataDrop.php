@@ -15,6 +15,6 @@ final readonly class DataDrop extends Instr
 
     public static function opName(): string
     {
-        return "data.drop";
+        return 'data.drop';
     }
 }

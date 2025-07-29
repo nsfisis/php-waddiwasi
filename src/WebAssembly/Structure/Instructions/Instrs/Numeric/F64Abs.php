@@ -10,6 +10,6 @@ final readonly class F64Abs extends Instr
 {
     public static function opName(): string
     {
-        return "f64.abs";
+        return 'f64.abs';
     }
 }

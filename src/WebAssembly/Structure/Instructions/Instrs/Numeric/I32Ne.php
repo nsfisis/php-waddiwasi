@@ -10,6 +10,6 @@ final readonly class I32Ne extends Instr
 {
     public static function opName(): string
     {
-        return "i32.ne";
+        return 'i32.ne';
     }
 }

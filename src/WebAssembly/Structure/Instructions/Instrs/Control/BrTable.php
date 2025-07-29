@@ -19,6 +19,6 @@ final readonly class BrTable extends Instr
 
     public static function opName(): string
     {
-        return "br_table";
+        return 'br_table';
     }
 }

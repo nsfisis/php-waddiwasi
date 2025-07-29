@@ -15,6 +15,6 @@ final readonly class GlobalGet extends Instr
 
     public static function opName(): string
     {
-        return "global.get";
+        return 'global.get';
     }
 }

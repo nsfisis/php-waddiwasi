@@ -20,6 +20,6 @@ final readonly class I32Load extends Instr
 
     public static function opName(): string
     {
-        return "i32.load";
+        return 'i32.load';
     }
 }

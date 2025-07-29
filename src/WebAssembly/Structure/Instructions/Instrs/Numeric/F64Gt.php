@@ -10,6 +10,6 @@ final readonly class F64Gt extends Instr
 {
     public static function opName(): string
     {
-        return "f64.gt";
+        return 'f64.gt';
     }
 }

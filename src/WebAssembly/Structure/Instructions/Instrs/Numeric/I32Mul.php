@@ -10,6 +10,6 @@ final readonly class I32Mul extends Instr
 {
     public static function opName(): string
     {
-        return "i32.mul";
+        return 'i32.mul';
     }
 }

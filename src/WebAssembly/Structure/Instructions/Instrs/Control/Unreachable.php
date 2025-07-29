@@ -10,6 +10,6 @@ final readonly class Unreachable extends Instr
 {
     public static function opName(): string
     {
-        return "unreachable";
+        return 'unreachable';
     }
 }

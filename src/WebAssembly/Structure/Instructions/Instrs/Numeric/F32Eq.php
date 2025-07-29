@@ -10,6 +10,6 @@ final readonly class F32Eq extends Instr
 {
     public static function opName(): string
     {
-        return "f32.eq";
+        return 'f32.eq';
     }
 }

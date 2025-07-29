@@ -10,6 +10,6 @@ final readonly class I64RotR extends Instr
 {
     public static function opName(): string
     {
-        return "i64.rot_r";
+        return 'i64.rot_r';
     }
 }

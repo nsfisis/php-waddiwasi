@@ -10,6 +10,6 @@ final readonly class F64Min extends Instr
 {
     public static function opName(): string
     {
-        return "f64.min";
+        return 'f64.min';
     }
 }

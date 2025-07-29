@@ -10,6 +10,6 @@ final readonly class F32Min extends Instr
 {
     public static function opName(): string
     {
-        return "f32.min";
+        return 'f32.min';
     }
 }

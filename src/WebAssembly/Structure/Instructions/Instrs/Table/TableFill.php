@@ -15,6 +15,6 @@ final readonly class TableFill extends Instr
 
     public static function opName(): string
     {
-        return "table.fill";
+        return 'table.fill';
     }
 }

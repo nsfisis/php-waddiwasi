@@ -10,6 +10,6 @@ final readonly class F32Trunc extends Instr
 {
     public static function opName(): string
     {
-        return "f32.trunc";
+        return 'f32.trunc';
     }
 }

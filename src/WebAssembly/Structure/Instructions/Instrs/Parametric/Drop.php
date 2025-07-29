@@ -10,6 +10,6 @@ final readonly class Drop extends Instr
 {
     public static function opName(): string
     {
-        return "drop";
+        return 'drop';
     }
 }

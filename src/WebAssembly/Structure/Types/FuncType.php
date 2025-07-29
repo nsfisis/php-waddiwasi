@@ -18,7 +18,7 @@ final readonly class FuncType
     ) {
     }
 
-    public function equals(FuncType $other): bool
+    public function equals(self $other): bool
     {
         if (count($this->params) !== count($other->params)) {
             return false;

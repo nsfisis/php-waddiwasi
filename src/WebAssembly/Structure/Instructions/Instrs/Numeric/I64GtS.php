@@ -10,6 +10,6 @@ final readonly class I64GtS extends Instr
 {
     public static function opName(): string
     {
-        return "i64.gt_s";
+        return 'i64.gt_s';
     }
 }

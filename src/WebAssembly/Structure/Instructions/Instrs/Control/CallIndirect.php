@@ -16,6 +16,6 @@ final readonly class CallIndirect extends Instr
 
     public static function opName(): string
     {
-        return "call_indirect";
+        return 'call_indirect';
     }
 }

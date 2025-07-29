@@ -16,6 +16,6 @@ final readonly class TableCopy extends Instr
 
     public static function opName(): string
     {
-        return "table.copy";
+        return 'table.copy';
     }
 }

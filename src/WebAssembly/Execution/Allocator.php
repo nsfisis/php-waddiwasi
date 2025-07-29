@@ -66,7 +66,7 @@ final readonly class Allocator
                 ExternVals\Table::class => $m->tableAddrs[] = $externVal->addr,
                 ExternVals\Mem::class => $m->memAddrs[] = $externVal->addr,
                 ExternVals\Global_::class => $m->globalAddrs[] = $externVal->addr,
-                default => throw new RuntimeException("unreachable"),
+                default => throw new RuntimeException('unreachable'),
             };
         }
 
@@ -104,7 +104,7 @@ final readonly class Allocator
                 ExportDescs\Table::class => ExternVal::Table($m->tableAddrs[$export->desc->table]),
                 ExportDescs\Mem::class => ExternVal::Mem($m->memAddrs[$export->desc->mem]),
                 ExportDescs\Global_::class => ExternVal::Global_($m->globalAddrs[$export->desc->global]),
-                default => throw new RuntimeException("unreachable"),
+                default => throw new RuntimeException('unreachable'),
             };
             $m->exports[] = new ExportInst($export->name, $value);
         }

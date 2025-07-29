@@ -72,9 +72,8 @@ final readonly class BinaryConversion
                 | FloatTraits::F32_EXPONENT_NAN
                 | ($payload >> (FloatTraits::F64_MANTISSA_BITS - FloatTraits::F32_MANTISSA_BITS));
             return self::packInt(PackIntSpecifiers::Int32LittleEndian, $i);
-        } else {
-            return self::packFloat(PackFloatSpecifiers::Float32LittleEndian, $x);
         }
+        return self::packFloat(PackFloatSpecifiers::Float32LittleEndian, $x);
     }
 
     /**
@@ -142,9 +141,8 @@ final readonly class BinaryConversion
                 FloatTraits::F64_EXPONENT_NAN |
                 ($payload << (FloatTraits::F64_MANTISSA_BITS - FloatTraits::F32_MANTISSA_BITS));
             return self::unpackFloat(UnpackFloatSpecifiers::Float64LittleEndian, self::packInt(PackIntSpecifiers::Int64LittleEndian, $j));
-        } else {
-            return self::unpackFloat(UnpackFloatSpecifiers::Float32LittleEndian, $s);
         }
+        return self::unpackFloat(UnpackFloatSpecifiers::Float32LittleEndian, $s);
     }
 
     /**
@@ -265,11 +263,11 @@ final readonly class BinaryConversion
         }
 
         // Exponent
-        if (bccomp($value, "9223372036854775807") <= 0) {
-            $e = strlen(decbin((int)$value)) - 1;
+        if (bccomp($value, '9223372036854775807') <= 0) {
+            $e = strlen(decbin((int) $value)) - 1;
         } else {
             for ($i = 63; ; $i++) {
-                if (bccomp($value, bcpow('2', (string)$i)) < 0) {
+                if (bccomp($value, bcpow('2', (string) $i)) < 0) {
                     $e = $i - 1;
                     break;
                 }
@@ -283,24 +281,24 @@ final readonly class BinaryConversion
         }
 
         // Mantissa
-        $p = bcpow('2', (string)$e); // p = 2^e
-        $numerator = bcmul(bcsub($value, $p), (string)(1 << 23)); // (value - p) * 2^23
-        $quotient = (int)bcdiv($numerator, $p, scale: 0);
+        $p = bcpow('2', (string) $e); // p = 2^e
+        $numerator = bcmul(bcsub($value, $p), (string) (1 << 23)); // (value - p) * 2^23
+        $quotient = (int) bcdiv($numerator, $p, scale: 0);
         $remainder = bcmod($numerator, $p);
 
         // Round
         $half = bcdiv($p, '2', scale: 0);
         if (bccomp($remainder, $half) > 0) {
-            $quotient += 1;
+            ++$quotient;
         } elseif ($remainder === $half) {
             // Half to even
             if ($quotient % 2 === 1) {
-                $quotient += 1;
+                ++$quotient;
             }
         }
         if ($quotient >= (1 << 23)) {
             $quotient -= (1 << 23);
-            $e += 1;
+            ++$e;
             // Infinity
             if ($e >= 128) {
                 return FloatTraits::getF32SignBit($sign) | FloatTraits::F32_INFINITY_BIT_PATTERN;
@@ -312,7 +310,7 @@ final readonly class BinaryConversion
 
     private static function isLittleEndian(): bool
     {
-        return pack("s", ord("a"))[0] === "a";
+        return pack('s', ord('a'))[0] === 'a';
     }
 
     /**

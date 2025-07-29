@@ -10,6 +10,6 @@ final readonly class F32Sub extends Instr
 {
     public static function opName(): string
     {
-        return "f32.sub";
+        return 'f32.sub';
     }
 }

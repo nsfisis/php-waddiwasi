@@ -10,6 +10,6 @@ final readonly class RefIsNull extends Instr
 {
     public static function opName(): string
     {
-        return "ref.is_null";
+        return 'ref.is_null';
     }
 }

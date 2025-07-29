@@ -15,6 +15,6 @@ final readonly class ElemDrop extends Instr
 
     public static function opName(): string
     {
-        return "elem.drop";
+        return 'elem.drop';
     }
 }

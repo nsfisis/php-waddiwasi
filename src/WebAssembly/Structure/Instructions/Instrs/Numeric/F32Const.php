@@ -18,6 +18,6 @@ final readonly class F32Const extends Instr
 
     public static function opName(): string
     {
-        return "f32.const";
+        return 'f32.const';
     }
 }

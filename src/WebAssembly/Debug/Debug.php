@@ -36,7 +36,7 @@ final readonly class Debug
                 ImportDescs\Global_::class => self::globalTypeToString($desc->global),
                 default => 'unknown',
             };
-            echo "$mod::$name: $type $extraInfo\n";
+            echo "{$mod}::{$name}: {$type} {$extraInfo}\n";
         }
     }
 
@@ -65,7 +65,7 @@ final readonly class Debug
     {
         $params = implode(', ', array_map(self::valTypeToString(...), $type->params));
         $results = implode(', ', array_map(self::valTypeToString(...), $type->results));
-        return "($params) -> ($results)";
+        return "({$params}) -> ({$results})";
     }
 
     private static function valTypeToString(ValType $type): string
@@ -85,7 +85,7 @@ final readonly class Debug
     {
         $min = $limit->min;
         $max = $limit->max;
-        return $max === null ? "[$min, inf)" : "[$min, $max]";
+        return $max === null ? "[{$min}, inf)" : "[{$min}, {$max}]";
     }
 
     private static function mutToString(Mut $mut): string

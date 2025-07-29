@@ -10,6 +10,6 @@ final readonly class Return_ extends Instr
 {
     public static function opName(): string
     {
-        return "return";
+        return 'return';
     }
 }

@@ -10,6 +10,6 @@ final readonly class F64Sqrt extends Instr
 {
     public static function opName(): string
     {
-        return "f64.sqrt";
+        return 'f64.sqrt';
     }
 }

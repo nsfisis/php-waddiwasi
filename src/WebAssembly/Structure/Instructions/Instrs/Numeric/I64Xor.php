@@ -10,6 +10,6 @@ final readonly class I64Xor extends Instr
 {
     public static function opName(): string
     {
-        return "i64.xor";
+        return 'i64.xor';
     }
 }

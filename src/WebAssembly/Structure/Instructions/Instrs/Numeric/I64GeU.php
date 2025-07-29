@@ -10,6 +10,6 @@ final readonly class I64GeU extends Instr
 {
     public static function opName(): string
     {
-        return "i64.ge_u";
+        return 'i64.ge_u';
     }
 }

@@ -10,6 +10,6 @@ final readonly class F32Sqrt extends Instr
 {
     public static function opName(): string
     {
-        return "f32.sqrt";
+        return 'f32.sqrt';
     }
 }

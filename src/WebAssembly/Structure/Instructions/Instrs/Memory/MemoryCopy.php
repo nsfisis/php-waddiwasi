@@ -10,6 +10,6 @@ final readonly class MemoryCopy extends Instr
 {
     public static function opName(): string
     {
-        return "memory.copy";
+        return 'memory.copy';
     }
 }

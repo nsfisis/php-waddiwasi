@@ -18,6 +18,6 @@ final readonly class I32Const extends Instr
 
     public static function opName(): string
     {
-        return "i32.const";
+        return 'i32.const';
     }
 }

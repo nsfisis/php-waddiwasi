@@ -68,7 +68,7 @@ final class Store
                 $this->globals[] = $extern->global;
                 return ExternVal::Global_(count($this->globals) - 1);
             default:
-                throw new RuntimeException("unreachable");
+                throw new RuntimeException('unreachable');
         }
     }
 }

@@ -10,6 +10,6 @@ final readonly class F64Mul extends Instr
 {
     public static function opName(): string
     {
-        return "f64.mul";
+        return 'f64.mul';
     }
 }

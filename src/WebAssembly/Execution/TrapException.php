@@ -12,7 +12,7 @@ class TrapException extends RuntimeException
     private readonly TrapKind $trapKind;
 
     public function __construct(
-        string $message = "",
+        string $message = '',
         int $code = 0,
         ?Throwable $previous = null,
         TrapKind $trapKind = TrapKind::Unknown,

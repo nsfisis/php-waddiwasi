@@ -10,6 +10,6 @@ final readonly class I64Add extends Instr
 {
     public static function opName(): string
     {
-        return "i64.add";
+        return 'i64.add';
     }
 }

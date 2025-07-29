@@ -10,6 +10,6 @@ final readonly class I32And extends Instr
 {
     public static function opName(): string
     {
-        return "i32.and";
+        return 'i32.and';
     }
 }

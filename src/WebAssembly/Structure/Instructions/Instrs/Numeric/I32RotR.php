@@ -10,6 +10,6 @@ final readonly class I32RotR extends Instr
 {
     public static function opName(): string
     {
-        return "i32.rot_r";
+        return 'i32.rot_r';
     }
 }

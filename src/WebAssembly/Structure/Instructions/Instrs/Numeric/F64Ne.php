@@ -10,6 +10,6 @@ final readonly class F64Ne extends Instr
 {
     public static function opName(): string
     {
-        return "f64.ne";
+        return 'f64.ne';
     }
 }

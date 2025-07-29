@@ -20,6 +20,6 @@ final readonly class I64Store8 extends Instr
 
     public static function opName(): string
     {
-        return "i64.store8";
+        return 'i64.store8';
     }
 }

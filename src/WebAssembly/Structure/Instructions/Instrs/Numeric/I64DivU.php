@@ -10,6 +10,6 @@ final readonly class I64DivU extends Instr
 {
     public static function opName(): string
     {
-        return "i64.div_u";
+        return 'i64.div_u';
     }
 }

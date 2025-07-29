@@ -20,6 +20,6 @@ final readonly class I64Load16S extends Instr
 
     public static function opName(): string
     {
-        return "i64.load16_s";
+        return 'i64.load16_s';
     }
 }

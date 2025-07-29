@@ -10,6 +10,6 @@ final readonly class F64PromoteF32 extends Instr
 {
     public static function opName(): string
     {
-        return "f64.promote_f32";
+        return 'f64.promote_f32';
     }
 }

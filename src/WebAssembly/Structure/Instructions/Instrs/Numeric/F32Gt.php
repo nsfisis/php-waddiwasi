@@ -10,6 +10,6 @@ final readonly class F32Gt extends Instr
 {
     public static function opName(): string
     {
-        return "f32.gt";
+        return 'f32.gt';
     }
 }

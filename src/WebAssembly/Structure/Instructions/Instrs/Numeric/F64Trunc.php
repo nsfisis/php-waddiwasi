@@ -10,6 +10,6 @@ final readonly class F64Trunc extends Instr
 {
     public static function opName(): string
     {
-        return "f64.trunc";
+        return 'f64.trunc';
     }
 }

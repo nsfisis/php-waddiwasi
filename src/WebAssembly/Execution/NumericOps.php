@@ -69,7 +69,7 @@ final readonly class NumericOps
 
     public static function f32ConvertI64S(int $x): float
     {
-        return BinaryConversion::convertBigIntToF32((string)$x);
+        return BinaryConversion::convertBigIntToF32((string) $x);
     }
 
     public static function f32ConvertI64U(int $x): float
@@ -89,9 +89,8 @@ final readonly class NumericOps
     {
         if (is_nan($x)) {
             return NAN;
-        } else {
-            return self::truncateF64ToF32($x);
         }
+        return self::truncateF64ToF32($x);
     }
 
     public static function f32Div(float $x, float $y): float
@@ -173,9 +172,8 @@ final readonly class NumericOps
         if (is_nan($x)) {
             // Negate operator does not work for NaN in PHP.
             return FloatOps::constructNan(FloatOps::getSignedness($x)->negated(), $x);
-        } else {
-            return -$x;
         }
+        return -$x;
     }
 
     public static function f32ReinterpretI32(int $x): float
@@ -205,9 +203,8 @@ final readonly class NumericOps
         }
         if ($x < 0) {
             return self::truncateF64ToF32(ceil($x));
-        } else {
-            return self::truncateF64ToF32(floor($x));
         }
+        return self::truncateF64ToF32(floor($x));
     }
 
     public static function f64Abs(float $x): float
@@ -336,18 +333,16 @@ final readonly class NumericOps
         if (is_nan($x)) {
             // Negate operator does not work for NaN in PHP.
             return FloatOps::constructNan(FloatOps::getSignedness($x)->negated(), $x);
-        } else {
-            return -$x;
         }
+        return -$x;
     }
 
     public static function f64PromoteF32(float $x): float
     {
         if (is_nan($x)) {
             return NAN;
-        } else {
-            return $x;
         }
+        return $x;
     }
 
     public static function f64ReinterpretI32(int $x): float
@@ -377,9 +372,8 @@ final readonly class NumericOps
         }
         if ($x < 0) {
             return ceil($x);
-        } else {
-            return floor($x);
         }
+        return floor($x);
     }
 
     public static function i32Add(int $x, int $y): int
@@ -398,7 +392,7 @@ final readonly class NumericOps
     {
         $x = self::convertS32ToU32($x);
         $zeros = 0;
-        for ($i = 31; 0 <= $i; $i--) {
+        for ($i = 31; $i >= 0; $i--) {
             if (($x & (1 << $i)) === 0) {
                 $zeros++;
             } else {
@@ -605,9 +599,8 @@ final readonly class NumericOps
                 $result = ($result >> 1) | 0x80000000;
             }
             return self::convertU32ToS32($result);
-        } else {
-            return $x >> $k;
         }
+        return $x >> $k;
     }
 
     public static function i32ShrU(int $x, int $y): int
@@ -634,10 +627,10 @@ final readonly class NumericOps
         if (is_infinite($x)) {
             return TrapKind::IntegerOverflow;
         }
-        if ($x <= -2147483649.0 || 2147483648.0 <= $x) {
+        if ($x <= -2147483649.0 || $x >= 2147483648.0) {
             return TrapKind::IntegerOverflow;
         }
-        return (int)round($x, mode: RoundingMode::TowardsZero);
+        return (int) round($x, mode: RoundingMode::TowardsZero);
     }
 
     public static function i32TruncF32U(float $x): int|TrapKind
@@ -648,10 +641,10 @@ final readonly class NumericOps
         if (is_infinite($x)) {
             return TrapKind::IntegerOverflow;
         }
-        if ($x <= -1.0 || 4294967296.0 <= $x) {
+        if ($x <= -1.0 || $x >= 4294967296.0) {
             return TrapKind::IntegerOverflow;
         }
-        return self::convertU32ToS32((int)round($x, mode: RoundingMode::TowardsZero));
+        return self::convertU32ToS32((int) round($x, mode: RoundingMode::TowardsZero));
     }
 
     public static function i32TruncF64S(float $x): int|TrapKind
@@ -662,10 +655,10 @@ final readonly class NumericOps
         if (is_infinite($x)) {
             return TrapKind::IntegerOverflow;
         }
-        if ($x <= -2147483649.0 || 2147483648.0 <= $x) {
+        if ($x <= -2147483649.0 || $x >= 2147483648.0) {
             return TrapKind::IntegerOverflow;
         }
-        return (int)round($x, mode: RoundingMode::TowardsZero);
+        return (int) round($x, mode: RoundingMode::TowardsZero);
     }
 
     public static function i32TruncF64U(float $x): int|TrapKind
@@ -676,10 +669,10 @@ final readonly class NumericOps
         if (is_infinite($x)) {
             return TrapKind::IntegerOverflow;
         }
-        if ($x <= -1.0 || 4294967296.0 <= $x) {
+        if ($x <= -1.0 || $x >= 4294967296.0) {
             return TrapKind::IntegerOverflow;
         }
-        return self::convertU32ToS32((int)round($x, mode: RoundingMode::TowardsZero));
+        return self::convertU32ToS32((int) round($x, mode: RoundingMode::TowardsZero));
     }
 
     public static function i32TruncSatF32S(float $x): int
@@ -689,11 +682,10 @@ final readonly class NumericOps
         }
         if ($x < -2147483648.0) {
             return -2147483648;
-        } elseif (2147483647.0 < $x) {
+        } elseif ($x > 2147483647.0) {
             return 2147483647;
-        } else {
-            return (int)round($x, mode: RoundingMode::TowardsZero);
         }
+        return (int) round($x, mode: RoundingMode::TowardsZero);
     }
 
     public static function i32TruncSatF32U(float $x): int
@@ -703,11 +695,10 @@ final readonly class NumericOps
         }
         if ($x < 0.0) {
             return 0;
-        } elseif (4294967295.0 < $x) {
+        } elseif ($x > 4294967295.0) {
             return -1;
-        } else {
-            return self::convertU32ToS32((int)round($x, mode: RoundingMode::TowardsZero));
         }
+        return self::convertU32ToS32((int) round($x, mode: RoundingMode::TowardsZero));
     }
 
     public static function i32TruncSatF64S(float $x): int
@@ -717,11 +708,10 @@ final readonly class NumericOps
         }
         if ($x < -2147483648.0) {
             return -2147483648;
-        } elseif (2147483647.0 < $x) {
+        } elseif ($x > 2147483647.0) {
             return 2147483647;
-        } else {
-            return (int)round($x, mode: RoundingMode::TowardsZero);
         }
+        return (int) round($x, mode: RoundingMode::TowardsZero);
     }
 
     public static function i32TruncSatF64U(float $x): int
@@ -731,11 +721,10 @@ final readonly class NumericOps
         }
         if ($x < 0.0) {
             return 0;
-        } elseif (4294967295.0 < $x) {
+        } elseif ($x > 4294967295.0) {
             return -1;
-        } else {
-            return self::convertU32ToS32((int)round($x, mode: RoundingMode::TowardsZero));
         }
+        return self::convertU32ToS32((int) round($x, mode: RoundingMode::TowardsZero));
     }
 
     public static function i32WrapI64(int $x): int
@@ -752,7 +741,7 @@ final readonly class NumericOps
 
     public static function i64Add(int $x, int $y): int
     {
-        return self::bigIntToPhpInt(bcadd((string)$x, (string)$y));
+        return self::bigIntToPhpInt(bcadd((string) $x, (string) $y));
     }
 
     public static function i64And(int $x, int $y): int
@@ -763,13 +752,12 @@ final readonly class NumericOps
     public static function i64Clz(int $x): int
     {
         $zeros = 0;
-        for ($i = 63; 0 <= $i; $i--) {
+        for ($i = 63; $i >= 0; $i--) {
             if ($i === 63) {
                 if ($x < 0) {
                     break;
-                } else {
-                    $zeros++;
                 }
+                $zeros++;
             } else {
                 if (($x & (1 << $i)) === 0) {
                     $zeros++;
@@ -786,7 +774,7 @@ final readonly class NumericOps
         $zeros = 0;
         for ($i = 0; $i < 64; $i++) {
             if ($i === 63) {
-                if (0 <= $x) {
+                if ($x >= 0) {
                     $zeros++;
                 }
             } else {
@@ -907,7 +895,7 @@ final readonly class NumericOps
 
     public static function i64Mul(int $x, int $y): int
     {
-        return self::bigIntToPhpInt(bcmul((string)$x, (string)$y));
+        return self::bigIntToPhpInt(bcmul((string) $x, (string) $y));
     }
 
     public static function i64Ne(int $x, int $y): bool
@@ -962,7 +950,7 @@ final readonly class NumericOps
     public static function i64RotL(int $x, int $y): int
     {
         $y = self::convertS64ToBigUInt($y);
-        $k = (int)bcmod($y, '64');
+        $k = (int) bcmod($y, '64');
         $left = $x << $k;
         $right = $x;
         for ($i = 0; $i < 64 - $k; $i++) {
@@ -974,7 +962,7 @@ final readonly class NumericOps
     public static function i64RotR(int $x, int $y): int
     {
         $y = self::convertS64ToBigUInt($y);
-        $k = (int)bcmod($y, '64');
+        $k = (int) bcmod($y, '64');
         $left = $x;
         for ($i = 0; $i < $k; $i++) {
             $left = ($left >> 1) & 0x7FFFFFFFFFFFFFFF;
@@ -986,21 +974,21 @@ final readonly class NumericOps
     public static function i64Shl(int $x, int $y): int
     {
         $y = self::convertS64ToBigUInt($y);
-        $k = (int)bcmod($y, '64');
+        $k = (int) bcmod($y, '64');
         return $x << $k;
     }
 
     public static function i64ShrS(int $x, int $y): int
     {
         $y = self::convertS64ToBigUInt($y);
-        $k = (int)bcmod($y, '64');
+        $k = (int) bcmod($y, '64');
         return $x >> $k;
     }
 
     public static function i64ShrU(int $x, int $y): int
     {
         $y = self::convertS64ToBigUInt($y);
-        $k = (int)bcmod($y, '64');
+        $k = (int) bcmod($y, '64');
         if ($k === 0) {
             return $x;
         }
@@ -1013,7 +1001,7 @@ final readonly class NumericOps
 
     public static function i64Sub(int $x, int $y): int
     {
-        $result = self::bigIntToPhpInt(bcsub((string)$x, (string)$y));
+        $result = self::bigIntToPhpInt(bcsub((string) $x, (string) $y));
         return $result;
     }
 
@@ -1025,10 +1013,10 @@ final readonly class NumericOps
         if (is_infinite($x)) {
             return TrapKind::IntegerOverflow;
         }
-        if ($x < -9223372036854775808.0 || 9223372036854775808.0 <= $x) {
+        if ($x < -9223372036854775808.0 || $x >= 9223372036854775808.0) {
             return TrapKind::IntegerOverflow;
         }
-        return (int)round($x, mode: RoundingMode::TowardsZero);
+        return (int) round($x, mode: RoundingMode::TowardsZero);
     }
 
     public static function i64TruncF32U(float $x): int|TrapKind
@@ -1039,7 +1027,7 @@ final readonly class NumericOps
         if (is_infinite($x)) {
             return TrapKind::IntegerOverflow;
         }
-        if ($x <= -1.0 || 18446744073709551616.0 <= $x) {
+        if ($x <= -1.0 || $x >= 18446744073709551616.0) {
             return TrapKind::IntegerOverflow;
         }
         return self::bigIntToPhpInt(sprintf('%F', round($x, mode: RoundingMode::TowardsZero)));
@@ -1053,10 +1041,10 @@ final readonly class NumericOps
         if (is_infinite($x)) {
             return TrapKind::IntegerOverflow;
         }
-        if ($x < -9223372036854775808.0 || 9223372036854775808.0 <= $x) {
+        if ($x < -9223372036854775808.0 || $x >= 9223372036854775808.0) {
             return TrapKind::IntegerOverflow;
         }
-        return (int)round($x, mode: RoundingMode::TowardsZero);
+        return (int) round($x, mode: RoundingMode::TowardsZero);
     }
 
     public static function i64TruncF64U(float $x): int|TrapKind
@@ -1067,7 +1055,7 @@ final readonly class NumericOps
         if (is_infinite($x)) {
             return TrapKind::IntegerOverflow;
         }
-        if ($x <= -1.0 || 18446744073709551616.0 <= $x) {
+        if ($x <= -1.0 || $x >= 18446744073709551616.0) {
             return TrapKind::IntegerOverflow;
         }
         return self::bigIntToPhpInt(sprintf('%F', round($x, mode: RoundingMode::TowardsZero)));
@@ -1080,11 +1068,10 @@ final readonly class NumericOps
         }
         if ($x < -9223372036854775808.0) {
             return PHP_INT_MIN;
-        } elseif (9223372036854775808.0 <= $x) {
+        } elseif ($x >= 9223372036854775808.0) {
             return PHP_INT_MAX;
-        } else {
-            return (int)round($x, mode: RoundingMode::TowardsZero);
         }
+        return (int) round($x, mode: RoundingMode::TowardsZero);
     }
 
     public static function i64TruncSatF32U(float $x): int
@@ -1098,9 +1085,8 @@ final readonly class NumericOps
             return self::bigIntToPhpInt('18446744073709551615');
         } elseif (bccomp('18446744073709551615', sprintf('%.9F', $x)) < 0) {
             return self::bigIntToPhpInt('18446744073709551615');
-        } else {
-            return self::bigIntToPhpInt(sprintf('%F', round($x, mode: RoundingMode::TowardsZero)));
         }
+        return self::bigIntToPhpInt(sprintf('%F', round($x, mode: RoundingMode::TowardsZero)));
     }
 
     public static function i64TruncSatF64S(float $x): int
@@ -1110,11 +1096,10 @@ final readonly class NumericOps
         }
         if ($x < -9223372036854775808.0) {
             return PHP_INT_MIN;
-        } elseif (9223372036854775808.0 <= $x) {
+        } elseif ($x >= 9223372036854775808.0) {
             return PHP_INT_MAX;
-        } else {
-            return (int)round($x, mode: RoundingMode::TowardsZero);
         }
+        return (int) round($x, mode: RoundingMode::TowardsZero);
     }
 
     public static function i64TruncSatF64U(float $x): int
@@ -1128,9 +1113,8 @@ final readonly class NumericOps
             return self::bigIntToPhpInt('18446744073709551615');
         } elseif (bccomp('18446744073709551615', sprintf('%.9F', $x)) < 0) {
             return self::bigIntToPhpInt('18446744073709551615');
-        } else {
-            return self::bigIntToPhpInt(sprintf('%F', round($x, mode: RoundingMode::TowardsZero)));
         }
+        return self::bigIntToPhpInt(sprintf('%F', round($x, mode: RoundingMode::TowardsZero)));
     }
 
     public static function i64Xor(int $x, int $y): int
@@ -1143,25 +1127,22 @@ final readonly class NumericOps
         return BinaryConversion::deserializeF32(BinaryConversion::serializeF32($x));
     }
 
-
     public static function convertS32ToU32(int $x): int
     {
-        assert(-0x80000000 <= $x && $x <= 0x7FFFFFFF);
+        assert($x >= -0x80000000 && $x <= 0x7FFFFFFF);
         if ($x < 0) {
             return $x + 0x100000000;
-        } else {
-            return $x;
         }
+        return $x;
     }
 
     public static function convertU32ToS32(int $x): int
     {
-        assert(0x00000000 <= $x && $x <= 0xFFFFFFFF);
+        assert($x >= 0x00000000 && $x <= 0xFFFFFFFF);
         if (($x & 0x80000000) !== 0) {
             return $x - 0x100000000;
-        } else {
-            return $x;
         }
+        return $x;
     }
 
     /**
@@ -1170,10 +1151,9 @@ final readonly class NumericOps
     public static function convertS64ToBigUInt(int $x): string
     {
         if ($x < 0) {
-            return bcadd((string)$x, '18446744073709551616');
-        } else {
-            return (string)$x;
+            return bcadd((string) $x, '18446744073709551616');
         }
+        return (string) $x;
     }
 
     public static function bigIntToPhpInt(string $s): int
@@ -1190,6 +1170,6 @@ final readonly class NumericOps
                 $result = bcsub($result, bcpow('2', '64'));
             }
         }
-        return (int)$result;
+        return (int) $result;
     }
 }

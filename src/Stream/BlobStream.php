@@ -90,7 +90,7 @@ final class BlobStream implements StreamInterface
     private function ensureNBytesAvailable(int $bytes): void
     {
         if ($this->len < $this->pos + $bytes) {
-            throw new UnexpectedEofException(sprintf("Unexpected EOF while reading from blob (%d bytes expected, %d bytes read)", $bytes, $this->len - $this->pos));
+            throw new UnexpectedEofException(sprintf('Unexpected EOF while reading from blob (%d bytes expected, %d bytes read)', $bytes, $this->len - $this->pos));
         }
     }
 }

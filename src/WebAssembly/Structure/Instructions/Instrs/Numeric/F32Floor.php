@@ -10,6 +10,6 @@ final readonly class F32Floor extends Instr
 {
     public static function opName(): string
     {
-        return "f32.floor";
+        return 'f32.floor';
     }
 }

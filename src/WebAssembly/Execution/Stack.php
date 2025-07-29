@@ -9,7 +9,6 @@ use function assert;
 use function count;
 use function is_float;
 use function is_int;
-use function is_null;
 
 final class Stack
 {
@@ -51,7 +50,7 @@ final class Stack
 
     public function pushBool(bool $value): void
     {
-        $this->pushValue((int)$value);
+        $this->pushValue((int) $value);
     }
 
     /**
@@ -117,7 +116,7 @@ final class Stack
     public function popInt(): int
     {
         $v = $this->popValue();
-        assert(is_int($v), "Expected an int on top of the stack, but got " . self::getValueTypeName($v));
+        assert(is_int($v), 'Expected an int on top of the stack, but got ' . self::getValueTypeName($v));
         return $v;
     }
 
@@ -127,14 +126,14 @@ final class Stack
     public function popFloat(): float
     {
         $v = $this->popValue();
-        assert(is_float($v), "Expected a float on top of the stack, but got " . self::getValueTypeName($v));
+        assert(is_float($v), 'Expected a float on top of the stack, but got ' . self::getValueTypeName($v));
         return $v;
     }
 
     public function popRef(): Ref
     {
         $v = $this->popValue();
-        assert($v instanceof Ref, "Expected a Ref on top of the stack, but got " . self::getValueTypeName($v));
+        assert($v instanceof Ref, 'Expected a Ref on top of the stack, but got ' . self::getValueTypeName($v));
         return $v;
     }
 
@@ -144,21 +143,20 @@ final class Stack
     public function popValuesToLabel(): array
     {
         $results = [];
-        while (!$this->isEmpty()) {
+        while (! $this->isEmpty()) {
             $top = $this->pop();
             if ($top instanceof Label) {
                 break;
-            } else {
-                assert(is_int($top) || is_float($top) || $top instanceof Ref);
-                $results[] = $top;
             }
+            assert(is_int($top) || is_float($top) || $top instanceof Ref);
+            $results[] = $top;
         }
         return $results;
     }
 
     public function popEntriesToCurrentFrame(): void
     {
-        while (!$this->isEmpty() && !$this->top() instanceof Frame) {
+        while (! $this->isEmpty() && ! $this->top() instanceof Frame) {
             $this->pop();
         }
         $this->popFrame();
@@ -204,7 +202,7 @@ final class Stack
     private static function getValueTypeName(int|float|Ref|Frame|Label|null $value): string
     {
         return match (true) {
-            is_null($value) => 'null',
+            $value === null => 'null',
             is_int($value) => 'int',
             is_float($value) => 'float',
             $value instanceof Ref => 'Ref',

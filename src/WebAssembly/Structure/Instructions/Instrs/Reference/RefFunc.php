@@ -15,6 +15,6 @@ final readonly class RefFunc extends Instr
 
     public static function opName(): string
     {
-        return "ref.func";
+        return 'ref.func';
     }
 }

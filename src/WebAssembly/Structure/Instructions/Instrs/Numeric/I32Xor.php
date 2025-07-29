@@ -10,6 +10,6 @@ final readonly class I32Xor extends Instr
 {
     public static function opName(): string
     {
-        return "i32.xor";
+        return 'i32.xor';
     }
 }

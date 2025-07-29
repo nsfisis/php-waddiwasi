@@ -15,6 +15,6 @@ final readonly class MemoryInit extends Instr
 
     public static function opName(): string
     {
-        return "memory.init";
+        return 'memory.init';
     }
 }

@@ -10,6 +10,6 @@ final readonly class I32Or extends Instr
 {
     public static function opName(): string
     {
-        return "i32.or";
+        return 'i32.or';
     }
 }

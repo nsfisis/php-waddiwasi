@@ -10,6 +10,6 @@ final readonly class I64ExtendI32S extends Instr
 {
     public static function opName(): string
     {
-        return "i64.extend_i32_s";
+        return 'i64.extend_i32_s';
     }
 }

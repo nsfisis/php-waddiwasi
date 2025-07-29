@@ -15,6 +15,6 @@ final readonly class LocalSet extends Instr
 
     public static function opName(): string
     {
-        return "local.set";
+        return 'local.set';
     }
 }

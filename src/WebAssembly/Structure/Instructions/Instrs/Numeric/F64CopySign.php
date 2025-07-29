@@ -10,6 +10,6 @@ final readonly class F64CopySign extends Instr
 {
     public static function opName(): string
     {
-        return "f64.copy_sign";
+        return 'f64.copy_sign';
     }
 }

@@ -10,6 +10,6 @@ final readonly class F32DemoteF64 extends Instr
 {
     public static function opName(): string
     {
-        return "f32.demote_f64";
+        return 'f32.demote_f64';
     }
 }

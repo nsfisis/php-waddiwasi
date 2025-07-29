@@ -19,6 +19,6 @@ final readonly class Loop extends Instr
 
     public static function opName(): string
     {
-        return "loop";
+        return 'loop';
     }
 }

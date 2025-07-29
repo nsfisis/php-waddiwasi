@@ -10,6 +10,6 @@ final readonly class F32CopySign extends Instr
 {
     public static function opName(): string
     {
-        return "f32.copy_sign";
+        return 'f32.copy_sign';
     }
 }

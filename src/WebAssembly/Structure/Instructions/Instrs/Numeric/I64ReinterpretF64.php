@@ -10,6 +10,6 @@ final readonly class I64ReinterpretF64 extends Instr
 {
     public static function opName(): string
     {
-        return "i64.reinterpret_f64";
+        return 'i64.reinterpret_f64';
     }
 }
