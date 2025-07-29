@@ -18,6 +18,11 @@ use function count;
 final class Validator
 {
     /**
+     * @var list<string>
+     */
+    private array $errors = [];
+
+    /**
      * @var list<?ValType>
      */
     private array $valueStack = [];
@@ -27,12 +32,8 @@ final class Validator
      */
     private array $controlStack = [];
 
-    /**
-     * @param list<string> $errors
-     */
     public function __construct(
         private readonly Module $module,
-        private array $errors,
     ) {
     }
 
