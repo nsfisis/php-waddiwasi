@@ -678,6 +678,13 @@ final class Decoder
 
     private function decodeInstr(): Instr
     {
+        $instr = $this->doDecodeInstr();
+        $this->validateMemArg($instr);
+        return $instr;
+    }
+
+    private function doDecodeInstr(): Instr
+    {
         switch ($op = $this->decodeByte()) {
             case 0x00: return Instr::Unreachable();
             case 0x01: return Instr::Nop();
@@ -1140,5 +1147,43 @@ final class Decoder
         assert(is_int($result), '$result is guaranteed not to exceed the maximum value of an integer because the number of instructions in $code is limited');
         assert(0 <= $result, '$result is guaranteed to be non-negative because it is the sum of non-negative integers');
         return $result;
+    }
+
+    private function validateMemArg(Instr $instr): void
+    {
+        $isValid = match ($instr::class) {
+            // 1-byte operations: align must be <= 0 (2^0 = 1)
+            Instrs\Memory\I32Load8S::class,
+            Instrs\Memory\I32Load8U::class,
+            Instrs\Memory\I64Load8S::class,
+            Instrs\Memory\I64Load8U::class,
+            Instrs\Memory\I32Store8::class,
+            Instrs\Memory\I64Store8::class => $instr->align <= 0,
+            // 2-byte operations: align must be <= 1 (2^1 = 2)
+            Instrs\Memory\I32Load16S::class,
+            Instrs\Memory\I32Load16U::class,
+            Instrs\Memory\I64Load16S::class,
+            Instrs\Memory\I64Load16U::class,
+            Instrs\Memory\I32Store16::class,
+            Instrs\Memory\I64Store16::class => $instr->align <= 1,
+            // 4-byte operations: align must be <= 2 (2^2 = 4)
+            Instrs\Memory\I32Load::class,
+            Instrs\Memory\F32Load::class,
+            Instrs\Memory\I32Store::class,
+            Instrs\Memory\F32Store::class,
+            Instrs\Memory\I64Load32S::class,
+            Instrs\Memory\I64Load32U::class,
+            Instrs\Memory\I64Store32::class => $instr->align <= 2,
+            // 8-byte operations: align must be <= 3 (2^3 = 8)
+            Instrs\Memory\I64Load::class,
+            Instrs\Memory\F64Load::class,
+            Instrs\Memory\I64Store::class,
+            Instrs\Memory\F64Store::class => $instr->align <= 3,
+            // Not a memory operation.
+            default => true,
+        };
+        if (!$isValid) {
+            throw new InvalidBinaryFormatException("malformed memop flags");
+        }
     }
 }

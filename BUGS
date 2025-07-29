@@ -2,7 +2,6 @@
 
 ## Validation
 
-* AlignTest
 * ImportsTest
 * LinkingTest
 * SkipStackGuardPageTest

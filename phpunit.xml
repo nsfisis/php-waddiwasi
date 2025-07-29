@@ -18,6 +18,7 @@
         </testsuite>
         <testsuite name="default">
             <file>tests/src/SpecTestsuites/Core/AddressTest.php</file>
+            <file>tests/src/SpecTestsuites/Core/AlignTest.php</file>
             <file>tests/src/SpecTestsuites/Core/BinaryLeb128Test.php</file>
             <file>tests/src/SpecTestsuites/Core/BinaryTest.php</file>
             <file>tests/src/SpecTestsuites/Core/BlockTest.php</file>
