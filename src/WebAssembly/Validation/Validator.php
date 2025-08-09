@@ -77,7 +77,8 @@ final class Validator
         $this->validateImports();
         $this->validateExports();
 
-        TODO();
+        $this->validateMemsCount();
+        $this->validateExportsHaveDifferentNames();
     }
 
     private function validateTypes(): void {
@@ -155,6 +156,16 @@ final class Validator
             todo();
         }
     }
+
+    private function validateStart(): void { TODO(); }
+
+    private function validateImports(): void { TODO(); }
+
+    private function validateExports(): void { TODO(); }
+
+    private function validateMemsCount(): void { TODO(); }
+
+    private function validateExportsHaveDifferentNames(): void { TODO(); }
 
     /**
      * @param Func $func
