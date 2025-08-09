@@ -60,6 +60,13 @@ final class Validator
         $this->context->labels = [];
         $this->context->return = [];
         $this->context->refs = TODO;
+
+        $this->validateTypes();
+        $this->validateTables();
+    }
+
+    private function validateTypes(): void {
+        // Do nothing because function types are always valid.
     }
 
     private function validateFuncs(): void {
@@ -68,7 +75,10 @@ final class Validator
             }
     }
 
-    private function validateTables(): void {}
+    private function validateTables(): void {
+        foreach ($this->module->tables as $i => $table) {
+        }
+    }
 
     private function validateMems(): void {}
 
