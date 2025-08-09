@@ -4,7 +4,6 @@ declare(strict_types=1);
 
 namespace Nsfisis\Waddiwasi\WebAssembly\Validation;
 
-use Nsfisis\Waddiwasi\WebAssembly\Execution\Linker;
 use Nsfisis\Waddiwasi\WebAssembly\Structure\Instructions\Instr;
 use Nsfisis\Waddiwasi\WebAssembly\Structure\Instructions\Instrs;
 use Nsfisis\Waddiwasi\WebAssembly\Structure\Instructions\Instrs\Control\BlockType;
@@ -12,6 +11,9 @@ use Nsfisis\Waddiwasi\WebAssembly\Structure\Instructions\Instrs\Control\BlockTyp
 use Nsfisis\Waddiwasi\WebAssembly\Structure\Modules\Func;
 use Nsfisis\Waddiwasi\WebAssembly\Structure\Modules\Module;
 use Nsfisis\Waddiwasi\WebAssembly\Structure\Types\FuncType;
+use Nsfisis\Waddiwasi\WebAssembly\Structure\Types\Limits;
+use Nsfisis\Waddiwasi\WebAssembly\Structure\Types\MemType;
+use Nsfisis\Waddiwasi\WebAssembly\Structure\Types\TableType;
 use Nsfisis\Waddiwasi\WebAssembly\Structure\Types\ValType;
 use function array_slice;
 use function count;
@@ -63,6 +65,19 @@ final class Validator
 
         $this->validateTypes();
         $this->validateTables();
+        $this->validateMems();
+        $this->validateGlobals();
+        $this->validateElems();
+        $this->validateDatas();
+
+        $this->context = TODO;
+
+        $this->validateFuncs();
+        $this->validateStart();
+        $this->validateImports();
+        $this->validateExports();
+
+        TODO();
     }
 
     private function validateTypes(): void {
@@ -77,22 +92,69 @@ final class Validator
 
     private function validateTables(): void {
         foreach ($this->module->tables as $i => $table) {
+            $this->validateTableType($table->type);
         }
     }
 
-    private function validateMems(): void {}
+    private function validateTableType(TableType $tableType): void {
+        $this->validateLimits($tableType->limits, 2**32 - 1);
+    }
 
-    private function validateGlobals(): void {}
+    private function validateLimits(Limits $limits, int $k): void {
+        $n = $limits->min;
+        $m = $limits->max;
+        $this->assertTrue($n <= $k, "invalid limits");
+        if ($m !== null) {
+            $this->assertTrue($m <= $k, "invalid limits");
+            $this->assertTrue($n <= $m, "invalid limits");
+        }
+    }
 
-    private function validateElems(): void {}
+    private function validateMems(): void {
+        foreach ($this->module->mems as $i => $mem) {
+            $this->validateMemType($mem->type);
+        }
+    }
 
-    private function validateDatas(): void {}
+    private function validateMemType(MemType $memType): void {
+        $this->validateLimits($memType->limits, 2**16);
+    }
 
-    private function validateStart(): void {}
+    private function validateGlobals(): void {
+        foreach ($this->module->globals as $i => $global) {
+            $this->validateExpr($global->init, TODO);
+            $this->validateExprIsConstant($global->init);
+        }
+    }
 
-    private function validateExports(): void {}
+    private function validateExpr(array $instrs, TODO $todo): void {
+    }
 
-    private function validateImports(): void {}
+    private function validateExprIsConstant(array $instrs): void {
+        $this->assertTrue(count($instrs) === 1, "expr is not constant");
+        match ($instrs[0]::class) {
+            Instrs\Numeric\F32Const::class,
+            Instrs\Numeric\F64Const::class,
+            Instrs\Numeric\I32Const::class,
+            Instrs\Numeric\I64Const::class,
+            Instrs\Reference\RefFunc::class,
+            Instrs\Reference\RefNull::class => true,
+            Instrs\Variable\GlobalGet::class => TODO,
+            default => $this->addError("expr is not constant"),
+        };
+    }
+
+    private function validateElems(): void {
+        foreach ($this->module->elems as $i => $elem) {
+            todo();
+        }
+    }
+
+    private function validateDatas(): void {
+        foreach ($this->module->datas as $i => $data) {
+            todo();
+        }
+    }
 
     /**
      * @param Func $func
@@ -499,6 +561,10 @@ final class Validator
             $currentFrame->height,
             true
         );
+    }
+
+    private function assertTrue(bool $x, string $message): void {
+        $x || $this->addError($message);
     }
 
     private function addError(string $message): void
