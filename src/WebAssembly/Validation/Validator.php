@@ -50,7 +50,8 @@ final class Validator
         }
     }
 
-    private function validateModule(): void {
+    private function validateModule(): void
+    {
         $this->context->types = $this->module->types;
         $this->context->funcs = TODO;
         $this->context->tables = TODO;
@@ -81,58 +82,68 @@ final class Validator
         $this->validateExportsHaveDifferentNames();
     }
 
-    private function validateTypes(): void {
+    private function validateTypes(): void
+    {
         // Do nothing because function types are always valid.
     }
 
-    private function validateFuncs(): void {
-            foreach ($this->module->funcs as $func) {
-                $this->validateFunc($func);
-            }
+    private function validateFuncs(): void
+    {
+        foreach ($this->module->funcs as $func) {
+            $this->validateFunc($func);
+        }
     }
 
-    private function validateTables(): void {
+    private function validateTables(): void
+    {
         foreach ($this->module->tables as $i => $table) {
             $this->validateTableType($table->type);
         }
     }
 
-    private function validateTableType(TableType $tableType): void {
-        $this->validateLimits($tableType->limits, 2**32 - 1);
+    private function validateTableType(TableType $tableType): void
+    {
+        $this->validateLimits($tableType->limits, 2 ** 32 - 1);
     }
 
-    private function validateLimits(Limits $limits, int $k): void {
+    private function validateLimits(Limits $limits, int $k): void
+    {
         $n = $limits->min;
         $m = $limits->max;
-        $this->assertTrue($n <= $k, "invalid limits");
+        $this->assertTrue($n <= $k, 'invalid limits');
         if ($m !== null) {
-            $this->assertTrue($m <= $k, "invalid limits");
-            $this->assertTrue($n <= $m, "invalid limits");
+            $this->assertTrue($m <= $k, 'invalid limits');
+            $this->assertTrue($n <= $m, 'invalid limits');
         }
     }
 
-    private function validateMems(): void {
+    private function validateMems(): void
+    {
         foreach ($this->module->mems as $i => $mem) {
             $this->validateMemType($mem->type);
         }
     }
 
-    private function validateMemType(MemType $memType): void {
-        $this->validateLimits($memType->limits, 2**16);
+    private function validateMemType(MemType $memType): void
+    {
+        $this->validateLimits($memType->limits, 2 ** 16);
     }
 
-    private function validateGlobals(): void {
+    private function validateGlobals(): void
+    {
         foreach ($this->module->globals as $i => $global) {
             $this->validateExpr($global->init, TODO);
             $this->validateExprIsConstant($global->init);
         }
     }
 
-    private function validateExpr(array $instrs, TODO $todo): void {
+    private function validateExpr(array $instrs, TODO $todo): void
+    {
     }
 
-    private function validateExprIsConstant(array $instrs): void {
-        $this->assertTrue(count($instrs) === 1, "expr is not constant");
+    private function validateExprIsConstant(array $instrs): void
+    {
+        $this->assertTrue(count($instrs) === 1, 'expr is not constant');
         match ($instrs[0]::class) {
             Instrs\Numeric\F32Const::class,
             Instrs\Numeric\F64Const::class,
@@ -141,31 +152,48 @@ final class Validator
             Instrs\Reference\RefFunc::class,
             Instrs\Reference\RefNull::class => true,
             Instrs\Variable\GlobalGet::class => TODO,
-            default => $this->addError("expr is not constant"),
+            default => $this->addError('expr is not constant'),
         };
     }
 
-    private function validateElems(): void {
+    private function validateElems(): void
+    {
         foreach ($this->module->elems as $i => $elem) {
             todo();
         }
     }
 
-    private function validateDatas(): void {
+    private function validateDatas(): void
+    {
         foreach ($this->module->datas as $i => $data) {
             todo();
         }
     }
 
-    private function validateStart(): void { TODO(); }
+    private function validateStart(): void
+    {
+        TODO();
+    }
 
-    private function validateImports(): void { TODO(); }
+    private function validateImports(): void
+    {
+        TODO();
+    }
 
-    private function validateExports(): void { TODO(); }
+    private function validateExports(): void
+    {
+        TODO();
+    }
 
-    private function validateMemsCount(): void { TODO(); }
+    private function validateMemsCount(): void
+    {
+        TODO();
+    }
 
-    private function validateExportsHaveDifferentNames(): void { TODO(); }
+    private function validateExportsHaveDifferentNames(): void
+    {
+        TODO();
+    }
 
     /**
      * @param Func $func
@@ -574,7 +602,8 @@ final class Validator
         );
     }
 
-    private function assertTrue(bool $x, string $message): void {
+    private function assertTrue(bool $x, string $message): void
+    {
         $x || $this->addError($message);
     }
 
