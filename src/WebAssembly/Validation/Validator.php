@@ -4,6 +4,7 @@ declare(strict_types=1);
 
 namespace Nsfisis\Waddiwasi\WebAssembly\Validation;
 
+use Nsfisis\Waddiwasi\WebAssembly\Execution\Linker;
 use Nsfisis\Waddiwasi\WebAssembly\Structure\Instructions\Instr;
 use Nsfisis\Waddiwasi\WebAssembly\Structure\Instructions\Instrs;
 use Nsfisis\Waddiwasi\WebAssembly\Structure\Instructions\Instrs\Control\BlockType;
@@ -34,25 +35,59 @@ final class Validator
 
     public function __construct(
         private readonly Module $module,
+        private readonly array $externVals,
     ) {
     }
 
     public function validate(): ValidationResult
     {
         try {
-            foreach ($this->module->funcs as $func) {
-                $this->validateFunction($func);
-            }
             return new ValidationResult($this->errors);
         } catch (ValidationFailureException $e) {
             return new ValidationResult([...$this->errors, $e->getMessage()]);
         }
     }
 
+    private function validateModule(): void {
+        $this->context->types = $this->module->types;
+        $this->context->funcs = TODO;
+        $this->context->tables = TODO;
+        $this->context->mems = TODO;
+        $this->context->globals = TODO;
+        $this->context->elems = TODO;
+        $this->context->datas = TODO;
+        $this->context->locals = [];
+        $this->context->labels = [];
+        $this->context->return = [];
+        $this->context->refs = TODO;
+    }
+
+    private function validateFuncs(): void {
+            foreach ($this->module->funcs as $func) {
+                $this->validateFunc($func);
+            }
+    }
+
+    private function validateTables(): void {}
+
+    private function validateMems(): void {}
+
+    private function validateGlobals(): void {}
+
+    private function validateElems(): void {}
+
+    private function validateDatas(): void {}
+
+    private function validateStart(): void {}
+
+    private function validateExports(): void {}
+
+    private function validateImports(): void {}
+
     /**
      * @param Func $func
      */
-    private function validateFunction($func): void
+    private function validateFunc($func): void
     {
         // Reset validation state for each function
         $this->valueStack = [];
