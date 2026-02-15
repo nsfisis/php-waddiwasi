@@ -7,6 +7,7 @@ namespace Nsfisis\Waddiwasi\WebAssembly\Execution;
 use Nsfisis\Waddiwasi\WebAssembly\Structure\Types\ValType;
 use function assert;
 use function count;
+use function gettype;
 use function is_float;
 use function is_int;
 
@@ -96,7 +97,7 @@ final class Stack
         $result = $this->pop();
         assert(
             is_int($result) || is_float($result) || $result instanceof Ref,
-            'Expected a value on the stack, but got ' . print_r($result, true),
+            'Expected a value on the stack, but got ' . gettype($result),
         );
         return $result;
     }
