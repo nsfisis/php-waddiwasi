@@ -4,7 +4,7 @@
         "Read more about it at https://getcomposer.org/doc/01-basic-usage.md#installing-dependencies",
         "This file is @generated automatically"
     ],
-    "content-hash": "8c47dacf7656b69efedeb6b1da1eba78",
+    "content-hash": "81f3515ffeb5ece39d86093223a4d528",
     "packages": [],
     "packages-dev": [
         {
@@ -1221,54 +1221,6 @@
                 }
             ],
             "time": "2026-01-15T06:54:53+00:00"
-        },
-        {
-            "name": "m3m0r7/rubyvm-on-php",
-            "version": "0.3.3.0",
-            "source": {
-                "type": "git",
-                "url": "https://github.com/m3m0r7/rubyvm-on-php.git",
-                "reference": "a568cabf4b71e7f8a3efebcaa3b77ea2c8bc2f5c"
-            },
-            "dist": {
-                "type": "zip",
-                "url": "https://api.github.com/repos/m3m0r7/rubyvm-on-php/zipball/a568cabf4b71e7f8a3efebcaa3b77ea2c8bc2f5c",
-                "reference": "a568cabf4b71e7f8a3efebcaa3b77ea2c8bc2f5c",
-                "shasum": ""
-            },
-            "require": {
-                "monolog/monolog": "^3.4",
-                "php": ">=8.2",
-                "symfony/console": "^6.3"
-            },
-            "require-dev": {
-                "friendsofphp/php-cs-fixer": "^3.21",
-                "phpstan/phpstan": "^1.10",
-                "phpunit/phpunit": "^10.2",
-                "rector/rector": "^0.18.3",
-                "squizlabs/php_codesniffer": "^3.7"
-            },
-            "type": "library",
-            "autoload": {
-                "psr-4": {
-                    "RubyVM\\": "src/"
-                }
-            },
-            "notification-url": "https://packagist.org/downloads/",
-            "license": [
-                "MIT"
-            ],
-            "authors": [
-                {
-                    "name": "m3m0r7",
-                    "homepage": "https://i.mem.ooo"
-                }
-            ],
-            "support": {
-                "issues": "https://github.com/m3m0r7/rubyvm-on-php/issues",
-                "source": "https://github.com/m3m0r7/rubyvm-on-php/tree/0.3.3.0"
-            },
-            "time": "2023-12-28T04:25:48+00:00"
         },
         {
             "name": "monolog/monolog",

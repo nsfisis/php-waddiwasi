@@ -24,18 +24,6 @@ $ composer example:php-on-wasm
 ```
 
 
-### RubyVM on PHP on Wasm
-
-https://github.com/m3m0r7/rubyvm-on-php is a RubyVM written in pure PHP.
-
-It works on the PHP runtime on my Wasm runtime.
-
-```
-$ composer install
-$ composer example:rubyvm-on-php-on-wasm
-```
-
-
 
 ## Talks
 
