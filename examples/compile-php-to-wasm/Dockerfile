@@ -1,6 +1,6 @@
-FROM emscripten/emsdk:3.1.74
+FROM emscripten/emsdk:5.0.1 AS wasm-builder
 
-RUN git clone --depth=1 --branch=php-8.4.5 https://github.com/php/php-src
+RUN git clone --depth=1 --branch=php-8.5.3 https://github.com/php/php-src
 
 RUN apt-get update && \
     apt-get install -y --no-install-recommends \
@@ -11,25 +11,24 @@ RUN apt-get update && \
         && \
     :
 
-# Define ZEND_MM_ERROR=0 for suppressing munmap() errors.
+# Define ZEND_MM_ERROR=0 to suppress munmap() errors.
 RUN cd php-src && \
     ./buildconf --force && \
     emconfigure ./configure \
         --disable-all \
-        --disable-mbregex \
-        --disable-fiber-asm \
-        --disable-cli \
         --disable-cgi \
+        --disable-cli \
+        --disable-fiber-asm \
+        --disable-opcache-jit \
         --disable-phpdbg \
         --enable-embed=static \
-        --enable-mbstring \
         --without-iconv \
         --without-libxml \
         --without-pcre-jit \
         --without-pdo-sqlite \
         --without-sqlite3 \
         && \
-    EMCC_CFLAGS='-s ERROR_ON_UNDEFINED_SYMBOLS=0 -D ZEND_MM_ERROR=0' emmake make -j$(nproc) && \
+    EMCC_CFLAGS='-D ZEND_MM_ERROR=0' emmake make -j$(nproc) && \
     mv libs/libphp.a .. && \
     make clean && \
     git clean -fd && \

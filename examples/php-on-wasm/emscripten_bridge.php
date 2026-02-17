@@ -41,16 +41,21 @@ $imports = [
         'getprotobynumber' => makeHostFunc('(i32) -> (i32)', hostFunc__env__getprotobynumber(...)),
         'strptime' => makeHostFunc('(i32, i32, i32) -> (i32)', hostFunc__env__strptime(...)),
         'getnameinfo' => makeHostFunc('(i32, i32, i32, i32, i32, i32, i32) -> (i32)', hostFunc__env__getnameinfo(...)),
+        'invoke_viiiiii' => makeHostFunc('(i32, i32, i32, i32, i32, i32, i32) -> ()', hostFunc__env__invoke_viiiiii(...)),
+        'invoke_iiidii' => makeHostFunc('(i32, i32, i32, f64, i32, i32) -> (i32)', hostFunc__env__invoke_iiidii(...)),
+        'invoke_jii' => makeHostFunc('(i32, i32, i32) -> (i64)', hostFunc__env__invoke_jii(...)),
         'invoke_viidii' => makeHostFunc('(i32, i32, i32, f64, i32, i32) -> ()', hostFunc__env__invoke_viidii(...)),
         'getcontext' => makeHostFunc('(i32) -> (i32)', hostFunc__env__getcontext(...)),
         'makecontext' => makeHostFunc('(i32, i32, i32, i32) -> ()', hostFunc__env__makecontext(...)),
         'swapcontext' => makeHostFunc('(i32, i32) -> (i32)', hostFunc__env__swapcontext(...)),
+        'initgroups' => makeHostFunc('(i32, i32) -> (i32)', hostFunc__env__initgroups(...)),
         '__syscall_fcntl64' => makeHostFunc('(i32, i32, i32) -> (i32)', hostFunc__env____syscall_fcntl64(...)),
         '__syscall_ioctl' => makeHostFunc('(i32, i32, i32) -> (i32)', hostFunc__env____syscall_ioctl(...)),
         '__syscall_faccessat' => makeHostFunc('(i32, i32, i32, i32) -> (i32)', hostFunc__env____syscall_faccessat(...)),
         '__syscall_chdir' => makeHostFunc('(i32) -> (i32)', hostFunc__env____syscall_chdir(...)),
         '__syscall_chmod' => makeHostFunc('(i32, i32) -> (i32)', hostFunc__env____syscall_chmod(...)),
         '__syscall_fchownat' => makeHostFunc('(i32, i32, i32, i32, i32) -> (i32)', hostFunc__env____syscall_fchownat(...)),
+        '__syscall_fchmod' => makeHostFunc('(i32, i32) -> (i32)', hostFunc__env____syscall_fchmod(...)),
         '__syscall_dup' => makeHostFunc('(i32) -> (i32)', hostFunc__env____syscall_dup(...)),
         '_emscripten_memcpy_js' => makeHostFunc('(i32, i32, i32) -> ()', hostFunc__env___emscripten_memcpy_js(...)),
         'emscripten_date_now' => makeHostFunc('() -> (f64)', hostFunc__env__emscripten_date_now(...)),
@@ -77,7 +82,7 @@ $imports = [
         '__syscall_statfs64' => makeHostFunc('(i32, i32, i32) -> (i32)', hostFunc__env____syscall_statfs64(...)),
         '__syscall_symlinkat' => makeHostFunc('(i32, i32, i32) -> (i32)', hostFunc__env____syscall_symlinkat(...)),
         'emscripten_get_heap_max' => makeHostFunc('() -> (i32)', hostFunc__env__emscripten_get_heap_max(...)),
-        '_tzset_js' => makeHostFunc('(i32, i32, i32) -> ()', hostFunc__env___tzset_js(...)),
+        '_tzset_js' => makeHostFunc('(i32, i32, i32, i32) -> ()', hostFunc__env___tzset_js(...)),
         '__syscall_unlinkat' => makeHostFunc('(i32, i32, i32) -> (i32)', hostFunc__env____syscall_unlinkat(...)),
         '__syscall_utimensat' => makeHostFunc('(i32, i32, i32, i32) -> (i32)', hostFunc__env____syscall_utimensat(...)),
         'emscripten_resize_heap' => makeHostFunc('(i32) -> (i32)', hostFunc__env__emscripten_resize_heap(...)),
@@ -93,12 +98,12 @@ $imports = [
         '__syscall_recvfrom' => makeHostFunc('(i32, i32, i32, i32, i32, i32) -> (i32)', hostFunc__env____syscall_recvfrom(...)),
         '__syscall_sendto' => makeHostFunc('(i32, i32, i32, i32, i32, i32) -> (i32)', hostFunc__env____syscall_sendto(...)),
         '__syscall_socket' => makeHostFunc('(i32, i32, i32, i32, i32, i32) -> (i32)', hostFunc__env____syscall_socket(...)),
-        '__syscall_ftruncate64' => makeHostFunc('(i32, i32, i32) -> (i32)', hostFunc__env____syscall_ftruncate64(...)),
-        '_mktime_js' => makeHostFunc('(i32) -> (i32)', hostFunc__env___mktime_js(...)),
-        '_localtime_js' => makeHostFunc('(i32, i32, i32) -> ()', hostFunc__env___localtime_js(...)),
-        '_gmtime_js' => makeHostFunc('(i32, i32, i32) -> ()', hostFunc__env___gmtime_js(...)),
-        '_munmap_js' => makeHostFunc('(i32, i32, i32, i32, i32, i32, i32) -> (i32)', hostFunc__env___munmap_js(...)),
-        '_mmap_js' => makeHostFunc('(i32, i32, i32, i32, i32, i32, i32, i32) -> (i32)', hostFunc__env___mmap_js(...)),
+        '__syscall_ftruncate64' => makeHostFunc('(i32, i64) -> (i32)', hostFunc__env____syscall_ftruncate64(...)),
+        '_mktime_js' => makeHostFunc('(i32) -> (i64)', hostFunc__env___mktime_js(...)),
+        '_localtime_js' => makeHostFunc('(i64, i32) -> ()', hostFunc__env___localtime_js(...)),
+        '_gmtime_js' => makeHostFunc('(i64, i32) -> ()', hostFunc__env___gmtime_js(...)),
+        '_munmap_js' => makeHostFunc('(i32, i32, i32, i32, i32, i64) -> (i32)', hostFunc__env___munmap_js(...)),
+        '_mmap_js' => makeHostFunc('(i32, i32, i32, i32, i64, i32, i32) -> (i32)', hostFunc__env___mmap_js(...)),
     ],
     'wasi_snapshot_preview1' => [
         'environ_sizes_get' => makeHostFunc('(i32, i32) -> (i32)', hostFunc__wasi_snapshot_preview1__environ_sizes_get(...)),
@@ -109,8 +114,8 @@ $imports = [
         'proc_exit' => makeHostFunc('(i32) -> ()', hostFunc__wasi_snapshot_preview1__proc_exit(...)),
         'fd_sync' => makeHostFunc('(i32) -> (i32)', hostFunc__wasi_snapshot_preview1__fd_sync(...)),
         'fd_fdstat_get' => makeHostFunc('(i32, i32) -> (i32)', hostFunc__wasi_snapshot_preview1__fd_fdstat_get(...)),
-        'clock_time_get' => makeHostFunc('(i32, i32, i32, i32) -> (i32)', hostFunc__wasi_snapshot_preview1__clock_time_get(...)),
-        'fd_seek' => makeHostFunc('(i32, i32, i32, i32, i32) -> (i32)', hostFunc__wasi_snapshot_preview1__fd_seek(...)),
+        'clock_time_get' => makeHostFunc('(i32, i64, i32) -> (i32)', hostFunc__wasi_snapshot_preview1__clock_time_get(...)),
+        'fd_seek' => makeHostFunc('(i32, i64, i32, i32) -> (i32)', hostFunc__wasi_snapshot_preview1__fd_seek(...)),
     ],
 ];
 
@@ -810,6 +815,45 @@ function hostFunc__env__getnameinfo(Runtime $runtime): void
     throw new \RuntimeException('env::getnameinfo: not implemented');
 }
 
+// Type: (i32, i32, i32, i32, i32, i32, i32) -> ()
+function hostFunc__env__invoke_viiiiii(Runtime $runtime, int $index, int $a1, int $a2, int $a3, int $a4, int $a5, int $a6): void
+{
+    $sp = emscripten_stack_get_current($runtime);
+    $func = getWasmTableEntry($runtime, $index);
+    $runtime->stack->pushValue($a1);
+    $runtime->stack->pushValue($a2);
+    $runtime->stack->pushValue($a3);
+    $runtime->stack->pushValue($a4);
+    $runtime->stack->pushValue($a5);
+    $runtime->stack->pushValue($a6);
+    $runtime->invokeByFuncAddr($func);
+}
+
+// Type: (i32, i32, i32, f64, i32, i32) -> (i32)
+function hostFunc__env__invoke_iiidii(Runtime $runtime, int $index, int $a1, int $a2, float $a3, int $a4, int $a5): int
+{
+    $sp = emscripten_stack_get_current($runtime);
+    $func = getWasmTableEntry($runtime, $index);
+    $runtime->stack->pushValue($a1);
+    $runtime->stack->pushValue($a2);
+    $runtime->stack->pushValue($a3);
+    $runtime->stack->pushValue($a4);
+    $runtime->stack->pushValue($a5);
+    $runtime->invokeByFuncAddr($func);
+    return $runtime->stack->popInt();
+}
+
+// Type: (i32, i32, i32) -> (i64)
+function hostFunc__env__invoke_jii(Runtime $runtime, int $index, int $a1, int $a2): int
+{
+    $sp = emscripten_stack_get_current($runtime);
+    $func = getWasmTableEntry($runtime, $index);
+    $runtime->stack->pushValue($a1);
+    $runtime->stack->pushValue($a2);
+    $runtime->invokeByFuncAddr($func);
+    return $runtime->stack->popInt();
+}
+
 // Type: (i32, i32, i32, f64, i32, i32) -> ()
 function hostFunc__env__invoke_viidii(Runtime $runtime, int $index, int $a1, int $a2, float $a3, int $a4, int $a5): void
 {
@@ -839,6 +883,18 @@ function hostFunc__env__makecontext(Runtime $runtime): void
 function hostFunc__env__swapcontext(Runtime $runtime): void
 {
     throw new \RuntimeException('env::swapcontext: not implemented');
+}
+
+// Type: (i32, i32) -> (i32)
+function hostFunc__env__initgroups(Runtime $runtime): void
+{
+    throw new \RuntimeException('env::initgroups: not implemented');
+}
+
+// Type: (i32, i32) -> (i32)
+function hostFunc__env____syscall_fchmod(Runtime $runtime): void
+{
+    throw new \RuntimeException('env::__syscall_fchmod: not implemented');
 }
 
 // Type: (i32, i32) -> (i32)
@@ -1260,8 +1316,8 @@ function hostFunc__env__emscripten_get_heap_max(Runtime $runtime): void
     throw new \RuntimeException('env::emscripten_get_heap_max: not implemented');
 }
 
-// Type: (i32, i32, i32) -> ()
-function hostFunc__env___tzset_js(Runtime $runtime): void
+// Type: (i32, i32, i32, i32) -> ()
+function hostFunc__env___tzset_js(Runtime $runtime, int $timezone, int $daylight, int $std_name, int $dst_name): void
 {
     // Do nothing ;)
 }
@@ -1356,14 +1412,14 @@ function hostFunc__env____syscall_socket(Runtime $runtime): void
     throw new \RuntimeException('env::__syscall_socket: not implemented');
 }
 
-// Type: (i32, i32, i32) -> (i32)
+// Type: (i32, i64) -> (i32)
 function hostFunc__env____syscall_ftruncate64(Runtime $runtime): void
 {
     throw new \RuntimeException('env::__syscall_ftruncate64: not implemented');
 }
 
-// Type: (i32, i32, i32, i32) -> (i32)
-function hostFunc__wasi_snapshot_preview1__clock_time_get(Runtime $runtime, int $clk_id, int $ignored_precision_low, int $ignored_precision_high, int $ptime): int
+// Type: (i32, i64, i32) -> (i32)
+function hostFunc__wasi_snapshot_preview1__clock_time_get(Runtime $runtime, int $clk_id, int $ignored_precision, int $ptime): int
 {
     if ($clk_id < 0 || $clk_id > 3) {
         return 28;
@@ -1383,10 +1439,9 @@ function hostFunc__wasi_snapshot_preview1__clock_time_get(Runtime $runtime, int 
     return 0;
 }
 
-// Type: (i32, i32, i32, i32, i32) -> (i32)
-function hostFunc__wasi_snapshot_preview1__fd_seek(Runtime $runtime, int $fd, int $offset_low, int $offset_high, int $whence, int $newOffset): int
+// Type: (i32, i64, i32, i32) -> (i32)
+function hostFunc__wasi_snapshot_preview1__fd_seek(Runtime $runtime, int $fd, int $offset, int $whence, int $newOffset): int
 {
-    $offset = $offset_low + $offset_high * 4294967296;
     $file = fsGetVFileFromFd($fd);
     $pos = $file->seek($offset, $whence);
     heap64Write($runtime, $newOffset, $pos);
@@ -1394,36 +1449,34 @@ function hostFunc__wasi_snapshot_preview1__fd_seek(Runtime $runtime, int $fd, in
     return 0;
 }
 
-// Type: (i32) -> (i32)
+// Type: (i32) -> (i64)
 function hostFunc__env___mktime_js(Runtime $runtime): void
 {
     throw new \RuntimeException('env::_mktime_js: not implemented');
 }
 
-// Type: (i32, i32, i32) -> ()
+// Type: (i64, i32) -> ()
 function hostFunc__env___localtime_js(Runtime $runtime): void
 {
     throw new \RuntimeException('env::_localtime_js: not implemented');
 }
 
-// Type: (i32, i32, i32) -> ()
+// Type: (i64, i32) -> ()
 function hostFunc__env___gmtime_js(Runtime $runtime): void
 {
     throw new \RuntimeException('env::_gmtime_js: not implemented');
 }
 
-// Type: (i32, i32, i32, i32, i32, i32, i32) -> (i32)
+// Type: (i32, i32, i32, i32, i32, i64) -> (i32)
 function hostFunc__env___munmap_js(Runtime $runtime): int
 {
     // Do nothing.
     return 0;
 }
 
-// Type: (i32, i32, i32, i32, i32, i32, i32, i32) -> (i32)
-function hostFunc__env___mmap_js(Runtime $runtime, int $len, int $prot, int $flags, int $fd, int $offset_low, int $offset_high, int $allocated, int $addr): int
+// Type: (i32, i32, i32, i32, i64, i32, i32) -> (i32)
+function hostFunc__env___mmap_js(Runtime $runtime, int $len, int $prot, int $flags, int $fd, int $offset, int $allocated, int $addr): int
 {
-    $offset = $offset_low + $offset_high * 4294967296;
-
     [$resultPtr, $resultAllocated] = fsMmap($runtime, $fd, $len, $offset, $prot, $flags);
     heap32Write($runtime, $allocated, $resultAllocated);
     heapU32Write($runtime, $addr, $resultPtr);
