@@ -244,7 +244,7 @@ abstract class SpecTestsuiteBase extends TestCase
         $runtime = self::$runtimes[$targetModuleName];
         self::$registeredModules[$as] = $targetModule;
         self::$registeredRuntimes[$as] = $runtime;
-        if ($name !== '_') {
+        if ($name !== null) {
             self::$registeredModules[$name] = $targetModule;
             self::$registeredRuntimes[$name] = $runtime;
         }
