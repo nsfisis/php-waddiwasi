@@ -38,7 +38,6 @@ use Nsfisis\Waddiwasi\WebAssembly\Structure\Types\ValType;
 use function array_reduce;
 use function assert;
 use function count;
-use function get_class;
 use function in_array;
 use function is_int;
 use function ord;
@@ -980,7 +979,7 @@ final class Decoder
         $result = [];
         while (true) {
             $instr = $this->decodeInstr();
-            if (in_array(get_class($instr), $delimiters, true)) {
+            if (in_array($instr::class, $delimiters, true)) {
                 return [$result, $instr];
             }
             $result[] = $instr;

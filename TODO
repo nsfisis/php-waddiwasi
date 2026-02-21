@@ -1,5 +1,4 @@
 * Support text format (.wat)
-* Implement validation
 * Provide sane bindings to PHP
 * Write PHPDoc for public APIs
 * Provide high-level APIs

@@ -31,6 +31,7 @@ use Nsfisis\Waddiwasi\WebAssembly\Structure\Types\MemType;
 use Nsfisis\Waddiwasi\WebAssembly\Structure\Types\Mut;
 use Nsfisis\Waddiwasi\WebAssembly\Structure\Types\TableType;
 use Nsfisis\Waddiwasi\WebAssembly\Structure\Types\ValType;
+use Nsfisis\Waddiwasi\WebAssembly\Validation\Validator;
 use PHPUnit\Framework\TestCase;
 use RuntimeException;
 use function count;
@@ -157,8 +158,18 @@ abstract class SpecTestsuiteBase extends TestCase
         string $text,
         int $line,
     ): void {
-        // @todo Our implementation does not support "validation" step.
-        $this->assertTrue(true);
+        $filePath = __DIR__ . "/../../fixtures/spec_testsuites/core/{$filename}";
+        $wasmBinaryStream = new FileStream($filePath);
+        try {
+            $module = (new Decoder($wasmBinaryStream))->decode();
+        } catch (InvalidBinaryFormatException) {
+            // Malformed binary is also a form of invalid module.
+            $this->assertTrue(true);
+            return;
+        }
+        $result = (new Validator($module))->validate();
+        // @todo Check error message.
+        $this->assertNotEmpty($result->errors, "validating {$filename} is expected to fail (at {$line})");
     }
 
     protected function runAssertExhaustionCommand(
